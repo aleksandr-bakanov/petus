@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace = "bav.petus.android"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         applicationId = "bav.petus.android"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
     }
@@ -49,4 +49,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     debugImplementation(libs.compose.ui.tooling)
     implementation(libs.compose.runtime)
+    implementation(libs.datastore.preferences)
+    implementation(libs.room.runtime)
 }

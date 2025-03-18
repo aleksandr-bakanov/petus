@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.foundation.lazy.items
 import org.koin.androidx.compose.koinViewModel
 import androidx.compose.ui.unit.dp
-import bav.petus.Pet
+import bav.petus.model.Pet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

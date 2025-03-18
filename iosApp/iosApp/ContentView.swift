@@ -77,7 +77,7 @@ extension ContentView {
         
         init() {
             self.loadPets()
-            self.getWeather()
+            //self.getWeather()
         }
         
         func getWeather() {
@@ -107,7 +107,7 @@ extension ContentView {
         func addPet(name: String) {
             Task {
                 do {
-                    helper.addPet(name: name)
+                    try await helper.addPet(name: name)
                     self.pets = .loading
                     let pets = try await helper.getPets()
                     self.pets = .result(pets)

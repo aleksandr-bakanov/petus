@@ -1,24 +1,26 @@
 package bav.petus
 
-import bav.petus.cache.Database
-import bav.petus.cache.DatabaseDriverFactory
 import bav.petus.entity.WeatherDto
-import bav.petus.network.WeatherApi
+import bav.petus.model.Pet
+import bav.petus.repo.PetsRepository
+import bav.petus.repo.WeatherRepository
 
-class PetsSDK(databaseDriverFactory: DatabaseDriverFactory, val api: WeatherApi) {
-    private val database = Database(databaseDriverFactory)
+class PetsSDK(
+    private val petsRepository: PetsRepository,
+    private val weatherRepository: WeatherRepository,
+) {
 
     @Throws(Exception::class)
     suspend fun getWeather(latitude: Double, longitude: Double): WeatherDto {
-        return api.getWeather(latitude, longitude)
+        return weatherRepository.getWeather(latitude, longitude)
     }
 
     @Throws(Exception::class)
-    fun getPets(): List<Pet> {
-        return database.getAllPets()
+    suspend fun getPets(): List<Pet> {
+        return petsRepository.getAllPets()
     }
 
-    fun addPet(pet: Pet) {
-        database.insertPet(pet)
+    suspend fun addPet(pet: Pet) {
+        petsRepository.insertPet(pet)
     }
 }
