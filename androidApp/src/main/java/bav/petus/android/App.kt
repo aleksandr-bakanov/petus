@@ -17,14 +17,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.lazy.items
-import org.koin.androidx.compose.koinViewModel
 import androidx.compose.ui.unit.dp
 import bav.petus.model.Pet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun App() {
-    val viewModel = koinViewModel<PetsViewModel>()
+fun App(
+    viewModel: PetsViewModel,
+    requestBackgroundLocationPermission: () -> Unit,
+) {
     val state by remember { viewModel.state }
 
     MyApplicationTheme {
@@ -43,6 +44,26 @@ fun App() {
                     .fillMaxSize()
                     .padding(padding)
             ) {
+                if (state.showRationale) {
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp),
+                        text = "GIVE ACCESS TO BACKGROUND LOCATION",
+                    )
+                    Button(onClick = {
+                        requestBackgroundLocationPermission()
+                        viewModel.updateRationale(value = false)
+                    }) {
+                        Text(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                            ,
+                            text = "Give permission"
+                        )
+                    }
+                }
                 TextField(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -50,7 +71,8 @@ fun App() {
                     value = state.newPetName,
                     onValueChange = {
                         viewModel.setNewPetName(it)
-                    })
+                    }
+                )
                 Button(onClick = {
                     viewModel.addPet()
                     viewModel.loadPets()

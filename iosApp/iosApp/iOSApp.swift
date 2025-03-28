@@ -5,6 +5,8 @@ import shared
 struct iOSApp: App {
     init() {
         KoinHelperKt.doInitKoin()
+        
+        LocationHelperKt.doInitLocationManager()
     }
     
 	var body: some Scene {

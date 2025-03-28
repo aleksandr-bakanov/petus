@@ -18,6 +18,10 @@ class PetsViewModel(private val sdk: PetsSDK) : ViewModel() {
         getWeather()
     }
 
+    fun updateRationale(value: Boolean) {
+        _state.value = _state.value.copy(showRationale = value)
+    }
+
     fun getWeather() {
         viewModelScope.launch {
             try {
@@ -57,4 +61,5 @@ class PetsViewModel(private val sdk: PetsSDK) : ViewModel() {
 data class PetsUiState(
     val pets: List<Pet> = emptyList(),
     val newPetName: String = "",
+    val showRationale: Boolean = false,
 )
