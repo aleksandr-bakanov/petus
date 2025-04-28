@@ -6,17 +6,13 @@ import bav.petus.android.ui.common.PetImageUseCase
 import bav.petus.android.ui.common.UiState
 import bav.petus.core.engine.Engine
 import bav.petus.extension.epochTimeToString
-import bav.petus.model.AgeState
 import bav.petus.model.Pet
 import bav.petus.model.PetType
 import bav.petus.repo.PetsRepository
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 data class PetDetailsUiState(

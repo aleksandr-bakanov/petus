@@ -63,7 +63,6 @@ val appModule = module {
     single<WeatherRepository> {
         WeatherRepository(
             database = get(),
-            timeRepo = get(),
         )
     }
 
@@ -115,7 +114,6 @@ val appModule = module {
 
     viewModel {
         PetCreationScreenViewModel(
-            petsRepo = get(),
             engine = get(),
         )
     }

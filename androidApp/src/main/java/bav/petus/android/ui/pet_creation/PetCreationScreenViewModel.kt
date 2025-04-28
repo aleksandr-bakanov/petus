@@ -5,7 +5,6 @@ import bav.petus.android.base.ViewModelWithNavigation
 import bav.petus.android.ui.common.UiState
 import bav.petus.core.engine.Engine
 import bav.petus.model.PetType
-import bav.petus.repo.PetsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,7 +18,6 @@ data class PetCreationUiState(
 )
 
 class PetCreationScreenViewModel(
-    private val petsRepo: PetsRepository,
     private val engine: Engine,
 ) : ViewModelWithNavigation<PetCreationScreenViewModel.Navigation>() {
 
@@ -87,9 +85,5 @@ class PetCreationScreenViewModel(
     sealed interface Navigation {
         data object CloseScreen : Navigation
         data object PetCreationSuccess : Navigation
-    }
-
-    companion object {
-        const val PET_SUCCESSFULLY_CREATED_KEY = "pet_successfully_created_key"
     }
 }

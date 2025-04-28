@@ -81,7 +81,7 @@ fun AppWithBottomBar(
             petDetailsScreen(navController)
             petCreationScreen(navController)
             cemeteryScreen(navController)
-            weatherReportScreen(navController)
+            weatherReportScreen()
         }
     }
 }

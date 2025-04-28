@@ -2,7 +2,6 @@ package bav.petus.repo
 
 import bav.petus.cache.PetsDatabase
 import bav.petus.cache.WeatherRecord
-import bav.petus.core.time.TimeRepository
 import bav.petus.extension.epochTimeToString
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -15,7 +14,6 @@ import kotlin.math.roundToInt
  */
 class WeatherRepository(
     private val database: PetsDatabase,
-    private val timeRepo: TimeRepository,
 ) {
 
     /**

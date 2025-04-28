@@ -14,7 +14,6 @@ import bav.petus.core.time.TimeRepository
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.entity.WeatherDto
 import bav.petus.network.WeatherApi
-import bav.petus.repo.PetsRepository
 import bav.petus.repo.WeatherRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject

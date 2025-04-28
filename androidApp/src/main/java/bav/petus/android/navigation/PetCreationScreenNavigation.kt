@@ -24,10 +24,7 @@ fun NavGraphBuilder.petCreationScreen(
                         navController.popBackStack()
                     }
                     PetCreationScreenViewModel.Navigation.PetCreationSuccess -> {
-                        navController.putForPreviousAndClose(
-                            key = PetCreationScreenViewModel.PET_SUCCESSFULLY_CREATED_KEY,
-                            value = true
-                        )
+                        navController.popBackStack()
                     }
                 }
             }

@@ -31,12 +31,6 @@ fun NavGraphBuilder.zooScreen(
             }
         )
         LaunchedEffect(Unit) {
-            navBackStackEntry.getOnce<Boolean>(PetCreationScreenViewModel.PET_SUCCESSFULLY_CREATED_KEY) {
-                if (it) {
-                    //viewModel.onAction(ZooScreenViewModel.Action.ReloadPets)
-                }
-            }
-
             viewModel.navigation.collect { navigation ->
                 when (navigation) {
                     ZooScreenViewModel.Navigation.OpenApplicationSettings -> {

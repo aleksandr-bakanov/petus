@@ -5,9 +5,7 @@ import bav.petus.core.engine.Engine
 import bav.petus.core.time.TimeRepository
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.entity.WeatherDto
-import bav.petus.model.Pet
 import bav.petus.network.WeatherApi
-import bav.petus.repo.PetsRepository
 import bav.petus.repo.WeatherRepository
 
 class PetsSDK(

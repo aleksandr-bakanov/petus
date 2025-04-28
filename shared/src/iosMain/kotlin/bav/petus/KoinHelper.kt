@@ -21,7 +21,6 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
-import platform.Foundation.NSTimeIntervalSince1970
 
 class KoinHelper : KoinComponent {
     private val sdk: PetsSDK by inject<PetsSDK>()
@@ -163,7 +162,6 @@ fun initKoin() {
             single<WeatherRepository> {
                 WeatherRepository(
                     database = get(),
-                    timeRepo = get(),
                 )
             }
 

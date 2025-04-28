@@ -2,7 +2,6 @@ package bav.petus.repo
 
 import bav.petus.cache.PetEntity
 import bav.petus.cache.PetsDatabase
-import bav.petus.cache.WeatherRecord
 import bav.petus.model.Pet
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -81,19 +80,6 @@ class PetsRepository(
             .selectPetByIdFlow(id)
             .map { entity ->
                 entity?.let {
-                    Json.decodeFromString<Pet>(entity.petData).copy(
-                        id = entity.id,
-                        isDead = entity.isDead,
-                    )
-                }
-            }
-    }
-
-    fun getAllPetsFlow(): Flow<List<Pet>> {
-        return database.getDao()
-            .selectAllPetsAsFlow()
-            .map { list ->
-                list.map { entity ->
                     Json.decodeFromString<Pet>(entity.petData).copy(
                         id = entity.id,
                         isDead = entity.isDead,
