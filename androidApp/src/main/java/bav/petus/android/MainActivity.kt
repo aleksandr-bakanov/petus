@@ -9,44 +9,63 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import org.koin.androidx.compose.koinViewModel
+import androidx.lifecycle.lifecycleScope
+import bav.petus.PetsSDK
+import bav.petus.android.helpers.WorkManagerHelper
+import bav.petus.android.navigation.AppWithBottomBar
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
 
-    private lateinit var viewModel: PetsViewModel
-
-    private val locationPermissionRequest = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        when {
-            permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-                Log.d("cqhg43" , "ACCESS_COARSE_LOCATION granted")
-                checkForBackgroundLocationPermission()
-            }
-            permissions.getOrDefault(Manifest.permission.ACCESS_BACKGROUND_LOCATION, false) -> {
-                Log.d("cqhg43" , "ACCESS_BACKGROUND_LOCATION granted")
-            }
-            else -> {
-                Log.d("cqhg43" , "NOT granted")
-            }
-        }
-    }
+    private val workManagerHelper: WorkManagerHelper by inject()
+    private val petsSDK: PetsSDK by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         checkForCoarseLocationPermissions()
+        workManagerHelper.enqueuePeriodicPetsUpdateWorker()
 
         setContent {
-            viewModel = koinViewModel<PetsViewModel>()
-            App(
-                viewModel = viewModel,
-                requestBackgroundLocationPermission = {
-                    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
-                        requestPermissions(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-                    }
+            MyApplicationTheme {
+                AppWithBottomBar(
+                    requestBackgroundLocationPermission = {
+                        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+                            requestPermissions(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+                        }
+                    },
+                    shouldShowBackgroundLocationPermissionRationale = ::shouldShowBackgroundLocationPermissionRationale,
+                )
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        lifecycleScope.launch {
+            petsSDK.applicationDidBecomeActive()
+        }
+    }
+
+    private fun shouldShowBackgroundLocationPermissionRationale(): Boolean {
+        return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+            when (ContextCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+            ) {
+                PackageManager.PERMISSION_GRANTED -> false
+
+                PackageManager.PERMISSION_DENIED -> {
+                    shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
                 }
-            )
+
+                else -> false
+            }
+        }
+        else {
+            false
         }
     }
 
@@ -57,35 +76,26 @@ class MainActivity : ComponentActivity() {
         ) {
             PackageManager.PERMISSION_GRANTED -> {
                 Log.d("cqhg43" , "ACCESS_COARSE_LOCATION already granted")
-                checkForBackgroundLocationPermission()
             }
             PackageManager.PERMISSION_DENIED -> {
-                val shouldShowRationale = shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)
-                Log.d("cqhg43" , "ACCESS_COARSE_LOCATION not yet granted; shouldShowRationale = $shouldShowRationale")
+                Log.d("cqhg43" , "ACCESS_COARSE_LOCATION not yet granted")
                 requestPermissions(permission = Manifest.permission.ACCESS_COARSE_LOCATION)
             }
         }
     }
 
-    private fun checkForBackgroundLocationPermission() {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
-            when (ContextCompat.checkSelfPermission(
-                applicationContext,
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-            ) {
-                PackageManager.PERMISSION_GRANTED -> {
-                    Log.d("cqhg43" , "ACCESS_BACKGROUND_LOCATION already granted")
-                }
-                PackageManager.PERMISSION_DENIED -> {
-                    val shouldShowRationale = shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-                    Log.d("cqhg43" , "ACCESS_BACKGROUND_LOCATION not yet granted; shouldShowRationale = $shouldShowRationale")
-                    if (shouldShowRationale) {
-                        viewModel.updateRationale(value = true)
-                    }
-                    else {
-                        requestPermissions(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-                    }
-                }
+    private val locationPermissionRequest = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        when {
+            permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
+                Log.d("cqhg43" , "ACCESS_COARSE_LOCATION granted")
+            }
+            permissions.getOrDefault(Manifest.permission.ACCESS_BACKGROUND_LOCATION, false) -> {
+                Log.d("cqhg43" , "ACCESS_BACKGROUND_LOCATION granted")
+            }
+            else -> {
+                Log.d("cqhg43" , "NOT granted")
             }
         }
     }

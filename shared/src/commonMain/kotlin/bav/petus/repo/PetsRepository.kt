@@ -2,6 +2,7 @@ package bav.petus.repo
 
 import bav.petus.cache.PetEntity
 import bav.petus.cache.PetsDatabase
+import bav.petus.cache.WeatherRecord
 import bav.petus.model.Pet
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -20,7 +21,7 @@ class PetsRepository(
 ) {
     suspend fun insertPet(pet: Pet) {
         database.getDao()
-            .insert(
+            .insertPet(
                 PetEntity(
                     petData = Json.encodeToString(pet)
                 )
@@ -29,7 +30,7 @@ class PetsRepository(
 
     suspend fun updatePet(pet: Pet) {
         database.getDao()
-            .update(
+            .updatePet(
                 PetEntity(
                     id = pet.id,
                     isDead = pet.isDead,
@@ -38,14 +39,53 @@ class PetsRepository(
             )
     }
 
-    suspend fun getAllPets(): List<Pet> {
+    suspend fun getAllAlivePets(): List<Pet> {
         return database.getDao()
-            .selectAllPets()
+            .selectAllAlivePets()
             .map { entity ->
                 Json.decodeFromString<Pet>(entity.petData).copy(
                     id = entity.id,
                     isDead = entity.isDead,
                 )
+            }
+    }
+
+    fun getAllAlivePetsFlow(): Flow<List<Pet>> {
+        return database.getDao()
+            .selectAllAlivePetsFlow()
+            .map { pets ->
+                pets.map { entity ->
+                    Json.decodeFromString<Pet>(entity.petData).copy(
+                        id = entity.id,
+                        isDead = entity.isDead,
+                    )
+                }
+            }
+    }
+
+    fun getAllDeadPetsFlow(): Flow<List<Pet>> {
+        return database.getDao()
+            .selectAllDeadPetsFlow()
+            .map { pets ->
+                pets.map { entity ->
+                    Json.decodeFromString<Pet>(entity.petData).copy(
+                        id = entity.id,
+                        isDead = entity.isDead,
+                    )
+                }
+            }
+    }
+
+    fun getPetByIdFlow(id: Long): Flow<Pet?> {
+        return database.getDao()
+            .selectPetByIdFlow(id)
+            .map { entity ->
+                entity?.let {
+                    Json.decodeFromString<Pet>(entity.petData).copy(
+                        id = entity.id,
+                        isDead = entity.isDead,
+                    )
+                }
             }
     }
 

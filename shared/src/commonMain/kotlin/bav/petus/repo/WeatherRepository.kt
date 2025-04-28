@@ -1,64 +1,127 @@
 package bav.petus.repo
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
+import bav.petus.cache.PetsDatabase
+import bav.petus.cache.WeatherRecord
 import bav.petus.core.time.TimeRepository
-import bav.petus.entity.WeatherDto
-import bav.petus.model.Pet
-import bav.petus.network.WeatherApi
-import kotlinx.coroutines.flow.first
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import bav.petus.extension.epochTimeToString
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlin.math.abs
+import kotlin.math.roundToInt
 
 /**
  * Responsibilities:
- *   - Provides current weather dto when asked
- *   - Deals with API errors
- *   - Somehow informs that weather is inaccessible for any reason so it wasn't affect calculations
+ *   - Provides weather record closest to requested time
  */
 class WeatherRepository(
-    private val weatherApi: WeatherApi,
-    private val timeRepository: TimeRepository,
-    private val dataStore: DataStore<Preferences>,
+    private val database: PetsDatabase,
+    private val timeRepo: TimeRepository,
 ) {
 
-    suspend fun getWeather(
-        latitude: Double = 52.3676,
-        longitude: Double = 4.9041,
-    ): WeatherDto {
-        return fakeWeatherDto
+    /**
+     * Provides approximated weather record closest to requested time
+     */
+    suspend fun getClosestWeather(timestamp: Long): WeatherRecord? {
+        val allRecords = database.getDao().selectAllWeatherRecords().sortedBy { it.timestampSecondsSinceEpoch }
+        return when {
+            allRecords.isEmpty() -> null
+            allRecords.size == 1 -> allRecords[0]
+            else -> {
+                val left = allRecords.lastOrNull { it.timestampSecondsSinceEpoch <= timestamp }
+                val right = allRecords.firstOrNull { it.timestampSecondsSinceEpoch >= timestamp }
 
-//        val dto: WeatherDto?
-//        if (timeRepository.isTimeToFetchWeather()) {
-//            val result = weatherApi.getWeather(52.3676, 4.9041)
-//            dto = result.getOrNull()
-//            dataStore.edit { store ->
-//                store[WEATHER_CACHE_KEY] = Json.encodeToString(dto)
-//            }
-//        } else {
-//            dto = Json.decodeFromString<WeatherDto?>(
-//                dataStore.data.first()[WEATHER_CACHE_KEY].orEmpty()
-//            )
-//        }
-//        return dto
+                when {
+                    // All records timestamps > timestamp
+                    left == null -> right
+                    // All records timestamps < timestamp
+                    right == null -> left
+                    // Exactly left
+                    left.timestampSecondsSinceEpoch == timestamp -> left
+                    // Exactly right
+                    right.timestampSecondsSinceEpoch == timestamp -> right
+                    // Between left and right
+                    else -> {
+                        val timeLeft = left.timestampSecondsSinceEpoch
+                        val timeRight = right.timestampSecondsSinceEpoch
+                        val weight = (timestamp - timeLeft).toDouble() / (timeRight - timeLeft).toDouble()
+
+                        val cloud = weightedMean(left.cloudPercentage, right.cloudPercentage, weight)
+                        val humidify = weightedMean(left.humidity, right.humidity, weight)
+                        val temperature = weightedMean(left.temperature, right.temperature, weight)
+                        val windSpeed = weightedMean(left.windSpeed, right.windSpeed, weight)
+
+                        WeatherRecord(
+                            timestampSecondsSinceEpoch = timestamp,
+                            cloudPercentage = cloud,
+                            humidity = humidify,
+                            temperature = temperature,
+                            windSpeed = windSpeed,
+                            info = null,
+                        )
+                    }
+                }
+            }
+        }
     }
 
-    companion object {
-        private val fakeWeatherDto = WeatherDto(
-            cloudPercentage = 0,
-            feelsLike = 20,
-            humidity = 10,
-            maxTemp = 25,
-            minTemp = 18,
-            sunrise = null,
-            sunset = null,
-            temperature = 21,
-            windDegrees = 0,
-            windSpeed = 0.0,
-        )
+    /**
+     * 0 < W < 1
+     */
+    private fun weightedMean(a: Double?, b: Double?, w: Double): Double? {
+        return if (a == null || b == null) null
+        else {
+            val diff = abs(a - b)
+            when {
+                a < b -> a + w * diff
+                a > b -> b + w * diff
+                else -> a
+            }
+        }
+    }
 
-        private val WEATHER_CACHE_KEY = stringPreferencesKey("weather_cache_key")
+    private fun weightedMean(a: Int?, b: Int?, w: Double): Int? {
+        return weightedMean(
+            a = a?.toDouble(),
+            b = b?.toDouble(),
+            w = w,
+        )?.roundToInt()
+    }
+
+    suspend fun insertWeatherRecord(record: WeatherRecord) {
+        if (database.getDao().selectWeatherRecordByTimestamp(record.timestampSecondsSinceEpoch) == null) {
+            database.getDao().insertWeatherRecord(record)
+        }
+    }
+
+    fun getAllWeatherRecordsFlow(): Flow<List<String>> {
+        return database.getDao().selectAllWeatherRecordsFlow()
+            .map { list ->
+                list.map { entity ->
+                    entity.str()
+                }.distinct()
+            }
+    }
+
+    fun getLatestWeatherRecordFlow(): Flow<WeatherRecord?> {
+        return database.getDao().selectAllWeatherRecordsFlow()
+            .map { list ->
+                list.maxByOrNull { it.timestampSecondsSinceEpoch }
+            }
+    }
+
+    private fun WeatherRecord.str(): String {
+        return buildString {
+            append(id)
+            append(" | ")
+            append(timestampSecondsSinceEpoch.epochTimeToString())
+            append(" | c:")
+            append(cloudPercentage)
+            append(" | h:")
+            append(humidity)
+            append(" | t:")
+            append(temperature)
+            append(" | w:")
+            append(windSpeed?.toInt())
+        }
     }
 }

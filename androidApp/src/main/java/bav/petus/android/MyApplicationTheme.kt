@@ -53,3 +53,7 @@ fun MyApplicationTheme(
         content = content
     )
 }
+
+val SatietyColor = Color(0xFF4CAF50)
+val PsychColor = Color(0xFF3F51B5)
+val HealthColor = Color(0xFFE53935)

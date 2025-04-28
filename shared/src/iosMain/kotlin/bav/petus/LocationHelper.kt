@@ -14,14 +14,20 @@ import platform.CoreLocation.kCLAuthorizationStatusRestricted
 import platform.Foundation.NSError
 import platform.darwin.NSObject
 
-val locationManagerDelegate = LocationManagerDelegate()
+/**
+ * This class is not used. It was an attempt to build Helper for location requests logic.
+ * Turns out it's easier to do in Swift.
+ */
+class LocationHelper : NSObject(), CLLocationManagerDelegateProtocol {
+    private val manager = CLLocationManager()
 
-fun initLocationManager() {
-    val manager = CLLocationManager()
-    manager.delegate = locationManagerDelegate
-}
+    private var onSuccess: ((Double, Double) -> Unit)? = null
+    private var onFailure: (() -> Unit)? = null
 
-class LocationManagerDelegate : NSObject(), CLLocationManagerDelegateProtocol {
+    init {
+        manager.delegate = this
+    }
+
     @OptIn(ExperimentalForeignApi::class)
     override fun locationManager(manager: CLLocationManager, didUpdateLocations: List<*>) {
         println("didUpdateLocations: locations = $didUpdateLocations")
@@ -29,12 +35,16 @@ class LocationManagerDelegate : NSObject(), CLLocationManagerDelegateProtocol {
             val loc: CLLocation = location as CLLocation
             loc.coordinate.useContents {
                 println("didUpdateLocations: last location = ${this.latitude} - ${this.longitude}")
+                onSuccess?.let { it(this.latitude, this.longitude) }
+                onSuccess = null
             }
         }
     }
 
     override fun locationManager(manager: CLLocationManager, didFailWithError: NSError) {
         println("didFailWithError: ${didFailWithError.description()}")
+        onFailure?.let { it() }
+        onFailure = null
     }
 
     override fun locationManagerDidChangeAuthorization(manager: CLLocationManager) {
@@ -45,7 +55,6 @@ class LocationManagerDelegate : NSObject(), CLLocationManagerDelegateProtocol {
             }
             kCLAuthorizationStatusAuthorized -> {
                 println("locationManagerDidChangeAuthorization: status = ${manager.authorizationStatus} Authorized")
-                manager.requestLocation()
             }
             kCLAuthorizationStatusAuthorizedAlways -> println("locationManagerDidChangeAuthorization: status = ${manager.authorizationStatus} AuthorizedAlways")
             kCLAuthorizationStatusAuthorizedWhenInUse -> {
@@ -56,5 +65,15 @@ class LocationManagerDelegate : NSObject(), CLLocationManagerDelegateProtocol {
             kCLAuthorizationStatusRestricted -> println("locationManagerDidChangeAuthorization: status = ${manager.authorizationStatus} Restricted")
             else -> println("locationManagerDidChangeAuthorization: status = ${manager.authorizationStatus} UNKNOWN STATUS")
         }
+    }
+
+    fun requestLocation(
+        onSuccess: (latitude: Double, longitude: Double) -> Unit,
+        onFailure: () -> Unit,
+    ) {
+        this.onSuccess = onSuccess
+        this.onFailure = onFailure
+
+        manager.requestLocation()
     }
 }

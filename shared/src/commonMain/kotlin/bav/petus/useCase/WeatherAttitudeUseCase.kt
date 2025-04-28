@@ -1,18 +1,19 @@
 package bav.petus.useCase
 
-import bav.petus.entity.WeatherDto
+import bav.petus.cache.WeatherRecord
 import bav.petus.model.PetType
 import bav.petus.model.ThreePointRange
 import bav.petus.model.WeatherAttitude
 
 class WeatherAttitudeUseCase {
 
-    fun convertDtoToAttitude(petType: PetType, dto: WeatherDto): WeatherAttitude {
-        return WeatherAttitude(
-            toCloudPercentage = getAttitudeToCloudPercentage(petType, dto.cloudPercentage),
-            toTemperature = getAttitudeToTemperature(petType, dto.temperature),
-            toHumidity = getAttitudeToHumidity(petType, dto.humidity),
-            toWindSpeed = getAttitudeToWindSpeed(petType, dto.windSpeed)
+    fun convertWeatherRecordToAttitude(petType: PetType, record: WeatherRecord?): WeatherAttitude {
+        return if (record == null) NEUTRAL_ATTITUDE
+        else WeatherAttitude(
+            toCloudPercentage = getAttitudeToCloudPercentage(petType, record.cloudPercentage),
+            toTemperature = getAttitudeToTemperature(petType, record.temperature),
+            toHumidity = getAttitudeToHumidity(petType, record.humidity),
+            toWindSpeed = getAttitudeToWindSpeed(petType, record.windSpeed)
         )
     }
 
@@ -137,5 +138,14 @@ class WeatherAttitudeUseCase {
             else -> 0.0
         }
         return result.coerceIn(-1.0, +1.0)
+    }
+
+    companion object {
+        private val NEUTRAL_ATTITUDE = WeatherAttitude(
+            toCloudPercentage = 0.0,
+            toTemperature = 0.0,
+            toHumidity = 0.0,
+            toWindSpeed = 0.0,
+        )
     }
 }

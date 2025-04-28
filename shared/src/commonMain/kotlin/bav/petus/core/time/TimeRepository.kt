@@ -4,46 +4,40 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
 
 /**
  * Responsibilities:
- *   - Provides current tick when asked
- *   - Knows if it's time to request weather
+ *   - Stores time of last tick
  */
 class TimeRepository(
     private val dataStore: DataStore<Preferences>,
 ) {
 
-    fun getCurrentTick(): Long {
-        return runBlocking(Dispatchers.IO) {
-            dataStore.data.first()[GLOBAL_TICK_KEY] ?: 0L
+    suspend fun getLastTimestamp(): Long {
+        return dataStore.data.first()[LAST_TICK_KEY] ?: 0L
+    }
+
+    suspend fun saveLastTimestamp(value: Long) {
+        dataStore.edit { store ->
+            store[LAST_TICK_KEY] = value
         }
     }
 
-    /**
-     * Worker should be responsible for incrementing ticks.
-     */
-    fun incrementTick() {
-        runBlocking(Dispatchers.IO) {
-            dataStore.edit { store ->
-                val currentTick = store[GLOBAL_TICK_KEY] ?: 0L
-                store[GLOBAL_TICK_KEY] = currentTick + 1L
-            }
-        }
+    suspend fun getLastTimestampOfWeatherRequest(): Long {
+        return dataStore.data.first()[LAST_TIMESTAMP_OF_WEATHER_REQUEST_KEY] ?: 0L
     }
 
-    fun isTimeToFetchWeather(): Boolean {
-        return (getCurrentTick() % WEATHER_FETCH_FREQUENCY) == 0L
+    suspend fun saveLastTimestampOfWeatherRequest(value: Long) {
+        dataStore.edit { store ->
+            store[LAST_TIMESTAMP_OF_WEATHER_REQUEST_KEY] = value
+        }
     }
 
     companion object {
-        private val GLOBAL_TICK_KEY = longPreferencesKey("global_tick_key")
-
-        // Each WEATHER_FETCH_FREQUENCY tick weather should be fetched from API
-        private const val WEATHER_FETCH_FREQUENCY = 3L
+        private val LAST_TICK_KEY = longPreferencesKey("last_tick_key")
+        private val LAST_TIMESTAMP_OF_WEATHER_REQUEST_KEY = longPreferencesKey("last_timestamp_of_weather_request_key")
+        const val CYCLE_PERIOD_IN_SECONDS = 5L * 60L
+        const val WEATHER_REQUEST_PERIOD_SEC = 3L * 60L * 60L
     }
 }

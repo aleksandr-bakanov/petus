@@ -15,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 
-@Database(entities = [PetEntity::class], version = 1)
+@Database(entities = [PetEntity::class, WeatherRecord::class], version = 1)
 @ConstructedBy(PetsDatabaseConstructor::class)
 abstract class PetsDatabase : RoomDatabase() {
     abstract fun getDao(): PetDao
@@ -30,19 +30,40 @@ expect object PetsDatabaseConstructor : RoomDatabaseConstructor<PetsDatabase> {
 @Dao
 interface PetDao {
     @Insert
-    suspend fun insert(item: PetEntity)
+    suspend fun insertPet(item: PetEntity)
 
     @Update
-    suspend fun update(item: PetEntity)
+    suspend fun updatePet(item: PetEntity)
 
     @Query("DELETE FROM PetEntity")
     suspend fun removeAllPets()
 
-    @Query("SELECT * FROM PetEntity")
-    suspend fun selectAllPets(): List<PetEntity>
+    @Query("SELECT * FROM PetEntity WHERE isDead = 0")
+    suspend fun selectAllAlivePets(): List<PetEntity>
+
+    @Query("SELECT * FROM PetEntity WHERE isDead = 0")
+    fun selectAllAlivePetsFlow(): Flow<List<PetEntity>>
+
+    @Query("SELECT * FROM PetEntity WHERE isDead = 1")
+    fun selectAllDeadPetsFlow(): Flow<List<PetEntity>>
+
+    @Query("SELECT * FROM PetEntity WHERE id = :id")
+    fun selectPetByIdFlow(id: Long): Flow<PetEntity?>
 
     @Query("SELECT * FROM PetEntity")
     fun selectAllPetsAsFlow(): Flow<List<PetEntity>>
+
+    @Query("SELECT * FROM WeatherRecord WHERE timestampSecondsSinceEpoch = :timestamp")
+    suspend fun selectWeatherRecordByTimestamp(timestamp: Long): WeatherRecord?
+
+    @Insert
+    suspend fun insertWeatherRecord(item: WeatherRecord)
+
+    @Query("SELECT * FROM WeatherRecord")
+    suspend fun selectAllWeatherRecords(): List<WeatherRecord>
+
+    @Query("SELECT * FROM WeatherRecord")
+    fun selectAllWeatherRecordsFlow(): Flow<List<WeatherRecord>>
 }
 
 @Entity
@@ -50,6 +71,19 @@ data class PetEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val isDead: Boolean = false,
     val petData: String,
+)
+
+@Entity
+data class WeatherRecord(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    // Since midnight January 1, 1970 UTC
+    val timestampSecondsSinceEpoch: Long,
+    val cloudPercentage: Int?,
+    val humidity: Int?,
+    val temperature: Int?,
+    val windSpeed: Double?,
+    // Additional random information
+    val info: String?,
 )
 
 fun getPetsDatabase(

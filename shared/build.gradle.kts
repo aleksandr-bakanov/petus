@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.skie)
 }
 
 kotlin {
@@ -16,9 +17,9 @@ kotlin {
     }
     
     listOf(
-        iosX64(),
+//        iosX64(), // Exclude ios x64 target
         iosArm64(),
-        iosSimulatorArm64()
+//        iosSimulatorArm64() // Exclude ios simulator target
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
@@ -43,11 +44,17 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.ktor.client.android)
             implementation(libs.datastore.preferences)
+            implementation(libs.play.services.location)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
             implementation(libs.datastore.preferences)
-            implementation(libs.room.common.iossimulatorarm64)
+
+            // Only one of these 3 should be enabled to be able to compile for iOS (strange)
+//            implementation(libs.room.common.iossimulatorarm64)
+//            implementation(libs.room.common.iosx64)
+            implementation(libs.room.common.iosarm64)
+
             implementation(libs.sqlite.bundled)
         }
         commonTest.dependencies {
@@ -63,8 +70,8 @@ kotlin {
 dependencies {
     add("kspCommonMainMetadata", libs.room.compiler)
     add("kspAndroid", libs.room.compiler)
-    add("kspIosSimulatorArm64", libs.room.compiler)
-    add("kspIosX64", libs.room.compiler)
+//    add("kspIosSimulatorArm64", libs.room.compiler) // Exclude ios simulator target
+//    add("kspIosX64", libs.room.compiler) // Exclude ios x64 target
     add("kspIosArm64", libs.room.compiler)
 }
 

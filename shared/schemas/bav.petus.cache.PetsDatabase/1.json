@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "be6d97a53ec2238ecfaea3e0669032c5",
+    "identityHash": "7a25f75b0e9d40c40c541676a1fbc076",
     "entities": [
       {
         "tableName": "PetEntity",
@@ -33,11 +33,60 @@
             "id"
           ]
         }
+      },
+      {
+        "tableName": "WeatherRecord",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestampSecondsSinceEpoch` INTEGER NOT NULL, `cloudPercentage` INTEGER, `humidity` INTEGER, `temperature` INTEGER, `windSpeed` REAL, `info` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestampSecondsSinceEpoch",
+            "columnName": "timestampSecondsSinceEpoch",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cloudPercentage",
+            "columnName": "cloudPercentage",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "humidity",
+            "columnName": "humidity",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "temperature",
+            "columnName": "temperature",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "windSpeed",
+            "columnName": "windSpeed",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "info",
+            "columnName": "info",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'be6d97a53ec2238ecfaea3e0669032c5')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7a25f75b0e9d40c40c541676a1fbc076')"
     ]
   }
 }

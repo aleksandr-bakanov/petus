@@ -9,23 +9,25 @@ data class Pet(
     val name: String = "",
     val type: PetType = PetType.Frogus,
 
-    var isDead: Boolean = false,
-    val creationTick: Long = 0L,
-    var ageState: AgeState = AgeState.Egg,
-    var illnessPossibility: Float = 0f,
+    val isDead: Boolean = false,
 
-    var activeSleepTick: Long = 0L,
-    var activeSleepState: SleepState = SleepState.Active,
+    // Timestamp in seconds since epoch
+    val creationTime: Long = 0L,
+    val ageState: AgeState = AgeState.Egg,
+    val illnessPossibility: Float = 0f,
 
-    var satiety: Float = 100F,
-    var psych: Float = 100F,
-    var health: Float = 100F,
+    val lastActiveSleepSwitchTimestamp: Long = 0L,
+    val activeSleepState: SleepState = SleepState.Sleep,
 
-    var illness: Boolean = false,
-    var isPooped: Boolean = false,
+    val satiety: Float = 100F,
+    val psych: Float = 100F,
+    val health: Float = 100F,
 
-    var deathOfOldAgePossibility: Float = 0f,
-    var timeOfDeath: String = "",
+    val illness: Boolean = false,
+    val isPooped: Boolean = false,
+
+    val deathOfOldAgePossibility: Float = 0f,
+    val timeOfDeath: Long = 0L,
 ) {
     val sleep: Boolean
         get() = activeSleepState == SleepState.Sleep
