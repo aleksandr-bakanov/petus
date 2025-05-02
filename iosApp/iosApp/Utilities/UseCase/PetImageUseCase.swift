@@ -37,10 +37,14 @@ class PetImageUseCase {
     private func newbornImageSuffix(for pet: Pet) -> String {
         if pet.sleep {
             return "newborn_sleep"
+        } else if pet.isPooped {
+            return "newborn_poop"
         } else if pet.illness {
             return "newborn_ill"
         } else if isPetHungryOrPsych(pet: pet) {
             return "newborn_hungry"
+        } else if isPetLowHealth(pet: pet) {
+            return "newborn_ill"
         } else {
             return "newborn_active"
         }
@@ -49,10 +53,14 @@ class PetImageUseCase {
     private func teenImageSuffix(for pet: Pet) -> String {
         if pet.sleep {
             return "teen_sleep"
+        } else if pet.isPooped {
+            return "teen_poop"
         } else if pet.illness {
             return "teen_ill"
         } else if isPetHungryOrPsych(pet: pet) {
             return "teen_hungry"
+        } else if isPetLowHealth(pet: pet) {
+            return "teen_ill"
         } else {
             return "teen_active"
         }
@@ -61,10 +69,14 @@ class PetImageUseCase {
     private func adultImageSuffix(for pet: Pet) -> String {
         if pet.sleep {
             return "adult_sleep"
+        } else if pet.isPooped {
+            return "adult_poop"
         } else if pet.illness {
             return "adult_ill"
         } else if isPetHungryOrPsych(pet: pet) {
             return "adult_hungry"
+        } else if isPetLowHealth(pet: pet) {
+            return "adult_ill"
         } else {
             return "adult_active"
         }
@@ -73,10 +85,14 @@ class PetImageUseCase {
     private func oldImageSuffix(for pet: Pet) -> String {
         if pet.sleep {
             return "old_sleep"
+        } else if pet.isPooped {
+            return "old_poop"
         } else if pet.illness {
             return "old_ill"
         } else if isPetHungryOrPsych(pet: pet) {
             return "old_hungry"
+        } else if isPetLowHealth(pet: pet) {
+            return "old_ill"
         } else {
             return "old_active"
         }
@@ -89,5 +105,9 @@ class PetImageUseCase {
     private func isPetHungryOrPsych(pet: Pet) -> Bool {
         return engine.getPetPsychFraction(pet: pet) < 0.66 ||
                engine.getPetHealthFraction(pet: pet) < 0.66
+    }
+    
+    private func isPetLowHealth(pet: Pet) -> Bool {
+        return engine.getPetHealthFraction(pet: pet) < 0.5
     }
 }

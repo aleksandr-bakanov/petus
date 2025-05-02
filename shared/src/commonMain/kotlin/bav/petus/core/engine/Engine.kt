@@ -467,7 +467,7 @@ class Engine(
      * @return Amount in seconds
      */
     private fun getTimeInState(pet: Pet, state: SleepState): Long {
-        var time = 43_200L
+        var time = HOUR * 12
         petsActiveSleepTimes[pet.type]?.let { times ->
             times[state]?.let { time = it }
         }
@@ -482,13 +482,16 @@ class Engine(
     }
 
     companion object {
+        private const val HOUR: Long = 3600L
+        private const val DAY: Long = HOUR * 24L
+
         // Ranges in seconds
         private val commonPetAgeToSecondsTable = mapOf(
-            AgeState.Egg to 0L..10_800L,
-            AgeState.NewBorn to 10_801L..97_200L,
-            AgeState.Teen to 97_201L..183_600L,
-            AgeState.Adult to 183_601L..270_000L,
-            AgeState.Old to 270_001L..Long.MAX_VALUE
+            AgeState.Egg to (0L until HOUR),                // 1 hour
+            AgeState.NewBorn to (HOUR until DAY * 2),       // 2 days (-1 hour)
+            AgeState.Teen to (DAY * 2 until DAY * 4),       // 2 days
+            AgeState.Adult to (DAY * 4 until DAY * 7),      // 3 days
+            AgeState.Old to (DAY * 7 until Long.MAX_VALUE),
         )
 
         private val petsAges = mapOf(
@@ -548,7 +551,7 @@ class Engine(
         const val BASIC_CLOUDINESS_MULTIPLIER = 1f
         const val ACTIVE_TEMPERATURE_MULTIPLIER = 0.5f
         const val SLEEP_TEMPERATURE_MULTIPLIER = 0.25f
-        const val DEATH_OF_OLD_AGE_POSSIBILITY_INC = 0.0005f
-        const val MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION = 0.0167f
+        const val DEATH_OF_OLD_AGE_POSSIBILITY_INC = 0.00005f
+        const val MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION = 0.00835f
     }
 }

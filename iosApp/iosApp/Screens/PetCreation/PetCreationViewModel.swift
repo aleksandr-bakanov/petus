@@ -5,13 +5,13 @@ import shared
     
     let koinHelper: KoinHelper = KoinHelper()
     
-    @Binding var isShowingPetCreation: Bool
+    var onFinish: (() -> Void)?
+    
     @Published var name: String = ""
     @Published var type: PetType = PetType.dogus
     @Published var typeDescription: String
     
-    init(isShowingPetCreation: Binding<Bool>) {
-        _isShowingPetCreation = isShowingPetCreation
+    init() {
         typeDescription = koinHelper.getPetTypeDescription(type: PetType.dogus)
     }
     
@@ -24,7 +24,7 @@ import shared
         if (!name.isEmpty) {
             Task {
                 try await koinHelper.createNewPet(name: name, type: type)
-                isShowingPetCreation = false
+                onFinish?()
             }
         }
     }

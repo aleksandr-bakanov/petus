@@ -17,32 +17,40 @@ class PetImageUseCase(
                     AgeState.NewBorn -> {
                         when {
                             pet.sleep -> R.drawable.catus_newborn_sleep
+                            pet.isPooped -> R.drawable.catus_newborn_poop
                             pet.illness -> R.drawable.catus_newborn_ill
                             isPetHungryOrPsych(pet) -> R.drawable.catus_newborn_hungry_or_psych
+                            isPetLowHealth(pet) -> R.drawable.catus_newborn_ill
                             else -> R.drawable.catus_newborn_active
                         }
                     }
                     AgeState.Teen -> {
                         when {
                             pet.sleep -> R.drawable.catus_teen_sleep
+                            pet.isPooped -> R.drawable.catus_teen_poop
                             pet.illness -> R.drawable.catus_teen_ill
                             isPetHungryOrPsych(pet) -> R.drawable.catus_teen_hungry
+                            isPetLowHealth(pet) -> R.drawable.catus_teen_ill
                             else -> R.drawable.catus_teen_active
                         }
                     }
                     AgeState.Adult -> {
                         when {
                             pet.sleep -> R.drawable.catus_adult_sleep
+                            pet.isPooped -> R.drawable.catus_adult_poop
                             pet.illness -> R.drawable.catus_adult_ill
                             isPetHungryOrPsych(pet) -> R.drawable.catus_adult_hungry
+                            isPetLowHealth(pet) -> R.drawable.catus_adult_ill
                             else -> R.drawable.catus_adult_active
                         }
                     }
                     AgeState.Old -> {
                         when {
                             pet.sleep -> R.drawable.catus_old_sleep
+                            pet.isPooped -> R.drawable.catus_old_poop
                             pet.illness -> R.drawable.catus_old_ill
                             isPetHungryOrPsych(pet) -> R.drawable.catus_old_hungry
+                            isPetLowHealth(pet) -> R.drawable.catus_old_ill
                             else -> R.drawable.catus_old_active
                         }
                     }
@@ -54,32 +62,40 @@ class PetImageUseCase(
                     AgeState.NewBorn -> {
                         when {
                             pet.sleep -> R.drawable.dogus_newborn_sleep
+                            pet.isPooped -> R.drawable.dogus_newborn_poop
                             pet.illness -> R.drawable.dogus_newborn_ill
                             isPetHungryOrPsych(pet) -> R.drawable.dogus_newborn_hungry
+                            isPetLowHealth(pet) -> R.drawable.dogus_newborn_ill
                             else -> R.drawable.dogus_newborn_active
                         }
                     }
                     AgeState.Teen -> {
                         when {
                             pet.sleep -> R.drawable.dogus_teen_sleep
+                            pet.isPooped -> R.drawable.dogus_teen_poop
                             pet.illness -> R.drawable.dogus_teen_ill
                             isPetHungryOrPsych(pet) -> R.drawable.dogus_teen_hungry
+                            isPetLowHealth(pet) -> R.drawable.dogus_teen_ill
                             else -> R.drawable.dogus_teen_active
                         }
                     }
                     AgeState.Adult -> {
                         when {
                             pet.sleep -> R.drawable.dogus_adult_sleep
+                            pet.isPooped -> R.drawable.dogus_adult_poop
                             pet.illness -> R.drawable.dogus_adult_ill
                             isPetHungryOrPsych(pet) -> R.drawable.dogus_adult_hungry
+                            isPetLowHealth(pet) -> R.drawable.dogus_adult_ill
                             else -> R.drawable.dogus_adult_active
                         }
                     }
                     AgeState.Old -> {
                         when {
                             pet.sleep -> R.drawable.dogus_old_sleep
+                            pet.isPooped -> R.drawable.dogus_old_poop
                             pet.illness -> R.drawable.dogus_old_ill
                             isPetHungryOrPsych(pet) -> R.drawable.dogus_old_hungry
+                            isPetLowHealth(pet) -> R.drawable.dogus_old_ill
                             else -> R.drawable.dogus_old_active
                         }
                     }
@@ -91,32 +107,40 @@ class PetImageUseCase(
                     AgeState.NewBorn -> {
                         when {
                             pet.sleep -> R.drawable.frogus_newborn_sleep
+                            pet.isPooped -> R.drawable.frogus_newborn_poop
                             pet.illness -> R.drawable.frogus_newborn_ill
                             isPetHungryOrPsych(pet) -> R.drawable.frogus_newborn_hungry
+                            isPetLowHealth(pet) -> R.drawable.frogus_newborn_ill
                             else -> R.drawable.frogus_newborn_active
                         }
                     }
                     AgeState.Teen -> {
                         when {
                             pet.sleep -> R.drawable.frogus_teen_sleep
+                            pet.isPooped -> R.drawable.frogus_teen_poop
                             pet.illness -> R.drawable.frogus_teen_ill
                             isPetHungryOrPsych(pet) -> R.drawable.frogus_teen_hungry
+                            isPetLowHealth(pet) -> R.drawable.frogus_teen_ill
                             else -> R.drawable.frogus_teen_active
                         }
                     }
                     AgeState.Adult -> {
                         when {
                             pet.sleep -> R.drawable.frogus_adult_sleep
+                            pet.isPooped -> R.drawable.frogus_adult_poop
                             pet.illness -> R.drawable.frogus_adult_ill
                             isPetHungryOrPsych(pet) -> R.drawable.frogus_adult_hungry
+                            isPetLowHealth(pet) -> R.drawable.frogus_adult_ill
                             else -> R.drawable.frogus_adult_active
                         }
                     }
                     AgeState.Old -> {
                         when {
                             pet.sleep -> R.drawable.frogus_old_sleep
+                            pet.isPooped -> R.drawable.frogus_old_poop
                             pet.illness -> R.drawable.frogus_old_ill
                             isPetHungryOrPsych(pet) -> R.drawable.frogus_old_hungry
+                            isPetLowHealth(pet) -> R.drawable.frogus_old_ill
                             else -> R.drawable.frogus_old_active
                         }
                     }
@@ -132,5 +156,9 @@ class PetImageUseCase(
     private fun isPetHungryOrPsych(pet: Pet): Boolean {
         return engine.getPetPsychFraction(pet) < 0.66f ||
                 engine.getPetSatietyFraction(pet) < 0.66f
+    }
+
+    private fun isPetLowHealth(pet: Pet): Boolean {
+        return engine.getPetHealthFraction(pet) < 0.5f
     }
 }

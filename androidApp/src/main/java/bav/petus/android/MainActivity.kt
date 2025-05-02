@@ -9,12 +9,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import bav.petus.PetsSDK
 import bav.petus.android.helpers.WorkManagerHelper
 import bav.petus.android.navigation.AppWithBottomBar
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
 
@@ -29,7 +31,11 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             MyApplicationTheme {
+                val mainViewModel: MainViewModel = koinViewModel()
+                val uiState = mainViewModel.uiState.collectAsStateWithLifecycle()
+
                 AppWithBottomBar(
+                    uiState = uiState.value,
                     requestBackgroundLocationPermission = {
                         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
                             requestPermissions(Manifest.permission.ACCESS_BACKGROUND_LOCATION)

@@ -1,15 +1,17 @@
 import SwiftUI
 import shared
 
+enum CemeteryNavigation: Hashable {
+    case petDetails(petId: Int64)
+}
+
 @MainActor final class CemeteryViewModel: ObservableObject {
     
     let koinHelper: KoinHelper = KoinHelper()
     let petImageUseCase = PetImageUseCase()
     
     @Published var pets: [PetThumbnailUiData] = []
-    
-    @Published var isShowingDetails = false
-    @Published var selectedPet: Pet?
+    @Published var navigationPath: [CemeteryNavigation] = []
     
     func loadPets() async {
         let petsFlow = koinHelper.getAllDeadPetsFlow()
@@ -25,7 +27,6 @@ import shared
     }
     
     func tapOnPet(pet: Pet) {
-        selectedPet = pet
-        isShowingDetails = true
+        navigationPath.append(.petDetails(petId: pet.id))
     }
 }

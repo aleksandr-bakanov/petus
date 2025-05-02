@@ -56,7 +56,7 @@ enum PetDetailsScreenAction {
         for await pet in petFlow {
             if let p = pet {
                 currentPet = p
-                uiState = PetDetailsUiState(title: "\(p.type.name) \(p.name)",
+                uiState = PetDetailsUiState(title: p.name,
                                             petType: p.type,
                                             petImage: petImageUseCase.getPetImageName(for: p),
                                             creationTime: "Born: \(p.creationTime.epochTimeToString)",

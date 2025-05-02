@@ -58,7 +58,7 @@ class PetDetailsScreenViewModel(
                 currentPet = pet
                 UiState.Success(
                     data = PetDetailsUiState(
-                        title = "${pet.type} ${pet.name}",
+                        title = pet.name,
                         petType = pet.type,
                         petImageResId = petImageUseCase.getPetImageResId(pet),
                         creationTime = "Born: ${pet.creationTime.epochTimeToString()}",

@@ -131,4 +131,10 @@ val appModule = module {
             weatherRepo = get(),
         )
     }
+
+    viewModel {
+        MainViewModel(
+            petsRepo = get(),
+        )
+    }
 }

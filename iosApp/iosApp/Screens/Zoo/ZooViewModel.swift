@@ -1,17 +1,18 @@
 import SwiftUI
 import shared
 
+enum ZooNavigation: Hashable {
+    case petDetails(petId: Int64)
+    case createPet
+}
+
 @MainActor final class ZooViewModel: ObservableObject {
     
     let koinHelper: KoinHelper = KoinHelper()
     let petImageUseCase = PetImageUseCase()
     
     @Published var pets: [PetThumbnailUiData] = []
-    
-    @Published var isShowingDetails = false
-    @Published var selectedPet: Pet?
-    
-    @Published var isShowingPetCreation = false
+    @Published var navigationPath: [ZooNavigation] = []
     
     func loadPets() async {
         let petsFlow = koinHelper.getAllAlivePetsFlow()
@@ -27,13 +28,10 @@ import shared
     }
     
     func tapOnPet(pet: Pet) {
-        selectedPet = pet
-        isShowingDetails = true
-        isShowingPetCreation = false
+        navigationPath.append(.petDetails(petId: pet.id))
     }
     
     func tapOnCreateNewPet() {
-        isShowingDetails = false
-        isShowingPetCreation = true
+        navigationPath.append(.createPet)
     }
 }

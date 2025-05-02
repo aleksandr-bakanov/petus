@@ -6,16 +6,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import bav.petus.android.ui.cemetery.CemeteryRoute
 import bav.petus.android.ui.cemetery.CemeteryScreenViewModel
-import kotlinx.serialization.Serializable
 import org.koin.androidx.compose.koinViewModel
-
-@Serializable
-data object CemeteryScreen
 
 fun NavGraphBuilder.cemeteryScreen(
     navController: NavHostController,
 ) {
-    composable<CemeteryScreen> {
+    composable<TopLevelRoutes.CemeteryScreen> {
         val viewModel: CemeteryScreenViewModel = koinViewModel()
         LaunchedEffect(Unit) {
             viewModel.navigation.collect { navigation ->

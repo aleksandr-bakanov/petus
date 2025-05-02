@@ -4,23 +4,18 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import bav.petus.android.ui.pet_creation.PetCreationScreenViewModel
 import bav.petus.android.ui.zoo.ZooRoute
 import bav.petus.android.ui.zoo.ZooScreenViewModel
 import bav.petus.android.ui.zoo.ZooScreenViewModelArgs
-import kotlinx.serialization.Serializable
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
-
-@Serializable
-data object ZooScreen
 
 fun NavGraphBuilder.zooScreen(
     navController: NavHostController,
     requestBackgroundLocationPermission: () -> Unit,
     shouldShowBackgroundLocationPermissionRationale: () -> Boolean,
 ) {
-    composable<ZooScreen> { navBackStackEntry ->
+    composable<TopLevelRoutes.ZooScreen> { navBackStackEntry ->
         val viewModel: ZooScreenViewModel = koinViewModel(
             parameters = {
                 parametersOf(

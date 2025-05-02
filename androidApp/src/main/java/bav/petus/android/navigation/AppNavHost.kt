@@ -1,5 +1,6 @@
 package bav.petus.android.navigation
 
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -12,76 +13,136 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import bav.petus.android.MainScreenUiState
+import bav.petus.android.ui.common.UiState
+import kotlinx.serialization.Serializable
 
-data class TopLevelRoute<T : Any>(val name: String, val route: T, val icon: ImageVector)
+sealed interface TopLevelRoutes {
+    @Serializable
+    data object CemeteryScreen : TopLevelRoutes
 
-private val topLevelRoutes = listOf(
-    TopLevelRoute("Cemetery", CemeteryScreen, Icons.Default.Add),
-    TopLevelRoute("Zoo", ZooScreen, Icons.Default.Home),
-    TopLevelRoute("Weather", WeatherReportScreen, Icons.Default.Menu),
-)
+    @Serializable
+    data object ZooScreen : TopLevelRoutes
+
+    @Serializable
+    data object WeatherReportScreen : TopLevelRoutes
+}
+
+data class TopLevelRoute(val name: String, val route: TopLevelRoutes, val icon: ImageVector)
+
+private val cemeteryTopRoute = TopLevelRoute("Cemetery", TopLevelRoutes.CemeteryScreen, Icons.Default.Add)
+private val zooTopRoute = TopLevelRoute("Zoo", TopLevelRoutes.ZooScreen, Icons.Default.Home)
+private val weatherTopRoute = TopLevelRoute("Weather", TopLevelRoutes.WeatherReportScreen, Icons.Default.Menu)
 
 @Composable
 fun AppWithBottomBar(
+    uiState: UiState<MainScreenUiState>,
     requestBackgroundLocationPermission: () -> Unit,
     shouldShowBackgroundLocationPermissionRationale: () -> Boolean,
 ) {
-    var navigationSelectedItem by remember {
-        mutableIntStateOf(1)
-    }
-    val navController = rememberNavController()
+    when (uiState) {
+        is UiState.Failure -> {}
+        UiState.Initial -> {}
+        UiState.Loading -> {}
+        is UiState.Success<MainScreenUiState> -> {
 
-    Scaffold(
-        bottomBar = {
-            NavigationBar {
-                topLevelRoutes.forEachIndexed { index, topLevelRoute ->
-                    NavigationBarItem(
-                        icon = { Icon(topLevelRoute.icon, contentDescription = topLevelRoute.name) },
-                        label = { Text(topLevelRoute.name) },
-                        selected = index == navigationSelectedItem,
-                        onClick = {
-                            navigationSelectedItem = index
-                            navController.navigate(topLevelRoute.route) {
-                                // Pop up to the start destination of the graph to
-                                // avoid building up a large stack of destinations
-                                // on the back stack as users select items
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                // Avoid multiple copies of the same destination when
-                                // reselecting the same item
-                                launchSingleTop = true
-                                // Restore state when reselecting a previously selected item
-                                restoreState = true
+            var navigationSelectedItemName by remember {
+                mutableStateOf(zooTopRoute.name)
+            }
+
+            val navController = rememberNavController()
+
+            Scaffold(
+                bottomBar = {
+                    NavigationBar {
+                        if (uiState.data.showCemetery == true) {
+                            TopLevelNavBarItem(
+                                item = cemeteryTopRoute,
+                                isSelected = navigationSelectedItemName == cemeteryTopRoute.name
+                            ) { item ->
+                                navigationSelectedItemName = item.name
+                                navigateToTopLevel(navController, item.route)
                             }
                         }
+
+                        TopLevelNavBarItem(
+                            item = zooTopRoute,
+                            isSelected = navigationSelectedItemName == zooTopRoute.name
+                        ) { item ->
+                            navigationSelectedItemName = item.name
+                            navigateToTopLevel(navController, item.route)
+                        }
+
+                        TopLevelNavBarItem(
+                            item = weatherTopRoute,
+                            isSelected = navigationSelectedItemName == weatherTopRoute.name
+                        ) { item ->
+                            navigationSelectedItemName = item.name
+                            navigateToTopLevel(navController, item.route)
+                        }
+                    }
+                }
+            ) { innerPadding ->
+                NavHost(
+                    navController = navController,
+                    startDestination = TopLevelRoutes.ZooScreen,
+                    modifier = Modifier.padding(innerPadding)
+                ) {
+                    zooScreen(
+                        navController = navController,
+                        requestBackgroundLocationPermission = requestBackgroundLocationPermission,
+                        shouldShowBackgroundLocationPermissionRationale = shouldShowBackgroundLocationPermissionRationale,
                     )
+                    petDetailsScreen(navController)
+                    petCreationScreen(navController)
+                    cemeteryScreen(navController)
+                    weatherReportScreen()
                 }
             }
         }
-    ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = ZooScreen,
-            modifier = Modifier.padding(innerPadding)
-        ) {
-            zooScreen(
-                navController = navController,
-                requestBackgroundLocationPermission = requestBackgroundLocationPermission,
-                shouldShowBackgroundLocationPermissionRationale = shouldShowBackgroundLocationPermissionRationale,
-            )
-            petDetailsScreen(navController)
-            petCreationScreen(navController)
-            cemeteryScreen(navController)
-            weatherReportScreen()
+    }
+}
+
+@Composable
+private fun RowScope.TopLevelNavBarItem(
+    item: TopLevelRoute,
+    isSelected: Boolean,
+    onClick: (item: TopLevelRoute) -> Unit,
+) {
+    NavigationBarItem(
+        icon = { Icon(item.icon, contentDescription = item.name) },
+        label = { Text(item.name) },
+        selected = isSelected,
+        onClick = {
+            onClick(item)
         }
+    )
+}
+
+private fun navigateToTopLevel(
+    navController: NavController,
+    route: TopLevelRoutes,
+) {
+    navController.navigate(route) {
+        // Pop up to the start destination of the graph to
+        // avoid building up a large stack of destinations
+        // on the back stack as users select items
+        popUpTo(navController.graph.findStartDestination().id) {
+            saveState = true
+        }
+        // Avoid multiple copies of the same destination when
+        // reselecting the same item
+        launchSingleTop = true
+        // Restore state when reselecting a previously selected item
+        restoreState = true
     }
 }
