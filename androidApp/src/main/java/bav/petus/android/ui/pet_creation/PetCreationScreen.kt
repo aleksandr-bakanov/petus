@@ -71,7 +71,10 @@ private fun PetCreationScreen(
                         style = MaterialTheme.typography.headlineLarge,
                         textAlign = TextAlign.Center,
                     )
-                    PetTypePicker(selectedValue = state.type) {
+                    PetTypePicker(
+                        selectedValue = state.type,
+                        availablePetTypes = state.availablePetTypes,
+                    ) {
                         onAction(PetCreationScreenViewModel.Action.UpdateType(it))
                     }
                     Text(

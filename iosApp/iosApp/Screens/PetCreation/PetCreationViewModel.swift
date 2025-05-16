@@ -4,20 +4,31 @@ import shared
 @MainActor final class PetCreationViewModel: ObservableObject {
     
     let koinHelper: KoinHelper = KoinHelper()
+    let stringResourcesUseCase = StringResourcesUseCase()
     
     var onFinish: (() -> Void)?
     
     @Published var name: String = ""
     @Published var type: PetType = PetType.dogus
     @Published var typeDescription: String
+    @Published var availablePetTypes: [PetType] = []
     
     init() {
-        typeDescription = koinHelper.getPetTypeDescription(type: PetType.dogus)
+        typeDescription = stringResourcesUseCase.getString(id: koinHelper.getPetTypeDescription(type: PetType.dogus))
+    }
+    
+    func loadData() async {
+        do {
+            availablePetTypes = try await Array(koinHelper.getAvailablePetTypes())
+        }
+        catch {
+            
+        }
     }
     
     func setNewType(type: PetType) {
         self.type = type
-        typeDescription = koinHelper.getPetTypeDescription(type: type)
+        typeDescription = stringResourcesUseCase.getString(id: koinHelper.getPetTypeDescription(type: type))
     }
     
     func createPet() {

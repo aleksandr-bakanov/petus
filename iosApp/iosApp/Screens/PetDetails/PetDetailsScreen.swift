@@ -67,14 +67,30 @@ struct PetDetailsScreen: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
+                    ActionButton(title: "Start dialog", backgroundColor: Color("SatietyColor"), action: { viewModel.startDialog() })
+                    if let node = viewModel.dialogData {
+                        DetailText(node.text)
+                        
+                        VStack(alignment: .leading, spacing: 2) {
+                            ForEach(Array(node.answers.enumerated()), id: \.element) { index, answer in
+                                ActionButton(title: answer,
+                                             backgroundColor: Color("SatietyColor"),
+                                             action: { viewModel.chooseDialogAnswer(index: Int32(index)) }
+                                )
+                            }
+                        }
+                    }
+                    
+                    ActionButton(title: "Kill", backgroundColor: Color("SatietyColor"), action: { viewModel.kill() })
+                    ActionButton(title: "Resurrect", backgroundColor: Color("SatietyColor"), action: { viewModel.resurrectPet() })
+                    ActionButton(title: "Egg", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .egg) })
+                    ActionButton(title: "Newborn", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .newBorn) })
+                    ActionButton(title: "Adult", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .adult) })
+                    ActionButton(title: "Old", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .old) })
+                    ActionButton(title: "To cemetery", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetPlace(place: .cemetery) })
+                    ActionButton(title: "To zoo", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetPlace(place: .zoo) })
+                    
                     DetailText(viewModel.uiState.creationTime)
-                    DetailText(viewModel.uiState.ageState)
-                    DetailText(viewModel.uiState.sleepState)
-                    DetailText(viewModel.uiState.satiety)
-                    DetailText(viewModel.uiState.psych)
-                    DetailText(viewModel.uiState.health)
-                    DetailText(viewModel.uiState.illness)
-                    DetailText(viewModel.uiState.pooped)
                     DetailText(viewModel.uiState.timeOfDeath)
                 }
                 .padding(.top, 16)

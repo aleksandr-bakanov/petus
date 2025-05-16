@@ -44,15 +44,7 @@ private fun ZooScreen(
         UiState.Loading -> {}
         is UiState.Success -> {
             val state = uiState.data
-            Scaffold(
-                topBar = {
-                    TopAppBar(title = {
-                        Text(
-                            "Zoo", style = MaterialTheme.typography.headlineLarge
-                        )
-                    })
-                },
-            ) { padding ->
+            Scaffold { padding ->
                 Column(
                     modifier = Modifier
                         .fillMaxSize()

@@ -6,12 +6,21 @@ import bav.petus.cache.PetsDatabase
 import bav.petus.cache.getDatabaseBuilder
 import bav.petus.cache.getPetsDatabase
 import bav.petus.core.datastore.createDataStore
+import bav.petus.core.dialog.DialogNode
+import bav.petus.core.dialog.DialogSystem
 import bav.petus.core.engine.Engine
+import bav.petus.core.engine.QuestSystem
+import bav.petus.core.engine.UserProfileData
+import bav.petus.core.engine.UserStats
+import bav.petus.core.inventory.InventoryItem
+import bav.petus.core.resources.StringId
 import bav.petus.core.time.TimeRepository
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.extension.epochTimeToString
+import bav.petus.model.AgeState
 import bav.petus.model.Pet
 import bav.petus.model.PetType
+import bav.petus.model.Place
 import bav.petus.network.WeatherApi
 import bav.petus.repo.PetsRepository
 import bav.petus.repo.WeatherRepository
@@ -28,13 +37,16 @@ class KoinHelper : KoinComponent {
     private val weatherRepo: WeatherRepository by inject<WeatherRepository>()
     private val timeRepo: TimeRepository by inject<TimeRepository>()
     private val engine: Engine by inject<Engine>()
+    private val dialogSystem: DialogSystem by inject<DialogSystem>()
+    private val userStats: UserStats by inject<UserStats>()
+    private val questSystem: QuestSystem by inject<QuestSystem>()
 
-    fun getAllAlivePetsFlow(): Flow<List<Pet>> {
-        return petsRepo.getAllAlivePetsFlow()
+    fun getAllPetsInZooFlow(): Flow<List<Pet>> {
+        return petsRepo.getAllPetsInZooFlow()
     }
 
-    fun getAllDeadPetsFlow(): Flow<List<Pet>> {
-        return petsRepo.getAllDeadPetsFlow()
+    fun getAllPetsInCemeteryFlow(): Flow<List<Pet>> {
+        return petsRepo.getAllPetsInCemeteryFlow()
     }
 
     fun getPetByIdFlow(petId: Long): Flow<Pet?> {
@@ -81,8 +93,56 @@ class KoinHelper : KoinComponent {
         engine.wakeUpPet(pet)
     }
 
-    fun getPetTypeDescription(type: PetType): String {
+    suspend fun killPet(pet: Pet) {
+        engine.killPet(pet)
+    }
+
+    suspend fun resurrectPet(pet: Pet) {
+        engine.resurrectPet(pet)
+    }
+
+    suspend fun changePetAgeState(pet: Pet, state: AgeState) {
+        engine.changePetAgeState(pet, state)
+    }
+
+    suspend fun changePetPlace(pet: Pet, place: Place) {
+        engine.changePetPlace(pet, place)
+    }
+
+    suspend fun startDialog(pet: Pet): DialogNode? {
+        return dialogSystem.startDialog(pet)
+    }
+
+    suspend fun chooseDialogAnswer(index: Int): DialogNode? {
+        return dialogSystem.chooseAnswer(index)
+    }
+
+    suspend fun maskDialogText(petType: PetType, text: String): String {
+        return dialogSystem.maskDialogText(petType, text)
+    }
+
+    fun getPetTypeDescription(type: PetType): StringId {
         return engine.getPetTypeDescription(type)
+    }
+
+    fun getUserProfileFlow(): Flow<UserProfileData> {
+        return userStats.getUserProfileFlow()
+    }
+
+    suspend fun getAvailablePetTypes(): Set<PetType> {
+        return userStats.getAvailablePetTypes()
+    }
+
+    suspend fun addInventoryItem(item: InventoryItem) {
+        userStats.addInventoryItem(item)
+    }
+
+    suspend fun removeInventoryItem(item: InventoryItem) {
+        userStats.removeInventoryItem(item)
+    }
+
+    suspend fun emitQuestEvent(event: QuestSystem.Event) {
+        questSystem.onEvent(event)
     }
 
     suspend fun createNewPet(
@@ -175,6 +235,8 @@ fun initKoin() {
                     timeRepo = get(),
                     weatherRepo = get(),
                     weatherAttitudeUseCase = get(),
+                    userStats = get(),
+                    questSystem = get(),
                 )
             }
 
@@ -184,6 +246,27 @@ fun initKoin() {
                     weatherRepo = get(),
                     engine = get(),
                     timeRepo = get(),
+                )
+            }
+
+            single<DialogSystem> {
+                DialogSystem(
+                    userStats = get(),
+                    questSystem = get(),
+                )
+            }
+
+            single {
+                UserStats(
+                    dataStore = get(),
+                )
+            }
+
+            single {
+                QuestSystem(
+                    dataStore = get(),
+                    petsRepo = get(),
+                    userStats = get(),
                 )
             }
         })

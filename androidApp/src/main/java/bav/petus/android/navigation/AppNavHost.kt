@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Icon
@@ -35,6 +36,9 @@ sealed interface TopLevelRoutes {
 
     @Serializable
     data object WeatherReportScreen : TopLevelRoutes
+
+    @Serializable
+    data object UserProfileScreen : TopLevelRoutes
 }
 
 data class TopLevelRoute(val name: String, val route: TopLevelRoutes, val icon: ImageVector)
@@ -42,6 +46,7 @@ data class TopLevelRoute(val name: String, val route: TopLevelRoutes, val icon: 
 private val cemeteryTopRoute = TopLevelRoute("Cemetery", TopLevelRoutes.CemeteryScreen, Icons.Default.Add)
 private val zooTopRoute = TopLevelRoute("Zoo", TopLevelRoutes.ZooScreen, Icons.Default.Home)
 private val weatherTopRoute = TopLevelRoute("Weather", TopLevelRoutes.WeatherReportScreen, Icons.Default.Menu)
+private val profileTopRoute = TopLevelRoute("Profile", TopLevelRoutes.UserProfileScreen, Icons.Default.Face)
 
 @Composable
 fun AppWithBottomBar(
@@ -83,8 +88,8 @@ fun AppWithBottomBar(
                         }
 
                         TopLevelNavBarItem(
-                            item = weatherTopRoute,
-                            isSelected = navigationSelectedItemName == weatherTopRoute.name
+                            item = profileTopRoute,
+                            isSelected = navigationSelectedItemName == profileTopRoute.name
                         ) { item ->
                             navigationSelectedItemName = item.name
                             navigateToTopLevel(navController, item.route)
@@ -106,6 +111,7 @@ fun AppWithBottomBar(
                     petCreationScreen(navController)
                     cemeteryScreen(navController)
                     weatherReportScreen()
+                    userProfileScreen()
                 }
             }
         }

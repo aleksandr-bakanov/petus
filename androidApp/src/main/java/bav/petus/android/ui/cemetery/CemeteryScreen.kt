@@ -30,7 +30,6 @@ fun CemeteryRoute(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun CemeteryScreen(
     uiState: UiState<CemeteryUiState>,
@@ -42,16 +41,7 @@ private fun CemeteryScreen(
         UiState.Loading -> {}
         is UiState.Success -> {
             val state = uiState.data
-            Scaffold(
-                topBar = {
-                    TopAppBar(title = {
-                        Text(
-                            "Cemetery",
-                            style = MaterialTheme.typography.headlineLarge
-                        )
-                    })
-                },
-            ) { padding ->
+            Scaffold { padding ->
                 Column(
                     modifier = Modifier
                         .fillMaxSize()

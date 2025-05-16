@@ -3,98 +3,99 @@ import shared
 
 class PetImageUseCase {
     private let engine: KoinHelper = KoinHelper()
-
+    
     func getPetImageName(for pet: Pet) -> String {
+        if pet.burialType == BurialType.exhumated { return "dug_out_grave" }
         switch pet.type {
         case .catus:
-            return imageName(for: pet, prefix: "catus")
+            switch pet.ageState {
+            case .egg:
+                return "catus_egg"
+            case .newBorn:
+                if pet.bodyState == BodyState.dead { return "catus_newborn_dead" }
+                if pet.sleep { return "catus_newborn_sleep" }
+                if pet.isPooped { return "catus_newborn_poop" }
+                if pet.illness { return "catus_newborn_ill" }
+                if isPetHungryOrPsych(pet: pet) { return "catus_newborn_hungry" }
+                if isPetLowHealth(pet: pet) { return "catus_newborn_ill" }
+                else { return "catus_newborn_active" }
+            case .teen, .adult:
+                if pet.bodyState == BodyState.dead { return "catus_adult_dead" }
+                if pet.sleep { return "catus_adult_sleep" }
+                if pet.isPooped { return "catus_adult_poop" }
+                if pet.illness { return "catus_adult_ill" }
+                if isPetHungryOrPsych(pet: pet) { return "catus_adult_hungry" }
+                if isPetLowHealth(pet: pet) { return "catus_adult_ill" }
+                else { return "catus_adult_active" }
+            case .old:
+                if pet.bodyState == BodyState.dead { return "catus_old_dead" }
+                if pet.sleep { return "catus_old_sleep" }
+                if pet.isPooped { return "catus_old_poop" }
+                if pet.illness { return "catus_old_ill" }
+                if isPetHungryOrPsych(pet: pet) { return "catus_old_hungry" }
+                if isPetLowHealth(pet: pet) { return "catus_old_ill" }
+                else { return "catus_old_active" }
+            }
+            
         case .dogus:
-            return imageName(for: pet, prefix: "dogus")
+            switch pet.ageState {
+            case .egg:
+                return "dogus_egg"
+            case .newBorn:
+                if pet.bodyState == BodyState.dead { return "dogus_dead" }
+                if pet.sleep { return "dogus_newborn_sleep" }
+                if pet.isPooped { return "dogus_newborn_poop" }
+                if pet.illness { return "dogus_newborn_ill" }
+                if isPetHungryOrPsych(pet: pet) { return "dogus_newborn_hungry" }
+                if isPetLowHealth(pet: pet) { return "dogus_newborn_ill" }
+                else { return "dogus_newborn_active" }
+            case .teen, .adult:
+                if pet.bodyState == BodyState.dead { return "dogus_dead" }
+                if pet.sleep { return "dogus_adult_sleep" }
+                if pet.isPooped { return "dogus_adult_poop" }
+                if pet.illness { return "dogus_adult_ill" }
+                if isPetHungryOrPsych(pet: pet) { return "dogus_adult_hungry" }
+                if isPetLowHealth(pet: pet) { return "dogus_adult_ill" }
+                else { return "dogus_adult_active" }
+            case .old:
+                if pet.bodyState == BodyState.dead { return "dogus_dead" }
+                if pet.sleep { return "dogus_old_sleep" }
+                if pet.isPooped { return "dogus_old_poop" }
+                if pet.illness { return "dogus_old_ill" }
+                if isPetHungryOrPsych(pet: pet) { return "dogus_old_hungry" }
+                if isPetLowHealth(pet: pet) { return "dogus_old_ill" }
+                else { return "dogus_old_active" }
+            }
+            
         case .frogus:
-            return imageName(for: pet, prefix: "frogus")
-        }
-    }
-
-    private func imageName(for pet: Pet, prefix: String) -> String {
-        let suffix: String
-
-        switch pet.ageState {
-        case .egg:
-            suffix = "egg"
-        case .newBorn:
-            suffix = newbornImageSuffix(for: pet)
-        case .teen:
-            suffix = teenImageSuffix(for: pet)
-        case .adult:
-            suffix = adultImageSuffix(for: pet)
-        case .old:
-            suffix = oldImageSuffix(for: pet)
-        }
-
-        return "\(prefix)_\(suffix)"
-    }
-
-    private func newbornImageSuffix(for pet: Pet) -> String {
-        if pet.sleep {
-            return "newborn_sleep"
-        } else if pet.isPooped {
-            return "newborn_poop"
-        } else if pet.illness {
-            return "newborn_ill"
-        } else if isPetHungryOrPsych(pet: pet) {
-            return "newborn_hungry"
-        } else if isPetLowHealth(pet: pet) {
-            return "newborn_ill"
-        } else {
-            return "newborn_active"
-        }
-    }
-
-    private func teenImageSuffix(for pet: Pet) -> String {
-        if pet.sleep {
-            return "teen_sleep"
-        } else if pet.isPooped {
-            return "teen_poop"
-        } else if pet.illness {
-            return "teen_ill"
-        } else if isPetHungryOrPsych(pet: pet) {
-            return "teen_hungry"
-        } else if isPetLowHealth(pet: pet) {
-            return "teen_ill"
-        } else {
-            return "teen_active"
-        }
-    }
-
-    private func adultImageSuffix(for pet: Pet) -> String {
-        if pet.sleep {
-            return "adult_sleep"
-        } else if pet.isPooped {
-            return "adult_poop"
-        } else if pet.illness {
-            return "adult_ill"
-        } else if isPetHungryOrPsych(pet: pet) {
-            return "adult_hungry"
-        } else if isPetLowHealth(pet: pet) {
-            return "adult_ill"
-        } else {
-            return "adult_active"
-        }
-    }
-
-    private func oldImageSuffix(for pet: Pet) -> String {
-        if pet.sleep {
-            return "old_sleep"
-        } else if pet.isPooped {
-            return "old_poop"
-        } else if pet.illness {
-            return "old_ill"
-        } else if isPetHungryOrPsych(pet: pet) {
-            return "old_hungry"
-        } else if isPetLowHealth(pet: pet) {
-            return "old_ill"
-        } else {
-            return "old_active"
+            switch pet.ageState {
+            case .egg:
+                return "frogus_egg"
+            case .newBorn:
+                if pet.bodyState == BodyState.dead { return "frogus_dead" }
+                if pet.sleep { return "frogus_newborn_sleep" }
+                if pet.isPooped { return "frogus_newborn_poop" }
+                if pet.illness { return "frogus_newborn_ill" }
+                if isPetHungryOrPsych(pet: pet) { return "frogus_newborn_hungry" }
+                if isPetLowHealth(pet: pet) { return "frogus_newborn_ill" }
+                else { return "frogus_newborn_active" }
+            case .teen, .adult:
+                if pet.bodyState == BodyState.dead { return "frogus_dead" }
+                if pet.sleep { return "frogus_adult_sleep" }
+                if pet.isPooped { return "frogus_adult_poop" }
+                if pet.illness { return "frogus_adult_ill" }
+                if isPetHungryOrPsych(pet: pet) { return "frogus_adult_hungry" }
+                if isPetLowHealth(pet: pet) { return "frogus_adult_ill" }
+                else { return "frogus_adult_active" }
+            case .old:
+                if pet.bodyState == BodyState.dead { return "frogus_dead" }
+                if pet.sleep { return "frogus_old_sleep" }
+                if pet.isPooped { return "frogus_old_poop" }
+                if pet.illness { return "frogus_old_ill" }
+                if isPetHungryOrPsych(pet: pet) { return "frogus_old_hungry" }
+                if isPetLowHealth(pet: pet) { return "frogus_old_ill" }
+                else { return "frogus_old_active" }
+            }
         }
     }
 

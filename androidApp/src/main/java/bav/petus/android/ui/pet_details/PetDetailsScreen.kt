@@ -25,6 +25,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -32,19 +33,24 @@ import bav.petus.android.HealthColor
 import bav.petus.android.PsychColor
 import bav.petus.android.R
 import bav.petus.android.SatietyColor
+import bav.petus.android.ui.common.ActionButton
 import bav.petus.android.ui.common.AnimatedImageButton
 import bav.petus.android.ui.common.StatBar
 import bav.petus.android.ui.common.UiState
+import bav.petus.model.AgeState
 import bav.petus.model.PetType
+import bav.petus.model.Place
 
 @Composable
 fun PetDetailsRoute(
     viewModel: PetDetailsScreenViewModel,
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val dialogNode by viewModel.dialogNodeFlow.collectAsState()
 
     PetDetailsScreen(
         uiState = uiState,
+        dialogData = dialogNode,
         onAction = viewModel::onAction,
     )
 }
@@ -53,6 +59,7 @@ fun PetDetailsRoute(
 @Composable
 private fun PetDetailsScreen(
     uiState: UiState<PetDetailsUiState>,
+    dialogData: DialogData?,
     onAction: (PetDetailsScreenViewModel.Action) -> Unit,
 ) {
     when (uiState) {
@@ -84,7 +91,7 @@ private fun PetDetailsScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(padding)
-                        .verticalScroll(rememberScrollState()), // Make scrollable
+                        .verticalScroll(rememberScrollState()),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Column(
@@ -113,6 +120,64 @@ private fun PetDetailsScreen(
                             color = HealthColor,
                             fraction = state.healthFraction,
                         )
+                        ActionButton(
+                            text = "Kill pet",
+                            color = Color.Red,
+                            onClick = { onAction(PetDetailsScreenViewModel.Action.Kill) }
+                        )
+                        ActionButton(
+                            text = "Resurrect pet",
+                            color = Color.Red,
+                            onClick = { onAction(PetDetailsScreenViewModel.Action.Resurrect) }
+                        )
+                        ActionButton(
+                            text = "Egg",
+                            color = Color.Red,
+                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Egg)) }
+                        )
+                        ActionButton(
+                            text = "Newborn",
+                            color = Color.Red,
+                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.NewBorn)) }
+                        )
+                        ActionButton(
+                            text = "Adult",
+                            color = Color.Red,
+                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Adult)) }
+                        )
+                        ActionButton(
+                            text = "Old",
+                            color = Color.Red,
+                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Old)) }
+                        )
+                        ActionButton(
+                            text = "To cemetery",
+                            color = Color.Red,
+                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangePlace(Place.Cemetery)) }
+                        )
+                        ActionButton(
+                            text = "To zoo",
+                            color = Color.Red,
+                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangePlace(Place.Zoo)) }
+                        )
+                        ActionButton(
+                            text = "Start dialog",
+                            color = Color.Red,
+                            onClick = { onAction(PetDetailsScreenViewModel.Action.StartDialog) }
+                        )
+                        if (dialogData != null) {
+                            Text(
+                                text = dialogData.text,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                            dialogData.answers.forEachIndexed { index, answerOption ->
+                                ActionButton(
+                                    text = answerOption,
+                                    color = Color.Red,
+                                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChooseDialogAnswer(index)) }
+                                )
+                            }
+                        }
                     }
 
                     // Action Buttons
@@ -180,13 +245,6 @@ private fun PetDetailsScreen(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         InfoText(text = state.creationTime)
-                        InfoText(text = state.ageState)
-                        InfoText(text = state.sleepState)
-                        InfoText(text = state.satiety)
-                        InfoText(text = state.psych)
-                        InfoText(text = state.health)
-                        InfoText(text = state.illness)
-                        InfoText(text = state.pooped)
                         InfoText(text = state.timeOfDeath)
                     }
 

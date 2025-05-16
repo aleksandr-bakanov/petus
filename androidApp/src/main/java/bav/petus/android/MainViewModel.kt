@@ -17,7 +17,7 @@ class MainViewModel(
     petsRepo: PetsRepository,
 ): ViewModel() {
 
-    private val deadPetsFlow: StateFlow<Boolean?> = petsRepo.getAllDeadPetsFlow()
+    private val deadPetsFlow: StateFlow<Boolean?> = petsRepo.getAllPetsInCemeteryFlow()
         .map { deadPets -> deadPets.isNotEmpty() }
         .stateIn(viewModelScope, SharingStarted.Lazily, null)
 

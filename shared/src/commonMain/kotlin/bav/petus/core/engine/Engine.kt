@@ -1,11 +1,15 @@
 package bav.petus.core.engine
 
 import bav.petus.cache.WeatherRecord
+import bav.petus.core.inventory.InventoryItem
+import bav.petus.core.resources.StringId
 import bav.petus.core.time.TimeRepository
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.model.AgeState
+import bav.petus.model.BodyState
 import bav.petus.model.Pet
 import bav.petus.model.PetType
+import bav.petus.model.Place
 import bav.petus.model.SleepState
 import bav.petus.model.WeatherAttitude
 import bav.petus.repo.PetsRepository
@@ -18,6 +22,8 @@ class Engine(
     private val petsRepo: PetsRepository,
     private val weatherRepo: WeatherRepository,
     private val weatherAttitudeUseCase: WeatherAttitudeUseCase,
+    private val userStats: UserStats,
+    private val questSystem: QuestSystem,
 ) {
 
     suspend fun createNewPet(
@@ -37,7 +43,7 @@ class Engine(
     }
 
     fun isAllowedToFeedPet(pet: Pet): Boolean {
-        return pet.isDead.not() &&
+        return pet.bodyState == BodyState.Alive &&
                 pet.ageState != AgeState.Egg &&
                 pet.satiety < getFullSatietyForPetType(pet.type) &&
                 pet.sleep.not()
@@ -51,7 +57,7 @@ class Engine(
     }
 
     fun isAllowedToPlayWithPet(pet: Pet): Boolean {
-        return pet.isDead.not() &&
+        return pet.bodyState == BodyState.Alive &&
                 pet.ageState != AgeState.Egg &&
                 pet.psych < getFullPsychForPetType(pet.type) &&
                 pet.sleep.not()
@@ -61,6 +67,9 @@ class Engine(
         val newPet = pet.copy(
             psych = getFullPsychForPetType(pet.type)
         )
+        val currentLanguageKnowledge = userStats.getLanguageKnowledge(pet.type)
+        val newLanguageKnowledge = currentLanguageKnowledge + LANGUAGE_KNOWLEDGE_INCREMENT
+        userStats.saveLanguageKnowledge(pet.type, newLanguageKnowledge)
         petsRepo.updatePet(newPet)
     }
 
@@ -76,7 +85,7 @@ class Engine(
     }
 
     fun isAllowedToHealPet(pet: Pet): Boolean {
-        return pet.illness && pet.isDead.not()
+        return pet.illness && pet.bodyState == BodyState.Alive
     }
 
     suspend fun healPetIllness(pet: Pet) {
@@ -87,7 +96,7 @@ class Engine(
     }
 
     fun isAllowedToWakeUpPet(pet: Pet): Boolean {
-        return pet.sleep && pet.isDead.not() && pet.ageState != AgeState.Egg
+        return pet.sleep && pet.bodyState == BodyState.Alive && pet.ageState != AgeState.Egg
     }
 
     suspend fun wakeUpPet(pet: Pet) {
@@ -100,6 +109,25 @@ class Engine(
         petsRepo.updatePet(newPet)
     }
 
+    suspend fun addItemToPetInventory(pet: Pet, item: InventoryItem) {
+        petsRepo.updatePet(
+            pet = pet.copy(
+                inventory = pet.inventory.addItem(item)
+            )
+        )
+    }
+
+    suspend fun removeItemFromPetInventory(pet: Pet, item: InventoryItem) {
+        val newInventory = pet.inventory.removeItem(item)
+        if (newInventory != null) {
+            petsRepo.updatePet(
+                pet = pet.copy(
+                    inventory = newInventory
+                )
+            )
+        }
+    }
+
     fun getPetSatietyFraction(pet: Pet): Float {
         return pet.satiety / getFullSatietyForPetType(pet.type)
     }
@@ -110,6 +138,28 @@ class Engine(
 
     fun getPetHealthFraction(pet: Pet): Float {
         return pet.health / getFullHealthForPetType(pet.type)
+    }
+
+    suspend fun killPet(pet: Pet) {
+        val now = getTimestampSecondsSinceEpoch()
+        val deadPet = makePetDead(pet, now)
+        petsRepo.updatePet(deadPet)
+    }
+
+    suspend fun resurrectPet(pet: Pet) {
+        val newPet = pet.copy(bodyState = BodyState.Alive, timeOfDeath = 0L)
+        petsRepo.updatePet(newPet)
+    }
+
+    suspend fun changePetPlace(pet: Pet, newPlace: Place) {
+        val newPet = pet.copy(place = newPlace)
+        petsRepo.updatePet(newPet)
+        questSystem.onEvent(QuestSystem.Event.PetMovedToPlace(pet, newPlace))
+    }
+
+    suspend fun changePetAgeState(pet: Pet, newState: AgeState) {
+        val newPet = pet.copy(ageState = newState)
+        petsRepo.updatePet(newPet)
     }
 
     fun getSecondsToNextSleepStateChange(pet: Pet): Long {
@@ -127,11 +177,11 @@ class Engine(
         }
     }
 
-    fun getPetTypeDescription(type: PetType): String {
+    fun getPetTypeDescription(type: PetType): StringId {
         return when (type) {
-            PetType.Catus -> "Catus: sleeps 16 hours, awake for 8 hours. Likes warm sunny days. Likes small wind."
-            PetType.Dogus -> "Dogus: sleeps 8 hours, awake for 16 hours. Likes warm sunny days. Likes medium wind."
-            PetType.Frogus -> "Frogus: sleeps 12 hours, awake for 12 hours. Likes cold cloudy days. Doesn't like wind."
+            PetType.Catus -> StringId.PetTypeDescriptionCatus
+            PetType.Dogus -> StringId.PetTypeDescriptionDogus
+            PetType.Frogus -> StringId.PetTypeDescriptionFrogus
         }
     }
 
@@ -151,20 +201,22 @@ class Engine(
         }
 
         // At least one period passed, let's update game state
-        var pets = petsRepo.getAllAlivePets()
+        var pets = petsRepo.getAllPetsInZoo().filter {
+            it.bodyState == BodyState.Alive
+        }
         val periodsPassed =
             (currentTime - lastTimestamp) / TimeRepository.CYCLE_PERIOD_IN_SECONDS
 
         for (periodIndex in 0 until periodsPassed) {
             // periodTime is a start point of a certain period - this may matter only for selection
             // of weather record. For the rest of the calculations it shouldn't matter.
-            val periodTime =
+            val periodTimestamp =
                 lastTimestamp + periodIndex * TimeRepository.CYCLE_PERIOD_IN_SECONDS
             val weatherRecord = weatherRepo.getClosestWeather(
-                timestamp = periodTime
+                timestamp = periodTimestamp
             )
             // Update all pets
-            pets = pets.map { updatePet(it, weatherRecord, periodTime) }
+            pets = pets.map { updatePet(it, weatherRecord, periodTimestamp) }
         }
 
         // Save results in DB
@@ -173,7 +225,9 @@ class Engine(
         }
 
         // Saving latest periodTime as new lastTimestamp
-        timeRepo.saveLastTimestamp(lastTimestamp + periodsPassed * TimeRepository.CYCLE_PERIOD_IN_SECONDS)
+        val newLastTimestamp = lastTimestamp + periodsPassed * TimeRepository.CYCLE_PERIOD_IN_SECONDS
+        timeRepo.saveLastTimestamp(newLastTimestamp)
+        questSystem.onEvent(QuestSystem.Event.Tick(newLastTimestamp))
     }
 
     /**
@@ -185,12 +239,12 @@ class Engine(
      *   by [TimeRepository.CYCLE_PERIOD_IN_SECONDS].
      * @return Resulting pet object
      */
-    private fun updatePet(
+    private suspend fun updatePet(
         pet: Pet,
         weatherRecord: WeatherRecord?,
         periodTimestamp: Long,
     ): Pet {
-        if (pet.isDead) return pet
+        if (pet.bodyState != BodyState.Alive) return pet
 
         var newPet = pet.copy()
 
@@ -271,7 +325,7 @@ class Engine(
         }
 
         // Additional checks for Old pets
-        if (newPet.ageState == AgeState.Old) {
+        if (newPet.ageState == AgeState.Old && newPet.bodyState == BodyState.Alive) {
             // Random death
             if (Random.Default.nextFloat() < newPet.deathOfOldAgePossibility) {
                 newPet = makePetDead(newPet, periodTimestamp)
@@ -286,10 +340,11 @@ class Engine(
         return newPet
     }
 
-    private fun makePetDead(pet: Pet, periodTime: Long): Pet {
+    private suspend fun makePetDead(pet: Pet, periodTime: Long): Pet {
+        questSystem.onEvent(QuestSystem.Event.PetDied(pet.id))
         // TODO: save some info about cause of death
         return pet.copy(
-            isDead = true,
+            bodyState = BodyState.Dead,
             timeOfDeath = periodTime,
         )
     }
@@ -482,16 +537,16 @@ class Engine(
     }
 
     companion object {
-        private const val HOUR: Long = 3600L
-        private const val DAY: Long = HOUR * 24L
+        const val HOUR: Long = 3600L
+        const val DAY: Long = HOUR * 24L
 
         // Ranges in seconds
         private val commonPetAgeToSecondsTable = mapOf(
-            AgeState.Egg to (0L until HOUR),                // 1 hour
-            AgeState.NewBorn to (HOUR until DAY * 2),       // 2 days (-1 hour)
-            AgeState.Teen to (DAY * 2 until DAY * 4),       // 2 days
-            AgeState.Adult to (DAY * 4 until DAY * 7),      // 3 days
-            AgeState.Old to (DAY * 7 until Long.MAX_VALUE),
+            AgeState.Egg to (0L until HOUR),                    // 1 hour
+            AgeState.NewBorn to (HOUR until DAY * 2),           // 2 days (-1 hour)
+            AgeState.Teen to (DAY * 2 until DAY * 2 + 1),       // Disable Teen state making it short
+            AgeState.Adult to (DAY * 2 + 1 until DAY * 5),      // 3 days
+            AgeState.Old to (DAY * 5 until Long.MAX_VALUE),
         )
 
         private val petsAges = mapOf(
@@ -553,5 +608,6 @@ class Engine(
         const val SLEEP_TEMPERATURE_MULTIPLIER = 0.25f
         const val DEATH_OF_OLD_AGE_POSSIBILITY_INC = 0.00005f
         const val MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION = 0.00835f
+        const val LANGUAGE_KNOWLEDGE_INCREMENT = 20
     }
 }

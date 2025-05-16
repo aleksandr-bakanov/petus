@@ -1,5 +1,6 @@
 package bav.petus.model
 
+import bav.petus.core.inventory.InventoryItem
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,7 +10,9 @@ data class Pet(
     val name: String = "",
     val type: PetType = PetType.Frogus,
 
-    val isDead: Boolean = false,
+    val place: Place = Place.Zoo,
+    val bodyState: BodyState = BodyState.Alive,
+    val burialType: BurialType = BurialType.Buried,
 
     // Timestamp in seconds since epoch
     val creationTime: Long = 0L,
@@ -28,6 +31,8 @@ data class Pet(
 
     val deathOfOldAgePossibility: Float = 0f,
     val timeOfDeath: Long = 0L,
+
+    val inventory: List<InventoryItem> = listOf()
 ) {
     val sleep: Boolean
         get() = activeSleepState == SleepState.Sleep

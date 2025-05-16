@@ -6,16 +6,9 @@ struct PetDetailsUiState {
     var petType: PetType = PetType.frogus
     var petImage: String = ""
     var creationTime: String = ""
-    var ageState: String = ""
-    var sleepState: String = ""
-    var satiety: String = ""
-    var psych: String = ""
-    var health: String = ""
     var satietyFraction: CGFloat = 0
     var psychFraction: CGFloat = 0
     var healthFraction: CGFloat = 0
-    var illness: String = ""
-    var pooped: String = ""
     var timeOfDeath: String = ""
 }
 
@@ -25,6 +18,11 @@ enum PetDetailsScreenAction {
     case tapPlayButton
     case tapPoopButton
     case tapCloseButton
+}
+
+struct DialogData {
+    var text: String
+    var answers: [String]
 }
 
 @MainActor final class PetDetailsViewModel: ObservableObject {
@@ -37,8 +35,10 @@ enum PetDetailsScreenAction {
     
     let koinHelper: KoinHelper = KoinHelper()
     let petImageUseCase = PetImageUseCase()
+    let stringResourcesUseCase = StringResourcesUseCase()
     
     @Published var uiState: PetDetailsUiState = PetDetailsUiState()
+    @Published var dialogData: DialogData? = nil
     @Published var showPlayButton: Bool = false
     @Published var showHealButton: Bool = false
     @Published var showPoopButton: Bool = false
@@ -55,21 +55,19 @@ enum PetDetailsScreenAction {
         let petFlow = koinHelper.getPetByIdFlow(petId: petId)
         for await pet in petFlow {
             if let p = pet {
+                if currentPet == nil && pet != nil {
+                    do {
+                        try await koinHelper.emitQuestEvent(event: QuestSystemEventUserOpenPetDetails(pet: p))
+                    } catch {}
+                }
                 currentPet = p
                 uiState = PetDetailsUiState(title: p.name,
                                             petType: p.type,
                                             petImage: petImageUseCase.getPetImageName(for: p),
                                             creationTime: "Born: \(p.creationTime.epochTimeToString)",
-                                            ageState: "Age state: \(p.ageState.name)",
-                                            sleepState: getSleepActiveStateString(pet: p),
-                                            satiety: "Satiety: \(p.satiety)",
-                                            psych: "Psych: \(p.psych)",
-                                            health: "Health: \(p.health)",
                                             satietyFraction: CGFloat(koinHelper.getPetSatietyFraction(pet: p)),
                                             psychFraction: CGFloat(koinHelper.getPetPsychFraction(pet: p)),
                                             healthFraction: CGFloat(koinHelper.getPetHealthFraction(pet: p)),
-                                            illness: "Illness: \(p.illness)",
-                                            pooped: "Pooped: \(p.isPooped)",
                                             timeOfDeath: "Time of death: \(p.timeOfDeath.epochTimeToString)"
                 )
                 showPlayButton = koinHelper.isAllowedToPlayWithPet(pet: p)
@@ -86,6 +84,53 @@ enum PetDetailsScreenAction {
         let timestamp = koinHelper.getNextSleepStateChangeTimestampString(pet: pet)
 
         return "Sleep or active: \(pet.activeSleepState.name) (\(action) \(timestamp))"
+    }
+    
+    func startDialog() {
+        if let p = currentPet {
+            Task {
+                if let node = try await koinHelper.startDialog(pet: p) {
+                    dialogData = await makeDialogData(node: node)
+                }
+                else {
+                    dialogData = nil
+                }
+            }
+        }
+    }
+    
+    func chooseDialogAnswer(index: Int32) {
+        Task {
+            if let node = try await koinHelper.chooseDialogAnswer(index: index) {
+                dialogData = await makeDialogData(node: node)
+            }
+            else {
+                dialogData = nil
+            }
+        }
+    }
+    
+    private func makeDialogData(node: DialogNode?) async -> DialogData? {
+        guard let node = node else { return nil }
+        guard let p = currentPet else { return nil }
+        
+        do {
+            let maskedText = try await koinHelper.maskDialogText(
+                petType: p.type,
+                text: stringResourcesUseCase.getString(id: node.text)
+            )
+
+            let answers = node.answers.map {
+                stringResourcesUseCase.getString(id: $0.text)
+            }
+
+            return DialogData(
+                text: maskedText,
+                answers: answers
+            )
+        } catch {
+            return nil
+        }
     }
     
     func feedPet() {
@@ -126,5 +171,21 @@ enum PetDetailsScreenAction {
                 try await koinHelper.wakeUpPet(pet: p)
             }
         }
+    }
+    
+    func kill() {
+        if let p = currentPet { Task { try await koinHelper.killPet(pet: p) } }
+    }
+    
+    func resurrectPet() {
+        if let p = currentPet { Task { try await koinHelper.resurrectPet(pet: p) } }
+    }
+    
+    func changePetAgeState(state: AgeState) {
+        if let p = currentPet { Task { try await koinHelper.changePetAgeState(pet: p, state: state) } }
+    }
+    
+    func changePetPlace(place: Place) {
+        if let p = currentPet { Task { try await koinHelper.changePetPlace(pet: p, place: place) } }
     }
 }

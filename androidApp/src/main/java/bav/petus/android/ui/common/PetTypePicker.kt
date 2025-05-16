@@ -27,6 +27,7 @@ import bav.petus.model.PetType
 @Composable
 fun PetTypePicker(
     selectedValue: PetType,
+    availablePetTypes: Set<PetType>,
     onSelect: (PetType) -> Unit,
 ) {
     val scrollState = rememberScrollState()
@@ -39,7 +40,7 @@ fun PetTypePicker(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
-        PetType.entries.forEach { item ->
+        availablePetTypes.forEach { item ->
             val isSelected = item == selectedValue
 
             ImageItem(

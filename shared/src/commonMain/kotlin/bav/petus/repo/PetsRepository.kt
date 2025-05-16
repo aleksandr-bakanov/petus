@@ -3,6 +3,7 @@ package bav.petus.repo
 import bav.petus.cache.PetEntity
 import bav.petus.cache.PetsDatabase
 import bav.petus.model.Pet
+import bav.petus.model.Place
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.json.Json
@@ -32,46 +33,43 @@ class PetsRepository(
             .updatePet(
                 PetEntity(
                     id = pet.id,
-                    isDead = pet.isDead,
                     petData = Json.encodeToString(pet),
                 )
             )
     }
 
-    suspend fun getAllAlivePets(): List<Pet> {
+    suspend fun getAllPetsInZoo(): List<Pet> {
         return database.getDao()
-            .selectAllAlivePets()
+            .selectAllPets()
             .map { entity ->
                 Json.decodeFromString<Pet>(entity.petData).copy(
                     id = entity.id,
-                    isDead = entity.isDead,
                 )
             }
+            .filter { pet -> pet.place == Place.Zoo }
     }
 
-    fun getAllAlivePetsFlow(): Flow<List<Pet>> {
+    fun getAllPetsInZooFlow(): Flow<List<Pet>> {
         return database.getDao()
-            .selectAllAlivePetsFlow()
-            .map { pets ->
+            .selectAllPetsFlow()
+            .map { pets: List<PetEntity> ->
                 pets.map { entity ->
                     Json.decodeFromString<Pet>(entity.petData).copy(
                         id = entity.id,
-                        isDead = entity.isDead,
                     )
-                }
+                }.filter { pet -> pet.place == Place.Zoo }
             }
     }
 
-    fun getAllDeadPetsFlow(): Flow<List<Pet>> {
+    fun getAllPetsInCemeteryFlow(): Flow<List<Pet>> {
         return database.getDao()
-            .selectAllDeadPetsFlow()
+            .selectAllPetsFlow()
             .map { pets ->
                 pets.map { entity ->
                     Json.decodeFromString<Pet>(entity.petData).copy(
                         id = entity.id,
-                        isDead = entity.isDead,
                     )
-                }
+                }.filter { pet -> pet.place == Place.Cemetery }
             }
     }
 
@@ -82,7 +80,6 @@ class PetsRepository(
                 entity?.let {
                     Json.decodeFromString<Pet>(entity.petData).copy(
                         id = entity.id,
-                        isDead = entity.isDead,
                     )
                 }
             }

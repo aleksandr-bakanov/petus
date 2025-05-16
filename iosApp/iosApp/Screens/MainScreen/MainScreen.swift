@@ -21,9 +21,9 @@ struct MainScreen: View {
                         Label("Zoo", systemImage: "house")
                     }
                     .tag(2)
-                WeatherReportView()
+                UserProfileView()
                     .tabItem {
-                        Label("Weather", systemImage: "cloud")
+                        Label("Profile", systemImage: "face.smiling")
                     }
                     .tag(3)
             }

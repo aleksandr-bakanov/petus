@@ -13,7 +13,7 @@ struct CemeteryView: View {
                     ).listRowInsets(EdgeInsets())
                 }
             }
-            .navigationTitle("Cemetery")
+//            .navigationTitle("Cemetery")
             .navigationDestination(for: CemeteryNavigation.self) { destination in
                 switch destination {
                 case .petDetails(let petId):

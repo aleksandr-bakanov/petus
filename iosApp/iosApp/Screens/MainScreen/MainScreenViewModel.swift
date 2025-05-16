@@ -13,7 +13,7 @@ struct MainScreenUiState {
                                                showCemetery: nil)
     
     func initialLoad() async {
-        let petsFlow = koinHelper.getAllDeadPetsFlow()
+        let petsFlow = koinHelper.getAllPetsInCemeteryFlow()
         
         for await pets in petsFlow {
             let newValue = pets.count > 0

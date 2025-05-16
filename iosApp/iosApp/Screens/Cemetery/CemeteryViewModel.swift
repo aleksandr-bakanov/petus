@@ -14,7 +14,7 @@ enum CemeteryNavigation: Hashable {
     @Published var navigationPath: [CemeteryNavigation] = []
     
     func loadPets() async {
-        let petsFlow = koinHelper.getAllDeadPetsFlow()
+        let petsFlow = koinHelper.getAllPetsInCemeteryFlow()
         for await pets in petsFlow {
             self.pets = pets.map { pet in
                 PetThumbnailUiData(petImageName: petImageUseCase.getPetImageName(for: pet),

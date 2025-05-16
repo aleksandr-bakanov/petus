@@ -17,7 +17,7 @@ struct ZooView: View {
                     viewModel.tapOnCreateNewPet()
                 }
             }
-            .navigationTitle("Zoo")
+//            .navigationTitle("Zoo")
             .navigationDestination(for: ZooNavigation.self) { destination in
                 switch destination {
                 case .petDetails(let petId):

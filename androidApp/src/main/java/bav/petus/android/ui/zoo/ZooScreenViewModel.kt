@@ -36,7 +36,7 @@ class ZooScreenViewModel(
     private val args: ZooScreenViewModelArgs,
 ) : ViewModelWithNavigation<ZooScreenViewModel.Navigation>() {
 
-    val uiState: StateFlow<UiState<ZooUiState>> = petsRepo.getAllAlivePetsFlow()
+    val uiState: StateFlow<UiState<ZooUiState>> = petsRepo.getAllPetsInZooFlow()
         .map { pets ->
             UiState.Success(
                 ZooUiState(

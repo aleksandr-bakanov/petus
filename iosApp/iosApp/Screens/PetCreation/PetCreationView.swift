@@ -18,7 +18,8 @@ struct PetCreationScreen: View {
                         .multilineTextAlignment(.center)
 
                     // PetTypePicker
-                    PetTypePicker(selectedValue: $viewModel.type) { newType in
+                    PetTypePicker(selectedValue: $viewModel.type,
+                                  availablePetTypes: viewModel.availablePetTypes) { newType in
                         viewModel.setNewType(type: newType)
                     }
 
@@ -67,6 +68,9 @@ struct PetCreationScreen: View {
             viewModel.onFinish = {
                 dismiss()
             }
+        }
+        .task {
+            await viewModel.loadData()
         }
         .navigationTitle("Create pet")
     }

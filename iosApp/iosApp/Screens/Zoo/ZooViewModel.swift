@@ -15,7 +15,7 @@ enum ZooNavigation: Hashable {
     @Published var navigationPath: [ZooNavigation] = []
     
     func loadPets() async {
-        let petsFlow = koinHelper.getAllAlivePetsFlow()
+        let petsFlow = koinHelper.getAllPetsInZooFlow()
         for await pets in petsFlow {
             self.pets = pets.map { pet in
                 PetThumbnailUiData(petImageName: petImageUseCase.getPetImageName(for: pet),

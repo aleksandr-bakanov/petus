@@ -35,23 +35,14 @@ interface PetDao {
     @Update
     suspend fun updatePet(item: PetEntity)
 
-    @Query("DELETE FROM PetEntity")
-    suspend fun removeAllPets()
-
-    @Query("SELECT * FROM PetEntity WHERE isDead = 0")
-    suspend fun selectAllAlivePets(): List<PetEntity>
-
-    @Query("SELECT * FROM PetEntity WHERE isDead = 0")
-    fun selectAllAlivePetsFlow(): Flow<List<PetEntity>>
-
-    @Query("SELECT * FROM PetEntity WHERE isDead = 1")
-    fun selectAllDeadPetsFlow(): Flow<List<PetEntity>>
-
     @Query("SELECT * FROM PetEntity WHERE id = :id")
     fun selectPetByIdFlow(id: Long): Flow<PetEntity?>
 
     @Query("SELECT * FROM PetEntity")
-    fun selectAllPetsAsFlow(): Flow<List<PetEntity>>
+    suspend fun selectAllPets(): List<PetEntity>
+
+    @Query("SELECT * FROM PetEntity")
+    fun selectAllPetsFlow(): Flow<List<PetEntity>>
 
     @Query("SELECT * FROM WeatherRecord WHERE timestampSecondsSinceEpoch = :timestamp")
     suspend fun selectWeatherRecordByTimestamp(timestamp: Long): WeatherRecord?
@@ -69,7 +60,6 @@ interface PetDao {
 @Entity
 data class PetEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val isDead: Boolean = false,
     val petData: String,
 )
 

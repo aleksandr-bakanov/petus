@@ -22,7 +22,7 @@ class CemeteryScreenViewModel(
     private val petImageUseCase: PetImageUseCase,
 ) : ViewModelWithNavigation<CemeteryScreenViewModel.Navigation>() {
 
-    val uiState: StateFlow<UiState<CemeteryUiState>> = petsRepo.getAllDeadPetsFlow()
+    val uiState: StateFlow<UiState<CemeteryUiState>> = petsRepo.getAllPetsInCemeteryFlow()
         .map { pets ->
             UiState.Success(
                 CemeteryUiState(

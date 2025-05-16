@@ -3,14 +3,15 @@ import shared
 
 struct PetTypePicker: View {
     @Binding var selectedValue: PetType
+    var availablePetTypes: [PetType]
     var onSelect: (PetType) -> Void
     
-    let ite = [PetType.catus, PetType.dogus, PetType.frogus]
+    //let ite = [PetType.catus, PetType.dogus, PetType.frogus]
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 16) {
-                ForEach(ite, id: \.ordinal) { item in
+                ForEach(availablePetTypes, id: \.ordinal) { item in
                     let isSelected = item == selectedValue
                     
                     ImageItem(

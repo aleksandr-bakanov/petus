@@ -6,9 +6,11 @@ import bav.petus.PetsSDK
 import bav.petus.android.helpers.WorkManagerHelper
 import bav.petus.android.ui.cemetery.CemeteryScreenViewModel
 import bav.petus.android.ui.common.PetImageUseCase
+import bav.petus.android.ui.common.StringResourcesUseCase
 import bav.petus.android.ui.pet_creation.PetCreationScreenViewModel
 import bav.petus.android.ui.pet_details.PetDetailsScreenViewModel
 import bav.petus.android.ui.pet_details.PetDetailsScreenViewModelArgs
+import bav.petus.android.ui.user_profile.UserProfileScreenViewModel
 import bav.petus.android.ui.weather_report.WeatherReportViewModel
 import bav.petus.android.ui.zoo.ZooScreenViewModel
 import bav.petus.android.ui.zoo.ZooScreenViewModelArgs
@@ -16,7 +18,10 @@ import bav.petus.cache.PetsDatabase
 import bav.petus.cache.getDatabaseBuilder
 import bav.petus.cache.getPetsDatabase
 import bav.petus.core.datastore.createDataStore
+import bav.petus.core.dialog.DialogSystem
 import bav.petus.core.engine.Engine
+import bav.petus.core.engine.QuestSystem
+import bav.petus.core.engine.UserStats
 import bav.petus.core.location.LocationHelper
 import bav.petus.core.time.TimeRepository
 import bav.petus.network.WeatherApi
@@ -76,6 +81,8 @@ val appModule = module {
             timeRepo = get(),
             weatherRepo = get(),
             weatherAttitudeUseCase = get(),
+            userStats = get(),
+            questSystem = get(),
         )
     }
 
@@ -94,6 +101,33 @@ val appModule = module {
         )
     }
 
+    single<DialogSystem> {
+        DialogSystem(
+            userStats = get(),
+            questSystem = get(),
+        )
+    }
+
+    single {
+        StringResourcesUseCase(
+            context = androidContext()
+        )
+    }
+
+    single {
+        UserStats(
+            dataStore = get(),
+        )
+    }
+
+    single {
+        QuestSystem(
+            dataStore = get(),
+            petsRepo = get(),
+            userStats = get(),
+        )
+    }
+
     viewModel { params ->
         ZooScreenViewModel(
             petsRepo = get(),
@@ -108,6 +142,9 @@ val appModule = module {
             petsRepo = get(),
             engine = get(),
             petImageUseCase = get(),
+            stringResourcesUseCase = get(),
+            dialogSystem = get(),
+            questSystem = get(),
             args = params.get<PetDetailsScreenViewModelArgs>(),
         )
     }
@@ -115,6 +152,8 @@ val appModule = module {
     viewModel {
         PetCreationScreenViewModel(
             engine = get(),
+            userStats = get(),
+            stringResourcesUseCase = get(),
         )
     }
 
@@ -135,6 +174,12 @@ val appModule = module {
     viewModel {
         MainViewModel(
             petsRepo = get(),
+        )
+    }
+
+    viewModel {
+        UserProfileScreenViewModel(
+            userStats = get(),
         )
     }
 }
