@@ -23,7 +23,6 @@ struct iOSApp: App {
         KoinHelperKt.doInitKoin()
         
         locationBackgroundTaskManager = LocationBackgroundTaskManager()
-        locationBackgroundTaskManager.checkIfBackgroundTaskExists()
         
         koinHelper = KoinHelper()
     }

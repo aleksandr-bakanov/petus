@@ -232,6 +232,27 @@ private fun PetDetailsScreen(
                                     onAction(PetDetailsScreenViewModel.Action.TapWakeUpButton)
                                 }
                             }
+                            if (state.showBuryButton) {
+                                AnimatedImageButton(
+                                    painter = painterResource(id = state.petType.buryButtonImageId()),
+                                ) {
+                                    onAction(PetDetailsScreenViewModel.Action.TapBuryButton)
+                                }
+                            }
+                            if (state.showSpeakButton) {
+                                AnimatedImageButton(
+                                    painter = painterResource(id = state.petType.speakButtonImageId()),
+                                ) {
+                                    onAction(PetDetailsScreenViewModel.Action.TapSpeakButton)
+                                }
+                            }
+                            if (state.showResurrectButton) {
+                                AnimatedImageButton(
+                                    painter = painterResource(id = state.petType.resurrectButtonImageId()),
+                                ) {
+                                    onAction(PetDetailsScreenViewModel.Action.TapSpeakButton)
+                                }
+                            }
                         }
                     }
 
@@ -301,5 +322,29 @@ private fun PetType.wakeUpButtonImageId(): Int {
         PetType.Catus -> R.drawable.wake_up_cat
         PetType.Dogus -> R.drawable.wake_up_dog
         PetType.Frogus -> R.drawable.wake_up_frog
+    }
+}
+
+private fun PetType.buryButtonImageId(): Int {
+    return when (this) {
+        PetType.Catus -> R.drawable.bury_cat
+        PetType.Dogus -> R.drawable.bury_dog
+        PetType.Frogus -> R.drawable.bury_frog
+    }
+}
+
+private fun PetType.speakButtonImageId(): Int {
+    return when (this) {
+        PetType.Catus -> R.drawable.speak_cat
+        PetType.Dogus -> R.drawable.speak_dog
+        PetType.Frogus -> R.drawable.speak_frog
+    }
+}
+
+private fun PetType.resurrectButtonImageId(): Int {
+    return when (this) {
+        PetType.Catus -> R.drawable.resurrect_cat
+        PetType.Dogus -> R.drawable.resurrect_dog
+        PetType.Frogus -> R.drawable.resurrect_frog
     }
 }

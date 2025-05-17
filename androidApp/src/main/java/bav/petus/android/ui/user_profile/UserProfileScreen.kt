@@ -19,14 +19,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import bav.petus.android.R
-import bav.petus.android.ui.common.ActionButton
 import bav.petus.android.ui.common.UiState
-import bav.petus.android.ui.pet_creation.PetCreationScreenViewModel
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.model.PetType
 

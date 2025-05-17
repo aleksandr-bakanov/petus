@@ -16,7 +16,7 @@ class LocationBackgroundTaskManager: NSObject {
         
         // Configure CLLocationManager
         locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization() // Make sure this is done before requesting location
+        locationManager.requestWhenInUseAuthorization() // Make sure this is done before requesting location
     }
     
     func checkIfBackgroundTaskExists() {
@@ -80,7 +80,6 @@ extension LocationBackgroundTaskManager: CLLocationManagerDelegate {
         switch manager.authorizationStatus {
         case .authorizedWhenInUse:  // Location services are available.
             print("locationManagerDidChangeAuthorization authorizedWhenInUse")
-            manager.requestAlwaysAuthorization()
             break
             
         case .authorizedAlways:
@@ -118,12 +117,10 @@ extension LocationBackgroundTaskManager: CLLocationManagerDelegate {
                     
                     currentTask?.setTaskCompleted(success: true)
                     currentTask = nil
-                    checkIfBackgroundTaskExists()
                 } catch {
                     print(error.localizedDescription)
                     currentTask?.setTaskCompleted(success: false)
                     currentTask = nil
-                    checkIfBackgroundTaskExists()
                 }
             }
         }
@@ -134,6 +131,5 @@ extension LocationBackgroundTaskManager: CLLocationManagerDelegate {
         // Complete the task even if location retrieval failed
         currentTask?.setTaskCompleted(success: false)
         currentTask = nil
-        checkIfBackgroundTaskExists()
     }
 }

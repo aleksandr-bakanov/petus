@@ -34,6 +34,12 @@ class TimeRepository(
         }
     }
 
+    suspend fun isTimeToFetchWeather(): Boolean {
+        val now = getTimestampSecondsSinceEpoch()
+        val lastTime = getLastTimestampOfWeatherRequest()
+        return (now - lastTime) > WEATHER_REQUEST_PERIOD_SEC
+    }
+
     companion object {
         private val LAST_TICK_KEY = longPreferencesKey("last_tick_key")
         private val LAST_TIMESTAMP_OF_WEATHER_REQUEST_KEY = longPreferencesKey("last_timestamp_of_weather_request_key")

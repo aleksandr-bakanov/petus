@@ -12,22 +12,24 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import bav.petus.PetsSDK
-import bav.petus.android.helpers.WorkManagerHelper
 import bav.petus.android.navigation.AppWithBottomBar
+import bav.petus.core.location.LocationHelper
+import bav.petus.core.location.getLocation
+import bav.petus.core.time.TimeRepository
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
 
-    private val workManagerHelper: WorkManagerHelper by inject()
+    private val locationHelper: LocationHelper by inject()
+    private val timeRepo: TimeRepository by inject()
     private val petsSDK: PetsSDK by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         checkForCoarseLocationPermissions()
-        workManagerHelper.enqueuePeriodicPetsUpdateWorker()
 
         setContent {
             MyApplicationTheme {
@@ -52,6 +54,16 @@ class MainActivity : ComponentActivity() {
 
         lifecycleScope.launch {
             petsSDK.applicationDidBecomeActive()
+
+            if (timeRepo.isTimeToFetchWeather()) {
+                locationHelper.getLocation()?.let { location ->
+                    petsSDK.retrieveWeatherInBackground(
+                        latitude = location.latitude,
+                        longitude = location.longitude,
+                        info = null,
+                    )
+                }
+            }
         }
     }
 

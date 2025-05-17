@@ -6,7 +6,6 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
-import bav.petus.core.engine.UserStats.Companion.USER_INVENTORY_KEY
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.model.PetType
 import kotlinx.coroutines.flow.Flow

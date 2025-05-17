@@ -7,6 +7,7 @@ import bav.petus.core.time.TimeRepository
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.model.AgeState
 import bav.petus.model.BodyState
+import bav.petus.model.BurialType
 import bav.petus.model.Pet
 import bav.petus.model.PetType
 import bav.petus.model.Place
@@ -71,6 +72,7 @@ class Engine(
         val newLanguageKnowledge = currentLanguageKnowledge + LANGUAGE_KNOWLEDGE_INCREMENT
         userStats.saveLanguageKnowledge(pet.type, newLanguageKnowledge)
         petsRepo.updatePet(newPet)
+        questSystem.onEvent(QuestSystem.Event.LanguageKnowledgeChanged(pet.type, newLanguageKnowledge))
     }
 
     fun isAllowedToCleanAfterPet(pet: Pet): Boolean {
@@ -107,6 +109,36 @@ class Engine(
             isPooped = true,
         )
         petsRepo.updatePet(newPet)
+    }
+
+    fun isAllowedToBuryPet(pet: Pet): Boolean {
+        return pet.bodyState == BodyState.Dead && pet.place == Place.Zoo
+    }
+
+    suspend fun buryPet(pet: Pet) {
+        val buriedPet = pet.copy(burialType = BurialType.Buried)
+        changePetPlace(buriedPet, Place.Cemetery)
+    }
+
+    suspend fun isAllowedToResurrectPet(pet: Pet): Boolean {
+        val abilities = userStats.getAvailableAbilities()
+        return abilities.contains(Ability.Necromancy) &&
+                pet.place == Place.Cemetery &&
+                pet.burialType != BurialType.Exhumated
+    }
+
+    suspend fun resurrectPetAsZombie(pet: Pet) {
+        val newPet = pet.copy(
+            bodyState = BodyState.Zombie,
+            place = Place.Zoo,
+        )
+        petsRepo.updatePet(newPet)
+    }
+
+    fun isAllowedToSpeakWithPet(pet: Pet): Boolean {
+        return pet.sleep.not() &&
+                (pet.bodyState == BodyState.Alive || pet.bodyState == BodyState.Zombie || pet.bodyState == BodyState.Spirit) &&
+                pet.ageState != AgeState.Egg
     }
 
     suspend fun addItemToPetInventory(pet: Pet, item: InventoryItem) {
@@ -400,16 +432,17 @@ class Engine(
         if (pet.illness) resultPsych += basicPsych * 2f
 
         // CLOUDINESS
-        if (pet.sleep.not()) resultPsych += (basicPsych * BASIC_CLOUDINESS_MULTIPLIER * weatherAttitude.toCloudPercentage).toFloat()
+        if (pet.sleep.not()) resultPsych -= (basicPsych * BASIC_CLOUDINESS_MULTIPLIER * weatherAttitude.toCloudPercentage).toFloat()
 
         // TEMPERATURE
-        if (pet.sleep) resultPsych += (basicPsych * SLEEP_TEMPERATURE_MULTIPLIER * weatherAttitude.toTemperature).toFloat()
-        else resultPsych += (basicPsych * ACTIVE_TEMPERATURE_MULTIPLIER * weatherAttitude.toTemperature).toFloat()
+        if (pet.sleep) resultPsych -= (basicPsych * SLEEP_TEMPERATURE_MULTIPLIER * weatherAttitude.toTemperature).toFloat()
+        else resultPsych -= (basicPsych * ACTIVE_TEMPERATURE_MULTIPLIER * weatherAttitude.toTemperature).toFloat()
 
         // HUMIDITY
-        // TODO
+        resultPsych -= (basicPsych * BASIC_HUMIDITY_MULTIPLIER * weatherAttitude.toHumidity).toFloat()
+
         // WIND SPEED
-        // TODO
+        resultPsych -= (basicPsych * BASIC_WIND_MULTIPLIER * weatherAttitude.toWindSpeed).toFloat()
 
         // POOP
         if (pet.isPooped) resultPsych += basicPsych * 0.5f
@@ -496,9 +529,9 @@ class Engine(
 
     fun getFullHealthForPetType(type: PetType): Float {
         return when (type) {
-            PetType.Catus -> 150_000f
-            PetType.Dogus -> 200_000f
-            PetType.Frogus -> 100_000f
+            PetType.Catus -> 300_000f
+            PetType.Dogus -> 300_000f
+            PetType.Frogus -> 200_000f
         }
     }
 
@@ -543,10 +576,10 @@ class Engine(
         // Ranges in seconds
         private val commonPetAgeToSecondsTable = mapOf(
             AgeState.Egg to (0L until HOUR),                    // 1 hour
-            AgeState.NewBorn to (HOUR until DAY * 2),           // 2 days (-1 hour)
-            AgeState.Teen to (DAY * 2 until DAY * 2 + 1),       // Disable Teen state making it short
-            AgeState.Adult to (DAY * 2 + 1 until DAY * 5),      // 3 days
-            AgeState.Old to (DAY * 5 until Long.MAX_VALUE),
+            AgeState.NewBorn to (HOUR until DAY * 7),           // 7 days (-1 hour)
+            AgeState.Teen to (DAY * 7 until DAY * 7 + 1),       // Disable Teen state making it short
+            AgeState.Adult to (DAY * 7 + 1 until DAY * 14),      // 7 days
+            AgeState.Old to (DAY * 14 until Long.MAX_VALUE),
         )
 
         private val petsAges = mapOf(
@@ -603,11 +636,13 @@ class Engine(
             ),
         )
 
-        const val BASIC_CLOUDINESS_MULTIPLIER = 1f
+        const val BASIC_CLOUDINESS_MULTIPLIER = 2f
+        const val BASIC_HUMIDITY_MULTIPLIER = 2f
+        const val BASIC_WIND_MULTIPLIER = 2f
         const val ACTIVE_TEMPERATURE_MULTIPLIER = 0.5f
         const val SLEEP_TEMPERATURE_MULTIPLIER = 0.25f
-        const val DEATH_OF_OLD_AGE_POSSIBILITY_INC = 0.00005f
+        const val DEATH_OF_OLD_AGE_POSSIBILITY_INC = 0.000015f
         const val MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION = 0.00835f
-        const val LANGUAGE_KNOWLEDGE_INCREMENT = 20
+        const val LANGUAGE_KNOWLEDGE_INCREMENT = 1
     }
 }

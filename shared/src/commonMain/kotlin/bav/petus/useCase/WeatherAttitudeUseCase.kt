@@ -101,21 +101,21 @@ class WeatherAttitudeUseCase {
             PetType.Catus -> calculateAttitude(
                 value = value,
                 range = ThreePointRange(
-                    start = -1000.0, middle = 5.0, end = 15.0
+                    start = -1000.0, middle = 0.5, end = 1.5
                 ),
             )
             // Dogs like up to medium wind
             PetType.Dogus -> calculateAttitude(
                 value = value,
                 range = ThreePointRange(
-                    start = -1000.0, middle = 10.0, end = 25.0
+                    start = -1000.0, middle = 1.0, end = 2.5
                 ),
             )
             // Frogs don't like wind
             PetType.Frogus -> calculateAttitude(
                 value = value,
                 range = ThreePointRange(
-                    start = -1000.0, middle = 0.0, end = 3.0
+                    start = -1000.0, middle = 0.0, end = 0.3
                 ),
             )
         }

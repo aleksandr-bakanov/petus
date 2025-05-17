@@ -127,6 +127,7 @@ data class QuestStage(
 
 private const val ALWAYS_FALSE_CONDITION = "ALWAYS_FALSE_CONDITION"
 private const val IS_PET_MOVED_TO_CEMETERY = "IS_PET_MOVED_TO_CEMETERY"
+private const val NECRONOMICON_STAGE_0_LAMBDA = "NECRONOMICON_STAGE_0_LAMBDA"
 private const val NECRONOMICON_STAGE_1_LAMBDA = "NECRONOMICON_STAGE_1_LAMBDA"
 private const val NECRONOMICON_STAGE_2_LAMBDA = "NECRONOMICON_STAGE_2_LAMBDA"
 private const val NECRONOMICON_STAGE_6_LAMBDA = "NECRONOMICON_STAGE_6_LAMBDA"
@@ -137,6 +138,15 @@ private val conditionLambdas =
         IS_PET_MOVED_TO_CEMETERY to { _, _, event ->
             (event as? QuestSystem.Event.PetMovedToPlace)?.let { e -> e.place == Place.Cemetery }
                 ?: false
+        },
+        NECRONOMICON_STAGE_0_LAMBDA to { questSystem, _, event ->
+            (event as? QuestSystem.Event.LanguageKnowledgeChanged)?.let { e ->
+                val catusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Catus)
+                val dogusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Dogus)
+
+                catusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE &&
+                        dogusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE
+            } ?: false
         },
         NECRONOMICON_STAGE_1_LAMBDA to { _, prefs, event ->
             (event as? QuestSystem.Event.Tick)?.let { e ->
@@ -168,7 +178,7 @@ private val quests = mapOf(
         stages = listOf(
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("necronomicon_stage_0_conditions"),
-                initialConditions = setOf(IS_PET_MOVED_TO_CEMETERY),
+                initialConditions = setOf(IS_PET_MOVED_TO_CEMETERY, NECRONOMICON_STAGE_0_LAMBDA),
                 onFinish = { questSystem ->
                     val now = getTimestampSecondsSinceEpoch()
                     questSystem.dataStore.edit { store ->

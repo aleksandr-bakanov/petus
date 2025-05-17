@@ -37,6 +37,10 @@ fun NavGraphBuilder.petDetailsScreen(
                     PetDetailsScreenViewModel.Navigation.CloseScreen -> {
                         navController.popBackStack()
                     }
+
+                    is PetDetailsScreenViewModel.Navigation.OpenDialogScreen -> {
+                        TODO()
+                    }
                 }
             }
         }

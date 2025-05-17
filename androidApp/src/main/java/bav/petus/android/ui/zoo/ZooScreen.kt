@@ -5,11 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -32,7 +28,6 @@ fun ZooRoute(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ZooScreen(
     uiState: UiState<ZooUiState>,
@@ -50,14 +45,6 @@ private fun ZooScreen(
                         .fillMaxSize()
                         .padding(padding)
                 ) {
-                    if (state.showLocationRationaleButton) {
-                        ActionButton(
-                            text = "GIVE ACCESS TO BACKGROUND LOCATION",
-                            color = Color(0xFFFF9800) // Orange
-                        ) {
-                            onAction(ZooScreenViewModel.Action.TapRationaleButton)
-                        }
-                    }
                     LazyColumn(
                         modifier = Modifier.weight(1f)
                     ) {

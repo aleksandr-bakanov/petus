@@ -172,9 +172,7 @@ class KoinHelper : KoinComponent {
     }
 
     suspend fun isTimeToFetchWeather(): Boolean {
-        val now = getTimestampSecondsSinceEpoch()
-        val lastTime = timeRepo.getLastTimestampOfWeatherRequest()
-        return (now - lastTime) > TimeRepository.WEATHER_REQUEST_PERIOD_SEC
+        return timeRepo.isTimeToFetchWeather()
     }
 
     fun getPetSatietyFraction(pet: Pet): Float {

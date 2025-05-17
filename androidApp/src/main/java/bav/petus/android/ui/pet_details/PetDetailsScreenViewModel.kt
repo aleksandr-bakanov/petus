@@ -37,9 +37,13 @@ data class PetDetailsUiState(
     val showPoopButton: Boolean,
     val showFeedButton: Boolean,
     val showWakeUpButton: Boolean,
+    val showBuryButton: Boolean,
+    val showSpeakButton: Boolean,
+    val showResurrectButton: Boolean,
 ) {
     val isAnyButtonShown: Boolean
-        get() = showPlayButton || showHealButton || showPoopButton || showFeedButton || showWakeUpButton
+        get() = showPlayButton || showHealButton || showPoopButton || showFeedButton ||
+                showWakeUpButton || showBuryButton || showSpeakButton || showResurrectButton
 }
 
 data class PetDetailsScreenViewModelArgs(
@@ -80,6 +84,9 @@ class PetDetailsScreenViewModel(
                         showPoopButton = engine.isAllowedToCleanAfterPet(pet),
                         showFeedButton = engine.isAllowedToFeedPet(pet),
                         showWakeUpButton = engine.isAllowedToWakeUpPet(pet),
+                        showBuryButton = engine.isAllowedToBuryPet(pet),
+                        showSpeakButton = engine.isAllowedToSpeakWithPet(pet),
+                        showResurrectButton = engine.isAllowedToResurrectPet(pet),
                     )
                 )
             }
@@ -143,28 +150,43 @@ class PetDetailsScreenViewModel(
                     _dialogNodeFlow.value = makeDialogData(node)
                 }
             }
-
             Action.Kill -> {
                 viewModelScope.launch {
                     currentPet?.let { pet -> engine.killPet(pet) }
                 }
             }
-
             is Action.ChangeAgeState -> {
                 viewModelScope.launch {
                     currentPet?.let { pet -> engine.changePetAgeState(pet, action.state) }
                 }
             }
-
             Action.Resurrect -> {
                 viewModelScope.launch {
                     currentPet?.let { pet -> engine.resurrectPet(pet) }
                 }
             }
-
             is Action.ChangePlace -> {
                 viewModelScope.launch {
                     currentPet?.let { pet -> engine.changePetPlace(pet, action.place) }
+                }
+            }
+            Action.TapBuryButton -> {
+                viewModelScope.launch {
+                    currentPet?.let { pet ->
+                        engine.buryPet(pet)
+                        navigate(Navigation.CloseScreen)
+                    }
+                }
+            }
+            Action.TapSpeakButton -> {
+                currentPet?.let { pet -> navigate(Navigation.OpenDialogScreen(pet.id)) }
+            }
+            Action.TapResurrectButton -> {
+                viewModelScope.launch {
+                    currentPet?.let { pet ->
+                        engine.resurrectPetAsZombie(pet)
+                        navigate(Navigation.CloseScreen)
+                    }
                 }
             }
         }
@@ -203,6 +225,9 @@ class PetDetailsScreenViewModel(
         data object TapPoopButton : Action
         data object TapFeedButton : Action
         data object TapWakeUpButton : Action
+        data object TapBuryButton : Action
+        data object TapSpeakButton : Action
+        data object TapResurrectButton : Action
         data object Kill : Action
         data object Resurrect : Action
         data class ChangePlace(val place: Place) : Action
@@ -213,5 +238,6 @@ class PetDetailsScreenViewModel(
 
     sealed interface Navigation {
         data object CloseScreen : Navigation
+        data class OpenDialogScreen(val petId: Long) : Navigation
     }
 }
