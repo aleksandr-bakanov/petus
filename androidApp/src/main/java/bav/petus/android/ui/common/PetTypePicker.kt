@@ -27,7 +27,7 @@ import bav.petus.model.PetType
 @Composable
 fun PetTypePicker(
     selectedValue: PetType,
-    availablePetTypes: Set<PetType>,
+    availablePetTypes: List<PetType>,
     onSelect: (PetType) -> Unit,
 ) {
     val scrollState = rememberScrollState()

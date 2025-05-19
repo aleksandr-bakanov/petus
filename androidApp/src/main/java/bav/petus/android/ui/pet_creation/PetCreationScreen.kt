@@ -17,11 +17,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import bav.petus.android.ui.common.ActionButton
 import bav.petus.android.ui.common.PetTypePicker
-import bav.petus.android.ui.common.UiState
+import bav.petus.android.ui.common.toResId
+import bav.petus.viewModel.petCreation.PetCreationScreenViewModel
+import bav.petus.viewModel.petCreation.PetCreationUiState
 
 @Composable
 fun PetCreationRoute(
@@ -29,93 +32,87 @@ fun PetCreationRoute(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    PetCreationScreen(
-        uiState = uiState,
-        onAction = viewModel::onAction,
-    )
+    uiState?.let {
+        PetCreationScreen(
+            uiState = it,
+            onAction = viewModel::onAction,
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PetCreationScreen(
-    uiState: UiState<PetCreationUiState>,
+    uiState: PetCreationUiState,
     onAction: (PetCreationScreenViewModel.Action) -> Unit,
 ) {
-    when (uiState) {
-        is UiState.Failure -> {}
-        UiState.Initial -> {}
-        UiState.Loading -> {}
-        is UiState.Success -> {
-            val state = uiState.data
-            Scaffold(
-                topBar = {
-                    TopAppBar(title = {
-                        Text(
-                            "Create pet",
-                            style = MaterialTheme.typography.headlineLarge
-                        )
-                    })
-                }
-            ) { padding ->
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(padding),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp),
-                        text = "Select pet type",
-                        style = MaterialTheme.typography.headlineLarge,
-                        textAlign = TextAlign.Center,
-                    )
-                    PetTypePicker(
-                        selectedValue = state.type,
-                        availablePetTypes = state.availablePetTypes,
-                    ) {
-                        onAction(PetCreationScreenViewModel.Action.UpdateType(it))
-                    }
-                    Text(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp),
-                        text = "Enter pet name:",
-                        style = MaterialTheme.typography.headlineLarge,
-                        textAlign = TextAlign.Center,
-                    )
-                    TextField(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp),
-                        value = state.name,
-                        onValueChange = {
-                            onAction(PetCreationScreenViewModel.Action.UpdateName(it))
-                        },
-                        textStyle = MaterialTheme.typography.headlineLarge,
-                        singleLine = true,
-                    )
+    Scaffold(
+        topBar = {
+            TopAppBar(title = {
+                Text(
+                    "Create pet",
+                    style = MaterialTheme.typography.headlineLarge
+                )
+            })
+        }
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                text = "Select pet type",
+                style = MaterialTheme.typography.headlineLarge,
+                textAlign = TextAlign.Center,
+            )
+            PetTypePicker(
+                selectedValue = uiState.type,
+                availablePetTypes = uiState.availablePetTypes,
+            ) {
+                onAction(PetCreationScreenViewModel.Action.UpdateType(it))
+            }
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                text = "Enter pet name:",
+                style = MaterialTheme.typography.headlineLarge,
+                textAlign = TextAlign.Center,
+            )
+            TextField(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                value = uiState.name,
+                onValueChange = {
+                    onAction(PetCreationScreenViewModel.Action.UpdateName(it))
+                },
+                textStyle = MaterialTheme.typography.headlineLarge,
+                singleLine = true,
+            )
 
-                    Text(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(24.dp),
-                        text = state.typeDescription,
-                        style = MaterialTheme.typography.titleLarge,
-                        textAlign = TextAlign.Justify,
-                    )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp),
+                text = stringResource(uiState.typeDescription.toResId()),
+                style = MaterialTheme.typography.titleLarge,
+                textAlign = TextAlign.Justify,
+            )
 
-                    Spacer(modifier = Modifier.weight(1f))
+            Spacer(modifier = Modifier.weight(1f))
 
-                    ActionButton(
-                        text = "Create ${state.type} ${state.name}",
-                        color = Color(0xFF4CAF50),
-                        modifier = Modifier.padding(16.dp),
-                    ) {
-                        onAction(PetCreationScreenViewModel.Action.TapCreateButton)
-                    }
-                }
+            ActionButton(
+                text = "Create ${uiState.type} ${uiState.name}",
+                color = Color(0xFF4CAF50),
+                modifier = Modifier.padding(16.dp),
+            ) {
+                onAction(PetCreationScreenViewModel.Action.TapCreateButton)
             }
         }
     }

@@ -1,16 +1,18 @@
 import SwiftUI
+import KMPObservableViewModelSwiftUI
+import shared
 
 struct MainScreen: View {
     
-    @StateObject var viewModel = MainScreenViewModel()
+    @StateViewModel var viewModel: MainViewModel = MainViewModel()
     
     @State private var selectedTab = 2
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            if !viewModel.uiState.isInitial {
-                if viewModel.uiState.showCemetery == true {
-                    CemeteryView()
+            if let state = viewModel.uiState.value {
+                if state.showCemetery == true {
+                    CemeteryScreen()
                         .tabItem {
                             Label("Cemetery", systemImage: "plus")
                         }
@@ -27,9 +29,6 @@ struct MainScreen: View {
                     }
                     .tag(3)
             }
-        }
-        .task {
-            await viewModel.initialLoad()
         }
         
     }

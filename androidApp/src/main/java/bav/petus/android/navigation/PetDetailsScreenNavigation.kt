@@ -6,8 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import bav.petus.android.ui.pet_details.PetDetailsRoute
-import bav.petus.android.ui.pet_details.PetDetailsScreenViewModel
-import bav.petus.android.ui.pet_details.PetDetailsScreenViewModelArgs
+import bav.petus.viewModel.petDetails.PetDetailsScreenViewModel
+import bav.petus.viewModel.petDetails.PetDetailsScreenViewModelArgs
 import kotlinx.serialization.Serializable
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -39,7 +39,7 @@ fun NavGraphBuilder.petDetailsScreen(
                     }
 
                     is PetDetailsScreenViewModel.Navigation.OpenDialogScreen -> {
-                        TODO()
+                        navController.navigate(DialogScreen(navigation.petId))
                     }
                 }
             }

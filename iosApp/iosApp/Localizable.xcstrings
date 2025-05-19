@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Abilities" : {
+
+    },
     "being_better" : {
       "extractionState" : "manual",
       "localizations" : {

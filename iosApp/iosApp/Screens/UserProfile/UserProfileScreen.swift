@@ -1,31 +1,32 @@
 import SwiftUI
+import KMPObservableViewModelSwiftUI
+import shared
 
 struct UserProfileView: View {
     
-    @StateObject var viewModel = UserProfileViewModel()
+    @StateViewModel var viewModel: UserProfileScreenViewModel = UserProfileScreenViewModel()
     
     var body: some View {
-        NavigationView {
-            ScrollView {
+        ScrollView {
+            if let state = viewModel.uiState.value {
                 VStack(alignment: .center, spacing: 16) {
                     Text("Languages")
-                    LanguageKnowledgeCell(type: .catus, value: viewModel.uiState.languageKnowledgeCatus)
-                    LanguageKnowledgeCell(type: .dogus, value: viewModel.uiState.languageKnowledgeDogus)
-                    LanguageKnowledgeCell(type: .frogus, value: viewModel.uiState.languageKnowledgeFrogus)
+                    LanguageKnowledgeCell(type: .catus, value: state.languageKnowledgeCatus)
+                    LanguageKnowledgeCell(type: .dogus, value: state.languageKnowledgeDogus)
+                    LanguageKnowledgeCell(type: .frogus, value: state.languageKnowledgeFrogus)
                     Text("Inventory")
-                    ForEach(viewModel.uiState.inventory, id: \.id) { item in
+                    ForEach(state.inventory, id: \.id) { item in
                         InventoryItemCell(item: item)
                     }
-                    ActionButton(title: "Add", backgroundColor: Color("SatietyColor"), action: { viewModel.addItem() })
-                    ActionButton(title: "Remove", backgroundColor: Color("SatietyColor"), action: { viewModel.removeItem() })
+                    Text("Abilities")
+                    ForEach(state.abilities, id: \.self) { item in
+                        Text(item.name)
+                    }
                 }
                 .frame(maxWidth: .infinity) // Center horizontally
                 .padding()
             }
-            .navigationTitle("Profile")
         }
-        .task {
-            await viewModel.loadData()
-        }
+        .navigationTitle("Profile")
     }
 }

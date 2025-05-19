@@ -4,16 +4,12 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import bav.petus.PetsSDK
 import bav.petus.android.helpers.WorkManagerHelper
-import bav.petus.android.ui.cemetery.CemeteryScreenViewModel
-import bav.petus.android.ui.common.PetImageUseCase
+import bav.petus.viewModel.cemetery.CemeteryScreenViewModel
 import bav.petus.android.ui.common.StringResourcesUseCase
-import bav.petus.android.ui.pet_creation.PetCreationScreenViewModel
-import bav.petus.android.ui.pet_details.PetDetailsScreenViewModel
-import bav.petus.android.ui.pet_details.PetDetailsScreenViewModelArgs
-import bav.petus.android.ui.user_profile.UserProfileScreenViewModel
-import bav.petus.android.ui.weather_report.WeatherReportViewModel
-import bav.petus.android.ui.zoo.ZooScreenViewModel
-import bav.petus.android.ui.zoo.ZooScreenViewModelArgs
+import bav.petus.viewModel.petCreation.PetCreationScreenViewModel
+import bav.petus.viewModel.petDetails.PetDetailsScreenViewModel
+import bav.petus.viewModel.petDetails.PetDetailsScreenViewModelArgs
+import bav.petus.viewModel.userProfile.UserProfileScreenViewModel
 import bav.petus.cache.PetsDatabase
 import bav.petus.cache.getDatabaseBuilder
 import bav.petus.cache.getPetsDatabase
@@ -27,7 +23,13 @@ import bav.petus.core.time.TimeRepository
 import bav.petus.network.WeatherApi
 import bav.petus.repo.PetsRepository
 import bav.petus.repo.WeatherRepository
+import bav.petus.useCase.PetImageUseCase
 import bav.petus.useCase.WeatherAttitudeUseCase
+import bav.petus.viewModel.dialog.DialogScreenViewModel
+import bav.petus.viewModel.dialog.DialogScreenViewModelArgs
+import bav.petus.viewModel.main.MainViewModel
+import bav.petus.viewModel.weatherReport.WeatherReportViewModel
+import bav.petus.viewModel.zoo.ZooScreenViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -128,58 +130,43 @@ val appModule = module {
         )
     }
 
-    viewModel { params ->
-        ZooScreenViewModel(
-            petsRepo = get(),
-            engine = get(),
-            petImageUseCase = get(),
-            args = params.get<ZooScreenViewModelArgs>(),
-        )
+    viewModel {
+        ZooScreenViewModel()
     }
 
     viewModel { params ->
         PetDetailsScreenViewModel(
-            petsRepo = get(),
-            engine = get(),
-            petImageUseCase = get(),
-            stringResourcesUseCase = get(),
-            dialogSystem = get(),
-            questSystem = get(),
             args = params.get<PetDetailsScreenViewModelArgs>(),
         )
     }
 
-    viewModel {
-        PetCreationScreenViewModel(
-            engine = get(),
-            userStats = get(),
-            stringResourcesUseCase = get(),
+    viewModel { params ->
+        val stringResourcesUseCase: StringResourcesUseCase = get()
+        DialogScreenViewModel(
+            args = DialogScreenViewModelArgs(
+                petId = params.get<Long>(),
+                convertStringIdToString = stringResourcesUseCase::getString,
+            )
         )
     }
 
     viewModel {
-        CemeteryScreenViewModel(
-            petsRepo = get(),
-            engine = get(),
-            petImageUseCase = get(),
-        )
+        PetCreationScreenViewModel()
     }
 
     viewModel {
-        WeatherReportViewModel(
-            weatherRepo = get(),
-        )
+        CemeteryScreenViewModel()
     }
 
     viewModel {
-        MainViewModel(
-            petsRepo = get(),
-        )
+        WeatherReportViewModel()
     }
 
     viewModel {
-        UserProfileScreenViewModel(
-            userStats = get(),
-        )
+        MainViewModel()
+    }
+
+    viewModel {
+        UserProfileScreenViewModel()
     }
 }

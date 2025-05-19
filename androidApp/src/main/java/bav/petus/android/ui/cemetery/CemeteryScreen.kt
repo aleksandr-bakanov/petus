@@ -12,9 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import bav.petus.android.ui.common.UiState
 import bav.petus.android.ui.views.PetListCell
-import bav.petus.android.ui.zoo.PetThumbnailUiData
+import bav.petus.viewModel.cemetery.CemeteryScreenViewModel
+import bav.petus.viewModel.cemetery.CemeteryUiState
 
 @Composable
 fun CemeteryRoute(
@@ -22,48 +22,42 @@ fun CemeteryRoute(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    CemeteryScreen(
-        uiState = uiState,
-        onAction = viewModel::onAction,
-    )
+    uiState?.let {
+        CemeteryScreen(
+            uiState = it,
+            onAction = viewModel::onAction,
+        )
+    }
 }
 
 @Composable
 private fun CemeteryScreen(
-    uiState: UiState<CemeteryUiState>,
+    uiState: CemeteryUiState,
     onAction: (CemeteryScreenViewModel.Action) -> Unit,
 ) {
-    when (uiState) {
-        is UiState.Failure -> {}
-        UiState.Initial -> {}
-        UiState.Loading -> {}
-        is UiState.Success -> {
-            val state = uiState.data
-            Scaffold { padding ->
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(padding)
+    Scaffold { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
+            if (uiState.pets.isEmpty()) {
+                Text(
+                    "Cemetery is empty",
+                    style = MaterialTheme.typography.headlineMedium
+                )
+            }
+            else {
+                LazyColumn(
+                    modifier = Modifier.weight(1f)
                 ) {
-                    if (state.pets.isEmpty()) {
-                        Text(
-                            "Cemetery is empty",
-                            style = MaterialTheme.typography.headlineMedium
-                        )
-                    }
-                    else {
-                        LazyColumn(
-                            modifier = Modifier.weight(1f)
-                        ) {
-                            items(state.pets) { data: PetThumbnailUiData ->
-                                PetListCell(
-                                    data = data,
-                                    onClick = {
-                                        onAction(CemeteryScreenViewModel.Action.TapOnPet(data.pet.id))
-                                    }
-                                )
+                    items(uiState.pets) { data ->
+                        PetListCell(
+                            data = data,
+                            onClick = {
+                                onAction(CemeteryScreenViewModel.Action.TapOnPet(data.pet.id))
                             }
-                        }
+                        )
                     }
                 }
             }

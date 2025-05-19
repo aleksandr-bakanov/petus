@@ -15,7 +15,6 @@ import bav.petus.core.engine.UserStats
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.resources.StringId
 import bav.petus.core.time.TimeRepository
-import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.extension.epochTimeToString
 import bav.petus.model.AgeState
 import bav.petus.model.Pet
@@ -24,6 +23,7 @@ import bav.petus.model.Place
 import bav.petus.network.WeatherApi
 import bav.petus.repo.PetsRepository
 import bav.petus.repo.WeatherRepository
+import bav.petus.useCase.PetImageUseCase
 import bav.petus.useCase.WeatherAttitudeUseCase
 import kotlinx.coroutines.flow.Flow
 import org.koin.core.component.KoinComponent
@@ -118,7 +118,7 @@ class KoinHelper : KoinComponent {
     }
 
     suspend fun maskDialogText(petType: PetType, text: String): String {
-        return dialogSystem.maskDialogText(petType, text)
+        return dialogSystem.censorDialogText(petType, text)
     }
 
     fun getPetTypeDescription(type: PetType): StringId {
@@ -265,6 +265,12 @@ fun initKoin() {
                     dataStore = get(),
                     petsRepo = get(),
                     userStats = get(),
+                )
+            }
+
+            single {
+                PetImageUseCase(
+                    engine = get(),
                 )
             }
         })

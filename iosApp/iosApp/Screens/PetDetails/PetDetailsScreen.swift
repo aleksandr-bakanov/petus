@@ -1,108 +1,130 @@
 import SwiftUI
+import KMPObservableViewModelSwiftUI
 import shared
 
 struct PetDetailsScreen: View {
+    @Environment(\.dismiss) private var dismiss
     
     let petId: Int64
+    let onNavigateToDialog: (Int64) -> Void
     
-    @StateObject var viewModel: PetDetailsViewModel
+    @StateViewModel var viewModel: PetDetailsScreenViewModel
     
-    init(petId: Int64) {
+    init(petId: Int64, onNavigateToDialog: @escaping (Int64) -> Void) {
         self.petId = petId
-        _viewModel = StateObject(wrappedValue: PetDetailsViewModel(petId: petId))
+        self.onNavigateToDialog = onNavigateToDialog
+        _viewModel = StateViewModel(wrappedValue: PetDetailsScreenViewModel(args: PetDetailsScreenViewModelArgs(petId: petId)))
     }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                VStack(spacing: 0) {
-                    if !viewModel.uiState.petImage.isEmpty {
-                        Image(viewModel.uiState.petImage)
+        if let state = viewModel.uiState.value {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    VStack(spacing: 0) {
+                        Image(state.petImageResId.resId)
                             .resizable()
                             .scaledToFit()
                             .frame(maxWidth: .infinity)
-                        StatBar(title: "SAT", color: Color("SatietyColor"), fraction: viewModel.uiState.satietyFraction)
-                        StatBar(title: "PSY", color: Color("PsychColor"), fraction: viewModel.uiState.psychFraction)
-                        StatBar(title: "HLT", color: Color("HealthColor"), fraction: viewModel.uiState.healthFraction)
+                        StatBar(title: "SAT", color: Color("SatietyColor"), fraction: CGFloat(state.satietyFraction))
+                        StatBar(title: "PSY", color: Color("PsychColor"), fraction: CGFloat(state.psychFraction))
+                        StatBar(title: "HLT", color: Color("HealthColor"), fraction: CGFloat(state.healthFraction))
                     }
-                }
-                
-                if viewModel.isAnyButtonShown() {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .center, spacing: 16) {
-                            if viewModel.showFeedButton {
-                                AnimatedImageButton(imageName: viewModel.uiState.petType.feedButtonImageName) {
-                                    viewModel.feedPet()
+                    
+                    if state.isAnyButtonShown {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(alignment: .center, spacing: 16) {
+                                if state.showFeedButton {
+                                    AnimatedImageButton(imageName: state.petType.feedButtonImageName) {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapFeedButton())
+                                    }
+                                }
+                                
+                                if state.showHealButton {
+                                    AnimatedImageButton(imageName: state.petType.healButtonImageName) {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapHealButton())
+                                    }
+                                }
+                                
+                                if state.showPlayButton {
+                                    AnimatedImageButton(imageName: state.petType.playButtonImageName) {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapPlayButton())
+                                    }
+                                }
+                                
+                                if state.showPoopButton {
+                                    AnimatedImageButton(imageName: state.petType.poopButtonImageName) {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapPoopButton())
+                                    }
+                                }
+                                
+                                if state.showWakeUpButton {
+                                    AnimatedImageButton(imageName: state.petType.wakeUpButtonImageName) {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapWakeUpButton())
+                                    }
+                                }
+                                
+                                if state.showBuryButton {
+                                    AnimatedImageButton(imageName: state.petType.buryButtonImageName) {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapBuryButton())
+                                    }
+                                }
+                                
+                                if state.showSpeakButton {
+                                    AnimatedImageButton(imageName: state.petType.speakButtonImageName) {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapSpeakButton())
+                                    }
+                                }
+                                
+                                if state.showResurrectButton {
+                                    AnimatedImageButton(imageName: state.petType.resurrectButtonImageName) {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapResurrectButton())
+                                    }
                                 }
                             }
-
-                            if viewModel.showHealButton {
-                                AnimatedImageButton(imageName: viewModel.uiState.petType.healButtonImageName) {
-                                    viewModel.healPetIllness()
-                                }
-                            }
-
-                            if viewModel.showPlayButton {
-                                AnimatedImageButton(imageName: viewModel.uiState.petType.playButtonImageName) {
-                                    viewModel.playWithPet()
-                                }
-                            }
-
-                            if viewModel.showPoopButton {
-                                AnimatedImageButton(imageName: viewModel.uiState.petType.poopButtonImageName) {
-                                    viewModel.cleanAfterPet()
-                                }
-                            }
-                            
-                            if viewModel.showWakeUpButton {
-                                AnimatedImageButton(imageName: viewModel.uiState.petType.wakeUpButtonImageName) {
-                                    viewModel.wakeUpPet()
-                                }
-                            }
-                        }
-                        .frame(height: 112)
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
-                    }
-                }
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    ActionButton(title: "Start dialog", backgroundColor: Color("SatietyColor"), action: { viewModel.startDialog() })
-                    if let node = viewModel.dialogData {
-                        DetailText(node.text)
-                        
-                        VStack(alignment: .leading, spacing: 2) {
-                            ForEach(Array(node.answers.enumerated()), id: \.element) { index, answer in
-                                ActionButton(title: answer,
-                                             backgroundColor: Color("SatietyColor"),
-                                             action: { viewModel.chooseDialogAnswer(index: Int32(index)) }
-                                )
-                            }
+                            .frame(height: 112)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal)
                         }
                     }
                     
-                    ActionButton(title: "Kill", backgroundColor: Color("SatietyColor"), action: { viewModel.kill() })
-                    ActionButton(title: "Resurrect", backgroundColor: Color("SatietyColor"), action: { viewModel.resurrectPet() })
-                    ActionButton(title: "Egg", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .egg) })
-                    ActionButton(title: "Newborn", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .newBorn) })
-                    ActionButton(title: "Adult", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .adult) })
-                    ActionButton(title: "Old", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .old) })
-                    ActionButton(title: "To cemetery", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetPlace(place: .cemetery) })
-                    ActionButton(title: "To zoo", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetPlace(place: .zoo) })
+//                    VStack(alignment: .leading, spacing: 8) {
+//                        
+//                        
+//                        ActionButton(title: "Kill", backgroundColor: Color("SatietyColor"), action: { viewModel.kill() })
+//                        ActionButton(title: "Resurrect", backgroundColor: Color("SatietyColor"), action: { viewModel.resurrectPet() })
+//                        ActionButton(title: "Egg", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .egg) })
+//                        ActionButton(title: "Newborn", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .newBorn) })
+//                        ActionButton(title: "Adult", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .adult) })
+//                        ActionButton(title: "Old", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .old) })
+//                        ActionButton(title: "To cemetery", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetPlace(place: .cemetery) })
+//                        ActionButton(title: "To zoo", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetPlace(place: .zoo) })
+//                        
+//                        DetailText(viewModel.uiState.creationTime)
+//                        DetailText(viewModel.uiState.timeOfDeath)
+//                    }
+//                    .padding(.top, 16)
                     
-                    DetailText(viewModel.uiState.creationTime)
-                    DetailText(viewModel.uiState.timeOfDeath)
+                    Spacer()
                 }
-                .padding(.top, 16)
-                
-                Spacer()
+                .padding()
             }
-            .padding()
+            .navigationTitle(state.title)
+            .task {
+                for await navigation in viewModel.navigation {
+                    switch navigation {
+                    case is PetDetailsScreenViewModelNavigationCloseScreen:
+                        dismiss()
+                    case is PetDetailsScreenViewModelNavigationOpenDialogScreen:
+                        if let nav = navigation as? PetDetailsScreenViewModelNavigationOpenDialogScreen {
+                            onNavigateToDialog(nav.petId)
+                        }
+                    default:
+                        break
+                    }
+                }
+            }
         }
-        .navigationTitle(viewModel.uiState.title)
-        .task {
-            await viewModel.loadPet()
-        }
+        
     }
 }
 

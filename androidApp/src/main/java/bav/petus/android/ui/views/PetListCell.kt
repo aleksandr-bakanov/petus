@@ -18,7 +18,8 @@ import bav.petus.android.HealthColor
 import bav.petus.android.PsychColor
 import bav.petus.android.SatietyColor
 import bav.petus.android.ui.common.StatBar
-import bav.petus.android.ui.zoo.PetThumbnailUiData
+import bav.petus.android.ui.common.toResId
+import bav.petus.viewModel.zoo.PetThumbnailUiData
 
 @Composable
 fun PetListCell(
@@ -32,7 +33,7 @@ fun PetListCell(
         .clickable { onClick() }
     ) {
         Image(
-            painter = painterResource(id = data.petImageResId),
+            painter = painterResource(id = data.petImageResId.toResId()),
             contentDescription = "",
             modifier = Modifier
                 .size(maxHeight)

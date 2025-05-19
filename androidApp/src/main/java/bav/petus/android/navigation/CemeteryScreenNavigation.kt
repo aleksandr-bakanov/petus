@@ -5,7 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import bav.petus.android.ui.cemetery.CemeteryRoute
-import bav.petus.android.ui.cemetery.CemeteryScreenViewModel
+import bav.petus.viewModel.cemetery.CemeteryScreenViewModel
 import org.koin.androidx.compose.koinViewModel
 
 fun NavGraphBuilder.cemeteryScreen(

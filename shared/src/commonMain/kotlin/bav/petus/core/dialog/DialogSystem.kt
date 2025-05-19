@@ -56,7 +56,7 @@ class DialogSystem(
         }
     }
 
-    suspend fun maskDialogText(petType: PetType, text: String): String {
+    suspend fun censorDialogText(petType: PetType, text: String): String {
         val maxKnowledge = UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE
         val knowledge = userStats.getLanguageKnowledge(petType).coerceIn(0, maxKnowledge)
 

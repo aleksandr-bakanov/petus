@@ -13,8 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import bav.petus.android.ui.common.ActionButton
-import bav.petus.android.ui.common.UiState
 import bav.petus.android.ui.views.PetListCell
+import bav.petus.viewModel.zoo.PetThumbnailUiData
+import bav.petus.viewModel.zoo.ZooScreenViewModel
+import bav.petus.viewModel.zoo.ZooUiState
 
 @Composable
 fun ZooRoute(
@@ -22,47 +24,41 @@ fun ZooRoute(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    ZooScreen(
-        uiState = uiState,
-        onAction = viewModel::onAction,
-    )
+    uiState?.let {
+        ZooScreen(
+            uiState = it,
+            onAction = viewModel::onAction,
+        )
+    }
 }
 
 @Composable
 private fun ZooScreen(
-    uiState: UiState<ZooUiState>,
+    uiState: ZooUiState,
     onAction: (ZooScreenViewModel.Action) -> Unit,
 ) {
-    when (uiState) {
-        is UiState.Failure -> {}
-        UiState.Initial -> {}
-        UiState.Loading -> {}
-        is UiState.Success -> {
-            val state = uiState.data
-            Scaffold { padding ->
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(padding)
-                ) {
-                    LazyColumn(
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        items(state.pets) { data: PetThumbnailUiData ->
-                            PetListCell(
-                                data = data, onClick = {
-                                    onAction(ZooScreenViewModel.Action.OpenPetDetails(data.pet.id))
-                                })
-                        }
-                    }
-                    ActionButton(
-                        text = "Create new pet",
-                        color = Color(0xFF4CAF50),
-                        modifier = Modifier.padding(16.dp),
-                    ) {
-                        onAction(ZooScreenViewModel.Action.TapCreateNewPetButton)
-                    }
+    Scaffold { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
+            LazyColumn(
+                modifier = Modifier.weight(1f)
+            ) {
+                items(uiState.pets) { data: PetThumbnailUiData ->
+                    PetListCell(
+                        data = data, onClick = {
+                            onAction(ZooScreenViewModel.Action.OpenPetDetails(data.pet.id))
+                        })
                 }
+            }
+            ActionButton(
+                text = "Create new pet",
+                color = Color(0xFF4CAF50),
+                modifier = Modifier.padding(16.dp),
+            ) {
+                onAction(ZooScreenViewModel.Action.TapCreateNewPetButton)
             }
         }
     }

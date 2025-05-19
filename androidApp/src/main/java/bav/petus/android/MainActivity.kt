@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.getValue
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -16,6 +17,7 @@ import bav.petus.android.navigation.AppWithBottomBar
 import bav.petus.core.location.LocationHelper
 import bav.petus.core.location.getLocation
 import bav.petus.core.time.TimeRepository
+import bav.petus.viewModel.main.MainViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
@@ -34,17 +36,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 val mainViewModel: MainViewModel = koinViewModel()
-                val uiState = mainViewModel.uiState.collectAsStateWithLifecycle()
+                val uiState by mainViewModel.uiState.collectAsStateWithLifecycle()
 
-                AppWithBottomBar(
-                    uiState = uiState.value,
-                    requestBackgroundLocationPermission = {
-                        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
-                            requestPermissions(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-                        }
-                    },
-                    shouldShowBackgroundLocationPermissionRationale = ::shouldShowBackgroundLocationPermissionRationale,
-                )
+                uiState?.let {
+                    AppWithBottomBar(
+                        uiState = it,
+                    )
+                }
             }
         }
     }

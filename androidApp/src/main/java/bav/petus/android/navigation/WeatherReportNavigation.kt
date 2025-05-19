@@ -4,7 +4,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import bav.petus.android.ui.weather_report.WeatherReportRoute
-import bav.petus.android.ui.weather_report.WeatherReportViewModel
+import bav.petus.viewModel.weatherReport.WeatherReportViewModel
 import org.koin.androidx.compose.koinViewModel
 
 fun NavGraphBuilder.weatherReportScreen() {

@@ -23,8 +23,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import bav.petus.android.MainScreenUiState
-import bav.petus.android.ui.common.UiState
+import bav.petus.viewModel.main.MainScreenUiState
 import kotlinx.serialization.Serializable
 
 sealed interface TopLevelRoutes {
@@ -50,70 +49,57 @@ private val profileTopRoute = TopLevelRoute("Profile", TopLevelRoutes.UserProfil
 
 @Composable
 fun AppWithBottomBar(
-    uiState: UiState<MainScreenUiState>,
-    requestBackgroundLocationPermission: () -> Unit,
-    shouldShowBackgroundLocationPermissionRationale: () -> Boolean,
+    uiState: MainScreenUiState,
 ) {
-    when (uiState) {
-        is UiState.Failure -> {}
-        UiState.Initial -> {}
-        UiState.Loading -> {}
-        is UiState.Success<MainScreenUiState> -> {
+    var navigationSelectedItemName by remember {
+        mutableStateOf(zooTopRoute.name)
+    }
 
-            var navigationSelectedItemName by remember {
-                mutableStateOf(zooTopRoute.name)
-            }
+    val navController = rememberNavController()
 
-            val navController = rememberNavController()
-
-            Scaffold(
-                bottomBar = {
-                    NavigationBar {
-                        if (uiState.data.showCemetery == true) {
-                            TopLevelNavBarItem(
-                                item = cemeteryTopRoute,
-                                isSelected = navigationSelectedItemName == cemeteryTopRoute.name
-                            ) { item ->
-                                navigationSelectedItemName = item.name
-                                navigateToTopLevel(navController, item.route)
-                            }
-                        }
-
-                        TopLevelNavBarItem(
-                            item = zooTopRoute,
-                            isSelected = navigationSelectedItemName == zooTopRoute.name
-                        ) { item ->
-                            navigationSelectedItemName = item.name
-                            navigateToTopLevel(navController, item.route)
-                        }
-
-                        TopLevelNavBarItem(
-                            item = profileTopRoute,
-                            isSelected = navigationSelectedItemName == profileTopRoute.name
-                        ) { item ->
-                            navigationSelectedItemName = item.name
-                            navigateToTopLevel(navController, item.route)
-                        }
+    Scaffold(
+        bottomBar = {
+            NavigationBar {
+                if (uiState.showCemetery == true) {
+                    TopLevelNavBarItem(
+                        item = cemeteryTopRoute,
+                        isSelected = navigationSelectedItemName == cemeteryTopRoute.name
+                    ) { item ->
+                        navigationSelectedItemName = item.name
+                        navigateToTopLevel(navController, item.route)
                     }
                 }
-            ) { innerPadding ->
-                NavHost(
-                    navController = navController,
-                    startDestination = TopLevelRoutes.ZooScreen,
-                    modifier = Modifier.padding(innerPadding)
-                ) {
-                    zooScreen(
-                        navController = navController,
-                        requestBackgroundLocationPermission = requestBackgroundLocationPermission,
-                        shouldShowBackgroundLocationPermissionRationale = shouldShowBackgroundLocationPermissionRationale,
-                    )
-                    petDetailsScreen(navController)
-                    petCreationScreen(navController)
-                    cemeteryScreen(navController)
-                    weatherReportScreen()
-                    userProfileScreen()
+
+                TopLevelNavBarItem(
+                    item = zooTopRoute,
+                    isSelected = navigationSelectedItemName == zooTopRoute.name
+                ) { item ->
+                    navigationSelectedItemName = item.name
+                    navigateToTopLevel(navController, item.route)
+                }
+
+                TopLevelNavBarItem(
+                    item = profileTopRoute,
+                    isSelected = navigationSelectedItemName == profileTopRoute.name
+                ) { item ->
+                    navigationSelectedItemName = item.name
+                    navigateToTopLevel(navController, item.route)
                 }
             }
+        }
+    ) { innerPadding ->
+        NavHost(
+            navController = navController,
+            startDestination = TopLevelRoutes.ZooScreen,
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            zooScreen(navController)
+            petDetailsScreen(navController)
+            petCreationScreen(navController)
+            cemeteryScreen(navController)
+            weatherReportScreen()
+            userProfileScreen()
+            dialogScreen(navController)
         }
     }
 }

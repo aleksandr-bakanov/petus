@@ -36,242 +36,203 @@ import bav.petus.android.SatietyColor
 import bav.petus.android.ui.common.ActionButton
 import bav.petus.android.ui.common.AnimatedImageButton
 import bav.petus.android.ui.common.StatBar
-import bav.petus.android.ui.common.UiState
+import bav.petus.android.ui.common.toResId
 import bav.petus.model.AgeState
 import bav.petus.model.PetType
 import bav.petus.model.Place
+import bav.petus.viewModel.petDetails.PetDetailsScreenViewModel
+import bav.petus.viewModel.petDetails.PetDetailsUiState
 
 @Composable
 fun PetDetailsRoute(
     viewModel: PetDetailsScreenViewModel,
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    val dialogNode by viewModel.dialogNodeFlow.collectAsState()
 
-    PetDetailsScreen(
-        uiState = uiState,
-        dialogData = dialogNode,
-        onAction = viewModel::onAction,
-    )
+    uiState?.let {
+        PetDetailsScreen(
+            uiState = it,
+            onAction = viewModel::onAction,
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PetDetailsScreen(
-    uiState: UiState<PetDetailsUiState>,
-    dialogData: DialogData?,
+    uiState: PetDetailsUiState,
     onAction: (PetDetailsScreenViewModel.Action) -> Unit,
 ) {
-    when (uiState) {
-        is UiState.Failure -> {}
-        UiState.Initial -> {}
-        UiState.Loading -> {}
-        is UiState.Success -> {
-            val state = uiState.data
-
-            Scaffold(
-                topBar = {
-                    TopAppBar(
-                        title = {
-                            Box(
-                                modifier = Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.Center,
-                            ) {
-                                Text(
-                                    text = state.title,
-                                    style = MaterialTheme.typography.headlineLarge,
-                                    textAlign = TextAlign.Center,
-                                )
-                            }
-                        }
-                    )
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = uiState.title,
+                            style = MaterialTheme.typography.headlineLarge,
+                            textAlign = TextAlign.Center,
+                        )
+                    }
                 }
-            ) { padding ->
-                Column(
+            )
+        }
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                // Pet Image
+                Image(
+                    painter = painterResource(id = uiState.petImageResId.toResId()),
+                    contentDescription = null,
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(padding)
-                        .verticalScroll(rememberScrollState()),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                        .fillMaxWidth()
+                )
+                // Stats
+                StatBar(
+                    title = "SAT",
+                    color = SatietyColor,
+                    fraction = uiState.satietyFraction,
+                )
+                StatBar(
+                    title = "PSY",
+                    color = PsychColor,
+                    fraction = uiState.psychFraction,
+                )
+                StatBar(
+                    title = "HLT",
+                    color = HealthColor,
+                    fraction = uiState.healthFraction,
+                )
+//                ActionButton(
+//                    text = "Kill pet",
+//                    color = Color.Red,
+//                    onClick = { onAction(PetDetailsScreenViewModel.Action.Kill) }
+//                )
+//                ActionButton(
+//                    text = "Resurrect pet",
+//                    color = Color.Red,
+//                    onClick = { onAction(PetDetailsScreenViewModel.Action.Resurrect) }
+//                )
+//                ActionButton(
+//                    text = "Egg",
+//                    color = Color.Red,
+//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Egg)) }
+//                )
+//                ActionButton(
+//                    text = "Newborn",
+//                    color = Color.Red,
+//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.NewBorn)) }
+//                )
+//                ActionButton(
+//                    text = "Adult",
+//                    color = Color.Red,
+//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Adult)) }
+//                )
+//                ActionButton(
+//                    text = "Old",
+//                    color = Color.Red,
+//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Old)) }
+//                )
+//                ActionButton(
+//                    text = "To cemetery",
+//                    color = Color.Red,
+//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangePlace(Place.Cemetery)) }
+//                )
+//                ActionButton(
+//                    text = "To zoo",
+//                    color = Color.Red,
+//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangePlace(Place.Zoo)) }
+//                )
+            }
+
+            // Action Buttons
+            Column(
+                modifier = Modifier.padding(horizontal = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                val scrollState = rememberScrollState()
+                val targetButtonRowHeight = if (uiState.isAnyButtonShown) 112.dp else 0.dp
+                val animatedButtonRowHeight by animateDpAsState(targetValue = targetButtonRowHeight, animationSpec = tween(300))
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(animatedButtonRowHeight)
+                        .horizontalScroll(scrollState),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
                 ) {
-                    Column(
-                        modifier = Modifier.padding(16.dp)
-                    ) {
-                        // Pet Image
-                        Image(
-                            painter = painterResource(id = state.petImageResId),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                        )
-                        // Stats
-                        StatBar(
-                            title = "SAT",
-                            color = SatietyColor,
-                            fraction = state.satietyFraction,
-                        )
-                        StatBar(
-                            title = "PSY",
-                            color = PsychColor,
-                            fraction = state.psychFraction,
-                        )
-                        StatBar(
-                            title = "HLT",
-                            color = HealthColor,
-                            fraction = state.healthFraction,
-                        )
-                        ActionButton(
-                            text = "Kill pet",
-                            color = Color.Red,
-                            onClick = { onAction(PetDetailsScreenViewModel.Action.Kill) }
-                        )
-                        ActionButton(
-                            text = "Resurrect pet",
-                            color = Color.Red,
-                            onClick = { onAction(PetDetailsScreenViewModel.Action.Resurrect) }
-                        )
-                        ActionButton(
-                            text = "Egg",
-                            color = Color.Red,
-                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Egg)) }
-                        )
-                        ActionButton(
-                            text = "Newborn",
-                            color = Color.Red,
-                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.NewBorn)) }
-                        )
-                        ActionButton(
-                            text = "Adult",
-                            color = Color.Red,
-                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Adult)) }
-                        )
-                        ActionButton(
-                            text = "Old",
-                            color = Color.Red,
-                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Old)) }
-                        )
-                        ActionButton(
-                            text = "To cemetery",
-                            color = Color.Red,
-                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangePlace(Place.Cemetery)) }
-                        )
-                        ActionButton(
-                            text = "To zoo",
-                            color = Color.Red,
-                            onClick = { onAction(PetDetailsScreenViewModel.Action.ChangePlace(Place.Zoo)) }
-                        )
-                        ActionButton(
-                            text = "Start dialog",
-                            color = Color.Red,
-                            onClick = { onAction(PetDetailsScreenViewModel.Action.StartDialog) }
-                        )
-                        if (dialogData != null) {
-                            Text(
-                                text = dialogData.text,
-                                modifier = Modifier.fillMaxWidth()
-                            )
-                            dialogData.answers.forEachIndexed { index, answerOption ->
-                                ActionButton(
-                                    text = answerOption,
-                                    color = Color.Red,
-                                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChooseDialogAnswer(index)) }
-                                )
-                            }
-                        }
-                    }
-
-                    // Action Buttons
-                    Column(
-                        modifier = Modifier.padding(horizontal = 16.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        val scrollState = rememberScrollState()
-                        val targetButtonRowHeight = if (state.isAnyButtonShown) 112.dp else 0.dp
-                        val animatedButtonRowHeight by animateDpAsState(targetValue = targetButtonRowHeight, animationSpec = tween(300))
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(animatedButtonRowHeight)
-                                .horizontalScroll(scrollState),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center,
+                    if (uiState.showFeedButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = uiState.petType.feedButtonImageId()),
                         ) {
-                            if (state.showFeedButton) {
-                                AnimatedImageButton(
-                                    painter = painterResource(id = state.petType.feedButtonImageId()),
-                                ) {
-                                    onAction(PetDetailsScreenViewModel.Action.TapFeedButton)
-                                }
-                            }
-                            if (state.showHealButton) {
-                                AnimatedImageButton(
-                                    painter = painterResource(id = state.petType.healButtonImageId()),
-                                ) {
-                                    onAction(PetDetailsScreenViewModel.Action.TapHealButton)
-                                }
-                            }
-                            if (state.showPlayButton) {
-                                AnimatedImageButton(
-                                    painter = painterResource(id = state.petType.playButtonImageId()),
-                                ) {
-                                    onAction(PetDetailsScreenViewModel.Action.TapPlayButton)
-                                }
-                            }
-                            if (state.showPoopButton) {
-                                AnimatedImageButton(
-                                    painter = painterResource(id = state.petType.poopButtonImageId()),
-                                ) {
-                                    onAction(PetDetailsScreenViewModel.Action.TapPoopButton)
-                                }
-                            }
-                            if (state.showWakeUpButton) {
-                                AnimatedImageButton(
-                                    painter = painterResource(id = state.petType.wakeUpButtonImageId()),
-                                ) {
-                                    onAction(PetDetailsScreenViewModel.Action.TapWakeUpButton)
-                                }
-                            }
-                            if (state.showBuryButton) {
-                                AnimatedImageButton(
-                                    painter = painterResource(id = state.petType.buryButtonImageId()),
-                                ) {
-                                    onAction(PetDetailsScreenViewModel.Action.TapBuryButton)
-                                }
-                            }
-                            if (state.showSpeakButton) {
-                                AnimatedImageButton(
-                                    painter = painterResource(id = state.petType.speakButtonImageId()),
-                                ) {
-                                    onAction(PetDetailsScreenViewModel.Action.TapSpeakButton)
-                                }
-                            }
-                            if (state.showResurrectButton) {
-                                AnimatedImageButton(
-                                    painter = painterResource(id = state.petType.resurrectButtonImageId()),
-                                ) {
-                                    onAction(PetDetailsScreenViewModel.Action.TapSpeakButton)
-                                }
-                            }
+                            onAction(PetDetailsScreenViewModel.Action.TapFeedButton)
                         }
                     }
-
-                    Spacer(modifier = Modifier.height(24.dp))
-
-                    // Pet Info Texts
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        InfoText(text = state.creationTime)
-                        InfoText(text = state.timeOfDeath)
+                    if (uiState.showHealButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = uiState.petType.healButtonImageId()),
+                        ) {
+                            onAction(PetDetailsScreenViewModel.Action.TapHealButton)
+                        }
                     }
-
-                    Spacer(modifier = Modifier.height(32.dp)) // breathing space at bottom
+                    if (uiState.showPlayButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = uiState.petType.playButtonImageId()),
+                        ) {
+                            onAction(PetDetailsScreenViewModel.Action.TapPlayButton)
+                        }
+                    }
+                    if (uiState.showPoopButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = uiState.petType.poopButtonImageId()),
+                        ) {
+                            onAction(PetDetailsScreenViewModel.Action.TapPoopButton)
+                        }
+                    }
+                    if (uiState.showWakeUpButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = uiState.petType.wakeUpButtonImageId()),
+                        ) {
+                            onAction(PetDetailsScreenViewModel.Action.TapWakeUpButton)
+                        }
+                    }
+                    if (uiState.showBuryButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = uiState.petType.buryButtonImageId()),
+                        ) {
+                            onAction(PetDetailsScreenViewModel.Action.TapBuryButton)
+                        }
+                    }
+                    if (uiState.showSpeakButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = uiState.petType.speakButtonImageId()),
+                        ) {
+                            onAction(PetDetailsScreenViewModel.Action.TapSpeakButton)
+                        }
+                    }
+                    if (uiState.showResurrectButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = uiState.petType.resurrectButtonImageId()),
+                        ) {
+                            onAction(PetDetailsScreenViewModel.Action.TapResurrectButton)
+                        }
+                    }
                 }
             }
+
+            Spacer(modifier = Modifier.height(32.dp))
         }
     }
 }

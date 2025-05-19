@@ -11,7 +11,8 @@ kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = JavaVersion.VERSION_11.toString()
+                //jvmTarget = "17"
             }
         }
     }
@@ -28,6 +29,10 @@ kotlin {
     }
 
     sourceSets {
+        all {
+            // From KMP-ObservableViewModel
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+        }
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.ktor.client.core)
@@ -40,6 +45,8 @@ kotlin {
 
             implementation(libs.sqlite.bundled)
             implementation(libs.datastore.preferences)
+
+            api(libs.kmp.observable.viewmodel)
         }
         androidMain.dependencies {
             implementation(libs.ktor.client.android)
@@ -82,8 +89,8 @@ android {
         minSdk = 24
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
 

@@ -5,7 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import bav.petus.android.ui.pet_creation.PetCreationRoute
-import bav.petus.android.ui.pet_creation.PetCreationScreenViewModel
+import bav.petus.viewModel.petCreation.PetCreationScreenViewModel
 import kotlinx.serialization.Serializable
 import org.koin.androidx.compose.koinViewModel
 

@@ -1,0 +1,104 @@
+package bav.petus.core.resources
+
+enum class ImageId {
+    //region Buttons
+    BuryCat,
+    BuryDog,
+    BuryFrog,
+    CleanUpCat,
+    CleanUpDog,
+    CleanUpFrog,
+    FeedCat,
+    FeedDog,
+    FeedFrog,
+    HealCat,
+    HealDog,
+    HealFrog,
+    PlayCat,
+    PlayDog,
+    PlayFrog,
+    ResurrectCat,
+    ResurrectDog,
+    ResurrectFrog,
+    SpeakCat,
+    SpeakDog,
+    SpeakFrog,
+    WakeUpCat,
+    WakeUpDog,
+    WakeUpFrog,
+    //endregion
+    
+    //region Catus
+    CatAdultActive,
+    CatAdultDead,
+    CatAdultHungry,
+    CatAdultIll,
+    CatAdultPoop,
+    CatAdultSleep,
+    CatEgg,
+    CatGrave,
+    CatNewbornActive,
+    CatNewbornDead,
+    CatNewbornHungry,
+    CatNewbornIll,
+    CatNewbornPoop,
+    CatNewbornSleep,
+    CatOldActive,
+    CatOldDead,
+    CatOldHungry,
+    CatOldIll,
+    CatOldPoop,
+    CatOldSleep,
+    //endregion
+
+    //region Dogus
+    DogAdultActive,
+    DogAdultDead,
+    DogAdultHungry,
+    DogAdultIll,
+    DogAdultPoop,
+    DogAdultSleep,
+    DogEgg,
+    DogGrave,
+    DogNewbornActive,
+    DogNewbornDead,
+    DogNewbornHungry,
+    DogNewbornIll,
+    DogNewbornPoop,
+    DogNewbornSleep,
+    DogOldActive,
+    DogOldDead,
+    DogOldHungry,
+    DogOldIll,
+    DogOldPoop,
+    DogOldSleep,
+    //endregion
+
+    //region Frogus
+    FrogAdultActive,
+    FrogAdultDead,
+    FrogAdultHungry,
+    FrogAdultIll,
+    FrogAdultPoop,
+    FrogAdultSleep,
+    FrogEgg,
+    FrogGrave,
+    FrogNewbornActive,
+    FrogNewbornDead,
+    FrogNewbornHungry,
+    FrogNewbornIll,
+    FrogNewbornPoop,
+    FrogNewbornSleep,
+    FrogOldActive,
+    FrogOldDead,
+    FrogOldHungry,
+    FrogOldIll,
+    FrogOldPoop,
+    FrogOldSleep,
+    //endregion
+
+    //region Common
+    DugOutGrave
+    //endregion
+    ;
+}

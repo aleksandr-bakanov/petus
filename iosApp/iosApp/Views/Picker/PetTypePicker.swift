@@ -2,11 +2,9 @@ import SwiftUI
 import shared
 
 struct PetTypePicker: View {
-    @Binding var selectedValue: PetType
+    var selectedValue: PetType
     var availablePetTypes: [PetType]
     var onSelect: (PetType) -> Void
-    
-    //let ite = [PetType.catus, PetType.dogus, PetType.frogus]
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
