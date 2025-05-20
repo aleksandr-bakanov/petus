@@ -9,6 +9,7 @@ import bav.petus.model.AgeState
 import bav.petus.model.Pet
 import bav.petus.model.PetType
 import bav.petus.model.Place
+import bav.petus.repo.HistoryRepository
 import bav.petus.repo.PetsRepository
 import bav.petus.useCase.PetImageUseCase
 import com.rickclephas.kmp.observableviewmodel.launch
@@ -36,6 +37,7 @@ data class PetDetailsUiState(
     val showBuryButton: Boolean,
     val showSpeakButton: Boolean,
     val showResurrectButton: Boolean,
+    val showStatBars: Boolean,
 ) {
     val isAnyButtonShown: Boolean
         get() = showPlayButton || showHealButton || showPoopButton || showFeedButton ||
@@ -54,6 +56,7 @@ class PetDetailsScreenViewModel(
     private val engine: Engine by inject()
     private val petImageUseCase: PetImageUseCase by inject()
     private val questSystem: QuestSystem by inject()
+    private val historyRepo: HistoryRepository by inject()
 
     val uiState: StateFlow<PetDetailsUiState?> = petsRepo.getPetByIdFlow(args.petId)
         .map { pet ->
@@ -76,6 +79,7 @@ class PetDetailsScreenViewModel(
                     showBuryButton = engine.isAllowedToBuryPet(pet),
                     showSpeakButton = engine.isAllowedToSpeakWithPet(pet),
                     showResurrectButton = engine.isAllowedToResurrectPet(pet),
+                    showStatBars = pet.place == Place.Zoo,
                 )
             }
             else {

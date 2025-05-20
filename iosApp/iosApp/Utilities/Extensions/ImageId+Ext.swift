@@ -89,6 +89,7 @@ extension ImageId {
         case .frogOldPoop: "frogus_old_poop"
         case .frogOldSleep: "frogus_old_sleep"
         case .dugOutGrave: "dug_out_grave"
+        case .userProfileAvatar: "user_profile_avatar"
         }
     }
 }

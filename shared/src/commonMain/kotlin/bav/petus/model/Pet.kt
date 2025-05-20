@@ -32,7 +32,10 @@ data class Pet(
     val deathOfOldAgePossibility: Float = 0f,
     val timeOfDeath: Long = 0L,
 
-    val inventory: List<InventoryItem> = listOf()
+    val inventory: List<InventoryItem> = listOf(),
+
+    // If now is before this timestamp - play with pet is not allowed
+    val timestampPlayAllowed: Long = 0L,
 ) {
     val sleep: Boolean
         get() = activeSleepState == SleepState.Sleep

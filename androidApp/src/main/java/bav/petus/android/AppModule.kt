@@ -21,6 +21,7 @@ import bav.petus.core.engine.UserStats
 import bav.petus.core.location.LocationHelper
 import bav.petus.core.time.TimeRepository
 import bav.petus.network.WeatherApi
+import bav.petus.repo.HistoryRepository
 import bav.petus.repo.PetsRepository
 import bav.petus.repo.WeatherRepository
 import bav.petus.useCase.PetImageUseCase
@@ -85,6 +86,7 @@ val appModule = module {
             weatherAttitudeUseCase = get(),
             userStats = get(),
             questSystem = get(),
+            historyRepo = get(),
         )
     }
 
@@ -127,6 +129,12 @@ val appModule = module {
             dataStore = get(),
             petsRepo = get(),
             userStats = get(),
+        )
+    }
+
+    single {
+        HistoryRepository(
+            database = get(),
         )
     }
 

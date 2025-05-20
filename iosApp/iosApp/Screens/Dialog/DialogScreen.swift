@@ -5,6 +5,8 @@ import shared
 struct DialogScreen: View {
     @Environment(\.dismiss) private var dismiss
     
+    @State private var scrollAnchor = UUID() // Used to scroll to bottom
+    
     let petId: Int64
     
     @StateViewModel var viewModel: DialogScreenViewModel
@@ -21,18 +23,40 @@ struct DialogScreen: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            if let node = viewModel.uiState.value {
-                DetailText(node.text)
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    ForEach(Array(node.answers.enumerated()), id: \.element) { index, answer in
-                        ActionButton(title: answer,
-                                     backgroundColor: Color("SatietyColor"),
-                                     action: { viewModel.onAction(action: DialogScreenViewModelActionChooseDialogAnswer(index: Int32(index))) }
-                        )
+        VStack(spacing: 0) {
+            if let uiState = viewModel.uiState.value {
+                // Scrollable message list
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        VStack(spacing: 0) {
+                            ForEach(uiState.messages.indices.reversed(), id: \.self) { index in
+                                DialogMessageCell(message: uiState.messages[index])
+                            }
+                            
+                            // Anchor at bottom for auto-scroll
+                            Color.clear
+                                .frame(height: 1)
+                                .id(scrollAnchor)
+                        }
+                    }
+                    .onChange(of: uiState.messages.count) { _ in
+                        withAnimation {
+                            proxy.scrollTo(scrollAnchor, anchor: .bottom)
+                        }
                     }
                 }
+                
+                Divider()
+                
+                // Bottom Buttons
+                VStack(spacing: 8) {
+                    ForEach(Array(uiState.answers.enumerated()), id: \.offset) { index, answer in
+                        DialogButton(text: answer) {
+                            viewModel.onAction(action: DialogScreenViewModelActionChooseDialogAnswer(index: Int32(index)))
+                        }
+                    }
+                }
+                .padding()
             }
         }
         .task {

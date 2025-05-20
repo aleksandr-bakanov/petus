@@ -90,5 +90,6 @@ fun ImageId.toResId(): Int {
         ImageId.FrogOldPoop -> R.drawable.frogus_old_poop
         ImageId.FrogOldSleep -> R.drawable.frogus_old_sleep
         ImageId.DugOutGrave -> R.drawable.dug_out_grave
+        ImageId.UserProfileAvatar -> R.drawable.user_profile_avatar
     }
 }

@@ -3,23 +3,32 @@ package bav.petus.viewModel.dialog
 import bav.petus.base.ViewModelWithNavigation
 import bav.petus.core.dialog.DialogNode
 import bav.petus.core.dialog.DialogSystem
+import bav.petus.core.resources.ImageId
 import bav.petus.core.resources.StringId
 import bav.petus.repo.PetsRepository
 import com.rickclephas.kmp.observableviewmodel.MutableStateFlow
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import bav.petus.model.Pet
+import bav.petus.useCase.PetImageUseCase
 import com.rickclephas.kmp.observableviewmodel.launch
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.update
 
 data class DialogScreenViewModelArgs(
     val petId: Long,
     val convertStringIdToString: (StringId) -> String,
 )
 
-data class DialogScreenUiState(
+data class DialogMessage(
+    val isImageAtStart: Boolean,
+    val imageId: ImageId,
     val text: String,
+)
+
+data class DialogScreenUiState(
+    val messages: List<DialogMessage>,
     val answers: List<String>,
 )
 
@@ -29,6 +38,7 @@ class DialogScreenViewModel(
 
     private val dialogSystem: DialogSystem by inject()
     private val petsRepo: PetsRepository by inject()
+    private val petImageUseCase: PetImageUseCase by inject()
 
     private var pet: Pet? = null
 
@@ -40,7 +50,15 @@ class DialogScreenViewModel(
             pet = petsRepo.getPetByIdFlow(args.petId).first()
             pet?.let { p ->
                 val node = dialogSystem.startDialog(p)
-                _uiState.value = makeDialogUiState(node)
+                if (node != null) {
+                    _uiState.value = makeDialogUiState(
+                        currentMessages = emptyList(),
+                        node = node,
+                        answer = null,
+                    )
+                } else {
+                    navigate(Navigation.CloseScreen)
+                }
             }
         }
     }
@@ -51,7 +69,13 @@ class DialogScreenViewModel(
                 viewModelScope.launch {
                     val node = dialogSystem.chooseAnswer(action.index)
                     if (node != null) {
-                        _uiState.value = makeDialogUiState(node)
+                        _uiState.update { state ->
+                            makeDialogUiState(
+                                currentMessages = state?.messages ?: emptyList(),
+                                node = node,
+                                answer = state?.answers?.get(action.index),
+                            )
+                        }
                     } else {
                         navigate(Navigation.CloseScreen)
                     }
@@ -60,18 +84,34 @@ class DialogScreenViewModel(
         }
     }
 
-    private suspend fun makeDialogUiState(node: DialogNode?): DialogScreenUiState? {
-        return node?.let { n ->
-            DialogScreenUiState(
-                text = dialogSystem.censorDialogText(
-                    petType = pet!!.type,
-                    text = args.convertStringIdToString(n.text),
-                ),
-                answers = n.answers.map {
-                    args.convertStringIdToString(it.text)
-                }
+    private suspend fun makeDialogUiState(
+        currentMessages: List<DialogMessage>,
+        node: DialogNode,
+        answer: String?,
+    ): DialogScreenUiState {
+        val petMessage = DialogMessage(
+            isImageAtStart = true,
+            imageId = petImageUseCase.getPetImageId(pet!!),
+            text = dialogSystem.censorDialogText(
+                petType = pet!!.type,
+                text = args.convertStringIdToString(node.text),
+            )
+        )
+        val userMessage: DialogMessage? = answer?.let {
+            DialogMessage(
+                isImageAtStart = false,
+                imageId = ImageId.UserProfileAvatar,
+                text = it,
             )
         }
+        val newMessages = listOfNotNull(petMessage, userMessage) + currentMessages
+
+        return DialogScreenUiState(
+            messages = newMessages,
+            answers = node.answers.map {
+                args.convertStringIdToString(it.text)
+            }
+        )
     }
 
     sealed interface Action {

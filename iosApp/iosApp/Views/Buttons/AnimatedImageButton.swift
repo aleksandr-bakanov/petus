@@ -10,6 +10,8 @@ struct AnimatedImageButton: View {
     var body: some View {
         Image(imageName)
             .resizable()
+            .interpolation(.high)
+            .antialiased(true)
             .scaledToFit()
             .frame(width: size, height: size)
             .scaleEffect(isPressed ? 0.9 : 1.0)

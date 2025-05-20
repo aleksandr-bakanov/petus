@@ -98,7 +98,8 @@ enum class ImageId {
     //endregion
 
     //region Common
-    DugOutGrave
+    DugOutGrave,
+    UserProfileAvatar,
     //endregion
     ;
 }

@@ -8,11 +8,13 @@ import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.model.AgeState
 import bav.petus.model.BodyState
 import bav.petus.model.BurialType
+import bav.petus.model.HistoryEvent
 import bav.petus.model.Pet
 import bav.petus.model.PetType
 import bav.petus.model.Place
 import bav.petus.model.SleepState
 import bav.petus.model.WeatherAttitude
+import bav.petus.repo.HistoryRepository
 import bav.petus.repo.PetsRepository
 import bav.petus.repo.WeatherRepository
 import bav.petus.useCase.WeatherAttitudeUseCase
@@ -25,6 +27,7 @@ class Engine(
     private val weatherAttitudeUseCase: WeatherAttitudeUseCase,
     private val userStats: UserStats,
     private val questSystem: QuestSystem,
+    private val historyRepo: HistoryRepository,
 ) {
 
     suspend fun createNewPet(
@@ -41,6 +44,9 @@ class Engine(
             satiety = getFullSatietyForPetType(type),
         )
         petsRepo.insertPet(pet)
+        historyRepo.getLatestPetId()?.let { id ->
+            historyRepo.recordHistoryEvent(id, HistoryEvent.PetCreated)
+        }
     }
 
     fun isAllowedToFeedPet(pet: Pet): Boolean {
@@ -55,13 +61,16 @@ class Engine(
             satiety = getFullSatietyForPetType(pet.type)
         )
         petsRepo.updatePet(newPet)
+        historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetFeed)
     }
 
     fun isAllowedToPlayWithPet(pet: Pet): Boolean {
+        val now = getTimestampSecondsSinceEpoch()
         return pet.bodyState == BodyState.Alive &&
                 pet.ageState != AgeState.Egg &&
                 pet.psych < getFullPsychForPetType(pet.type) &&
-                pet.sleep.not()
+                pet.sleep.not() &&
+                now > pet.timestampPlayAllowed
     }
 
     suspend fun playWithPet(pet: Pet) {
@@ -73,6 +82,7 @@ class Engine(
         userStats.saveLanguageKnowledge(pet.type, newLanguageKnowledge)
         petsRepo.updatePet(newPet)
         questSystem.onEvent(QuestSystem.Event.LanguageKnowledgeChanged(pet.type, newLanguageKnowledge))
+        historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetPlay)
     }
 
     fun isAllowedToCleanAfterPet(pet: Pet): Boolean {
@@ -84,6 +94,7 @@ class Engine(
             isPooped = false,
         )
         petsRepo.updatePet(newPet)
+        historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetCleanUp)
     }
 
     fun isAllowedToHealPet(pet: Pet): Boolean {
@@ -95,6 +106,7 @@ class Engine(
             illness = false,
         )
         petsRepo.updatePet(newPet)
+        historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetGetHealed)
     }
 
     fun isAllowedToWakeUpPet(pet: Pet): Boolean {
@@ -103,12 +115,17 @@ class Engine(
 
     suspend fun wakeUpPet(pet: Pet) {
         val now = getTimestampSecondsSinceEpoch()
+        val fullPsych = getFullPsychForPetType(pet.type)
+        val newPsych = (pet.psych - fullPsych / 2f).coerceIn(0f, fullPsych)
         val newPet = pet.copy(
             activeSleepState = SleepState.Active,
             lastActiveSleepSwitchTimestamp = now,
             isPooped = true,
+            psych = newPsych,
+            timestampPlayAllowed = now + PET_NOT_ALLOWED_TO_PLAY_INTERVAL_SEC,
         )
         petsRepo.updatePet(newPet)
+        historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetForciblyWakeUp)
     }
 
     fun isAllowedToBuryPet(pet: Pet): Boolean {
@@ -118,6 +135,7 @@ class Engine(
     suspend fun buryPet(pet: Pet) {
         val buriedPet = pet.copy(burialType = BurialType.Buried)
         changePetPlace(buriedPet, Place.Cemetery)
+        historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetBuried)
     }
 
     suspend fun isAllowedToResurrectPet(pet: Pet): Boolean {
@@ -133,6 +151,7 @@ class Engine(
             place = Place.Zoo,
         )
         petsRepo.updatePet(newPet)
+        historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetResurrected)
     }
 
     fun isAllowedToSpeakWithPet(pet: Pet): Boolean {
@@ -285,6 +304,24 @@ class Engine(
             ageState = getPetAgeState(newPet.type, petAgeInSeconds),
         )
 
+        // If pet changed age state we need to record it in history
+        if (pet.ageState != newPet.ageState) {
+            val historyEvent = when (newPet.ageState) {
+                AgeState.Egg -> null
+                AgeState.NewBorn -> HistoryEvent.PetBecomeNewborn
+                AgeState.Teen -> HistoryEvent.PetBecomeTeen
+                AgeState.Adult -> HistoryEvent.PetBecomeAdult
+                AgeState.Old -> HistoryEvent.PetBecomeOld
+            }
+            historyEvent?.let { event ->
+                historyRepo.recordHistoryEvent(
+                    petId = pet.id,
+                    event = event,
+                    timestamp = periodTimestamp,
+                )
+            }
+        }
+
         // If pet became new born on this cycle we need to awake him
         // and remember this first time of awakening
         if (pet.ageState == AgeState.Egg && newPet.ageState == AgeState.NewBorn) {
@@ -292,6 +329,7 @@ class Engine(
                 activeSleepState = SleepState.Active,
                 lastActiveSleepSwitchTimestamp = periodTimestamp,
             )
+            historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetWakeUp, periodTimestamp)
         }
 
         when (newPet.ageState) {
@@ -332,6 +370,9 @@ class Engine(
                         newPet = newPet.copy(
                             illness = Random.Default.nextFloat() < newPet.illnessPossibility
                         )
+                        if (newPet.illness) {
+                            historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetGetIll, periodTimestamp)
+                        }
                     }
 
                     // Whether it's time to switch between sleep and active states
@@ -346,10 +387,13 @@ class Engine(
                             lastActiveSleepSwitchTimestamp = periodTimestamp,
                             activeSleepState = newPet.activeSleepState.not()
                         )
+                        val sleepActiveHistoryEvent = if (newPet.sleep) HistoryEvent.PetSleep else HistoryEvent.PetWakeUp
+                        historyRepo.recordHistoryEvent(pet.id, sleepActiveHistoryEvent, periodTimestamp)
 
                         // If pet woke up then it immediately poops
                         if (newPet.activeSleepState == SleepState.Active) {
                             newPet = newPet.copy(isPooped = true)
+                            historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetPoop, periodTimestamp)
                         }
                     }
                 }
@@ -374,6 +418,7 @@ class Engine(
 
     private suspend fun makePetDead(pet: Pet, periodTime: Long): Pet {
         questSystem.onEvent(QuestSystem.Event.PetDied(pet.id))
+        historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetDied, periodTime)
         // TODO: save some info about cause of death
         return pet.copy(
             bodyState = BodyState.Dead,
@@ -575,8 +620,8 @@ class Engine(
 
         // Ranges in seconds
         private val commonPetAgeToSecondsTable = mapOf(
-            AgeState.Egg to (0L until HOUR),                    // 1 hour
-            AgeState.NewBorn to (HOUR until DAY * 7),           // 7 days (-1 hour)
+            AgeState.Egg to (0L until 60),                    // 1 hour
+            AgeState.NewBorn to (60 until DAY * 7),           // 7 days (-1 hour)
             AgeState.Teen to (DAY * 7 until DAY * 7 + 1),       // Disable Teen state making it short
             AgeState.Adult to (DAY * 7 + 1 until DAY * 14),      // 7 days
             AgeState.Old to (DAY * 14 until Long.MAX_VALUE),
@@ -644,5 +689,6 @@ class Engine(
         const val DEATH_OF_OLD_AGE_POSSIBILITY_INC = 0.000015f
         const val MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION = 0.00835f
         const val LANGUAGE_KNOWLEDGE_INCREMENT = 1
+        const val PET_NOT_ALLOWED_TO_PLAY_INTERVAL_SEC = 12 * HOUR
     }
 }

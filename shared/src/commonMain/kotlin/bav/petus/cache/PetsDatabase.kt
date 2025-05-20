@@ -11,11 +11,12 @@ import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
 import androidx.room.Update
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import bav.petus.model.HistoryEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 
-@Database(entities = [PetEntity::class, WeatherRecord::class], version = 1)
+@Database(entities = [PetEntity::class, WeatherRecord::class, PetHistoryRecord::class], version = 1)
 @ConstructedBy(PetsDatabaseConstructor::class)
 abstract class PetsDatabase : RoomDatabase() {
     abstract fun getDao(): PetDao
@@ -34,6 +35,9 @@ interface PetDao {
 
     @Update
     suspend fun updatePet(item: PetEntity)
+
+    @Query("SELECT MAX(id) FROM PetEntity")
+    suspend fun getLatestPetId(): Long?
 
     @Query("SELECT * FROM PetEntity WHERE id = :id")
     fun selectPetByIdFlow(id: Long): Flow<PetEntity?>
@@ -55,6 +59,12 @@ interface PetDao {
 
     @Query("SELECT * FROM WeatherRecord")
     fun selectAllWeatherRecordsFlow(): Flow<List<WeatherRecord>>
+
+    @Insert
+    suspend fun insertPetHistoryRecord(item: PetHistoryRecord)
+
+    @Query("SELECT * FROM PetHistoryRecord WHERE petId = :id")
+    suspend fun selectHistoryRecordsForPet(id: Long): List<PetHistoryRecord>
 }
 
 @Entity
@@ -72,6 +82,17 @@ data class WeatherRecord(
     val humidity: Int?,
     val temperature: Int?,
     val windSpeed: Double?,
+    // Additional random information
+    val info: String?,
+)
+
+@Entity
+data class PetHistoryRecord(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    // Since midnight January 1, 1970 UTC
+    val timestampSecondsSinceEpoch: Long,
+    val petId: Long,
+    val event: HistoryEvent,
     // Additional random information
     val info: String?,
 )

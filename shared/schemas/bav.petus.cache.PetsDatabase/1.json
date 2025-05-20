@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "83ddc4b009be7f64adbf8735291af9bc",
+    "identityHash": "af2edff849a65a2331086e86b4f76081",
     "entities": [
       {
         "tableName": "PetEntity",
@@ -76,11 +76,52 @@
             "id"
           ]
         }
+      },
+      {
+        "tableName": "PetHistoryRecord",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestampSecondsSinceEpoch` INTEGER NOT NULL, `petId` INTEGER NOT NULL, `event` TEXT NOT NULL, `info` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestampSecondsSinceEpoch",
+            "columnName": "timestampSecondsSinceEpoch",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "petId",
+            "columnName": "petId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "event",
+            "columnName": "event",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "info",
+            "columnName": "info",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '83ddc4b009be7f64adbf8735291af9bc')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'af2edff849a65a2331086e86b4f76081')"
     ]
   }
 }

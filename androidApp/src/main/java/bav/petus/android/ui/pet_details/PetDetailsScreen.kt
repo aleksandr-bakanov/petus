@@ -25,7 +25,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -33,13 +32,10 @@ import bav.petus.android.HealthColor
 import bav.petus.android.PsychColor
 import bav.petus.android.R
 import bav.petus.android.SatietyColor
-import bav.petus.android.ui.common.ActionButton
 import bav.petus.android.ui.common.AnimatedImageButton
 import bav.petus.android.ui.common.StatBar
 import bav.petus.android.ui.common.toResId
-import bav.petus.model.AgeState
 import bav.petus.model.PetType
-import bav.petus.model.Place
 import bav.petus.viewModel.petDetails.PetDetailsScreenViewModel
 import bav.petus.viewModel.petDetails.PetDetailsUiState
 
@@ -98,62 +94,24 @@ private fun PetDetailsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                 )
-                // Stats
-                StatBar(
-                    title = "SAT",
-                    color = SatietyColor,
-                    fraction = uiState.satietyFraction,
-                )
-                StatBar(
-                    title = "PSY",
-                    color = PsychColor,
-                    fraction = uiState.psychFraction,
-                )
-                StatBar(
-                    title = "HLT",
-                    color = HealthColor,
-                    fraction = uiState.healthFraction,
-                )
-//                ActionButton(
-//                    text = "Kill pet",
-//                    color = Color.Red,
-//                    onClick = { onAction(PetDetailsScreenViewModel.Action.Kill) }
-//                )
-//                ActionButton(
-//                    text = "Resurrect pet",
-//                    color = Color.Red,
-//                    onClick = { onAction(PetDetailsScreenViewModel.Action.Resurrect) }
-//                )
-//                ActionButton(
-//                    text = "Egg",
-//                    color = Color.Red,
-//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Egg)) }
-//                )
-//                ActionButton(
-//                    text = "Newborn",
-//                    color = Color.Red,
-//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.NewBorn)) }
-//                )
-//                ActionButton(
-//                    text = "Adult",
-//                    color = Color.Red,
-//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Adult)) }
-//                )
-//                ActionButton(
-//                    text = "Old",
-//                    color = Color.Red,
-//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangeAgeState(AgeState.Old)) }
-//                )
-//                ActionButton(
-//                    text = "To cemetery",
-//                    color = Color.Red,
-//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangePlace(Place.Cemetery)) }
-//                )
-//                ActionButton(
-//                    text = "To zoo",
-//                    color = Color.Red,
-//                    onClick = { onAction(PetDetailsScreenViewModel.Action.ChangePlace(Place.Zoo)) }
-//                )
+                if (uiState.showStatBars) {
+                    // Stats
+                    StatBar(
+                        title = "SAT",
+                        color = SatietyColor,
+                        fraction = uiState.satietyFraction,
+                    )
+                    StatBar(
+                        title = "PSY",
+                        color = PsychColor,
+                        fraction = uiState.psychFraction,
+                    )
+                    StatBar(
+                        title = "HLT",
+                        color = HealthColor,
+                        fraction = uiState.healthFraction,
+                    )
+                }
             }
 
             // Action Buttons

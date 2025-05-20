@@ -23,11 +23,15 @@ struct PetDetailsScreen: View {
                     VStack(spacing: 0) {
                         Image(state.petImageResId.resId)
                             .resizable()
+                            .interpolation(.high)
+                            .antialiased(true)
                             .scaledToFit()
                             .frame(maxWidth: .infinity)
-                        StatBar(title: "SAT", color: Color("SatietyColor"), fraction: CGFloat(state.satietyFraction))
-                        StatBar(title: "PSY", color: Color("PsychColor"), fraction: CGFloat(state.psychFraction))
-                        StatBar(title: "HLT", color: Color("HealthColor"), fraction: CGFloat(state.healthFraction))
+                        if state.showStatBars {
+                            StatBar(title: "SAT", color: Color("SatietyColor"), fraction: CGFloat(state.satietyFraction))
+                            StatBar(title: "PSY", color: Color("PsychColor"), fraction: CGFloat(state.psychFraction))
+                            StatBar(title: "HLT", color: Color("HealthColor"), fraction: CGFloat(state.healthFraction))
+                        }
                     }
                     
                     if state.isAnyButtonShown {
@@ -86,24 +90,7 @@ struct PetDetailsScreen: View {
                             .padding(.horizontal)
                         }
                     }
-                    
-//                    VStack(alignment: .leading, spacing: 8) {
-//                        
-//                        
-//                        ActionButton(title: "Kill", backgroundColor: Color("SatietyColor"), action: { viewModel.kill() })
-//                        ActionButton(title: "Resurrect", backgroundColor: Color("SatietyColor"), action: { viewModel.resurrectPet() })
-//                        ActionButton(title: "Egg", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .egg) })
-//                        ActionButton(title: "Newborn", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .newBorn) })
-//                        ActionButton(title: "Adult", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .adult) })
-//                        ActionButton(title: "Old", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetAgeState(state: .old) })
-//                        ActionButton(title: "To cemetery", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetPlace(place: .cemetery) })
-//                        ActionButton(title: "To zoo", backgroundColor: Color("SatietyColor"), action: { viewModel.changePetPlace(place: .zoo) })
-//                        
-//                        DetailText(viewModel.uiState.creationTime)
-//                        DetailText(viewModel.uiState.timeOfDeath)
-//                    }
-//                    .padding(.top, 16)
-                    
+
                     Spacer()
                 }
                 .padding()
