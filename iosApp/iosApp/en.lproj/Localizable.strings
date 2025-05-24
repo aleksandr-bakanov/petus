@@ -1,16 +1,34 @@
+
+/* Screen titles */
 "ZooScreenTitle"                           = "Home";
 "CemeteryScreenTitle"                      = "Cemetery";
 "WeatherScreenTitle"                       = "Weather";
 "ProfileScreenTitle"                       = "Profile";
+
+/* User profile */
 "ProfileScreenLanguagesLabel"              = "Languages";
 "ProfileScreenInventoryLabel"              = "Inventory";
 "ProfileScreenAbilitiesLabel"              = "Abilities";
 "LanguageKnowledgeTitleCatus"              = "Catus language knowledge";
 "LanguageKnowledgeTitleDogus"              = "Dogus language knowledge";
 "LanguageKnowledgeTitleFrogus"             = "Frogus language knowledge";
+
+/* Pet descriptions */
 "PetTypeDescriptionCatus"                  = "Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.";
 "PetTypeDescriptionDogus"                  = "Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.";
 "PetTypeDescriptionFrogus"                 = "Frogus: sleeps 12 hours, awake for 12 hours. Likes cold cloudy days. Does not like wind.";
+
+/* Item names */
+"Necronomicon"                             = "Necronomicon";
+"PieceOfCloth"                             = "Piece of cloth";
+"MysteriousBook"                           = "Mysterious book";
+"InventoryItemPattern"                     = "%@ (x%d)";
+
+/* Notifications */
+"NotificationInventoryItemAdded"           = "%@ added";
+"NotificationInventoryItemRemoved"         = "%@ removed";
+
+/* Dialogs */
 "WhatIsGoingOnWithYou"                     = "What is going on with you?";
 "BeenBetter"                               = "Been better.";
 "IShouldGo"                                = "I should go.";

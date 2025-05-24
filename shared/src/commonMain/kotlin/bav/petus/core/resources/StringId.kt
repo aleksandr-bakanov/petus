@@ -12,6 +12,12 @@ sealed class StringId {
     data object PetTypeDescriptionFrogus : StringId()
     //endregion
 
+    //region Inventory items
+    data object Necronomicon : StringId()
+    data object PieceOfCloth : StringId()
+    data object MysteriousBook : StringId()
+    //endregion
+
     //region Dialogs
     data object WhatIsGoingOnWithYou : StringId()
     data object BeingBetter : StringId()

@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+	<!-- Screen titles -->
 	<string name="ZooScreenTitle">Home</string>
 	<string name="CemeteryScreenTitle">Cemetery</string>
 	<string name="WeatherScreenTitle">Weather</string>
 	<string name="ProfileScreenTitle">Profile</string>
+
+	<!-- User profile -->
 	<string name="ProfileScreenLanguagesLabel">Languages</string>
 	<string name="ProfileScreenInventoryLabel">Inventory</string>
 	<string name="ProfileScreenAbilitiesLabel">Abilities</string>
 	<string name="LanguageKnowledgeTitleCatus">Catus language knowledge</string>
 	<string name="LanguageKnowledgeTitleDogus">Dogus language knowledge</string>
 	<string name="LanguageKnowledgeTitleFrogus">Frogus language knowledge</string>
+
+	<!-- Pet descriptions -->
 	<string name="PetTypeDescriptionCatus">Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.</string>
 	<string name="PetTypeDescriptionDogus">Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.</string>
 	<string name="PetTypeDescriptionFrogus">Frogus: sleeps 12 hours, awake for 12 hours. Likes cold cloudy days. Does not like wind.</string>
+
+	<!-- Item names -->
+	<string name="Necronomicon">Necronomicon</string>
+	<string name="PieceOfCloth">Piece of cloth</string>
+	<string name="MysteriousBook">Mysterious book</string>
+	<string name="InventoryItemPattern">%s (x%d)</string>
+
+	<!-- Notifications -->
+	<string name="NotificationInventoryItemAdded">%s added</string>
+	<string name="NotificationInventoryItemRemoved">%s removed</string>
+
+	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">What is going on with you?</string>
 	<string name="BeenBetter">Been better.</string>
 	<string name="IShouldGo">I should go.</string>

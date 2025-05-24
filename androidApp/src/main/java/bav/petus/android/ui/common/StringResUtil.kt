@@ -36,5 +36,8 @@ fun StringId.toResId(): Int {
         StringId.NecronomiconStage8AnswerOption0 -> R.string.NecronomiconStage8AnswerOption0
         StringId.NecronomiconStage8Dialog0 -> R.string.NecronomiconStage8Dialog0
         StringId.NecronomiconStage8Dialog1 -> R.string.NecronomiconStage8Dialog1
+        StringId.MysteriousBook -> R.string.MysteriousBook
+        StringId.Necronomicon -> R.string.Necronomicon
+        StringId.PieceOfCloth -> R.string.PieceOfCloth
     }
 }

@@ -1,5 +1,8 @@
 package bav.petus.android.navigation
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -20,13 +23,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import bav.petus.android.ui.common.UserNotificationCell
 import bav.petus.android.ui.common.toResId
 import bav.petus.core.resources.StringId
 import bav.petus.viewModel.main.MainScreenUiState
+import bav.petus.viewModel.main.MainViewModel
 import kotlinx.serialization.Serializable
 
 sealed interface TopLevelRoutes {
@@ -53,6 +59,7 @@ private val profileTopRoute = TopLevelRoute(StringId.ProfileScreenTitle, TopLeve
 @Composable
 fun AppWithBottomBar(
     uiState: MainScreenUiState,
+    onAction: (MainViewModel.Action) -> Unit,
 ) {
     var navigationSelectedItemName by remember {
         mutableStateOf(zooTopRoute.name)
@@ -91,18 +98,31 @@ fun AppWithBottomBar(
             }
         }
     ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = TopLevelRoutes.ZooScreen,
+        Box(
             modifier = Modifier.padding(innerPadding)
         ) {
-            zooScreen(navController)
-            petDetailsScreen(navController)
-            petCreationScreen(navController)
-            cemeteryScreen(navController)
-            weatherReportScreen()
-            userProfileScreen()
-            dialogScreen(navController)
+            NavHost(
+                navController = navController,
+                startDestination = TopLevelRoutes.ZooScreen,
+            ) {
+                zooScreen(navController)
+                petDetailsScreen(navController)
+                petCreationScreen(navController)
+                cemeteryScreen(navController)
+                weatherReportScreen()
+                userProfileScreen()
+                dialogScreen(navController)
+            }
+
+            if (uiState.notifications.isNotEmpty()) {
+                Column {
+                    uiState.notifications.forEach { notification ->
+                        UserNotificationCell(notification) {
+                            onAction(MainViewModel.Action.TapOnNotification(notification.id))
+                        }
+                    }
+                }
+            }
         }
     }
 }

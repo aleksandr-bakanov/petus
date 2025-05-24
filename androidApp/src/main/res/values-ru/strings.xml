@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+	<!-- Screen titles -->
 	<string name="ZooScreenTitle">Дом</string>
 	<string name="CemeteryScreenTitle">Погост</string>
 	<string name="WeatherScreenTitle">Погода</string>
 	<string name="ProfileScreenTitle">Профиль</string>
+
+	<!-- User profile -->
 	<string name="ProfileScreenLanguagesLabel">Языки</string>
 	<string name="ProfileScreenInventoryLabel">Инвентарь</string>
 	<string name="ProfileScreenAbilitiesLabel">Способности</string>
 	<string name="LanguageKnowledgeTitleCatus">Язык Катуса</string>
 	<string name="LanguageKnowledgeTitleDogus">Язык Догуса</string>
 	<string name="LanguageKnowledgeTitleFrogus">Язык Фрогуса</string>
+
+	<!-- Pet descriptions -->
 	<string name="PetTypeDescriptionCatus">Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.</string>
 	<string name="PetTypeDescriptionDogus">Догус: спит 1 часа, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.</string>
 	<string name="PetTypeDescriptionFrogus">Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер ветер.</string>
+
+	<!-- Item names -->
+	<string name="Necronomicon">Некрономикон</string>
+	<string name="PieceOfCloth">Кусок ткани</string>
+	<string name="MysteriousBook">Загадочная книга</string>
+	<string name="InventoryItemPattern">%s (x%d)</string>
+
+	<!-- Notifications -->
+	<string name="NotificationInventoryItemAdded">Добавлено: %s</string>
+	<string name="NotificationInventoryItemRemoved">Удалено: %s</string>
+
+	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">Как дела?</string>
 	<string name="BeenBetter">Бывало и получше.</string>
 	<string name="IShouldGo">Мне пора.</string>

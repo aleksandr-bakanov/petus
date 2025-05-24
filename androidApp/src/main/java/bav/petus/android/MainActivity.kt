@@ -40,6 +40,7 @@ class MainActivity : ComponentActivity() {
                 uiState?.let {
                     AppWithBottomBar(
                         uiState = it,
+                        onAction = mainViewModel::onAction,
                     )
                 }
             }

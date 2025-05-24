@@ -1,42 +1,53 @@
-Variables;English;Russian
+Comment;OS;Variables;English;Russian
 
-ZooScreenTitle;Home;Дом
-CemeteryScreenTitle;Cemetery;Погост
-WeatherScreenTitle;Weather;Погода
-ProfileScreenTitle;Profile;Профиль
+Screen titles;android, ios;ZooScreenTitle;Home;Дом
+;android, ios;CemeteryScreenTitle;Cemetery;Погост
+;android, ios;WeatherScreenTitle;Weather;Погода
+;android, ios;ProfileScreenTitle;Profile;Профиль
 
-ProfileScreenLanguagesLabel;Languages;Языки
-ProfileScreenInventoryLabel;Inventory;Инвентарь
-ProfileScreenAbilitiesLabel;Abilities;Способности
-LanguageKnowledgeTitleCatus;Catus language knowledge;Язык Катуса
-LanguageKnowledgeTitleDogus;Dogus language knowledge;Язык Догуса
-LanguageKnowledgeTitleFrogus;Frogus language knowledge;Язык Фрогуса
+User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
+;android, ios;ProfileScreenInventoryLabel;Inventory;Инвентарь
+;android, ios;ProfileScreenAbilitiesLabel;Abilities;Способности
+;android, ios;LanguageKnowledgeTitleCatus;Catus language knowledge;Язык Катуса
+;android, ios;LanguageKnowledgeTitleDogus;Dogus language knowledge;Язык Догуса
+;android, ios;LanguageKnowledgeTitleFrogus;Frogus language knowledge;Язык Фрогуса
 
-PetTypeDescriptionCatus;Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.;Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.
-PetTypeDescriptionDogus;Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.;Догус: спит 1 часа, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.
-PetTypeDescriptionFrogus;Frogus: sleeps 12 hours, awake for 12 hours. Likes cold cloudy days. Does not like wind.;Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер ветер.
+Pet descriptions;android, ios;PetTypeDescriptionCatus;Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.;Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.
+;android, ios;PetTypeDescriptionDogus;Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.;Догус: спит 1 часа, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.
+;android, ios;PetTypeDescriptionFrogus;Frogus: sleeps 12 hours, awake for 12 hours. Likes cold cloudy days. Does not like wind.;Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер ветер.
 
-WhatIsGoingOnWithYou;What is going on with you?;Как дела?
-BeenBetter;Been better.;Бывало и получше.
-IShouldGo;I should go.;Мне пора.
-SeeYa;See ya.;Бывай.
-ByeBye;Bye bye.;Пока-пока.
-Sure;Sure;Угу
-Ok;Ok;Окей
-Thanks;Thanks;Пасиб
-Use;Use;Использовать
-Destroy;Destroy;Уничтожить
-NecronomiconStage3AnswerOption0;Do you know anything about the dug grave?;Ты знаешь что-нибудь про разрытую могилу?
-NecronomiconStage3CommonDialog;Nope, do not know anything;Неа, ничего не знаю
-NecronomiconStage3DogDialog;I do not know anything but we could investigate, bring me something from there.;Я ничего не знаю, но можно расследовать. Принеси мне что-нибудь оттуда.
-NecronomiconStage3DogDialogAnswerOption0;Ok, I will see what I can find;Океюшки, посмотрю что я смогу найти
-NecronomiconStage5AnswerOption0;Look what I have found near the grave;Смотри что я нашла на у могилы
-NecronomiconStage5DogDialog;Hmm, interesting, let me see where it will lead me…;Хмм, интересно, посмотрим что можно с этим сделать
-NecronomiconStage6AnswerOption0;Have you found anything?;Ты нашел что нибудь?
-NecronomiconStage6DogDialog;No, not yet, but I am searching.;Не, пока что ничего, но я в процессе
-NecronomiconStage7DogDialog0;Look, I have found this strange book on ritual site. Take it.;Смотри-ка, нашел какой-то место для ритуалов и вот эту странную книгу. Возьми её.
-NecronomiconStage7AnswerOption0;Thanks, do you know who can help me with it?;Спасибо, знаешь кого-нибудь кто может мне с ней помочь?
-NecronomiconStage7DogDialog1;Try to ask catus they usually more experienced in wisdom stuff, the older the better.;Попробуй спросить катуса, они обычно лучше разбираются в мудрёных делах, чем старше тем лучше
-NecronomiconStage8AnswerOption0;[Show the book] Do you know anything about this book?;[Показать книгу] Знаешь что-нибудь про эту книгу?
-NecronomiconStage8Dialog0;What is this? I can sense some magic but I am not sure…;Это что такое? Я чувствую какую-то магию, но вообще не уверен…
-NecronomiconStage8Dialog1;Ahh, yes, I know what it is. This is Necronomicon. Do you with to use it or destroy it?;Ааа, ну да, я знаю что это такое. Это Некрономикон. Хочешь использовать его или уничтожить?
+Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
+;android, ios;PieceOfCloth;Piece of cloth;Кусок ткани
+;android, ios;MysteriousBook;Mysterious book;Загадочная книга
+;android;InventoryItemPattern;%s (x%d);%s (x%d)
+;ios;InventoryItemPattern;%@ (x%d);%@ (x%d)
+
+Notifications;android;NotificationInventoryItemAdded;%s added;Добавлено: %s
+Notifications;ios;NotificationInventoryItemAdded;%@ added;Добавлено: %@
+;android;NotificationInventoryItemRemoved;%s removed;Удалено: %s
+;ios;NotificationInventoryItemRemoved;%@ removed;Удалено: %@
+
+Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как дела?
+;android, ios;BeenBetter;Been better.;Бывало и получше.
+;android, ios;IShouldGo;I should go.;Мне пора.
+;android, ios;SeeYa;See ya.;Бывай.
+;android, ios;ByeBye;Bye bye.;Пока-пока.
+;android, ios;Sure;Sure;Угу
+;android, ios;Ok;Ok;Окей
+;android, ios;Thanks;Thanks;Пасиб
+;android, ios;Use;Use;Использовать
+;android, ios;Destroy;Destroy;Уничтожить
+;android, ios;NecronomiconStage3AnswerOption0;Do you know anything about the dug grave?;Ты знаешь что-нибудь про разрытую могилу?
+;android, ios;NecronomiconStage3CommonDialog;Nope, do not know anything;Неа, ничего не знаю
+;android, ios;NecronomiconStage3DogDialog;I do not know anything but we could investigate, bring me something from there.;Я ничего не знаю, но можно расследовать. Принеси мне что-нибудь оттуда.
+;android, ios;NecronomiconStage3DogDialogAnswerOption0;Ok, I will see what I can find;Океюшки, посмотрю что я смогу найти
+;android, ios;NecronomiconStage5AnswerOption0;Look what I have found near the grave;Смотри что я нашла на у могилы
+;android, ios;NecronomiconStage5DogDialog;Hmm, interesting, let me see where it will lead me…;Хмм, интересно, посмотрим что можно с этим сделать
+;android, ios;NecronomiconStage6AnswerOption0;Have you found anything?;Ты нашел что нибудь?
+;android, ios;NecronomiconStage6DogDialog;No, not yet, but I am searching.;Не, пока что ничего, но я в процессе
+;android, ios;NecronomiconStage7DogDialog0;Look, I have found this strange book on ritual site. Take it.;Смотри-ка, нашел какой-то место для ритуалов и вот эту странную книгу. Возьми её.
+;android, ios;NecronomiconStage7AnswerOption0;Thanks, do you know who can help me with it?;Спасибо, знаешь кого-нибудь кто может мне с ней помочь?
+;android, ios;NecronomiconStage7DogDialog1;Try to ask catus they usually more experienced in wisdom stuff, the older the better.;Попробуй спросить катуса, они обычно лучше разбираются в мудрёных делах, чем старше тем лучше
+;android, ios;NecronomiconStage8AnswerOption0;[Show the book] Do you know anything about this book?;[Показать книгу] Знаешь что-нибудь про эту книгу?
+;android, ios;NecronomiconStage8Dialog0;What is this? I can sense some magic but I am not sure…;Это что такое? Я чувствую какую-то магию, но вообще не уверен…
+;android, ios;NecronomiconStage8Dialog1;Ahh, yes, I know what it is. This is Necronomicon. Do you with to use it or destroy it?;Ааа, ну да, я знаю что это такое. Это Некрономикон. Хочешь использовать его или уничтожить?

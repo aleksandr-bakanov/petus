@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import bav.petus.core.inventory.InventoryItem
+import bav.petus.core.notification.UserNotification
 import bav.petus.model.PetType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -65,11 +66,40 @@ class UserStats(
         } ?: emptyList()
     }
 
+    private fun Preferences.getUserNotifications(): List<UserNotification> {
+        return this[USER_NOTIFICATIONS_KEY]?.let {
+            Json.decodeFromString<List<UserNotification>>(it)
+        } ?: emptyList()
+    }
+
+    fun getUserNotificationsFlow(): Flow<List<UserNotification>> {
+        return dataStore.data.map { store ->
+            store[USER_NOTIFICATIONS_KEY]?.let {
+                Json.decodeFromString<List<UserNotification>>(it)
+            } ?: emptyList()
+        }
+    }
+
+    suspend fun addNotification(notification: UserNotification) {
+        val notifications = dataStore.data.first().getUserNotifications()
+        val updatedNotifications = listOf(notification) + notifications
+        dataStore.edit { store -> store[USER_NOTIFICATIONS_KEY] = Json.encodeToString(updatedNotifications) }
+    }
+
+    suspend fun removeNotification(id: String) {
+        val notifications = dataStore.data.first().getUserNotifications()
+        val updatedNotifications = notifications.filterNot { it.id == id }
+        if (notifications.size != updatedNotifications.size) {
+            dataStore.edit { store -> store[USER_NOTIFICATIONS_KEY] = Json.encodeToString(updatedNotifications) }
+        }
+    }
+
     // TODO: add some toast to inform user about item addition
     suspend fun addInventoryItem(item: InventoryItem) {
         val inventory = dataStore.data.first().getInventory()
         val newInventory = inventory.addItem(item)
         dataStore.edit { store -> store[USER_INVENTORY_KEY] = Json.encodeToString(newInventory) }
+        addNotification(UserNotification.InventoryItemAdded(item))
     }
 
     suspend fun removeInventoryItem(item: InventoryItem) {
@@ -77,6 +107,7 @@ class UserStats(
         val newInventory = inventory.removeItem(item)
         if (newInventory != null) {
             dataStore.edit { store -> store[USER_INVENTORY_KEY] = Json.encodeToString(newInventory) }
+            addNotification(UserNotification.InventoryItemRemoved(item))
         }
     }
 
@@ -141,6 +172,7 @@ class UserStats(
         private val AVAILABLE_ABILITIES_KEY = stringSetPreferencesKey("available_abilities_types")
 
         private val USER_INVENTORY_KEY = stringPreferencesKey("user_inventory")
+        private val USER_NOTIFICATIONS_KEY = stringPreferencesKey("user_notifications")
     }
 }
 

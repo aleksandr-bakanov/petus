@@ -1,16 +1,34 @@
+
+/* Screen titles */
 "ZooScreenTitle"                           = "Дом";
 "CemeteryScreenTitle"                      = "Погост";
 "WeatherScreenTitle"                       = "Погода";
 "ProfileScreenTitle"                       = "Профиль";
+
+/* User profile */
 "ProfileScreenLanguagesLabel"              = "Языки";
 "ProfileScreenInventoryLabel"              = "Инвентарь";
 "ProfileScreenAbilitiesLabel"              = "Способности";
 "LanguageKnowledgeTitleCatus"              = "Язык Катуса";
 "LanguageKnowledgeTitleDogus"              = "Язык Догуса";
 "LanguageKnowledgeTitleFrogus"             = "Язык Фрогуса";
+
+/* Pet descriptions */
 "PetTypeDescriptionCatus"                  = "Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.";
 "PetTypeDescriptionDogus"                  = "Догус: спит 1 часа, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.";
 "PetTypeDescriptionFrogus"                 = "Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер ветер.";
+
+/* Item names */
+"Necronomicon"                             = "Некрономикон";
+"PieceOfCloth"                             = "Кусок ткани";
+"MysteriousBook"                           = "Загадочная книга";
+"InventoryItemPattern"                     = "%@ (x%d)";
+
+/* Notifications */
+"NotificationInventoryItemAdded"           = "Добавлено: %@";
+"NotificationInventoryItemRemoved"         = "Удалено: %@";
+
+/* Dialogs */
 "WhatIsGoingOnWithYou"                     = "Как дела?";
 "BeenBetter"                               = "Бывало и получше.";
 "IShouldGo"                                = "Мне пора.";

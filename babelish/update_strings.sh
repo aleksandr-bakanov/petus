@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-babelish csv2android
-babelish csv2strings
+babelish csv2android --excluded_states="ios"
+babelish csv2strings --excluded_states="android"
 
 # Copy Android strings
 echo "Copying Android strings"
