@@ -30,8 +30,8 @@ class KoinHelper : KoinComponent {
         latitude: Double?,
         longitude: Double?,
         info: String?,
-    ): Boolean {
-        return sdk.retrieveWeatherInBackground(latitude, longitude, info)
+    ) {
+        sdk.retrieveWeatherInBackground(latitude, longitude, info)
     }
 
     /**

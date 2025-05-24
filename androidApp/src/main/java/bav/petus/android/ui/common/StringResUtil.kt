@@ -5,14 +5,18 @@ import bav.petus.core.resources.StringId
 
 fun StringId.toResId(): Int {
     return when (this) {
-        StringId.PetTypeDescriptionCatus -> R.string.pet_type_description_catus
-        StringId.PetTypeDescriptionDogus -> R.string.pet_type_description_dogus
-        StringId.PetTypeDescriptionFrogus -> R.string.pet_type_description_frogus
-        StringId.WhatIsGoingOnWithYou -> R.string.what_is_going_on_with_you
-        StringId.BeingBetter -> R.string.being_better
-        StringId.IShouldGo -> R.string.i_should_go
-        StringId.SeeYa -> R.string.see_ya
-        StringId.ByeBye -> R.string.bye_bye
+        StringId.ZooScreenTitle -> R.string.ZooScreenTitle
+        StringId.CemeteryScreenTitle -> R.string.CemeteryScreenTitle
+        StringId.ProfileScreenTitle -> R.string.ProfileScreenTitle
+        StringId.WeatherScreenTitle -> R.string.WeatherScreenTitle
+        StringId.PetTypeDescriptionCatus -> R.string.PetTypeDescriptionCatus
+        StringId.PetTypeDescriptionDogus -> R.string.PetTypeDescriptionDogus
+        StringId.PetTypeDescriptionFrogus -> R.string.PetTypeDescriptionFrogus
+        StringId.WhatIsGoingOnWithYou -> R.string.WhatIsGoingOnWithYou
+        StringId.BeingBetter -> R.string.BeenBetter
+        StringId.IShouldGo -> R.string.IShouldGo
+        StringId.SeeYa -> R.string.SeeYa
+        StringId.ByeBye -> R.string.ByeBye
         StringId.Sure -> R.string.Sure
         StringId.Ok -> R.string.Ok
         StringId.Thanks -> R.string.Thanks

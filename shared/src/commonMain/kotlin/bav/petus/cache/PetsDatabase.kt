@@ -60,6 +60,9 @@ interface PetDao {
     @Query("SELECT * FROM WeatherRecord")
     fun selectAllWeatherRecordsFlow(): Flow<List<WeatherRecord>>
 
+    @Query("SELECT * FROM WeatherRecord ORDER BY timestampSecondsSinceEpoch DESC LIMIT 1")
+    fun selectLatestWeatherRecordsFlow(): Flow<WeatherRecord?>
+
     @Insert
     suspend fun insertPetHistoryRecord(item: PetHistoryRecord)
 

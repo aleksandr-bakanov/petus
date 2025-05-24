@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="ZooScreenTitle">Дом</string>
+	<string name="CemeteryScreenTitle">Погост</string>
+	<string name="WeatherScreenTitle">Погода</string>
+	<string name="ProfileScreenTitle">Профиль</string>
+	<string name="ProfileScreenLanguagesLabel">Языки</string>
+	<string name="ProfileScreenInventoryLabel">Инвентарь</string>
+	<string name="ProfileScreenAbilitiesLabel">Способности</string>
+	<string name="LanguageKnowledgeTitleCatus">Язык Катуса</string>
+	<string name="LanguageKnowledgeTitleDogus">Язык Догуса</string>
+	<string name="LanguageKnowledgeTitleFrogus">Язык Фрогуса</string>
+	<string name="PetTypeDescriptionCatus">Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.</string>
+	<string name="PetTypeDescriptionDogus">Догус: спит 1 часа, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.</string>
+	<string name="PetTypeDescriptionFrogus">Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер ветер.</string>
+	<string name="WhatIsGoingOnWithYou">Как дела?</string>
+	<string name="BeenBetter">Бывало и получше.</string>
+	<string name="IShouldGo">Мне пора.</string>
+	<string name="SeeYa">Бывай.</string>
+	<string name="ByeBye">Пока-пока.</string>
+	<string name="Sure">Угу</string>
+	<string name="Ok">Окей</string>
+	<string name="Thanks">Пасиб</string>
+	<string name="Use">Использовать</string>
+	<string name="Destroy">Уничтожить</string>
+	<string name="NecronomiconStage3AnswerOption0">Ты знаешь что-нибудь про разрытую могилу?</string>
+	<string name="NecronomiconStage3CommonDialog">Неа, ничего не знаю</string>
+	<string name="NecronomiconStage3DogDialog">Я ничего не знаю, но можно расследовать. Принеси мне что-нибудь оттуда.</string>
+	<string name="NecronomiconStage3DogDialogAnswerOption0">Океюшки, посмотрю что я смогу найти</string>
+	<string name="NecronomiconStage5AnswerOption0">Смотри что я нашла на у могилы</string>
+	<string name="NecronomiconStage5DogDialog">Хмм, интересно, посмотрим что можно с этим сделать</string>
+	<string name="NecronomiconStage6AnswerOption0">Ты нашел что нибудь?</string>
+	<string name="NecronomiconStage6DogDialog">Не, пока что ничего, но я в процессе</string>
+	<string name="NecronomiconStage7DogDialog0">Смотри-ка, нашел какой-то место для ритуалов и вот эту странную книгу. Возьми её.</string>
+	<string name="NecronomiconStage7AnswerOption0">Спасибо, знаешь кого-нибудь кто может мне с ней помочь?</string>
+	<string name="NecronomiconStage7DogDialog1">Попробуй спросить катуса, они обычно лучше разбираются в мудрёных делах, чем старше тем лучше</string>
+	<string name="NecronomiconStage8AnswerOption0">[Показать книгу] Знаешь что-нибудь про эту книгу?</string>
+	<string name="NecronomiconStage8Dialog0">Это что такое? Я чувствую какую-то магию, но вообще не уверен…</string>
+	<string name="NecronomiconStage8Dialog1">Ааа, ну да, я знаю что это такое. Это Некрономикон. Хочешь использовать его или уничтожить?</string>
+</resources>

@@ -7,6 +7,7 @@ import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.entity.WeatherDto
 import bav.petus.network.WeatherApi
 import bav.petus.repo.WeatherRepository
+import kotlinx.coroutines.sync.Mutex
 
 class PetsSDK(
     private val weatherApi: WeatherApi,
@@ -15,8 +16,10 @@ class PetsSDK(
     private val timeRepo: TimeRepository,
 ) {
 
+    private val mutex = Mutex()
+
     /**
-     * Called from iOS side
+     * Called from iOS and Android side
      *
      * @return true if success
      */
@@ -25,7 +28,14 @@ class PetsSDK(
         latitude: Double?,
         longitude: Double?,
         info: String?,
-    ): Boolean {
+    ) {
+        mutex.lock()
+
+        if (!timeRepo.isTimeToFetchWeather()) {
+            mutex.unlock()
+            return
+        }
+
         val weatherDto: WeatherDto? = if (latitude != null && longitude != null) {
             val result = weatherApi.getWeather(latitude = latitude, longitude = longitude)
             result.getOrNull()
@@ -49,7 +59,7 @@ class PetsSDK(
             timeRepo.saveLastTimestampOfWeatherRequest(timestamp)
         }
 
-        return weatherDto != null
+        mutex.unlock()
     }
 
     suspend fun applicationDidBecomeActive() {

@@ -14,18 +14,18 @@ struct MainScreen: View {
                 if state.showCemetery == true {
                     CemeteryScreen()
                         .tabItem {
-                            Label("Cemetery", systemImage: "plus")
+                            Label("CemeteryScreenTitle", systemImage: "plus")
                         }
                         .tag(1)
                 }
                 ZooView()
                     .tabItem {
-                        Label("Zoo", systemImage: "house")
+                        Label("ZooScreenTitle", systemImage: "house")
                     }
                     .tag(2)
                 UserProfileView()
                     .tabItem {
-                        Label("Profile", systemImage: "face.smiling")
+                        Label("ProfileScreenTitle", systemImage: "face.smiling")
                     }
                     .tag(3)
             }

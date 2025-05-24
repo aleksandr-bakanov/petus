@@ -5,15 +5,18 @@ import bav.petus.core.engine.Ability
 import bav.petus.core.engine.UserStats
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
+import bav.petus.extension.str
+import bav.petus.repo.WeatherRepository
 import com.rickclephas.kmp.observableviewmodel.launch
 import com.rickclephas.kmp.observableviewmodel.stateIn
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.combine
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 data class UserProfileUiState(
+    val latestWeather: String?,
     val languageKnowledgeCatus: String,
     val languageKnowledgeDogus: String,
     val languageKnowledgeFrogus: String,
@@ -24,18 +27,21 @@ data class UserProfileUiState(
 class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenViewModel.Navigation>(), KoinComponent {
 
     private val userStats: UserStats by inject()
+    private val weatherRepo: WeatherRepository by inject()
 
-    val uiState: StateFlow<UserProfileUiState?> = userStats.getUserProfileFlow()
-        .map { data ->
-            UserProfileUiState(
-                languageKnowledgeCatus = "${data.languageKnowledge.catus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
-                languageKnowledgeDogus = "${data.languageKnowledge.dogus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
-                languageKnowledgeFrogus = "${data.languageKnowledge.frogus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
-                inventory = data.inventory,
-                abilities = data.abilities.toList(),
-            )
-        }
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
+    val uiState: StateFlow<UserProfileUiState?> = combine(
+        userStats.getUserProfileFlow(),
+        weatherRepo.getLatestWeatherRecordFlow()
+    ) { userData, weatherRecord ->
+        UserProfileUiState(
+            latestWeather = weatherRecord?.str(),
+            languageKnowledgeCatus = "${userData.languageKnowledge.catus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
+            languageKnowledgeDogus = "${userData.languageKnowledge.dogus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
+            languageKnowledgeFrogus = "${userData.languageKnowledge.frogus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
+            inventory = userData.inventory,
+            abilities = userData.abilities.toList(),
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     fun onAction(action: Action) {
         when (action) {

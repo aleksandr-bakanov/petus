@@ -18,11 +18,11 @@ struct LanguageKnowledgeCell: View {
     private var title: String {
         switch type {
         case .catus:
-            return NSLocalizedString("language_knowledge_title_catus", comment: "")
+            return NSLocalizedString("LanguageKnowledgeTitleCatus", comment: "")
         case .dogus:
-            return NSLocalizedString("language_knowledge_title_dogus", comment: "")
+            return NSLocalizedString("LanguageKnowledgeTitleDogus", comment: "")
         case .frogus:
-            return NSLocalizedString("language_knowledge_title_frogus", comment: "")
+            return NSLocalizedString("LanguageKnowledgeTitleFrogus", comment: "")
         }
     }
 }

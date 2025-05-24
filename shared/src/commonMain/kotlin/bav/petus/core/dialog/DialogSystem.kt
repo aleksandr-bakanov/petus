@@ -95,7 +95,7 @@ class DialogSystem(
 
         private val nodes: Map<String, DialogNode> = mapOf(
             STANDARD_DIALOG_BEGINNING to DialogNode(
-                text = StringId.WhatIsGoingOnWithYou,
+                text = listOf(StringId.WhatIsGoingOnWithYou),
                 answers = listOf(
                     Answer(
                         text = StringId.BeingBetter,
@@ -108,7 +108,7 @@ class DialogSystem(
                 )
             ),
             BEING_BETTER to DialogNode(
-                text = StringId.SeeYa,
+                text = listOf(StringId.SeeYa),
                 answers = listOf(
                     Answer(
                         text = StringId.ByeBye,
@@ -117,7 +117,7 @@ class DialogSystem(
                 )
             ),
             NECRONOMICON_STAGE_3_COMMON_DIALOG to DialogNode(
-                text = StringId.NecronomiconStage3CommonDialog,
+                text = listOf(StringId.NecronomiconStage3CommonDialog),
                 answers = listOf(
                     Answer(
                         text = StringId.ByeBye,
@@ -126,7 +126,7 @@ class DialogSystem(
                 )
             ),
             NECRONOMICON_STAGE_3_DOG_DIALOG to DialogNode(
-                text = StringId.NecronomiconStage3DogDialog,
+                text = listOf(StringId.NecronomiconStage3DogDialog),
                 answers = listOf(
                     Answer(
                         text = StringId.NecronomiconStage3DogDialogAnswerOption0,
@@ -138,7 +138,7 @@ class DialogSystem(
                 )
             ),
             NECRONOMICON_STAGE_5_DOG_DIALOG to DialogNode(
-                text = StringId.NecronomiconStage5DogDialog,
+                text = listOf(StringId.NecronomiconStage5DogDialog),
                 answers = listOf(
                     Answer(
                         text = StringId.Sure,
@@ -158,7 +158,7 @@ class DialogSystem(
                 )
             ),
             NECRONOMICON_STAGE_6_DOG_DIALOG to DialogNode(
-                text = StringId.NecronomiconStage6DogDialog,
+                text = listOf(StringId.NecronomiconStage6DogDialog),
                 answers = listOf(
                     Answer(
                         text = StringId.Ok,
@@ -167,7 +167,7 @@ class DialogSystem(
                 )
             ),
             NECRONOMICON_STAGE_7_DOG_DIALOG_0 to DialogNode(
-                text = StringId.NecronomiconStage7DogDialog0,
+                text = listOf(StringId.NecronomiconStage7DogDialog0),
                 answers = listOf(
                     Answer(
                         text = StringId.NecronomiconStage7AnswerOption0,
@@ -181,7 +181,7 @@ class DialogSystem(
                 )
             ),
             NECRONOMICON_STAGE_7_DOG_DIALOG_1 to DialogNode(
-                text = StringId.NecronomiconStage7DogDialog1,
+                text = listOf(StringId.NecronomiconStage7DogDialog1),
                 answers = listOf(
                     Answer(
                         text = StringId.Thanks,
@@ -193,7 +193,7 @@ class DialogSystem(
                 )
             ),
             NECRONOMICON_STAGE_8_DIALOG_0 to DialogNode(
-                text = StringId.NecronomiconStage8Dialog0,
+                text = listOf(StringId.NecronomiconStage8Dialog0),
                 answers = listOf(
                     Answer(
                         text = StringId.Ok,
@@ -202,7 +202,7 @@ class DialogSystem(
                 )
             ),
             NECRONOMICON_STAGE_8_DIALOG_1 to DialogNode(
-                text = StringId.NecronomiconStage8Dialog1,
+                text = listOf(StringId.NecronomiconStage8Dialog1),
                 answers = listOf(
                     Answer(
                         text = StringId.Use,

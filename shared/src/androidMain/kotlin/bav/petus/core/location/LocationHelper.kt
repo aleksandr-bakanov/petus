@@ -18,23 +18,15 @@ class LocationHelper(private val context: Context) {
     private val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
 
     fun getCurrentLocation(
-        onSuccess: (Location) -> Unit,
+        onSuccess: (Location?) -> Unit,
         onFailure: (Exception) -> Unit,
     ) {
         val coarseLocationPermitted = ActivityCompat.checkSelfPermission(
             context,
             Manifest.permission.ACCESS_COARSE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
-        val backgroundLocationPermitted = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
-            ActivityCompat.checkSelfPermission(
-                context,
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        } else {
-            coarseLocationPermitted
-        }
-        if (!coarseLocationPermitted || !backgroundLocationPermitted) {
-            onFailure(Exception("Location access not permitted: isCoarse = $coarseLocationPermitted, isBackground = $backgroundLocationPermitted"))
+        if (!coarseLocationPermitted) {
+            onFailure(Exception("Location access not permitted"))
             return
         }
 
@@ -47,12 +39,17 @@ class LocationHelper(private val context: Context) {
             null,
         ).addOnSuccessListener { location ->
             Log.d("cqhg43", "LOCA Success location = $location")
-            onSuccess(location)
+            if (location != null) {
+                onSuccess(location)
+            } else {
+                onFailure(Exception("Received null location in success listener"))
+            }
         }.addOnFailureListener { exception ->
             Log.d("cqhg43", "LOCA Failure $exception")
             onFailure(exception)
         }.addOnCanceledListener {
             Log.d("cqhg43", "LOCA Canceled")
+            onFailure(Exception("LOCA canceled"))
         }.addOnCompleteListener {
             Log.d("cqhg43", "LOCA Completed")
         }
@@ -65,7 +62,7 @@ suspend fun LocationHelper.getLocation(): Location? =
             onSuccess = { location ->
                 cont.resume(location)
             },
-            onFailure = { _ ->
+            onFailure = { error ->
                 cont.resume(null)
             }
         )

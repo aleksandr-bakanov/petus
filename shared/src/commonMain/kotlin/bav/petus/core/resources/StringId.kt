@@ -1,38 +1,42 @@
 package bav.petus.core.resources
 
-enum class StringId {
+sealed class StringId {
+    data object ZooScreenTitle : StringId()
+    data object CemeteryScreenTitle : StringId()
+    data object WeatherScreenTitle : StringId()
+    data object ProfileScreenTitle : StringId()
+
     //region Pet type description
-    PetTypeDescriptionCatus,
-    PetTypeDescriptionDogus,
-    PetTypeDescriptionFrogus,
+    data object PetTypeDescriptionCatus : StringId()
+    data object PetTypeDescriptionDogus : StringId()
+    data object PetTypeDescriptionFrogus : StringId()
     //endregion
 
     //region Dialogs
-    WhatIsGoingOnWithYou,
-    BeingBetter,
-    IShouldGo,
-    SeeYa,
-    ByeBye,
-    Sure,
-    Ok,
-    Thanks,
-    Use,
-    Destroy,
+    data object WhatIsGoingOnWithYou : StringId()
+    data object BeingBetter : StringId()
+    data object IShouldGo : StringId()
+    data object SeeYa : StringId()
+    data object ByeBye : StringId()
+    data object Sure : StringId()
+    data object Ok : StringId()
+    data object Thanks : StringId()
+    data object Use : StringId()
+    data object Destroy : StringId()
 
-    NecronomiconStage3AnswerOption0, // Do you know anything about exhumated grave?
-    NecronomiconStage3CommonDialog, // Nope, don't know anything
-    NecronomiconStage3DogDialog, // I don't know anything but we could investigate, bring me something from there.
-    NecronomiconStage3DogDialogAnswerOption0, // Ok, I'll see what I can find
-    NecronomiconStage5AnswerOption0, // Look what I've found near the grave
-    NecronomiconStage5DogDialog, // Hmm, interesting, let me see where it'll lead me...
-    NecronomiconStage6AnswerOption0, // Have you found anything?
-    NecronomiconStage6DogDialog, // No, not yet, but I'm searching.
-    NecronomiconStage7DogDialog0, // Look, I've found this strange book on ritual site. Take it.
-    NecronomiconStage7AnswerOption0, // Thanks, do you know who can help me with it?
-    NecronomiconStage7DogDialog1, // Try to ask catus they usually more experienced in wisdom stuff, the older the better.
-    NecronomiconStage8AnswerOption0, // [Show the book] Do you know anything about this book?
-    NecronomiconStage8Dialog0, // What's this? I can sense some magic but I'm not sure...
-    NecronomiconStage8Dialog1, // Ahh, yes, I know what it is. This is Necronomicon. Do you with to use it or destroy it?
+    data object NecronomiconStage3AnswerOption0 : StringId()
+    data object NecronomiconStage3CommonDialog : StringId()
+    data object NecronomiconStage3DogDialog : StringId()
+    data object NecronomiconStage3DogDialogAnswerOption0 : StringId()
+    data object NecronomiconStage5AnswerOption0 : StringId()
+    data object NecronomiconStage5DogDialog : StringId()
+    data object NecronomiconStage6AnswerOption0 : StringId()
+    data object NecronomiconStage6DogDialog : StringId()
+    data object NecronomiconStage7DogDialog0 : StringId()
+    data object NecronomiconStage7AnswerOption0 : StringId()
+    data object NecronomiconStage7DogDialog1 : StringId()
+    data object NecronomiconStage8AnswerOption0 : StringId()
+    data object NecronomiconStage8Dialog0 : StringId()
+    data object NecronomiconStage8Dialog1 : StringId()
     //endregion
-    ;
 }

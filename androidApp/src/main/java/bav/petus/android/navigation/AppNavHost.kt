@@ -19,10 +19,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import bav.petus.android.ui.common.toResId
+import bav.petus.core.resources.StringId
 import bav.petus.viewModel.main.MainScreenUiState
 import kotlinx.serialization.Serializable
 
@@ -40,12 +43,12 @@ sealed interface TopLevelRoutes {
     data object UserProfileScreen : TopLevelRoutes
 }
 
-data class TopLevelRoute(val name: String, val route: TopLevelRoutes, val icon: ImageVector)
+data class TopLevelRoute(val name: StringId, val route: TopLevelRoutes, val icon: ImageVector)
 
-private val cemeteryTopRoute = TopLevelRoute("Cemetery", TopLevelRoutes.CemeteryScreen, Icons.Default.Add)
-private val zooTopRoute = TopLevelRoute("Zoo", TopLevelRoutes.ZooScreen, Icons.Default.Home)
-private val weatherTopRoute = TopLevelRoute("Weather", TopLevelRoutes.WeatherReportScreen, Icons.Default.Menu)
-private val profileTopRoute = TopLevelRoute("Profile", TopLevelRoutes.UserProfileScreen, Icons.Default.Face)
+private val cemeteryTopRoute = TopLevelRoute(StringId.CemeteryScreenTitle, TopLevelRoutes.CemeteryScreen, Icons.Default.Add)
+private val zooTopRoute = TopLevelRoute(StringId.ZooScreenTitle, TopLevelRoutes.ZooScreen, Icons.Default.Home)
+private val weatherTopRoute = TopLevelRoute(StringId.WeatherScreenTitle, TopLevelRoutes.WeatherReportScreen, Icons.Default.Menu)
+private val profileTopRoute = TopLevelRoute(StringId.ProfileScreenTitle, TopLevelRoutes.UserProfileScreen, Icons.Default.Face)
 
 @Composable
 fun AppWithBottomBar(
@@ -111,8 +114,8 @@ private fun RowScope.TopLevelNavBarItem(
     onClick: (item: TopLevelRoute) -> Unit,
 ) {
     NavigationBarItem(
-        icon = { Icon(item.icon, contentDescription = item.name) },
-        label = { Text(item.name) },
+        icon = { Icon(item.icon, contentDescription = stringResource(item.name.toResId())) },
+        label = { Text(stringResource(item.name.toResId())) },
         selected = isSelected,
         onClick = {
             onClick(item)

@@ -52,7 +52,7 @@ class Engine(
     fun isAllowedToFeedPet(pet: Pet): Boolean {
         return pet.bodyState == BodyState.Alive &&
                 pet.ageState != AgeState.Egg &&
-                pet.satiety < getFullSatietyForPetType(pet.type) &&
+                pet.satiety < getFullSatietyForPetType(pet.type) * 0.8f &&
                 pet.sleep.not()
     }
 
@@ -68,7 +68,7 @@ class Engine(
         val now = getTimestampSecondsSinceEpoch()
         return pet.bodyState == BodyState.Alive &&
                 pet.ageState != AgeState.Egg &&
-                pet.psych < getFullPsychForPetType(pet.type) &&
+                pet.psych < getFullPsychForPetType(pet.type) * 0.8f &&
                 pet.sleep.not() &&
                 now > pet.timestampPlayAllowed
     }
@@ -620,7 +620,7 @@ class Engine(
 
         // Ranges in seconds
         private val commonPetAgeToSecondsTable = mapOf(
-            AgeState.Egg to (0L until 60),                    // 1 hour
+            AgeState.Egg to (0L until 60),                    // 1 minute
             AgeState.NewBorn to (60 until DAY * 7),           // 7 days (-1 hour)
             AgeState.Teen to (DAY * 7 until DAY * 7 + 1),       // Disable Teen state making it short
             AgeState.Adult to (DAY * 7 + 1 until DAY * 14),      // 7 days
@@ -668,16 +668,16 @@ class Engine(
         // Measured in seconds
         private val petsActiveSleepTimes = mapOf(
             PetType.Catus to mapOf(
-                SleepState.Active to 28_800L,
-                SleepState.Sleep to 57_600L,
+                SleepState.Active to HOUR,
+                SleepState.Sleep to HOUR * 2,
             ),
             PetType.Dogus to mapOf(
-                SleepState.Active to 57_600L,
-                SleepState.Sleep to 28_800L,
+                SleepState.Active to HOUR * 2,
+                SleepState.Sleep to HOUR,
             ),
             PetType.Frogus to mapOf(
-                SleepState.Active to 43_200L,
-                SleepState.Sleep to 43_200L,
+                SleepState.Active to (HOUR * 3) / 2,
+                SleepState.Sleep to (HOUR * 3) / 2,
             ),
         )
 

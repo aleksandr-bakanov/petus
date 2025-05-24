@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--region Profile screen -->
-    <string name="profile_screen_title">Profile</string>
-    <string name="language_knowledge_title_catus">Catus language knowledge</string>
-    <string name="language_knowledge_title_dogus">Dogus language knowledge</string>
-    <string name="language_knowledge_title_frogus">Frogus language knowledge</string>
-    <!--endregion-->
-
-    <string name="pet_type_description_catus">Catus: sleeps 16 hours, awake for 8 hours. Likes warm sunny days. Likes small wind.</string>
-    <string name="pet_type_description_dogus">Dogus: sleeps 8 hours, awake for 16 hours. Likes warm sunny days. Likes medium wind.</string>
-    <string name="pet_type_description_frogus">Frogus: sleeps 12 hours, awake for 12 hours. Likes cold cloudy days. Does not like wind.</string>
-
-    <string name="what_is_going_on_with_you">What\'s going on with you?</string>
-    <string name="being_better">Being better.</string>
-    <string name="i_should_go">I should go.</string>
-    <string name="see_ya">See ya.</string>
-    <string name="bye_bye">Bye bye.</string>
-
-
-    <string name="Sure">Sure</string>
-    <string name="Ok">Ok</string>
-    <string name="Thanks">Thanks</string>
-    <string name="Use">Use</string>
-    <string name="Destroy">Destroy</string>
-    <string name="NecronomiconStage3AnswerOption0">Do you know anything about exhumated grave?</string>
-    <string name="NecronomiconStage3CommonDialog">Nope, don\'t know anything</string>
-    <string name="NecronomiconStage3DogDialog">I don\'t know anything but we could investigate, bring me something from there.</string>
-    <string name="NecronomiconStage3DogDialogAnswerOption0">Ok, I\'ll see what I can find</string>
-    <string name="NecronomiconStage5AnswerOption0">Look what I\'ve found near the grave</string>
-    <string name="NecronomiconStage5DogDialog">Hmm, interesting, let me see where it\'ll lead me…</string>
-    <string name="NecronomiconStage6AnswerOption0">Have you found anything?</string>
-    <string name="NecronomiconStage6DogDialog">No, not yet, but I\'m searching.</string>
-    <string name="NecronomiconStage7DogDialog0">Look, I\'ve found this strange book on ritual site. Take it.</string>
-    <string name="NecronomiconStage7AnswerOption0">Thanks, do you know who can help me with it?</string>
-    <string name="NecronomiconStage7DogDialog1">Try to ask catus they usually more experienced in wisdom stuff, the older the better.</string>
-    <string name="NecronomiconStage8AnswerOption0">[Show the book] Do you know anything about this book?</string>
-    <string name="NecronomiconStage8Dialog0">What\'s this? I can sense some magic but I\'m not sure…</string>
-    <string name="NecronomiconStage8Dialog1">Ahh, yes, I know what it is. This is Necronomicon. Do you with to use it or destroy it?</string>
+	<string name="ZooScreenTitle">Home</string>
+	<string name="CemeteryScreenTitle">Cemetery</string>
+	<string name="WeatherScreenTitle">Weather</string>
+	<string name="ProfileScreenTitle">Profile</string>
+	<string name="ProfileScreenLanguagesLabel">Languages</string>
+	<string name="ProfileScreenInventoryLabel">Inventory</string>
+	<string name="ProfileScreenAbilitiesLabel">Abilities</string>
+	<string name="LanguageKnowledgeTitleCatus">Catus language knowledge</string>
+	<string name="LanguageKnowledgeTitleDogus">Dogus language knowledge</string>
+	<string name="LanguageKnowledgeTitleFrogus">Frogus language knowledge</string>
+	<string name="PetTypeDescriptionCatus">Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.</string>
+	<string name="PetTypeDescriptionDogus">Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.</string>
+	<string name="PetTypeDescriptionFrogus">Frogus: sleeps 12 hours, awake for 12 hours. Likes cold cloudy days. Does not like wind.</string>
+	<string name="WhatIsGoingOnWithYou">What is going on with you?</string>
+	<string name="BeenBetter">Been better.</string>
+	<string name="IShouldGo">I should go.</string>
+	<string name="SeeYa">See ya.</string>
+	<string name="ByeBye">Bye bye.</string>
+	<string name="Sure">Sure</string>
+	<string name="Ok">Ok</string>
+	<string name="Thanks">Thanks</string>
+	<string name="Use">Use</string>
+	<string name="Destroy">Destroy</string>
+	<string name="NecronomiconStage3AnswerOption0">Do you know anything about the dug grave?</string>
+	<string name="NecronomiconStage3CommonDialog">Nope, do not know anything</string>
+	<string name="NecronomiconStage3DogDialog">I do not know anything but we could investigate, bring me something from there.</string>
+	<string name="NecronomiconStage3DogDialogAnswerOption0">Ok, I will see what I can find</string>
+	<string name="NecronomiconStage5AnswerOption0">Look what I have found near the grave</string>
+	<string name="NecronomiconStage5DogDialog">Hmm, interesting, let me see where it will lead me…</string>
+	<string name="NecronomiconStage6AnswerOption0">Have you found anything?</string>
+	<string name="NecronomiconStage6DogDialog">No, not yet, but I am searching.</string>
+	<string name="NecronomiconStage7DogDialog0">Look, I have found this strange book on ritual site. Take it.</string>
+	<string name="NecronomiconStage7AnswerOption0">Thanks, do you know who can help me with it?</string>
+	<string name="NecronomiconStage7DogDialog1">Try to ask catus they usually more experienced in wisdom stuff, the older the better.</string>
+	<string name="NecronomiconStage8AnswerOption0">[Show the book] Do you know anything about this book?</string>
+	<string name="NecronomiconStage8Dialog0">What is this? I can sense some magic but I am not sure…</string>
+	<string name="NecronomiconStage8Dialog1">Ahh, yes, I know what it is. This is Necronomicon. Do you with to use it or destroy it?</string>
 </resources>

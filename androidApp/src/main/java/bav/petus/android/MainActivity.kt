@@ -2,7 +2,6 @@ package bav.petus.android
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -62,26 +61,6 @@ class MainActivity : ComponentActivity() {
                     )
                 }
             }
-        }
-    }
-
-    private fun shouldShowBackgroundLocationPermissionRationale(): Boolean {
-        return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
-            when (ContextCompat.checkSelfPermission(
-                applicationContext,
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-            ) {
-                PackageManager.PERMISSION_GRANTED -> false
-
-                PackageManager.PERMISSION_DENIED -> {
-                    shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-                }
-
-                else -> false
-            }
-        }
-        else {
-            false
         }
     }
 

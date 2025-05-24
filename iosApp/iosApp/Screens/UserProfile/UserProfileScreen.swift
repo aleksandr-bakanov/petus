@@ -10,15 +10,18 @@ struct UserProfileView: View {
         ScrollView {
             if let state = viewModel.uiState.value {
                 VStack(alignment: .center, spacing: 16) {
-                    Text("Languages")
+                    if let weather = state.latestWeather {
+                        Text(weather).font(.caption)
+                    }
+                    Text("ProfileScreenLanguagesLabel")
                     LanguageKnowledgeCell(type: .catus, value: state.languageKnowledgeCatus)
                     LanguageKnowledgeCell(type: .dogus, value: state.languageKnowledgeDogus)
                     LanguageKnowledgeCell(type: .frogus, value: state.languageKnowledgeFrogus)
-                    Text("Inventory")
+                    Text("ProfileScreenInventoryLabel")
                     ForEach(state.inventory, id: \.id) { item in
                         InventoryItemCell(item: item)
                     }
-                    Text("Abilities")
+                    Text("ProfileScreenAbilitiesLabel")
                     ForEach(state.abilities, id: \.self) { item in
                         Text(item.name)
                     }
@@ -27,6 +30,6 @@ struct UserProfileView: View {
                 .padding()
             }
         }
-        .navigationTitle("Profile")
+        .navigationTitle("ProfileScreenTitle")
     }
 }

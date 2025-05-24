@@ -2,7 +2,7 @@ package bav.petus.repo
 
 import bav.petus.cache.PetsDatabase
 import bav.petus.cache.WeatherRecord
-import bav.petus.extension.epochTimeToString
+import bav.petus.extension.str
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlin.math.abs
@@ -101,25 +101,6 @@ class WeatherRepository(
     }
 
     fun getLatestWeatherRecordFlow(): Flow<WeatherRecord?> {
-        return database.getDao().selectAllWeatherRecordsFlow()
-            .map { list ->
-                list.maxByOrNull { it.timestampSecondsSinceEpoch }
-            }
-    }
-
-    private fun WeatherRecord.str(): String {
-        return buildString {
-            append(id)
-            append(" | ")
-            append(timestampSecondsSinceEpoch.epochTimeToString())
-            append(" | c:")
-            append(cloudPercentage)
-            append(" | h:")
-            append(humidity)
-            append(" | t:")
-            append(temperature)
-            append(" | w:")
-            append(windSpeed?.toInt())
-        }
+        return database.getDao().selectLatestWeatherRecordsFlow()
     }
 }

@@ -30,11 +30,9 @@ class LocationHelper : NSObject(), CLLocationManagerDelegateProtocol {
 
     @OptIn(ExperimentalForeignApi::class)
     override fun locationManager(manager: CLLocationManager, didUpdateLocations: List<*>) {
-        println("didUpdateLocations: locations = $didUpdateLocations")
         didUpdateLocations.lastOrNull()?.let { location ->
             val loc: CLLocation = location as CLLocation
             loc.coordinate.useContents {
-                println("didUpdateLocations: last location = ${this.latitude} - ${this.longitude}")
                 onSuccess?.let { it(this.latitude, this.longitude) }
                 onSuccess = null
             }
@@ -42,7 +40,6 @@ class LocationHelper : NSObject(), CLLocationManagerDelegateProtocol {
     }
 
     override fun locationManager(manager: CLLocationManager, didFailWithError: NSError) {
-        println("didFailWithError: ${didFailWithError.description()}")
         onFailure?.let { it() }
         onFailure = null
     }

@@ -94,7 +94,9 @@ class DialogScreenViewModel(
             imageId = petImageUseCase.getPetImageId(pet!!),
             text = dialogSystem.censorDialogText(
                 petType = pet!!.type,
-                text = args.convertStringIdToString(node.text),
+                text = node.text.joinToString(". ") {
+                    args.convertStringIdToString(it)
+                },
             )
         )
         val userMessage: DialogMessage? = answer?.let {

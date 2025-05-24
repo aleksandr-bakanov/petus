@@ -3,15 +3,15 @@ import shared
 
 extension StringId {
     var localized: String {
-        let resId: String.LocalizationValue = switch self {
-        case .petTypeDescriptionCatus: "pet_type_description_catus"
-        case .petTypeDescriptionDogus: "pet_type_description_dogus"
-        case .petTypeDescriptionFrogus: "pet_type_description_frogus"
-        case .whatIsGoingOnWithYou: "what_is_going_on_with_you"
-        case .beingBetter: "being_better"
-        case .byeBye: "bye_bye"
-        case .ishouldGo: "i_should_go"
-        case .seeYa: "see_ya"
+        let resId: String.LocalizationValue = switch onEnum(of: self) {
+        case .petTypeDescriptionCatus: "PetTypeDescriptionCatus"
+        case .petTypeDescriptionDogus: "PetTypeDescriptionDogus"
+        case .petTypeDescriptionFrogus: "PetTypeDescriptionFrogus"
+        case .whatIsGoingOnWithYou: "WhatIsGoingOnWithYou"
+        case .beingBetter: "BeenBetter"
+        case .byeBye: "ByeBye"
+        case .iShouldGo: "IShouldGo"
+        case .seeYa: "SeeYa"
         case .sure: "Sure"
         case .ok: "Ok"
         case .thanks: "Thanks"
@@ -31,6 +31,10 @@ extension StringId {
         case .necronomiconStage8AnswerOption0: "NecronomiconStage8AnswerOption0"
         case .necronomiconStage8Dialog0: "NecronomiconStage8Dialog0"
         case .necronomiconStage8Dialog1: "NecronomiconStage8Dialog1"
+        case .cemeteryScreenTitle: "CemeteryScreenTitle"
+        case .profileScreenTitle: "ProfileScreenTitle"
+        case .weatherScreenTitle: "WeatherScreenTitle"
+        case .zooScreenTitle: "ZooScreenTitle"
         }
         
         return String(localized: resId)
