@@ -27,4 +27,8 @@ class HistoryRepository(
         )
         database.getDao().insertPetHistoryRecord(record)
     }
+
+    suspend fun getHistoryRecordsForPet(id: Long): List<PetHistoryRecord> {
+        return database.getDao().selectHistoryRecordsForPet(id)
+    }
 }

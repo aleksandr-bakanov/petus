@@ -30,6 +30,25 @@
 	<string name="NotificationInventoryItemAdded">%s added</string>
 	<string name="NotificationInventoryItemRemoved">%s removed</string>
 
+	<!-- History events -->
+	<string name="HistoryEventPetCreated">Created</string>
+	<string name="HistoryEventPetWakeUp">Wake up</string>
+	<string name="HistoryEventPetForciblyWakeUp">Forcibly wake up</string>
+	<string name="HistoryEventPetSleep">Fall asleep</string>
+	<string name="HistoryEventPetGetIll">Get ill</string>
+	<string name="HistoryEventPetGetHealed">Get healed</string>
+	<string name="HistoryEventPetFeed">Been fed</string>
+	<string name="HistoryEventPetPlay">Played with</string>
+	<string name="HistoryEventPetDied">Died</string>
+	<string name="HistoryEventPetCleanUp">Cleaned up</string>
+	<string name="HistoryEventPetBecomeNewborn">Become newborn</string>
+	<string name="HistoryEventPetBecomeTeen">Become teen</string>
+	<string name="HistoryEventPetBecomeAdult">Become adult</string>
+	<string name="HistoryEventPetBecomeOld">Become old</string>
+	<string name="HistoryEventPetBuried">Buried</string>
+	<string name="HistoryEventPetResurrected">Resurrected</string>
+	<string name="HistoryEventPetPoop">Pooped</string>
+
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">What is going on with you?</string>
 	<string name="BeenBetter">Been better.</string>

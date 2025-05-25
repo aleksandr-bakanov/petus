@@ -28,6 +28,25 @@
 "NotificationInventoryItemAdded"           = "Добавлено: %@";
 "NotificationInventoryItemRemoved"         = "Удалено: %@";
 
+/* History events */
+"HistoryEventPetCreated"                   = "Создан";
+"HistoryEventPetWakeUp"                    = "Проснулся";
+"HistoryEventPetForciblyWakeUp"            = "Был разбужен";
+"HistoryEventPetSleep"                     = "Уснул";
+"HistoryEventPetGetIll"                    = "Заболел";
+"HistoryEventPetGetHealed"                 = "Вылечен";
+"HistoryEventPetFeed"                      = "Накормлен";
+"HistoryEventPetPlay"                      = "Со мной поиграли";
+"HistoryEventPetDied"                      = "Умер";
+"HistoryEventPetCleanUp"                   = "За мной прибрали";
+"HistoryEventPetBecomeNewborn"             = "Родился";
+"HistoryEventPetBecomeTeen"                = "Стал подростком";
+"HistoryEventPetBecomeAdult"               = "Стал взросрым";
+"HistoryEventPetBecomeOld"                 = "Стал старым";
+"HistoryEventPetBuried"                    = "Похоронен";
+"HistoryEventPetResurrected"               = "Воскрешен";
+"HistoryEventPetPoop"                      = "Покакал";
+
 /* Dialogs */
 "WhatIsGoingOnWithYou"                     = "Как дела?";
 "BeenBetter"                               = "Бывало и получше.";

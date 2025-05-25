@@ -4,11 +4,14 @@ import bav.petus.base.ViewModelWithNavigation
 import bav.petus.core.engine.Engine
 import bav.petus.core.engine.QuestSystem
 import bav.petus.core.resources.ImageId
+import bav.petus.core.resources.StringId
+import bav.petus.extension.epochTimeToShortString
 import bav.petus.extension.epochTimeToString
 import bav.petus.model.AgeState
 import bav.petus.model.Pet
 import bav.petus.model.PetType
 import bav.petus.model.Place
+import bav.petus.model.toStringId
 import bav.petus.repo.HistoryRepository
 import bav.petus.repo.PetsRepository
 import bav.petus.useCase.PetImageUseCase
@@ -38,6 +41,8 @@ data class PetDetailsUiState(
     val showSpeakButton: Boolean,
     val showResurrectButton: Boolean,
     val showStatBars: Boolean,
+    val lifespan: String?,
+    val historyEvents: List<String>,
 ) {
     val isAnyButtonShown: Boolean
         get() = showPlayButton || showHealButton || showPoopButton || showFeedButton ||
@@ -46,6 +51,7 @@ data class PetDetailsUiState(
 
 data class PetDetailsScreenViewModelArgs(
     val petId: Long,
+    val convertStringIdToString: (StringId) -> String,
 )
 
 class PetDetailsScreenViewModel(
@@ -80,6 +86,8 @@ class PetDetailsScreenViewModel(
                     showSpeakButton = engine.isAllowedToSpeakWithPet(pet),
                     showResurrectButton = engine.isAllowedToResurrectPet(pet),
                     showStatBars = pet.place == Place.Zoo,
+                    lifespan = getLifespan(pet),
+                    historyEvents = getHistoryEvents(pet),
                 )
             }
             else {
@@ -97,6 +105,33 @@ class PetDetailsScreenViewModel(
             }
             field = value
         }
+
+    private suspend fun getHistoryEvents(pet: Pet): List<String> {
+        return if (pet.place == Place.Cemetery) {
+            val events = historyRepo.getHistoryRecordsForPet(pet.id)
+            events.map { event ->
+                buildString {
+                    append(event.timestampSecondsSinceEpoch.epochTimeToString())
+                    append(": ")
+                    append(args.convertStringIdToString(event.event.toStringId()))
+                }
+            }
+        } else {
+            emptyList()
+        }
+    }
+
+    private fun getLifespan(pet: Pet): String? {
+        return if (pet.place == Place.Cemetery) {
+            buildString {
+                append(pet.creationTime.epochTimeToShortString())
+                append(" - ")
+                append(pet.timeOfDeath.epochTimeToShortString())
+            }
+        } else {
+            null
+        }
+    }
 
     fun onAction(action: Action) {
         when (action) {

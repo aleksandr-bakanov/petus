@@ -18,6 +18,26 @@ sealed class StringId {
     data object MysteriousBook : StringId()
     //endregion
 
+    //region History events
+    data object HistoryEventPetCreated : StringId()
+    data object HistoryEventPetWakeUp : StringId()
+    data object HistoryEventPetForciblyWakeUp : StringId()
+    data object HistoryEventPetSleep : StringId()
+    data object HistoryEventPetGetIll : StringId()
+    data object HistoryEventPetGetHealed : StringId()
+    data object HistoryEventPetFeed : StringId()
+    data object HistoryEventPetPlay : StringId()
+    data object HistoryEventPetDied : StringId()
+    data object HistoryEventPetCleanUp : StringId()
+    data object HistoryEventPetBecomeNewborn : StringId()
+    data object HistoryEventPetBecomeTeen : StringId()
+    data object HistoryEventPetBecomeAdult : StringId()
+    data object HistoryEventPetBecomeOld : StringId()
+    data object HistoryEventPetBuried : StringId()
+    data object HistoryEventPetResurrected : StringId()
+    data object HistoryEventPetPoop : StringId()
+    //endregion
+
     //region Dialogs
     data object WhatIsGoingOnWithYou : StringId()
     data object BeingBetter : StringId()

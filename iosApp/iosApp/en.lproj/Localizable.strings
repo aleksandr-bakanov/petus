@@ -28,6 +28,25 @@
 "NotificationInventoryItemAdded"           = "%@ added";
 "NotificationInventoryItemRemoved"         = "%@ removed";
 
+/* History events */
+"HistoryEventPetCreated"                   = "Created";
+"HistoryEventPetWakeUp"                    = "Wake up";
+"HistoryEventPetForciblyWakeUp"            = "Forcibly wake up";
+"HistoryEventPetSleep"                     = "Fall asleep";
+"HistoryEventPetGetIll"                    = "Get ill";
+"HistoryEventPetGetHealed"                 = "Get healed";
+"HistoryEventPetFeed"                      = "Been fed";
+"HistoryEventPetPlay"                      = "Played with";
+"HistoryEventPetDied"                      = "Died";
+"HistoryEventPetCleanUp"                   = "Cleaned up";
+"HistoryEventPetBecomeNewborn"             = "Become newborn";
+"HistoryEventPetBecomeTeen"                = "Become teen";
+"HistoryEventPetBecomeAdult"               = "Become adult";
+"HistoryEventPetBecomeOld"                 = "Become old";
+"HistoryEventPetBuried"                    = "Buried";
+"HistoryEventPetResurrected"               = "Resurrected";
+"HistoryEventPetPoop"                      = "Pooped";
+
 /* Dialogs */
 "WhatIsGoingOnWithYou"                     = "What is going on with you?";
 "BeenBetter"                               = "Been better.";

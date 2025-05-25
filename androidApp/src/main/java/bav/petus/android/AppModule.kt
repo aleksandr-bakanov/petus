@@ -143,8 +143,12 @@ val appModule = module {
     }
 
     viewModel { params ->
+        val stringResourcesUseCase: StringResourcesUseCase = get()
         PetDetailsScreenViewModel(
-            args = params.get<PetDetailsScreenViewModelArgs>(),
+            args = PetDetailsScreenViewModelArgs(
+                petId = params.get<Long>(),
+                convertStringIdToString = stringResourcesUseCase::getString,
+            ),
         )
     }
 

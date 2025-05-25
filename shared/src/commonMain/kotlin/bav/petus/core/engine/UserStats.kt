@@ -94,7 +94,6 @@ class UserStats(
         }
     }
 
-    // TODO: add some toast to inform user about item addition
     suspend fun addInventoryItem(item: InventoryItem) {
         val inventory = dataStore.data.first().getInventory()
         val newInventory = inventory.addItem(item)

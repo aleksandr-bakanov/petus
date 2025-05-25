@@ -13,7 +13,13 @@ struct PetDetailsScreen: View {
     init(petId: Int64, onNavigateToDialog: @escaping (Int64) -> Void) {
         self.petId = petId
         self.onNavigateToDialog = onNavigateToDialog
-        _viewModel = StateViewModel(wrappedValue: PetDetailsScreenViewModel(args: PetDetailsScreenViewModelArgs(petId: petId)))
+        _viewModel = StateViewModel(wrappedValue: PetDetailsScreenViewModel(args: PetDetailsScreenViewModelArgs(petId: petId,
+                    convertStringIdToString: { stringId in
+                        stringId.localized
+                    }
+                )
+            )
+        )
     }
 
     var body: some View {
@@ -88,6 +94,24 @@ struct PetDetailsScreen: View {
                             .frame(height: 112)
                             .frame(maxWidth: .infinity)
                             .padding(.horizontal)
+                        }
+                    }
+                    
+                    if let lifespan = state.lifespan {
+                        VStack(alignment: .leading, spacing: 0) {
+                            // Lifespan text centered
+                            Text(lifespan)
+                                .font(.title2) // equivalent to headlineMedium
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(16)
+
+                            // History events
+                            ForEach(state.historyEvents, id: \.self) { event in
+                                Text(event)
+                                    .font(.caption) // equivalent to bodySmall
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal, 16)
+                            }
                         }
                     }
 

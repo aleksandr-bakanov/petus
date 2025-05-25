@@ -6,7 +6,7 @@ struct InventoryItemCell: View {
 
     var body: some View {
         HStack {
-            Text(item.id.name)
+            Text(item.id.toStringId().localized)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .layoutPriority(1)
             Text(item.amount.formatted())

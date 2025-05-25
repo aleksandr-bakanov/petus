@@ -38,6 +38,23 @@ extension StringId {
         case .profileScreenTitle: "ProfileScreenTitle"
         case .weatherScreenTitle: "WeatherScreenTitle"
         case .zooScreenTitle: "ZooScreenTitle"
+        case .historyEventPetBecomeAdult: "HistoryEventPetBecomeAdult"
+        case .historyEventPetBecomeNewborn: "HistoryEventPetBecomeNewborn"
+        case .historyEventPetBecomeOld: "HistoryEventPetBecomeOld"
+        case .historyEventPetBecomeTeen: "HistoryEventPetBecomeTeen"
+        case .historyEventPetBuried: "HistoryEventPetBuried"
+        case .historyEventPetCleanUp: "HistoryEventPetCleanUp"
+        case .historyEventPetCreated: "HistoryEventPetCreated"
+        case .historyEventPetDied: "HistoryEventPetDied"
+        case .historyEventPetFeed: "HistoryEventPetFeed"
+        case .historyEventPetForciblyWakeUp: "HistoryEventPetForciblyWakeUp"
+        case .historyEventPetGetHealed: "HistoryEventPetGetHealed"
+        case .historyEventPetGetIll: "HistoryEventPetGetIll"
+        case .historyEventPetPlay: "HistoryEventPetPlay"
+        case .historyEventPetPoop: "HistoryEventPetPoop"
+        case .historyEventPetResurrected: "HistoryEventPetResurrected"
+        case .historyEventPetSleep: "HistoryEventPetSleep"
+        case .historyEventPetWakeUp: "HistoryEventPetWakeUp"
         }
         
         return String(localized: resId)

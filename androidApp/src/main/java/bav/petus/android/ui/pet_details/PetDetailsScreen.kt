@@ -190,6 +190,30 @@ private fun PetDetailsScreen(
                 }
             }
 
+            // Cemetery info
+            uiState.lifespan?.let { span ->
+                Column {
+                    Text(
+                        text = span,
+                        style = MaterialTheme.typography.headlineMedium,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                    )
+                    uiState.historyEvents.forEach { e ->
+                        Text(
+                            text = e,
+                            textAlign = TextAlign.Start,
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp),
+                        )
+                    }
+                }
+            }
+
             Spacer(modifier = Modifier.height(32.dp))
         }
     }

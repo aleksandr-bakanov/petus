@@ -27,6 +27,24 @@ Notifications;ios;NotificationInventoryItemAdded;%@ added;Добавлено: %@
 ;android;NotificationInventoryItemRemoved;%s removed;Удалено: %s
 ;ios;NotificationInventoryItemRemoved;%@ removed;Удалено: %@
 
+History events;android, ios;HistoryEventPetCreated;Created;Создан
+;android, ios;HistoryEventPetWakeUp;Wake up;Проснулся
+;android, ios;HistoryEventPetForciblyWakeUp;Forcibly wake up;Был разбужен
+;android, ios;HistoryEventPetSleep;Fall asleep;Уснул
+;android, ios;HistoryEventPetGetIll;Get ill;Заболел
+;android, ios;HistoryEventPetGetHealed;Get healed;Вылечен
+;android, ios;HistoryEventPetFeed;Been fed;Накормлен
+;android, ios;HistoryEventPetPlay;Played with;Со мной поиграли
+;android, ios;HistoryEventPetDied;Died;Умер
+;android, ios;HistoryEventPetCleanUp;Cleaned up;За мной прибрали
+;android, ios;HistoryEventPetBecomeNewborn;Become newborn;Родился
+;android, ios;HistoryEventPetBecomeTeen;Become teen;Стал подростком
+;android, ios;HistoryEventPetBecomeAdult;Become adult;Стал взросрым
+;android, ios;HistoryEventPetBecomeOld;Become old;Стал старым
+;android, ios;HistoryEventPetBuried;Buried;Похоронен
+;android, ios;HistoryEventPetResurrected;Resurrected;Воскрешен
+;android, ios;HistoryEventPetPoop;Pooped;Покакал
+
 Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как дела?
 ;android, ios;BeenBetter;Been better.;Бывало и получше.
 ;android, ios;IShouldGo;I should go.;Мне пора.

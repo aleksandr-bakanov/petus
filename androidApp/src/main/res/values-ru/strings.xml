@@ -30,6 +30,25 @@
 	<string name="NotificationInventoryItemAdded">Добавлено: %s</string>
 	<string name="NotificationInventoryItemRemoved">Удалено: %s</string>
 
+	<!-- History events -->
+	<string name="HistoryEventPetCreated">Создан</string>
+	<string name="HistoryEventPetWakeUp">Проснулся</string>
+	<string name="HistoryEventPetForciblyWakeUp">Был разбужен</string>
+	<string name="HistoryEventPetSleep">Уснул</string>
+	<string name="HistoryEventPetGetIll">Заболел</string>
+	<string name="HistoryEventPetGetHealed">Вылечен</string>
+	<string name="HistoryEventPetFeed">Накормлен</string>
+	<string name="HistoryEventPetPlay">Со мной поиграли</string>
+	<string name="HistoryEventPetDied">Умер</string>
+	<string name="HistoryEventPetCleanUp">За мной прибрали</string>
+	<string name="HistoryEventPetBecomeNewborn">Родился</string>
+	<string name="HistoryEventPetBecomeTeen">Стал подростком</string>
+	<string name="HistoryEventPetBecomeAdult">Стал взросрым</string>
+	<string name="HistoryEventPetBecomeOld">Стал старым</string>
+	<string name="HistoryEventPetBuried">Похоронен</string>
+	<string name="HistoryEventPetResurrected">Воскрешен</string>
+	<string name="HistoryEventPetPoop">Покакал</string>
+
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">Как дела?</string>
 	<string name="BeenBetter">Бывало и получше.</string>

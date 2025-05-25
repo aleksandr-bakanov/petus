@@ -24,11 +24,7 @@ fun NavGraphBuilder.petDetailsScreen(
         val args: PetDetailsScreen = navBackStackEntry.toRoute()
         val viewModel: PetDetailsScreenViewModel = koinViewModel(
             parameters = {
-                parametersOf(
-                    PetDetailsScreenViewModelArgs(
-                        petId = args.petId,
-                    )
-                )
+                parametersOf(args.petId)
             }
         )
         LaunchedEffect(Unit) {

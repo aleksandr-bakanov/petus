@@ -39,5 +39,22 @@ fun StringId.toResId(): Int {
         StringId.MysteriousBook -> R.string.MysteriousBook
         StringId.Necronomicon -> R.string.Necronomicon
         StringId.PieceOfCloth -> R.string.PieceOfCloth
+        StringId.HistoryEventPetBecomeAdult -> R.string.HistoryEventPetBecomeAdult
+        StringId.HistoryEventPetBecomeNewborn -> R.string.HistoryEventPetBecomeNewborn
+        StringId.HistoryEventPetBecomeOld -> R.string.HistoryEventPetBecomeOld
+        StringId.HistoryEventPetBecomeTeen -> R.string.HistoryEventPetBecomeTeen
+        StringId.HistoryEventPetBuried -> R.string.HistoryEventPetBuried
+        StringId.HistoryEventPetCleanUp -> R.string.HistoryEventPetCleanUp
+        StringId.HistoryEventPetCreated -> R.string.HistoryEventPetCreated
+        StringId.HistoryEventPetDied -> R.string.HistoryEventPetDied
+        StringId.HistoryEventPetFeed -> R.string.HistoryEventPetFeed
+        StringId.HistoryEventPetForciblyWakeUp -> R.string.HistoryEventPetForciblyWakeUp
+        StringId.HistoryEventPetGetHealed -> R.string.HistoryEventPetGetHealed
+        StringId.HistoryEventPetGetIll -> R.string.HistoryEventPetGetIll
+        StringId.HistoryEventPetPlay -> R.string.HistoryEventPetPlay
+        StringId.HistoryEventPetPoop -> R.string.HistoryEventPetPoop
+        StringId.HistoryEventPetResurrected -> R.string.HistoryEventPetResurrected
+        StringId.HistoryEventPetSleep -> R.string.HistoryEventPetSleep
+        StringId.HistoryEventPetWakeUp -> R.string.HistoryEventPetWakeUp
     }
 }

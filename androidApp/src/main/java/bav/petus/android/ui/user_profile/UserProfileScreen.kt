@@ -1,5 +1,6 @@
 package bav.petus.android.ui.user_profile
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,8 +18,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import bav.petus.android.R
+import bav.petus.android.ui.common.toResId
 import bav.petus.core.inventory.InventoryItem
+import bav.petus.core.inventory.toStringId
 import bav.petus.model.PetType
 import bav.petus.viewModel.userProfile.UserProfileScreenViewModel
 import bav.petus.viewModel.userProfile.UserProfileUiState
@@ -48,7 +53,8 @@ private fun UserProfileScreen(
                 .fillMaxSize()
                 .padding(padding)
                 .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             uiState.latestWeather?.let { weather ->
                 Text(
@@ -96,14 +102,15 @@ private fun LanguageKnowledgeStat(type: PetType, value: String) {
         )
         Text(
             text = value,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.End
         )
     }
 }
 
 @Composable
 private fun InventoryItemCell(item: InventoryItem) {
-    val title = item.id.name
+    val title = stringResource(item.id.toStringId().toResId())
     Row(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
         Text(
             text = title,
@@ -111,7 +118,8 @@ private fun InventoryItemCell(item: InventoryItem) {
         )
         Text(
             text = item.amount.toString(),
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.End
         )
     }
 }
