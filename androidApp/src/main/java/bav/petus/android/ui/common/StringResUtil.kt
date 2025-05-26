@@ -40,6 +40,8 @@ fun StringId.toResId(): Int {
         StringId.MysteriousBook -> R.string.MysteriousBook
         StringId.Necronomicon -> R.string.Necronomicon
         StringId.PieceOfCloth -> R.string.PieceOfCloth
+        StringId.Fish -> R.string.Fish
+        StringId.FrogusEgg -> R.string.FrogusEgg
         StringId.HistoryEventPetBecomeAdult -> R.string.HistoryEventPetBecomeAdult
         StringId.HistoryEventPetBecomeNewborn -> R.string.HistoryEventPetBecomeNewborn
         StringId.HistoryEventPetBecomeOld -> R.string.HistoryEventPetBecomeOld
@@ -58,5 +60,14 @@ fun StringId.toResId(): Int {
         StringId.HistoryEventPetSleep -> R.string.HistoryEventPetSleep
         StringId.HistoryEventPetWakeUp -> R.string.HistoryEventPetWakeUp
         StringId.Necromancy -> R.string.Necromancy
+        StringId.ObtainFrogusStage1Answer0 -> R.string.ObtainFrogusStage1Answer0
+        StringId.ObtainFrogusStage1Dialog0 -> R.string.ObtainFrogusStage1Dialog0
+        StringId.ObtainFrogusStage1Answer1 -> R.string.ObtainFrogusStage1Answer1
+        StringId.ObtainFrogusStage3Answer0 -> R.string.ObtainFrogusStage3Answer0
+        StringId.ObtainFrogusStage3Dialog0 -> R.string.ObtainFrogusStage3Dialog0
+        StringId.ObtainFrogusStage3Answer1 -> R.string.ObtainFrogusStage3Answer1
+        StringId.ObtainFrogusStage5Answer0 -> R.string.ObtainFrogusStage5Answer0
+        StringId.ObtainFrogusStage5Dialog0 -> R.string.ObtainFrogusStage5Dialog0
+        StringId.ObtainFrogusStage5Answer1 -> R.string.ObtainFrogusStage5Answer1
     }
 }

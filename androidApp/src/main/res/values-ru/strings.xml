@@ -24,6 +24,8 @@
 	<string name="Necronomicon">Некрономикон</string>
 	<string name="PieceOfCloth">Кусок ткани</string>
 	<string name="MysteriousBook">Загадочная книга</string>
+	<string name="Fish">Рыба</string>
+	<string name="FrogusEgg">Яйцо Фрогуса</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
 
 	<!-- Abilities names -->
@@ -68,14 +70,23 @@
 	<string name="NecronomiconStage3DogDialog">Я ничего не знаю, но можно расследовать. Принеси мне что-нибудь оттуда.</string>
 	<string name="NecronomiconStage3DogDialogAnswerOption0">Океюшки, посмотрю что я смогу найти</string>
 	<string name="NecronomiconStage5AnswerOption0">Смотри что я нашла на у могилы</string>
-	<string name="NecronomiconStage5DogDialog">Хмм, интересно, посмотрим что можно с этим сделать</string>
+	<string name="NecronomiconStage5DogDialog">Хмм, интересно, посмотрим что можно с этим сделать…</string>
 	<string name="NecronomiconStage6AnswerOption0">Ты нашел что нибудь?</string>
 	<string name="NecronomiconStage6DogDialog">Не, пока что ничего, но я в процессе</string>
 	<string name="NecronomiconStage7DogDialog0">Смотри-ка, нашел какое-то место для ритуалов и вот эту странную книгу. Возьми её.</string>
 	<string name="NecronomiconStage7AnswerOption0">Спасибо, знаешь кого-нибудь кто может мне с ней помочь?</string>
 	<string name="NecronomiconStage7DogDialog1">Попробуй спросить катуса, они обычно лучше разбираются в мудрёных делах, чем старше тем лучше</string>
-	<string name="NecronomiconStage7DogDialog2">Да, ещё кое-что. На том самом месте для ритуалов я нашел тело пропавшего пета. Бедняга. Не волнуйся я помещу его обратно в его могилу.</string>
+	<string name="NecronomiconStage7DogDialog2">Да, ещё кое-что. На том самом месте для ритуалов я нашел тело пропавшего пета. Бедняга. Не волнуйся я верну его обратно в его могилу.</string>
 	<string name="NecronomiconStage8AnswerOption0">[Показать книгу] Знаешь что-нибудь про эту книгу?</string>
 	<string name="NecronomiconStage8Dialog0">Это что такое? Я чувствую какую-то магию, но вообще не уверен…</string>
 	<string name="NecronomiconStage8Dialog1">Ааа, ну да, я знаю что это такое. Это Некрономикон. Очень опасная штука. Я советую сразу его уничтожить, ничего хорошего он не принесёт. Хотя конечно я могу научить тебя пользоваться им. Выбор за тобой. Ну так что, хочешь использовать его или уничтожить?</string>
+	<string name="ObtainFrogusStage1Answer0">Эй приятель, я заметила что ты почти не ешь, с тобой всё в порядке?</string>
+	<string name="ObtainFrogusStage1Dialog0">Хмм… знаешь что, пожалуй мне хочется рыбки, сможешь наловить для меня? Тут недалеко есть озеро, думаю ты можешь попробовать что-нибудь там.</string>
+	<string name="ObtainFrogusStage1Answer1">Океюшки, посмотрим что мне удастся сделать. Думаю что-нибудь придумаю на следующий день.</string>
+	<string name="ObtainFrogusStage3Answer0">Эй, дружище, вот рыба, про которую ты спрашивал. С того самого озера.</string>
+	<string name="ObtainFrogusStage3Dialog0">Спасибо, братуха, вот это я понимаю! Настоящая свежая рыба, el belissimo! Теперь, когда я знаю что это озеро хорошее, думаю провести там какое-то время самому. Ещё раз спасибо!</string>
+	<string name="ObtainFrogusStage3Answer1">Без проблем!</string>
+	<string name="ObtainFrogusStage5Answer0">Эй, с чем это ты играешь?</string>
+	<string name="ObtainFrogusStage5Dialog0">Аа, нашел на озере. Круглое и катается! К тому что пахнет тиной, но это ничего. На возьми себе, я уже с ним наигрался.</string>
+	<string name="ObtainFrogusStage5Answer1">Спасибо, думаю я знаю что с этим делать.</string>
 </resources>

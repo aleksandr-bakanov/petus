@@ -6,6 +6,8 @@ import bav.petus.core.engine.NECRONOMICON_EXHUMATED_PET_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_SEARCH_DOG_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_TIMESTAMP_KEY
 import bav.petus.core.engine.NECRONOMICON_WISE_CAT_ID_KEY
+import bav.petus.core.engine.OBTAIN_FROGUS_ASKING_CAT_ID_KEY
+import bav.petus.core.engine.OBTAIN_FROGUS_TIMESTAMP_KEY
 import bav.petus.core.engine.QuestSystem
 import bav.petus.core.engine.UserStats
 import bav.petus.core.inventory.InventoryItem
@@ -89,6 +91,10 @@ class DialogSystem(
         const val NECRONOMICON_STAGE_7_DOG_DIALOG_2 = "NECRONOMICON_STAGE_7_DOG_DIALOG_2"
         const val NECRONOMICON_STAGE_8_DIALOG_0 = "NECRONOMICON_STAGE_8_DIALOG_0"
         const val NECRONOMICON_STAGE_8_DIALOG_1 = "NECRONOMICON_STAGE_8_DIALOG_1"
+
+        const val OBTAIN_FROGUS_STAGE_1_DIALOG_0 = "OBTAIN_FROGUS_STAGE_1_DIALOG_0"
+        const val OBTAIN_FROGUS_STAGE_3_DIALOG_0 = "OBTAIN_FROGUS_STAGE_3_DIALOG_0"
+        const val OBTAIN_FROGUS_STAGE_5_DIALOG_0 = "OBTAIN_FROGUS_STAGE_5_DIALOG_0"
 
         private val nodes: Map<String, DialogNode> = mapOf(
             STANDARD_DIALOG_BEGINNING to DialogNode(
@@ -248,6 +254,55 @@ class DialogSystem(
                             questSystem.setQuestStageToNext(QuestSystem.QUEST_NECRONOMICON)
                         }
                     )
+                )
+            ),
+            OBTAIN_FROGUS_STAGE_1_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainFrogusStage1Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainFrogusStage1Answer1,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_FROGUS_TIMESTAMP_KEY] = now
+                                pet?.let { p -> store[OBTAIN_FROGUS_ASKING_CAT_ID_KEY] = p.id }
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_FROGUS)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_FROGUS_STAGE_3_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainFrogusStage3Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainFrogusStage3Answer1,
+                        nextNode = null,
+                        action = { questSystem, _, _ ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_FROGUS_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_FROGUS)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_FROGUS_STAGE_5_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainFrogusStage5Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainFrogusStage5Answer1,
+                        nextNode = null,
+                        action = { questSystem, userStats, _ ->
+                            userStats.addNewAvailablePetType(PetType.Frogus)
+                            userStats.addInventoryItem(
+                                InventoryItem(InventoryItemId.FrogusEgg, 1)
+                            )
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_FROGUS)
+                        }
+                    ),
                 )
             ),
         )

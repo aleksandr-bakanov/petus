@@ -10,6 +10,8 @@ extension StringId {
         case .mysteriousBook: "MysteriousBook"
         case .necronomicon: "Necronomicon"
         case .pieceOfCloth: "PieceOfCloth"
+        case .fish: "Fish"
+        case .frogusEgg: "FrogusEgg"
         case .whatIsGoingOnWithYou: "WhatIsGoingOnWithYou"
         case .beingBetter: "BeenBetter"
         case .byeBye: "ByeBye"
@@ -57,6 +59,15 @@ extension StringId {
         case .historyEventPetSleep: "HistoryEventPetSleep"
         case .historyEventPetWakeUp: "HistoryEventPetWakeUp"
         case .necromancy: "Necromancy"
+        case .obtainFrogusStage1Answer0: "ObtainFrogusStage1Answer0"
+        case .obtainFrogusStage1Dialog0: "ObtainFrogusStage1Dialog0"
+        case .obtainFrogusStage1Answer1: "ObtainFrogusStage1Answer1"
+        case .obtainFrogusStage3Answer0: "ObtainFrogusStage3Answer0"
+        case .obtainFrogusStage3Dialog0: "ObtainFrogusStage3Dialog0"
+        case .obtainFrogusStage3Answer1: "ObtainFrogusStage3Answer1"
+        case .obtainFrogusStage5Answer0: "ObtainFrogusStage5Answer0"
+        case .obtainFrogusStage5Dialog0: "ObtainFrogusStage5Dialog0"
+        case .obtainFrogusStage5Answer1: "ObtainFrogusStage5Answer1"
         }
         
         return String(localized: resId)

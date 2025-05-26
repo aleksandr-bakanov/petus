@@ -16,6 +16,8 @@ sealed class StringId {
     data object Necronomicon : StringId()
     data object PieceOfCloth : StringId()
     data object MysteriousBook : StringId()
+    data object Fish : StringId()
+    data object FrogusEgg : StringId()
     //endregion
 
     //region Abilities names
@@ -69,5 +71,15 @@ sealed class StringId {
     data object NecronomiconStage8AnswerOption0 : StringId()
     data object NecronomiconStage8Dialog0 : StringId()
     data object NecronomiconStage8Dialog1 : StringId()
+
+    data object ObtainFrogusStage1Answer0 : StringId()
+    data object ObtainFrogusStage1Dialog0 : StringId()
+    data object ObtainFrogusStage1Answer1 : StringId()
+    data object ObtainFrogusStage3Answer0 : StringId()
+    data object ObtainFrogusStage3Dialog0 : StringId()
+    data object ObtainFrogusStage3Answer1 : StringId()
+    data object ObtainFrogusStage5Answer0 : StringId()
+    data object ObtainFrogusStage5Dialog0 : StringId()
+    data object ObtainFrogusStage5Answer1 : StringId()
     //endregion
 }

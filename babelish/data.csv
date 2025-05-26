@@ -19,6 +19,8 @@ Pet descriptions;android, ios;PetTypeDescriptionCatus;Catus: sleeps 2 hours, awa
 Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android, ios;PieceOfCloth;Piece of cloth;Кусок ткани
 ;android, ios;MysteriousBook;Mysterious book;Загадочная книга
+;android, ios;Fish;Fish;Рыба
+;android, ios;FrogusEgg;Frogus egg;Яйцо Фрогуса
 ;android;InventoryItemPattern;%s (x%d);%s (x%d)
 ;ios;InventoryItemPattern;%@ (x%d);%@ (x%d)
 
@@ -62,7 +64,7 @@ Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как де
 ;android, ios;NecronomiconStage3DogDialog;I do not know anything but we could investigate, bring me something from there.;Я ничего не знаю, но можно расследовать. Принеси мне что-нибудь оттуда.
 ;android, ios;NecronomiconStage3DogDialogAnswerOption0;Ok, I will see what I can find;Океюшки, посмотрю что я смогу найти
 ;android, ios;NecronomiconStage5AnswerOption0;Look what I have found near the grave;Смотри что я нашла на у могилы
-;android, ios;NecronomiconStage5DogDialog;Hmm, interesting, let me see where it will lead me…;Хмм, интересно, посмотрим что можно с этим сделать
+;android, ios;NecronomiconStage5DogDialog;Hmm, interesting, let me see where it will lead me…;Хмм, интересно, посмотрим что можно с этим сделать…
 ;android, ios;NecronomiconStage6AnswerOption0;Have you found anything?;Ты нашел что нибудь?
 ;android, ios;NecronomiconStage6DogDialog;No, not yet, but I am searching.;Не, пока что ничего, но я в процессе
 ;android, ios;NecronomiconStage7DogDialog0;Look, I have found this strange book on ritual site. Take it.;Смотри-ка, нашел какое-то место для ритуалов и вот эту странную книгу. Возьми её.
@@ -72,3 +74,12 @@ Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как де
 ;android, ios;NecronomiconStage8AnswerOption0;[Show the book] Do you know anything about this book?;[Показать книгу] Знаешь что-нибудь про эту книгу?
 ;android, ios;NecronomiconStage8Dialog0;What is this? I can sense some magic but I am not sure…;Это что такое? Я чувствую какую-то магию, но вообще не уверен…
 ;android, ios;NecronomiconStage8Dialog1;Ahh, yes, I know what it is. This is Necronomicon. Very dangerous stuff, I recommend to destroy it right away, nothing good will come from it. However I can also teach you how to use it. Your choice. So do you want to use it or destroy it?;Ааа, ну да, я знаю что это такое. Это Некрономикон. Очень опасная штука. Я советую сразу его уничтожить, ничего хорошего он не принесёт. Хотя конечно я могу научить тебя пользоваться им. Выбор за тобой. Ну так что, хочешь использовать его или уничтожить?
+;android, ios;ObtainFrogusStage1Answer0;Hey buddy, I have noticed you barely touches your food, what is going on?;Эй приятель, я заметила что ты почти не ешь, с тобой всё в порядке?
+;android, ios;ObtainFrogusStage1Dialog0;Yeah, you know what, I think I want some fish, could you catch me some? There is a lake nearby I think you can try there.;Хмм… знаешь что, пожалуй мне хочется рыбки, сможешь наловить для меня? Тут недалеко есть озеро, думаю ты можешь попробовать что-нибудь там.
+;android, ios;ObtainFrogusStage1Answer1;All right, let us see what I can do. I think I will come up with something on next day.;Океюшки, посмотрим что мне удастся сделать. Думаю что-нибудь придумаю на следующий день.
+;android, ios;ObtainFrogusStage3Answer0;Oi mate, here is fish you have asked for. From very same lake you described.;Эй, дружище, вот рыба, про которую ты спрашивал. С того самого озера.
+;android, ios;ObtainFrogusStage3Dialog0;Cheers mate, that is what I am talking about! Real fresh fish, el belissimo! Now I know this lake is good, think I will spend some time there by myself. Thanks again!;Спасибо, братуха, вот это я понимаю! Настоящая свежая рыба, el belissimo! Теперь, когда я знаю что это озеро хорошее, думаю провести там какое-то время самому. Ещё раз спасибо!
+;android, ios;ObtainFrogusStage3Answer1;No problem!;Без проблем!
+;android, ios;ObtainFrogusStage5Answer0;Hey, what is that you are playing with?;Эй, с чем это ты играешь?
+;android, ios;ObtainFrogusStage5Dialog0;Ah, found it on the lake. Round and rolling! Also smells like slime but it is okay. Here, take it, I am done playing with it.;Аа, нашел на озере. Круглое и катается! К тому что пахнет тиной, но это ничего. На возьми себе, я уже с ним наигрался.
+;android, ios;ObtainFrogusStage5Answer1;Thank you, I think I know what to do with it.;Спасибо, думаю я знаю что с этим делать.

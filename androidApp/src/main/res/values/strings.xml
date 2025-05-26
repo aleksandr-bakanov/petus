@@ -24,6 +24,8 @@
 	<string name="Necronomicon">Necronomicon</string>
 	<string name="PieceOfCloth">Piece of cloth</string>
 	<string name="MysteriousBook">Mysterious book</string>
+	<string name="Fish">Fish</string>
+	<string name="FrogusEgg">Frogus egg</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
 
 	<!-- Abilities names -->
@@ -74,8 +76,17 @@
 	<string name="NecronomiconStage7DogDialog0">Look, I have found this strange book on ritual site. Take it.</string>
 	<string name="NecronomiconStage7AnswerOption0">Thanks, do you know who can help me with it?</string>
 	<string name="NecronomiconStage7DogDialog1">Try to ask catus they usually more experienced in wisdom stuff, the older the better.</string>
-	<string name="NecronomiconStage7DogDialog2">One more thing, at the same ritual site I have found the body of the lost pet. Poor guy. Do not worry I will put him back to his grave.</string>
+	<string name="NecronomiconStage7DogDialog2">One more thing, at the same ritual site I have found the body of the lost pet. Poor guy. Do not worry I will return him back to his grave.</string>
 	<string name="NecronomiconStage8AnswerOption0">[Show the book] Do you know anything about this book?</string>
 	<string name="NecronomiconStage8Dialog0">What is this? I can sense some magic but I am not sure…</string>
 	<string name="NecronomiconStage8Dialog1">Ahh, yes, I know what it is. This is Necronomicon. Very dangerous stuff, I recommend to destroy it right away, nothing good will come from it. However I can also teach you how to use it. Your choice. So do you want to use it or destroy it?</string>
+	<string name="ObtainFrogusStage1Answer0">Hey buddy, I have noticed you barely touches your food, what is going on?</string>
+	<string name="ObtainFrogusStage1Dialog0">Yeah, you know what, I think I want some fish, could you catch me some? There is a lake nearby I think you can try there.</string>
+	<string name="ObtainFrogusStage1Answer1">All right, let us see what I can do. I think I will come up with something on next day.</string>
+	<string name="ObtainFrogusStage3Answer0">Oi mate, here is fish you have asked for. From very same lake you described.</string>
+	<string name="ObtainFrogusStage3Dialog0">Cheers mate, that is what I am talking about! Real fresh fish, el belissimo! Now I know this lake is good, think I will spend some time there by myself. Thanks again!</string>
+	<string name="ObtainFrogusStage3Answer1">No problem!</string>
+	<string name="ObtainFrogusStage5Answer0">Hey, what is that you are playing with?</string>
+	<string name="ObtainFrogusStage5Dialog0">Ah, found it on the lake. Round and rolling! Also smells like slime but it is okay. Here, take it, I am done playing with it.</string>
+	<string name="ObtainFrogusStage5Answer1">Thank you, I think I know what to do with it.</string>
 </resources>
