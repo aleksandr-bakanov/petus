@@ -31,6 +31,7 @@ extension StringId {
         case .necronomiconStage7DogDialog0: "NecronomiconStage7DogDialog0"
         case .necronomiconStage7AnswerOption0: "NecronomiconStage7AnswerOption0"
         case .necronomiconStage7DogDialog1: "NecronomiconStage7DogDialog1"
+        case .necronomiconStage7DogDialog2: "NecronomiconStage7DogDialog2"
         case .necronomiconStage8AnswerOption0: "NecronomiconStage8AnswerOption0"
         case .necronomiconStage8Dialog0: "NecronomiconStage8Dialog0"
         case .necronomiconStage8Dialog1: "NecronomiconStage8Dialog1"
@@ -55,6 +56,7 @@ extension StringId {
         case .historyEventPetResurrected: "HistoryEventPetResurrected"
         case .historyEventPetSleep: "HistoryEventPetSleep"
         case .historyEventPetWakeUp: "HistoryEventPetWakeUp"
+        case .necromancy: "Necromancy"
         }
         
         return String(localized: resId)

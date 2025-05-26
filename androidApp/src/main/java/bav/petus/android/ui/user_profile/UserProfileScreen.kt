@@ -1,11 +1,15 @@
 package bav.petus.android.ui.user_profile
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -17,11 +21,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import bav.petus.android.R
 import bav.petus.android.ui.common.toResId
+import bav.petus.core.engine.toStringId
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.toStringId
 import bav.petus.model.PetType
@@ -51,7 +57,7 @@ private fun UserProfileScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding)
+                .padding(vertical = 8.dp, horizontal = 16.dp)
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -62,6 +68,13 @@ private fun UserProfileScreen(
                     style = MaterialTheme.typography.labelSmall
                 )
             }
+            Spacer(modifier = Modifier.height(16.dp))
+            Image(
+                painter = painterResource(id = R.drawable.user_profile_avatar),
+                contentDescription = null,
+                modifier = Modifier.size(112.dp)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenLanguagesLabel))
             LanguageKnowledgeStat(
                 type = PetType.Catus,
@@ -75,13 +88,15 @@ private fun UserProfileScreen(
                 type = PetType.Frogus,
                 value = uiState.languageKnowledgeFrogus,
             )
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenInventoryLabel))
             uiState.inventory.forEach { item ->
                 InventoryItemCell(item)
             }
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenAbilitiesLabel))
             uiState.abilities.forEach { item ->
-                Text(text = "Ability -> ${item.name}")
+                Text(text = stringResource(id = item.toStringId().toResId()))
             }
         }
     }
@@ -95,7 +110,10 @@ private fun LanguageKnowledgeStat(type: PetType, value: String) {
             PetType.Frogus -> R.string.LanguageKnowledgeTitleFrogus
         }
     )
-    Row(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .wrapContentHeight()
+    ) {
         Text(
             text = title,
             modifier = Modifier.weight(2f)

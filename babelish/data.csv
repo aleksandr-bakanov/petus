@@ -8,9 +8,9 @@ Screen titles;android, ios;ZooScreenTitle;Home;Дом
 User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
 ;android, ios;ProfileScreenInventoryLabel;Inventory;Инвентарь
 ;android, ios;ProfileScreenAbilitiesLabel;Abilities;Способности
-;android, ios;LanguageKnowledgeTitleCatus;Catus language knowledge;Язык Катуса
-;android, ios;LanguageKnowledgeTitleDogus;Dogus language knowledge;Язык Догуса
-;android, ios;LanguageKnowledgeTitleFrogus;Frogus language knowledge;Язык Фрогуса
+;android, ios;LanguageKnowledgeTitleCatus;Catus language;Язык Катуса
+;android, ios;LanguageKnowledgeTitleDogus;Dogus language;Язык Догуса
+;android, ios;LanguageKnowledgeTitleFrogus;Frogus language;Язык Фрогуса
 
 Pet descriptions;android, ios;PetTypeDescriptionCatus;Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.;Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.
 ;android, ios;PetTypeDescriptionDogus;Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.;Догус: спит 1 часа, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.
@@ -21,6 +21,8 @@ Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android, ios;MysteriousBook;Mysterious book;Загадочная книга
 ;android;InventoryItemPattern;%s (x%d);%s (x%d)
 ;ios;InventoryItemPattern;%@ (x%d);%@ (x%d)
+
+Abilities names;android, ios;Necromancy;Necromancy;Некромантия
 
 Notifications;android;NotificationInventoryItemAdded;%s added;Добавлено: %s
 Notifications;ios;NotificationInventoryItemAdded;%@ added;Добавлено: %@
@@ -63,9 +65,10 @@ Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как де
 ;android, ios;NecronomiconStage5DogDialog;Hmm, interesting, let me see where it will lead me…;Хмм, интересно, посмотрим что можно с этим сделать
 ;android, ios;NecronomiconStage6AnswerOption0;Have you found anything?;Ты нашел что нибудь?
 ;android, ios;NecronomiconStage6DogDialog;No, not yet, but I am searching.;Не, пока что ничего, но я в процессе
-;android, ios;NecronomiconStage7DogDialog0;Look, I have found this strange book on ritual site. Take it.;Смотри-ка, нашел какой-то место для ритуалов и вот эту странную книгу. Возьми её.
+;android, ios;NecronomiconStage7DogDialog0;Look, I have found this strange book on ritual site. Take it.;Смотри-ка, нашел какое-то место для ритуалов и вот эту странную книгу. Возьми её.
 ;android, ios;NecronomiconStage7AnswerOption0;Thanks, do you know who can help me with it?;Спасибо, знаешь кого-нибудь кто может мне с ней помочь?
 ;android, ios;NecronomiconStage7DogDialog1;Try to ask catus they usually more experienced in wisdom stuff, the older the better.;Попробуй спросить катуса, они обычно лучше разбираются в мудрёных делах, чем старше тем лучше
+;android, ios;NecronomiconStage7DogDialog2;One more thing, at the same ritual site I have found the body of the lost pet. Poor guy. Do not worry I will return him back to his grave.;Да, ещё кое-что. На том самом месте для ритуалов я нашел тело пропавшего пета. Бедняга. Не волнуйся я верну его обратно в его могилу.
 ;android, ios;NecronomiconStage8AnswerOption0;[Show the book] Do you know anything about this book?;[Показать книгу] Знаешь что-нибудь про эту книгу?
 ;android, ios;NecronomiconStage8Dialog0;What is this? I can sense some magic but I am not sure…;Это что такое? Я чувствую какую-то магию, но вообще не уверен…
-;android, ios;NecronomiconStage8Dialog1;Ahh, yes, I know what it is. This is Necronomicon. Do you with to use it or destroy it?;Ааа, ну да, я знаю что это такое. Это Некрономикон. Хочешь использовать его или уничтожить?
+;android, ios;NecronomiconStage8Dialog1;Ahh, yes, I know what it is. This is Necronomicon. Very dangerous stuff, I recommend to destroy it right away, nothing good will come from it. However I can also teach you how to use it. Your choice. So do you want to use it or destroy it?;Ааа, ну да, я знаю что это такое. Это Некрономикон. Очень опасная штука. Я советую сразу его уничтожить, ничего хорошего он не принесёт. Хотя конечно я могу научить тебя пользоваться им. Выбор за тобой. Ну так что, хочешь использовать его или уничтожить?

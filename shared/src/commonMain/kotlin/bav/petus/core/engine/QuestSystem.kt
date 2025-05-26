@@ -57,7 +57,7 @@ class QuestSystem(
             // If dog went on a journey to find the book but haven't returned yet (stage 6)
             if (preferences[quest.currentStageKey] == 6) {
                 // If pet who died is this dog
-                if (preferences[NECRONOMICON_PET_ID_KEY] == e.petId) {
+                if (preferences[NECRONOMICON_SEARCH_DOG_ID_KEY] == e.petId) {
                     // Then return piece of cloth to player and set quest stage to 5
                     userStats.addInventoryItem(
                         InventoryItem(
@@ -170,7 +170,9 @@ private val conditionLambdas =
     )
 
 val NECRONOMICON_TIMESTAMP_KEY = longPreferencesKey("NECRONOMICON_TIMESTAMP_KEY")
-val NECRONOMICON_PET_ID_KEY = longPreferencesKey("NECRONOMICON_PET_ID_KEY")
+val NECRONOMICON_EXHUMATED_PET_ID_KEY = longPreferencesKey("NECRONOMICON_EXHUMATED_PET_ID_KEY")
+val NECRONOMICON_SEARCH_DOG_ID_KEY = longPreferencesKey("NECRONOMICON_SEARCH_DOG_ID_KEY")
+val NECRONOMICON_WISE_CAT_ID_KEY = longPreferencesKey("NECRONOMICON_WISE_CAT_ID_KEY")
 
 private val quests = mapOf(
     QUEST_NECRONOMICON to Quest(
@@ -193,6 +195,9 @@ private val quests = mapOf(
                 onFinish = { questSystem ->
                     val deadPets = questSystem.petsRepo.getAllPetsInCemeteryFlow().first()
                     val pet = deadPets[Random.nextInt(deadPets.size)]
+                    questSystem.dataStore.edit { store ->
+                        store[NECRONOMICON_EXHUMATED_PET_ID_KEY] = pet.id
+                    }
                     questSystem.petsRepo.updatePet(
                         pet = pet.copy(
                             burialType = BurialType.Exhumated,
@@ -263,7 +268,7 @@ private val quests = mapOf(
                 initialConditions = setOf(NECRONOMICON_STAGE_6_LAMBDA),
                 onFinish = {},
                 additionalAnswerOptions = { questSystem, pet, nodeKey ->
-                    val searchingDogId = questSystem.dataStore.data.first()[NECRONOMICON_PET_ID_KEY] ?: -1L
+                    val searchingDogId = questSystem.dataStore.data.first()[NECRONOMICON_SEARCH_DOG_ID_KEY] ?: -1L
                     if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING && pet.id == searchingDogId) {
                         listOf(
                             Answer(
@@ -281,7 +286,7 @@ private val quests = mapOf(
                 initialConditions = setOf(ALWAYS_FALSE_CONDITION),
                 onFinish = {},
                 additionalAnswerOptions = { questSystem, pet, nodeKey ->
-                    val searchingDogId = questSystem.dataStore.data.first()[NECRONOMICON_PET_ID_KEY] ?: -1L
+                    val searchingDogId = questSystem.dataStore.data.first()[NECRONOMICON_SEARCH_DOG_ID_KEY] ?: -1L
                     if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING && pet.id == searchingDogId) {
                         listOf(
                             Answer(

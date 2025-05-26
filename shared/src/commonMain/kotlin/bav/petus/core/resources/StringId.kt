@@ -18,6 +18,10 @@ sealed class StringId {
     data object MysteriousBook : StringId()
     //endregion
 
+    //region Abilities names
+    data object Necromancy : StringId()
+    //endregion
+
     //region History events
     data object HistoryEventPetCreated : StringId()
     data object HistoryEventPetWakeUp : StringId()
@@ -61,6 +65,7 @@ sealed class StringId {
     data object NecronomiconStage7DogDialog0 : StringId()
     data object NecronomiconStage7AnswerOption0 : StringId()
     data object NecronomiconStage7DogDialog1 : StringId()
+    data object NecronomiconStage7DogDialog2 : StringId()
     data object NecronomiconStage8AnswerOption0 : StringId()
     data object NecronomiconStage8Dialog0 : StringId()
     data object NecronomiconStage8Dialog1 : StringId()

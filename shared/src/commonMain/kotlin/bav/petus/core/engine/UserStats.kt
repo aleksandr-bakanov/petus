@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.notification.UserNotification
+import bav.petus.core.resources.StringId
 import bav.petus.model.PetType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -24,6 +25,12 @@ data class LanguageKnowledge(
 enum class Ability {
     Necromancy,
     ;
+}
+
+fun Ability.toStringId(): StringId {
+    return when (this) {
+        Ability.Necromancy -> StringId.Necromancy
+    }
 }
 
 data class UserProfileData(

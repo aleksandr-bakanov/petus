@@ -33,6 +33,7 @@ fun StringId.toResId(): Int {
         StringId.NecronomiconStage7DogDialog0 -> R.string.NecronomiconStage7DogDialog0
         StringId.NecronomiconStage7AnswerOption0 -> R.string.NecronomiconStage7AnswerOption0
         StringId.NecronomiconStage7DogDialog1 -> R.string.NecronomiconStage7DogDialog1
+        StringId.NecronomiconStage7DogDialog2 -> R.string.NecronomiconStage7DogDialog2
         StringId.NecronomiconStage8AnswerOption0 -> R.string.NecronomiconStage8AnswerOption0
         StringId.NecronomiconStage8Dialog0 -> R.string.NecronomiconStage8Dialog0
         StringId.NecronomiconStage8Dialog1 -> R.string.NecronomiconStage8Dialog1
@@ -56,5 +57,6 @@ fun StringId.toResId(): Int {
         StringId.HistoryEventPetResurrected -> R.string.HistoryEventPetResurrected
         StringId.HistoryEventPetSleep -> R.string.HistoryEventPetSleep
         StringId.HistoryEventPetWakeUp -> R.string.HistoryEventPetWakeUp
+        StringId.Necromancy -> R.string.Necromancy
     }
 }

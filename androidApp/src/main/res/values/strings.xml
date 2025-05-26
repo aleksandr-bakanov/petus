@@ -11,9 +11,9 @@
 	<string name="ProfileScreenLanguagesLabel">Languages</string>
 	<string name="ProfileScreenInventoryLabel">Inventory</string>
 	<string name="ProfileScreenAbilitiesLabel">Abilities</string>
-	<string name="LanguageKnowledgeTitleCatus">Catus language knowledge</string>
-	<string name="LanguageKnowledgeTitleDogus">Dogus language knowledge</string>
-	<string name="LanguageKnowledgeTitleFrogus">Frogus language knowledge</string>
+	<string name="LanguageKnowledgeTitleCatus">Catus language</string>
+	<string name="LanguageKnowledgeTitleDogus">Dogus language</string>
+	<string name="LanguageKnowledgeTitleFrogus">Frogus language</string>
 
 	<!-- Pet descriptions -->
 	<string name="PetTypeDescriptionCatus">Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.</string>
@@ -25,6 +25,9 @@
 	<string name="PieceOfCloth">Piece of cloth</string>
 	<string name="MysteriousBook">Mysterious book</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
+
+	<!-- Abilities names -->
+	<string name="Necromancy">Necromancy</string>
 
 	<!-- Notifications -->
 	<string name="NotificationInventoryItemAdded">%s added</string>
@@ -71,7 +74,8 @@
 	<string name="NecronomiconStage7DogDialog0">Look, I have found this strange book on ritual site. Take it.</string>
 	<string name="NecronomiconStage7AnswerOption0">Thanks, do you know who can help me with it?</string>
 	<string name="NecronomiconStage7DogDialog1">Try to ask catus they usually more experienced in wisdom stuff, the older the better.</string>
+	<string name="NecronomiconStage7DogDialog2">One more thing, at the same ritual site I have found the body of the lost pet. Poor guy. Do not worry I will put him back to his grave.</string>
 	<string name="NecronomiconStage8AnswerOption0">[Show the book] Do you know anything about this book?</string>
 	<string name="NecronomiconStage8Dialog0">What is this? I can sense some magic but I am not sure…</string>
-	<string name="NecronomiconStage8Dialog1">Ahh, yes, I know what it is. This is Necronomicon. Do you with to use it or destroy it?</string>
+	<string name="NecronomiconStage8Dialog1">Ahh, yes, I know what it is. This is Necronomicon. Very dangerous stuff, I recommend to destroy it right away, nothing good will come from it. However I can also teach you how to use it. Your choice. So do you want to use it or destroy it?</string>
 </resources>

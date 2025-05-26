@@ -13,6 +13,11 @@ struct UserProfileView: View {
                     if let weather = state.latestWeather {
                         Text(weather).font(.caption)
                     }
+                    Image("user_profile_avatar")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 112, height: 112)
+                        .clipped()
                     Text("ProfileScreenLanguagesLabel")
                     LanguageKnowledgeCell(type: .catus, value: state.languageKnowledgeCatus)
                     LanguageKnowledgeCell(type: .dogus, value: state.languageKnowledgeDogus)

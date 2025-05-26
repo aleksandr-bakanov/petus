@@ -9,9 +9,9 @@
 "ProfileScreenLanguagesLabel"              = "Languages";
 "ProfileScreenInventoryLabel"              = "Inventory";
 "ProfileScreenAbilitiesLabel"              = "Abilities";
-"LanguageKnowledgeTitleCatus"              = "Catus language knowledge";
-"LanguageKnowledgeTitleDogus"              = "Dogus language knowledge";
-"LanguageKnowledgeTitleFrogus"             = "Frogus language knowledge";
+"LanguageKnowledgeTitleCatus"              = "Catus language";
+"LanguageKnowledgeTitleDogus"              = "Dogus language";
+"LanguageKnowledgeTitleFrogus"             = "Frogus language";
 
 /* Pet descriptions */
 "PetTypeDescriptionCatus"                  = "Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.";
@@ -23,6 +23,9 @@
 "PieceOfCloth"                             = "Piece of cloth";
 "MysteriousBook"                           = "Mysterious book";
 "InventoryItemPattern"                     = "%@ (x%d)";
+
+/* Abilities names */
+"Necromancy"                               = "Necromancy";
 
 /* Notifications */
 "NotificationInventoryItemAdded"           = "%@ added";
@@ -69,6 +72,7 @@
 "NecronomiconStage7DogDialog0"             = "Look, I have found this strange book on ritual site. Take it.";
 "NecronomiconStage7AnswerOption0"          = "Thanks, do you know who can help me with it?";
 "NecronomiconStage7DogDialog1"             = "Try to ask catus they usually more experienced in wisdom stuff, the older the better.";
+"NecronomiconStage7DogDialog2"             = "One more thing, at the same ritual site I have found the body of the lost pet. Poor guy. Do not worry I will put him back to his grave.";
 "NecronomiconStage8AnswerOption0"          = "[Show the book] Do you know anything about this book?";
 "NecronomiconStage8Dialog0"                = "What is this? I can sense some magic but I am not sure…";
-"NecronomiconStage8Dialog1"                = "Ahh, yes, I know what it is. This is Necronomicon. Do you with to use it or destroy it?";
+"NecronomiconStage8Dialog1"                = "Ahh, yes, I know what it is. This is Necronomicon. Very dangerous stuff, I recommend to destroy it right away, nothing good will come from it. However I can also teach you how to use it. Your choice. So do you want to use it or destroy it?";

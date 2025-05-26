@@ -2,16 +2,20 @@ package bav.petus.core.dialog
 
 import androidx.datastore.preferences.core.edit
 import bav.petus.core.engine.Ability
-import bav.petus.core.engine.NECRONOMICON_PET_ID_KEY
+import bav.petus.core.engine.NECRONOMICON_EXHUMATED_PET_ID_KEY
+import bav.petus.core.engine.NECRONOMICON_SEARCH_DOG_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_TIMESTAMP_KEY
+import bav.petus.core.engine.NECRONOMICON_WISE_CAT_ID_KEY
 import bav.petus.core.engine.QuestSystem
 import bav.petus.core.engine.UserStats
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
 import bav.petus.core.resources.StringId
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
+import bav.petus.model.BurialType
 import bav.petus.model.Pet
 import bav.petus.model.PetType
+import kotlinx.coroutines.flow.first
 
 class DialogSystem(
     private val userStats: UserStats,
@@ -60,25 +64,17 @@ class DialogSystem(
         val maxKnowledge = UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE
         val knowledge = userStats.getLanguageKnowledge(petType).coerceIn(0, maxKnowledge)
 
-        val maskSymbol = when (petType) {
-            PetType.Catus -> "\uD83D\uDC31"
-            PetType.Dogus -> "\uD83D\uDC36"
-            PetType.Frogus -> "\uD83D\uDC38"
+        val ratio = knowledge.toFloat() / maxKnowledge.toFloat()
+        val amountToCensor = text.length - (text.length * ratio).toInt()
+        val indicesToCensor = text.indices.shuffled().take(amountToCensor)
+
+        val maskSymbol = "\u258A"
+
+        return buildString {
+            for (i in text.indices) {
+                append(if (i in indicesToCensor) maskSymbol else text[i])
+            }
         }
-
-        val words = text.split(" ")
-        val wordCount = words.size
-        val numToCensor = (wordCount * (maxKnowledge - knowledge) / maxKnowledge.toDouble()).toInt()
-
-        if (numToCensor == 0 || wordCount == 0) return text
-
-        // Calculate step size to space censored words evenly
-        val step = wordCount.toDouble() / numToCensor
-        val indicesToCensor = (0 until numToCensor).map { (it * step).toInt() }.toSet()
-
-        return words.mapIndexed { index, word ->
-            if (index in indicesToCensor) maskSymbol else word
-        }.joinToString(" ")
     }
 
     companion object {
@@ -90,6 +86,7 @@ class DialogSystem(
         const val NECRONOMICON_STAGE_6_DOG_DIALOG = "NECRONOMICON_STAGE_6_DOG_DIALOG"
         const val NECRONOMICON_STAGE_7_DOG_DIALOG_0 = "NECRONOMICON_STAGE_7_DOG_DIALOG_0"
         const val NECRONOMICON_STAGE_7_DOG_DIALOG_1 = "NECRONOMICON_STAGE_7_DOG_DIALOG_1"
+        const val NECRONOMICON_STAGE_7_DOG_DIALOG_2 = "NECRONOMICON_STAGE_7_DOG_DIALOG_2"
         const val NECRONOMICON_STAGE_8_DIALOG_0 = "NECRONOMICON_STAGE_8_DIALOG_0"
         const val NECRONOMICON_STAGE_8_DIALOG_1 = "NECRONOMICON_STAGE_8_DIALOG_1"
 
@@ -150,7 +147,7 @@ class DialogSystem(
                             val now = getTimestampSecondsSinceEpoch()
                             questSystem.dataStore.edit { store ->
                                 store[NECRONOMICON_TIMESTAMP_KEY] = now
-                                pet?.let { p -> store[NECRONOMICON_PET_ID_KEY] = p.id }
+                                pet?.let { p -> store[NECRONOMICON_SEARCH_DOG_ID_KEY] = p.id }
                             }
                             questSystem.setQuestStageToNext(QuestSystem.QUEST_NECRONOMICON)
                         }
@@ -174,7 +171,7 @@ class DialogSystem(
                         nextNode = NECRONOMICON_STAGE_7_DOG_DIALOG_1,
                         action = { _, userStats, _ ->
                             userStats.addInventoryItem(
-                                InventoryItem(InventoryItemId.Necronomicon, 1)
+                                InventoryItem(InventoryItemId.MysteriousBook, 1)
                             )
                         }
                     )
@@ -185,8 +182,26 @@ class DialogSystem(
                 answers = listOf(
                     Answer(
                         text = StringId.Thanks,
+                        nextNode = NECRONOMICON_STAGE_7_DOG_DIALOG_2,
+                    )
+                )
+            ),
+            NECRONOMICON_STAGE_7_DOG_DIALOG_2 to DialogNode(
+                text = listOf(StringId.NecronomiconStage7DogDialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Sure,
                         nextNode = null,
                         action = { questSystem, _, _ ->
+                            questSystem.dataStore.data.first()[NECRONOMICON_EXHUMATED_PET_ID_KEY]?.let { bodyPetId ->
+                                questSystem.petsRepo.getPetByIdFlow(bodyPetId).first()?.let { pet ->
+                                    questSystem.petsRepo.updatePet(
+                                        pet = pet.copy(
+                                            burialType = BurialType.Buried,
+                                        )
+                                    )
+                                }
+                            }
                             questSystem.setQuestStageToNext(QuestSystem.QUEST_NECRONOMICON)
                         }
                     )
@@ -207,7 +222,18 @@ class DialogSystem(
                     Answer(
                         text = StringId.Use,
                         nextNode = null,
-                        action = { questSystem, userStats, _ ->
+                        action = { questSystem, userStats, pet ->
+                            userStats.removeInventoryItem(
+                                InventoryItem(InventoryItemId.MysteriousBook, 1)
+                            )
+                            userStats.addInventoryItem(
+                                InventoryItem(InventoryItemId.Necronomicon, 1)
+                            )
+                            pet?.let { p ->
+                                questSystem.dataStore.edit { store ->
+                                    store[NECRONOMICON_WISE_CAT_ID_KEY] = p.id
+                                }
+                            }
                             userStats.addNewAbility(Ability.Necromancy)
                             questSystem.setQuestStageToNext(QuestSystem.QUEST_NECRONOMICON)
                         }
@@ -217,7 +243,7 @@ class DialogSystem(
                         nextNode = null,
                         action = { questSystem, userStats, _ ->
                             userStats.removeInventoryItem(
-                                InventoryItem(InventoryItemId.Necronomicon, 1)
+                                InventoryItem(InventoryItemId.MysteriousBook, 1)
                             )
                             questSystem.setQuestStageToNext(QuestSystem.QUEST_NECRONOMICON)
                         }

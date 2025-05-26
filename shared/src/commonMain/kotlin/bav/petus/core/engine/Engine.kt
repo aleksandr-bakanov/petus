@@ -35,7 +35,7 @@ class Engine(
         type: PetType,
     ) {
         val pet = Pet(
-            name = name,
+            name = name.trim(),
             type = type,
             creationTime = getTimestampSecondsSinceEpoch(),
             illnessPossibility = getRandomIllnessPossibility(),
@@ -688,7 +688,7 @@ class Engine(
         const val SLEEP_TEMPERATURE_MULTIPLIER = 0.25f
         const val DEATH_OF_OLD_AGE_POSSIBILITY_INC = 0.000015f
         const val MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION = 0.00835f
-        const val LANGUAGE_KNOWLEDGE_INCREMENT = 1
+        const val LANGUAGE_KNOWLEDGE_INCREMENT = 3
         const val PET_NOT_ALLOWED_TO_PLAY_INTERVAL_SEC = 12 * HOUR
     }
 }
