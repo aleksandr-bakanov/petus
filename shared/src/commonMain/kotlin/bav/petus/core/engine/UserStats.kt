@@ -37,6 +37,7 @@ data class UserProfileData(
     val languageKnowledge: LanguageKnowledge,
     val inventory: List<InventoryItem>,
     val abilities: Set<Ability>,
+    val zooSize: Int,
 )
 
 class UserStats(
@@ -59,6 +60,7 @@ class UserStats(
                 ),
                 inventory = it.getInventory(),
                 abilities = it.getAbilities(),
+                zooSize = it[ZOO_SIZE_KEY] ?: DEFAULT_ZOO_SIZE
             )
         }
     }
@@ -169,10 +171,13 @@ class UserStats(
     companion object {
         const val MAXIMUM_LANGUAGE_KNOWLEDGE = 120
         const val MAXIMUM_LANGUAGE_UI_KNOWLEDGE = 100
+        const val DEFAULT_ZOO_SIZE = 6
 
         private val LANGUAGE_KNOWLEDGE_CATUS_KEY = intPreferencesKey("language_knowledge_catus")
         private val LANGUAGE_KNOWLEDGE_DOGUS_KEY = intPreferencesKey("language_knowledge_dogus")
         private val LANGUAGE_KNOWLEDGE_FROGUS_KEY = intPreferencesKey("language_knowledge_frogus")
+
+        private val ZOO_SIZE_KEY = intPreferencesKey("zoo_size")
 
         private val AVAILABLE_PET_TYPES_KEY = stringSetPreferencesKey("available_pet_types")
         private val AVAILABLE_ABILITIES_KEY = stringSetPreferencesKey("available_abilities_types")

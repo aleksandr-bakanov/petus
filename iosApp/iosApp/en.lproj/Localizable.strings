@@ -12,6 +12,11 @@
 "LanguageKnowledgeTitleCatus"              = "Catus language";
 "LanguageKnowledgeTitleDogus"              = "Dogus language";
 "LanguageKnowledgeTitleFrogus"             = "Frogus language";
+"ZooSizeTitle"                             = "Home size";
+"ProfileScreenMiscLabel"                   = "Misc";
+
+/* Zoo screen */
+"CreatePetButtonTitle"                     = "Create new pet";
 
 /* Pet descriptions */
 "PetTypeDescriptionCatus"                  = "Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.";

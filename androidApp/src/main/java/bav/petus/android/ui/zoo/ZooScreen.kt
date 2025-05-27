@@ -11,7 +11,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import bav.petus.android.R
 import bav.petus.android.ui.common.ActionButton
 import bav.petus.android.ui.views.PetListCell
 import bav.petus.viewModel.zoo.PetThumbnailUiData
@@ -53,12 +55,14 @@ private fun ZooScreen(
                         })
                 }
             }
-            ActionButton(
-                text = "Create new pet",
-                color = Color(0xFF4CAF50),
-                modifier = Modifier.padding(16.dp),
-            ) {
-                onAction(ZooScreenViewModel.Action.TapCreateNewPetButton)
+            if (uiState.showCreateNewPetButton) {
+                ActionButton(
+                    text = stringResource(id = R.string.CreatePetButtonTitle),
+                    color = Color(0xFF4CAF50),
+                    modifier = Modifier.padding(16.dp),
+                ) {
+                    onAction(ZooScreenViewModel.Action.TapCreateNewPetButton)
+                }
             }
         }
     }

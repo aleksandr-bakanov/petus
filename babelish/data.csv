@@ -11,6 +11,10 @@ User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
 ;android, ios;LanguageKnowledgeTitleCatus;Catus language;Язык Катуса
 ;android, ios;LanguageKnowledgeTitleDogus;Dogus language;Язык Догуса
 ;android, ios;LanguageKnowledgeTitleFrogus;Frogus language;Язык Фрогуса
+;android, ios;ZooSizeTitle;Home size;Размер дома
+;android, ios;ProfileScreenMiscLabel;Misc;Прочее
+
+Zoo screen;android, ios;CreatePetButtonTitle;Create new pet;Создать нового пета
 
 Pet descriptions;android, ios;PetTypeDescriptionCatus;Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.;Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.
 ;android, ios;PetTypeDescriptionDogus;Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.;Догус: спит 1 часа, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.

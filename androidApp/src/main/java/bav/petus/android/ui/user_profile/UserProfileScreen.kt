@@ -98,7 +98,31 @@ private fun UserProfileScreen(
             uiState.abilities.forEach { item ->
                 Text(text = stringResource(id = item.toStringId().toResId()))
             }
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = stringResource(R.string.ProfileScreenMiscLabel))
+            UserProfileRow(
+                title = stringResource(R.string.ZooSizeTitle),
+                message = uiState.zooSize,
+            )
         }
+    }
+}
+
+@Composable
+private fun UserProfileRow(title: String, message: String) {
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .wrapContentHeight()
+    ) {
+        Text(
+            text = title,
+            modifier = Modifier.weight(2f)
+        )
+        Text(
+            text = message,
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.End
+        )
     }
 }
 
@@ -110,34 +134,17 @@ private fun LanguageKnowledgeStat(type: PetType, value: String) {
             PetType.Frogus -> R.string.LanguageKnowledgeTitleFrogus
         }
     )
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .wrapContentHeight()
-    ) {
-        Text(
-            text = title,
-            modifier = Modifier.weight(2f)
-        )
-        Text(
-            text = value,
-            modifier = Modifier.weight(1f),
-            textAlign = TextAlign.End
-        )
-    }
+    UserProfileRow(
+        title = title,
+        message = value
+    )
 }
 
 @Composable
 private fun InventoryItemCell(item: InventoryItem) {
     val title = stringResource(item.id.toStringId().toResId())
-    Row(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
-        Text(
-            text = title,
-            modifier = Modifier.weight(2f)
-        )
-        Text(
-            text = item.amount.toString(),
-            modifier = Modifier.weight(1f),
-            textAlign = TextAlign.End
-        )
-    }
+    UserProfileRow(
+        title = title,
+        message = item.amount.toString()
+    )
 }

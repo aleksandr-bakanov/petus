@@ -30,6 +30,14 @@ struct UserProfileView: View {
                     ForEach(state.abilities, id: \.self) { item in
                         Text(item.name)
                     }
+                    Text("ProfileScreenMiscLabel")
+                    HStack {
+                        Text("ZooSizeTitle")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .layoutPriority(1)
+                        Text(state.zooSize)
+                            .frame(width: 80, alignment: .trailing) // Fixed width or proportional width
+                    }
                 }
                 .frame(maxWidth: .infinity) // Center horizontally
                 .padding()

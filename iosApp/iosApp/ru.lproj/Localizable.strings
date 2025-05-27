@@ -12,6 +12,11 @@
 "LanguageKnowledgeTitleCatus"              = "Язык Катуса";
 "LanguageKnowledgeTitleDogus"              = "Язык Догуса";
 "LanguageKnowledgeTitleFrogus"             = "Язык Фрогуса";
+"ZooSizeTitle"                             = "Размер дома";
+"ProfileScreenMiscLabel"                   = "Прочее";
+
+/* Zoo screen */
+"CreatePetButtonTitle"                     = "Создать нового пета";
 
 /* Pet descriptions */
 "PetTypeDescriptionCatus"                  = "Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.";

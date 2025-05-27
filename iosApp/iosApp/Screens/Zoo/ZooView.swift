@@ -22,12 +22,13 @@ struct ZooView: View {
                                     onClick: { navigationPath.append(.petDetails(petId: data.pet.id)) }
                         ).listRowInsets(EdgeInsets())
                     }
-                    
-                    ActionButton(title: "Create new pet", backgroundColor: .accentColor) {
-                        navigationPath.append(.createPet)
+
+                    if state.showCreateNewPetButton == true {
+                        ActionButton(title: NSLocalizedString("CreatePetButtonTitle", comment: ""), backgroundColor: .accentColor) {
+                            navigationPath.append(.createPet)
+                        }
                     }
                 }
-                
             }
             .navigationDestination(for: ZooNavigation.self) { destination in
                 switch destination {

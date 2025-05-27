@@ -22,6 +22,7 @@ data class UserProfileUiState(
     val languageKnowledgeFrogus: String,
     val inventory: List<InventoryItem>,
     val abilities: List<Ability>,
+    val zooSize: String,
 )
 
 class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenViewModel.Navigation>(), KoinComponent {
@@ -40,6 +41,7 @@ class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenView
             languageKnowledgeFrogus = "${userData.languageKnowledge.frogus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
             inventory = userData.inventory,
             abilities = userData.abilities.toList(),
+            zooSize = userData.zooSize.toString(),
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 

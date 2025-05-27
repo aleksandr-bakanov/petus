@@ -18,6 +18,7 @@ import bav.petus.repo.HistoryRepository
 import bav.petus.repo.PetsRepository
 import bav.petus.repo.WeatherRepository
 import bav.petus.useCase.WeatherAttitudeUseCase
+import kotlinx.coroutines.flow.first
 import kotlin.random.Random
 
 class Engine(
@@ -139,10 +140,12 @@ class Engine(
     }
 
     suspend fun isAllowedToResurrectPet(pet: Pet): Boolean {
-        val abilities = userStats.getAvailableAbilities()
-        return abilities.contains(Ability.Necromancy) &&
+        val userData = userStats.getUserProfileFlow().first()
+        val petsInZoo = petsRepo.getAllPetsInZooFlow().first()
+        return userData.abilities.contains(Ability.Necromancy) &&
                 pet.place == Place.Cemetery &&
-                pet.burialType != BurialType.Exhumated
+                pet.burialType != BurialType.Exhumated &&
+                petsInZoo.size < userData.zooSize
     }
 
     suspend fun resurrectPetAsZombie(pet: Pet) {

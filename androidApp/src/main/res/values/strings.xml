@@ -14,6 +14,11 @@
 	<string name="LanguageKnowledgeTitleCatus">Catus language</string>
 	<string name="LanguageKnowledgeTitleDogus">Dogus language</string>
 	<string name="LanguageKnowledgeTitleFrogus">Frogus language</string>
+	<string name="ZooSizeTitle">Home size</string>
+	<string name="ProfileScreenMiscLabel">Misc</string>
+
+	<!-- Zoo screen -->
+	<string name="CreatePetButtonTitle">Create new pet</string>
 
 	<!-- Pet descriptions -->
 	<string name="PetTypeDescriptionCatus">Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.</string>
