@@ -11,15 +11,24 @@ struct CemeteryScreen: View {
     @StateViewModel var viewModel: CemeteryScreenViewModel = CemeteryScreenViewModel()
     @State private var navigationPath: [CemeteryNavigation] = []
     
+    // Two-column grid layout
+    private let columns = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16)
+    ]
+    
     var body: some View {
         NavigationStack(path: $navigationPath) {
-            VStack {
+            ScrollView {
                 if let state = viewModel.uiState.value {
-                    List(state.pets, id: \.pet.id) { data in
-                        PetListCell(data: data,
-                                    onClick: { viewModel.onAction(action: CemeteryScreenViewModelActionTapOnPet(petId: data.pet.id)) }
-                        ).listRowInsets(EdgeInsets())
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach(state.pets, id: \.pet.id) { data in
+                            PetCemeteryListCell(data: data) {
+                                viewModel.onAction(action: CemeteryScreenViewModelActionTapOnPet(petId: data.pet.id))
+                            }
+                        }
                     }
+                    .padding(16)
                 }
             }
             .navigationDestination(for: CemeteryNavigation.self) { destination in

@@ -1,6 +1,8 @@
 package bav.petus.android.ui.zoo
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -46,7 +48,9 @@ private fun ZooScreen(
                 .padding(padding)
         ) {
             LazyColumn(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                contentPadding = PaddingValues(8.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 items(uiState.pets) { data: PetThumbnailUiData ->
                     PetListCell(
@@ -67,5 +71,3 @@ private fun ZooScreen(
         }
     }
 }
-
-

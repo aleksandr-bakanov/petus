@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -20,7 +18,6 @@ import bav.petus.android.MyApplicationTheme
 
 @Composable
 fun StatBar(
-    title: String,
     color: Color,
     fraction: Float,
 ) {
@@ -40,11 +37,6 @@ fun StatBar(
                 .fillMaxHeight()
                 .fillMaxWidth(fraction = animatedFraction)
         )
-        Text(
-            text = title,
-            color = Color.White,
-            style = MaterialTheme.typography.bodySmall,
-        )
     }
 }
 
@@ -53,7 +45,6 @@ fun StatBar(
 private fun StatBarPreview() {
     MyApplicationTheme {
         StatBar(
-            title = "HLT",
             color = HealthColor,
             fraction = 0.6f,
         )

@@ -12,19 +12,28 @@ struct ZooView: View {
     
     @StateViewModel var viewModel: ZooScreenViewModel = ZooScreenViewModel()
     @State private var navigationPath: [ZooNavigation] = []
-    
+
     var body: some View {
         NavigationStack(path: $navigationPath) {
-            VStack {
+            VStack(spacing: 0) {
                 if let state = viewModel.uiState.value {
-                    List(state.pets, id: \.pet.id) { data in
-                        PetListCell(data: data,
-                                    onClick: { navigationPath.append(.petDetails(petId: data.pet.id)) }
-                        ).listRowInsets(EdgeInsets())
+                    // Pets list
+                    ScrollView {
+                        LazyVStack(spacing: 4) {
+                            ForEach(state.pets, id: \.pet.id) { data in
+                                PetListCell(data: data) {
+                                    navigationPath.append(.petDetails(petId: data.pet.id))
+                                }
+                            }
+                        }
+                        .padding(8)
                     }
-
-                    if state.showCreateNewPetButton == true {
-                        ActionButton(title: NSLocalizedString("CreatePetButtonTitle", comment: ""), backgroundColor: .accentColor) {
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                    // Create pet button (conditionally)
+                    if state.showCreateNewPetButton {
+                        ActionButton(title: NSLocalizedString("CreatePetButtonTitle", comment: ""),
+                                     backgroundColor: .accentColor) {
                             navigationPath.append(.createPet)
                         }
                     }

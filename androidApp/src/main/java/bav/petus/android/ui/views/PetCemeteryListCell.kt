@@ -2,13 +2,12 @@ package bav.petus.android.ui.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -17,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import bav.petus.android.HealthColor
@@ -27,48 +27,26 @@ import bav.petus.android.ui.common.toResId
 import bav.petus.viewModel.zoo.PetThumbnailUiData
 
 @Composable
-fun PetListCell(
+fun PetCemeteryListCell(
     data: PetThumbnailUiData,
     onClick: () -> Unit,
 ) {
-    val maxHeight = 96.dp
-    Row(modifier = Modifier
+    Column(modifier = Modifier
         .fillMaxWidth()
-        .height(maxHeight)
         .clickable { onClick() }
     ) {
+        Text(
+            text = data.pet.name,
+            style = MaterialTheme.typography.titleLarge,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
         Image(
             painter = painterResource(id = data.petImageResId.toResId()),
             contentDescription = "",
-            modifier = Modifier
-                .size(maxHeight)
-                .clip(RoundedCornerShape(8.dp))
+            modifier = Modifier.clip(RoundedCornerShape(16.dp, 16.dp, 0.dp, 0.dp))
         )
-        Column(
-            modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            Text(
-                text = data.pet.name,
-                style = MaterialTheme.typography.titleLarge,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-            StatBar(
-                color = SatietyColor,
-                fraction = data.satietyFraction,
-            )
-            StatBar(
-                color = PsychColor,
-                fraction = data.psychFraction,
-            )
-            StatBar(
-                color = HealthColor,
-                fraction = data.healthFraction,
-            )
-        }
     }
 }
-

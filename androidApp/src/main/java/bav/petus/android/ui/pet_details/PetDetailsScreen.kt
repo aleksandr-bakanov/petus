@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import bav.petus.android.HealthColor
 import bav.petus.android.PsychColor
@@ -71,6 +72,8 @@ private fun PetDetailsScreen(
                             text = uiState.title,
                             style = MaterialTheme.typography.headlineLarge,
                             textAlign = TextAlign.Center,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
                         )
                     }
                 }
@@ -97,17 +100,14 @@ private fun PetDetailsScreen(
                 if (uiState.showStatBars) {
                     // Stats
                     StatBar(
-                        title = "SAT",
                         color = SatietyColor,
                         fraction = uiState.satietyFraction,
                     )
                     StatBar(
-                        title = "PSY",
                         color = PsychColor,
                         fraction = uiState.psychFraction,
                     )
                     StatBar(
-                        title = "HLT",
                         color = HealthColor,
                         fraction = uiState.healthFraction,
                     )

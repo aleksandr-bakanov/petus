@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct StatBar: View {
-    var title: String
     var color: Color
     var fraction: CGFloat
 
@@ -16,10 +15,6 @@ struct StatBar: View {
                     .animation(.easeInOut(duration: 0.3), value: fraction)
             }
             .frame(height: 16) // fix height outside GeometryReader
-            
-            Text(title)
-                .font(.caption)
-                .foregroundColor(.white)
         }
         .frame(height: 16)
         .frame(maxWidth: .infinity)

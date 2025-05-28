@@ -34,9 +34,9 @@ struct PetDetailsScreen: View {
                             .scaledToFit()
                             .frame(maxWidth: .infinity)
                         if state.showStatBars {
-                            StatBar(title: "SAT", color: Color("SatietyColor"), fraction: CGFloat(state.satietyFraction))
-                            StatBar(title: "PSY", color: Color("PsychColor"), fraction: CGFloat(state.psychFraction))
-                            StatBar(title: "HLT", color: Color("HealthColor"), fraction: CGFloat(state.healthFraction))
+                            StatBar(color: Color("SatietyColor"), fraction: CGFloat(state.satietyFraction))
+                            StatBar(color: Color("PsychColor"), fraction: CGFloat(state.psychFraction))
+                            StatBar(color: Color("HealthColor"), fraction: CGFloat(state.healthFraction))
                         }
                     }
                     
