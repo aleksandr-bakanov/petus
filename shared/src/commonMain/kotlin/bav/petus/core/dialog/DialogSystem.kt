@@ -15,6 +15,7 @@ import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
 import bav.petus.core.resources.StringId
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
+import bav.petus.model.BodyState
 import bav.petus.model.BurialType
 import bav.petus.model.Pet
 import bav.petus.model.PetType
@@ -33,12 +34,19 @@ class DialogSystem(
         currentPet = pet
         val standardBeginning = nodes[STANDARD_DIALOG_BEGINNING]!!
         val additionalAnswerOptions = questSystem.getAdditionalAnswers(pet, STANDARD_DIALOG_BEGINNING)
-        val resultNode = if (additionalAnswerOptions.isNotEmpty()) {
+        val nodeWithAdditionalQuestAnswers = if (additionalAnswerOptions.isNotEmpty()) {
             standardBeginning.copy(
                 answers = additionalAnswerOptions + standardBeginning.answers
             )
         } else {
             standardBeginning
+        }
+        val resultNode = if (engine.isPetSpeakLatin(pet)) {
+            nodeWithAdditionalQuestAnswers.copy(
+                text = listOf(StringId.WhatIsGoingOnWithYouLatin)
+            )
+        } else {
+            nodeWithAdditionalQuestAnswers
         }
         currentNode = resultNode
         return currentNode
@@ -71,6 +79,7 @@ class DialogSystem(
     private fun addPetDescription(pet: Pet?, node: DialogNode?): DialogNode? {
         if (pet == null || node == null) return node
         else {
+            val isLatin = engine.isPetSpeakLatin(pet)
             val texts = buildList {
                 val isSick = pet.illness
                 val isHungry = engine.isPetHungry(pet)
@@ -79,12 +88,12 @@ class DialogSystem(
                 val isHalfHp = engine.isPetLowHealth(pet)
                 val isGood = listOf(isSick, isHungry, isPooped, isBored, isHalfHp).none { it }
 
-                if (isSick) add(StringId.IAmSick)
-                if (isHungry) add(StringId.IAmHungry)
-                if (isPooped) add(StringId.IPooped)
-                if (isBored) add(StringId.IAmBored)
-                if (isHalfHp) add(StringId.IAmHalfHp)
-                if (isGood) add(StringId.IAmGood)
+                if (isSick) add(if (isLatin) StringId.IAmSickLatin else StringId.IAmSick)
+                if (isHungry) add(if (isLatin) StringId.IAmHungryLatin else StringId.IAmHungry)
+                if (isPooped) add(if (isLatin) StringId.IPoopedLatin else StringId.IPooped)
+                if (isBored) add(if (isLatin) StringId.IAmBoredLatin else StringId.IAmBored)
+                if (isHalfHp) add(if (isLatin) StringId.IAmHalfHpLatin else StringId.IAmHalfHp)
+                if (isGood) add(if (isLatin) StringId.IAmGoodLatin else StringId.IAmGood)
             }
             return node.copy(
                 text = node.text + texts.shuffled()

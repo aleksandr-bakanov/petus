@@ -183,6 +183,10 @@ class Engine(
         }
     }
 
+    fun isPetSpeakLatin(pet: Pet): Boolean {
+        return pet.bodyState == BodyState.Zombie || pet.bodyState == BodyState.Spirit
+    }
+
     fun isPetHungry(pet: Pet): Boolean {
         return getPetSatietyFraction(pet) < 0.66f
     }

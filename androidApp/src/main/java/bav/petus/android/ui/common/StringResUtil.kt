@@ -13,6 +13,7 @@ fun StringId.toResId(): Int {
         StringId.PetTypeDescriptionDogus -> R.string.PetTypeDescriptionDogus
         StringId.PetTypeDescriptionFrogus -> R.string.PetTypeDescriptionFrogus
         StringId.WhatIsGoingOnWithYou -> R.string.WhatIsGoingOnWithYou
+        StringId.WhatIsGoingOnWithYouLatin -> R.string.WhatIsGoingOnWithYouLatin
         StringId.BeingBetter -> R.string.BeenBetter
         StringId.IShouldGo -> R.string.IShouldGo
         StringId.SeeYa -> R.string.SeeYa
@@ -24,11 +25,17 @@ fun StringId.toResId(): Int {
         StringId.Destroy -> R.string.Destroy
         StringId.IAmOkayHowAreYou -> R.string.IAmOkayHowAreYou
         StringId.IAmSick -> R.string.IAmSick
+        StringId.IAmSickLatin -> R.string.IAmSickLatin
         StringId.IAmHungry -> R.string.IAmHungry
+        StringId.IAmHungryLatin -> R.string.IAmHungryLatin
         StringId.IPooped -> R.string.IPooped
+        StringId.IPoopedLatin -> R.string.IPoopedLatin
         StringId.IAmBored -> R.string.IAmBored
+        StringId.IAmBoredLatin -> R.string.IAmBoredLatin
         StringId.IAmHalfHp -> R.string.IAmHalfHp
+        StringId.IAmHalfHpLatin -> R.string.IAmHalfHpLatin
         StringId.IAmGood -> R.string.IAmGood
+        StringId.IAmGoodLatin -> R.string.IAmGoodLatin
         StringId.NecronomiconStage3AnswerOption0 -> R.string.NecronomiconStage3AnswerOption0
         StringId.NecronomiconStage3CommonDialog -> R.string.NecronomiconStage3CommonDialog
         StringId.NecronomiconStage3DogDialog -> R.string.NecronomiconStage3DogDialog

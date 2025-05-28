@@ -46,6 +46,7 @@ sealed class StringId {
 
     //region Dialogs
     data object WhatIsGoingOnWithYou : StringId()
+    data object WhatIsGoingOnWithYouLatin : StringId()
     data object BeingBetter : StringId()
     data object IShouldGo : StringId()
     data object SeeYa : StringId()
@@ -58,11 +59,17 @@ sealed class StringId {
     data object IAmOkayHowAreYou : StringId()
 
     data object IAmSick : StringId()
+    data object IAmSickLatin : StringId()
     data object IAmHungry : StringId()
+    data object IAmHungryLatin : StringId()
     data object IPooped : StringId()
+    data object IPoopedLatin : StringId()
     data object IAmBored : StringId()
+    data object IAmBoredLatin : StringId()
     data object IAmHalfHp : StringId()
+    data object IAmHalfHpLatin : StringId()
     data object IAmGood : StringId()
+    data object IAmGoodLatin : StringId()
 
     data object NecronomiconStage3AnswerOption0 : StringId()
     data object NecronomiconStage3CommonDialog : StringId()

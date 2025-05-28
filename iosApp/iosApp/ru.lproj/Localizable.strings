@@ -59,11 +59,17 @@
 
 /* Pet state description dialogs */
 "IAmSick"                                  = "Я болею, у тебя найдется какое-нибудь лекарство?";
+"IAmSickLatin"                             = "Aeger sum, habesne medicamentum aliquod?";
 "IAmHungry"                                = "Я голодный, дай что-нибудь поесть.";
+"IAmHungryLatin"                           = "Esurio, da mihi cibum.";
 "IPooped"                                  = "Я сходил в туалет (будет неплохо если ты уберешь за мной).";
+"IPoopedLatin"                             = "Cacavi (gratum esset si post me lavares).";
 "IAmBored"                                 = "Мне скучно, поиграем?";
+"IAmBoredLatin"                            = "Taedet me, ludere vis?";
 "IAmHalfHp"                                = "Что-то мне не хорошо, надо бы отдохнуть.";
+"IAmHalfHpLatin"                           = "Non tam bene me habeo, requie mihi opus est.";
 "IAmGood"                                  = "Всё хорошо.";
+"IAmGoodLatin"                             = "Bene sum.";
 
 /* Dialogs */
 "WhatIsGoingOnWithYou"                     = "Как дела?";

@@ -61,11 +61,17 @@
 
 	<!-- Pet state description dialogs -->
 	<string name="IAmSick">I am sick, do you have any medicine?</string>
+	<string name="IAmSickLatin">Aeger sum, habesne medicamentum aliquod?</string>
 	<string name="IAmHungry">I am hungry, give me some food.</string>
+	<string name="IAmHungryLatin">Esurio, da mihi cibum.</string>
 	<string name="IPooped">I pooped (it would be nice if you clean after me).</string>
+	<string name="IPoopedLatin">Cacavi (gratum esset si post me lavares).</string>
 	<string name="IAmBored">I am bored, wanna play?</string>
+	<string name="IAmBoredLatin">Taedet me, ludere vis?</string>
 	<string name="IAmHalfHp">I do not feel so good, need some rest.</string>
+	<string name="IAmHalfHpLatin">Non tam bene me habeo, requie mihi opus est.</string>
 	<string name="IAmGood">I am fine.</string>
+	<string name="IAmGoodLatin">Bene sum.</string>
 
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">What is going on with you?</string>
