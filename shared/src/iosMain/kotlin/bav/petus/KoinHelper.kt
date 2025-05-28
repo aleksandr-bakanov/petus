@@ -106,6 +106,7 @@ fun initKoin() {
                 DialogSystem(
                     userStats = get(),
                     questSystem = get(),
+                    engine = get(),
                 )
             }
 

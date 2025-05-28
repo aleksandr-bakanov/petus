@@ -25,7 +25,7 @@ class PetImageUseCase(
                             pet.sleep -> ImageId.CatNewbornSleep
                             pet.isPooped -> ImageId.CatNewbornPoop
                             pet.illness -> ImageId.CatNewbornIll
-                            isPetHungryOrPsych(pet) -> ImageId.CatNewbornHungry
+                            isPetHungryOrBored(pet) -> ImageId.CatNewbornHungry
                             isPetLowHealth(pet) -> ImageId.CatNewbornIll
                             else -> ImageId.CatNewbornActive
                         }
@@ -37,7 +37,7 @@ class PetImageUseCase(
                             pet.sleep -> ImageId.CatAdultSleep
                             pet.isPooped -> ImageId.CatAdultPoop
                             pet.illness -> ImageId.CatAdultIll
-                            isPetHungryOrPsych(pet) -> ImageId.CatAdultHungry
+                            isPetHungryOrBored(pet) -> ImageId.CatAdultHungry
                             isPetLowHealth(pet) -> ImageId.CatAdultIll
                             else -> ImageId.CatAdultActive
                         }
@@ -48,7 +48,7 @@ class PetImageUseCase(
                             pet.sleep -> ImageId.CatOldSleep
                             pet.isPooped -> ImageId.CatOldPoop
                             pet.illness -> ImageId.CatOldIll
-                            isPetHungryOrPsych(pet) -> ImageId.CatOldHungry
+                            isPetHungryOrBored(pet) -> ImageId.CatOldHungry
                             isPetLowHealth(pet) -> ImageId.CatOldIll
                             else -> ImageId.CatOldActive
                         }
@@ -65,7 +65,7 @@ class PetImageUseCase(
                             pet.sleep -> ImageId.DogNewbornSleep
                             pet.isPooped -> ImageId.DogNewbornPoop
                             pet.illness -> ImageId.DogNewbornIll
-                            isPetHungryOrPsych(pet) -> ImageId.DogNewbornHungry
+                            isPetHungryOrBored(pet) -> ImageId.DogNewbornHungry
                             isPetLowHealth(pet) -> ImageId.DogNewbornIll
                             else -> ImageId.DogNewbornActive
                         }
@@ -77,7 +77,7 @@ class PetImageUseCase(
                             pet.sleep -> ImageId.DogAdultSleep
                             pet.isPooped -> ImageId.DogAdultPoop
                             pet.illness -> ImageId.DogAdultIll
-                            isPetHungryOrPsych(pet) -> ImageId.DogAdultHungry
+                            isPetHungryOrBored(pet) -> ImageId.DogAdultHungry
                             isPetLowHealth(pet) -> ImageId.DogAdultIll
                             else -> ImageId.DogAdultActive
                         }
@@ -88,7 +88,7 @@ class PetImageUseCase(
                             pet.sleep -> ImageId.DogOldSleep
                             pet.isPooped -> ImageId.DogOldPoop
                             pet.illness -> ImageId.DogOldIll
-                            isPetHungryOrPsych(pet) -> ImageId.DogOldHungry
+                            isPetHungryOrBored(pet) -> ImageId.DogOldHungry
                             isPetLowHealth(pet) -> ImageId.DogOldIll
                             else -> ImageId.DogOldActive
                         }
@@ -105,7 +105,7 @@ class PetImageUseCase(
                             pet.sleep -> ImageId.FrogNewbornSleep
                             pet.isPooped -> ImageId.FrogNewbornPoop
                             pet.illness -> ImageId.FrogNewbornIll
-                            isPetHungryOrPsych(pet) -> ImageId.FrogNewbornHungry
+                            isPetHungryOrBored(pet) -> ImageId.FrogNewbornHungry
                             isPetLowHealth(pet) -> ImageId.FrogNewbornIll
                             else -> ImageId.FrogNewbornActive
                         }
@@ -117,7 +117,7 @@ class PetImageUseCase(
                             pet.sleep -> ImageId.FrogAdultSleep
                             pet.isPooped -> ImageId.FrogAdultPoop
                             pet.illness -> ImageId.FrogAdultIll
-                            isPetHungryOrPsych(pet) -> ImageId.FrogAdultHungry
+                            isPetHungryOrBored(pet) -> ImageId.FrogAdultHungry
                             isPetLowHealth(pet) -> ImageId.FrogAdultIll
                             else -> ImageId.FrogAdultActive
                         }
@@ -128,7 +128,7 @@ class PetImageUseCase(
                             pet.sleep -> ImageId.FrogOldSleep
                             pet.isPooped -> ImageId.FrogOldPoop
                             pet.illness -> ImageId.FrogOldIll
-                            isPetHungryOrPsych(pet) -> ImageId.FrogOldHungry
+                            isPetHungryOrBored(pet) -> ImageId.FrogOldHungry
                             isPetLowHealth(pet) -> ImageId.FrogOldIll
                             else -> ImageId.FrogOldActive
                         }
@@ -142,13 +142,12 @@ class PetImageUseCase(
      * Based on [Engine.getHealthChange] calculation
      * where zero point is defined as 2/3 of full satiety of psych
      */
-    private fun isPetHungryOrPsych(pet: Pet): Boolean {
-        return engine.getPetPsychFraction(pet) < 0.66f ||
-                engine.getPetSatietyFraction(pet) < 0.66f
+    private fun isPetHungryOrBored(pet: Pet): Boolean {
+        return engine.isPetBored(pet) || engine.isPetHungry(pet)
     }
 
     private fun isPetLowHealth(pet: Pet): Boolean {
-        return engine.getPetHealthFraction(pet) < 0.5f
+        return engine.isPetLowHealth(pet)
     }
 
     private fun isPetInGrave(pet: Pet): Boolean {

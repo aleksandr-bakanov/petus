@@ -55,6 +55,14 @@ sealed class StringId {
     data object Thanks : StringId()
     data object Use : StringId()
     data object Destroy : StringId()
+    data object IAmOkayHowAreYou : StringId()
+
+    data object IAmSick : StringId()
+    data object IAmHungry : StringId()
+    data object IPooped : StringId()
+    data object IAmBored : StringId()
+    data object IAmHalfHp : StringId()
+    data object IAmGood : StringId()
 
     data object NecronomiconStage3AnswerOption0 : StringId()
     data object NecronomiconStage3CommonDialog : StringId()

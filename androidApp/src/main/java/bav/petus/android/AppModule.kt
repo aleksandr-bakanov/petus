@@ -109,6 +109,7 @@ val appModule = module {
         DialogSystem(
             userStats = get(),
             questSystem = get(),
+            engine = get(),
         )
     }
 

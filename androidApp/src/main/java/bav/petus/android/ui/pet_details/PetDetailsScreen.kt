@@ -219,15 +219,6 @@ private fun PetDetailsScreen(
     }
 }
 
-@Composable
-private fun InfoText(text: String) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.bodyMedium,
-        modifier = Modifier.fillMaxWidth()
-    )
-}
-
 private fun PetType.feedButtonImageId(): Int {
     return when (this) {
         PetType.Catus -> R.drawable.feed_cat

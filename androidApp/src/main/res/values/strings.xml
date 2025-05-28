@@ -59,9 +59,19 @@
 	<string name="HistoryEventPetResurrected">Resurrected</string>
 	<string name="HistoryEventPetPoop">Pooped</string>
 
+	<!-- Pet state description dialogs -->
+	<string name="IAmSick">I am sick, do you have any medicine?</string>
+	<string name="IAmHungry">I am hungry, give me some food.</string>
+	<string name="IPooped">I pooped (it would be nice if you clean after me).</string>
+	<string name="IAmBored">I am bored, wanna play?</string>
+	<string name="IAmHalfHp">I do not feel so good, need some rest.</string>
+	<string name="IAmGood">I am fine.</string>
+
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">What is going on with you?</string>
+	<string name="WhatIsGoingOnWithYouLatin">Quid tecum agitur?</string>
 	<string name="BeenBetter">Been better.</string>
+	<string name="IAmOkayHowAreYou">I am fine, how are you?</string>
 	<string name="IShouldGo">I should go.</string>
 	<string name="SeeYa">See ya.</string>
 	<string name="ByeBye">Bye bye.</string>

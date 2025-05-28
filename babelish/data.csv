@@ -47,14 +47,23 @@ History events;android, ios;HistoryEventPetCreated;Created;Создан
 ;android, ios;HistoryEventPetCleanUp;Cleaned up;За мной прибрали
 ;android, ios;HistoryEventPetBecomeNewborn;Become newborn;Родился
 ;android, ios;HistoryEventPetBecomeTeen;Become teen;Стал подростком
-;android, ios;HistoryEventPetBecomeAdult;Become adult;Стал взросрым
+;android, ios;HistoryEventPetBecomeAdult;Become adult;Стал взрослым
 ;android, ios;HistoryEventPetBecomeOld;Become old;Стал старым
 ;android, ios;HistoryEventPetBuried;Buried;Похоронен
 ;android, ios;HistoryEventPetResurrected;Resurrected;Воскрешен
 ;android, ios;HistoryEventPetPoop;Pooped;Покакал
 
+Pet state description dialogs;android, ios;IAmSick;I am sick, do you have any medicine?;Я болею, у тебя найдется какое-нибудь лекарство?
+;android, ios;IAmHungry;I am hungry, give me some food.;Я голодный, дай что-нибудь поесть.
+;android, ios;IPooped;I pooped (it would be nice if you clean after me).;Я сходил в туалет (будет неплохо если ты уберешь за мной).
+;android, ios;IAmBored;I am bored, wanna play?;Мне скучно, поиграем?
+;android, ios;IAmHalfHp;I do not feel so good, need some rest.;Что-то мне не хорошо, надо бы отдохнуть.
+;android, ios;IAmGood;I am fine.;Всё хорошо.
+
 Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как дела?
+;android, ios;WhatIsGoingOnWithYouLatin;Quid tecum agitur?;Quid tecum agitur?
 ;android, ios;BeenBetter;Been better.;Бывало и получше.
+;android, ios;IAmOkayHowAreYou;I am fine, how are you?;Порядок, как сам?
 ;android, ios;IShouldGo;I should go.;Мне пора.
 ;android, ios;SeeYa;See ya.;Бывай.
 ;android, ios;ByeBye;Bye bye.;Пока-пока.

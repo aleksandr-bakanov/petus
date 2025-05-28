@@ -94,7 +94,7 @@ class DialogScreenViewModel(
             imageId = petImageUseCase.getPetImageId(pet!!),
             text = dialogSystem.censorDialogText(
                 petType = pet!!.type,
-                text = node.text.joinToString(". ") {
+                text = node.text.joinToString(" ") {
                     args.convertStringIdToString(it)
                 },
             )

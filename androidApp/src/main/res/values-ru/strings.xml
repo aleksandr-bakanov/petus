@@ -53,15 +53,25 @@
 	<string name="HistoryEventPetCleanUp">За мной прибрали</string>
 	<string name="HistoryEventPetBecomeNewborn">Родился</string>
 	<string name="HistoryEventPetBecomeTeen">Стал подростком</string>
-	<string name="HistoryEventPetBecomeAdult">Стал взросрым</string>
+	<string name="HistoryEventPetBecomeAdult">Стал взрослым</string>
 	<string name="HistoryEventPetBecomeOld">Стал старым</string>
 	<string name="HistoryEventPetBuried">Похоронен</string>
 	<string name="HistoryEventPetResurrected">Воскрешен</string>
 	<string name="HistoryEventPetPoop">Покакал</string>
 
+	<!-- Pet state description dialogs -->
+	<string name="IAmSick">Я болею, у тебя найдется какое-нибудь лекарство?</string>
+	<string name="IAmHungry">Я голодный, дай что-нибудь поесть.</string>
+	<string name="IPooped">Я сходил в туалет (будет неплохо если ты уберешь за мной).</string>
+	<string name="IAmBored">Мне скучно, поиграем?</string>
+	<string name="IAmHalfHp">Что-то мне не хорошо, надо бы отдохнуть.</string>
+	<string name="IAmGood">Всё хорошо.</string>
+
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">Как дела?</string>
+	<string name="WhatIsGoingOnWithYouLatin">Quid tecum agitur?</string>
 	<string name="BeenBetter">Бывало и получше.</string>
+	<string name="IAmOkayHowAreYou">Порядок, как сам?</string>
 	<string name="IShouldGo">Мне пора.</string>
 	<string name="SeeYa">Бывай.</string>
 	<string name="ByeBye">Пока-пока.</string>

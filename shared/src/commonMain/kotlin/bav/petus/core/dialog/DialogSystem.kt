@@ -2,6 +2,7 @@ package bav.petus.core.dialog
 
 import androidx.datastore.preferences.core.edit
 import bav.petus.core.engine.Ability
+import bav.petus.core.engine.Engine
 import bav.petus.core.engine.NECRONOMICON_EXHUMATED_PET_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_SEARCH_DOG_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_TIMESTAMP_KEY
@@ -22,6 +23,7 @@ import kotlinx.coroutines.flow.first
 class DialogSystem(
     private val userStats: UserStats,
     private val questSystem: QuestSystem,
+    private val engine: Engine,
 ) {
 
     private var currentNode: DialogNode? = null
@@ -57,8 +59,36 @@ class DialogSystem(
                     nodes[nextId]
                 }
 
+                if (answer.nextNode == PET_DESCRIPTION) {
+                    currentNode = addPetDescription(currentPet, currentNode)
+                }
+
                 currentNode
             }
+        }
+    }
+
+    private fun addPetDescription(pet: Pet?, node: DialogNode?): DialogNode? {
+        if (pet == null || node == null) return node
+        else {
+            val texts = buildList {
+                val isSick = pet.illness
+                val isHungry = engine.isPetHungry(pet)
+                val isPooped = pet.isPooped
+                val isBored = engine.isPetBored(pet)
+                val isHalfHp = engine.isPetLowHealth(pet)
+                val isGood = listOf(isSick, isHungry, isPooped, isBored, isHalfHp).none { it }
+
+                if (isSick) add(StringId.IAmSick)
+                if (isHungry) add(StringId.IAmHungry)
+                if (isPooped) add(StringId.IPooped)
+                if (isBored) add(StringId.IAmBored)
+                if (isHalfHp) add(StringId.IAmHalfHp)
+                if (isGood) add(StringId.IAmGood)
+            }
+            return node.copy(
+                text = node.text + texts.shuffled()
+            )
         }
     }
 
@@ -81,7 +111,9 @@ class DialogSystem(
 
     companion object {
         const val STANDARD_DIALOG_BEGINNING = "STANDARD_DIALOG_BEGINNING"
+        const val PET_DESCRIPTION = "PET_DESCRIPTION"
         const val BEING_BETTER = "BEING_BETTER"
+
         const val NECRONOMICON_STAGE_3_COMMON_DIALOG = "NECRONOMICON_STAGE_3_COMMON_DIALOG"
         const val NECRONOMICON_STAGE_3_DOG_DIALOG = "NECRONOMICON_STAGE_3_DOG_DIALOG"
         const val NECRONOMICON_STAGE_5_DOG_DIALOG = "NECRONOMICON_STAGE_5_DOG_DIALOG"
@@ -101,13 +133,22 @@ class DialogSystem(
                 text = listOf(StringId.WhatIsGoingOnWithYou),
                 answers = listOf(
                     Answer(
-                        text = StringId.BeingBetter,
-                        nextNode = BEING_BETTER,
+                        text = StringId.IAmOkayHowAreYou,
+                        nextNode = PET_DESCRIPTION,
                     ),
                     Answer(
                         text = StringId.IShouldGo,
                         nextNode = null,
                     ),
+                )
+            ),
+            PET_DESCRIPTION to DialogNode(
+                text = emptyList(),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ByeBye,
+                        nextNode = null,
+                    )
                 )
             ),
             BEING_BETTER to DialogNode(

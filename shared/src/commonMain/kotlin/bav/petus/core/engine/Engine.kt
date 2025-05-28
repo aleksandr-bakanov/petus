@@ -159,6 +159,7 @@ class Engine(
 
     fun isAllowedToSpeakWithPet(pet: Pet): Boolean {
         return pet.sleep.not() &&
+                pet.place == Place.Zoo &&
                 (pet.bodyState == BodyState.Alive || pet.bodyState == BodyState.Zombie || pet.bodyState == BodyState.Spirit) &&
                 pet.ageState != AgeState.Egg
     }
@@ -180,6 +181,18 @@ class Engine(
                 )
             )
         }
+    }
+
+    fun isPetHungry(pet: Pet): Boolean {
+        return getPetSatietyFraction(pet) < 0.66f
+    }
+
+    fun isPetBored(pet: Pet): Boolean {
+        return getPetPsychFraction(pet) < 0.66f
+    }
+
+    fun isPetLowHealth(pet: Pet): Boolean {
+        return getPetHealthFraction(pet) < 0.5f
     }
 
     fun getPetSatietyFraction(pet: Pet): Float {

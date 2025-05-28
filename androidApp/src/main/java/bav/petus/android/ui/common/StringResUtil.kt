@@ -22,6 +22,13 @@ fun StringId.toResId(): Int {
         StringId.Thanks -> R.string.Thanks
         StringId.Use -> R.string.Use
         StringId.Destroy -> R.string.Destroy
+        StringId.IAmOkayHowAreYou -> R.string.IAmOkayHowAreYou
+        StringId.IAmSick -> R.string.IAmSick
+        StringId.IAmHungry -> R.string.IAmHungry
+        StringId.IPooped -> R.string.IPooped
+        StringId.IAmBored -> R.string.IAmBored
+        StringId.IAmHalfHp -> R.string.IAmHalfHp
+        StringId.IAmGood -> R.string.IAmGood
         StringId.NecronomiconStage3AnswerOption0 -> R.string.NecronomiconStage3AnswerOption0
         StringId.NecronomiconStage3CommonDialog -> R.string.NecronomiconStage3CommonDialog
         StringId.NecronomiconStage3DogDialog -> R.string.NecronomiconStage3DogDialog

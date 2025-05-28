@@ -3,12 +3,7 @@ package bav.petus.android.ui.views
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -19,10 +14,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import bav.petus.android.HealthColor
-import bav.petus.android.PsychColor
-import bav.petus.android.SatietyColor
-import bav.petus.android.ui.common.StatBar
 import bav.petus.android.ui.common.toResId
 import bav.petus.viewModel.zoo.PetThumbnailUiData
 

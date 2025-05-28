@@ -51,15 +51,25 @@
 "HistoryEventPetCleanUp"                   = "За мной прибрали";
 "HistoryEventPetBecomeNewborn"             = "Родился";
 "HistoryEventPetBecomeTeen"                = "Стал подростком";
-"HistoryEventPetBecomeAdult"               = "Стал взросрым";
+"HistoryEventPetBecomeAdult"               = "Стал взрослым";
 "HistoryEventPetBecomeOld"                 = "Стал старым";
 "HistoryEventPetBuried"                    = "Похоронен";
 "HistoryEventPetResurrected"               = "Воскрешен";
 "HistoryEventPetPoop"                      = "Покакал";
 
+/* Pet state description dialogs */
+"IAmSick"                                  = "Я болею, у тебя найдется какое-нибудь лекарство?";
+"IAmHungry"                                = "Я голодный, дай что-нибудь поесть.";
+"IPooped"                                  = "Я сходил в туалет (будет неплохо если ты уберешь за мной).";
+"IAmBored"                                 = "Мне скучно, поиграем?";
+"IAmHalfHp"                                = "Что-то мне не хорошо, надо бы отдохнуть.";
+"IAmGood"                                  = "Всё хорошо.";
+
 /* Dialogs */
 "WhatIsGoingOnWithYou"                     = "Как дела?";
+"WhatIsGoingOnWithYouLatin"                = "Quid tecum agitur?";
 "BeenBetter"                               = "Бывало и получше.";
+"IAmOkayHowAreYou"                         = "Порядок, как сам?";
 "IShouldGo"                                = "Мне пора.";
 "SeeYa"                                    = "Бывай.";
 "ByeBye"                                   = "Пока-пока.";

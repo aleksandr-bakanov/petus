@@ -57,9 +57,19 @@
 "HistoryEventPetResurrected"               = "Resurrected";
 "HistoryEventPetPoop"                      = "Pooped";
 
+/* Pet state description dialogs */
+"IAmSick"                                  = "I am sick, do you have any medicine?";
+"IAmHungry"                                = "I am hungry, give me some food.";
+"IPooped"                                  = "I pooped (it would be nice if you clean after me).";
+"IAmBored"                                 = "I am bored, wanna play?";
+"IAmHalfHp"                                = "I do not feel so good, need some rest.";
+"IAmGood"                                  = "I am fine.";
+
 /* Dialogs */
 "WhatIsGoingOnWithYou"                     = "What is going on with you?";
+"WhatIsGoingOnWithYouLatin"                = "Quid tecum agitur?";
 "BeenBetter"                               = "Been better.";
+"IAmOkayHowAreYou"                         = "I am fine, how are you?";
 "IShouldGo"                                = "I should go.";
 "SeeYa"                                    = "See ya.";
 "ByeBye"                                   = "Bye bye.";
