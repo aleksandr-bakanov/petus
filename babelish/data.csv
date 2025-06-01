@@ -1,5 +1,7 @@
 Comment;OS;Variables;English;Russian
 
+;android, ios;AppName;Petus;
+
 Screen titles;android, ios;ZooScreenTitle;Home;Дом
 ;android, ios;CemeteryScreenTitle;Cemetery;Погост
 ;android, ios;WeatherScreenTitle;Weather;Погода
@@ -54,17 +56,17 @@ History events;android, ios;HistoryEventPetCreated;Created;Создан
 ;android, ios;HistoryEventPetPoop;Pooped;Покакал
 
 Pet state description dialogs;android, ios;IAmSick;I am sick, do you have any medicine?;Я болею, у тебя найдется какое-нибудь лекарство?
-;android, ios;IAmSickLatin;Aeger sum, habesne medicamentum aliquod?;Aeger sum, habesne medicamentum aliquod?
+;android, ios;IAmSickLatin;Aeger sum, habesne medicamentum aliquod?;
 ;android, ios;IAmHungry;I am hungry, give me some food.;Я голодный, дай что-нибудь поесть.
-;android, ios;IAmHungryLatin;Esurio, da mihi cibum.;Esurio, da mihi cibum.
+;android, ios;IAmHungryLatin;Esurio, da mihi cibum.;
 ;android, ios;IPooped;I pooped (it would be nice if you clean after me).;Я сходил в туалет (будет неплохо если ты уберешь за мной).
-;android, ios;IPoopedLatin;Cacavi (gratum esset si post me lavares).;Cacavi (gratum esset si post me lavares).
+;android, ios;IPoopedLatin;Cacavi (gratum esset si post me lavares).;
 ;android, ios;IAmBored;I am bored, wanna play?;Мне скучно, поиграем?
-;android, ios;IAmBoredLatin;Taedet me, ludere vis?;Taedet me, ludere vis?
+;android, ios;IAmBoredLatin;Taedet me, ludere vis?;
 ;android, ios;IAmHalfHp;I do not feel so good, need some rest.;Что-то мне не хорошо, надо бы отдохнуть.
-;android, ios;IAmHalfHpLatin;Non tam bene me habeo, requie mihi opus est.;Non tam bene me habeo, requie mihi opus est.
+;android, ios;IAmHalfHpLatin;Non tam bene me habeo, requie mihi opus est.;
 ;android, ios;IAmGood;I am fine.;Всё хорошо.
-;android, ios;IAmGoodLatin;Bene sum.;Bene sum.
+;android, ios;IAmGoodLatin;Bene sum.;
 
 
 Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как дела?

@@ -15,7 +15,6 @@ import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
 import bav.petus.core.resources.StringId
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
-import bav.petus.model.BodyState
 import bav.petus.model.BurialType
 import bav.petus.model.Pet
 import bav.petus.model.PetType
