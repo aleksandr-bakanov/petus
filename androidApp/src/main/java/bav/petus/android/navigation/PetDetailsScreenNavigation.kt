@@ -7,21 +7,20 @@ import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import bav.petus.android.ui.pet_details.PetDetailsRoute
 import bav.petus.viewModel.petDetails.PetDetailsScreenViewModel
-import bav.petus.viewModel.petDetails.PetDetailsScreenViewModelArgs
 import kotlinx.serialization.Serializable
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Serializable
-data class PetDetailsScreen(
+data class PetDetailsScreenDestination(
     val petId: Long,
 )
 
 fun NavGraphBuilder.petDetailsScreen(
     navController: NavHostController,
 ) {
-    composable<PetDetailsScreen> { navBackStackEntry ->
-        val args: PetDetailsScreen = navBackStackEntry.toRoute()
+    composable<PetDetailsScreenDestination> { navBackStackEntry ->
+        val args: PetDetailsScreenDestination = navBackStackEntry.toRoute()
         val viewModel: PetDetailsScreenViewModel = koinViewModel(
             parameters = {
                 parametersOf(args.petId)
@@ -35,7 +34,7 @@ fun NavGraphBuilder.petDetailsScreen(
                     }
 
                     is PetDetailsScreenViewModel.Navigation.OpenDialogScreen -> {
-                        navController.navigate(DialogScreen(navigation.petId))
+                        navController.navigate(DialogScreenDestination(navigation.petId))
                     }
                 }
             }

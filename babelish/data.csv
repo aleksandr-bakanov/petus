@@ -18,9 +18,9 @@ User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
 
 Zoo screen;android, ios;CreatePetButtonTitle;Create new pet;Создать нового пета
 
-Pet descriptions;android, ios;PetTypeDescriptionCatus;Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.;Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.
-;android, ios;PetTypeDescriptionDogus;Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.;Догус: спит 1 часа, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.
-;android, ios;PetTypeDescriptionFrogus;Frogus: sleeps 12 hours, awake for 12 hours. Likes cold cloudy days. Does not like wind.;Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер ветер.
+Pet descriptions;android, ios;PetTypeDescriptionCatus;Catus: sleeps 2 hours, awake for 1 hour. Likes warm sunny days. Likes small wind.;Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.
+;android, ios;PetTypeDescriptionDogus;Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.;Догус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.
+;android, ios;PetTypeDescriptionFrogus;Frogus: sleeps 1.5 hours, awake for 1.5 hours. Likes cold cloudy days. Does not like wind.;Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер.
 
 Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android, ios;PieceOfCloth;Piece of cloth;Кусок ткани
@@ -96,7 +96,7 @@ Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как де
 ;android, ios;NecronomiconStage8AnswerOption0;[Show the book] Do you know anything about this book?;[Показать книгу] Знаешь что-нибудь про эту книгу?
 ;android, ios;NecronomiconStage8Dialog0;What is this? I can sense some magic but I am not sure…;Это что такое? Я чувствую какую-то магию, но вообще не уверен…
 ;android, ios;NecronomiconStage8Dialog1;Ahh, yes, I know what it is. This is Necronomicon. Very dangerous stuff, I recommend to destroy it right away, nothing good will come from it. However I can also teach you how to use it. Your choice. So do you want to use it or destroy it?;Ааа, ну да, я знаю что это такое. Это Некрономикон. Очень опасная штука. Я советую сразу его уничтожить, ничего хорошего он не принесёт. Хотя конечно я могу научить тебя пользоваться им. Выбор за тобой. Ну так что, хочешь использовать его или уничтожить?
-;android, ios;ObtainFrogusStage1Answer0;Hey buddy, I have noticed you barely touches your food, what is going on?;Эй приятель, я заметила что ты почти не ешь, с тобой всё в порядке?
+;android, ios;ObtainFrogusStage1Answer0;Hey buddy, I have noticed you barely touch your food, what is going on?;Эй приятель, я заметила что ты почти не ешь, с тобой всё в порядке?
 ;android, ios;ObtainFrogusStage1Dialog0;Yeah, you know what, I think I want some fish, could you catch me some? There is a lake nearby I think you can try there.;Хмм… знаешь что, пожалуй мне хочется рыбки, сможешь наловить для меня? Тут недалеко есть озеро, думаю ты можешь попробовать что-нибудь там.
 ;android, ios;ObtainFrogusStage1Answer1;All right, let us see what I can do. I think I will come up with something on next day.;Океюшки, посмотрим что мне удастся сделать. Думаю что-нибудь придумаю на следующий день.
 ;android, ios;ObtainFrogusStage3Answer0;Oi mate, here is fish you have asked for. From very same lake you described.;Эй, дружище, вот рыба, про которую ты спрашивал. С того самого озера.

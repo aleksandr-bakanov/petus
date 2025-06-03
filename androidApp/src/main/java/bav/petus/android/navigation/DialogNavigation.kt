@@ -12,15 +12,15 @@ import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Serializable
-data class DialogScreen(
+data class DialogScreenDestination(
     val petId: Long,
 )
 
 fun NavGraphBuilder.dialogScreen(
     navController: NavHostController,
 ) {
-    composable<DialogScreen> { navBackStackEntry ->
-        val args: DialogScreen = navBackStackEntry.toRoute()
+    composable<DialogScreenDestination> { navBackStackEntry ->
+        val args: DialogScreenDestination = navBackStackEntry.toRoute()
         val viewModel: DialogScreenViewModel = koinViewModel(
             parameters = {
                 parametersOf(args.petId)

@@ -6,21 +6,25 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import bav.petus.android.ui.zoo.ZooRoute
 import bav.petus.viewModel.zoo.ZooScreenViewModel
+import kotlinx.serialization.Serializable
 import org.koin.androidx.compose.koinViewModel
+
+@Serializable
+data object ZooScreenDestination
 
 fun NavGraphBuilder.zooScreen(
     navController: NavHostController,
 ) {
-    composable<TopLevelRoutes.ZooScreen> { _ ->
+    composable<ZooScreenDestination> { _ ->
         val viewModel: ZooScreenViewModel = koinViewModel()
         LaunchedEffect(Unit) {
             viewModel.navigation.collect { navigation ->
                 when (navigation) {
                     is ZooScreenViewModel.Navigation.ToDetails -> {
-                        navController.navigate(PetDetailsScreen(navigation.petId))
+                        navController.navigate(PetDetailsScreenDestination(navigation.petId))
                     }
                     ZooScreenViewModel.Navigation.ToNewPetCreation -> {
-                        navController.navigate(PetCreationScreen)
+                        navController.navigate(PetCreationScreenDestination)
                     }
                 }
             }

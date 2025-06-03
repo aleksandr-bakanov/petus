@@ -22,9 +22,9 @@
 	<string name="CreatePetButtonTitle">Create new pet</string>
 
 	<!-- Pet descriptions -->
-	<string name="PetTypeDescriptionCatus">Catus: sleeps 2 hours, awake for 1 hours. Likes warm sunny days. Likes small wind.</string>
+	<string name="PetTypeDescriptionCatus">Catus: sleeps 2 hours, awake for 1 hour. Likes warm sunny days. Likes small wind.</string>
 	<string name="PetTypeDescriptionDogus">Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.</string>
-	<string name="PetTypeDescriptionFrogus">Frogus: sleeps 12 hours, awake for 12 hours. Likes cold cloudy days. Does not like wind.</string>
+	<string name="PetTypeDescriptionFrogus">Frogus: sleeps 1.5 hours, awake for 1.5 hours. Likes cold cloudy days. Does not like wind.</string>
 
 	<!-- Item names -->
 	<string name="Necronomicon">Necronomicon</string>
@@ -102,7 +102,7 @@
 	<string name="NecronomiconStage8AnswerOption0">[Show the book] Do you know anything about this book?</string>
 	<string name="NecronomiconStage8Dialog0">What is this? I can sense some magic but I am not sure…</string>
 	<string name="NecronomiconStage8Dialog1">Ahh, yes, I know what it is. This is Necronomicon. Very dangerous stuff, I recommend to destroy it right away, nothing good will come from it. However I can also teach you how to use it. Your choice. So do you want to use it or destroy it?</string>
-	<string name="ObtainFrogusStage1Answer0">Hey buddy, I have noticed you barely touches your food, what is going on?</string>
+	<string name="ObtainFrogusStage1Answer0">Hey buddy, I have noticed you barely touch your food, what is going on?</string>
 	<string name="ObtainFrogusStage1Dialog0">Yeah, you know what, I think I want some fish, could you catch me some? There is a lake nearby I think you can try there.</string>
 	<string name="ObtainFrogusStage1Answer1">All right, let us see what I can do. I think I will come up with something on next day.</string>
 	<string name="ObtainFrogusStage3Answer0">Oi mate, here is fish you have asked for. From very same lake you described.</string>

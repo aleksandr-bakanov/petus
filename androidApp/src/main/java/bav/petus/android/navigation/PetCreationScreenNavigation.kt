@@ -10,12 +10,12 @@ import kotlinx.serialization.Serializable
 import org.koin.androidx.compose.koinViewModel
 
 @Serializable
-data object PetCreationScreen
+data object PetCreationScreenDestination
 
 fun NavGraphBuilder.petCreationScreen(
     navController: NavHostController,
 ) {
-    composable<PetCreationScreen> {
+    composable<PetCreationScreenDestination> {
         val viewModel: PetCreationScreenViewModel = koinViewModel()
         LaunchedEffect(Unit) {
             viewModel.navigation.collect { navigation ->

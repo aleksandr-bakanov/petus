@@ -1,6 +1,5 @@
 package bav.petus.android.navigation
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
@@ -10,6 +9,10 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.Face
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -17,55 +20,40 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import bav.petus.android.ui.common.UserNotificationCell
 import bav.petus.android.ui.common.toResId
 import bav.petus.core.resources.StringId
 import bav.petus.viewModel.main.MainScreenUiState
 import bav.petus.viewModel.main.MainViewModel
-import kotlinx.serialization.Serializable
 
-sealed interface TopLevelRoutes {
-    @Serializable
-    data object CemeteryScreen : TopLevelRoutes
+data class TopLevelRoute(
+    val name: StringId,
+    val route: String,
+    val selectedIcon: ImageVector,
+    val unselectedIcon: ImageVector,
+)
 
-    @Serializable
-    data object ZooScreen : TopLevelRoutes
-
-    @Serializable
-    data object WeatherReportScreen : TopLevelRoutes
-
-    @Serializable
-    data object UserProfileScreen : TopLevelRoutes
-}
-
-data class TopLevelRoute(val name: StringId, val route: TopLevelRoutes, val icon: ImageVector)
-
-private val cemeteryTopRoute = TopLevelRoute(StringId.CemeteryScreenTitle, TopLevelRoutes.CemeteryScreen, Icons.Default.Add)
-private val zooTopRoute = TopLevelRoute(StringId.ZooScreenTitle, TopLevelRoutes.ZooScreen, Icons.Default.Home)
-private val weatherTopRoute = TopLevelRoute(StringId.WeatherScreenTitle, TopLevelRoutes.WeatherReportScreen, Icons.Default.Menu)
-private val profileTopRoute = TopLevelRoute(StringId.ProfileScreenTitle, TopLevelRoutes.UserProfileScreen, Icons.Default.Face)
+private val cemeteryTopRoute = TopLevelRoute(StringId.CemeteryScreenTitle, "CemeteryTab", Icons.Filled.Add, Icons.Outlined.Add)
+private val zooTopRoute = TopLevelRoute(StringId.ZooScreenTitle, "ZooTab", Icons.Filled.Home, Icons.Outlined.Home)
+private val weatherTopRoute = TopLevelRoute(StringId.WeatherScreenTitle, "WeatherReportTab", Icons.Filled.Menu, Icons.Outlined.Menu)
+private val profileTopRoute = TopLevelRoute(StringId.ProfileScreenTitle, "UserProfileTab", Icons.Filled.Face, Icons.Outlined.Face)
 
 @Composable
 fun AppWithBottomBar(
     uiState: MainScreenUiState,
     onAction: (MainViewModel.Action) -> Unit,
 ) {
-    var navigationSelectedItemName by remember {
-        mutableStateOf(zooTopRoute.name)
-    }
-
-    val navController = rememberNavController()
+    val rootNavController = rememberNavController()
+    val navBackStackEntry by rootNavController.currentBackStackEntryAsState()
 
     Scaffold(
         bottomBar = {
@@ -73,27 +61,24 @@ fun AppWithBottomBar(
                 if (uiState.showCemetery == true) {
                     TopLevelNavBarItem(
                         item = cemeteryTopRoute,
-                        isSelected = navigationSelectedItemName == cemeteryTopRoute.name
+                        isSelected = navBackStackEntry.isTabSelected(cemeteryTopRoute.route)
                     ) { item ->
-                        navigationSelectedItemName = item.name
-                        navigateToTopLevel(navController, item.route)
+                        navigateToTopLevel(rootNavController, item.route)
                     }
                 }
 
                 TopLevelNavBarItem(
                     item = zooTopRoute,
-                    isSelected = navigationSelectedItemName == zooTopRoute.name
+                    isSelected = navBackStackEntry.isTabSelected(zooTopRoute.route)
                 ) { item ->
-                    navigationSelectedItemName = item.name
-                    navigateToTopLevel(navController, item.route)
+                    navigateToTopLevel(rootNavController, item.route)
                 }
 
                 TopLevelNavBarItem(
                     item = profileTopRoute,
-                    isSelected = navigationSelectedItemName == profileTopRoute.name
+                    isSelected = navBackStackEntry.isTabSelected(profileTopRoute.route)
                 ) { item ->
-                    navigationSelectedItemName = item.name
-                    navigateToTopLevel(navController, item.route)
+                    navigateToTopLevel(rootNavController, item.route)
                 }
             }
         }
@@ -102,16 +87,18 @@ fun AppWithBottomBar(
             modifier = Modifier.padding(innerPadding)
         ) {
             NavHost(
-                navController = navController,
-                startDestination = TopLevelRoutes.ZooScreen,
+                navController = rootNavController,
+                startDestination = zooTopRoute.route,
             ) {
-                zooScreen(navController)
-                petDetailsScreen(navController)
-                petCreationScreen(navController)
-                cemeteryScreen(navController)
-                weatherReportScreen()
-                userProfileScreen()
-                dialogScreen(navController)
+                composable(cemeteryTopRoute.route) {
+                    CemeteryNavHost()
+                }
+                composable(zooTopRoute.route) {
+                    ZooNavHost()
+                }
+                composable(profileTopRoute.route) {
+                    UserProfileNavHost()
+                }
             }
 
             if (uiState.notifications.isNotEmpty()) {
@@ -127,6 +114,35 @@ fun AppWithBottomBar(
     }
 }
 
+
+@Composable
+private fun ZooNavHost() {
+    val zooNavController = rememberNavController()
+    NavHost(zooNavController, startDestination = ZooScreenDestination) {
+        zooScreen(zooNavController)
+        petCreationScreen(zooNavController)
+        petDetailsScreen(zooNavController)
+        dialogScreen(zooNavController)
+    }
+}
+
+@Composable
+private fun CemeteryNavHost() {
+    val cemeteryNavController = rememberNavController()
+    NavHost(cemeteryNavController, startDestination = CemeteryScreenDestination) {
+        cemeteryScreen(cemeteryNavController)
+        petDetailsScreen(cemeteryNavController)
+    }
+}
+
+@Composable
+private fun UserProfileNavHost() {
+    val userProfileNavController = rememberNavController()
+    NavHost(userProfileNavController, startDestination = UserProfileScreenDestination) {
+        userProfileScreen()
+    }
+}
+
 @Composable
 private fun RowScope.TopLevelNavBarItem(
     item: TopLevelRoute,
@@ -134,7 +150,12 @@ private fun RowScope.TopLevelNavBarItem(
     onClick: (item: TopLevelRoute) -> Unit,
 ) {
     NavigationBarItem(
-        icon = { Icon(item.icon, contentDescription = stringResource(item.name.toResId())) },
+        icon = {
+            Icon(
+                imageVector = if (isSelected) item.selectedIcon else item.unselectedIcon,
+                contentDescription = stringResource(item.name.toResId())
+            )
+        },
         label = { Text(stringResource(item.name.toResId())) },
         selected = isSelected,
         onClick = {
@@ -145,7 +166,7 @@ private fun RowScope.TopLevelNavBarItem(
 
 private fun navigateToTopLevel(
     navController: NavController,
-    route: TopLevelRoutes,
+    route: String,
 ) {
     navController.navigate(route) {
         // Pop up to the start destination of the graph to

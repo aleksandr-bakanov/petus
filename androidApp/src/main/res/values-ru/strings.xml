@@ -23,8 +23,8 @@
 
 	<!-- Pet descriptions -->
 	<string name="PetTypeDescriptionCatus">Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.</string>
-	<string name="PetTypeDescriptionDogus">Догус: спит 1 часа, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.</string>
-	<string name="PetTypeDescriptionFrogus">Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер ветер.</string>
+	<string name="PetTypeDescriptionDogus">Догус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.</string>
+	<string name="PetTypeDescriptionFrogus">Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер.</string>
 
 	<!-- Item names -->
 	<string name="Necronomicon">Некрономикон</string>

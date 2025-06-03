@@ -22,3 +22,7 @@ fun <T> NavHostController.putForPreviousAndClose(
     previousBackStackEntry?.savedStateHandle?.set(key, value)
     popBackStack()
 }
+
+fun NavBackStackEntry?.isTabSelected(tabName: String): Boolean {
+    return this?.let { entry -> entry.destination.route == tabName } ?: false
+}
