@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app uses location to determine the weather in your area. Different weather will affect your pets differently.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app uses location to determine the weather in your area. Different weather will affect your pets differently.</string>
 	<key>UIApplicationSceneManifest</key>
