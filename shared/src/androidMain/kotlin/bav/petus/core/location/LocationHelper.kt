@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
-import android.util.Log
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.CurrentLocationRequest
 import com.google.android.gms.location.Granularity
@@ -37,20 +36,17 @@ class LocationHelper(private val context: Context) {
                 .build(),
             null,
         ).addOnSuccessListener { location ->
-            Log.d("cqhg43", "LOCA Success location = $location")
             if (location != null) {
                 onSuccess(location)
             } else {
                 onFailure(Exception("Received null location in success listener"))
             }
         }.addOnFailureListener { exception ->
-            Log.d("cqhg43", "LOCA Failure $exception")
             onFailure(exception)
         }.addOnCanceledListener {
-            Log.d("cqhg43", "LOCA Canceled")
             onFailure(Exception("LOCA canceled"))
         }.addOnCompleteListener {
-            Log.d("cqhg43", "LOCA Completed")
+
         }
     }
 }

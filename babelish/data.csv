@@ -18,6 +18,15 @@ User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
 
 Zoo screen;android, ios;CreatePetButtonTitle;Create new pet;Создать нового пета
 
+Pet creation screen;android, ios;PetCreationScreenSelectPetType;Select pet type;Выбери тип пета
+;android, ios;PetCreationScreenEnterPetName;Enter pet name:;Введи имя пета:
+;android, ios;PetCreationScreenEnterPetNameHint;Pet name;Имя пета
+;android, ios;PetCreationScreenPetTypeDogus;dogus;догуса
+;android, ios;PetCreationScreenPetTypeCatus;catus;катуса
+;android, ios;PetCreationScreenPetTypeFrogus;frogus;фрогуса
+;android;PetCreationScreenButtonTemplate;Create %s %s;Создать %s %s
+;ios;PetCreationScreenButtonTemplate;Create %@ %@;Создать %@ %@
+
 Pet descriptions;android, ios;PetTypeDescriptionCatus;Catus: sleeps 2 hours, awake for 1 hour. Likes warm sunny days. Likes small wind.;Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.
 ;android, ios;PetTypeDescriptionDogus;Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.;Догус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.
 ;android, ios;PetTypeDescriptionFrogus;Frogus: sleeps 1.5 hours, awake for 1.5 hours. Likes cold cloudy days. Does not like wind.;Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер.

@@ -21,6 +21,15 @@
 	<!-- Zoo screen -->
 	<string name="CreatePetButtonTitle">Create new pet</string>
 
+	<!-- Pet creation screen -->
+	<string name="PetCreationScreenSelectPetType">Select pet type</string>
+	<string name="PetCreationScreenEnterPetName">Enter pet name:</string>
+	<string name="PetCreationScreenEnterPetNameHint">Pet name</string>
+	<string name="PetCreationScreenPetTypeDogus">dogus</string>
+	<string name="PetCreationScreenPetTypeCatus">catus</string>
+	<string name="PetCreationScreenPetTypeFrogus">frogus</string>
+	<string name="PetCreationScreenButtonTemplate">Create %s %s</string>
+
 	<!-- Pet descriptions -->
 	<string name="PetTypeDescriptionCatus">Catus: sleeps 2 hours, awake for 1 hour. Likes warm sunny days. Likes small wind.</string>
 	<string name="PetTypeDescriptionDogus">Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.</string>

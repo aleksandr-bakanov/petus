@@ -5,12 +5,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -20,9 +18,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import bav.petus.android.R
 import bav.petus.android.ui.common.ActionButton
 import bav.petus.android.ui.common.PetTypePicker
 import bav.petus.android.ui.common.toResId
+import bav.petus.model.PetType
 import bav.petus.viewModel.petCreation.PetCreationScreenViewModel
 import bav.petus.viewModel.petCreation.PetCreationUiState
 
@@ -40,22 +40,12 @@ fun PetCreationRoute(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PetCreationScreen(
     uiState: PetCreationUiState,
     onAction: (PetCreationScreenViewModel.Action) -> Unit,
 ) {
-    Scaffold(
-        topBar = {
-            TopAppBar(title = {
-                Text(
-                    "Create pet",
-                    style = MaterialTheme.typography.headlineLarge
-                )
-            })
-        }
-    ) { padding ->
+    Scaffold { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -66,7 +56,7 @@ private fun PetCreationScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp),
-                text = "Select pet type",
+                text = stringResource(id = R.string.PetCreationScreenSelectPetType),
                 style = MaterialTheme.typography.headlineLarge,
                 textAlign = TextAlign.Center,
             )
@@ -80,7 +70,7 @@ private fun PetCreationScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp),
-                text = "Enter pet name:",
+                text = stringResource(id = R.string.PetCreationScreenEnterPetName),
                 style = MaterialTheme.typography.headlineLarge,
                 textAlign = TextAlign.Center,
             )
@@ -89,6 +79,7 @@ private fun PetCreationScreen(
                     .fillMaxWidth()
                     .padding(8.dp),
                 value = uiState.name,
+                placeholder = { Text(stringResource(id = R.string.PetCreationScreenEnterPetNameHint)) },
                 onValueChange = {
                     onAction(PetCreationScreenViewModel.Action.UpdateName(it))
                 },
@@ -108,7 +99,11 @@ private fun PetCreationScreen(
             Spacer(modifier = Modifier.weight(1f))
 
             ActionButton(
-                text = "Create ${uiState.type} ${uiState.name}",
+                text = stringResource(
+                    id = R.string.PetCreationScreenButtonTemplate,
+                    petTypeString(uiState.type),
+                    uiState.name
+                ),
                 color = Color(0xFF4CAF50),
                 modifier = Modifier.padding(16.dp),
             ) {
@@ -116,4 +111,15 @@ private fun PetCreationScreen(
             }
         }
     }
+}
+
+@Composable
+private fun petTypeString(type: PetType): String {
+    return stringResource(
+        id = when (type) {
+            PetType.Catus -> R.string.PetCreationScreenPetTypeCatus
+            PetType.Dogus -> R.string.PetCreationScreenPetTypeDogus
+            PetType.Frogus -> R.string.PetCreationScreenPetTypeFrogus
+        }
+    )
 }

@@ -14,7 +14,7 @@ struct PetCreationScreen: View {
                 ScrollView {
                     VStack(alignment: .center, spacing: 16) {
                         // Title: Select pet type
-                        Text("Select pet type")
+                        Text("PetCreationScreenSelectPetType")
                             .font(.largeTitle)
                             .frame(maxWidth: .infinity)
                             .padding(8)
@@ -27,14 +27,14 @@ struct PetCreationScreen: View {
                         }
                         
                         // Title: Enter pet name
-                        Text("Enter pet name:")
+                        Text("PetCreationScreenEnterPetName")
                             .font(.largeTitle)
                             .frame(maxWidth: .infinity)
                             .padding(8)
                             .multilineTextAlignment(.center)
                         
                         // TextField for Pet Name
-                        TextField("Pet name", text: $name)
+                        TextField("PetCreationScreenEnterPetNameHint", text: $name)
                             .textFieldStyle(.roundedBorder)
                             .font(.title2)
                             .padding(8)
@@ -59,7 +59,8 @@ struct PetCreationScreen: View {
                 Button(action: {
                     viewModel.onAction(action: PetCreationScreenViewModelActionTapCreateButton())
                 }) {
-                    Text("Create \(state.type.name) \(state.name)")
+                    let buttonTitle = String(format: NSLocalizedString("PetCreationScreenButtonTemplate", comment: ""), petTypeString(state.type), state.name)
+                    Text(buttonTitle)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.blue)
@@ -85,3 +86,13 @@ struct PetCreationScreen: View {
     }
 }
 
+private func petTypeString(_ type: PetType) -> String {
+    switch type {
+    case .catus:
+        return NSLocalizedString("PetCreationScreenPetTypeCatus", comment: "")
+    case .dogus:
+        return NSLocalizedString("PetCreationScreenPetTypeDogus", comment: "")
+    case .frogus:
+        return NSLocalizedString("PetCreationScreenPetTypeFrogus", comment: "")
+    }
+}

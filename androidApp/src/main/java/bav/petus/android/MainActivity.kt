@@ -3,7 +3,6 @@ package bav.petus.android
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -72,11 +71,8 @@ class MainActivity : ComponentActivity() {
             applicationContext,
             Manifest.permission.ACCESS_COARSE_LOCATION)
         ) {
-            PackageManager.PERMISSION_GRANTED -> {
-                Log.d("cqhg43" , "ACCESS_COARSE_LOCATION already granted")
-            }
+            PackageManager.PERMISSION_GRANTED -> {}
             PackageManager.PERMISSION_DENIED -> {
-                Log.d("cqhg43" , "ACCESS_COARSE_LOCATION not yet granted")
                 requestPermissions(permission = Manifest.permission.ACCESS_COARSE_LOCATION)
             }
         }
@@ -86,15 +82,9 @@ class MainActivity : ComponentActivity() {
         ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
         when {
-            permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-                Log.d("cqhg43" , "ACCESS_COARSE_LOCATION granted")
-            }
-            permissions.getOrDefault(Manifest.permission.ACCESS_BACKGROUND_LOCATION, false) -> {
-                Log.d("cqhg43" , "ACCESS_BACKGROUND_LOCATION granted")
-            }
-            else -> {
-                Log.d("cqhg43" , "NOT granted")
-            }
+            permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {}
+            permissions.getOrDefault(Manifest.permission.ACCESS_BACKGROUND_LOCATION, false) -> {}
+            else -> {}
         }
     }
 

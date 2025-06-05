@@ -21,6 +21,15 @@
 	<!-- Zoo screen -->
 	<string name="CreatePetButtonTitle">Создать нового пета</string>
 
+	<!-- Pet creation screen -->
+	<string name="PetCreationScreenSelectPetType">Выбери тип пета</string>
+	<string name="PetCreationScreenEnterPetName">Введи имя пета:</string>
+	<string name="PetCreationScreenEnterPetNameHint">Имя пета</string>
+	<string name="PetCreationScreenPetTypeDogus">догуса</string>
+	<string name="PetCreationScreenPetTypeCatus">катуса</string>
+	<string name="PetCreationScreenPetTypeFrogus">фрогуса</string>
+	<string name="PetCreationScreenButtonTemplate">Создать %s %s</string>
+
 	<!-- Pet descriptions -->
 	<string name="PetTypeDescriptionCatus">Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.</string>
 	<string name="PetTypeDescriptionDogus">Догус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.</string>

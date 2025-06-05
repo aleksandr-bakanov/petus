@@ -19,6 +19,15 @@
 /* Zoo screen */
 "CreatePetButtonTitle"                     = "Создать нового пета";
 
+/* Pet creation screen */
+"PetCreationScreenSelectPetType"           = "Выбери тип пета";
+"PetCreationScreenEnterPetName"            = "Введи имя пета:";
+"PetCreationScreenEnterPetNameHint"        = "Имя пета";
+"PetCreationScreenPetTypeDogus"            = "догуса";
+"PetCreationScreenPetTypeCatus"            = "катуса";
+"PetCreationScreenPetTypeFrogus"           = "фрогуса";
+"PetCreationScreenButtonTemplate"          = "Создать %@ %@";
+
 /* Pet descriptions */
 "PetTypeDescriptionCatus"                  = "Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.";
 "PetTypeDescriptionDogus"                  = "Догус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.";

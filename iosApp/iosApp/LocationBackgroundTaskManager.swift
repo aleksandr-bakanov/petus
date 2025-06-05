@@ -22,7 +22,6 @@ class LocationBackgroundTaskManager: NSObject {
     func checkIfBackgroundTaskExists() {
         Task {
             let requests = await BGTaskScheduler.shared.pendingTaskRequests()
-            print("checkIfBackgroundTaskExists requests = " + requests.description + "; size = " + requests.count.description)
             if (requests.isEmpty) {
                 registerAndScheduleBackgroundTask()
             }
@@ -38,7 +37,6 @@ class LocationBackgroundTaskManager: NSObject {
         let result = BGTaskScheduler.shared.register(forTaskWithIdentifier: BACKGROUND_TASK_ID, using: nil) { task in
             self.handleAppRefresh(task: task as! BGAppRefreshTask)
         }
-        print("registerBackgroundTask result = " + result.description)
     }
 
     func scheduleBackgroundTask() {
@@ -52,8 +50,6 @@ class LocationBackgroundTaskManager: NSObject {
         } catch {
             print("Failed to submit background task: \(error)")
         }
-        
-        print("scheduleBackgroundTask end")
     }
     
     func handleAppRefresh(task: BGAppRefreshTask) {
@@ -103,8 +99,6 @@ extension LocationBackgroundTaskManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             // Handle the location here
-            print("Location in background: \(location.coordinate)")
-            
             Task {
                 let latitude: Double = location.coordinate.latitude
                 let longitude: Double = location.coordinate.longitude
