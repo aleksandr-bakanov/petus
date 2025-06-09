@@ -131,6 +131,13 @@ private fun PetDetailsScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center,
                 ) {
+                    if (uiState.showSpeakButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = uiState.petType.speakButtonImageId()),
+                        ) {
+                            onAction(PetDetailsScreenViewModel.Action.TapSpeakButton)
+                        }
+                    }
                     if (uiState.showFeedButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.feedButtonImageId()),
@@ -171,13 +178,6 @@ private fun PetDetailsScreen(
                             painter = painterResource(id = uiState.petType.buryButtonImageId()),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapBuryButton)
-                        }
-                    }
-                    if (uiState.showSpeakButton) {
-                        AnimatedImageButton(
-                            painter = painterResource(id = uiState.petType.speakButtonImageId()),
-                        ) {
-                            onAction(PetDetailsScreenViewModel.Action.TapSpeakButton)
                         }
                     }
                     if (uiState.showResurrectButton) {

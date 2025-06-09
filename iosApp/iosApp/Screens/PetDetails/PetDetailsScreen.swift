@@ -43,6 +43,12 @@ struct PetDetailsScreen: View {
                     if state.isAnyButtonShown {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(alignment: .center, spacing: 16) {
+                                if state.showSpeakButton {
+                                    AnimatedImageButton(imageName: state.petType.speakButtonImageName) {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapSpeakButton())
+                                    }
+                                }
+                                
                                 if state.showFeedButton {
                                     AnimatedImageButton(imageName: state.petType.feedButtonImageName) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapFeedButton())
@@ -76,12 +82,6 @@ struct PetDetailsScreen: View {
                                 if state.showBuryButton {
                                     AnimatedImageButton(imageName: state.petType.buryButtonImageName) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapBuryButton())
-                                    }
-                                }
-                                
-                                if state.showSpeakButton {
-                                    AnimatedImageButton(imageName: state.petType.speakButtonImageName) {
-                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapSpeakButton())
                                     }
                                 }
                                 
