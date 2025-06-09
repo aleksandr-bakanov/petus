@@ -28,7 +28,8 @@ struct UserProfileView: View {
                     }
                     Text("ProfileScreenAbilitiesLabel")
                     ForEach(state.abilities, id: \.self) { item in
-                        Text(item.name)
+                        Text(item.toStringId().localized)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     Text("ProfileScreenMiscLabel")
                     HStack {
