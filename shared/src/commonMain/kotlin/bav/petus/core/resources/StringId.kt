@@ -66,6 +66,8 @@ sealed class StringId {
     data object IPoopedLatin : StringId()
     data object IAmBored : StringId()
     data object IAmBoredLatin : StringId()
+    data object IAmStillAngryAfterForceWakeUp : StringId()
+    data object IAmStillAngryAfterForceWakeUpLatin : StringId()
     data object IAmHalfHp : StringId()
     data object IAmHalfHpLatin : StringId()
     data object IAmGood : StringId()

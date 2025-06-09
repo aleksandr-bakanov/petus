@@ -78,6 +78,8 @@
 	<string name="IPoopedLatin">Cacavi (gratum esset si post me lavares).</string>
 	<string name="IAmBored">Мне скучно, поиграем?</string>
 	<string name="IAmBoredLatin">Taedet me, ludere vis?</string>
+	<string name="IAmStillAngryAfterForceWakeUp">Я все еще не доволен тем, что ты меня разбудила по чем зря!</string>
+	<string name="IAmStillAngryAfterForceWakeUpLatin">Adhuc non gaudeo te me sine causa excitasse!</string>
 	<string name="IAmHalfHp">Что-то мне не хорошо, надо бы отдохнуть.</string>
 	<string name="IAmHalfHpLatin">Non tam bene me habeo, requie mihi opus est.</string>
 	<string name="IAmGood">Всё хорошо.</string>

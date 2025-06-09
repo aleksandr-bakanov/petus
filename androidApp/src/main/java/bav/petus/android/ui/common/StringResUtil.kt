@@ -32,6 +32,8 @@ fun StringId.toResId(): Int {
         StringId.IPoopedLatin -> R.string.IPoopedLatin
         StringId.IAmBored -> R.string.IAmBored
         StringId.IAmBoredLatin -> R.string.IAmBoredLatin
+        StringId.IAmStillAngryAfterForceWakeUp -> R.string.IAmStillAngryAfterForceWakeUp
+        StringId.IAmStillAngryAfterForceWakeUpLatin -> R.string.IAmStillAngryAfterForceWakeUpLatin
         StringId.IAmHalfHp -> R.string.IAmHalfHp
         StringId.IAmHalfHpLatin -> R.string.IAmHalfHpLatin
         StringId.IAmGood -> R.string.IAmGood

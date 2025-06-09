@@ -78,6 +78,8 @@
 	<string name="IPoopedLatin">Cacavi (gratum esset si post me lavares).</string>
 	<string name="IAmBored">I am bored, wanna play?</string>
 	<string name="IAmBoredLatin">Taedet me, ludere vis?</string>
+	<string name="IAmStillAngryAfterForceWakeUp">I am still not happy that you woke me up for no reason!</string>
+	<string name="IAmStillAngryAfterForceWakeUpLatin">Adhuc non gaudeo te me sine causa excitasse!</string>
 	<string name="IAmHalfHp">I do not feel so good, need some rest.</string>
 	<string name="IAmHalfHpLatin">Non tam bene me habeo, requie mihi opus est.</string>
 	<string name="IAmGood">I am fine.</string>

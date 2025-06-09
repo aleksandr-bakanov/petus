@@ -66,12 +66,16 @@ class Engine(
     }
 
     fun isAllowedToPlayWithPet(pet: Pet): Boolean {
-        val now = getTimestampSecondsSinceEpoch()
         return pet.bodyState == BodyState.Alive &&
                 pet.ageState != AgeState.Egg &&
                 pet.psych < getFullPsychForPetType(pet.type) * 0.8f &&
                 pet.sleep.not() &&
-                now > pet.timestampPlayAllowed
+                isPetStillAngryAfterForcefulWakeUp(pet).not()
+    }
+
+    fun isPetStillAngryAfterForcefulWakeUp(pet: Pet): Boolean {
+        val now = getTimestampSecondsSinceEpoch()
+        return now < pet.timestampPlayAllowed
     }
 
     suspend fun playWithPet(pet: Pet) {

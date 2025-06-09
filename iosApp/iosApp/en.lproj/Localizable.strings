@@ -76,6 +76,8 @@
 "IPoopedLatin"                             = "Cacavi (gratum esset si post me lavares).";
 "IAmBored"                                 = "I am bored, wanna play?";
 "IAmBoredLatin"                            = "Taedet me, ludere vis?";
+"IAmStillAngryAfterForceWakeUp"            = "I am still not happy that you woke me up for no reason!";
+"IAmStillAngryAfterForceWakeUpLatin"       = "Adhuc non gaudeo te me sine causa excitasse!";
 "IAmHalfHp"                                = "I do not feel so good, need some rest.";
 "IAmHalfHpLatin"                           = "Non tam bene me habeo, requie mihi opus est.";
 "IAmGood"                                  = "I am fine.";

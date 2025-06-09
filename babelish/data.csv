@@ -72,11 +72,12 @@ Pet state description dialogs;android, ios;IAmSick;I am sick, do you have any me
 ;android, ios;IPoopedLatin;Cacavi (gratum esset si post me lavares).;
 ;android, ios;IAmBored;I am bored, wanna play?;Мне скучно, поиграем?
 ;android, ios;IAmBoredLatin;Taedet me, ludere vis?;
+;android, ios;IAmStillAngryAfterForceWakeUp;I am still not happy that you woke me up for no reason!;Я все еще не доволен тем, что ты меня разбудила по чем зря!
+;android, ios;IAmStillAngryAfterForceWakeUpLatin;Adhuc non gaudeo te me sine causa excitasse!;
 ;android, ios;IAmHalfHp;I do not feel so good, need some rest.;Что-то мне не хорошо, надо бы отдохнуть.
 ;android, ios;IAmHalfHpLatin;Non tam bene me habeo, requie mihi opus est.;
 ;android, ios;IAmGood;I am fine.;Всё хорошо.
 ;android, ios;IAmGoodLatin;Bene sum.;
-
 
 Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как дела?
 ;android, ios;WhatIsGoingOnWithYouLatin;Quid tecum agitur?;Quid tecum agitur?

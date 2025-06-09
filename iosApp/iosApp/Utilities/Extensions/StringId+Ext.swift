@@ -32,6 +32,8 @@ extension StringId {
         case .iPoopedLatin: "IPoopedLatin"
         case .iAmBored: "IAmBored"
         case .iAmBoredLatin: "IAmBoredLatin"
+        case .iAmStillAngryAfterForceWakeUp: "IAmStillAngryAfterForceWakeUp"
+        case .iAmStillAngryAfterForceWakeUpLatin: "IAmStillAngryAfterForceWakeUpLatin"
         case .iAmHalfHp: "IAmHalfHp"
         case .iAmHalfHpLatin: "IAmHalfHpLatin"
         case .iAmGood: "IAmGood"

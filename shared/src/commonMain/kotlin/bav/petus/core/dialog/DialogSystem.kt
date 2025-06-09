@@ -83,14 +83,16 @@ class DialogSystem(
                 val isSick = pet.illness
                 val isHungry = engine.isPetHungry(pet)
                 val isPooped = pet.isPooped
-                val isBored = engine.isPetBored(pet)
+                val isAngryAfterForceWakeUp = engine.isPetStillAngryAfterForcefulWakeUp(pet)
+                val isBored = engine.isPetBored(pet) && isAngryAfterForceWakeUp.not()
                 val isHalfHp = engine.isPetLowHealth(pet)
-                val isGood = listOf(isSick, isHungry, isPooped, isBored, isHalfHp).none { it }
+                val isGood = listOf(isSick, isHungry, isPooped, isBored, isHalfHp, isAngryAfterForceWakeUp).none { it }
 
                 if (isSick) add(if (isLatin) StringId.IAmSickLatin else StringId.IAmSick)
                 if (isHungry) add(if (isLatin) StringId.IAmHungryLatin else StringId.IAmHungry)
                 if (isPooped) add(if (isLatin) StringId.IPoopedLatin else StringId.IPooped)
                 if (isBored) add(if (isLatin) StringId.IAmBoredLatin else StringId.IAmBored)
+                if (isAngryAfterForceWakeUp) add(if (isLatin) StringId.IAmStillAngryAfterForceWakeUpLatin else StringId.IAmStillAngryAfterForceWakeUp)
                 if (isHalfHp) add(if (isLatin) StringId.IAmHalfHpLatin else StringId.IAmHalfHp)
                 if (isGood) add(if (isLatin) StringId.IAmGoodLatin else StringId.IAmGood)
             }
