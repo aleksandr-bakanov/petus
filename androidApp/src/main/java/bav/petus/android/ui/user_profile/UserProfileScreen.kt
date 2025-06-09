@@ -96,7 +96,11 @@ private fun UserProfileScreen(
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenAbilitiesLabel))
             uiState.abilities.forEach { item ->
-                Text(text = stringResource(id = item.toStringId().toResId()))
+                Text(
+                    text = stringResource(id = item.toStringId().toResId()),
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Start,
+                )
             }
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenMiscLabel))

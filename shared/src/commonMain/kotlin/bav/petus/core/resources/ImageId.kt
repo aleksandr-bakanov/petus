@@ -35,6 +35,7 @@ enum class ImageId {
     CatAdultIll,
     CatAdultPoop,
     CatAdultSleep,
+    CatAdultZombie,
     CatEgg,
     CatGrave,
     CatNewbornActive,
@@ -43,12 +44,14 @@ enum class ImageId {
     CatNewbornIll,
     CatNewbornPoop,
     CatNewbornSleep,
+    CatNewbornZombie,
     CatOldActive,
     CatOldDead,
     CatOldHungry,
     CatOldIll,
     CatOldPoop,
     CatOldSleep,
+    CatOldZombie,
     //endregion
 
     //region Dogus
@@ -58,6 +61,7 @@ enum class ImageId {
     DogAdultIll,
     DogAdultPoop,
     DogAdultSleep,
+    DogAdultZombie,
     DogEgg,
     DogGrave,
     DogNewbornActive,
@@ -66,12 +70,14 @@ enum class ImageId {
     DogNewbornIll,
     DogNewbornPoop,
     DogNewbornSleep,
+    DogNewbornZombie,
     DogOldActive,
     DogOldDead,
     DogOldHungry,
     DogOldIll,
     DogOldPoop,
     DogOldSleep,
+    DogOldZombie,
     //endregion
 
     //region Frogus
@@ -81,6 +87,7 @@ enum class ImageId {
     FrogAdultIll,
     FrogAdultPoop,
     FrogAdultSleep,
+    FrogAdultZombie,
     FrogEgg,
     FrogGrave,
     FrogNewbornActive,
@@ -89,12 +96,14 @@ enum class ImageId {
     FrogNewbornIll,
     FrogNewbornPoop,
     FrogNewbornSleep,
+    FrogNewbornZombie,
     FrogOldActive,
     FrogOldDead,
     FrogOldHungry,
     FrogOldIll,
     FrogOldPoop,
     FrogOldSleep,
+    FrogOldZombie,
     //endregion
 
     //region Common

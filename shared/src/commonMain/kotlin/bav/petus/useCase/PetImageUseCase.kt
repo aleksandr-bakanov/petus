@@ -21,6 +21,7 @@ class PetImageUseCase(
                     AgeState.Egg -> ImageId.CatEgg
                     AgeState.NewBorn -> {
                         when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.CatNewbornZombie
                             pet.bodyState == BodyState.Dead -> ImageId.CatNewbornDead
                             pet.sleep -> ImageId.CatNewbornSleep
                             pet.isPooped -> ImageId.CatNewbornPoop
@@ -33,6 +34,7 @@ class PetImageUseCase(
                     AgeState.Teen,
                     AgeState.Adult -> {
                         when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.CatAdultZombie
                             pet.bodyState == BodyState.Dead -> ImageId.CatAdultDead
                             pet.sleep -> ImageId.CatAdultSleep
                             pet.isPooped -> ImageId.CatAdultPoop
@@ -44,6 +46,7 @@ class PetImageUseCase(
                     }
                     AgeState.Old -> {
                         when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.CatOldZombie
                             pet.bodyState == BodyState.Dead -> ImageId.CatOldDead
                             pet.sleep -> ImageId.CatOldSleep
                             pet.isPooped -> ImageId.CatOldPoop
@@ -61,6 +64,7 @@ class PetImageUseCase(
                     AgeState.Egg -> ImageId.DogEgg
                     AgeState.NewBorn -> {
                         when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.DogNewbornZombie
                             pet.bodyState == BodyState.Dead -> ImageId.DogNewbornDead
                             pet.sleep -> ImageId.DogNewbornSleep
                             pet.isPooped -> ImageId.DogNewbornPoop
@@ -73,6 +77,7 @@ class PetImageUseCase(
                     AgeState.Teen,
                     AgeState.Adult -> {
                         when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.DogAdultZombie
                             pet.bodyState == BodyState.Dead -> ImageId.DogAdultDead
                             pet.sleep -> ImageId.DogAdultSleep
                             pet.isPooped -> ImageId.DogAdultPoop
@@ -84,6 +89,7 @@ class PetImageUseCase(
                     }
                     AgeState.Old -> {
                         when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.DogOldZombie
                             pet.bodyState == BodyState.Dead -> ImageId.DogOldDead
                             pet.sleep -> ImageId.DogOldSleep
                             pet.isPooped -> ImageId.DogOldPoop
@@ -101,6 +107,7 @@ class PetImageUseCase(
                     AgeState.Egg -> ImageId.FrogEgg
                     AgeState.NewBorn -> {
                         when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.FrogNewbornZombie
                             pet.bodyState == BodyState.Dead -> ImageId.FrogNewbornDead
                             pet.sleep -> ImageId.FrogNewbornSleep
                             pet.isPooped -> ImageId.FrogNewbornPoop
@@ -113,6 +120,7 @@ class PetImageUseCase(
                     AgeState.Teen,
                     AgeState.Adult -> {
                         when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.FrogAdultZombie
                             pet.bodyState == BodyState.Dead -> ImageId.FrogAdultDead
                             pet.sleep -> ImageId.FrogAdultSleep
                             pet.isPooped -> ImageId.FrogAdultPoop
@@ -124,6 +132,7 @@ class PetImageUseCase(
                     }
                     AgeState.Old -> {
                         when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.FrogOldZombie
                             pet.bodyState == BodyState.Dead -> ImageId.FrogOldDead
                             pet.sleep -> ImageId.FrogOldSleep
                             pet.isPooped -> ImageId.FrogOldPoop

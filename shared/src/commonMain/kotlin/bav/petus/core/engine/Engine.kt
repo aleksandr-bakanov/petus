@@ -130,7 +130,8 @@ class Engine(
     }
 
     fun isAllowedToBuryPet(pet: Pet): Boolean {
-        return pet.bodyState == BodyState.Dead && pet.place == Place.Zoo
+        return (pet.bodyState == BodyState.Dead || pet.bodyState == BodyState.Zombie) &&
+                pet.place == Place.Zoo
     }
 
     suspend fun buryPet(pet: Pet) {
@@ -149,7 +150,10 @@ class Engine(
     }
 
     suspend fun resurrectPetAsZombie(pet: Pet) {
+        val now = getTimestampSecondsSinceEpoch()
         val newPet = pet.copy(
+            lastActiveSleepSwitchTimestamp = now,
+            activeSleepState = SleepState.Active,
             bodyState = BodyState.Zombie,
             place = Place.Zoo,
         )

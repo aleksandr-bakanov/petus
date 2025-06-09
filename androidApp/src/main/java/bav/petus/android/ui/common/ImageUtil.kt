@@ -35,6 +35,7 @@ fun ImageId.toResId(): Int {
         ImageId.CatAdultIll -> R.drawable.catus_adult_ill
         ImageId.CatAdultPoop -> R.drawable.catus_adult_poop
         ImageId.CatAdultSleep -> R.drawable.catus_adult_sleep
+        ImageId.CatAdultZombie -> R.drawable.catus_adult_zombie
         ImageId.CatEgg -> R.drawable.catus_egg
         ImageId.CatGrave -> R.drawable.catus_grave
         ImageId.CatNewbornActive -> R.drawable.catus_newborn_active
@@ -43,18 +44,21 @@ fun ImageId.toResId(): Int {
         ImageId.CatNewbornIll -> R.drawable.catus_newborn_ill
         ImageId.CatNewbornPoop -> R.drawable.catus_newborn_poop
         ImageId.CatNewbornSleep -> R.drawable.catus_newborn_sleep
+        ImageId.CatNewbornZombie -> R.drawable.catus_newborn_zombie
         ImageId.CatOldActive -> R.drawable.catus_old_active
         ImageId.CatOldDead -> R.drawable.catus_old_dead
         ImageId.CatOldHungry -> R.drawable.catus_old_hungry
         ImageId.CatOldIll -> R.drawable.catus_old_ill
         ImageId.CatOldPoop -> R.drawable.catus_old_poop
         ImageId.CatOldSleep -> R.drawable.catus_old_sleep
+        ImageId.CatOldZombie -> R.drawable.catus_old_zombie
         ImageId.DogAdultActive -> R.drawable.dogus_adult_active
         ImageId.DogAdultDead -> R.drawable.dogus_dead
         ImageId.DogAdultHungry -> R.drawable.dogus_adult_hungry
         ImageId.DogAdultIll -> R.drawable.dogus_adult_ill
         ImageId.DogAdultPoop -> R.drawable.dogus_adult_poop
         ImageId.DogAdultSleep -> R.drawable.dogus_adult_sleep
+        ImageId.DogAdultZombie -> R.drawable.dogus_adult_zombie
         ImageId.DogEgg -> R.drawable.dogus_egg
         ImageId.DogGrave -> R.drawable.dogus_grave
         ImageId.DogNewbornActive -> R.drawable.dogus_newborn_active
@@ -63,18 +67,21 @@ fun ImageId.toResId(): Int {
         ImageId.DogNewbornIll -> R.drawable.dogus_newborn_ill
         ImageId.DogNewbornPoop -> R.drawable.dogus_newborn_poop
         ImageId.DogNewbornSleep -> R.drawable.dogus_newborn_sleep
+        ImageId.DogNewbornZombie -> R.drawable.dogus_newborn_zombie
         ImageId.DogOldActive -> R.drawable.dogus_old_active
         ImageId.DogOldDead -> R.drawable.dogus_dead
         ImageId.DogOldHungry -> R.drawable.dogus_old_hungry
         ImageId.DogOldIll -> R.drawable.dogus_old_ill
         ImageId.DogOldPoop -> R.drawable.dogus_old_poop
         ImageId.DogOldSleep -> R.drawable.dogus_old_sleep
+        ImageId.DogOldZombie -> R.drawable.dogus_old_zombie
         ImageId.FrogAdultActive -> R.drawable.frogus_adult_active
         ImageId.FrogAdultDead -> R.drawable.frogus_dead
         ImageId.FrogAdultHungry -> R.drawable.frogus_adult_hungry
         ImageId.FrogAdultIll -> R.drawable.frogus_adult_ill
         ImageId.FrogAdultPoop -> R.drawable.frogus_adult_poop
         ImageId.FrogAdultSleep -> R.drawable.frogus_adult_sleep
+        ImageId.FrogAdultZombie -> R.drawable.frogus_adult_zombie
         ImageId.FrogEgg -> R.drawable.frogus_egg
         ImageId.FrogGrave -> R.drawable.frogus_grave
         ImageId.FrogNewbornActive -> R.drawable.frogus_newborn_active
@@ -83,12 +90,14 @@ fun ImageId.toResId(): Int {
         ImageId.FrogNewbornIll -> R.drawable.frogus_newborn_ill
         ImageId.FrogNewbornPoop -> R.drawable.frogus_newborn_poop
         ImageId.FrogNewbornSleep -> R.drawable.frogus_newborn_sleep
+        ImageId.FrogNewbornZombie -> R.drawable.frogus_newborn_zombie
         ImageId.FrogOldActive -> R.drawable.frogus_old_active
         ImageId.FrogOldDead -> R.drawable.frogus_dead
         ImageId.FrogOldHungry -> R.drawable.frogus_old_hungry
         ImageId.FrogOldIll -> R.drawable.frogus_old_ill
         ImageId.FrogOldPoop -> R.drawable.frogus_old_poop
         ImageId.FrogOldSleep -> R.drawable.frogus_old_sleep
+        ImageId.FrogOldZombie -> R.drawable.frogus_old_zombie
         ImageId.DugOutGrave -> R.drawable.dug_out_grave
         ImageId.UserProfileAvatar -> R.drawable.user_profile_avatar
     }
