@@ -199,6 +199,9 @@ class PetDetailsScreenViewModel(
                     }
                 }
             }
+            Action.CloseScreen -> {
+                navigate(Navigation.CloseScreen)
+            }
         }
     }
 
@@ -228,6 +231,7 @@ class PetDetailsScreenViewModel(
         data object Resurrect : Action
         data class ChangePlace(val place: Place) : Action
         data class ChangeAgeState(val state: AgeState) : Action
+        data object CloseScreen : Action
     }
 
     sealed interface Navigation {
