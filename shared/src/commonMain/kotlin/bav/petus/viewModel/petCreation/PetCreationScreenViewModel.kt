@@ -27,6 +27,8 @@ class PetCreationScreenViewModel
     private val _uiState = MutableStateFlow<PetCreationUiState?>(viewModelScope, null)
     val uiState = _uiState.asStateFlow()
 
+    private var petCreationInProgress: Boolean = false
+
     init {
         viewModelScope.launch {
             val availablePetTypes = userStats.getAvailablePetTypes()
@@ -44,12 +46,15 @@ class PetCreationScreenViewModel
             Action.TapCreateButton -> {
                 _uiState.value?.let {
                     if (it.name.isNotBlank()) {
-                        viewModelScope.launch {
-                            engine.createNewPet(
-                                name = it.name,
-                                type = it.type,
-                            )
-                            navigate(Navigation.PetCreationSuccess)
+                        if (!petCreationInProgress) {
+                            petCreationInProgress = true
+                            viewModelScope.launch {
+                                engine.createNewPet(
+                                    name = it.name,
+                                    type = it.type,
+                                )
+                                navigate(Navigation.PetCreationSuccess)
+                            }
                         }
                     }
                 }
