@@ -106,6 +106,32 @@ enum class ImageId {
     FrogOldZombie,
     //endregion
 
+    //region Bober
+    BoberAdultActive,
+    BoberAdultDead,
+    BoberAdultHungry,
+    BoberAdultIll,
+    BoberAdultPoop,
+    BoberAdultSleep,
+    BoberAdultZombie,
+    BoberEgg,
+    BoberGrave,
+    BoberNewbornActive,
+    BoberNewbornDead,
+    BoberNewbornHungry,
+    BoberNewbornIll,
+    BoberNewbornPoop,
+    BoberNewbornSleep,
+    BoberNewbornZombie,
+    BoberOldActive,
+    BoberOldDead,
+    BoberOldHungry,
+    BoberOldIll,
+    BoberOldPoop,
+    BoberOldSleep,
+    BoberOldZombie,
+    //endregion
+
     //region Common
     DugOutGrave,
     UserProfileAvatar,

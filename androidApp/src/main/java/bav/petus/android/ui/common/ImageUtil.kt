@@ -98,6 +98,29 @@ fun ImageId.toResId(): Int {
         ImageId.FrogOldPoop -> R.drawable.frogus_old_poop
         ImageId.FrogOldSleep -> R.drawable.frogus_old_sleep
         ImageId.FrogOldZombie -> R.drawable.frogus_old_zombie
+        ImageId.BoberAdultActive -> R.drawable.bober_adult_active
+        ImageId.BoberAdultDead -> R.drawable.bober_adult_dead
+        ImageId.BoberAdultHungry -> R.drawable.bober_adult_hungry
+        ImageId.BoberAdultIll -> R.drawable.bober_adult_ill
+        ImageId.BoberAdultPoop -> R.drawable.bober_adult_poop
+        ImageId.BoberAdultSleep -> R.drawable.bober_adult_sleep
+        ImageId.BoberAdultZombie -> R.drawable.bober_adult_zombie
+        ImageId.BoberEgg -> R.drawable.bober_egg
+        ImageId.BoberGrave -> R.drawable.bober_grave
+        ImageId.BoberNewbornActive -> R.drawable.bober_newborn_active
+        ImageId.BoberNewbornDead -> R.drawable.bober_newborn_dead
+        ImageId.BoberNewbornHungry -> R.drawable.bober_newborn_hungry
+        ImageId.BoberNewbornIll -> R.drawable.bober_newborn_ill
+        ImageId.BoberNewbornPoop -> R.drawable.bober_newborn_poop
+        ImageId.BoberNewbornSleep -> R.drawable.bober_newborn_sleep
+        ImageId.BoberNewbornZombie -> R.drawable.bober_newborn_zombie
+        ImageId.BoberOldActive -> R.drawable.bober_old_active
+        ImageId.BoberOldDead -> R.drawable.bober_old_dead
+        ImageId.BoberOldHungry -> R.drawable.bober_old_hungry
+        ImageId.BoberOldIll -> R.drawable.bober_old_ill
+        ImageId.BoberOldPoop -> R.drawable.bober_old_poop
+        ImageId.BoberOldSleep -> R.drawable.bober_old_sleep
+        ImageId.BoberOldZombie -> R.drawable.bober_old_zombie
         ImageId.DugOutGrave -> R.drawable.dug_out_grave
         ImageId.UserProfileAvatar -> R.drawable.user_profile_avatar
     }
