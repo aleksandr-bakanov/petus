@@ -23,20 +23,23 @@ class WeatherApi {
     }
 
     suspend fun getWeather(latitude: Double, longitude: Double): Result<WeatherDto> {
-        val response = httpClient.get {
-            url {
-                protocol = URLProtocol.HTTPS
-                host = "api.api-ninjas.com"
-                path("v1/weather")
-                parameters.append("lat", latitude.toString())
-                parameters.append("lon", longitude.toString())
+        try {
+            val response = httpClient.get {
+                url {
+                    protocol = URLProtocol.HTTPS
+                    host = "api.api-ninjas.com"
+                    path("v1/weather")
+                    parameters.append("lat", latitude.toString())
+                    parameters.append("lon", longitude.toString())
+                }
+                header("X-Api-Key", "YOUR-API-KEY-HERE")
             }
-            header("X-Api-Key", "YOUR-API-KEY-HERE")
-        }
-
-        return when (response.status) {
-            HttpStatusCode.OK -> Result.success(response.body())
-            else -> Result.failure(Throwable("${response.status.value} ${response.status.description}"))
+            return when (response.status) {
+                HttpStatusCode.OK -> Result.success(response.body())
+                else -> Result.failure(Throwable("${response.status.value} ${response.status.description}"))
+            }
+        } catch (t: Throwable) {
+            return Result.failure(t)
         }
     }
 }
