@@ -50,7 +50,8 @@ class MainActivity : ComponentActivity() {
         super.onResume()
 
         lifecycleScope.launch {
-            // TODO: do the same on iOS
+            petsSDK.applicationDidBecomeActive()
+
             if (timeRepo.isTimeToFetchWeather()) {
                 locationHelper.getLocation()?.let { location ->
                     petsSDK.retrieveWeatherInBackground(
@@ -59,9 +60,6 @@ class MainActivity : ComponentActivity() {
                         info = null,
                     )
                 }
-                petsSDK.applicationDidBecomeActive()
-            } else {
-                petsSDK.applicationDidBecomeActive()
             }
         }
     }
