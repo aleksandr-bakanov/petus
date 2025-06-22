@@ -6,11 +6,14 @@ struct DialogButton: View {
 
     var body: some View {
         Button(action: onClick) {
-            Text(text)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 8)
-                .font(.body)
+            HStack(alignment: .top) {
+                Text(text)
+                    .font(.body)
+                    .multilineTextAlignment(.leading)
+                Spacer()
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
         }
         .frame(maxWidth: .infinity)
         .background(Color.secondary.opacity(0.2)) // containerColor with alpha
