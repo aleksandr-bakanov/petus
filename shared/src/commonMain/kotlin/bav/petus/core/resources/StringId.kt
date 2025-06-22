@@ -10,6 +10,7 @@ sealed class StringId {
     data object PetTypeDescriptionCatus : StringId()
     data object PetTypeDescriptionDogus : StringId()
     data object PetTypeDescriptionFrogus : StringId()
+    data object PetTypeDescriptionBober : StringId()
     //endregion
 
     //region Inventory items

@@ -13,6 +13,7 @@ User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
 ;android, ios;LanguageKnowledgeTitleCatus;Catus language;Язык Катуса
 ;android, ios;LanguageKnowledgeTitleDogus;Dogus language;Язык Догуса
 ;android, ios;LanguageKnowledgeTitleFrogus;Frogus language;Язык Фрогуса
+;android, ios;LanguageKnowledgeTitleBober;Bober language;Язык Бобера
 ;android, ios;ZooSizeTitle;Home size;Размер дома
 ;android, ios;ProfileScreenMiscLabel;Misc;Прочее
 
@@ -24,12 +25,14 @@ Pet creation screen;android, ios;PetCreationScreenSelectPetType;Select pet type;
 ;android, ios;PetCreationScreenPetTypeDogus;dogus;догуса
 ;android, ios;PetCreationScreenPetTypeCatus;catus;катуса
 ;android, ios;PetCreationScreenPetTypeFrogus;frogus;фрогуса
+;android, ios;PetCreationScreenPetTypeBober;bober;бобера
 ;android;PetCreationScreenButtonTemplate;Create %s %s;Создать %s %s
 ;ios;PetCreationScreenButtonTemplate;Create %@ %@;Создать %@ %@
 
 Pet descriptions;android, ios;PetTypeDescriptionCatus;Catus: sleeps 2 hours, awake for 1 hour. Likes warm sunny days. Likes small wind.;Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.
 ;android, ios;PetTypeDescriptionDogus;Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.;Догус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.
 ;android, ios;PetTypeDescriptionFrogus;Frogus: sleeps 1.5 hours, awake for 1.5 hours. Likes cold cloudy days. Does not like wind.;Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер.
+;android, ios;PetTypeDescriptionBober;Bober: sleeps 1 hours, awake for 2 hours. Likes warm sunny days. Does not like wind.;Фрогус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Не любит ветер.
 
 Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android, ios;PieceOfCloth;Piece of cloth;Кусок ткани

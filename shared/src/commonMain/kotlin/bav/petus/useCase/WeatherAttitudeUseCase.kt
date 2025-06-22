@@ -40,6 +40,13 @@ class WeatherAttitudeUseCase {
                     start = 20.0, middle = 70.0, end = 1000.0
                 ),
             )
+            // Bober love sunny days
+            PetType.Bober -> calculateAttitude(
+                value = value?.toDouble(),
+                range = ThreePointRange(
+                    start = -1000.0, middle = 30.0, end = 80.0
+                ),
+            )
         }
     }
 
@@ -64,6 +71,13 @@ class WeatherAttitudeUseCase {
                 value = value?.toDouble(),
                 range = ThreePointRange(
                     start = 3.0, middle = 10.0, end = 15.0
+                ),
+            )
+            // Bober loves warm
+            PetType.Bober -> calculateAttitude(
+                value = value?.toDouble(),
+                range = ThreePointRange(
+                    start = 15.0, middle = 23.0, end = 27.0
                 ),
             )
         }
@@ -92,6 +106,13 @@ class WeatherAttitudeUseCase {
                     start = 30.0, middle = 50.0, end = 1000.0
                 ),
             )
+            // Bober likes wet weather
+            PetType.Bober -> calculateAttitude(
+                value = value?.toDouble(),
+                range = ThreePointRange(
+                    start = 30.0, middle = 50.0, end = 1000.0
+                ),
+            )
         }
     }
 
@@ -113,6 +134,13 @@ class WeatherAttitudeUseCase {
             )
             // Frogs don't like wind
             PetType.Frogus -> calculateAttitude(
+                value = value,
+                range = ThreePointRange(
+                    start = -1000.0, middle = 0.0, end = 0.3
+                ),
+            )
+            // Bober does not like wind
+            PetType.Bober -> calculateAttitude(
                 value = value,
                 range = ThreePointRange(
                     start = -1000.0, middle = 0.0, end = 0.3

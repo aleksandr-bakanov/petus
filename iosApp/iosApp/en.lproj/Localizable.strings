@@ -13,6 +13,7 @@
 "LanguageKnowledgeTitleCatus"              = "Catus language";
 "LanguageKnowledgeTitleDogus"              = "Dogus language";
 "LanguageKnowledgeTitleFrogus"             = "Frogus language";
+"LanguageKnowledgeTitleBober"              = "Bober language";
 "ZooSizeTitle"                             = "Home size";
 "ProfileScreenMiscLabel"                   = "Misc";
 
@@ -26,12 +27,14 @@
 "PetCreationScreenPetTypeDogus"            = "dogus";
 "PetCreationScreenPetTypeCatus"            = "catus";
 "PetCreationScreenPetTypeFrogus"           = "frogus";
+"PetCreationScreenPetTypeBober"            = "bober";
 "PetCreationScreenButtonTemplate"          = "Create %@ %@";
 
 /* Pet descriptions */
 "PetTypeDescriptionCatus"                  = "Catus: sleeps 2 hours, awake for 1 hour. Likes warm sunny days. Likes small wind.";
 "PetTypeDescriptionDogus"                  = "Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.";
 "PetTypeDescriptionFrogus"                 = "Frogus: sleeps 1.5 hours, awake for 1.5 hours. Likes cold cloudy days. Does not like wind.";
+"PetTypeDescriptionBober"                  = "Bober: sleeps 1 hours, awake for 2 hours. Likes warm sunny days. Does not like wind.";
 
 /* Item names */
 "Necronomicon"                             = "Necronomicon";

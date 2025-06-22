@@ -144,6 +144,50 @@ class PetImageUseCase(
                     }
                 }
             }
+
+            PetType.Bober -> {
+                if (isPetInGrave(pet)) return ImageId.BoberGrave
+                when (pet.ageState) {
+                    AgeState.Egg -> ImageId.BoberEgg
+                    AgeState.NewBorn -> {
+                        when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.BoberNewbornZombie
+                            pet.bodyState == BodyState.Dead -> ImageId.BoberNewbornDead
+                            pet.sleep -> ImageId.BoberNewbornSleep
+                            pet.isPooped -> ImageId.BoberNewbornPoop
+                            pet.illness -> ImageId.BoberNewbornIll
+                            isPetHungryOrBored(pet) -> ImageId.BoberNewbornHungry
+                            isPetLowHealth(pet) -> ImageId.BoberNewbornIll
+                            else -> ImageId.BoberNewbornActive
+                        }
+                    }
+                    AgeState.Teen,
+                    AgeState.Adult -> {
+                        when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.BoberAdultZombie
+                            pet.bodyState == BodyState.Dead -> ImageId.BoberAdultDead
+                            pet.sleep -> ImageId.BoberAdultSleep
+                            pet.isPooped -> ImageId.BoberAdultPoop
+                            pet.illness -> ImageId.BoberAdultIll
+                            isPetHungryOrBored(pet) -> ImageId.BoberAdultHungry
+                            isPetLowHealth(pet) -> ImageId.BoberAdultIll
+                            else -> ImageId.BoberAdultActive
+                        }
+                    }
+                    AgeState.Old -> {
+                        when {
+                            pet.bodyState == BodyState.Zombie -> ImageId.BoberOldZombie
+                            pet.bodyState == BodyState.Dead -> ImageId.BoberOldDead
+                            pet.sleep -> ImageId.BoberOldSleep
+                            pet.isPooped -> ImageId.BoberOldPoop
+                            pet.illness -> ImageId.BoberOldIll
+                            isPetHungryOrBored(pet) -> ImageId.BoberOldHungry
+                            isPetLowHealth(pet) -> ImageId.BoberOldIll
+                            else -> ImageId.BoberOldActive
+                        }
+                    }
+                }
+            }
         }
     }
 

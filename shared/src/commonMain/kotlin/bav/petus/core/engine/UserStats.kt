@@ -20,6 +20,7 @@ data class LanguageKnowledge(
     val catus: Int,
     val dogus: Int,
     val frogus: Int,
+    val bober: Int,
 )
 
 enum class Ability {
@@ -57,6 +58,7 @@ class UserStats(
                     catus = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_CATUS_KEY),
                     dogus = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_DOGUS_KEY),
                     frogus = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_FROGUS_KEY),
+                    bober = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_BOBER_KEY),
                 ),
                 inventory = it.getInventory(),
                 abilities = it.getAbilities(),
@@ -135,6 +137,7 @@ class UserStats(
             PetType.Catus -> LANGUAGE_KNOWLEDGE_CATUS_KEY
             PetType.Dogus -> LANGUAGE_KNOWLEDGE_DOGUS_KEY
             PetType.Frogus -> LANGUAGE_KNOWLEDGE_FROGUS_KEY
+            PetType.Bober -> LANGUAGE_KNOWLEDGE_BOBER_KEY
         }
     }
 
@@ -176,6 +179,7 @@ class UserStats(
         private val LANGUAGE_KNOWLEDGE_CATUS_KEY = intPreferencesKey("language_knowledge_catus")
         private val LANGUAGE_KNOWLEDGE_DOGUS_KEY = intPreferencesKey("language_knowledge_dogus")
         private val LANGUAGE_KNOWLEDGE_FROGUS_KEY = intPreferencesKey("language_knowledge_frogus")
+        private val LANGUAGE_KNOWLEDGE_BOBER_KEY = intPreferencesKey("language_knowledge_bober")
 
         private val ZOO_SIZE_KEY = intPreferencesKey("zoo_size")
 

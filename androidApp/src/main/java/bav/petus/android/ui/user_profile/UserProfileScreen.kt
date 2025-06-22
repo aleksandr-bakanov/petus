@@ -88,6 +88,10 @@ private fun UserProfileScreen(
                 type = PetType.Frogus,
                 value = uiState.languageKnowledgeFrogus,
             )
+            LanguageKnowledgeStat(
+                type = PetType.Bober,
+                value = uiState.languageKnowledgeBober,
+            )
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenInventoryLabel))
             uiState.inventory.forEach { item ->
@@ -136,6 +140,7 @@ private fun LanguageKnowledgeStat(type: PetType, value: String) {
             PetType.Catus -> R.string.LanguageKnowledgeTitleCatus
             PetType.Dogus -> R.string.LanguageKnowledgeTitleDogus
             PetType.Frogus -> R.string.LanguageKnowledgeTitleFrogus
+            PetType.Bober -> R.string.LanguageKnowledgeTitleBober
         }
     )
     UserProfileRow(

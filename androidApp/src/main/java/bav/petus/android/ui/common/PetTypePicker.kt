@@ -98,5 +98,6 @@ private fun PetType.eggImageResId(): Int {
         PetType.Catus -> R.drawable.catus_egg
         PetType.Dogus -> R.drawable.dogus_egg
         PetType.Frogus -> R.drawable.frogus_egg
+        PetType.Bober -> R.drawable.bober_egg
     }
 }

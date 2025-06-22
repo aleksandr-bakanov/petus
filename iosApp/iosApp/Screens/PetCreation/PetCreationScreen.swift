@@ -94,5 +94,7 @@ private func petTypeString(_ type: PetType) -> String {
         return NSLocalizedString("PetCreationScreenPetTypeDogus", comment: "")
     case .frogus:
         return NSLocalizedString("PetCreationScreenPetTypeFrogus", comment: "")
+    case .bober:
+        return NSLocalizedString("PetCreationScreenPetTypeBober", comment: "")
     }
 }

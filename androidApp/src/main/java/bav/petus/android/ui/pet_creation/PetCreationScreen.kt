@@ -120,6 +120,7 @@ private fun petTypeString(type: PetType): String {
             PetType.Catus -> R.string.PetCreationScreenPetTypeCatus
             PetType.Dogus -> R.string.PetCreationScreenPetTypeDogus
             PetType.Frogus -> R.string.PetCreationScreenPetTypeFrogus
+            PetType.Bober -> R.string.PetCreationScreenPetTypeBober
         }
     )
 }

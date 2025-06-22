@@ -261,6 +261,7 @@ class Engine(
             PetType.Catus -> StringId.PetTypeDescriptionCatus
             PetType.Dogus -> StringId.PetTypeDescriptionDogus
             PetType.Frogus -> StringId.PetTypeDescriptionFrogus
+            PetType.Bober -> StringId.PetTypeDescriptionBober
         }
     }
 
@@ -456,15 +457,23 @@ class Engine(
 
     private fun getPetAgeState(petType: PetType, petAgeInSeconds: Long): AgeState {
         var state = AgeState.Egg
-        petsAges[petType]?.let { ages ->
-            for (pair in ages) {
-                if (pair.value.contains(petAgeInSeconds)) {
-                    state = pair.key
-                    break
-                }
+        val ages = getPetAgeToSecondsTable(petType)
+        for (pair in ages) {
+            if (pair.value.contains(petAgeInSeconds)) {
+                state = pair.key
+                break
             }
         }
         return state
+    }
+
+    private fun getPetAgeToSecondsTable(petType: PetType): Map<AgeState, LongRange> {
+        return when (petType) {
+            PetType.Catus -> commonPetAgeToSecondsTable
+            PetType.Dogus -> commonPetAgeToSecondsTable
+            PetType.Frogus -> commonPetAgeToSecondsTable
+            PetType.Bober -> commonPetAgeToSecondsTable
+        }
     }
 
     /**
@@ -570,10 +579,18 @@ class Engine(
      */
     private fun getHungerBasedOnPetTypeAndAgeState(pet: Pet): Float {
         var hunger = 0f
-        petsHunger[pet.type]?.let { hungerByAgeState ->
-            hungerByAgeState[pet.ageState]?.let { hunger = it }
-        }
+        val hungerByAgeState = getPetsHungerByAgeState(pet.type)
+        hungerByAgeState[pet.ageState]?.let { hunger = it }
         return hunger
+    }
+
+    private fun getPetsHungerByAgeState(petType: PetType): Map<AgeState, Float> {
+        return when (petType) {
+            PetType.Catus -> commonPetHungerTable
+            PetType.Dogus -> commonPetHungerTable
+            PetType.Frogus -> commonPetHungerTable
+            PetType.Bober -> commonPetHungerTable
+        }
     }
 
     /**
@@ -582,10 +599,18 @@ class Engine(
      */
     private fun getPsychBasedOnPetTypeAndAgeState(pet: Pet): Float {
         var psych = 0f
-        petsPsych[pet.type]?.let { psychByAgeState ->
-            psychByAgeState[pet.ageState]?.let { psych = it }
-        }
+        val psychByAgeState = getPetsPsychByAgeState(pet.type)
+        psychByAgeState[pet.ageState]?.let { psych = it }
         return psych
+    }
+
+    private fun getPetsPsychByAgeState(petType: PetType): Map<AgeState, Float> {
+        return when (petType) {
+            PetType.Catus -> commonPetPsychTable
+            PetType.Dogus -> commonPetPsychTable
+            PetType.Frogus -> commonPetPsychTable
+            PetType.Bober -> commonPetPsychTable
+        }
     }
 
     /**
@@ -597,30 +622,34 @@ class Engine(
             PetType.Catus -> 500f
             PetType.Dogus -> 500f
             PetType.Frogus -> 500f
+            PetType.Bober -> 500f
         }
     }
 
-    fun getFullHealthForPetType(type: PetType): Float {
+    private fun getFullHealthForPetType(type: PetType): Float {
         return when (type) {
             PetType.Catus -> 300_000f
             PetType.Dogus -> 300_000f
             PetType.Frogus -> 200_000f
+            PetType.Bober -> 400_000f
         }
     }
 
-    fun getFullPsychForPetType(type: PetType): Float {
+    private fun getFullPsychForPetType(type: PetType): Float {
         return when (type) {
             PetType.Catus -> 50_000f
             PetType.Dogus -> 40_000f
             PetType.Frogus -> 30_000f
+            PetType.Bober -> 50_000f
         }
     }
 
-    fun getFullSatietyForPetType(type: PetType): Float {
+    private fun getFullSatietyForPetType(type: PetType): Float {
         return when (type) {
             PetType.Catus -> 50_000f
             PetType.Dogus -> 50_000f
             PetType.Frogus -> 50_000f
+            PetType.Bober -> 50_000f
         }
     }
 
@@ -628,11 +657,32 @@ class Engine(
      * @return Amount in seconds
      */
     private fun getTimeInState(pet: Pet, state: SleepState): Long {
-        var time = HOUR * 12
-        petsActiveSleepTimes[pet.type]?.let { times ->
-            times[state]?.let { time = it }
+        return when (pet.type) {
+            PetType.Catus -> {
+                when (state) {
+                    SleepState.Active -> HOUR
+                    SleepState.Sleep -> HOUR * 2
+                }
+            }
+            PetType.Dogus -> {
+                when (state) {
+                    SleepState.Active -> HOUR * 2
+                    SleepState.Sleep -> HOUR
+                }
+            }
+            PetType.Frogus -> {
+                when (state) {
+                    SleepState.Active -> (HOUR * 3) / 2
+                    SleepState.Sleep -> (HOUR * 3) / 2
+                }
+            }
+            PetType.Bober -> {
+                when (state) {
+                    SleepState.Active -> HOUR * 2
+                    SleepState.Sleep -> HOUR
+                }
+            }
         }
-        return time
     }
 
     /**
@@ -655,12 +705,6 @@ class Engine(
             AgeState.Old to (DAY * 14 until Long.MAX_VALUE),
         )
 
-        private val petsAges = mapOf(
-            PetType.Catus to commonPetAgeToSecondsTable,
-            PetType.Dogus to commonPetAgeToSecondsTable,
-            PetType.Frogus to commonPetAgeToSecondsTable,
-        )
-
         // Represents 'hunger speed' how much calories
         // are burned in 1 second
         private val commonPetHungerTable = mapOf(
@@ -671,12 +715,6 @@ class Engine(
             AgeState.Old to 0.3f
         )
 
-        private val petsHunger = mapOf(
-            PetType.Catus to commonPetHungerTable,
-            PetType.Dogus to commonPetHungerTable,
-            PetType.Frogus to commonPetHungerTable,
-        )
-
         // Represents 'psych exhaustion speed' how much brain cells
         // are burned in 1 second
         private val commonPetPsychTable = mapOf(
@@ -685,28 +723,6 @@ class Engine(
             AgeState.Teen to 0.6f,
             AgeState.Adult to 0.8f,
             AgeState.Old to 1f
-        )
-
-        private val petsPsych = mapOf(
-            PetType.Catus to commonPetPsychTable,
-            PetType.Dogus to commonPetPsychTable,
-            PetType.Frogus to commonPetPsychTable,
-        )
-
-        // Measured in seconds
-        private val petsActiveSleepTimes = mapOf(
-            PetType.Catus to mapOf(
-                SleepState.Active to HOUR,
-                SleepState.Sleep to HOUR * 2,
-            ),
-            PetType.Dogus to mapOf(
-                SleepState.Active to HOUR * 2,
-                SleepState.Sleep to HOUR,
-            ),
-            PetType.Frogus to mapOf(
-                SleepState.Active to (HOUR * 3) / 2,
-                SleepState.Sleep to (HOUR * 3) / 2,
-            ),
         )
 
         const val BASIC_CLOUDINESS_MULTIPLIER = 2f
