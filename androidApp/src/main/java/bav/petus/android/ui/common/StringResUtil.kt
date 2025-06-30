@@ -59,6 +59,9 @@ fun StringId.toResId(): Int {
         StringId.PieceOfCloth -> R.string.PieceOfCloth
         StringId.Fish -> R.string.Fish
         StringId.FrogusEgg -> R.string.FrogusEgg
+        StringId.DogusEgg -> R.string.DogusEgg
+        StringId.CatusEgg -> R.string.CatusEgg
+        StringId.BoberEgg -> R.string.BoberEgg
         StringId.HistoryEventPetBecomeAdult -> R.string.HistoryEventPetBecomeAdult
         StringId.HistoryEventPetBecomeNewborn -> R.string.HistoryEventPetBecomeNewborn
         StringId.HistoryEventPetBecomeOld -> R.string.HistoryEventPetBecomeOld

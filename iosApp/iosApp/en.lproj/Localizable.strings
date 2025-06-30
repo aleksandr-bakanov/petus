@@ -42,6 +42,9 @@
 "MysteriousBook"                           = "Mysterious book";
 "Fish"                                     = "Fish";
 "FrogusEgg"                                = "Frogus egg";
+"DogusEgg"                                 = "Dogus egg";
+"CatusEgg"                                 = "Catus egg";
+"BoberEgg"                                 = "Bober egg";
 "InventoryItemPattern"                     = "%@ (x%d)";
 
 /* Abilities names */

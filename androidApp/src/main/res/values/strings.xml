@@ -44,6 +44,9 @@
 	<string name="MysteriousBook">Mysterious book</string>
 	<string name="Fish">Fish</string>
 	<string name="FrogusEgg">Frogus egg</string>
+	<string name="DogusEgg">Dogus egg</string>
+	<string name="CatusEgg">Catus egg</string>
+	<string name="BoberEgg">Bober egg</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
 
 	<!-- Abilities names -->

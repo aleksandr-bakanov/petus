@@ -19,6 +19,7 @@ import bav.petus.core.engine.Engine
 import bav.petus.core.engine.QuestSystem
 import bav.petus.core.engine.UserStats
 import bav.petus.core.location.LocationHelper
+import bav.petus.core.migration.Migrations
 import bav.petus.core.time.TimeRepository
 import bav.petus.network.WeatherApi
 import bav.petus.repo.HistoryRepository
@@ -102,6 +103,7 @@ val appModule = module {
             weatherRepo = get(),
             engine = get(),
             timeRepo = get(),
+            migrations = get(),
         )
     }
 
@@ -136,6 +138,13 @@ val appModule = module {
     single {
         HistoryRepository(
             database = get(),
+        )
+    }
+
+    single {
+        Migrations(
+            dataStore = get(),
+            userStats = get(),
         )
     }
 

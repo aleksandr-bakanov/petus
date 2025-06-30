@@ -19,6 +19,9 @@ sealed class StringId {
     data object MysteriousBook : StringId()
     data object Fish : StringId()
     data object FrogusEgg : StringId()
+    data object DogusEgg : StringId()
+    data object CatusEgg : StringId()
+    data object BoberEgg : StringId()
     //endregion
 
     //region Abilities names

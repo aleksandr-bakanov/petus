@@ -44,6 +44,9 @@
 	<string name="MysteriousBook">Загадочная книга</string>
 	<string name="Fish">Рыба</string>
 	<string name="FrogusEgg">Яйцо Фрогуса</string>
+	<string name="DogusEgg">Яйцо Догуса</string>
+	<string name="CatusEgg">Яйцо Катуса</string>
+	<string name="BoberEgg">Яйцо Бобера</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
 
 	<!-- Abilities names -->

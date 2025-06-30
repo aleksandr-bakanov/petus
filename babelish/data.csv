@@ -39,6 +39,9 @@ Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android, ios;MysteriousBook;Mysterious book;Загадочная книга
 ;android, ios;Fish;Fish;Рыба
 ;android, ios;FrogusEgg;Frogus egg;Яйцо Фрогуса
+;android, ios;DogusEgg;Dogus egg;Яйцо Догуса
+;android, ios;CatusEgg;Catus egg;Яйцо Катуса
+;android, ios;BoberEgg;Bober egg;Яйцо Бобера
 ;android;InventoryItemPattern;%s (x%d);%s (x%d)
 ;ios;InventoryItemPattern;%@ (x%d);%@ (x%d)
 

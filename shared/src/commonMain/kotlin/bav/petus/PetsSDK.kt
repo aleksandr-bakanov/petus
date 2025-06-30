@@ -2,6 +2,7 @@ package bav.petus
 
 import bav.petus.cache.WeatherRecord
 import bav.petus.core.engine.Engine
+import bav.petus.core.migration.Migrations
 import bav.petus.core.time.TimeRepository
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.entity.WeatherDto
@@ -14,6 +15,7 @@ class PetsSDK(
     private val weatherRepo: WeatherRepository,
     private val engine: Engine,
     private val timeRepo: TimeRepository,
+    private val migrations: Migrations,
 ) {
 
     private val mutex = Mutex()
@@ -63,6 +65,7 @@ class PetsSDK(
     }
 
     suspend fun applicationDidBecomeActive() {
+        migrations.doMigrationsIfRequired()
         engine.updateGameState()
     }
 }

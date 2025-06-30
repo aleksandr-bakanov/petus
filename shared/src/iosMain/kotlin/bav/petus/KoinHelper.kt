@@ -10,6 +10,7 @@ import bav.petus.core.dialog.DialogSystem
 import bav.petus.core.engine.Engine
 import bav.petus.core.engine.QuestSystem
 import bav.petus.core.engine.UserStats
+import bav.petus.core.migration.Migrations
 import bav.petus.core.time.TimeRepository
 import bav.petus.network.WeatherApi
 import bav.petus.repo.HistoryRepository
@@ -99,6 +100,7 @@ fun initKoin() {
                     weatherRepo = get(),
                     engine = get(),
                     timeRepo = get(),
+                    migrations = get(),
                 )
             }
 
@@ -133,6 +135,13 @@ fun initKoin() {
             single {
                 HistoryRepository(
                     database = get(),
+                )
+            }
+
+            single {
+                Migrations(
+                    dataStore = get(),
+                    userStats = get(),
                 )
             }
         })
