@@ -55,6 +55,12 @@ struct PetDetailsScreen: View {
                                     }
                                 }
                                 
+                                if state.showPoopButton {
+                                    AnimatedImageButton(imageName: state.petType.poopButtonImageName) {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapPoopButton())
+                                    }
+                                }
+                                
                                 if state.showFeedButton {
                                     AnimatedImageButton(imageName: state.petType.feedButtonImageName) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapFeedButton())
@@ -70,12 +76,6 @@ struct PetDetailsScreen: View {
                                 if state.showPlayButton {
                                     AnimatedImageButton(imageName: state.petType.playButtonImageName) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapPlayButton())
-                                    }
-                                }
-                                
-                                if state.showPoopButton {
-                                    AnimatedImageButton(imageName: state.petType.poopButtonImageName) {
-                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapPoopButton())
                                     }
                                 }
                                 

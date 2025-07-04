@@ -155,6 +155,13 @@ private fun PetDetailsScreen(
                             onAction(PetDetailsScreenViewModel.Action.TapSpeakButton)
                         }
                     }
+                    if (uiState.showPoopButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = uiState.petType.poopButtonImageId()),
+                        ) {
+                            onAction(PetDetailsScreenViewModel.Action.TapPoopButton)
+                        }
+                    }
                     if (uiState.showFeedButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.feedButtonImageId()),
@@ -174,13 +181,6 @@ private fun PetDetailsScreen(
                             painter = painterResource(id = uiState.petType.playButtonImageId()),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapPlayButton)
-                        }
-                    }
-                    if (uiState.showPoopButton) {
-                        AnimatedImageButton(
-                            painter = painterResource(id = uiState.petType.poopButtonImageId()),
-                        ) {
-                            onAction(PetDetailsScreenViewModel.Action.TapPoopButton)
                         }
                     }
                     if (uiState.showWakeUpButton) {
