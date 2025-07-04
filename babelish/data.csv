@@ -19,6 +19,8 @@ User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
 
 Zoo screen;android, ios;CreatePetButtonTitle;Create new pet;Создать нового пета
 
+Pet details;android, ios;WillHatchSoon;Will hatch soon…;Скоро вылуплюсь…
+
 Pet creation screen;android, ios;PetCreationScreenSelectPetType;Select pet type;Выбери тип пета
 ;android, ios;PetCreationScreenEnterPetName;Enter pet name:;Введи имя пета:
 ;android, ios;PetCreationScreenEnterPetNameHint;Pet name;Имя пета

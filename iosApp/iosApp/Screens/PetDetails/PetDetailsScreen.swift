@@ -38,6 +38,12 @@ struct PetDetailsScreen: View {
                             StatBar(color: Color("PsychColor"), fraction: CGFloat(state.psychFraction))
                             StatBar(color: Color("HealthColor"), fraction: CGFloat(state.healthFraction))
                         }
+                        if state.showWillHatchSoon {
+                            Text("WillHatchSoon")
+                                .font(.title2) // equivalent to headlineMedium
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(16)
+                        }
                     }
                     
                     if state.isAnyButtonShown {

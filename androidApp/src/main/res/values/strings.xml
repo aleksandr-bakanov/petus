@@ -22,6 +22,9 @@
 	<!-- Zoo screen -->
 	<string name="CreatePetButtonTitle">Create new pet</string>
 
+	<!-- Pet details -->
+	<string name="WillHatchSoon">Will hatch soon…</string>
+
 	<!-- Pet creation screen -->
 	<string name="PetCreationScreenSelectPetType">Select pet type</string>
 	<string name="PetCreationScreenEnterPetName">Enter pet name:</string>

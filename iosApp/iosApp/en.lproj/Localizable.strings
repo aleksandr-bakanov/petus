@@ -20,6 +20,9 @@
 /* Zoo screen */
 "CreatePetButtonTitle"                     = "Create new pet";
 
+/* Pet details */
+"WillHatchSoon"                            = "Will hatch soon…";
+
 /* Pet creation screen */
 "PetCreationScreenSelectPetType"           = "Select pet type";
 "PetCreationScreenEnterPetName"            = "Enter pet name:";
