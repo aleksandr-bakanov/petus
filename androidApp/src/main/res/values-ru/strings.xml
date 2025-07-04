@@ -47,6 +47,7 @@
 	<string name="DogusEgg">Яйцо Догуса</string>
 	<string name="CatusEgg">Яйцо Катуса</string>
 	<string name="BoberEgg">Яйцо Бобера</string>
+	<string name="Basket">Прекрасная и надёжная корзина для хранения яиц (с крышечкой)</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
 
 	<!-- Abilities names -->
@@ -101,7 +102,7 @@
 	<string name="ByeBye">Пока-пока.</string>
 	<string name="Sure">Угу</string>
 	<string name="Ok">Окей</string>
-	<string name="Thanks">Пасиб</string>
+	<string name="Thanks">Спасибки</string>
 	<string name="Use">Использовать</string>
 	<string name="Destroy">Уничтожить</string>
 	<string name="NecronomiconStage3AnswerOption0">Ты знаешь что-нибудь про разрытую могилу?</string>
@@ -128,4 +129,24 @@
 	<string name="ObtainFrogusStage5Answer0">Эй, с чем это ты играешь?</string>
 	<string name="ObtainFrogusStage5Dialog0">Аа, нашел на озере. Круглое и катается! К тому что пахнет тиной, но это ничего. На возьми себе, я уже с ним наигрался.</string>
 	<string name="ObtainFrogusStage5Answer1">Спасибо, думаю я знаю что с этим делать.</string>
+	<string name="ObtainBoberStage2Answer0">Слушай, ты знаешь куда делись все яйца?</string>
+	<string name="ObtainBoberStage2Dialog0">Ого! Ничего про это не знаю, но могу поискать, спроси меня завтра, может найду что-нибудь.</string>
+	<string name="ObtainBoberStage2Dialog1">Ничего не знаю и, если честно, меня это не заботит.</string>
+	<string name="ObtainBoberStage2Answer1">Спасибо, загляну к тебе завтра!</string>
+	<string name="ObtainBoberStage3Answer0">Ну как, нашел что-нибудь?</string>
+	<string name="ObtainBoberStage3Dialog0">Неа, все еще ищу.</string>
+	<string name="ObtainBoberStage4Dialog0">Ага, нашел все яйца, ну и заставила ты меня побегать! Подозреваю, что они просто укатились или может ветром сдуло, вернул их на место, теперь точно не укатятся.</string>
+	<string name="ObtainBoberStage6Answer0">Яйца снова пропали, ты знаешь что-нибудь про это?</string>
+	<string name="ObtainBoberStage6Dialog0">Шо, опять? Ну ё-маё! Ладно, поищу ещё раз, но после того как найду, тебе лучше что-нибудь придумать чтобы такого больше не было.</string>
+	<string name="ObtainBoberStage6Dialog1">Ахахахахахахаха! Серьёзно? Ну и чёрт с ними.</string>
+	<string name="ObtainBoberStage8Dialog0">Вот они, наконец-то. Слушай, я не хочу опять бегать искать пропавшие яйца, если с ними что-нибудь еще случится. Поспрашивай еще кого-нибудь, может они помогут, ну надо уже как-то эту проблему решать.</string>
+	<string name="ObtainBoberStage8Answer0">Хорошо, я поспрашиваю.</string>
+	<string name="ObtainBoberStage9Answer0">Может ты знаешь что делать с этими постоянно укатывающимися яйцами?</string>
+	<string name="ObtainBoberStage9Dialog0">Хмм, я не знаю как тебе с этим помочь, но кажется я знаю кто знает что делать. Мои знакомые с пруда, рукастые ребята. Спрошу у них, зайди ко мне завтра.</string>
+	<string name="ObtainBoberStage9Dialog1">Я же тебе говорил поспрашивать кого-нибудь ещё, неужели мы для тебя все на одно лицо?</string>
+	<string name="ObtainBoberStage9Dialog2">Ну ты и спросишь, я что похож на того кто может управлять ветром?</string>
+	<string name="ObtainBoberStage10Answer0">Ну как, есть вести от твоих друзей?</string>
+	<string name="ObtainBoberStage10Dialog0">Они сказали что сделают всё в лучшем виде, подожди ещё немного.</string>
+	<string name="ObtainBoberStage11Dialog0">Да! Ты посмотри только что они нам прислали - прекрасную, надёжную корзину для хранения яиц (с крышечкой). А вместе с корзиной они прислали яйцо Бобера - вот так удача!</string>
+	<string name="ObtainBoberStage11Answer0">Воистину удача! Надо будет попробовать вывести одного или двух.</string>
 </resources>

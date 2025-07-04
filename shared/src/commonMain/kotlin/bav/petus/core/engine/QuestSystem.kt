@@ -11,6 +11,7 @@ import bav.petus.core.dialog.DialogSystem
 import bav.petus.core.engine.Engine.Companion.DAY
 import bav.petus.core.engine.Engine.Companion.HOUR
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_NECRONOMICON
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_BOBER
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FROGUS
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
@@ -48,7 +49,10 @@ class QuestSystem(
                 }
                 if (newConditions.isEmpty()) {
                     stage.onFinish(this)
-                    dataStore.edit { store -> store[quest.currentStageKey] = currentStageIndex + 1 }
+                    dataStore.edit { store ->
+                        store.remove(stage.conditionsKey)
+                        store[quest.currentStageKey] = currentStageIndex + 1
+                    }
                 }
             }
         }
@@ -86,6 +90,33 @@ class QuestSystem(
                         )
                     )
                     dataStore.edit { store -> store[obtainFrogusQuest.currentStageKey] = 1 }
+                }
+            }
+
+            // Obtain Bober stage 3, 4 check
+            val obtainBoberQuest = quests[QUEST_TO_OBTAIN_BOBER]!!
+            val obtainBoberCurrentStage = preferences[obtainBoberQuest.currentStageKey]
+            if (obtainBoberCurrentStage in 3..4) {
+                // If pet who died is this dog
+                if (preferences[OBTAIN_BOBER_SEARCH_DOG_ID_KEY] == e.petId) {
+                    // Then set stage to 2
+                    dataStore.edit { store -> store[obtainBoberQuest.currentStageKey] = 2 }
+                }
+            }
+            // Stages 7 and 8
+            if (obtainBoberCurrentStage in 7..8) {
+                // If pet who died is this dog
+                if (preferences[OBTAIN_BOBER_SEARCH_DOG_ID_KEY] == e.petId) {
+                    // Then set stage to 6
+                    dataStore.edit { store -> store[obtainBoberQuest.currentStageKey] = 6 }
+                }
+            }
+            // Stages 10 and 11
+            if (obtainBoberCurrentStage in 10..11) {
+                // If pet who died is this frog
+                if (preferences[OBTAIN_BOBER_SEARCH_FROG_ID_KEY] == e.petId) {
+                    // Then set stage to 9
+                    dataStore.edit { store -> store[obtainBoberQuest.currentStageKey] = 9 }
                 }
             }
         }
@@ -131,6 +162,7 @@ class QuestSystem(
     companion object {
         const val QUEST_NECRONOMICON = "QUEST_NECRONOMICON"
         const val QUEST_TO_OBTAIN_FROGUS = "QUEST_TO_OBTAIN_FROGUS"
+        const val QUEST_TO_OBTAIN_BOBER = "QUEST_TO_OBTAIN_BOBER"
     }
 }
 
@@ -157,6 +189,11 @@ private const val NECRONOMICON_STAGE_6_LAMBDA = "NECRONOMICON_STAGE_6_LAMBDA"
 private const val OBTAIN_FROGUS_STAGE_0_LAMBDA = "OBTAIN_FROGUS_STAGE_0_LAMBDA"
 private const val OBTAIN_FROGUS_STAGE_2_LAMBDA = "OBTAIN_FROGUS_STAGE_2_LAMBDA"
 private const val OBTAIN_FROGUS_STAGE_4_LAMBDA = "OBTAIN_FROGUS_STAGE_4_LAMBDA"
+
+private const val OBTAIN_BOBER_STAGE_0_LAMBDA = "OBTAIN_BOBER_STAGE_0_LAMBDA"
+private const val OBTAIN_BOBER_STAGE_1_LAMBDA = "OBTAIN_BOBER_STAGE_1_LAMBDA"
+private const val OBTAIN_BOBER_STAGE_3_LAMBDA = "OBTAIN_BOBER_STAGE_3_LAMBDA"
+private const val OBTAIN_BOBER_STAGE_5_LAMBDA = "OBTAIN_BOBER_STAGE_5_LAMBDA"
 
 private val conditionLambdas =
     mapOf<String, suspend (QuestSystem, Preferences, QuestSystem.Event) -> Boolean>(
@@ -213,6 +250,36 @@ private val conditionLambdas =
                 } ?: false
             } ?: false
         },
+        OBTAIN_BOBER_STAGE_0_LAMBDA to { questSystem, _, event ->
+            (event as? QuestSystem.Event.LanguageKnowledgeChanged)?.let { _ ->
+                val frogusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Frogus)
+                val dogusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Dogus)
+
+                frogusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE &&
+                        dogusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE
+            } ?: false
+        },
+        OBTAIN_BOBER_STAGE_1_LAMBDA to { _, prefs, event ->
+            (event as? QuestSystem.Event.Tick)?.let { e ->
+                prefs[OBTAIN_BOBER_TIMESTAMP_KEY]?.let { timestamp ->
+                    e.secondsSinceEpoch - timestamp > HOUR
+                } ?: false
+            } ?: false
+        },
+        OBTAIN_BOBER_STAGE_3_LAMBDA to { _, prefs, event ->
+            (event as? QuestSystem.Event.Tick)?.let { e ->
+                prefs[OBTAIN_BOBER_TIMESTAMP_KEY]?.let { timestamp ->
+                    e.secondsSinceEpoch - timestamp > DAY
+                } ?: false
+            } ?: false
+        },
+        OBTAIN_BOBER_STAGE_5_LAMBDA to { _, prefs, event ->
+            (event as? QuestSystem.Event.Tick)?.let { e ->
+                prefs[OBTAIN_BOBER_TIMESTAMP_KEY]?.let { timestamp ->
+                    e.secondsSinceEpoch - timestamp > HOUR * 3
+                } ?: false
+            } ?: false
+        },
     )
 
 val NECRONOMICON_TIMESTAMP_KEY = longPreferencesKey("NECRONOMICON_TIMESTAMP_KEY")
@@ -223,10 +290,15 @@ val NECRONOMICON_WISE_CAT_ID_KEY = longPreferencesKey("NECRONOMICON_WISE_CAT_ID_
 val OBTAIN_FROGUS_TIMESTAMP_KEY = longPreferencesKey("OBTAIN_FROGUS_TIMESTAMP_KEY")
 val OBTAIN_FROGUS_ASKING_CAT_ID_KEY = longPreferencesKey("OBTAIN_FROGUS_ASKING_CAT_ID_KEY")
 
+val OBTAIN_BOBER_TIMESTAMP_KEY = longPreferencesKey("OBTAIN_BOBER_TIMESTAMP_KEY")
+val OBTAIN_BOBER_SEARCH_DOG_ID_KEY = longPreferencesKey("OBTAIN_BOBER_ASKING_DOG_ID_KEY")
+val OBTAIN_BOBER_SEARCH_FROG_ID_KEY = longPreferencesKey("OBTAIN_BOBER_SEARCH_FROG_ID_KEY")
+
 private val quests = mapOf(
     QUEST_NECRONOMICON to Quest(
         currentStageKey = intPreferencesKey("necronomicon_stage_key"),
         stages = listOf(
+            // Stage 0 - make sure user understands cat and dog 100%, and any pet moved to cemetery
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("necronomicon_stage_0_conditions"),
                 initialConditions = setOf(IS_PET_MOVED_TO_CEMETERY, NECRONOMICON_STAGE_0_LAMBDA),
@@ -238,6 +310,7 @@ private val quests = mapOf(
                 },
                 additionalAnswerOptions = null,
             ),
+            // Stage 1 - wait 1 day and exhumate random grave
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("necronomicon_stage_1_conditions"),
                 initialConditions = setOf(NECRONOMICON_STAGE_1_LAMBDA),
@@ -255,12 +328,14 @@ private val quests = mapOf(
                 },
                 additionalAnswerOptions = null,
             ),
+            // Stage 2 - make sure user opened exhumated grave
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("necronomicon_stage_2_conditions"),
                 initialConditions = setOf(NECRONOMICON_STAGE_2_LAMBDA),
                 onFinish = {},
                 additionalAnswerOptions = null,
             ),
+            // Stage 3 - dialog stage - ask any dog if he knows something, dog will ask user to bring something from the grave
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("necronomicon_stage_3_conditions"),
                 initialConditions = setOf(ALWAYS_FALSE_CONDITION),
@@ -282,6 +357,7 @@ private val quests = mapOf(
                     }
                 },
             ),
+            // Stage 4 - open exhumated grave details to find piece of cloth
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("necronomicon_stage_4_conditions"),
                 initialConditions = setOf(NECRONOMICON_STAGE_2_LAMBDA), // Same, just open exhumated pet details
@@ -295,6 +371,7 @@ private val quests = mapOf(
                 },
                 additionalAnswerOptions = null,
             ),
+            // Stage 5 - show piece of cloth to any dog, he will go looking
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("necronomicon_stage_5_conditions"),
                 initialConditions = setOf(ALWAYS_FALSE_CONDITION),
@@ -312,6 +389,7 @@ private val quests = mapOf(
                     }
                 },
             ),
+            // Stage 6 - wait 1 hour for dog to find the book
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("necronomicon_stage_6_conditions"),
                 initialConditions = setOf(NECRONOMICON_STAGE_6_LAMBDA),
@@ -330,6 +408,7 @@ private val quests = mapOf(
                     }
                 }
             ),
+            // Stage 7 - dialog stage - receive the book from a dog
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("necronomicon_stage_7_conditions"),
                 initialConditions = setOf(ALWAYS_FALSE_CONDITION),
@@ -348,6 +427,7 @@ private val quests = mapOf(
                     }
                 }
             ),
+            // Stage 8 - dialog stage - ask old cat about book - either use it or destroy
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("necronomicon_stage_8_conditions"),
                 initialConditions = setOf(ALWAYS_FALSE_CONDITION),
@@ -365,7 +445,7 @@ private val quests = mapOf(
                             listOf(
                                 Answer(
                                     text = StringId.NecronomiconStage8AnswerOption0, // Same as for not old catus
-                                    nextNode = DialogSystem.NECRONOMICON_STAGE_8_DIALOG_1,
+                                    nextNode = DialogSystem.NECRONOMICON_STAGE_8_DIALOG_1, // Different dialog
                                 )
                             )
                         }
@@ -379,14 +459,14 @@ private val quests = mapOf(
     QUEST_TO_OBTAIN_FROGUS to Quest(
         currentStageKey = intPreferencesKey("obtain_frogus_stage_key"),
         stages = listOf(
-            // Stage 0 - make sure user understands catus 100%
+            // Stage 0 - make sure user understands cat 100%
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("obtain_frogus_stage_0_conditions"),
                 initialConditions = setOf(OBTAIN_FROGUS_STAGE_0_LAMBDA),
                 onFinish = {},
                 additionalAnswerOptions = null,
             ),
-            // Stage 1 - dialog stage - adult catus should request fish
+            // Stage 1 - dialog stage - adult cat should request fish
             QuestStage(
                 conditionsKey = stringSetPreferencesKey("obtain_frogus_stage_1_conditions"),
                 initialConditions = setOf(ALWAYS_FALSE_CONDITION),
@@ -474,6 +554,286 @@ private val quests = mapOf(
                             Answer(
                                 text = StringId.ObtainFrogusStage5Answer0,
                                 nextNode = DialogSystem.OBTAIN_FROGUS_STAGE_5_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+        )
+    ),
+    QUEST_TO_OBTAIN_BOBER to Quest(
+        currentStageKey = intPreferencesKey("obtain_bober_stage_key"),
+        stages = listOf(
+            // Stage 0 - make sure user understands dogus and frogus 100%
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_0_conditions"),
+                initialConditions = setOf(OBTAIN_BOBER_STAGE_0_LAMBDA),
+                onFinish = { questSystem ->
+                    val now = getTimestampSecondsSinceEpoch()
+                    questSystem.dataStore.edit { store ->
+                        store[OBTAIN_BOBER_TIMESTAMP_KEY] = now
+                    }
+                },
+                additionalAnswerOptions = null,
+            ),
+            // Stage 1 - wait 1 hour and remove all eggs
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_1_conditions"),
+                initialConditions = setOf(OBTAIN_BOBER_STAGE_1_LAMBDA),
+                onFinish = { questSystem ->
+                    questSystem.userStats.removeInventoryItem(
+                        InventoryItem(id = InventoryItemId.CatusEgg, amount = 1)
+                    )
+                    questSystem.userStats.removeInventoryItem(
+                        InventoryItem(id = InventoryItemId.DogusEgg, amount = 1)
+                    )
+                    questSystem.userStats.removeInventoryItem(
+                        InventoryItem(id = InventoryItemId.FrogusEgg, amount = 1)
+                    )
+                },
+                additionalAnswerOptions = null,
+            ),
+            // Stage 2 - dialog with any dog - ask him to search for eggs
+            //   - save timestamp to OBTAIN_BOBER_TIMESTAMP_KEY
+            //   - save dog id to OBTAIN_BOBER_ASKING_DOG_ID_KEY
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_2_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { _, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        if (pet.type == PetType.Dogus) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainBoberStage2Answer0,
+                                    nextNode = DialogSystem.OBTAIN_BOBER_STAGE_2_DIALOG_0,
+                                )
+                            )
+                        } else {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainBoberStage2Answer0,
+                                    nextNode = DialogSystem.OBTAIN_BOBER_STAGE_2_DIALOG_1,
+                                )
+                            )
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 3 - wait 1 day until dog finds the eggs
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_3_conditions"),
+                initialConditions = setOf(OBTAIN_BOBER_STAGE_3_LAMBDA),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    val searchDogId = questSystem.dataStore.data.first()[OBTAIN_BOBER_SEARCH_DOG_ID_KEY] ?: -1L
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        searchDogId == pet.id &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainBoberStage3Answer0,
+                                nextNode = DialogSystem.OBTAIN_BOBER_STAGE_3_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 4 - dialog with dog - asked dog returns eggs
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_4_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    val searchDogId = questSystem.dataStore.data.first()[OBTAIN_BOBER_SEARCH_DOG_ID_KEY] ?: -1L
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        searchDogId == pet.id &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainBoberStage3Answer0, // Same question as in previous stage
+                                nextNode = DialogSystem.OBTAIN_BOBER_STAGE_4_DIALOG_0, // But different dialog
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 5 - wait 3 hours until losing eggs again
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_5_conditions"),
+                initialConditions = setOf(OBTAIN_BOBER_STAGE_5_LAMBDA),
+                onFinish = { questSystem ->
+                    questSystem.userStats.removeInventoryItem(
+                        InventoryItem(id = InventoryItemId.CatusEgg, amount = 1)
+                    )
+                    questSystem.userStats.removeInventoryItem(
+                        InventoryItem(id = InventoryItemId.DogusEgg, amount = 1)
+                    )
+                    questSystem.userStats.removeInventoryItem(
+                        InventoryItem(id = InventoryItemId.FrogusEgg, amount = 1)
+                    )
+                },
+                additionalAnswerOptions = null,
+            ),
+            // Stage 6 - ask any dog about lost eggs again
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_6_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { _, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        if (pet.type == PetType.Dogus) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainBoberStage6Answer0,
+                                    nextNode = DialogSystem.OBTAIN_BOBER_STAGE_6_DIALOG_0,
+                                )
+                            )
+                        } else {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainBoberStage6Answer0,
+                                    nextNode = DialogSystem.OBTAIN_BOBER_STAGE_6_DIALOG_1,
+                                )
+                            )
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 7 - wait again until dog finds the eggs
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_7_conditions"),
+                initialConditions = setOf(OBTAIN_BOBER_STAGE_3_LAMBDA), // Lambda can be the same as on stage 3 - wait for 1 day.
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    val searchDogId = questSystem.dataStore.data.first()[OBTAIN_BOBER_SEARCH_DOG_ID_KEY] ?: -1L
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        searchDogId == pet.id &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainBoberStage3Answer0,
+                                nextNode = DialogSystem.OBTAIN_BOBER_STAGE_3_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 8 - dog found eggs again
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_8_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    val searchDogId = questSystem.dataStore.data.first()[OBTAIN_BOBER_SEARCH_DOG_ID_KEY] ?: -1L
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        searchDogId == pet.id &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainBoberStage3Answer0, // Same question as in previous stage
+                                nextNode = DialogSystem.OBTAIN_BOBER_STAGE_8_DIALOG_0, // But different dialog
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 9 - ask frog to help with eggs
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_9_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val searchDogId = questSystem.dataStore.data.first()[OBTAIN_BOBER_SEARCH_DOG_ID_KEY] ?: -1L
+                        if (pet.type == PetType.Frogus) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainBoberStage9Answer0,
+                                    nextNode = DialogSystem.OBTAIN_BOBER_STAGE_9_DIALOG_0,
+                                )
+                            )
+                        } else if (searchDogId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainBoberStage9Answer0,
+                                    nextNode = DialogSystem.OBTAIN_BOBER_STAGE_9_DIALOG_1,
+                                )
+                            )
+                        } else {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainBoberStage9Answer0,
+                                    nextNode = DialogSystem.OBTAIN_BOBER_STAGE_9_DIALOG_2,
+                                )
+                            )
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 10 - wait 1 day for frog to get bober egg and basket
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_10_conditions"),
+                initialConditions = setOf(OBTAIN_BOBER_STAGE_3_LAMBDA), // Lambda can be the same as on stage 3 - wait for 1 day.
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    val searchFrogId = questSystem.dataStore.data.first()[OBTAIN_BOBER_SEARCH_FROG_ID_KEY] ?: -1L
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        searchFrogId == pet.id &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainBoberStage10Answer0,
+                                nextNode = DialogSystem.OBTAIN_BOBER_STAGE_10_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 11 - frog gives bober egg and basket
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_bober_stage_11_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    val searchDogId = questSystem.dataStore.data.first()[OBTAIN_BOBER_SEARCH_FROG_ID_KEY] ?: -1L
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        searchDogId == pet.id &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainBoberStage10Answer0, // Same question as in previous stage
+                                nextNode = DialogSystem.OBTAIN_BOBER_STAGE_11_DIALOG_0, // But different dialog
                             )
                         )
                     } else {

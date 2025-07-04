@@ -62,6 +62,7 @@ fun StringId.toResId(): Int {
         StringId.DogusEgg -> R.string.DogusEgg
         StringId.CatusEgg -> R.string.CatusEgg
         StringId.BoberEgg -> R.string.BoberEgg
+        StringId.Basket -> R.string.Basket
         StringId.HistoryEventPetBecomeAdult -> R.string.HistoryEventPetBecomeAdult
         StringId.HistoryEventPetBecomeNewborn -> R.string.HistoryEventPetBecomeNewborn
         StringId.HistoryEventPetBecomeOld -> R.string.HistoryEventPetBecomeOld
@@ -89,5 +90,25 @@ fun StringId.toResId(): Int {
         StringId.ObtainFrogusStage5Answer0 -> R.string.ObtainFrogusStage5Answer0
         StringId.ObtainFrogusStage5Dialog0 -> R.string.ObtainFrogusStage5Dialog0
         StringId.ObtainFrogusStage5Answer1 -> R.string.ObtainFrogusStage5Answer1
+        StringId.ObtainBoberStage2Answer0 -> R.string.ObtainBoberStage2Answer0
+        StringId.ObtainBoberStage2Answer1 -> R.string.ObtainBoberStage2Answer1
+        StringId.ObtainBoberStage2Dialog0 -> R.string.ObtainBoberStage2Dialog0
+        StringId.ObtainBoberStage2Dialog1 -> R.string.ObtainBoberStage2Dialog1
+        StringId.ObtainBoberStage3Answer0 -> R.string.ObtainBoberStage3Answer0
+        StringId.ObtainBoberStage3Dialog0 -> R.string.ObtainBoberStage3Dialog0
+        StringId.ObtainBoberStage4Dialog0 -> R.string.ObtainBoberStage4Dialog0
+        StringId.ObtainBoberStage6Answer0 -> R.string.ObtainBoberStage6Answer0
+        StringId.ObtainBoberStage6Dialog0 -> R.string.ObtainBoberStage6Dialog0
+        StringId.ObtainBoberStage6Dialog1 -> R.string.ObtainBoberStage6Dialog1
+        StringId.ObtainBoberStage8Answer0 -> R.string.ObtainBoberStage8Answer0
+        StringId.ObtainBoberStage8Dialog0 -> R.string.ObtainBoberStage8Dialog0
+        StringId.ObtainBoberStage9Answer0 -> R.string.ObtainBoberStage9Answer0
+        StringId.ObtainBoberStage9Dialog0 -> R.string.ObtainBoberStage9Dialog0
+        StringId.ObtainBoberStage9Dialog1 -> R.string.ObtainBoberStage9Dialog1
+        StringId.ObtainBoberStage9Dialog2 -> R.string.ObtainBoberStage9Dialog2
+        StringId.ObtainBoberStage10Answer0 -> R.string.ObtainBoberStage10Answer0
+        StringId.ObtainBoberStage10Dialog0 -> R.string.ObtainBoberStage10Dialog0
+        StringId.ObtainBoberStage11Dialog0 -> R.string.ObtainBoberStage11Dialog0
+        StringId.ObtainBoberStage11Answer0 -> R.string.ObtainBoberStage11Answer0
     }
 }

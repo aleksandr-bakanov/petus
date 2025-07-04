@@ -11,6 +11,7 @@ enum class InventoryItemId {
     DogusEgg,
     CatusEgg,
     BoberEgg,
+    Basket,
     ;
 }
 
@@ -24,5 +25,6 @@ fun InventoryItemId.toStringId(): StringId {
         InventoryItemId.DogusEgg -> StringId.DogusEgg
         InventoryItemId.CatusEgg -> StringId.CatusEgg
         InventoryItemId.BoberEgg -> StringId.BoberEgg
+        InventoryItemId.Basket -> StringId.Basket
     }
 }

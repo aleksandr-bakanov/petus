@@ -22,6 +22,7 @@ sealed class StringId {
     data object DogusEgg : StringId()
     data object CatusEgg : StringId()
     data object BoberEgg : StringId()
+    data object Basket : StringId()
     //endregion
 
     //region Abilities names
@@ -102,5 +103,26 @@ sealed class StringId {
     data object ObtainFrogusStage5Answer0 : StringId()
     data object ObtainFrogusStage5Dialog0 : StringId()
     data object ObtainFrogusStage5Answer1 : StringId()
+
+    data object ObtainBoberStage2Answer0 : StringId()
+    data object ObtainBoberStage2Dialog0 : StringId()
+    data object ObtainBoberStage2Dialog1 : StringId()
+    data object ObtainBoberStage2Answer1 : StringId()
+    data object ObtainBoberStage3Answer0 : StringId()
+    data object ObtainBoberStage3Dialog0 : StringId()
+    data object ObtainBoberStage4Dialog0 : StringId()
+    data object ObtainBoberStage6Answer0 : StringId()
+    data object ObtainBoberStage6Dialog0 : StringId()
+    data object ObtainBoberStage6Dialog1 : StringId()
+    data object ObtainBoberStage8Dialog0 : StringId()
+    data object ObtainBoberStage8Answer0 : StringId()
+    data object ObtainBoberStage9Answer0 : StringId()
+    data object ObtainBoberStage9Dialog0 : StringId()
+    data object ObtainBoberStage9Dialog1 : StringId()
+    data object ObtainBoberStage9Dialog2 : StringId()
+    data object ObtainBoberStage10Answer0 : StringId()
+    data object ObtainBoberStage10Dialog0 : StringId()
+    data object ObtainBoberStage11Dialog0 : StringId()
+    data object ObtainBoberStage11Answer0 : StringId()
     //endregion
 }

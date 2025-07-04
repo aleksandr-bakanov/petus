@@ -7,6 +7,9 @@ import bav.petus.core.engine.NECRONOMICON_EXHUMATED_PET_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_SEARCH_DOG_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_TIMESTAMP_KEY
 import bav.petus.core.engine.NECRONOMICON_WISE_CAT_ID_KEY
+import bav.petus.core.engine.OBTAIN_BOBER_SEARCH_DOG_ID_KEY
+import bav.petus.core.engine.OBTAIN_BOBER_SEARCH_FROG_ID_KEY
+import bav.petus.core.engine.OBTAIN_BOBER_TIMESTAMP_KEY
 import bav.petus.core.engine.OBTAIN_FROGUS_ASKING_CAT_ID_KEY
 import bav.petus.core.engine.OBTAIN_FROGUS_TIMESTAMP_KEY
 import bav.petus.core.engine.QuestSystem
@@ -137,6 +140,19 @@ class DialogSystem(
         const val OBTAIN_FROGUS_STAGE_1_DIALOG_0 = "OBTAIN_FROGUS_STAGE_1_DIALOG_0"
         const val OBTAIN_FROGUS_STAGE_3_DIALOG_0 = "OBTAIN_FROGUS_STAGE_3_DIALOG_0"
         const val OBTAIN_FROGUS_STAGE_5_DIALOG_0 = "OBTAIN_FROGUS_STAGE_5_DIALOG_0"
+
+        const val OBTAIN_BOBER_STAGE_2_DIALOG_0 = "OBTAIN_BOBER_STAGE_2_DIALOG_0"
+        const val OBTAIN_BOBER_STAGE_2_DIALOG_1 = "OBTAIN_BOBER_STAGE_2_DIALOG_1"
+        const val OBTAIN_BOBER_STAGE_3_DIALOG_0 = "OBTAIN_BOBER_STAGE_3_DIALOG_0"
+        const val OBTAIN_BOBER_STAGE_4_DIALOG_0 = "OBTAIN_BOBER_STAGE_4_DIALOG_0"
+        const val OBTAIN_BOBER_STAGE_6_DIALOG_0 = "OBTAIN_BOBER_STAGE_6_DIALOG_0"
+        const val OBTAIN_BOBER_STAGE_6_DIALOG_1 = "OBTAIN_BOBER_STAGE_6_DIALOG_1"
+        const val OBTAIN_BOBER_STAGE_8_DIALOG_0 = "OBTAIN_BOBER_STAGE_8_DIALOG_0"
+        const val OBTAIN_BOBER_STAGE_9_DIALOG_0 = "OBTAIN_BOBER_STAGE_9_DIALOG_0"
+        const val OBTAIN_BOBER_STAGE_9_DIALOG_1 = "OBTAIN_BOBER_STAGE_9_DIALOG_1"
+        const val OBTAIN_BOBER_STAGE_9_DIALOG_2 = "OBTAIN_BOBER_STAGE_9_DIALOG_2"
+        const val OBTAIN_BOBER_STAGE_10_DIALOG_0 = "OBTAIN_BOBER_STAGE_10_DIALOG_0"
+        const val OBTAIN_BOBER_STAGE_11_DIALOG_0 = "OBTAIN_BOBER_STAGE_11_DIALOG_0"
 
         private val nodes: Map<String, DialogNode> = mapOf(
             STANDARD_DIALOG_BEGINNING to DialogNode(
@@ -352,6 +368,176 @@ class DialogSystem(
                                 InventoryItem(InventoryItemId.FrogusEgg, 1)
                             )
                             questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_FROGUS)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_2_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage2Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainBoberStage2Answer1,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_BOBER_TIMESTAMP_KEY] = now
+                                pet?.let { p -> store[OBTAIN_BOBER_SEARCH_DOG_ID_KEY] = p.id }
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_BOBER)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_2_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage2Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ok,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_3_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage3Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ok,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_4_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage4Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Thanks,
+                        nextNode = null,
+                        action = { questSystem, _, _ ->
+                            with(questSystem.userStats) {
+                                addInventoryItem(
+                                    InventoryItem(id = InventoryItemId.CatusEgg, amount = 1)
+                                )
+                                addInventoryItem(
+                                    InventoryItem(id = InventoryItemId.DogusEgg, amount = 1)
+                                )
+                                addInventoryItem(
+                                    InventoryItem(id = InventoryItemId.FrogusEgg, amount = 1)
+                                )
+                            }
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_BOBER_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_BOBER)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_6_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage6Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Thanks,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_BOBER_TIMESTAMP_KEY] = now
+                                pet?.let { p -> store[OBTAIN_BOBER_SEARCH_DOG_ID_KEY] = p.id }
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_BOBER)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_6_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage6Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ok,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_8_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage8Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainBoberStage8Answer0,
+                        nextNode = null,
+                        action = { questSystem, _, _ ->
+                            with(questSystem.userStats) {
+                                addInventoryItem(
+                                    InventoryItem(id = InventoryItemId.CatusEgg, amount = 1)
+                                )
+                                addInventoryItem(
+                                    InventoryItem(id = InventoryItemId.DogusEgg, amount = 1)
+                                )
+                                addInventoryItem(
+                                    InventoryItem(id = InventoryItemId.FrogusEgg, amount = 1)
+                                )
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_BOBER)
+                        },
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_9_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage9Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Thanks,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_BOBER_TIMESTAMP_KEY] = now
+                                pet?.let { p -> store[OBTAIN_BOBER_SEARCH_FROG_ID_KEY] = p.id }
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_BOBER)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_9_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage9Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ok,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_9_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage9Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ok,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_10_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage10Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ok,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_BOBER_STAGE_11_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainBoberStage11Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainBoberStage11Answer0,
+                        nextNode = null,
+                        action = { questSystem, userStats, _ ->
+                            userStats.addNewAvailablePetType(PetType.Bober)
+                            userStats.addInventoryItem(InventoryItem(InventoryItemId.BoberEgg, 1))
+                            userStats.addInventoryItem(InventoryItem(InventoryItemId.Basket, 1))
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_BOBER)
                         }
                     ),
                 )

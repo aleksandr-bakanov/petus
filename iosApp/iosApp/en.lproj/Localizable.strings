@@ -45,6 +45,7 @@
 "DogusEgg"                                 = "Dogus egg";
 "CatusEgg"                                 = "Catus egg";
 "BoberEgg"                                 = "Bober egg";
+"Basket"                                   = "Beautiful and reliable basket for storing eggs (with a lid)";
 "InventoryItemPattern"                     = "%@ (x%d)";
 
 /* Abilities names */
@@ -126,3 +127,23 @@
 "ObtainFrogusStage5Answer0"                = "Hey, what is that you are playing with?";
 "ObtainFrogusStage5Dialog0"                = "Ah, found it on the lake. Round and rolling! Also smells like slime but it is okay. Here, take it, I am done playing with it.";
 "ObtainFrogusStage5Answer1"                = "Thank you, I think I know what to do with it.";
+"ObtainBoberStage2Answer0"                 = "Hey, do you know where all the eggs went?";
+"ObtainBoberStage2Dialog0"                 = "Wow! I do not know anything about this, but I can look for it, ask me tomorrow, maybe I will find something.";
+"ObtainBoberStage2Dialog1"                 = "I do not know anything and, honestly, I do not care.";
+"ObtainBoberStage2Answer1"                 = "Thank you, I will come see you tomorrow!";
+"ObtainBoberStage3Answer0"                 = "Well, did you find anything?";
+"ObtainBoberStage3Dialog0"                 = "Nope, still looking.";
+"ObtainBoberStage4Dialog0"                 = "Aha, I found all the eggs, well, you made me run! I suspect that they just rolled away or maybe the wind blew them away, I put them back in place, now they definitely will not roll away.";
+"ObtainBoberStage6Answer0"                 = "The eggs are missing again, do you know anything about it?";
+"ObtainBoberStage6Dialog0"                 = "What, again? Oh my! Okay, I will look again, but after I find it, you better come up with something so that this does not happen again.";
+"ObtainBoberStage6Dialog1"                 = "Ahahahahahahahaha! Seriously? Well, screw them.";
+"ObtainBoberStage8Dialog0"                 = "Here they are, finally. Listen, I do not want to run around looking for the missing eggs again if something else happens to them. Ask someone else, maybe they can help, we need to solve this problem somehow.";
+"ObtainBoberStage8Answer0"                 = "Okay, I will ask around.";
+"ObtainBoberStage9Answer0"                 = "Maybe you know what to do with these constantly rolling eggs?";
+"ObtainBoberStage9Dialog0"                 = "Hmm, I do not know how to help you with this, but I think I know someone who knows what to do. My friends from the pond, handy guys. I will ask them, come see me tomorrow.";
+"ObtainBoberStage9Dialog1"                 = "I told you to ask someone else, do we all look the same to you?";
+"ObtainBoberStage9Dialog2"                 = "Well, do I look like someone who can control the wind?";
+"ObtainBoberStage10Answer0"                = "Well, have you heard from your friends?";
+"ObtainBoberStage10Dialog0"                = "They said they would do everything in the best possible way, wait a little longer.";
+"ObtainBoberStage11Dialog0"                = "Yes! Look what they just sent us - a beautiful, reliable basket for storing eggs (with a lid). And along with the basket they sent a Bober egg - lucky!";
+"ObtainBoberStage11Answer0"                = "Truly a stroke of luck! I will have to try and hatch one or two.";

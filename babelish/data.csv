@@ -42,6 +42,7 @@ Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android, ios;DogusEgg;Dogus egg;Яйцо Догуса
 ;android, ios;CatusEgg;Catus egg;Яйцо Катуса
 ;android, ios;BoberEgg;Bober egg;Яйцо Бобера
+;android, ios;Basket;Beautiful and reliable basket for storing eggs (with a lid);Прекрасная и надёжная корзина для хранения яиц (с крышечкой)
 ;android;InventoryItemPattern;%s (x%d);%s (x%d)
 ;ios;InventoryItemPattern;%@ (x%d);%@ (x%d)
 
@@ -94,7 +95,7 @@ Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как де
 ;android, ios;ByeBye;Bye bye.;Пока-пока.
 ;android, ios;Sure;Sure;Угу
 ;android, ios;Ok;Ok;Окей
-;android, ios;Thanks;Thanks;Пасиб
+;android, ios;Thanks;Thanks;Спасибки
 ;android, ios;Use;Use;Использовать
 ;android, ios;Destroy;Destroy;Уничтожить
 ;android, ios;NecronomiconStage3AnswerOption0;Do you know anything about the dug grave?;Ты знаешь что-нибудь про разрытую могилу?
@@ -121,3 +122,23 @@ Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как де
 ;android, ios;ObtainFrogusStage5Answer0;Hey, what is that you are playing with?;Эй, с чем это ты играешь?
 ;android, ios;ObtainFrogusStage5Dialog0;Ah, found it on the lake. Round and rolling! Also smells like slime but it is okay. Here, take it, I am done playing with it.;Аа, нашел на озере. Круглое и катается! К тому что пахнет тиной, но это ничего. На возьми себе, я уже с ним наигрался.
 ;android, ios;ObtainFrogusStage5Answer1;Thank you, I think I know what to do with it.;Спасибо, думаю я знаю что с этим делать.
+;android, ios;ObtainBoberStage2Answer0;Hey, do you know where all the eggs went?;Слушай, ты знаешь куда делись все яйца?
+;android, ios;ObtainBoberStage2Dialog0;Wow! I do not know anything about this, but I can look for it, ask me tomorrow, maybe I will find something.;Ого! Ничего про это не знаю, но могу поискать, спроси меня завтра, может найду что-нибудь.
+;android, ios;ObtainBoberStage2Dialog1;I do not know anything and, honestly, I do not care.;Ничего не знаю и, если честно, меня это не заботит.
+;android, ios;ObtainBoberStage2Answer1;Thank you, I will come see you tomorrow!;Спасибо, загляну к тебе завтра!
+;android, ios;ObtainBoberStage3Answer0;Well, did you find anything?;Ну как, нашел что-нибудь?
+;android, ios;ObtainBoberStage3Dialog0;Nope, still looking.;Неа, все еще ищу.
+;android, ios;ObtainBoberStage4Dialog0;Aha, I found all the eggs, well, you made me run! I suspect that they just rolled away or maybe the wind blew them away, I put them back in place, now they definitely will not roll away.;Ага, нашел все яйца, ну и заставила ты меня побегать! Подозреваю, что они просто укатились или может ветром сдуло, вернул их на место, теперь точно не укатятся.
+;android, ios;ObtainBoberStage6Answer0;The eggs are missing again, do you know anything about it?;Яйца снова пропали, ты знаешь что-нибудь про это?
+;android, ios;ObtainBoberStage6Dialog0;What, again? Oh my! Okay, I will look again, but after I find it, you better come up with something so that this does not happen again.;Шо, опять? Ну ё-маё! Ладно, поищу ещё раз, но после того как найду, тебе лучше что-нибудь придумать чтобы такого больше не было.
+;android, ios;ObtainBoberStage6Dialog1;Ahahahahahahahaha! Seriously? Well, screw them.;Ахахахахахахаха! Серьёзно? Ну и чёрт с ними.
+;android, ios;ObtainBoberStage8Dialog0;Here they are, finally. Listen, I do not want to run around looking for the missing eggs again if something else happens to them. Ask someone else, maybe they can help, we need to solve this problem somehow.;Вот они, наконец-то. Слушай, я не хочу опять бегать искать пропавшие яйца, если с ними что-нибудь еще случится. Поспрашивай еще кого-нибудь, может они помогут, ну надо уже как-то эту проблему решать.
+;android, ios;ObtainBoberStage8Answer0;Okay, I will ask around.;Хорошо, я поспрашиваю.
+;android, ios;ObtainBoberStage9Answer0;Maybe you know what to do with these constantly rolling eggs?;Может ты знаешь что делать с этими постоянно укатывающимися яйцами?
+;android, ios;ObtainBoberStage9Dialog0;Hmm, I do not know how to help you with this, but I think I know someone who knows what to do. My friends from the pond, handy guys. I will ask them, come see me tomorrow.;Хмм, я не знаю как тебе с этим помочь, но кажется я знаю кто знает что делать. Мои знакомые с пруда, рукастые ребята. Спрошу у них, зайди ко мне завтра.
+;android, ios;ObtainBoberStage9Dialog1;I told you to ask someone else, do we all look the same to you?;Я же тебе говорил поспрашивать кого-нибудь ещё, неужели мы для тебя все на одно лицо?
+;android, ios;ObtainBoberStage9Dialog2;Well, do I look like someone who can control the wind?;Ну ты и спросишь, я что похож на того кто может управлять ветром?
+;android, ios;ObtainBoberStage10Answer0;Well, have you heard from your friends?;Ну как, есть вести от твоих друзей?
+;android, ios;ObtainBoberStage10Dialog0;They said they would do everything in the best possible way, wait a little longer.;Они сказали что сделают всё в лучшем виде, подожди ещё немного.
+;android, ios;ObtainBoberStage11Dialog0;Yes! Look what they just sent us - a beautiful, reliable basket for storing eggs (with a lid). And along with the basket they sent a Bober egg - lucky!;Да! Ты посмотри только что они нам прислали - прекрасную, надёжную корзину для хранения яиц (с крышечкой). А вместе с корзиной они прислали яйцо Бобера - вот так удача!
+;android, ios;ObtainBoberStage11Answer0;Truly a stroke of luck! I will have to try and hatch one or two.;Воистину удача! Надо будет попробовать вывести одного или двух.
