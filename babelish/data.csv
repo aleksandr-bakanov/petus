@@ -73,18 +73,25 @@ History events;android, ios;HistoryEventPetCreated;Created;Создан
 
 Pet state description dialogs;android, ios;IAmSick;I am sick, do you have any medicine?;Я болею, у тебя найдется какое-нибудь лекарство?
 ;android, ios;IAmSickLatin;Aeger sum, habesne medicamentum aliquod?;
+;android, ios;IAmSickPolish;Jestem chory. Czy masz jakieś lekarstwo?;
 ;android, ios;IAmHungry;I am hungry, give me some food.;Я голодный, дай что-нибудь поесть.
 ;android, ios;IAmHungryLatin;Esurio, da mihi cibum.;
+;android, ios;IAmHungryPolish;Jestem głodny, daj mi trochę jedzenia.;
 ;android, ios;IPooped;I pooped (it would be nice if you clean after me).;Я сходил в туалет (будет неплохо если ты уберешь за мной).
 ;android, ios;IPoopedLatin;Cacavi (gratum esset si post me lavares).;
+;android, ios;IPoopedPolish;Zrobiłem kupę (byłoby miło, gdybyś po mnie posprzątał).;
 ;android, ios;IAmBored;I am bored, wanna play?;Мне скучно, поиграем?
 ;android, ios;IAmBoredLatin;Taedet me, ludere vis?;
+;android, ios;IAmBoredPolish;Nudzę się, chcesz zagrać?;
 ;android, ios;IAmStillAngryAfterForceWakeUp;I am still not happy that you woke me up for no reason!;Я все еще не доволен тем, что ты меня разбудила по чем зря!
 ;android, ios;IAmStillAngryAfterForceWakeUpLatin;Adhuc non gaudeo te me sine causa excitasse!;
+;android, ios;IAmStillAngryAfterForceWakeUpPolish;Nadal nie jestem zadowolony, że mnie obudziłeś bez powodu!;
 ;android, ios;IAmHalfHp;I do not feel so good, need some rest.;Что-то мне не хорошо, надо бы отдохнуть.
 ;android, ios;IAmHalfHpLatin;Non tam bene me habeo, requie mihi opus est.;
+;android, ios;IAmHalfHpPolish;Nie czuję się najlepiej, muszę odpocząć.;
 ;android, ios;IAmGood;I am fine.;Всё хорошо.
 ;android, ios;IAmGoodLatin;Bene sum.;
+;android, ios;IAmGoodPolish;Mam się dobrze.;
 
 Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как дела?
 ;android, ios;WhatIsGoingOnWithYouLatin;Quid tecum agitur?;Quid tecum agitur?

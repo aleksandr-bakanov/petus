@@ -27,18 +27,25 @@ fun StringId.toResId(): Int {
         StringId.IAmOkayHowAreYou -> R.string.IAmOkayHowAreYou
         StringId.IAmSick -> R.string.IAmSick
         StringId.IAmSickLatin -> R.string.IAmSickLatin
+        StringId.IAmSickPolish -> R.string.IAmSickPolish
         StringId.IAmHungry -> R.string.IAmHungry
         StringId.IAmHungryLatin -> R.string.IAmHungryLatin
+        StringId.IAmHungryPolish -> R.string.IAmHungryPolish
         StringId.IPooped -> R.string.IPooped
         StringId.IPoopedLatin -> R.string.IPoopedLatin
+        StringId.IPoopedPolish -> R.string.IPoopedPolish
         StringId.IAmBored -> R.string.IAmBored
         StringId.IAmBoredLatin -> R.string.IAmBoredLatin
+        StringId.IAmBoredPolish -> R.string.IAmBoredPolish
         StringId.IAmStillAngryAfterForceWakeUp -> R.string.IAmStillAngryAfterForceWakeUp
         StringId.IAmStillAngryAfterForceWakeUpLatin -> R.string.IAmStillAngryAfterForceWakeUpLatin
+        StringId.IAmStillAngryAfterForceWakeUpPolish -> R.string.IAmStillAngryAfterForceWakeUpPolish
         StringId.IAmHalfHp -> R.string.IAmHalfHp
         StringId.IAmHalfHpLatin -> R.string.IAmHalfHpLatin
+        StringId.IAmHalfHpPolish -> R.string.IAmHalfHpPolish
         StringId.IAmGood -> R.string.IAmGood
         StringId.IAmGoodLatin -> R.string.IAmGoodLatin
+        StringId.IAmGoodPolish -> R.string.IAmGoodPolish
         StringId.NecronomiconStage3AnswerOption0 -> R.string.NecronomiconStage3AnswerOption0
         StringId.NecronomiconStage3CommonDialog -> R.string.NecronomiconStage3CommonDialog
         StringId.NecronomiconStage3DogDialog -> R.string.NecronomiconStage3DogDialog

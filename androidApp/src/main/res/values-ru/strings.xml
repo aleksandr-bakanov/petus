@@ -79,18 +79,25 @@
 	<!-- Pet state description dialogs -->
 	<string name="IAmSick">Я болею, у тебя найдется какое-нибудь лекарство?</string>
 	<string name="IAmSickLatin">Aeger sum, habesne medicamentum aliquod?</string>
+	<string name="IAmSickPolish">Jestem chory. Czy masz jakieś lekarstwo?</string>
 	<string name="IAmHungry">Я голодный, дай что-нибудь поесть.</string>
 	<string name="IAmHungryLatin">Esurio, da mihi cibum.</string>
+	<string name="IAmHungryPolish">Jestem głodny, daj mi trochę jedzenia.</string>
 	<string name="IPooped">Я сходил в туалет (будет неплохо если ты уберешь за мной).</string>
 	<string name="IPoopedLatin">Cacavi (gratum esset si post me lavares).</string>
+	<string name="IPoopedPolish">Zrobiłem kupę (byłoby miło, gdybyś po mnie posprzątał).</string>
 	<string name="IAmBored">Мне скучно, поиграем?</string>
 	<string name="IAmBoredLatin">Taedet me, ludere vis?</string>
+	<string name="IAmBoredPolish">Nudzę się, chcesz zagrać?</string>
 	<string name="IAmStillAngryAfterForceWakeUp">Я все еще не доволен тем, что ты меня разбудила по чем зря!</string>
 	<string name="IAmStillAngryAfterForceWakeUpLatin">Adhuc non gaudeo te me sine causa excitasse!</string>
+	<string name="IAmStillAngryAfterForceWakeUpPolish">Nadal nie jestem zadowolony, że mnie obudziłeś bez powodu!</string>
 	<string name="IAmHalfHp">Что-то мне не хорошо, надо бы отдохнуть.</string>
 	<string name="IAmHalfHpLatin">Non tam bene me habeo, requie mihi opus est.</string>
+	<string name="IAmHalfHpPolish">Nie czuję się najlepiej, muszę odpocząć.</string>
 	<string name="IAmGood">Всё хорошо.</string>
 	<string name="IAmGoodLatin">Bene sum.</string>
+	<string name="IAmGoodPolish">Mam się dobrze.</string>
 
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">Как дела?</string>

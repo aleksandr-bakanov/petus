@@ -77,18 +77,25 @@
 /* Pet state description dialogs */
 "IAmSick"                                  = "I am sick, do you have any medicine?";
 "IAmSickLatin"                             = "Aeger sum, habesne medicamentum aliquod?";
+"IAmSickPolish"                            = "Jestem chory. Czy masz jakieś lekarstwo?";
 "IAmHungry"                                = "I am hungry, give me some food.";
 "IAmHungryLatin"                           = "Esurio, da mihi cibum.";
+"IAmHungryPolish"                          = "Jestem głodny, daj mi trochę jedzenia.";
 "IPooped"                                  = "I pooped (it would be nice if you clean after me).";
 "IPoopedLatin"                             = "Cacavi (gratum esset si post me lavares).";
+"IPoopedPolish"                            = "Zrobiłem kupę (byłoby miło, gdybyś po mnie posprzątał).";
 "IAmBored"                                 = "I am bored, wanna play?";
 "IAmBoredLatin"                            = "Taedet me, ludere vis?";
+"IAmBoredPolish"                           = "Nudzę się, chcesz zagrać?";
 "IAmStillAngryAfterForceWakeUp"            = "I am still not happy that you woke me up for no reason!";
 "IAmStillAngryAfterForceWakeUpLatin"       = "Adhuc non gaudeo te me sine causa excitasse!";
+"IAmStillAngryAfterForceWakeUpPolish"      = "Nadal nie jestem zadowolony, że mnie obudziłeś bez powodu!";
 "IAmHalfHp"                                = "I do not feel so good, need some rest.";
 "IAmHalfHpLatin"                           = "Non tam bene me habeo, requie mihi opus est.";
+"IAmHalfHpPolish"                          = "Nie czuję się najlepiej, muszę odpocząć.";
 "IAmGood"                                  = "I am fine.";
 "IAmGoodLatin"                             = "Bene sum.";
+"IAmGoodPolish"                            = "Mam się dobrze.";
 
 /* Dialogs */
 "WhatIsGoingOnWithYou"                     = "What is going on with you?";

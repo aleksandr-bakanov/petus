@@ -81,7 +81,6 @@ class DialogSystem(
     private fun addPetDescription(pet: Pet?, node: DialogNode?): DialogNode? {
         if (pet == null || node == null) return node
         else {
-            val isLatin = engine.isPetSpeakLatin(pet)
             val texts = buildList {
                 val isSick = pet.illness
                 val isHungry = engine.isPetHungry(pet)
@@ -91,17 +90,73 @@ class DialogSystem(
                 val isHalfHp = engine.isPetLowHealth(pet)
                 val isGood = listOf(isSick, isHungry, isPooped, isBored, isHalfHp, isAngryAfterForceWakeUp).none { it }
 
-                if (isSick) add(if (isLatin) StringId.IAmSickLatin else StringId.IAmSick)
-                if (isHungry) add(if (isLatin) StringId.IAmHungryLatin else StringId.IAmHungry)
-                if (isPooped) add(if (isLatin) StringId.IPoopedLatin else StringId.IPooped)
-                if (isBored) add(if (isLatin) StringId.IAmBoredLatin else StringId.IAmBored)
-                if (isAngryAfterForceWakeUp) add(if (isLatin) StringId.IAmStillAngryAfterForceWakeUpLatin else StringId.IAmStillAngryAfterForceWakeUp)
-                if (isHalfHp) add(if (isLatin) StringId.IAmHalfHpLatin else StringId.IAmHalfHp)
-                if (isGood) add(if (isLatin) StringId.IAmGoodLatin else StringId.IAmGood)
+                if (isSick) add(getSickStringId(pet))
+                if (isHungry) add(getHungryStringId(pet))
+                if (isPooped) add(getPoopedStringId(pet))
+                if (isBored) add(getBoredStringId(pet))
+                if (isAngryAfterForceWakeUp) add(getAngryAfterForceWakeUpStringId(pet))
+                if (isHalfHp) add(getHalfHpStringId(pet))
+                if (isGood) add(getIAmGoodStringId(pet))
             }
             return node.copy(
                 text = node.text + texts.shuffled()
             )
+        }
+    }
+
+    private fun getSickStringId(pet: Pet): StringId {
+        return when {
+            engine.isPetSpeakLatin(pet) -> StringId.IAmSickLatin
+            pet.type == PetType.Bober -> StringId.IAmSickPolish
+            else -> StringId.IAmSick
+        }
+    }
+
+    private fun getHungryStringId(pet: Pet): StringId {
+        return when {
+            engine.isPetSpeakLatin(pet) -> StringId.IAmHungryLatin
+            pet.type == PetType.Bober -> StringId.IAmHungryPolish
+            else -> StringId.IAmHungry
+        }
+    }
+
+    private fun getPoopedStringId(pet: Pet): StringId {
+        return when {
+            engine.isPetSpeakLatin(pet) -> StringId.IPoopedLatin
+            pet.type == PetType.Bober -> StringId.IPoopedPolish
+            else -> StringId.IPooped
+        }
+    }
+
+    private fun getBoredStringId(pet: Pet): StringId {
+        return when {
+            engine.isPetSpeakLatin(pet) -> StringId.IAmBoredLatin
+            pet.type == PetType.Bober -> StringId.IAmBoredPolish
+            else -> StringId.IAmBored
+        }
+    }
+
+    private fun getAngryAfterForceWakeUpStringId(pet: Pet): StringId {
+        return when {
+            engine.isPetSpeakLatin(pet) -> StringId.IAmStillAngryAfterForceWakeUpLatin
+            pet.type == PetType.Bober -> StringId.IAmStillAngryAfterForceWakeUpPolish
+            else -> StringId.IAmStillAngryAfterForceWakeUp
+        }
+    }
+
+    private fun getHalfHpStringId(pet: Pet): StringId {
+        return when {
+            engine.isPetSpeakLatin(pet) -> StringId.IAmHalfHpLatin
+            pet.type == PetType.Bober -> StringId.IAmHalfHpPolish
+            else -> StringId.IAmHalfHp
+        }
+    }
+
+    private fun getIAmGoodStringId(pet: Pet): StringId {
+        return when {
+            engine.isPetSpeakLatin(pet) -> StringId.IAmGoodLatin
+            pet.type == PetType.Bober -> StringId.IAmGoodPolish
+            else -> StringId.IAmGood
         }
     }
 
