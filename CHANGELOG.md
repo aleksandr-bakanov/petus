@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2025-07-06
+
+### Added
+
+- New pet: bober
+- Quest status screen
+
+### Fixed
+
+- Weather fetch error
+
 ## [1.0.2] - 2025-06-10
 
 ### Fixed
