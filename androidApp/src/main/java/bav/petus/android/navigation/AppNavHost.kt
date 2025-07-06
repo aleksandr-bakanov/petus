@@ -8,10 +8,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -46,6 +48,7 @@ private val cemeteryTopRoute = TopLevelRoute(StringId.CemeteryScreenTitle, "Ceme
 private val zooTopRoute = TopLevelRoute(StringId.ZooScreenTitle, "ZooTab", Icons.Filled.Home, Icons.Outlined.Home)
 private val weatherTopRoute = TopLevelRoute(StringId.WeatherScreenTitle, "WeatherReportTab", Icons.Filled.Menu, Icons.Outlined.Menu)
 private val profileTopRoute = TopLevelRoute(StringId.ProfileScreenTitle, "UserProfileTab", Icons.Filled.Face, Icons.Outlined.Face)
+private val questStatusTopRoute = TopLevelRoute(StringId.QuestsScreenTitle, "QuestStatusTab", Icons.Filled.Info, Icons.Outlined.Info)
 
 @Composable
 fun AppWithBottomBar(
@@ -80,6 +83,13 @@ fun AppWithBottomBar(
                 ) { item ->
                     navigateToTopLevel(rootNavController, item.route)
                 }
+
+                TopLevelNavBarItem(
+                    item = questStatusTopRoute,
+                    isSelected = navBackStackEntry.isTabSelected(questStatusTopRoute.route)
+                ) { item ->
+                    navigateToTopLevel(rootNavController, item.route)
+                }
             }
         }
     ) { innerPadding ->
@@ -98,6 +108,9 @@ fun AppWithBottomBar(
                 }
                 composable(profileTopRoute.route) {
                     UserProfileNavHost()
+                }
+                composable(questStatusTopRoute.route) {
+                    QuestStatusNavHost()
                 }
             }
 
@@ -140,6 +153,14 @@ private fun UserProfileNavHost() {
     val userProfileNavController = rememberNavController()
     NavHost(userProfileNavController, startDestination = UserProfileScreenDestination) {
         userProfileScreen()
+    }
+}
+
+@Composable
+private fun QuestStatusNavHost() {
+    val questStatusNavController = rememberNavController()
+    NavHost(questStatusNavController, startDestination = QuestStatusScreenDestination) {
+        questStatusScreen()
     }
 }
 

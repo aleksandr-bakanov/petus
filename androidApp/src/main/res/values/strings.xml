@@ -7,6 +7,7 @@
 	<string name="CemeteryScreenTitle">Cemetery</string>
 	<string name="WeatherScreenTitle">Weather</string>
 	<string name="ProfileScreenTitle">Profile</string>
+	<string name="QuestsScreenTitle">Quests</string>
 
 	<!-- User profile -->
 	<string name="ProfileScreenLanguagesLabel">Languages</string>
@@ -159,4 +160,41 @@
 	<string name="ObtainBoberStage10Dialog0">They said they would do everything in the best possible way, wait a little longer.</string>
 	<string name="ObtainBoberStage11Dialog0">Yes! Look what they just sent us - a beautiful, reliable basket for storing eggs (with a lid). And along with the basket they sent a Bober egg - lucky!</string>
 	<string name="ObtainBoberStage11Answer0">Truly a stroke of luck! I will have to try and hatch one or two.</string>
+
+	<!-- Quest description -->
+	<string name="QuestIsFinished">Done</string>
+	<string name="QuestNameNecronomicon">Lost and found</string>
+	<string name="QuestNameObtainFrogus">Fish and consequences</string>
+	<string name="QuestNameObtainBober">Must be a wind</string>
+	<string name="QuestDescObtainFrogusStage0">Something tells me that I need to make sure I understand catus properly.</string>
+	<string name="QuestDescObtainFrogusStage1">Great, now I need to ask catus, maybe someone needs some help.</string>
+	<string name="QuestDescObtainFrogusStage2">As I thought, one of the katus asked me to diversify the menu and find some fish somewhere. I will look for it near the pond he was talking about.</string>
+	<string name="QuestDescObtainFrogusStage3">Well, I caught some fish, I should give it to the catus.</string>
+	<string name="QuestDescObtainFrogusStage4">Catus was pleased with my offering and said that he would go to the pond himself and evaluate its potential.</string>
+	<string name="QuestDescObtainFrogusStage5">I should probably ask Catus about his assessment of the pond.</string>
+	<string name="QuestDescObtainFrogusStage6">Well, the pond assessment turned out to be very successful, he even found a Frogus egg, which I am incredibly happy about.</string>
+	<string name="QuestDescNecronomiconStage0">To begin with, it would be nice to fully understand my pets.</string>
+	<string name="QuestDescNecronomiconStage1">Here comes another beautiful day.</string>
+	<string name="QuestDescNecronomiconStage2">Nothing foreshadows trouble.</string>
+	<string name="QuestDescNecronomiconStage3">Oh no! Someone dug up the grave without the consent of the deceased’s closest relatives! I need to ask around, maybe someone knows something.</string>
+	<string name="QuestDescNecronomiconStage4">Dogus asked me to bring something from the grave so that he could begin his search.</string>
+	<string name="QuestDescNecronomiconStage5">I found a piece of fabric, I need to show it to the dogus.</string>
+	<string name="QuestDescNecronomiconStage6">Dogus said that he would try to follow the trail.</string>
+	<string name="QuestDescNecronomiconStage7">I should ask the dogus if he found anything.</string>
+	<string name="QuestDescNecronomiconStage8">I learned that catus are knowledgeable in magic. And the longer they live, the better they understand it. Perhaps one of them can help me with this mysterious book.</string>
+	<string name="QuestDescNecronomiconStage9Use">The old catus told me that the book that dogus found was the Necronomicon. He also warned me that it was a very dangerous book. However, I decided to ignore him and wanted to learn the knowledge that this book contains. It seems that now I can resurrect the dead.</string>
+	<string name="QuestDescNecronomiconStage9Destroy">The old katus told me that the book that the dogus found was the Necronomicon. He also warned me that it was a very dangerous book. Taking his advice, I decided to destroy the book. To be on the safe side.</string>
+	<string name="QuestDescObtainBoberStage0">To begin with, it would be nice to fully understand my pets.</string>
+	<string name="QuestDescObtainBoberStage1">The eggs are gone! The eggs are gone! What should I do?</string>
+	<string name="QuestDescObtainBoberStage2">I will ask the pets, maybe they know something.</string>
+	<string name="QuestDescObtainBoberStage3">Dogus agreed to look for the eggs and said to give him a day to do it.</string>
+	<string name="QuestDescObtainBoberStage4">It seems it’s time to ask the dogus about the results of his search.</string>
+	<string name="QuestDescObtainBoberStage5">Dogus successfully returned the eggs to their place, now nothing will happen to them.</string>
+	<string name="QuestDescObtainBoberStage6">The eggs are gone again! What the hell is going on! Maybe someone else can help me?</string>
+	<string name="QuestDescObtainBoberStage7">Dogus agreed to help me again and told me to think about solving the problem in the future.</string>
+	<string name="QuestDescObtainBoberStage8">Perhaps it’s time to ask the dogus about the search results again.</string>
+	<string name="QuestDescObtainBoberStage9">Dogus put all the eggs back in place. I really should ask the other pets to help me with this.</string>
+	<string name="QuestDescObtainBoberStage10">Frogus said that he would ask his friends from the pond, he said that they are handy and know their business.</string>
+	<string name="QuestDescObtainBoberStage11">It’s time to ask frogus if there is any news from his friends.</string>
+	<string name="QuestDescObtainBoberStage12">Wow! These Bober guys not only gave me a basket for eggs, but they also entrusted me with one of their eggs so that I could care for future generations of bobers.</string>
 </resources>

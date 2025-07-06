@@ -144,6 +144,17 @@ class QuestSystem(
         }
     }
 
+    suspend fun getQuestStage(questKey: String): Int {
+        val preferences = dataStore.data.first()
+        return quests[questKey]?.let { quest ->
+            preferences[quest.currentStageKey] ?: 0
+        } ?: 0
+    }
+
+    fun getQuestStagesAmount(questKey: String): Int {
+        return quests[questKey]?.stages?.size ?: 0
+    }
+
     suspend fun setQuestStageToNext(questKey: String) {
         quests[questKey]?.let { quest ->
             val current = dataStore.data.first()[quest.currentStageKey] ?: 0

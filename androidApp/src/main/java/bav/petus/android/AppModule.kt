@@ -30,6 +30,7 @@ import bav.petus.useCase.WeatherAttitudeUseCase
 import bav.petus.viewModel.dialog.DialogScreenViewModel
 import bav.petus.viewModel.dialog.DialogScreenViewModelArgs
 import bav.petus.viewModel.main.MainViewModel
+import bav.petus.viewModel.questStatus.QuestStatusViewModel
 import bav.petus.viewModel.weatherReport.WeatherReportViewModel
 import bav.petus.viewModel.zoo.ZooScreenViewModel
 import org.koin.android.ext.koin.androidContext
@@ -169,6 +170,13 @@ val appModule = module {
                 petId = params.get<Long>(),
                 convertStringIdToString = stringResourcesUseCase::getString,
             )
+        )
+    }
+
+    viewModel {
+        val stringResourcesUseCase: StringResourcesUseCase = get()
+        QuestStatusViewModel(
+            convertStringIdToString = stringResourcesUseCase::getString,
         )
     }
 

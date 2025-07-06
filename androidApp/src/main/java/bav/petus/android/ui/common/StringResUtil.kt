@@ -9,6 +9,7 @@ fun StringId.toResId(): Int {
         StringId.CemeteryScreenTitle -> R.string.CemeteryScreenTitle
         StringId.ProfileScreenTitle -> R.string.ProfileScreenTitle
         StringId.WeatherScreenTitle -> R.string.WeatherScreenTitle
+        StringId.QuestsScreenTitle -> R.string.QuestsScreenTitle
         StringId.PetTypeDescriptionCatus -> R.string.PetTypeDescriptionCatus
         StringId.PetTypeDescriptionDogus -> R.string.PetTypeDescriptionDogus
         StringId.PetTypeDescriptionFrogus -> R.string.PetTypeDescriptionFrogus
@@ -117,5 +118,40 @@ fun StringId.toResId(): Int {
         StringId.ObtainBoberStage10Dialog0 -> R.string.ObtainBoberStage10Dialog0
         StringId.ObtainBoberStage11Dialog0 -> R.string.ObtainBoberStage11Dialog0
         StringId.ObtainBoberStage11Answer0 -> R.string.ObtainBoberStage11Answer0
+        StringId.QuestIsFinished -> R.string.QuestIsFinished
+        StringId.QuestNameNecronomicon -> R.string.QuestNameNecronomicon
+        StringId.QuestNameObtainFrogus -> R.string.QuestNameObtainFrogus
+        StringId.QuestNameObtainBober -> R.string.QuestNameObtainBober
+        StringId.QuestDescObtainFrogusStage0 -> R.string.QuestDescObtainFrogusStage0
+        StringId.QuestDescObtainFrogusStage1 -> R.string.QuestDescObtainFrogusStage1
+        StringId.QuestDescObtainFrogusStage2 -> R.string.QuestDescObtainFrogusStage2
+        StringId.QuestDescObtainFrogusStage3 -> R.string.QuestDescObtainFrogusStage3
+        StringId.QuestDescObtainFrogusStage4 -> R.string.QuestDescObtainFrogusStage4
+        StringId.QuestDescObtainFrogusStage5 -> R.string.QuestDescObtainFrogusStage5
+        StringId.QuestDescObtainFrogusStage6 -> R.string.QuestDescObtainFrogusStage6
+        StringId.QuestDescNecronomiconStage0 -> R.string.QuestDescNecronomiconStage0
+        StringId.QuestDescNecronomiconStage1 -> R.string.QuestDescNecronomiconStage1
+        StringId.QuestDescNecronomiconStage2 -> R.string.QuestDescNecronomiconStage2
+        StringId.QuestDescNecronomiconStage3 -> R.string.QuestDescNecronomiconStage3
+        StringId.QuestDescNecronomiconStage4 -> R.string.QuestDescNecronomiconStage4
+        StringId.QuestDescNecronomiconStage5 -> R.string.QuestDescNecronomiconStage5
+        StringId.QuestDescNecronomiconStage6 -> R.string.QuestDescNecronomiconStage6
+        StringId.QuestDescNecronomiconStage7 -> R.string.QuestDescNecronomiconStage7
+        StringId.QuestDescNecronomiconStage8 -> R.string.QuestDescNecronomiconStage8
+        StringId.QuestDescNecronomiconStage9Use -> R.string.QuestDescNecronomiconStage9Use
+        StringId.QuestDescNecronomiconStage9Destroy -> R.string.QuestDescNecronomiconStage9Destroy
+        StringId.QuestDescObtainBoberStage0 -> R.string.QuestDescObtainBoberStage0
+        StringId.QuestDescObtainBoberStage1 -> R.string.QuestDescObtainBoberStage1
+        StringId.QuestDescObtainBoberStage2 -> R.string.QuestDescObtainBoberStage2
+        StringId.QuestDescObtainBoberStage3 -> R.string.QuestDescObtainBoberStage3
+        StringId.QuestDescObtainBoberStage4 -> R.string.QuestDescObtainBoberStage4
+        StringId.QuestDescObtainBoberStage5 -> R.string.QuestDescObtainBoberStage5
+        StringId.QuestDescObtainBoberStage6 -> R.string.QuestDescObtainBoberStage6
+        StringId.QuestDescObtainBoberStage7 -> R.string.QuestDescObtainBoberStage7
+        StringId.QuestDescObtainBoberStage8 -> R.string.QuestDescObtainBoberStage8
+        StringId.QuestDescObtainBoberStage9 -> R.string.QuestDescObtainBoberStage9
+        StringId.QuestDescObtainBoberStage10 -> R.string.QuestDescObtainBoberStage10
+        StringId.QuestDescObtainBoberStage11 -> R.string.QuestDescObtainBoberStage11
+        StringId.QuestDescObtainBoberStage12 -> R.string.QuestDescObtainBoberStage12
     }
 }

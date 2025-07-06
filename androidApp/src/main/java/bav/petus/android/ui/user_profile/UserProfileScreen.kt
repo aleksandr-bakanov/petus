@@ -124,7 +124,7 @@ private fun UserProfileRow(title: String, message: String) {
     ) {
         Text(
             text = title,
-            modifier = Modifier.weight(2f)
+            modifier = Modifier.weight(3f)
         )
         Text(
             text = message,

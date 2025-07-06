@@ -29,6 +29,11 @@ struct MainScreen: View {
                             Label("ProfileScreenTitle", systemImage: "face.smiling")
                         }
                         .tag(3)
+                    QuestStatusView()
+                        .tabItem {
+                            Label("QuestsScreenTitle", systemImage: "info.circle")
+                        }
+                        .tag(4)
                 }
                 
                 if !state.notifications.isEmpty {
