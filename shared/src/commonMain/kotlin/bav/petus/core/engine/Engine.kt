@@ -18,8 +18,15 @@ import bav.petus.repo.HistoryRepository
 import bav.petus.repo.PetsRepository
 import bav.petus.repo.WeatherRepository
 import bav.petus.useCase.WeatherAttitudeUseCase
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.first
 import kotlin.random.Random
+
+data class GameUpdateState(
+    val fraction: Float,
+)
 
 class Engine(
     private val timeRepo: TimeRepository,
@@ -30,6 +37,9 @@ class Engine(
     private val questSystem: QuestSystem,
     private val historyRepo: HistoryRepository,
 ) {
+
+    private val _gameStateUpdateFlow: MutableSharedFlow<GameUpdateState?> = MutableSharedFlow()
+    val gameStateUpdateFlow = _gameStateUpdateFlow.asSharedFlow()
 
     suspend fun createNewPet(
         name: String,
@@ -266,6 +276,8 @@ class Engine(
     }
 
     suspend fun updateGameState() {
+        _gameStateUpdateFlow.emit(null)
+
         val currentTime = getTimestampSecondsSinceEpoch()
         val lastTimestamp = timeRepo.getLastTimestamp()
 
@@ -288,6 +300,11 @@ class Engine(
             (currentTime - lastTimestamp) / TimeRepository.CYCLE_PERIOD_IN_SECONDS
 
         for (periodIndex in 0 until periodsPassed) {
+            _gameStateUpdateFlow.emit(
+                GameUpdateState(
+                    fraction = periodIndex.toFloat() / periodsPassed.toFloat(),
+                )
+            )
             // periodTime is a start point of a certain period - this may matter only for selection
             // of weather record. For the rest of the calculations it shouldn't matter.
             val periodTimestamp =
@@ -303,6 +320,8 @@ class Engine(
         pets.forEach {
             petsRepo.updatePet(it)
         }
+
+        _gameStateUpdateFlow.emit(null)
 
         // Saving latest periodTime as new lastTimestamp
         val newLastTimestamp = lastTimestamp + periodsPassed * TimeRepository.CYCLE_PERIOD_IN_SECONDS

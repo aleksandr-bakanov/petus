@@ -36,8 +36,19 @@ struct MainScreen: View {
                         .tag(4)
                 }
                 
+                if let gus = state.gameUpdateState {
+                    VStack {
+                        StatBar(color: Color("SatietyColor"),
+                                fraction: CGFloat(gus.fraction),
+                                tweenDuration: 0.1,
+                                frameHeight: 4
+                        )
+                        Spacer()
+                    }
+                }
+                
                 if !state.notifications.isEmpty {
-                    VStack(alignment: .leading,spacing: 0) {
+                    VStack(alignment: .leading, spacing: 0) {
                         ForEach(state.notifications, id: \.id) { notification in
                             UserNotificationCell(notification: notification) { id in
                                 viewModel.onAction(action: MainViewModelActionTapOnNotification(id: notification.id))

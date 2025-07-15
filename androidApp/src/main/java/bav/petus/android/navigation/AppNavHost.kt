@@ -3,6 +3,8 @@ package bav.petus.android.navigation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -25,12 +27,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import bav.petus.android.SatietyColor
+import bav.petus.android.ui.common.StatBar
 import bav.petus.android.ui.common.UserNotificationCell
 import bav.petus.android.ui.common.toResId
 import bav.petus.core.resources.StringId
@@ -111,6 +116,20 @@ fun AppWithBottomBar(
                 }
                 composable(questStatusTopRoute.route) {
                     QuestStatusNavHost()
+                }
+            }
+
+            uiState.gameUpdateState?.let {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(4.dp)
+                ) {
+                    StatBar(
+                        color = SatietyColor,
+                        fraction = it.fraction,
+                        tweenDuration = 100,
+                    )
                 }
             }
 
@@ -197,9 +216,9 @@ private fun navigateToTopLevel(
             saveState = true
         }
         // Avoid multiple copies of the same destination when
-        // reselecting the same item
+        // re-selecting the same item
         launchSingleTop = true
-        // Restore state when reselecting a previously selected item
+        // Restore state when re-selecting a previously selected item
         restoreState = true
     }
 }

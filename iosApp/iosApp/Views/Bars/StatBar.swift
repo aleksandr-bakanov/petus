@@ -3,6 +3,8 @@ import SwiftUI
 struct StatBar: View {
     var color: Color
     var fraction: CGFloat
+    var tweenDuration: Float = 0.3
+    var frameHeight: Int = 16
 
     var body: some View {
         ZStack {
@@ -11,12 +13,12 @@ struct StatBar: View {
 
                 Rectangle()
                     .fill(color)
-                    .frame(width: totalWidth * fraction, height: 16)
-                    .animation(.easeInOut(duration: 0.3), value: fraction)
+                    .frame(width: totalWidth * fraction, height: CGFloat(frameHeight))
+                    .animation(.easeInOut(duration: TimeInterval(tweenDuration)), value: fraction)
             }
-            .frame(height: 16) // fix height outside GeometryReader
+            .frame(height: CGFloat(frameHeight)) // fix height outside GeometryReader
         }
-        .frame(height: 16)
+        .frame(height: CGFloat(frameHeight))
         .frame(maxWidth: .infinity)
     }
 }

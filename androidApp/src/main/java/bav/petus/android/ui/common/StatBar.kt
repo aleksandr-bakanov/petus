@@ -20,10 +20,11 @@ import bav.petus.android.MyApplicationTheme
 fun StatBar(
     color: Color,
     fraction: Float,
+    tweenDuration: Int = 500,
 ) {
     val animatedFraction by animateFloatAsState(
         targetValue = fraction,
-        animationSpec = tween(durationMillis = 500) // smooth 500ms animation
+        animationSpec = tween(durationMillis = tweenDuration) // smooth 500ms animation
     )
 
     Box(

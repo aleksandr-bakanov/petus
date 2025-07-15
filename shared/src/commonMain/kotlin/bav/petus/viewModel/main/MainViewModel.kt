@@ -1,6 +1,8 @@
 package bav.petus.viewModel.main
 
 import bav.petus.base.ViewModelWithNavigation
+import bav.petus.core.engine.Engine
+import bav.petus.core.engine.GameUpdateState
 import bav.petus.core.engine.UserStats
 import bav.petus.core.notification.UserNotification
 import bav.petus.repo.PetsRepository
@@ -16,12 +18,14 @@ import org.koin.core.component.inject
 data class MainScreenUiState(
     val showCemetery: Boolean?,
     val notifications: List<UserNotification>,
+    val gameUpdateState: GameUpdateState?,
 )
 
 class MainViewModel : ViewModelWithNavigation<MainViewModel.Navigation>(), KoinComponent {
 
     private val petsRepo: PetsRepository by inject()
     private val userStats: UserStats by inject()
+    private val engine: Engine by inject()
 
     private val deadPetsFlow: StateFlow<Boolean?> = petsRepo.getAllPetsInCemeteryFlow()
         .map { deadPets -> deadPets.isNotEmpty() }
@@ -30,13 +34,15 @@ class MainViewModel : ViewModelWithNavigation<MainViewModel.Navigation>(), KoinC
     val uiState: StateFlow<MainScreenUiState?> = combine(
         deadPetsFlow,
         userStats.getUserNotificationsFlow(),
-    ) { showCemetery, notifications ->
+        engine.gameStateUpdateFlow,
+    ) { showCemetery, notifications, gameUpdateState ->
         if (showCemetery == null) {
             null
         } else {
             MainScreenUiState(
                 showCemetery = showCemetery,
                 notifications = notifications,
+                gameUpdateState = gameUpdateState,
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
