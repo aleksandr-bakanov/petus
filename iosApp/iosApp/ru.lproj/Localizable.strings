@@ -104,6 +104,7 @@
 /* Dialogs */
 "WhatIsGoingOnWithYou"                     = "Как дела?";
 "WhatIsGoingOnWithYouLatin"                = "Quid tecum agitur?";
+"WhatIsGoingOnWithYouPolish"               = "Jak się masz?";
 "BeenBetter"                               = "Бывало и получше.";
 "IAmOkayHowAreYou"                         = "Порядок, как сам?";
 "IShouldGo"                                = "Мне пора.";

@@ -97,7 +97,8 @@ Pet state description dialogs;android, ios;IAmSick;I am sick, do you have any me
 ;android, ios;IAmGoodPolish;Mam się dobrze.;
 
 Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как дела?
-;android, ios;WhatIsGoingOnWithYouLatin;Quid tecum agitur?;Quid tecum agitur?
+;android, ios;WhatIsGoingOnWithYouLatin;Quid tecum agitur?;
+;android, ios;WhatIsGoingOnWithYouPolish;Jak się masz?;
 ;android, ios;BeenBetter;Been better.;Бывало и получше.
 ;android, ios;IAmOkayHowAreYou;I am fine, how are you?;Порядок, как сам?
 ;android, ios;IShouldGo;I should go.;Мне пора.

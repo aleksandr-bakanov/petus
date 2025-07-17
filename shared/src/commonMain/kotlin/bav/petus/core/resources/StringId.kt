@@ -53,6 +53,7 @@ sealed class StringId {
     //region Dialogs
     data object WhatIsGoingOnWithYou : StringId()
     data object WhatIsGoingOnWithYouLatin : StringId()
+    data object WhatIsGoingOnWithYouPolish : StringId()
     data object BeingBetter : StringId()
     data object IShouldGo : StringId()
     data object SeeYa : StringId()

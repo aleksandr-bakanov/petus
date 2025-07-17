@@ -19,6 +19,7 @@ extension StringId {
         case .basket: "Basket"
         case .whatIsGoingOnWithYou: "WhatIsGoingOnWithYou"
         case .whatIsGoingOnWithYouLatin: "WhatIsGoingOnWithYouLatin"
+        case .whatIsGoingOnWithYouPolish: "WhatIsGoingOnWithYouPolish"
         case .beingBetter: "BeenBetter"
         case .byeBye: "ByeBye"
         case .iShouldGo: "IShouldGo"

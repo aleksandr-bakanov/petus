@@ -43,13 +43,14 @@ class DialogSystem(
         } else {
             standardBeginning
         }
-        val resultNode = if (engine.isPetSpeakLatin(pet)) {
-            nodeWithAdditionalQuestAnswers.copy(
-                text = listOf(StringId.WhatIsGoingOnWithYouLatin)
+        val whatGoingOnStringId = getWhatGoingOnStringId(pet)
+        val resultNode = when {
+            whatGoingOnStringId != StringId.WhatIsGoingOnWithYou -> nodeWithAdditionalQuestAnswers.copy(
+                text = listOf(whatGoingOnStringId)
             )
-        } else {
-            nodeWithAdditionalQuestAnswers
+            else -> nodeWithAdditionalQuestAnswers
         }
+
         currentNode = resultNode
         return currentNode
     }
@@ -101,6 +102,14 @@ class DialogSystem(
             return node.copy(
                 text = node.text + texts.shuffled()
             )
+        }
+    }
+
+    private fun getWhatGoingOnStringId(pet: Pet): StringId {
+        return when {
+            engine.isPetSpeakLatin(pet) -> StringId.WhatIsGoingOnWithYouLatin
+            pet.type == PetType.Bober -> StringId.WhatIsGoingOnWithYouPolish
+            else -> StringId.WhatIsGoingOnWithYou
         }
     }
 

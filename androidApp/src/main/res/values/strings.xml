@@ -106,6 +106,7 @@
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">What is going on with you?</string>
 	<string name="WhatIsGoingOnWithYouLatin">Quid tecum agitur?</string>
+	<string name="WhatIsGoingOnWithYouPolish">Jak się masz?</string>
 	<string name="BeenBetter">Been better.</string>
 	<string name="IAmOkayHowAreYou">I am fine, how are you?</string>
 	<string name="IShouldGo">I should go.</string>
