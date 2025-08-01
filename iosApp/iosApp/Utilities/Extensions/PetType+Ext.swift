@@ -7,6 +7,7 @@ extension PetType {
         case .dogus: return "feed_dog"
         case .frogus: return "feed_frog"
         case .bober: return "feed_bober"
+        case .fractal: return "feed_fractal"
         }
     }
 
@@ -16,6 +17,7 @@ extension PetType {
         case .dogus: return "play_dog"
         case .frogus: return "play_frog"
         case .bober: return "play_bober"
+        case .fractal: return "play_fractal"
         }
     }
 
@@ -25,6 +27,7 @@ extension PetType {
         case .dogus: return "heal_dog"
         case .frogus: return "heal_frog"
         case .bober: return "heal_bober"
+        case .fractal: return "heal_fractal"
         }
     }
 
@@ -34,6 +37,7 @@ extension PetType {
         case .dogus: return "clean_up_dog"
         case .frogus: return "clean_up_frog"
         case .bober: return "clean_up_bober"
+        case .fractal: return "clean_up_fractal"
         }
     }
 
@@ -43,6 +47,7 @@ extension PetType {
         case .dogus: return "wake_up_dog"
         case .frogus: return "wake_up_frog"
         case .bober: return "wake_up_bober"
+        case .fractal: return "wake_up_fractal"
         }
     }
     
@@ -52,6 +57,7 @@ extension PetType {
         case .dogus: return "bury_dog"
         case .frogus: return "bury_frog"
         case .bober: return "bury_bober"
+        case .fractal: return "bury_bober" // Can't bury fractal
         }
     }
     
@@ -61,6 +67,7 @@ extension PetType {
         case .dogus: return "speak_dog"
         case .frogus: return "speak_frog"
         case .bober: return "speak_bober"
+        case .fractal: return "speak_fractal"
         }
     }
     
@@ -70,6 +77,7 @@ extension PetType {
         case .dogus: return "resurrect_dog"
         case .frogus: return "resurrect_frog"
         case .bober: return "resurrect_bober"
+        case .fractal: return "resurrect_bober" // Can't resurrect fractal
         }
     }
     
@@ -79,6 +87,7 @@ extension PetType {
         case .dogus: return "dogus_egg"
         case .frogus: return "frogus_egg"
         case .bober: return "bober_egg"
+        case .fractal: return "fractal_egg"
         }
     }
 }

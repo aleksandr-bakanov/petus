@@ -121,6 +121,27 @@ fun ImageId.toResId(): Int {
         ImageId.BoberOldPoop -> R.drawable.bober_old_poop
         ImageId.BoberOldSleep -> R.drawable.bober_old_sleep
         ImageId.BoberOldZombie -> R.drawable.bober_old_zombie
+        ImageId.FractalEgg -> R.drawable.fractal_egg
+        ImageId.FractalGosperActive -> R.drawable.fractal_gosper_active
+        ImageId.FractalGosperHungry -> R.drawable.fractal_gosper_hungry
+        ImageId.FractalGosperIll -> R.drawable.fractal_gosper_ill
+        ImageId.FractalGosperPoop -> R.drawable.fractal_gosper_poop
+        ImageId.FractalGosperSleep -> R.drawable.fractal_gosper_sleep
+        ImageId.FractalKochActive -> R.drawable.fractal_koch_active
+        ImageId.FractalKochHungry -> R.drawable.fractal_koch_hungry
+        ImageId.FractalKochIll -> R.drawable.fractal_koch_ill
+        ImageId.FractalKochPoop -> R.drawable.fractal_koch_poop
+        ImageId.FractalKochSleep -> R.drawable.fractal_koch_sleep
+        ImageId.FractalNewbornActive -> R.drawable.fractal_newborn_active
+        ImageId.FractalNewbornHungry -> R.drawable.fractal_newborn_hungry
+        ImageId.FractalNewbornIll -> R.drawable.fractal_newborn_ill
+        ImageId.FractalNewbornPoop -> R.drawable.fractal_newborn_poop
+        ImageId.FractalNewbornSleep -> R.drawable.fractal_newborn_sleep
+        ImageId.FractalSpongeActive -> R.drawable.fractal_sponge_active
+        ImageId.FractalSpongeHungry -> R.drawable.fractal_sponge_hungry
+        ImageId.FractalSpongeIll -> R.drawable.fractal_sponge_ill
+        ImageId.FractalSpongePoop -> R.drawable.fractal_sponge_poop
+        ImageId.FractalSpongeSleep -> R.drawable.fractal_sponge_sleep
         ImageId.DugOutGrave -> R.drawable.dug_out_grave
         ImageId.UserProfileAvatar -> R.drawable.user_profile_avatar
     }

@@ -4,7 +4,8 @@ enum class PetType {
     Catus,
     Dogus,
     Frogus,
-    Bober;
+    Bober,
+    Fractal;
 
     companion object {
         val names = entries.map { it.name }

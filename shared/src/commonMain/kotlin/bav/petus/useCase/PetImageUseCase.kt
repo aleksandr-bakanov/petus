@@ -5,6 +5,7 @@ import bav.petus.core.resources.ImageId
 import bav.petus.model.AgeState
 import bav.petus.model.BodyState
 import bav.petus.model.BurialType
+import bav.petus.model.FractalType
 import bav.petus.model.Pet
 import bav.petus.model.PetType
 import bav.petus.model.Place
@@ -184,6 +185,52 @@ class PetImageUseCase(
                             isPetHungryOrBored(pet) -> ImageId.BoberOldHungry
                             isPetLowHealth(pet) -> ImageId.BoberOldIll
                             else -> ImageId.BoberOldActive
+                        }
+                    }
+                }
+            }
+
+            PetType.Fractal -> {
+                when (pet.ageState) {
+                    AgeState.Egg -> ImageId.FractalEgg
+                    AgeState.NewBorn -> {
+                        when {
+                            pet.sleep -> ImageId.FractalNewbornSleep
+                            pet.isPooped -> ImageId.FractalNewbornPoop
+                            pet.illness -> ImageId.FractalNewbornIll
+                            isPetHungryOrBored(pet) -> ImageId.FractalNewbornHungry
+                            isPetLowHealth(pet) -> ImageId.FractalNewbornIll
+                            else -> ImageId.FractalNewbornActive
+                        }
+                    }
+                    AgeState.Teen,
+                    AgeState.Adult,
+                    AgeState.Old -> {
+                        when (pet.fractalType) {
+                            FractalType.Gosper -> when {
+                                pet.sleep -> ImageId.FractalGosperSleep
+                                pet.isPooped -> ImageId.FractalGosperPoop
+                                pet.illness -> ImageId.FractalGosperIll
+                                isPetHungryOrBored(pet) -> ImageId.FractalGosperHungry
+                                isPetLowHealth(pet) -> ImageId.FractalGosperIll
+                                else -> ImageId.FractalGosperActive
+                            }
+                            FractalType.Koch -> when {
+                                pet.sleep -> ImageId.FractalKochSleep
+                                pet.isPooped -> ImageId.FractalKochPoop
+                                pet.illness -> ImageId.FractalKochIll
+                                isPetHungryOrBored(pet) -> ImageId.FractalKochHungry
+                                isPetLowHealth(pet) -> ImageId.FractalKochIll
+                                else -> ImageId.FractalKochActive
+                            }
+                            FractalType.Sponge -> when {
+                                pet.sleep -> ImageId.FractalSpongeSleep
+                                pet.isPooped -> ImageId.FractalSpongePoop
+                                pet.illness -> ImageId.FractalSpongeIll
+                                isPetHungryOrBored(pet) -> ImageId.FractalSpongeHungry
+                                isPetLowHealth(pet) -> ImageId.FractalSpongeIll
+                                else -> ImageId.FractalSpongeActive
+                            }
                         }
                     }
                 }

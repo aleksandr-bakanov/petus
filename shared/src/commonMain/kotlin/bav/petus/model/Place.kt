@@ -2,5 +2,6 @@ package bav.petus.model
 
 enum class Place {
     Zoo,
-    Cemetery;
+    Cemetery,
+    Limbo; // For forgotten fractals
 }

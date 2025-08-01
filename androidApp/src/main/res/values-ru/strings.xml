@@ -17,6 +17,7 @@
 	<string name="LanguageKnowledgeTitleDogus">Язык Догуса</string>
 	<string name="LanguageKnowledgeTitleFrogus">Язык Фрогуса</string>
 	<string name="LanguageKnowledgeTitleBober">Язык Бобера</string>
+	<string name="LanguageKnowledgeTitleFractal">Язык Фрактала</string>
 	<string name="ZooSizeTitle">Размер дома</string>
 	<string name="ProfileScreenMiscLabel">Прочее</string>
 
@@ -34,13 +35,16 @@
 	<string name="PetCreationScreenPetTypeCatus">катуса</string>
 	<string name="PetCreationScreenPetTypeFrogus">фрогуса</string>
 	<string name="PetCreationScreenPetTypeBober">бобера</string>
+	<string name="PetCreationScreenPetTypeFractal">фрактал</string>
 	<string name="PetCreationScreenButtonTemplate">Создать %s %s</string>
+	<string name="PetCreationScreenButtonTemplateFractal">Вообразить фрактал %s</string>
 
 	<!-- Pet descriptions -->
 	<string name="PetTypeDescriptionCatus">Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.</string>
 	<string name="PetTypeDescriptionDogus">Догус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.</string>
 	<string name="PetTypeDescriptionFrogus">Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер.</string>
 	<string name="PetTypeDescriptionBober">Фрогус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Не любит ветер.</string>
+	<string name="PetTypeDescriptionFractal">Фрактал: спит 1,5 часа, бодрствует 1,5 часа. Не переживает насчет погоды потому что является просто идеей в твоей голове.</string>
 
 	<!-- Item names -->
 	<string name="Necronomicon">Некрономикон</string>
@@ -56,6 +60,7 @@
 
 	<!-- Abilities names -->
 	<string name="Necromancy">Некромантия</string>
+	<string name="Meditation">Медитация</string>
 
 	<!-- Notifications -->
 	<string name="NotificationInventoryItemAdded">Добавлено: %s</string>
@@ -77,6 +82,7 @@
 	<string name="HistoryEventPetBecomeAdult">Стал взрослым</string>
 	<string name="HistoryEventPetBecomeOld">Стал старым</string>
 	<string name="HistoryEventPetBuried">Похоронен</string>
+	<string name="HistoryEventPetForgotten">Забыт</string>
 	<string name="HistoryEventPetResurrected">Воскрешен</string>
 	<string name="HistoryEventPetPoop">Покакал</string>
 

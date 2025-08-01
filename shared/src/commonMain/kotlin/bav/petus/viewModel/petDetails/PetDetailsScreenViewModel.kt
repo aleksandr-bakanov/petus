@@ -41,6 +41,7 @@ data class PetDetailsUiState(
     val showBuryButton: Boolean,
     val showSpeakButton: Boolean,
     val showResurrectButton: Boolean,
+    val showForgetButton: Boolean,
     val showStatBars: Boolean,
     val lifespan: String?,
     val historyEvents: List<String>,
@@ -87,6 +88,7 @@ class PetDetailsScreenViewModel(
                     showBuryButton = engine.isAllowedToBuryPet(pet),
                     showSpeakButton = engine.isAllowedToSpeakWithPet(pet),
                     showResurrectButton = engine.isAllowedToResurrectPet(pet),
+                    showForgetButton = engine.isAllowedToForgetPet(pet),
                     showStatBars = pet.place == Place.Zoo,
                     lifespan = getLifespan(pet),
                     historyEvents = getHistoryEvents(pet),
@@ -190,6 +192,14 @@ class PetDetailsScreenViewModel(
                     }
                 }
             }
+            Action.TapForgetButton -> {
+                viewModelScope.launch {
+                    currentPet?.let { pet ->
+                        engine.forgetPet(pet)
+                        navigate(Navigation.CloseScreen)
+                    }
+                }
+            }
             Action.TapSpeakButton -> {
                 currentPet?.let { pet -> navigate(Navigation.OpenDialogScreen(pet.id)) }
             }
@@ -227,6 +237,7 @@ class PetDetailsScreenViewModel(
         data object TapFeedButton : Action
         data object TapWakeUpButton : Action
         data object TapBuryButton : Action
+        data object TapForgetButton : Action
         data object TapSpeakButton : Action
         data object TapResurrectButton : Action
         data object Kill : Action

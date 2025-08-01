@@ -14,6 +14,7 @@ fun StringId.toResId(): Int {
         StringId.PetTypeDescriptionDogus -> R.string.PetTypeDescriptionDogus
         StringId.PetTypeDescriptionFrogus -> R.string.PetTypeDescriptionFrogus
         StringId.PetTypeDescriptionBober -> R.string.PetTypeDescriptionBober
+        StringId.PetTypeDescriptionFractal -> R.string.PetTypeDescriptionFractal
         StringId.WhatIsGoingOnWithYou -> R.string.WhatIsGoingOnWithYou
         StringId.WhatIsGoingOnWithYouLatin -> R.string.WhatIsGoingOnWithYouLatin
         StringId.WhatIsGoingOnWithYouPolish -> R.string.WhatIsGoingOnWithYouPolish
@@ -77,6 +78,7 @@ fun StringId.toResId(): Int {
         StringId.HistoryEventPetBecomeOld -> R.string.HistoryEventPetBecomeOld
         StringId.HistoryEventPetBecomeTeen -> R.string.HistoryEventPetBecomeTeen
         StringId.HistoryEventPetBuried -> R.string.HistoryEventPetBuried
+        StringId.HistoryEventPetForgotten -> R.string.HistoryEventPetForgotten
         StringId.HistoryEventPetCleanUp -> R.string.HistoryEventPetCleanUp
         StringId.HistoryEventPetCreated -> R.string.HistoryEventPetCreated
         StringId.HistoryEventPetDied -> R.string.HistoryEventPetDied
@@ -90,6 +92,7 @@ fun StringId.toResId(): Int {
         StringId.HistoryEventPetSleep -> R.string.HistoryEventPetSleep
         StringId.HistoryEventPetWakeUp -> R.string.HistoryEventPetWakeUp
         StringId.Necromancy -> R.string.Necromancy
+        StringId.Meditation -> R.string.Meditation
         StringId.ObtainFrogusStage1Answer0 -> R.string.ObtainFrogusStage1Answer0
         StringId.ObtainFrogusStage1Dialog0 -> R.string.ObtainFrogusStage1Dialog0
         StringId.ObtainFrogusStage1Answer1 -> R.string.ObtainFrogusStage1Answer1

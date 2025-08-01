@@ -47,6 +47,8 @@ class WeatherAttitudeUseCase {
                     start = -1000.0, middle = 30.0, end = 80.0
                 ),
             )
+            // Fractal doesn't care about weather
+            PetType.Fractal -> NEUTRAL_ATTITUDE.toCloudPercentage
         }
     }
 
@@ -80,6 +82,8 @@ class WeatherAttitudeUseCase {
                     start = 15.0, middle = 23.0, end = 27.0
                 ),
             )
+            // Fractal doesn't care about weather
+            PetType.Fractal -> NEUTRAL_ATTITUDE.toTemperature
         }
     }
 
@@ -113,6 +117,8 @@ class WeatherAttitudeUseCase {
                     start = 30.0, middle = 50.0, end = 1000.0
                 ),
             )
+            // Fractal doesn't care about weather
+            PetType.Fractal -> NEUTRAL_ATTITUDE.toHumidity
         }
     }
 
@@ -146,6 +152,8 @@ class WeatherAttitudeUseCase {
                     start = -1000.0, middle = 0.0, end = 0.3
                 ),
             )
+            // Fractal doesn't care about weather
+            PetType.Fractal -> NEUTRAL_ATTITUDE.toWindSpeed
         }
     }
 

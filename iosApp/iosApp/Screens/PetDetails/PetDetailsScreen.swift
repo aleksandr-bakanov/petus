@@ -91,6 +91,12 @@ struct PetDetailsScreen: View {
                                     }
                                 }
                                 
+                                if state.showForgetButton {
+                                    AnimatedImageButton(imageName: "forget_fractal") {
+                                        viewModel.onAction(action: PetDetailsScreenViewModelActionTapForgetButton())
+                                    }
+                                }
+                                
                                 if state.showResurrectButton {
                                     AnimatedImageButton(imageName: state.petType.resurrectButtonImageName) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapResurrectButton())

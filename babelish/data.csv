@@ -15,6 +15,7 @@ User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
 ;android, ios;LanguageKnowledgeTitleDogus;Dogus language;Язык Догуса
 ;android, ios;LanguageKnowledgeTitleFrogus;Frogus language;Язык Фрогуса
 ;android, ios;LanguageKnowledgeTitleBober;Bober language;Язык Бобера
+;android, ios;LanguageKnowledgeTitleFractal;Fractal language;Язык Фрактала
 ;android, ios;ZooSizeTitle;Home size;Размер дома
 ;android, ios;ProfileScreenMiscLabel;Misc;Прочее
 
@@ -29,13 +30,17 @@ Pet creation screen;android, ios;PetCreationScreenSelectPetType;Select pet type;
 ;android, ios;PetCreationScreenPetTypeCatus;catus;катуса
 ;android, ios;PetCreationScreenPetTypeFrogus;frogus;фрогуса
 ;android, ios;PetCreationScreenPetTypeBober;bober;бобера
+;android, ios;PetCreationScreenPetTypeFractal;fractal;фрактал
 ;android;PetCreationScreenButtonTemplate;Create %s %s;Создать %s %s
 ;ios;PetCreationScreenButtonTemplate;Create %@ %@;Создать %@ %@
+;android;PetCreationScreenButtonTemplateFractal;Imagine fractal %s;Вообразить фрактал %s
+;ios;PetCreationScreenButtonTemplateFractal;Imagine fractal %@;Вообразить фрактал %@
 
 Pet descriptions;android, ios;PetTypeDescriptionCatus;Catus: sleeps 2 hours, awake for 1 hour. Likes warm sunny days. Likes small wind.;Катус: спит 2 часа, бодрствует 1 час. Любит теплые солнечные дни. Любит легкий ветерок.
 ;android, ios;PetTypeDescriptionDogus;Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.;Догус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Любит средний ветер.
 ;android, ios;PetTypeDescriptionFrogus;Frogus: sleeps 1.5 hours, awake for 1.5 hours. Likes cold cloudy days. Does not like wind.;Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер.
 ;android, ios;PetTypeDescriptionBober;Bober: sleeps 1 hours, awake for 2 hours. Likes warm sunny days. Does not like wind.;Фрогус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Не любит ветер.
+;android, ios;PetTypeDescriptionFractal;Fractal: sleeps 1.5 hours, awake for 1.5 hours. Does not care about weather since it is just an idea.;Фрактал: спит 1,5 часа, бодрствует 1,5 часа. Не переживает насчет погоды потому что является просто идеей в твоей голове.
 
 Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android, ios;PieceOfCloth;Piece of cloth;Кусок ткани
@@ -50,6 +55,7 @@ Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;ios;InventoryItemPattern;%@ (x%d);%@ (x%d)
 
 Abilities names;android, ios;Necromancy;Necromancy;Некромантия
+;android, ios;Meditation;Meditation;Медитация
 
 Notifications;android;NotificationInventoryItemAdded;%s added;Добавлено: %s
 Notifications;ios;NotificationInventoryItemAdded;%@ added;Добавлено: %@
@@ -71,6 +77,7 @@ History events;android, ios;HistoryEventPetCreated;Created;Создан
 ;android, ios;HistoryEventPetBecomeAdult;Become adult;Стал взрослым
 ;android, ios;HistoryEventPetBecomeOld;Become old;Стал старым
 ;android, ios;HistoryEventPetBuried;Buried;Похоронен
+;android, ios;HistoryEventPetForgotten;Forgotten;Забыт
 ;android, ios;HistoryEventPetResurrected;Resurrected;Воскрешен
 ;android, ios;HistoryEventPetPoop;Pooped;Покакал
 

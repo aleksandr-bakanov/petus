@@ -114,6 +114,21 @@ private fun PetCreationScreen(
 }
 
 @Composable
+private fun createButtonText(type: PetType, name: String): String {
+    return when (type) {
+        PetType.Fractal -> stringResource(
+            id = R.string.PetCreationScreenButtonTemplateFractal,
+            name,
+        )
+        else -> stringResource(
+            id = R.string.PetCreationScreenButtonTemplate,
+            petTypeString(type),
+            name,
+        )
+    }
+}
+
+@Composable
 private fun petTypeString(type: PetType): String {
     return stringResource(
         id = when (type) {
@@ -121,6 +136,7 @@ private fun petTypeString(type: PetType): String {
             PetType.Dogus -> R.string.PetCreationScreenPetTypeDogus
             PetType.Frogus -> R.string.PetCreationScreenPetTypeFrogus
             PetType.Bober -> R.string.PetCreationScreenPetTypeBober
+            PetType.Fractal -> R.string.PetCreationScreenPetTypeFractal
         }
     )
 }

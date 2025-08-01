@@ -59,7 +59,7 @@ struct PetCreationScreen: View {
                 Button(action: {
                     viewModel.onAction(action: PetCreationScreenViewModelActionTapCreateButton())
                 }) {
-                    let buttonTitle = String(format: NSLocalizedString("PetCreationScreenButtonTemplate", comment: ""), petTypeString(state.type), state.name)
+                    let buttonTitle = createButtonText(type: state.type, name: state.name)
                     Text(buttonTitle)
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -86,6 +86,15 @@ struct PetCreationScreen: View {
     }
 }
 
+private func createButtonText(type: PetType, name: String) -> String {
+    switch type {
+    case .fractal:
+        return String(format: NSLocalizedString("PetCreationScreenButtonTemplateFractal", comment: ""), name)
+    default:
+        return String(format: NSLocalizedString("PetCreationScreenButtonTemplate", comment: ""), petTypeString(type), name)
+    }
+}
+
 private func petTypeString(_ type: PetType) -> String {
     switch type {
     case .catus:
@@ -96,5 +105,7 @@ private func petTypeString(_ type: PetType) -> String {
         return NSLocalizedString("PetCreationScreenPetTypeFrogus", comment: "")
     case .bober:
         return NSLocalizedString("PetCreationScreenPetTypeBober", comment: "")
+    case .fractal:
+        return NSLocalizedString("PetCreationScreenPetTypeFractal", comment: "")
     }
 }

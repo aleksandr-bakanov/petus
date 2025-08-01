@@ -17,6 +17,7 @@
 	<string name="LanguageKnowledgeTitleDogus">Dogus language</string>
 	<string name="LanguageKnowledgeTitleFrogus">Frogus language</string>
 	<string name="LanguageKnowledgeTitleBober">Bober language</string>
+	<string name="LanguageKnowledgeTitleFractal">Fractal language</string>
 	<string name="ZooSizeTitle">Home size</string>
 	<string name="ProfileScreenMiscLabel">Misc</string>
 
@@ -34,13 +35,16 @@
 	<string name="PetCreationScreenPetTypeCatus">catus</string>
 	<string name="PetCreationScreenPetTypeFrogus">frogus</string>
 	<string name="PetCreationScreenPetTypeBober">bober</string>
+	<string name="PetCreationScreenPetTypeFractal">fractal</string>
 	<string name="PetCreationScreenButtonTemplate">Create %s %s</string>
+	<string name="PetCreationScreenButtonTemplateFractal">Imagine fractal %s</string>
 
 	<!-- Pet descriptions -->
 	<string name="PetTypeDescriptionCatus">Catus: sleeps 2 hours, awake for 1 hour. Likes warm sunny days. Likes small wind.</string>
 	<string name="PetTypeDescriptionDogus">Dogus: sleeps 1 hour, awake for 2 hours. Likes warm sunny days. Likes medium wind.</string>
 	<string name="PetTypeDescriptionFrogus">Frogus: sleeps 1.5 hours, awake for 1.5 hours. Likes cold cloudy days. Does not like wind.</string>
 	<string name="PetTypeDescriptionBober">Bober: sleeps 1 hours, awake for 2 hours. Likes warm sunny days. Does not like wind.</string>
+	<string name="PetTypeDescriptionFractal">Fractal: sleeps 1.5 hours, awake for 1.5 hours. Does not care about weather since it is just an idea.</string>
 
 	<!-- Item names -->
 	<string name="Necronomicon">Necronomicon</string>
@@ -56,6 +60,7 @@
 
 	<!-- Abilities names -->
 	<string name="Necromancy">Necromancy</string>
+	<string name="Meditation">Meditation</string>
 
 	<!-- Notifications -->
 	<string name="NotificationInventoryItemAdded">%s added</string>
@@ -77,6 +82,7 @@
 	<string name="HistoryEventPetBecomeAdult">Become adult</string>
 	<string name="HistoryEventPetBecomeOld">Become old</string>
 	<string name="HistoryEventPetBuried">Buried</string>
+	<string name="HistoryEventPetForgotten">Forgotten</string>
 	<string name="HistoryEventPetResurrected">Resurrected</string>
 	<string name="HistoryEventPetPoop">Pooped</string>
 

@@ -18,6 +18,7 @@ enum class HistoryEvent {
     PetBecomeAdult,
     PetBecomeOld,
     PetBuried,
+    PetForgotten,
     PetResurrected,
     PetPoop,
     ;
@@ -40,6 +41,7 @@ fun HistoryEvent.toStringId(): StringId {
         HistoryEvent.PetBecomeAdult -> StringId.HistoryEventPetBecomeAdult
         HistoryEvent.PetBecomeOld -> StringId.HistoryEventPetBecomeOld
         HistoryEvent.PetBuried -> StringId.HistoryEventPetBuried
+        HistoryEvent.PetForgotten -> StringId.HistoryEventPetForgotten
         HistoryEvent.PetResurrected -> StringId.HistoryEventPetResurrected
         HistoryEvent.PetPoop -> StringId.HistoryEventPetPoop
     }

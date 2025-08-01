@@ -25,6 +25,8 @@ struct LanguageKnowledgeCell: View {
             return NSLocalizedString("LanguageKnowledgeTitleFrogus", comment: "")
         case .bober:
             return NSLocalizedString("LanguageKnowledgeTitleBober", comment: "")
+        case .fractal:
+            return NSLocalizedString("LanguageKnowledgeTitleFractal", comment: "")
         }
     }
 }

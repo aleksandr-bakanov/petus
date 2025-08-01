@@ -25,12 +25,14 @@ data class LanguageKnowledge(
 
 enum class Ability {
     Necromancy,
+    Meditation,
     ;
 }
 
 fun Ability.toStringId(): StringId {
     return when (this) {
         Ability.Necromancy -> StringId.Necromancy
+        Ability.Meditation -> StringId.Meditation
     }
 }
 
@@ -138,6 +140,7 @@ class UserStats(
             PetType.Dogus -> LANGUAGE_KNOWLEDGE_DOGUS_KEY
             PetType.Frogus -> LANGUAGE_KNOWLEDGE_FROGUS_KEY
             PetType.Bober -> LANGUAGE_KNOWLEDGE_BOBER_KEY
+            PetType.Fractal -> LANGUAGE_KNOWLEDGE_FRACTAL_KEY
         }
     }
 
@@ -180,6 +183,7 @@ class UserStats(
         private val LANGUAGE_KNOWLEDGE_DOGUS_KEY = intPreferencesKey("language_knowledge_dogus")
         private val LANGUAGE_KNOWLEDGE_FROGUS_KEY = intPreferencesKey("language_knowledge_frogus")
         private val LANGUAGE_KNOWLEDGE_BOBER_KEY = intPreferencesKey("language_knowledge_bober")
+        private val LANGUAGE_KNOWLEDGE_FRACTAL_KEY = intPreferencesKey("language_knowledge_fractal")
 
         private val ZOO_SIZE_KEY = intPreferencesKey("zoo_size")
 

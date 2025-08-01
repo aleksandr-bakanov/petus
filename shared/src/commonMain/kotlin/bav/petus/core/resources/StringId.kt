@@ -12,6 +12,7 @@ sealed class StringId {
     data object PetTypeDescriptionDogus : StringId()
     data object PetTypeDescriptionFrogus : StringId()
     data object PetTypeDescriptionBober : StringId()
+    data object PetTypeDescriptionFractal : StringId()
     //endregion
 
     //region Inventory items
@@ -28,6 +29,7 @@ sealed class StringId {
 
     //region Abilities names
     data object Necromancy : StringId()
+    data object Meditation : StringId()
     //endregion
 
     //region History events
@@ -46,6 +48,7 @@ sealed class StringId {
     data object HistoryEventPetBecomeAdult : StringId()
     data object HistoryEventPetBecomeOld : StringId()
     data object HistoryEventPetBuried : StringId()
+    data object HistoryEventPetForgotten : StringId()
     data object HistoryEventPetResurrected : StringId()
     data object HistoryEventPetPoop : StringId()
     //endregion

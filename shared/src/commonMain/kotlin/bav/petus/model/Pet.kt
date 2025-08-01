@@ -9,6 +9,7 @@ data class Pet(
 
     val name: String = "",
     val type: PetType = PetType.Frogus,
+    val fractalType: FractalType = FractalType.Gosper,
 
     val place: Place = Place.Zoo,
     val bodyState: BodyState = BodyState.Alive,

@@ -141,6 +141,7 @@ private fun LanguageKnowledgeStat(type: PetType, value: String) {
             PetType.Dogus -> R.string.LanguageKnowledgeTitleDogus
             PetType.Frogus -> R.string.LanguageKnowledgeTitleFrogus
             PetType.Bober -> R.string.LanguageKnowledgeTitleBober
+            PetType.Fractal -> R.string.LanguageKnowledgeTitleFractal
         }
     )
     UserProfileRow(

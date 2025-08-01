@@ -197,6 +197,13 @@ private fun PetDetailsScreen(
                             onAction(PetDetailsScreenViewModel.Action.TapBuryButton)
                         }
                     }
+                    if (uiState.showForgetButton) {
+                        AnimatedImageButton(
+                            painter = painterResource(id = R.drawable.forget_fractal),
+                        ) {
+                            onAction(PetDetailsScreenViewModel.Action.TapForgetButton)
+                        }
+                    }
                     if (uiState.showResurrectButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.resurrectButtonImageId()),
@@ -242,6 +249,7 @@ private fun PetType.feedButtonImageId(): Int {
         PetType.Dogus -> R.drawable.feed_dog
         PetType.Frogus -> R.drawable.feed_frog
         PetType.Bober -> R.drawable.feed_bober
+        PetType.Fractal -> R.drawable.feed_fractal
     }
 }
 
@@ -251,6 +259,7 @@ private fun PetType.playButtonImageId(): Int {
         PetType.Dogus -> R.drawable.play_dog
         PetType.Frogus -> R.drawable.play_frog
         PetType.Bober -> R.drawable.play_bober
+        PetType.Fractal -> R.drawable.play_fractal
     }
 }
 
@@ -260,6 +269,7 @@ private fun PetType.healButtonImageId(): Int {
         PetType.Dogus -> R.drawable.heal_dog
         PetType.Frogus -> R.drawable.heal_frog
         PetType.Bober -> R.drawable.heal_bober
+        PetType.Fractal -> R.drawable.heal_fractal
     }
 }
 
@@ -269,6 +279,7 @@ private fun PetType.poopButtonImageId(): Int {
         PetType.Dogus -> R.drawable.clean_up_dog
         PetType.Frogus -> R.drawable.clean_up_frog
         PetType.Bober -> R.drawable.clean_up_bober
+        PetType.Fractal -> R.drawable.clean_up_fractal
     }
 }
 
@@ -278,6 +289,7 @@ private fun PetType.wakeUpButtonImageId(): Int {
         PetType.Dogus -> R.drawable.wake_up_dog
         PetType.Frogus -> R.drawable.wake_up_frog
         PetType.Bober -> R.drawable.wake_up_bober
+        PetType.Fractal -> R.drawable.wake_up_fractal
     }
 }
 
@@ -287,6 +299,7 @@ private fun PetType.buryButtonImageId(): Int {
         PetType.Dogus -> R.drawable.bury_dog
         PetType.Frogus -> R.drawable.bury_frog
         PetType.Bober -> R.drawable.bury_bober
+        PetType.Fractal -> R.drawable.bury_bober // Can't bury fractal
     }
 }
 
@@ -296,6 +309,7 @@ private fun PetType.speakButtonImageId(): Int {
         PetType.Dogus -> R.drawable.speak_dog
         PetType.Frogus -> R.drawable.speak_frog
         PetType.Bober -> R.drawable.speak_bober
+        PetType.Fractal -> R.drawable.speak_fractal
     }
 }
 
@@ -305,5 +319,6 @@ private fun PetType.resurrectButtonImageId(): Int {
         PetType.Dogus -> R.drawable.resurrect_dog
         PetType.Frogus -> R.drawable.resurrect_frog
         PetType.Bober -> R.drawable.resurrect_bober
+        PetType.Fractal -> R.drawable.resurrect_bober // Can't resurrect fractal
     }
 }

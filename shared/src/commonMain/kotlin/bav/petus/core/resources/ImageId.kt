@@ -132,6 +132,30 @@ enum class ImageId {
     BoberOldZombie,
     //endregion
 
+    //region Fractal
+    FractalEgg,
+    FractalGosperActive,
+    FractalGosperHungry,
+    FractalGosperIll,
+    FractalGosperPoop,
+    FractalGosperSleep,
+    FractalKochActive,
+    FractalKochHungry,
+    FractalKochIll,
+    FractalKochPoop,
+    FractalKochSleep,
+    FractalNewbornActive,
+    FractalNewbornHungry,
+    FractalNewbornIll,
+    FractalNewbornPoop,
+    FractalNewbornSleep,
+    FractalSpongeActive,
+    FractalSpongeHungry,
+    FractalSpongeIll,
+    FractalSpongePoop,
+    FractalSpongeSleep,
+    //endregion
+
     //region Common
     DugOutGrave,
     UserProfileAvatar,
