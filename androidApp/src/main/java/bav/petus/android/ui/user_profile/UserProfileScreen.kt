@@ -92,6 +92,10 @@ private fun UserProfileScreen(
                 type = PetType.Bober,
                 value = uiState.languageKnowledgeBober,
             )
+            LanguageKnowledgeStat(
+                type = PetType.Fractal,
+                value = uiState.languageKnowledgeFractal,
+            )
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenInventoryLabel))
             uiState.inventory.forEach { item ->

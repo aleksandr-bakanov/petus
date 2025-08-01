@@ -21,6 +21,7 @@ data class LanguageKnowledge(
     val dogus: Int,
     val frogus: Int,
     val bober: Int,
+    val fractal: Int,
 )
 
 enum class Ability {
@@ -61,6 +62,7 @@ class UserStats(
                     dogus = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_DOGUS_KEY),
                     frogus = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_FROGUS_KEY),
                     bober = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_BOBER_KEY),
+                    fractal = MAXIMUM_LANGUAGE_UI_KNOWLEDGE,
                 ),
                 inventory = it.getInventory(),
                 abilities = it.getAbilities(),

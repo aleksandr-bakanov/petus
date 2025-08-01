@@ -462,8 +462,11 @@ class Engine(
             }
         }
 
-        // Additional checks for Old pets
-        if (newPet.ageState == AgeState.Old && newPet.bodyState == BodyState.Alive) {
+        // Additional checks for Old pets (except for fractals)
+        if (newPet.ageState == AgeState.Old &&
+            newPet.bodyState == BodyState.Alive &&
+            newPet.type != PetType.Fractal
+        ) {
             // Random death
             if (Random.Default.nextFloat() < newPet.deathOfOldAgePossibility) {
                 newPet = makePetDead(newPet, periodTimestamp)
