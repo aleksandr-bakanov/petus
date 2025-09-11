@@ -25,6 +25,9 @@ sealed class StringId {
     data object CatusEgg : StringId()
     data object BoberEgg : StringId()
     data object Basket : StringId()
+    data object TwoMeterRuler : StringId()
+    data object TenCentimeterRuler : StringId()
+    data object MathBook : StringId()
     //endregion
 
     //region Abilities names
@@ -136,6 +139,20 @@ sealed class StringId {
     data object ObtainBoberStage10Dialog0 : StringId()
     data object ObtainBoberStage11Dialog0 : StringId()
     data object ObtainBoberStage11Answer0 : StringId()
+
+    data object ObtainFractalStage1Answer0 : StringId()
+    data object ObtainFractalStage1Dialog0 : StringId()
+    data object ObtainFractalStage1Dialog1 : StringId()
+    data object ObtainFractalStage1Answer1 : StringId()
+    data object ObtainFractalStage3Answer0 : StringId()
+    data object ObtainFractalStage3Dialog0 : StringId()
+    data object ObtainFractalStage3Answer1 : StringId()
+    data object ObtainFractalStage5Answer0 : StringId()
+    data object ObtainFractalStage5Dialog0 : StringId()
+    data object ObtainFractalStage5Answer1 : StringId()
+    data object ObtainFractalStage6Answer0 : StringId()
+    data object ObtainFractalStage6Dialog0 : StringId()
+    data object ObtainFractalStage6Answer1 : StringId()
     //endregion
     
     //region Quest status
@@ -143,6 +160,7 @@ sealed class StringId {
     data object QuestNameNecronomicon : StringId()
     data object QuestNameObtainFrogus : StringId()
     data object QuestNameObtainBober : StringId()
+    data object QuestNameObtainFractal : StringId()
     data object QuestDescObtainFrogusStage0 : StringId()
     data object QuestDescObtainFrogusStage1 : StringId()
     data object QuestDescObtainFrogusStage2 : StringId()
@@ -174,5 +192,14 @@ sealed class StringId {
     data object QuestDescObtainBoberStage10 : StringId()
     data object QuestDescObtainBoberStage11 : StringId()
     data object QuestDescObtainBoberStage12 : StringId()
+    data object QuestDescObtainFractalStage0 : StringId()
+    data object QuestDescObtainFractalStage1 : StringId()
+    data object QuestDescObtainFractalStage2 : StringId()
+    data object QuestDescObtainFractalStage3 : StringId()
+    data object QuestDescObtainFractalStage4 : StringId()
+    data object QuestDescObtainFractalStage5 : StringId()
+    data object QuestDescObtainFractalStage6 : StringId()
+    data object QuestDescObtainFractalStage7 : StringId()
+    data object QuestDescObtainFractalStage8 : StringId()
     //endregion
 }

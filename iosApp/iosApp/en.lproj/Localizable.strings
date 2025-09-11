@@ -54,6 +54,9 @@
 "CatusEgg"                                 = "Catus egg";
 "BoberEgg"                                 = "Bober egg";
 "Basket"                                   = "Beautiful and reliable basket for storing eggs (with a lid)";
+"TwoMeterRuler"                            = "2 meter stick";
+"TenCentimeterRuler"                       = "10 centimeter stick";
+"MathBook"                                 = "What Is Mathematics? - book by Herbert Robbins and Richard Courant";
 "InventoryItemPattern"                     = "%@ (x%d)";
 
 /* Abilities names */
@@ -165,12 +168,26 @@
 "ObtainBoberStage10Dialog0"                = "They said they would do everything in the best possible way, wait a little longer.";
 "ObtainBoberStage11Dialog0"                = "Yes! Look what they just sent us - a beautiful, reliable basket for storing eggs (with a lid). And along with the basket they sent a Bober egg - lucky!";
 "ObtainBoberStage11Answer0"                = "Truly a stroke of luck! I will have to try and hatch one or two.";
+"ObtainFractalStage1Answer0"               = "I see you have been thinking about something a lot lately, is everything okay?";
+"ObtainFractalStage1Dialog0"               = "Yes, everything is fine, I am thinking about one interesting task and want to test it in practice, but I have paws. Will you help me?";
+"ObtainFractalStage1Dialog1"               = "Thank you! Then take this two-meter stick and go measure the length of the shoreline of our pond. I am very interested in how much you measure.";
+"ObtainFractalStage1Answer1"               = "It will take me one day, I will report the results tomorrow.";
+"ObtainFractalStage3Answer0"               = "Hi, I measured the length of the coast - it was 4.76 kilometers, what is next?";
+"ObtainFractalStage3Dialog0"               = "Very good, very good. Let us write it down - 4.76 kilometers. Now take this smaller ruler and do the same.";
+"ObtainFractalStage3Answer1"               = "Okay, I will be back tomorrow with the results.";
+"ObtainFractalStage5Answer0"               = "So, the survey is complete and some kind of devilry is going on there. This time the length of the coast was 5.12 kilometers. How so?";
+"ObtainFractalStage5Dialog0"               = "That, my dear, is the paradox of the coastline. If you want to know more about it, ask the bobers, they are good not only at carpentry, but also at mathematics.";
+"ObtainFractalStage5Answer1"               = "That is what I will do.";
+"ObtainFractalStage6Answer0"               = "Hi, frogus said you could explain the coastline paradox to me.";
+"ObtainFractalStage6Dialog0"               = "Aaaah, paradoks linii brzegowej? Wiemy, wiemy. Mam o tym bardzo ciekawą książkę. Przeczytaj ją, jest w niej mnóstwo ciekawych rzeczy.";
+"ObtainFractalStage6Answer1"               = "Thank you very much, I think I will master it overnight.";
 
 /* Quest description */
 "QuestIsFinished"                          = "Done";
 "QuestNameNecronomicon"                    = "Lost and found";
 "QuestNameObtainFrogus"                    = "Fish and consequences";
 "QuestNameObtainBober"                     = "Must be a wind";
+"QuestNameObtainFractal"                   = "Coastline paradox";
 "QuestDescObtainFrogusStage0"              = "Something tells me that I need to make sure I understand catus properly.";
 "QuestDescObtainFrogusStage1"              = "Great, now I need to ask catus, maybe someone needs some help.";
 "QuestDescObtainFrogusStage2"              = "As I thought, one of the katus asked me to diversify the menu and find some fish somewhere. I will look for it near the pond he was talking about.";
@@ -202,3 +219,12 @@
 "QuestDescObtainBoberStage10"              = "Frogus said that he would ask his friends from the pond, he said that they are handy and know their business.";
 "QuestDescObtainBoberStage11"              = "It’s time to ask frogus if there is any news from his friends.";
 "QuestDescObtainBoberStage12"              = "Wow! These Bober guys not only gave me a basket for eggs, but they also entrusted me with one of their eggs so that I could care for future generations of bobers.";
+"QuestDescObtainFractalStage0"             = "To begin with, it would be nice to fully understand my pets.";
+"QuestDescObtainFractalStage1"             = "I have noticed that lately the froguses have been sitting in thought for a long time, I need to figure out what is going on.";
+"QuestDescObtainFractalStage2"             = "Frogus asked me to measure the length of the pond shoreline using a two-meter stick. Why would he want that?";
+"QuestDescObtainFractalStage3"             = "Well, I have measured it, it is time to report the results.";
+"QuestDescObtainFractalStage4"             = "Now frogus asked me to do the same thing, but with a different ruler.";
+"QuestDescObtainFractalStage5"             = "This time I measured a completely different number. Strange, I will go ask frogus.";
+"QuestDescObtainFractalStage6"             = "Frogus sent me to the bobers to find out about this paradox.";
+"QuestDescObtainFractalStage7"             = "Bober gave me a book about mathematics, I will dive into it head first.";
+"QuestDescObtainFractalStage8"             = "Wow, I learned a lot of new things there! What I liked most in this book were the fractals, now I know what they are and how different they are. I love imagining them!";

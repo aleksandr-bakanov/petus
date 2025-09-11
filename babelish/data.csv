@@ -51,6 +51,9 @@ Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android, ios;CatusEgg;Catus egg;Яйцо Катуса
 ;android, ios;BoberEgg;Bober egg;Яйцо Бобера
 ;android, ios;Basket;Beautiful and reliable basket for storing eggs (with a lid);Прекрасная и надёжная корзина для хранения яиц (с крышечкой)
+;android, ios;TwoMeterRuler;2 meter stick;Двухметровая палка
+;android, ios;TenCentimeterRuler;10 centimeter stick;Десятисантиметровая палочка
+;android, ios;MathBook;What Is Mathematics? - book by Herbert Robbins and Richard Courant;Что такое математика? - книга Р. Куранта и Г. Роббинса
 ;android;InventoryItemPattern;%s (x%d);%s (x%d)
 ;ios;InventoryItemPattern;%@ (x%d);%@ (x%d)
 
@@ -160,11 +163,25 @@ Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как де
 ;android, ios;ObtainBoberStage10Dialog0;They said they would do everything in the best possible way, wait a little longer.;Они сказали что сделают всё в лучшем виде, подожди ещё немного.
 ;android, ios;ObtainBoberStage11Dialog0;Yes! Look what they just sent us - a beautiful, reliable basket for storing eggs (with a lid). And along with the basket they sent a Bober egg - lucky!;Да! Ты посмотри только что они нам прислали - прекрасную, надёжную корзину для хранения яиц (с крышечкой). А вместе с корзиной они прислали яйцо Бобера - вот так удача!
 ;android, ios;ObtainBoberStage11Answer0;Truly a stroke of luck! I will have to try and hatch one or two.;Воистину удача! Надо будет попробовать вывести одного или двух.
+;android, ios;ObtainFractalStage1Answer0;I see you have been thinking about something a lot lately, is everything okay?;Я вижу ты в последнее время о чем-то постоянно думаешь, все нормально?
+;android, ios;ObtainFractalStage1Dialog0;Yes, everything is fine, I am thinking about one interesting task and want to test it in practice, but I have paws. Will you help me?;Да, все в порядке, я думаю на одной интересной задачей и хочу проверить ее на практике, но у меня лапки. Поможешь мне?
+;android, ios;ObtainFractalStage1Dialog1;Thank you! Then take this two-meter stick and go measure the length of the shoreline of our pond. I am very interested in how much you measure.;Спасибо! Тогда возми вот эту двухметровую палку и сходи измерь длину береговой линии нашего пруда. Очень интересно сколько ты намереешь.
+;android, ios;ObtainFractalStage1Answer1;It will take me one day, I will report the results tomorrow.;Это займет у меня один день, завтра доложу о результатах.
+;android, ios;ObtainFractalStage3Answer0;Hi, I measured the length of the coast - it was 4.76 kilometers, what is next?;Привет, я измерил длину берега - получилось 4.76 километра, что дальше?
+;android, ios;ObtainFractalStage3Dialog0;Very good, very good. Let us write it down - 4.76 kilometers. Now take this smaller ruler and do the same.;Очень хорошо, очень хорошо. Так и запишем - 4.76 километра. Теперь возьми вот эту линейку поменьше и сделай то же самое.
+;android, ios;ObtainFractalStage3Answer1;Okay, I will be back tomorrow with the results.;Окей, вернусь завтра с результатами.
+;android, ios;ObtainFractalStage5Answer0;So, the survey is complete and some kind of devilry is going on there. This time the length of the coast was 5.12 kilometers. How so?;Так-с, исследование завершено и там твориться какая-то чертовщина. На этот раз длина берега составила 5.12 километров. Как так?
+;android, ios;ObtainFractalStage5Dialog0;That, my dear, is the paradox of the coastline. If you want to know more about it, ask the bobers, they are good not only at carpentry, but also at mathematics.;Это, моя дорогая, и есть парадокс береговой линии. Если хочешь узнать про это поподробнее - спроси у боберов, они хороши не только в столярном деле, но и в математике.
+;android, ios;ObtainFractalStage5Answer1;That is what I will do.;Так и сделаю.
+;android, ios;ObtainFractalStage6Answer0;Hi, frogus said you could explain the coastline paradox to me.;Привет, фрогус сказал, что ты можешь объяснить мне про парадокс береговой линии.
+;android, ios;ObtainFractalStage6Dialog0;Aaaah, paradoks linii brzegowej? Wiemy, wiemy. Mam o tym bardzo ciekawą książkę. Przeczytaj ją, jest w niej mnóstwo ciekawych rzeczy.;
+;android, ios;ObtainFractalStage6Answer1;Thank you very much, I think I will master it overnight.;Спасибо большое, думаю освою за ночь.
 
 Quest description;android, ios;QuestIsFinished;Done;Завершен
 ;android, ios;QuestNameNecronomicon;Lost and found;Утраченный и обретённый
 ;android, ios;QuestNameObtainFrogus;Fish and consequences;Последствия рыбалки
 ;android, ios;QuestNameObtainBober;Must be a wind;Должно быть, ветер.
+;android, ios;QuestNameObtainFractal;Coastline paradox;Парадокс береговой линии
 ;android, ios;QuestDescObtainFrogusStage0;Something tells me that I need to make sure I understand catus properly.;Что-то мне подсказывает, что мне нужно убедиться, что я правильно понимаю катусов.
 ;android, ios;QuestDescObtainFrogusStage1;Great, now I need to ask catus, maybe someone needs some help.;Отлично, теперь надо поспрашивать катусов, может кому нужна какая помощь.
 ;android, ios;QuestDescObtainFrogusStage2;As I thought, one of the katus asked me to diversify the menu and find some fish somewhere. I will look for it near the pond he was talking about.;Как я и думала, один из катусов попросил меня разнообразить меню и найти где-нибудь рыбы. Поищу у пруда, про который он говорил.
@@ -196,3 +213,12 @@ Quest description;android, ios;QuestIsFinished;Done;Завершен
 ;android, ios;QuestDescObtainBoberStage10;Frogus said that he would ask his friends from the pond, he said that they are handy and know their business.;Фрогус сказал что поспрашивает своих приятелей с пруда, говорит они рукастые и знают своё дело.
 ;android, ios;QuestDescObtainBoberStage11;It’s time to ask frogus if there is any news from his friends.;Пора бы спросить фрогуса, нет ли вестей от его друзей.
 ;android, ios;QuestDescObtainBoberStage12;Wow! These Bober guys not only gave me a basket for eggs, but they also entrusted me with one of their eggs so that I could care for future generations of bobers.;Вот это да! Эти ребята Боберы не только подарили мне корзину для яйц, но также доверили одно из их яйц, чтобы я могла заботиться о будущих поколениях боберов.
+;android, ios;QuestDescObtainFractalStage0;To begin with, it would be nice to fully understand my pets.;Для начала, неплохо бы полностью понимать моих питомцев.
+;android, ios;QuestDescObtainFractalStage1;I have noticed that lately the froguses have been sitting in thought for a long time, I need to figure out what is going on.;Я заметила что последнее время фрогусы подолгу сидят в задумчивости, надо выяснить в чем дело.
+;android, ios;QuestDescObtainFractalStage2;Frogus asked me to measure the length of the pond shoreline using a two-meter stick. Why would he want that?;Фрогус попросил меня измерить длину береговой линии пруда с помощью двухметровой палки. Зачем ему это?
+;android, ios;QuestDescObtainFractalStage3;Well, I have measured it, it is time to report the results.;Ну я померяла, пора сообщить о результатах.
+;android, ios;QuestDescObtainFractalStage4;Now frogus asked me to do the same thing, but with a different ruler.;Теперь Фрогус попросил меня сделать то же самое, но уже другой линейкой.
+;android, ios;QuestDescObtainFractalStage5;This time I measured a completely different number. Strange, I will go ask frogus.;В этот раз я намеряля совсем другое число. Странно, пойду спрошу фрогуса.
+;android, ios;QuestDescObtainFractalStage6;Frogus sent me to the bobers to find out about this paradox.;Фрогус отправил меня к боберам узнать насчет этого парадокса.
+;android, ios;QuestDescObtainFractalStage7;Bober gave me a book about mathematics, I will dive into it head first.;Бобер дал мне книгу про математику, нырну туда с головой.
+;android, ios;QuestDescObtainFractalStage8;Wow, I learned a lot of new things there! What I liked most in this book were the fractals, now I know what they are and how different they are. I love imagining them!;Вау, я узнала там много нового! Больше всего в этой книге мне понравились фракталы, теперь я знаю что это такое и какие разные они бывают. Обожаю их себе представлять!

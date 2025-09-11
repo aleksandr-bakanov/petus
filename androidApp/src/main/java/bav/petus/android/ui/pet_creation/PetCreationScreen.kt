@@ -99,10 +99,9 @@ private fun PetCreationScreen(
             Spacer(modifier = Modifier.weight(1f))
 
             ActionButton(
-                text = stringResource(
-                    id = R.string.PetCreationScreenButtonTemplate,
-                    petTypeString(uiState.type),
-                    uiState.name
+                text = createButtonText(
+                    type = uiState.type,
+                    name = uiState.name,
                 ),
                 color = Color(0xFF4CAF50),
                 modifier = Modifier.padding(16.dp),

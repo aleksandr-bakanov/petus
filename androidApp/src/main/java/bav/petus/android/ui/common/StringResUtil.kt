@@ -73,6 +73,9 @@ fun StringId.toResId(): Int {
         StringId.CatusEgg -> R.string.CatusEgg
         StringId.BoberEgg -> R.string.BoberEgg
         StringId.Basket -> R.string.Basket
+        StringId.TwoMeterRuler -> R.string.TwoMeterRuler
+        StringId.TenCentimeterRuler -> R.string.TenCentimeterRuler
+        StringId.MathBook -> R.string.MathBook
         StringId.HistoryEventPetBecomeAdult -> R.string.HistoryEventPetBecomeAdult
         StringId.HistoryEventPetBecomeNewborn -> R.string.HistoryEventPetBecomeNewborn
         StringId.HistoryEventPetBecomeOld -> R.string.HistoryEventPetBecomeOld
@@ -122,10 +125,24 @@ fun StringId.toResId(): Int {
         StringId.ObtainBoberStage10Dialog0 -> R.string.ObtainBoberStage10Dialog0
         StringId.ObtainBoberStage11Dialog0 -> R.string.ObtainBoberStage11Dialog0
         StringId.ObtainBoberStage11Answer0 -> R.string.ObtainBoberStage11Answer0
+        StringId.ObtainFractalStage1Answer0 -> R.string.ObtainFractalStage1Answer0
+        StringId.ObtainFractalStage1Dialog0 -> R.string.ObtainFractalStage1Dialog0
+        StringId.ObtainFractalStage1Dialog1 -> R.string.ObtainFractalStage1Dialog1
+        StringId.ObtainFractalStage1Answer1 -> R.string.ObtainFractalStage1Answer1
+        StringId.ObtainFractalStage3Answer0 -> R.string.ObtainFractalStage3Answer0
+        StringId.ObtainFractalStage3Dialog0 -> R.string.ObtainFractalStage3Dialog0
+        StringId.ObtainFractalStage3Answer1 -> R.string.ObtainFractalStage3Answer1
+        StringId.ObtainFractalStage5Answer0 -> R.string.ObtainFractalStage5Answer0
+        StringId.ObtainFractalStage5Dialog0 -> R.string.ObtainFractalStage5Dialog0
+        StringId.ObtainFractalStage5Answer1 -> R.string.ObtainFractalStage5Answer1
+        StringId.ObtainFractalStage6Answer0 -> R.string.ObtainFractalStage6Answer0
+        StringId.ObtainFractalStage6Dialog0 -> R.string.ObtainFractalStage6Dialog0
+        StringId.ObtainFractalStage6Answer1 -> R.string.ObtainFractalStage6Answer1
         StringId.QuestIsFinished -> R.string.QuestIsFinished
         StringId.QuestNameNecronomicon -> R.string.QuestNameNecronomicon
         StringId.QuestNameObtainFrogus -> R.string.QuestNameObtainFrogus
         StringId.QuestNameObtainBober -> R.string.QuestNameObtainBober
+        StringId.QuestNameObtainFractal -> R.string.QuestNameObtainFractal
         StringId.QuestDescObtainFrogusStage0 -> R.string.QuestDescObtainFrogusStage0
         StringId.QuestDescObtainFrogusStage1 -> R.string.QuestDescObtainFrogusStage1
         StringId.QuestDescObtainFrogusStage2 -> R.string.QuestDescObtainFrogusStage2
@@ -157,5 +174,14 @@ fun StringId.toResId(): Int {
         StringId.QuestDescObtainBoberStage10 -> R.string.QuestDescObtainBoberStage10
         StringId.QuestDescObtainBoberStage11 -> R.string.QuestDescObtainBoberStage11
         StringId.QuestDescObtainBoberStage12 -> R.string.QuestDescObtainBoberStage12
+        StringId.QuestDescObtainFractalStage0 -> R.string.QuestDescObtainFractalStage0
+        StringId.QuestDescObtainFractalStage1 -> R.string.QuestDescObtainFractalStage1
+        StringId.QuestDescObtainFractalStage2 -> R.string.QuestDescObtainFractalStage2
+        StringId.QuestDescObtainFractalStage3 -> R.string.QuestDescObtainFractalStage3
+        StringId.QuestDescObtainFractalStage4 -> R.string.QuestDescObtainFractalStage4
+        StringId.QuestDescObtainFractalStage5 -> R.string.QuestDescObtainFractalStage5
+        StringId.QuestDescObtainFractalStage6 -> R.string.QuestDescObtainFractalStage6
+        StringId.QuestDescObtainFractalStage7 -> R.string.QuestDescObtainFractalStage7
+        StringId.QuestDescObtainFractalStage8 -> R.string.QuestDescObtainFractalStage8
     }
 }

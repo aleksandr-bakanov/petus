@@ -12,6 +12,7 @@ import bav.petus.core.engine.Engine.Companion.DAY
 import bav.petus.core.engine.Engine.Companion.HOUR
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_NECRONOMICON
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_BOBER
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FRACTAL
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FROGUS
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
@@ -119,6 +120,30 @@ class QuestSystem(
                     dataStore.edit { store -> store[obtainBoberQuest.currentStageKey] = 9 }
                 }
             }
+
+            // Obtain Fractal stage 2..5 check
+            val obtainFractalQuest = quests[QUEST_TO_OBTAIN_FRACTAL]!!
+            val obtainFractalCurrentStage = preferences[obtainFractalQuest.currentStageKey]
+            if (obtainFractalCurrentStage in 2..5) {
+                // If pet who died is this frog
+                if (preferences[OBTAIN_FRACTAL_FROG_ID_KEY] == e.petId) {
+                    // Then set stage to 1
+                    dataStore.edit { store -> store[obtainFractalQuest.currentStageKey] = 1 }
+                    // And remove rulers from user inventory
+                    userStats.removeInventoryItem(
+                        InventoryItem(
+                            id = InventoryItemId.TwoMeterRuler,
+                            amount = 1,
+                        )
+                    )
+                    userStats.removeInventoryItem(
+                        InventoryItem(
+                            id = InventoryItemId.TenCentimeterRuler,
+                            amount = 1,
+                        )
+                    )
+                }
+            }
         }
     }
 
@@ -174,6 +199,7 @@ class QuestSystem(
         const val QUEST_NECRONOMICON = "QUEST_NECRONOMICON"
         const val QUEST_TO_OBTAIN_FROGUS = "QUEST_TO_OBTAIN_FROGUS"
         const val QUEST_TO_OBTAIN_BOBER = "QUEST_TO_OBTAIN_BOBER"
+        const val QUEST_TO_OBTAIN_FRACTAL = "QUEST_TO_OBTAIN_FRACTAL"
     }
 }
 
@@ -205,6 +231,9 @@ private const val OBTAIN_BOBER_STAGE_0_LAMBDA = "OBTAIN_BOBER_STAGE_0_LAMBDA"
 private const val OBTAIN_BOBER_STAGE_1_LAMBDA = "OBTAIN_BOBER_STAGE_1_LAMBDA"
 private const val OBTAIN_BOBER_STAGE_3_LAMBDA = "OBTAIN_BOBER_STAGE_3_LAMBDA"
 private const val OBTAIN_BOBER_STAGE_5_LAMBDA = "OBTAIN_BOBER_STAGE_5_LAMBDA"
+
+private const val OBTAIN_FRACTAL_STAGE_0_LAMBDA = "OBTAIN_FRACTAL_STAGE_0_LAMBDA"
+private const val OBTAIN_FRACTAL_STAGE_2_LAMBDA = "OBTAIN_FRACTAL_STAGE_2_LAMBDA"
 
 private val conditionLambdas =
     mapOf<String, suspend (QuestSystem, Preferences, QuestSystem.Event) -> Boolean>(
@@ -291,6 +320,22 @@ private val conditionLambdas =
                 } ?: false
             } ?: false
         },
+        OBTAIN_FRACTAL_STAGE_0_LAMBDA to { questSystem, _, event ->
+            (event as? QuestSystem.Event.LanguageKnowledgeChanged)?.let { _ ->
+                val frogusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Frogus)
+                val boberKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Bober)
+
+                frogusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE &&
+                        boberKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE
+            } ?: false
+        },
+        OBTAIN_FRACTAL_STAGE_2_LAMBDA to { _, prefs, event ->
+            (event as? QuestSystem.Event.Tick)?.let { e ->
+                prefs[OBTAIN_FRACTAL_TIMESTAMP_KEY]?.let { timestamp ->
+                    e.secondsSinceEpoch - timestamp > DAY
+                } ?: false
+            } ?: false
+        },
     )
 
 val NECRONOMICON_TIMESTAMP_KEY = longPreferencesKey("NECRONOMICON_TIMESTAMP_KEY")
@@ -304,6 +349,9 @@ val OBTAIN_FROGUS_ASKING_CAT_ID_KEY = longPreferencesKey("OBTAIN_FROGUS_ASKING_C
 val OBTAIN_BOBER_TIMESTAMP_KEY = longPreferencesKey("OBTAIN_BOBER_TIMESTAMP_KEY")
 val OBTAIN_BOBER_SEARCH_DOG_ID_KEY = longPreferencesKey("OBTAIN_BOBER_ASKING_DOG_ID_KEY")
 val OBTAIN_BOBER_SEARCH_FROG_ID_KEY = longPreferencesKey("OBTAIN_BOBER_SEARCH_FROG_ID_KEY")
+
+val OBTAIN_FRACTAL_TIMESTAMP_KEY = longPreferencesKey("OBTAIN_FRACTAL_TIMESTAMP_KEY")
+val OBTAIN_FRACTAL_FROG_ID_KEY = longPreferencesKey("OBTAIN_FRACTAL_FROG_ID_KEY")
 
 private val quests = mapOf(
     QUEST_NECRONOMICON to Quest(
@@ -853,5 +901,126 @@ private val quests = mapOf(
                 },
             ),
         )
-    )
+    ),
+    QUEST_TO_OBTAIN_FRACTAL to Quest(
+        currentStageKey = intPreferencesKey("obtain_fractal_stage_key"),
+        stages = listOf(
+            // Stage 0 - make sure user understands frogus and bober 100%
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_fractal_stage_0_conditions"),
+                initialConditions = setOf(OBTAIN_FRACTAL_STAGE_0_LAMBDA),
+                onFinish = {},
+                additionalAnswerOptions = null,
+            ),
+            // Stage 1 - dialog stage - frogus gives big meter and asks user to measure pond coastline
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_fractal_stage_1_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Frogus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainFractalStage1Answer0,
+                                nextNode = DialogSystem.OBTAIN_FRACTAL_STAGE_1_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 2 - wait 1 day to measure pond coastline using 2-meter ruler
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_fractal_stage_2_conditions"),
+                initialConditions = setOf(OBTAIN_FRACTAL_STAGE_2_LAMBDA),
+                onFinish = {},
+                additionalAnswerOptions = null,
+            ),
+            // Stage 3 - dialog stage - report to frogus about measurement, and go measure with 10 cm ruler
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_fractal_stage_3_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    val wiseFrogId = questSystem.dataStore.data.first()[OBTAIN_FRACTAL_FROG_ID_KEY] ?: -1L
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        wiseFrogId == pet.id &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainFractalStage3Answer0,
+                                nextNode = DialogSystem.OBTAIN_FRACTAL_STAGE_3_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 4 - wait 1 day to measure pond coastline using 10-centimeter ruler
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_fractal_stage_4_conditions"),
+                initialConditions = setOf(OBTAIN_FRACTAL_STAGE_2_LAMBDA), // Same as in stage 2
+                onFinish = {},
+                additionalAnswerOptions = null,
+            ),
+            // Stage 5 - dialog stage - frogus explains coastline paradox and forward user to bober to acquire the book
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_fractal_stage_5_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    val wiseFrogId = questSystem.dataStore.data.first()[OBTAIN_FRACTAL_FROG_ID_KEY] ?: -1L
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        wiseFrogId == pet.id &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainFractalStage5Answer0,
+                                nextNode = DialogSystem.OBTAIN_FRACTAL_STAGE_5_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 6 - dialog stage - bober gives user math book
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_fractal_stage_6_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Bober &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainFractalStage6Answer0,
+                                nextNode = DialogSystem.OBTAIN_FRACTAL_STAGE_6_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 7 - wait for 1 day to read the book
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_fractal_stage_7_conditions"),
+                initialConditions = setOf(OBTAIN_FRACTAL_STAGE_2_LAMBDA), // Same as in stage 2
+                onFinish = { questSystem ->
+                    questSystem.userStats.addNewAvailablePetType(PetType.Fractal)
+                },
+                additionalAnswerOptions = null,
+            ),
+        )
+    ),
 )

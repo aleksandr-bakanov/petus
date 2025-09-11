@@ -142,6 +142,7 @@ fun initKoin() {
                 Migrations(
                     dataStore = get(),
                     userStats = get(),
+                    questSystem = get(),
                 )
             }
         })

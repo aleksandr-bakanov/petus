@@ -56,6 +56,9 @@
 	<string name="CatusEgg">Яйцо Катуса</string>
 	<string name="BoberEgg">Яйцо Бобера</string>
 	<string name="Basket">Прекрасная и надёжная корзина для хранения яиц (с крышечкой)</string>
+	<string name="TwoMeterRuler">Двухметровая палка</string>
+	<string name="TenCentimeterRuler">Десятисантиметровая палочка</string>
+	<string name="MathBook">Что такое математика? - книга Р. Куранта и Г. Роббинса</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
 
 	<!-- Abilities names -->
@@ -167,12 +170,26 @@
 	<string name="ObtainBoberStage10Dialog0">Они сказали что сделают всё в лучшем виде, подожди ещё немного.</string>
 	<string name="ObtainBoberStage11Dialog0">Да! Ты посмотри только что они нам прислали - прекрасную, надёжную корзину для хранения яиц (с крышечкой). А вместе с корзиной они прислали яйцо Бобера - вот так удача!</string>
 	<string name="ObtainBoberStage11Answer0">Воистину удача! Надо будет попробовать вывести одного или двух.</string>
+	<string name="ObtainFractalStage1Answer0">Я вижу ты в последнее время о чем-то постоянно думаешь, все нормально?</string>
+	<string name="ObtainFractalStage1Dialog0">Да, все в порядке, я думаю на одной интересной задачей и хочу проверить ее на практике, но у меня лапки. Поможешь мне?</string>
+	<string name="ObtainFractalStage1Dialog1">Спасибо! Тогда возми вот эту двухметровую палку и сходи измерь длину береговой линии нашего пруда. Очень интересно сколько ты намереешь.</string>
+	<string name="ObtainFractalStage1Answer1">Это займет у меня один день, завтра доложу о результатах.</string>
+	<string name="ObtainFractalStage3Answer0">Привет, я измерил длину берега - получилось 4.76 километра, что дальше?</string>
+	<string name="ObtainFractalStage3Dialog0">Очень хорошо, очень хорошо. Так и запишем - 4.76 километра. Теперь возьми вот эту линейку поменьше и сделай то же самое.</string>
+	<string name="ObtainFractalStage3Answer1">Окей, вернусь завтра с результатами.</string>
+	<string name="ObtainFractalStage5Answer0">Так-с, исследование завершено и там твориться какая-то чертовщина. На этот раз длина берега составила 5.12 километров. Как так?</string>
+	<string name="ObtainFractalStage5Dialog0">Это, моя дорогая, и есть парадокс береговой линии. Если хочешь узнать про это поподробнее - спроси у боберов, они хороши не только в столярном деле, но и в математике.</string>
+	<string name="ObtainFractalStage5Answer1">Так и сделаю.</string>
+	<string name="ObtainFractalStage6Answer0">Привет, фрогус сказал, что ты можешь объяснить мне про парадокс береговой линии.</string>
+	<string name="ObtainFractalStage6Dialog0">Aaaah, paradoks linii brzegowej? Wiemy, wiemy. Mam o tym bardzo ciekawą książkę. Przeczytaj ją, jest w niej mnóstwo ciekawych rzeczy.</string>
+	<string name="ObtainFractalStage6Answer1">Спасибо большое, думаю освою за ночь.</string>
 
 	<!-- Quest description -->
 	<string name="QuestIsFinished">Завершен</string>
 	<string name="QuestNameNecronomicon">Утраченный и обретённый</string>
 	<string name="QuestNameObtainFrogus">Последствия рыбалки</string>
 	<string name="QuestNameObtainBober">Должно быть, ветер.</string>
+	<string name="QuestNameObtainFractal">Парадокс береговой линии</string>
 	<string name="QuestDescObtainFrogusStage0">Что-то мне подсказывает, что мне нужно убедиться, что я правильно понимаю катусов.</string>
 	<string name="QuestDescObtainFrogusStage1">Отлично, теперь надо поспрашивать катусов, может кому нужна какая помощь.</string>
 	<string name="QuestDescObtainFrogusStage2">Как я и думала, один из катусов попросил меня разнообразить меню и найти где-нибудь рыбы. Поищу у пруда, про который он говорил.</string>
@@ -204,4 +221,13 @@
 	<string name="QuestDescObtainBoberStage10">Фрогус сказал что поспрашивает своих приятелей с пруда, говорит они рукастые и знают своё дело.</string>
 	<string name="QuestDescObtainBoberStage11">Пора бы спросить фрогуса, нет ли вестей от его друзей.</string>
 	<string name="QuestDescObtainBoberStage12">Вот это да! Эти ребята Боберы не только подарили мне корзину для яйц, но также доверили одно из их яйц, чтобы я могла заботиться о будущих поколениях боберов.</string>
+	<string name="QuestDescObtainFractalStage0">Для начала, неплохо бы полностью понимать моих питомцев.</string>
+	<string name="QuestDescObtainFractalStage1">Я заметила что последнее время фрогусы подолгу сидят в задумчивости, надо выяснить в чем дело.</string>
+	<string name="QuestDescObtainFractalStage2">Фрогус попросил меня измерить длину береговой линии пруда с помощью двухметровой палки. Зачем ему это?</string>
+	<string name="QuestDescObtainFractalStage3">Ну я померяла, пора сообщить о результатах.</string>
+	<string name="QuestDescObtainFractalStage4">Теперь Фрогус попросил меня сделать то же самое, но уже другой линейкой.</string>
+	<string name="QuestDescObtainFractalStage5">В этот раз я намеряля совсем другое число. Странно, пойду спрошу фрогуса.</string>
+	<string name="QuestDescObtainFractalStage6">Фрогус отправил меня к боберам узнать насчет этого парадокса.</string>
+	<string name="QuestDescObtainFractalStage7">Бобер дал мне книгу про математику, нырну туда с головой.</string>
+	<string name="QuestDescObtainFractalStage8">Вау, я узнала там много нового! Больше всего в этой книге мне понравились фракталы, теперь я знаю что это такое и какие разные они бывают. Обожаю их себе представлять!</string>
 </resources>

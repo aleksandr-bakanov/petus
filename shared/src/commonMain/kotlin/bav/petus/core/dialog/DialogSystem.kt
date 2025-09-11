@@ -10,6 +10,8 @@ import bav.petus.core.engine.NECRONOMICON_WISE_CAT_ID_KEY
 import bav.petus.core.engine.OBTAIN_BOBER_SEARCH_DOG_ID_KEY
 import bav.petus.core.engine.OBTAIN_BOBER_SEARCH_FROG_ID_KEY
 import bav.petus.core.engine.OBTAIN_BOBER_TIMESTAMP_KEY
+import bav.petus.core.engine.OBTAIN_FRACTAL_FROG_ID_KEY
+import bav.petus.core.engine.OBTAIN_FRACTAL_TIMESTAMP_KEY
 import bav.petus.core.engine.OBTAIN_FROGUS_ASKING_CAT_ID_KEY
 import bav.petus.core.engine.OBTAIN_FROGUS_TIMESTAMP_KEY
 import bav.petus.core.engine.QuestSystem
@@ -217,6 +219,12 @@ class DialogSystem(
         const val OBTAIN_BOBER_STAGE_9_DIALOG_2 = "OBTAIN_BOBER_STAGE_9_DIALOG_2"
         const val OBTAIN_BOBER_STAGE_10_DIALOG_0 = "OBTAIN_BOBER_STAGE_10_DIALOG_0"
         const val OBTAIN_BOBER_STAGE_11_DIALOG_0 = "OBTAIN_BOBER_STAGE_11_DIALOG_0"
+
+        const val OBTAIN_FRACTAL_STAGE_1_DIALOG_0 = "OBTAIN_FRACTAL_STAGE_1_DIALOG_0"
+        const val OBTAIN_FRACTAL_STAGE_1_DIALOG_1 = "OBTAIN_FRACTAL_STAGE_1_DIALOG_1"
+        const val OBTAIN_FRACTAL_STAGE_3_DIALOG_0 = "OBTAIN_FRACTAL_STAGE_3_DIALOG_0"
+        const val OBTAIN_FRACTAL_STAGE_5_DIALOG_0 = "OBTAIN_FRACTAL_STAGE_5_DIALOG_0"
+        const val OBTAIN_FRACTAL_STAGE_6_DIALOG_0 = "OBTAIN_FRACTAL_STAGE_6_DIALOG_0"
 
         private val nodes: Map<String, DialogNode> = mapOf(
             STANDARD_DIALOG_BEGINNING to DialogNode(
@@ -602,6 +610,106 @@ class DialogSystem(
                             userStats.addInventoryItem(InventoryItem(InventoryItemId.BoberEgg, 1))
                             userStats.addInventoryItem(InventoryItem(InventoryItemId.Basket, 1))
                             questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_BOBER)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_FRACTAL_STAGE_1_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainFractalStage1Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Sure,
+                        nextNode = OBTAIN_FRACTAL_STAGE_1_DIALOG_1,
+                    ),
+                )
+            ),
+            OBTAIN_FRACTAL_STAGE_1_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainFractalStage1Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainFractalStage1Answer1,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_FRACTAL_TIMESTAMP_KEY] = now
+                                pet?.let { p -> store[OBTAIN_FRACTAL_FROG_ID_KEY] = p.id }
+                            }
+                            questSystem.userStats.addInventoryItem(
+                                item = InventoryItem(
+                                    id = InventoryItemId.TwoMeterRuler,
+                                    amount = 1,
+                                )
+                            )
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_FRACTAL)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_FRACTAL_STAGE_3_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainFractalStage3Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainFractalStage3Answer1,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_FRACTAL_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.userStats.removeInventoryItem(
+                                item = InventoryItem(
+                                    id = InventoryItemId.TwoMeterRuler,
+                                    amount = 1,
+                                )
+                            )
+                            questSystem.userStats.addInventoryItem(
+                                item = InventoryItem(
+                                    id = InventoryItemId.TenCentimeterRuler,
+                                    amount = 1,
+                                )
+                            )
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_FRACTAL)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_FRACTAL_STAGE_5_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainFractalStage5Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainFractalStage5Answer1,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            questSystem.userStats.removeInventoryItem(
+                                item = InventoryItem(
+                                    id = InventoryItemId.TenCentimeterRuler,
+                                    amount = 1,
+                                )
+                            )
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_FRACTAL)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_FRACTAL_STAGE_6_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainFractalStage6Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainFractalStage6Answer1,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_FRACTAL_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.userStats.addInventoryItem(
+                                item = InventoryItem(
+                                    id = InventoryItemId.MathBook,
+                                    amount = 1,
+                                )
+                            )
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_FRACTAL)
                         }
                     ),
                 )

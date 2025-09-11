@@ -8,6 +8,7 @@ import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.model.AgeState
 import bav.petus.model.BodyState
 import bav.petus.model.BurialType
+import bav.petus.model.FractalType
 import bav.petus.model.HistoryEvent
 import bav.petus.model.Pet
 import bav.petus.model.PetType
@@ -18,7 +19,6 @@ import bav.petus.repo.HistoryRepository
 import bav.petus.repo.PetsRepository
 import bav.petus.repo.WeatherRepository
 import bav.petus.useCase.WeatherAttitudeUseCase
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.first
@@ -48,6 +48,7 @@ class Engine(
         val pet = Pet(
             name = name.trim(),
             type = type,
+            fractalType = getRandomFractalType(),
             creationTime = getTimestampSecondsSinceEpoch(),
             illnessPossibility = getRandomIllnessPossibility(),
             health = getFullHealthForPetType(type),
@@ -58,6 +59,11 @@ class Engine(
         historyRepo.getLatestPetId()?.let { id ->
             historyRepo.recordHistoryEvent(id, HistoryEvent.PetCreated)
         }
+    }
+
+    private fun getRandomFractalType(): FractalType {
+        val randomIndex = Random.Default.nextInt(FractalType.entries.size)
+        return FractalType.entries[randomIndex]
     }
 
     fun isAllowedToFeedPet(pet: Pet): Boolean {

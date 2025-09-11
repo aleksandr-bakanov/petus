@@ -56,6 +56,9 @@
 	<string name="CatusEgg">Catus egg</string>
 	<string name="BoberEgg">Bober egg</string>
 	<string name="Basket">Beautiful and reliable basket for storing eggs (with a lid)</string>
+	<string name="TwoMeterRuler">2 meter stick</string>
+	<string name="TenCentimeterRuler">10 centimeter stick</string>
+	<string name="MathBook">What Is Mathematics? - book by Herbert Robbins and Richard Courant</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
 
 	<!-- Abilities names -->
@@ -167,12 +170,26 @@
 	<string name="ObtainBoberStage10Dialog0">They said they would do everything in the best possible way, wait a little longer.</string>
 	<string name="ObtainBoberStage11Dialog0">Yes! Look what they just sent us - a beautiful, reliable basket for storing eggs (with a lid). And along with the basket they sent a Bober egg - lucky!</string>
 	<string name="ObtainBoberStage11Answer0">Truly a stroke of luck! I will have to try and hatch one or two.</string>
+	<string name="ObtainFractalStage1Answer0">I see you have been thinking about something a lot lately, is everything okay?</string>
+	<string name="ObtainFractalStage1Dialog0">Yes, everything is fine, I am thinking about one interesting task and want to test it in practice, but I have paws. Will you help me?</string>
+	<string name="ObtainFractalStage1Dialog1">Thank you! Then take this two-meter stick and go measure the length of the shoreline of our pond. I am very interested in how much you measure.</string>
+	<string name="ObtainFractalStage1Answer1">It will take me one day, I will report the results tomorrow.</string>
+	<string name="ObtainFractalStage3Answer0">Hi, I measured the length of the coast - it was 4.76 kilometers, what is next?</string>
+	<string name="ObtainFractalStage3Dialog0">Very good, very good. Let us write it down - 4.76 kilometers. Now take this smaller ruler and do the same.</string>
+	<string name="ObtainFractalStage3Answer1">Okay, I will be back tomorrow with the results.</string>
+	<string name="ObtainFractalStage5Answer0">So, the survey is complete and some kind of devilry is going on there. This time the length of the coast was 5.12 kilometers. How so?</string>
+	<string name="ObtainFractalStage5Dialog0">That, my dear, is the paradox of the coastline. If you want to know more about it, ask the bobers, they are good not only at carpentry, but also at mathematics.</string>
+	<string name="ObtainFractalStage5Answer1">That is what I will do.</string>
+	<string name="ObtainFractalStage6Answer0">Hi, frogus said you could explain the coastline paradox to me.</string>
+	<string name="ObtainFractalStage6Dialog0">Aaaah, paradoks linii brzegowej? Wiemy, wiemy. Mam o tym bardzo ciekawą książkę. Przeczytaj ją, jest w niej mnóstwo ciekawych rzeczy.</string>
+	<string name="ObtainFractalStage6Answer1">Thank you very much, I think I will master it overnight.</string>
 
 	<!-- Quest description -->
 	<string name="QuestIsFinished">Done</string>
 	<string name="QuestNameNecronomicon">Lost and found</string>
 	<string name="QuestNameObtainFrogus">Fish and consequences</string>
 	<string name="QuestNameObtainBober">Must be a wind</string>
+	<string name="QuestNameObtainFractal">Coastline paradox</string>
 	<string name="QuestDescObtainFrogusStage0">Something tells me that I need to make sure I understand catus properly.</string>
 	<string name="QuestDescObtainFrogusStage1">Great, now I need to ask catus, maybe someone needs some help.</string>
 	<string name="QuestDescObtainFrogusStage2">As I thought, one of the katus asked me to diversify the menu and find some fish somewhere. I will look for it near the pond he was talking about.</string>
@@ -204,4 +221,13 @@
 	<string name="QuestDescObtainBoberStage10">Frogus said that he would ask his friends from the pond, he said that they are handy and know their business.</string>
 	<string name="QuestDescObtainBoberStage11">It’s time to ask frogus if there is any news from his friends.</string>
 	<string name="QuestDescObtainBoberStage12">Wow! These Bober guys not only gave me a basket for eggs, but they also entrusted me with one of their eggs so that I could care for future generations of bobers.</string>
+	<string name="QuestDescObtainFractalStage0">To begin with, it would be nice to fully understand my pets.</string>
+	<string name="QuestDescObtainFractalStage1">I have noticed that lately the froguses have been sitting in thought for a long time, I need to figure out what is going on.</string>
+	<string name="QuestDescObtainFractalStage2">Frogus asked me to measure the length of the pond shoreline using a two-meter stick. Why would he want that?</string>
+	<string name="QuestDescObtainFractalStage3">Well, I have measured it, it is time to report the results.</string>
+	<string name="QuestDescObtainFractalStage4">Now frogus asked me to do the same thing, but with a different ruler.</string>
+	<string name="QuestDescObtainFractalStage5">This time I measured a completely different number. Strange, I will go ask frogus.</string>
+	<string name="QuestDescObtainFractalStage6">Frogus sent me to the bobers to find out about this paradox.</string>
+	<string name="QuestDescObtainFractalStage7">Bober gave me a book about mathematics, I will dive into it head first.</string>
+	<string name="QuestDescObtainFractalStage8">Wow, I learned a lot of new things there! What I liked most in this book were the fractals, now I know what they are and how different they are. I love imagining them!</string>
 </resources>
