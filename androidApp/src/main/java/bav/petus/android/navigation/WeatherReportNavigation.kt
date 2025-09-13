@@ -1,6 +1,5 @@
 package bav.petus.android.navigation
 
-import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import bav.petus.android.ui.weather_report.WeatherReportRoute
@@ -14,10 +13,8 @@ data object WeatherReportScreenDestination
 fun NavGraphBuilder.weatherReportScreen() {
     composable<WeatherReportScreenDestination> {
         val viewModel: WeatherReportViewModel = koinViewModel()
-        LaunchedEffect(Unit) {
-            viewModel.navigation.collect { _ ->
+        ObserveNavigationEvents(viewModel.navigation) { _ ->
 
-            }
         }
         WeatherReportRoute(viewModel = viewModel)
     }

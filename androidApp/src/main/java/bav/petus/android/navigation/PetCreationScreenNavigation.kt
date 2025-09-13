@@ -1,6 +1,5 @@
 package bav.petus.android.navigation
 
-import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -17,15 +16,13 @@ fun NavGraphBuilder.petCreationScreen(
 ) {
     composable<PetCreationScreenDestination> {
         val viewModel: PetCreationScreenViewModel = koinViewModel()
-        LaunchedEffect(Unit) {
-            viewModel.navigation.collect { navigation ->
-                when (navigation) {
-                    PetCreationScreenViewModel.Navigation.CloseScreen -> {
-                        navController.popBackStack()
-                    }
-                    PetCreationScreenViewModel.Navigation.PetCreationSuccess -> {
-                        navController.popBackStack()
-                    }
+        ObserveNavigationEvents(viewModel.navigation) { navigation ->
+            when (navigation) {
+                PetCreationScreenViewModel.Navigation.CloseScreen -> {
+                    navController.popBackStack()
+                }
+                PetCreationScreenViewModel.Navigation.PetCreationSuccess -> {
+                    navController.popBackStack()
                 }
             }
         }

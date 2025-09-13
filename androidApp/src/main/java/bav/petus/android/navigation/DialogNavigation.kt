@@ -1,6 +1,5 @@
 package bav.petus.android.navigation
 
-import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -26,12 +25,10 @@ fun NavGraphBuilder.dialogScreen(
                 parametersOf(args.petId)
             }
         )
-        LaunchedEffect(Unit) {
-            viewModel.navigation.collect { navigation ->
-                when (navigation) {
-                    DialogScreenViewModel.Navigation.CloseScreen -> {
-                        navController.popBackStack()
-                    }
+        ObserveNavigationEvents(viewModel.navigation) { navigation ->
+            when (navigation) {
+                DialogScreenViewModel.Navigation.CloseScreen -> {
+                    navController.popBackStack()
                 }
             }
         }
