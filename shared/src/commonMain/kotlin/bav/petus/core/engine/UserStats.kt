@@ -51,7 +51,6 @@ class UserStats(
      * Returns language level for provided pet type in range [0, [MAXIMUM_LANGUAGE_KNOWLEDGE]]
      */
     suspend fun getLanguageKnowledge(type: PetType): Int {
-        if (type == PetType.Fractal) return MAXIMUM_LANGUAGE_UI_KNOWLEDGE
         return dataStore.data.first()[type.languageKnowledgeKey()] ?: 0
     }
 

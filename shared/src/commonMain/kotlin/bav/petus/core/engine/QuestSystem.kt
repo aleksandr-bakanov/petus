@@ -14,6 +14,7 @@ import bav.petus.core.engine.QuestSystem.Companion.QUEST_NECRONOMICON
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_BOBER
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FRACTAL
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FROGUS
+import bav.petus.core.engine.UserStats.Companion.MAXIMUM_LANGUAGE_KNOWLEDGE
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
 import bav.petus.core.resources.StringId
@@ -1018,6 +1019,7 @@ private val quests = mapOf(
                 initialConditions = setOf(OBTAIN_FRACTAL_STAGE_2_LAMBDA), // Same as in stage 2
                 onFinish = { questSystem ->
                     questSystem.userStats.addNewAvailablePetType(PetType.Fractal)
+                    questSystem.userStats.saveLanguageKnowledge(PetType.Fractal, MAXIMUM_LANGUAGE_KNOWLEDGE)
                 },
                 additionalAnswerOptions = null,
             ),
