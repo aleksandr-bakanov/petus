@@ -29,14 +29,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.Path
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import bav.petus.viewModel.questStatus.QuestDescription
 import bav.petus.viewModel.questStatus.QuestStatusUiState
 import bav.petus.viewModel.questStatus.QuestStatusViewModel
-import kotlin.collections.List
 
 @Composable
 fun QuestStatusRoute(
@@ -65,6 +63,7 @@ private fun QuestStatusScreen(
         ) {
 
             Spacer(modifier = Modifier.height(8.dp))
+
             for (quest in uiState.quests) {
                 var isExpanded by remember { mutableStateOf(false) }
                 Row(
@@ -83,27 +82,15 @@ private fun QuestStatusScreen(
                             title = quest.questName,
                             message = quest.stagesDescription,
                         )
-                        if(isExpanded) {
-                            Text(
-                                text = quest.questDescription,
-                                style = MaterialTheme.typography.bodyMedium,
-                                modifier = Modifier
-                                    .padding(8.dp),
-                            )
-                        }
+                        ExpandableDescription(
+                            description = quest.questDescription,
+                            isExpanded = isExpanded,
+                        )
                     }
-                    Icon(
-                        imageVector = if (isExpanded) {
-                            Icons.Filled.KeyboardArrowUp
-                        } else {
-                            Icons.Filled.KeyboardArrowDown
-                        },
-                        contentDescription = "Expand icon",
-                        modifier = Modifier
-                            .padding(start = 8.dp)
-                            .clickable { isExpanded = !isExpanded }
-                            .align( Alignment.CenterVertically)
 
+                    ExpandableIcon(
+                        isExpanded = isExpanded,
+                        onExpandChanged = { isExpanded = it },
                     )
 
                 }
@@ -118,7 +105,8 @@ private fun QuestTitleRow(title: String, message: String) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .wrapContentHeight()
-        .padding(start = 8.dp)
+        .padding(start = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = title,
@@ -127,10 +115,44 @@ private fun QuestTitleRow(title: String, message: String) {
         )
         Text(
             text = message,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier
+                .weight(1f),
             textAlign = TextAlign.End
         )
     }
+}
+@Composable
+private fun ExpandableDescription(
+    description: String,
+    isExpanded: Boolean,
+) {
+    if(isExpanded) {
+        Text(
+            text = description,
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.
+            padding(8.dp)
+        )
+    }
+}
+
+@Composable
+private fun ExpandableIcon(
+    isExpanded: Boolean,
+    onExpandChanged: (Boolean) -> Unit,
+) {
+    Icon(
+        imageVector = if (isExpanded) {
+            Icons.Filled.KeyboardArrowUp
+        } else {
+            Icons.Filled.KeyboardArrowDown
+        },
+        contentDescription = "Expand icon",
+        modifier = Modifier
+            .padding(start = 8.dp)
+            .clickable { onExpandChanged(!isExpanded) }
+
+    )
 }
 
 @Preview
