@@ -71,7 +71,7 @@ private fun QuestStatusScreen(
                         .fillMaxWidth()
                         .wrapContentHeight()
                         .animateContentSize(),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.Top
                 ) {
                     Column(
                         modifier = Modifier
