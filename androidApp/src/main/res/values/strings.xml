@@ -93,32 +93,40 @@
 	<string name="IAmSick">I am sick, do you have any medicine?</string>
 	<string name="IAmSickLatin">Aeger sum, habesne medicamentum aliquod?</string>
 	<string name="IAmSickPolish">Jestem chory. Czy masz jakieś lekarstwo?</string>
+	<string name="IAmSickMath">[C = 2πr]</string>
 	<string name="IAmHungry">I am hungry, give me some food.</string>
 	<string name="IAmHungryLatin">Esurio, da mihi cibum.</string>
 	<string name="IAmHungryPolish">Jestem głodny, daj mi trochę jedzenia.</string>
+	<string name="IAmHungryMath">[sin^2(θ) + cos^2(θ) = 1]</string>
 	<string name="IPooped">I pooped (it would be nice if you clean after me).</string>
 	<string name="IPoopedLatin">Cacavi (gratum esset si post me lavares).</string>
 	<string name="IPoopedPolish">Zrobiłem kupę (byłoby miło, gdybyś po mnie posprzątał).</string>
+	<string name="IPoopedMath">[φ = (1 + √5) / 2]</string>
 	<string name="IAmBored">I am bored, wanna play?</string>
 	<string name="IAmBoredLatin">Taedet me, ludere vis?</string>
 	<string name="IAmBoredPolish">Nudzę się, chcesz zagrać?</string>
+	<string name="IAmBoredMath">[F - E + V = 2]</string>
 	<string name="IAmStillAngryAfterForceWakeUp">I am still not happy that you woke me up for no reason!</string>
 	<string name="IAmStillAngryAfterForceWakeUpLatin">Adhuc non gaudeo te me sine causa excitasse!</string>
 	<string name="IAmStillAngryAfterForceWakeUpPolish">Nadal nie jestem zadowolony, że mnie obudziłeś bez powodu!</string>
+	<string name="IAmStillAngryAfterForceWakeUpMath">[(-b ± √(b^2 - 4ac)) / 2a]</string>
 	<string name="IAmHalfHp">I do not feel so good, need some rest.</string>
 	<string name="IAmHalfHpLatin">Non tam bene me habeo, requie mihi opus est.</string>
 	<string name="IAmHalfHpPolish">Nie czuję się najlepiej, muszę odpocząć.</string>
+	<string name="IAmHalfHpMath">[a^2 + b^2 = c^2]</string>
 	<string name="IAmGood">I am fine.</string>
 	<string name="IAmGoodLatin">Bene sum.</string>
 	<string name="IAmGoodPolish">Mam się dobrze.</string>
-	<string name="IWillDie">As I am old, within the next five minutes I will die with a probability of %1$.3f%%.</string>
-	<string name="IWillDieLatin">Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.</string>
-	<string name="IWillDiePolish">Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.</string>
+	<string name="IAmGoodMath">[e^(iπ) + 1 = 0]</string>
 
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">What is going on with you?</string>
 	<string name="WhatIsGoingOnWithYouLatin">Quid tecum agitur?</string>
 	<string name="WhatIsGoingOnWithYouPolish">Jak się masz?</string>
+	<string name="WhatIsGoingOnWithYouMathMandelbrot">1. c, z ∈ ℂ\n2. z ↦ z^2 + c\n3. ∀ c : z[0] = 0, n → ∞, |z[n]| ↛ ∞</string>
+	<string name="WhatIsGoingOnWithYouMathGosper">1. ∠ 60°\n2. + := +60°\n3. — := -60°\n4. A\n5. A ↦ A — B — — B + A + + A A + B —\n6. B ↦ + A — B B — — B — A + + A + B</string>
+	<string name="WhatIsGoingOnWithYouMathKoch">1. ∠ 60°\n2. + := +60°\n3. — := -60°\n4. F\n5. F ↦ F + F — — F + F</string>
+	<string name="WhatIsGoingOnWithYouMathSponge">1. M := ∩{n∈ℕ} M[n]\n2. M[n+1] := { (x,y,z) ∈ ℝ^3 : ∃i,j,k ∈ {0,1,2} (3x - i, 3y - j, 3z - k) ∈ M[n], ¬((i=1 ∧ j=1) ∨ (i=1 ∧ k=1) ∨ (j=1 ∧ k=1)) }</string>
 	<string name="BeenBetter">Been better.</string>
 	<string name="IAmOkayHowAreYou">I am fine, how are you?</string>
 	<string name="IShouldGo">I should go.</string>

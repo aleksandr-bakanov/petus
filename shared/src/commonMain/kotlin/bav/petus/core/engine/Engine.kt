@@ -222,6 +222,14 @@ class Engine(
         return pet.bodyState == BodyState.Zombie || pet.bodyState == BodyState.Spirit
     }
 
+    fun isPetSpeakPolish(pet: Pet): Boolean {
+        return pet.type == PetType.Bober
+    }
+
+    fun isPetSpeakMath(pet: Pet): Boolean {
+        return pet.type == PetType.Fractal
+    }
+
     fun isPetHungry(pet: Pet): Boolean {
         return getPetSatietyFraction(pet) < 0.66f
     }

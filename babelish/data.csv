@@ -87,24 +87,31 @@ History events;android, ios;HistoryEventPetCreated;Created;Создан
 Pet state description dialogs;android, ios;IAmSick;I am sick, do you have any medicine?;Я болею, у тебя найдется какое-нибудь лекарство?
 ;android, ios;IAmSickLatin;Aeger sum, habesne medicamentum aliquod?;
 ;android, ios;IAmSickPolish;Jestem chory. Czy masz jakieś lekarstwo?;
+;android, ios;IAmSickMath;[C = 2πr];
 ;android, ios;IAmHungry;I am hungry, give me some food.;Я голодный, дай что-нибудь поесть.
 ;android, ios;IAmHungryLatin;Esurio, da mihi cibum.;
 ;android, ios;IAmHungryPolish;Jestem głodny, daj mi trochę jedzenia.;
+;android, ios;IAmHungryMath;[sin^2(θ) + cos^2(θ) = 1];
 ;android, ios;IPooped;I pooped (it would be nice if you clean after me).;Я сходил в туалет (будет неплохо если ты уберешь за мной).
 ;android, ios;IPoopedLatin;Cacavi (gratum esset si post me lavares).;
 ;android, ios;IPoopedPolish;Zrobiłem kupę (byłoby miło, gdybyś po mnie posprzątał).;
+;android, ios;IPoopedMath;[φ = (1 + √5) / 2];
 ;android, ios;IAmBored;I am bored, wanna play?;Мне скучно, поиграем?
 ;android, ios;IAmBoredLatin;Taedet me, ludere vis?;
 ;android, ios;IAmBoredPolish;Nudzę się, chcesz zagrać?;
+;android, ios;IAmBoredMath;[F - E + V = 2];
 ;android, ios;IAmStillAngryAfterForceWakeUp;I am still not happy that you woke me up for no reason!;Я все еще не доволен тем, что ты меня разбудила по чем зря!
 ;android, ios;IAmStillAngryAfterForceWakeUpLatin;Adhuc non gaudeo te me sine causa excitasse!;
 ;android, ios;IAmStillAngryAfterForceWakeUpPolish;Nadal nie jestem zadowolony, że mnie obudziłeś bez powodu!;
+;android, ios;IAmStillAngryAfterForceWakeUpMath;[(-b ± √(b^2 - 4ac)) / 2a];
 ;android, ios;IAmHalfHp;I do not feel so good, need some rest.;Что-то мне не хорошо, надо бы отдохнуть.
 ;android, ios;IAmHalfHpLatin;Non tam bene me habeo, requie mihi opus est.;
 ;android, ios;IAmHalfHpPolish;Nie czuję się najlepiej, muszę odpocząć.;
+;android, ios;IAmHalfHpMath;[a^2 + b^2 = c^2];
 ;android, ios;IAmGood;I am fine.;Всё хорошо.
 ;android, ios;IAmGoodLatin;Bene sum.;
 ;android, ios;IAmGoodPolish;Mam się dobrze.;
+;android, ios;IAmGoodMath;[e^(iπ) + 1 = 0];
 ;android, ios;IWillDie;As I am old, within the next five minutes I will die with a probability of %1$.3f%%.;Поскольку я стар, в течение следующих пяти минут я умру с вероятностью %1$.3f%%.
 ;android, ios;IWillDieLatin;Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.;
 ;android, ios;IWillDiePolish;Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.;
@@ -112,6 +119,10 @@ Pet state description dialogs;android, ios;IAmSick;I am sick, do you have any me
 Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как дела?
 ;android, ios;WhatIsGoingOnWithYouLatin;Quid tecum agitur?;
 ;android, ios;WhatIsGoingOnWithYouPolish;Jak się masz?;
+;android, ios;WhatIsGoingOnWithYouMathMandelbrot;1. c, z ∈ ℂ\n2. z ↦ z^2 + c\n3. ∀ c : z[0] = 0, n → ∞, |z[n]| ↛ ∞;
+;android, ios;WhatIsGoingOnWithYouMathGosper;1. ∠ 60°\n2. + := +60°\n3. — := -60°\n4. A\n5. A ↦ A — B — — B + A + + A A + B —\n6. B ↦ + A — B B — — B — A + + A + B;
+;android, ios;WhatIsGoingOnWithYouMathKoch;1. ∠ 60°\n2. + := +60°\n3. — := -60°\n4. F\n5. F ↦ F + F — — F + F;
+;android, ios;WhatIsGoingOnWithYouMathSponge;1. M := ∩{n∈ℕ} M[n]\n2. M[n+1] := { (x,y,z) ∈ ℝ^3 : ∃i,j,k ∈ {0,1,2} (3x - i, 3y - j, 3z - k) ∈ M[n], ¬((i=1 ∧ j=1) ∨ (i=1 ∧ k=1) ∨ (j=1 ∧ k=1)) };
 ;android, ios;BeenBetter;Been better.;Бывало и получше.
 ;android, ios;IAmOkayHowAreYou;I am fine, how are you?;Порядок, как сам?
 ;android, ios;IShouldGo;I should go.;Мне пора.

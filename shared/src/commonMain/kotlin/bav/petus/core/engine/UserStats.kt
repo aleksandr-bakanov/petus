@@ -62,7 +62,7 @@ class UserStats(
                     dogus = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_DOGUS_KEY),
                     frogus = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_FROGUS_KEY),
                     bober = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_BOBER_KEY),
-                    fractal = MAXIMUM_LANGUAGE_UI_KNOWLEDGE,
+                    fractal = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_FRACTAL_KEY),
                 ),
                 inventory = it.getInventory(),
                 abilities = it.getAbilities(),

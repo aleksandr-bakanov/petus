@@ -22,6 +22,7 @@ import bav.petus.core.resources.StringId
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.model.AgeState
 import bav.petus.model.BurialType
+import bav.petus.model.FractalType
 import bav.petus.model.Pet
 import bav.petus.model.PetType
 import kotlinx.coroutines.flow.first
@@ -113,7 +114,18 @@ class DialogSystem(
     private fun getWhatGoingOnStringId(pet: Pet): StringId {
         return when {
             engine.isPetSpeakLatin(pet) -> StringId.WhatIsGoingOnWithYouLatin
-            pet.type == PetType.Bober -> StringId.WhatIsGoingOnWithYouPolish
+            engine.isPetSpeakPolish(pet) -> StringId.WhatIsGoingOnWithYouPolish
+            engine.isPetSpeakMath(pet) -> {
+                if (pet.ageState == AgeState.NewBorn) {
+                    StringId.WhatIsGoingOnWithYouMathMandelbrot
+                } else {
+                    when (pet.fractalType) {
+                        FractalType.Gosper -> StringId.WhatIsGoingOnWithYouMathGosper
+                        FractalType.Koch -> StringId.WhatIsGoingOnWithYouMathKoch
+                        FractalType.Sponge -> StringId.WhatIsGoingOnWithYouMathSponge
+                    }
+                }
+            }
             else -> StringId.WhatIsGoingOnWithYou
         }
     }
@@ -121,7 +133,8 @@ class DialogSystem(
     private fun getSickStringId(pet: Pet): StringId {
         return when {
             engine.isPetSpeakLatin(pet) -> StringId.IAmSickLatin
-            pet.type == PetType.Bober -> StringId.IAmSickPolish
+            engine.isPetSpeakPolish(pet) -> StringId.IAmSickPolish
+            engine.isPetSpeakMath(pet) -> StringId.IAmSickMath
             else -> StringId.IAmSick
         }
     }
@@ -129,7 +142,8 @@ class DialogSystem(
     private fun getHungryStringId(pet: Pet): StringId {
         return when {
             engine.isPetSpeakLatin(pet) -> StringId.IAmHungryLatin
-            pet.type == PetType.Bober -> StringId.IAmHungryPolish
+            engine.isPetSpeakPolish(pet) -> StringId.IAmHungryPolish
+            engine.isPetSpeakMath(pet) -> StringId.IAmHungryMath
             else -> StringId.IAmHungry
         }
     }
@@ -137,7 +151,8 @@ class DialogSystem(
     private fun getPoopedStringId(pet: Pet): StringId {
         return when {
             engine.isPetSpeakLatin(pet) -> StringId.IPoopedLatin
-            pet.type == PetType.Bober -> StringId.IPoopedPolish
+            engine.isPetSpeakPolish(pet) -> StringId.IPoopedPolish
+            engine.isPetSpeakMath(pet) -> StringId.IPoopedMath
             else -> StringId.IPooped
         }
     }
@@ -145,7 +160,8 @@ class DialogSystem(
     private fun getBoredStringId(pet: Pet): StringId {
         return when {
             engine.isPetSpeakLatin(pet) -> StringId.IAmBoredLatin
-            pet.type == PetType.Bober -> StringId.IAmBoredPolish
+            engine.isPetSpeakPolish(pet) -> StringId.IAmBoredPolish
+            engine.isPetSpeakMath(pet) -> StringId.IAmBoredMath
             else -> StringId.IAmBored
         }
     }
@@ -153,7 +169,8 @@ class DialogSystem(
     private fun getAngryAfterForceWakeUpStringId(pet: Pet): StringId {
         return when {
             engine.isPetSpeakLatin(pet) -> StringId.IAmStillAngryAfterForceWakeUpLatin
-            pet.type == PetType.Bober -> StringId.IAmStillAngryAfterForceWakeUpPolish
+            engine.isPetSpeakPolish(pet) -> StringId.IAmStillAngryAfterForceWakeUpPolish
+            engine.isPetSpeakMath(pet) -> StringId.IAmStillAngryAfterForceWakeUpMath
             else -> StringId.IAmStillAngryAfterForceWakeUp
         }
     }
@@ -161,7 +178,8 @@ class DialogSystem(
     private fun getHalfHpStringId(pet: Pet): StringId {
         return when {
             engine.isPetSpeakLatin(pet) -> StringId.IAmHalfHpLatin
-            pet.type == PetType.Bober -> StringId.IAmHalfHpPolish
+            engine.isPetSpeakPolish(pet) -> StringId.IAmHalfHpPolish
+            engine.isPetSpeakMath(pet) -> StringId.IAmHalfHpMath
             else -> StringId.IAmHalfHp
         }
     }
@@ -178,7 +196,8 @@ class DialogSystem(
     private fun getIAmGoodStringId(pet: Pet): StringId {
         return when {
             engine.isPetSpeakLatin(pet) -> StringId.IAmGoodLatin
-            pet.type == PetType.Bober -> StringId.IAmGoodPolish
+            engine.isPetSpeakPolish(pet) -> StringId.IAmGoodPolish
+            engine.isPetSpeakMath(pet) -> StringId.IAmGoodMath
             else -> StringId.IAmGood
         }
     }
