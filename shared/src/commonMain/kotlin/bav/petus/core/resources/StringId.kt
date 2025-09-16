@@ -92,6 +92,10 @@ sealed class StringId {
     data object IAmGood : StringId()
     data object IAmGoodLatin : StringId()
     data object IAmGoodPolish : StringId()
+    data class IWillDie(val chance: Float) : StringId()
+    data class IWillDieLatin(val chance: Float) : StringId()
+    data class IWillDiePolish(val chance: Float) : StringId()
+
 
     data object NecronomiconStage3AnswerOption0 : StringId()
     data object NecronomiconStage3CommonDialog : StringId()
