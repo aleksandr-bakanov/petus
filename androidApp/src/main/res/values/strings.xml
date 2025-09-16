@@ -111,9 +111,9 @@
 	<string name="IAmGood">I am fine.</string>
 	<string name="IAmGoodLatin">Bene sum.</string>
 	<string name="IAmGoodPolish">Mam się dobrze.</string>
-	<string name="IWillDie">As I am old, within next five minutes I will die with probability of %.4f%%.</string>
-	<string name="IWillDieLatin">Quia senex sum, in proximis quinque minutis moriendum est probabilitate %.4f%%.</string>
-	<string name="IWillDiePolish">Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.4f%%.</string>
+	<string name="IWillDie">As I am old, within next five minutes I will die with probability of %.3f%%.</string>
+	<string name="IWillDieLatin">Quia senex sum, in proximis quinque minutis moriendum est probabilitate %.3f%%.</string>
+	<string name="IWillDiePolish">Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.</string>
 
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">What is going on with you?</string>
