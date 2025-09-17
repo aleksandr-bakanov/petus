@@ -20,6 +20,7 @@ import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
 import bav.petus.core.resources.StringId
 import bav.petus.core.time.getTimestampSecondsSinceEpoch
+import bav.petus.model.AgeState
 import bav.petus.model.BurialType
 import bav.petus.model.Pet
 import bav.petus.model.PetType
@@ -92,6 +93,7 @@ class DialogSystem(
                 val isBored = engine.isPetBored(pet) && isAngryAfterForceWakeUp.not()
                 val isHalfHp = engine.isPetLowHealth(pet)
                 val isGood = listOf(isSick, isHungry, isPooped, isBored, isHalfHp, isAngryAfterForceWakeUp).none { it }
+                val isOld = pet.ageState == AgeState.Old
 
                 if (isSick) add(getSickStringId(pet))
                 if (isHungry) add(getHungryStringId(pet))
@@ -100,6 +102,7 @@ class DialogSystem(
                 if (isAngryAfterForceWakeUp) add(getAngryAfterForceWakeUpStringId(pet))
                 if (isHalfHp) add(getHalfHpStringId(pet))
                 if (isGood) add(getIAmGoodStringId(pet))
+                if (isOld) add(getOldChancesOfDeathStringId(pet))
             }
             return node.copy(
                 text = node.text + texts.shuffled()
@@ -160,6 +163,15 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmHalfHpLatin
             pet.type == PetType.Bober -> StringId.IAmHalfHpPolish
             else -> StringId.IAmHalfHp
+        }
+    }
+
+    private fun getOldChancesOfDeathStringId(pet: Pet): StringId{
+        val chance = pet.deathOfOldAgePossibility*100
+        return when{
+            engine.isPetSpeakLatin(pet) -> StringId.IWillDieLatin(chance)
+            pet.type == PetType.Bober -> StringId.IWillDiePolish(chance)
+            else -> StringId.IWillDie(chance)
         }
     }
 
