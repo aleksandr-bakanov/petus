@@ -109,9 +109,9 @@
 "IAmGood"                                  = "I am fine.";
 "IAmGoodLatin"                             = "Bene sum.";
 "IAmGoodPolish"                            = "Mam się dobrze.";
-"IWillDie"                                 = "As I am old, within next five minutes I will die with probability of %.3f%%."
-"IWillDieLatin"                            = "Quia senex sum, in proximis quinque minutis moriendum est probabilitate %.3f%%."
-"IWillDiePolish"                           = "Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%."
+"IWillDie"                                 = "As I am old, within the next five minutes I will die with a probability of %1$.3f%%.";
+"IWillDieLatin"                            = "Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.";
+"IWillDiePolish"                           = "Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.";
 
 /* Dialogs */
 "WhatIsGoingOnWithYou"                     = "What is going on with you?";

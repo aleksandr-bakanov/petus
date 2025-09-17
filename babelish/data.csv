@@ -105,6 +105,9 @@ Pet state description dialogs;android, ios;IAmSick;I am sick, do you have any me
 ;android, ios;IAmGood;I am fine.;Всё хорошо.
 ;android, ios;IAmGoodLatin;Bene sum.;
 ;android, ios;IAmGoodPolish;Mam się dobrze.;
+;android, ios;IWillDie;As I am old, within the next five minutes I will die with a probability of %1$.3f%%.;Поскольку я стар, в течение следующих пяти минут я умру с вероятностью %1$.3f%%.
+;android, ios;IWillDieLatin;Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.;
+;android, ios;IWillDiePolish;Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.;
 
 Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как дела?
 ;android, ios;WhatIsGoingOnWithYouLatin;Quid tecum agitur?;
