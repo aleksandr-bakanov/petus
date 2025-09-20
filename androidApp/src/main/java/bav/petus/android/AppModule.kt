@@ -146,7 +146,6 @@ val appModule = module {
         Migrations(
             dataStore = get(),
             userStats = get(),
-            questSystem = get(),
         )
     }
 

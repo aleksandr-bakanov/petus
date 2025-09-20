@@ -303,6 +303,12 @@ class Engine(
     }
 
     suspend fun updateGameState() {
+        // Trigger fake LanguageKnowledgeChanged event to trigger possible quests stage changes
+        // if they depends on language knowledge (usually very first stage of the quests)
+        // value = 0 and pet type do not matter because it's ignored in quest stage lambdas -
+        // instead actual value from userStats is taken and used.
+        questSystem.onEvent(QuestSystem.Event.LanguageKnowledgeChanged(PetType.Catus, 0))
+
         _gameStateUpdateFlow.emit(null)
 
         val currentTime = getTimestampSecondsSinceEpoch()
