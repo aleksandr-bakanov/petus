@@ -5,9 +5,11 @@ import bav.petus.core.engine.Engine
 import bav.petus.core.engine.UserStats
 import bav.petus.core.resources.StringId
 import bav.petus.model.PetType
+import bav.petus.repo.PetsRepository
 import com.rickclephas.kmp.observableviewmodel.MutableStateFlow
 import com.rickclephas.kmp.observableviewmodel.launch
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -23,6 +25,7 @@ class PetCreationScreenViewModel
 
     private val engine: Engine by inject()
     private val userStats: UserStats by inject()
+    private val petsRepo: PetsRepository by inject()
 
     private val _uiState = MutableStateFlow<PetCreationUiState?>(viewModelScope, null)
     val uiState = _uiState.asStateFlow()
@@ -31,11 +34,19 @@ class PetCreationScreenViewModel
 
     init {
         viewModelScope.launch {
-            val availablePetTypes = userStats.getAvailablePetTypes()
+            val petsInZoo = petsRepo.getAllPetsInZoo()
+            val zooSize = userStats.getUserProfileFlow().first().zooSize
+            val allAvailablePetTypes = userStats.getAvailablePetTypes()
+            val availablePetTypes = if (petsInZoo.size < zooSize) {
+                allAvailablePetTypes
+            } else {
+                allAvailablePetTypes.filter { it == PetType.Fractal }
+            }
+            val petTypes = availablePetTypes.toList()
             _uiState.value = PetCreationUiState(
                 name = "",
-                type = PetType.Dogus,
-                typeDescription = engine.getPetTypeDescription(PetType.Dogus),
+                type = petTypes.first(),
+                typeDescription = engine.getPetTypeDescription(petTypes.first()),
                 availablePetTypes = availablePetTypes.toList(),
             )
         }

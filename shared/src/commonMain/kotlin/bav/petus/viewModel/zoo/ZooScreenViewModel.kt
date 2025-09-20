@@ -2,9 +2,11 @@ package bav.petus.viewModel.zoo
 
 import bav.petus.base.ViewModelWithNavigation
 import bav.petus.core.engine.Engine
+import bav.petus.core.engine.UserProfileData
 import bav.petus.core.engine.UserStats
 import bav.petus.core.resources.ImageId
 import bav.petus.model.Pet
+import bav.petus.model.PetType
 import bav.petus.repo.PetsRepository
 import bav.petus.useCase.PetImageUseCase
 import com.rickclephas.kmp.observableviewmodel.stateIn
@@ -48,10 +50,20 @@ class ZooScreenViewModel : ViewModelWithNavigation<ZooScreenViewModel.Navigation
                     healthFraction = engine.getPetHealthFraction(it),
                 )
             },
-            showCreateNewPetButton = pets.size < profile.zooSize
+            showCreateNewPetButton = shouldShowCreateNewPetButton(pets, profile)
         )
     }
     .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
+
+    private suspend fun shouldShowCreateNewPetButton(pets: List<Pet>, profileData: UserProfileData): Boolean {
+        return if (pets.size >= profileData.zooSize) {
+            // If there is no physical space for new pet we're allowing
+            // to show create new pet button only if user can imagine fractals
+            userStats.getAvailablePetTypes().contains(PetType.Fractal)
+        } else {
+            true
+        }
+    }
 
     fun onAction(action: Action) {
         when (action) {
