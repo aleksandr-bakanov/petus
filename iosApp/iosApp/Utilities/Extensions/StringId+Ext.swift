@@ -86,6 +86,9 @@ extension StringId {
         case .iAmGoodLatin: "IAmGoodLatin"
         case .iAmGoodPolish: "IAmGoodPolish"
         case .iAmGoodMath: "IAmGoodMath"
+        case .iWillDie(_): fatalError("IWillDie requires formatting and should not be mapped with localized")
+        case .iWillDieLatin(_): fatalError("IWillDieLatin requires formatting and should not be mapped with localized")
+        case .iWillDiePolish(_): fatalError("IWillDiePolish requires formatting and should not be mapped with localized")
         case .necronomiconStage3AnswerOption0: "NecronomiconStage3AnswerOption0"
         case .necronomiconStage3CommonDialog: "NecronomiconStage3CommonDialog"
         case .necronomiconStage3DogDialog: "NecronomiconStage3DogDialog"
@@ -237,5 +240,18 @@ extension StringId {
         }
         
         return String(localized: resId)
+    }
+}
+
+func convertStringIdToString(id: StringId) -> String {
+    switch onEnum(of: id) {
+    case .iWillDie(let value):
+        return String(format: NSLocalizedString("IWillDie", comment: ""), value.chance)
+    case .iWillDieLatin(let value):
+        return String(format: NSLocalizedString("IWillDieLatin", comment: ""), value.chance)
+    case .iWillDiePolish(let value):
+        return String(format: NSLocalizedString("IWillDiePolish", comment: ""), value.chance)
+    default:
+        return id.localized
     }
 }

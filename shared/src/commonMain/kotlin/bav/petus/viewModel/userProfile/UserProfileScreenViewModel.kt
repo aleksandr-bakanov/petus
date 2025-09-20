@@ -42,7 +42,7 @@ class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenView
             languageKnowledgeDogus = "${userData.languageKnowledge.dogus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
             languageKnowledgeFrogus = "${userData.languageKnowledge.frogus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
             languageKnowledgeBober = "${userData.languageKnowledge.bober} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
-            languageKnowledgeFractal = "100 / 100",
+            languageKnowledgeFractal = "${userData.languageKnowledge.fractal} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
             inventory = userData.inventory,
             abilities = userData.abilities.toList(),
             zooSize = userData.zooSize.toString(),

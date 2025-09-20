@@ -14,9 +14,7 @@ struct PetDetailsScreen: View {
         self.petId = petId
         self.onNavigateToDialog = onNavigateToDialog
         _viewModel = StateViewModel(wrappedValue: PetDetailsScreenViewModel(args: PetDetailsScreenViewModelArgs(petId: petId,
-                    convertStringIdToString: { stringId in
-                        stringId.localized
-                    }
+                    convertStringIdToString: convertStringIdToString
                 )
             )
         )

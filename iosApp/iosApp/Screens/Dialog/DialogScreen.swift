@@ -14,9 +14,7 @@ struct DialogScreen: View {
     init(id: Int64) {
         self.petId = id
         _viewModel = StateViewModel(wrappedValue: DialogScreenViewModel(args: DialogScreenViewModelArgs(petId: id,
-                    convertStringIdToString: { stringId in
-                        stringId.localized
-                    }
+                    convertStringIdToString: convertStringIdToString
                 )
             )
         )

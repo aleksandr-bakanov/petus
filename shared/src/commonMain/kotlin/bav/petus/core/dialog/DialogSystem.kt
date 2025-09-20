@@ -196,8 +196,8 @@ class DialogSystem(
     }
 
     private fun getOldChancesOfDeathStringId(pet: Pet): StringId{
-        val chance = pet.deathOfOldAgePossibility*100
-        return when{
+        val chance = pet.deathOfOldAgePossibility * 100
+        return when {
             engine.isPetSpeakLatin(pet) -> StringId.IWillDieLatin(chance)
             pet.type == PetType.Bober -> StringId.IWillDiePolish(chance)
             else -> StringId.IWillDie(chance)

@@ -4,25 +4,18 @@ import shared
 
 struct QuestStatusView: View {
     
-    @StateViewModel var viewModel: QuestStatusViewModel = QuestStatusViewModel(convertStringIdToString: { stringId in
-        stringId.localized
-    })
+    @StateViewModel var viewModel: QuestStatusViewModel = QuestStatusViewModel(
+        convertStringIdToString: convertStringIdToString
+    )
     
     var body: some View {
         ScrollView {
             let state = viewModel.uiState.value
-            VStack(alignment: .center, spacing: 16) {
+            VStack(spacing: 8) {
                 Spacer().frame(height: 8)
 
-                ForEach(state.quests, id: \.questName) { quest in
-                    QuestTitleRow(title: quest.questName, message: quest.stagesDescription)
-
-                    Text(quest.questDescription)
-                        .font(.body)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(8)
-
-                    Spacer().frame(height: 8)
+                ForEach(state.quests.indices, id: \.self) { index in
+                    ExpandableQuestCell(quest: state.quests[index])
                 }
             }
             .padding(.vertical, 8)
@@ -32,20 +25,53 @@ struct QuestStatusView: View {
     }
 }
 
+struct ExpandableQuestCell: View {
+    let quest: QuestDescription
+    @State private var isExpanded = false
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack(alignment: .center) {
+                QuestTitleRow(title: quest.questName, message: quest.stagesDescription)
+
+                Button(action: {
+                    withAnimation {
+                        isExpanded.toggle()
+                    }
+                }) {
+                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                        .padding(.leading, 8)
+                }
+            }
+            .animation(.easeInOut, value: isExpanded)
+            
+            if isExpanded {
+                Text(quest.questDescription)
+                    .font(.body)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(8)
+            }
+
+            Spacer().frame(height: 8)
+        }
+    }
+}
+
 struct QuestTitleRow: View {
     let title: String
     let message: String
 
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             Text(title)
                 .font(.headline)
+                .fontWeight(.semibold)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .layoutPriority(1)
 
             Text(message)
-                .frame(width: 80, alignment: .trailing)
-                .multilineTextAlignment(.trailing)
+                .font(.subheadline)
+                .frame(alignment: .trailing)
         }
+        .padding(.horizontal, 8)
     }
 }

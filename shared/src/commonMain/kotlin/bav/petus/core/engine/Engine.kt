@@ -162,7 +162,8 @@ class Engine(
 
     suspend fun isAllowedToResurrectPet(pet: Pet): Boolean {
         val userData = userStats.getUserProfileFlow().first()
-        val petsInZoo = petsRepo.getAllPetsInZooFlow().first()
+        // There is no need to count fractals, they don't occupy space in zoo
+        val petsInZoo = petsRepo.getAllPetsInZooFlow().first().filter { it.type != PetType.Fractal }
         return userData.abilities.contains(Ability.Necromancy) &&
                 pet.place == Place.Cemetery &&
                 pet.burialType != BurialType.Exhumated &&
