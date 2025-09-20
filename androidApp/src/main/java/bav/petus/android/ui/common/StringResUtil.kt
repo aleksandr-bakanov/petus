@@ -90,6 +90,26 @@ fun StringId.toResId(): Int {
         StringId.TwoMeterRuler -> R.string.TwoMeterRuler
         StringId.TenCentimeterRuler -> R.string.TenCentimeterRuler
         StringId.MathBook -> R.string.MathBook
+        StringId.MeditationExerciseBreathAwareness -> R.string.MeditationExerciseBreathAwareness
+        StringId.MeditationExerciseBoxBreathing -> R.string.MeditationExerciseBoxBreathing
+        StringId.MeditationExerciseBodyScan -> R.string.MeditationExerciseBodyScan
+        StringId.MeditationExerciseLovingKindnessPhrases -> R.string.MeditationExerciseLovingKindnessPhrases
+        StringId.MeditationExerciseCountingTheBreath -> R.string.MeditationExerciseCountingTheBreath
+        StringId.MeditationExerciseMantraRepetition -> R.string.MeditationExerciseMantraRepetition
+        StringId.MeditationExerciseWalkingMeditation -> R.string.MeditationExerciseWalkingMeditation
+        StringId.MeditationExerciseCandleGazing -> R.string.MeditationExerciseCandleGazing
+        StringId.MeditationExerciseNotingPractice -> R.string.MeditationExerciseNotingPractice
+        StringId.MeditationExerciseFiveSensesAwareness -> R.string.MeditationExerciseFiveSensesAwareness
+        StringId.MeditationExerciseVisualization -> R.string.MeditationExerciseVisualization
+        StringId.MeditationExerciseMountainMeditation -> R.string.MeditationExerciseMountainMeditation
+        StringId.MeditationExerciseSoundAwareness -> R.string.MeditationExerciseSoundAwareness
+        StringId.MeditationExerciseTonglenExercise -> R.string.MeditationExerciseTonglenExercise
+        StringId.MeditationExerciseGratitudeReflection -> R.string.MeditationExerciseGratitudeReflection
+        StringId.MeditationExerciseMindfulEating -> R.string.MeditationExerciseMindfulEating
+        StringId.MeditationExerciseProgressiveRelaxation -> R.string.MeditationExerciseProgressiveRelaxation
+        StringId.MeditationExerciseChakraFocusing -> R.string.MeditationExerciseChakraFocusing
+        StringId.MeditationExerciseSelfInquiryQuestions -> R.string.MeditationExerciseSelfInquiryQuestions
+        StringId.MeditationExerciseSilentSitting -> R.string.MeditationExerciseSilentSitting
         StringId.HistoryEventPetBecomeAdult -> R.string.HistoryEventPetBecomeAdult
         StringId.HistoryEventPetBecomeNewborn -> R.string.HistoryEventPetBecomeNewborn
         StringId.HistoryEventPetBecomeOld -> R.string.HistoryEventPetBecomeOld
@@ -152,11 +172,27 @@ fun StringId.toResId(): Int {
         StringId.ObtainFractalStage6Answer0 -> R.string.ObtainFractalStage6Answer0
         StringId.ObtainFractalStage6Dialog0 -> R.string.ObtainFractalStage6Dialog0
         StringId.ObtainFractalStage6Answer1 -> R.string.ObtainFractalStage6Answer1
+        StringId.MeditationStage1Answer0 -> R.string.MeditationStage1Answer0
+        StringId.MeditationStage1Dialog0 -> R.string.MeditationStage1Dialog0
+        StringId.MeditationStage1Dialog1 -> R.string.MeditationStage1Dialog1
+        StringId.MeditationStage1Answer1 -> R.string.MeditationStage1Answer1
+        StringId.MeditationStage2Answer0 -> R.string.MeditationStage2Answer0
+        StringId.MeditationStage2Dialog0 -> R.string.MeditationStage2Dialog0
+        StringId.MeditationStage2Dialog1 -> R.string.MeditationStage2Dialog1
+        StringId.MeditationStage2Dialog2 -> R.string.MeditationStage2Dialog2
+        StringId.MeditationStage3Answer0 -> R.string.MeditationStage3Answer0
+        StringId.MeditationStage3Dialog0 -> R.string.MeditationStage3Dialog0
+        StringId.MeditationStage3Dialog1 -> R.string.MeditationStage3Dialog1
+        StringId.MeditationStage3Dialog2 -> R.string.MeditationStage3Dialog2
+        StringId.MeditationStage3Answer1 -> R.string.MeditationStage3Answer1
+        StringId.MeditationStage3Dialog4 -> R.string.MeditationStage3Dialog4
+        StringId.MeditationStage3Answer2 -> R.string.MeditationStage3Answer2
         StringId.QuestIsFinished -> R.string.QuestIsFinished
         StringId.QuestNameNecronomicon -> R.string.QuestNameNecronomicon
         StringId.QuestNameObtainFrogus -> R.string.QuestNameObtainFrogus
         StringId.QuestNameObtainBober -> R.string.QuestNameObtainBober
         StringId.QuestNameObtainFractal -> R.string.QuestNameObtainFractal
+        StringId.QuestNameMeditation -> R.string.QuestNameMeditation
         StringId.QuestDescObtainFrogusStage0 -> R.string.QuestDescObtainFrogusStage0
         StringId.QuestDescObtainFrogusStage1 -> R.string.QuestDescObtainFrogusStage1
         StringId.QuestDescObtainFrogusStage2 -> R.string.QuestDescObtainFrogusStage2
@@ -197,5 +233,10 @@ fun StringId.toResId(): Int {
         StringId.QuestDescObtainFractalStage6 -> R.string.QuestDescObtainFractalStage6
         StringId.QuestDescObtainFractalStage7 -> R.string.QuestDescObtainFractalStage7
         StringId.QuestDescObtainFractalStage8 -> R.string.QuestDescObtainFractalStage8
+        StringId.QuestDescMeditationStage0 -> R.string.QuestDescMeditationStage0
+        StringId.QuestDescMeditationStage1 -> R.string.QuestDescMeditationStage1
+        StringId.QuestDescMeditationStage2 -> R.string.QuestDescMeditationStage2
+        StringId.QuestDescMeditationStage3 -> R.string.QuestDescMeditationStage3
+        StringId.QuestDescMeditationStage4 -> R.string.QuestDescMeditationStage4
     }
 }

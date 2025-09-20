@@ -10,6 +10,7 @@ import bav.petus.core.dialog.Answer
 import bav.petus.core.dialog.DialogSystem
 import bav.petus.core.engine.Engine.Companion.DAY
 import bav.petus.core.engine.Engine.Companion.HOUR
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_MEDITATION
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_NECRONOMICON
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_BOBER
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FRACTAL
@@ -145,6 +146,19 @@ class QuestSystem(
                     )
                 }
             }
+
+            // Meditation stage 3 check
+            val meditationQuest = quests[QUEST_MEDITATION]!!
+            val meditationCurrentStage = preferences[meditationQuest.currentStageKey]
+            if (meditationCurrentStage == 3) {
+                // If pet who died is this frog
+                if (preferences[MEDITATION_FROG_ID_KEY] == e.petId) {
+                    // Then set stage to 2
+                    dataStore.edit { store ->
+                        store[meditationQuest.currentStageKey] = 2
+                    }
+                }
+            }
         }
     }
 
@@ -201,6 +215,7 @@ class QuestSystem(
         const val QUEST_TO_OBTAIN_FROGUS = "QUEST_TO_OBTAIN_FROGUS"
         const val QUEST_TO_OBTAIN_BOBER = "QUEST_TO_OBTAIN_BOBER"
         const val QUEST_TO_OBTAIN_FRACTAL = "QUEST_TO_OBTAIN_FRACTAL"
+        const val QUEST_MEDITATION = "QUEST_MEDITATION"
     }
 }
 
@@ -235,6 +250,8 @@ private const val OBTAIN_BOBER_STAGE_5_LAMBDA = "OBTAIN_BOBER_STAGE_5_LAMBDA"
 
 private const val OBTAIN_FRACTAL_STAGE_0_LAMBDA = "OBTAIN_FRACTAL_STAGE_0_LAMBDA"
 private const val OBTAIN_FRACTAL_STAGE_2_LAMBDA = "OBTAIN_FRACTAL_STAGE_2_LAMBDA"
+
+private const val MEDITATION_STAGE_0_LAMBDA = "MEDITATION_STAGE_0_LAMBDA"
 
 private val conditionLambdas =
     mapOf<String, suspend (QuestSystem, Preferences, QuestSystem.Event) -> Boolean>(
@@ -337,6 +354,15 @@ private val conditionLambdas =
                 } ?: false
             } ?: false
         },
+        MEDITATION_STAGE_0_LAMBDA to { questSystem, _, event ->
+            (event as? QuestSystem.Event.LanguageKnowledgeChanged)?.let { _ ->
+                val dogusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Dogus)
+                val frogusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Frogus)
+
+                dogusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE &&
+                        frogusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE
+            } ?: false
+        },
     )
 
 val NECRONOMICON_TIMESTAMP_KEY = longPreferencesKey("NECRONOMICON_TIMESTAMP_KEY")
@@ -353,6 +379,11 @@ val OBTAIN_BOBER_SEARCH_FROG_ID_KEY = longPreferencesKey("OBTAIN_BOBER_SEARCH_FR
 
 val OBTAIN_FRACTAL_TIMESTAMP_KEY = longPreferencesKey("OBTAIN_FRACTAL_TIMESTAMP_KEY")
 val OBTAIN_FRACTAL_FROG_ID_KEY = longPreferencesKey("OBTAIN_FRACTAL_FROG_ID_KEY")
+
+val MEDITATION_TIMESTAMP_KEY = longPreferencesKey("MEDITATION_TIMESTAMP_KEY")
+val MEDITATION_FROG_ID_KEY = longPreferencesKey("MEDITATION_FROG_ID_KEY")
+val MEDITATION_EXERCISES_LEFT_KEY = longPreferencesKey("MEDITATION_EXERCISES_LEFT_KEY")
+const val MEDITATION_TOTAL_EXERCISES = 10L
 
 private val quests = mapOf(
     QUEST_NECRONOMICON to Quest(
@@ -1022,6 +1053,126 @@ private val quests = mapOf(
                     questSystem.userStats.saveLanguageKnowledge(PetType.Fractal, MAXIMUM_LANGUAGE_KNOWLEDGE)
                 },
                 additionalAnswerOptions = null,
+            ),
+        )
+    ),
+    QUEST_MEDITATION to Quest(
+        currentStageKey = intPreferencesKey("meditation_stage_key"),
+        stages = listOf(
+            // Stage 0 - make sure user understands dog and frog 100%
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("meditation_stage_0_conditions"),
+                initialConditions = setOf(MEDITATION_STAGE_0_LAMBDA),
+                onFinish = {},
+                additionalAnswerOptions = null,
+            ),
+            // Stage 1 - dialog stage - ask adult dogus how he can stay always positive and relaxed
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("meditation_stage_1_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Dogus &&
+                        pet.ageState == AgeState.Adult &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.MeditationStage1Answer0,
+                                nextNode = DialogSystem.MEDITATION_STAGE_1_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 2 - dialog stage - ask freshly born (not later then 1 day) frogus to start meditating
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("meditation_stage_2_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Frogus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val now = getTimestampSecondsSinceEpoch()
+                        if (pet.ageState == AgeState.NewBorn &&
+                            now - pet.creationTime < DAY)
+                        {
+                            listOf(
+                                Answer(
+                                    text = StringId.MeditationStage2Answer0,
+                                    nextNode = DialogSystem.MEDITATION_STAGE_2_DIALOG_0,
+                                )
+                            )
+                        } else {
+                            listOf(
+                                Answer(
+                                    text = StringId.MeditationStage2Answer0,
+                                    nextNode = DialogSystem.MEDITATION_STAGE_2_DIALOG_1,
+                                )
+                            )
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 3 - dialog stage - continue meditation with the frogus
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("meditation_stage_3_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    val wiseFrogId = questSystem.dataStore.data.first()[MEDITATION_FROG_ID_KEY] ?: -1L
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.id == wiseFrogId &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val now = getTimestampSecondsSinceEpoch()
+                        val timeOfLastMeditation = questSystem.dataStore.data.first()[MEDITATION_TIMESTAMP_KEY] ?: -1L
+                        val timePassed = now - timeOfLastMeditation
+                        when {
+                            timePassed < DAY -> listOf(
+                                Answer(
+                                    text = StringId.MeditationStage3Answer0,
+                                    nextNode = DialogSystem.MEDITATION_STAGE_3_DIALOG_0,
+                                )
+                            )
+                            timePassed >= DAY && timePassed < DAY * 2 -> {
+                                val exercisesLeft = questSystem.dataStore.data.first()[MEDITATION_EXERCISES_LEFT_KEY] ?: MEDITATION_TOTAL_EXERCISES
+                                // If there is no more exercises left then finis training
+                                if (exercisesLeft == 0L) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.MeditationStage3Answer0,
+                                            nextNode = DialogSystem.MEDITATION_STAGE_3_DIALOG_4,
+                                        )
+                                    )
+                                } else {
+                                    // Continue training
+                                    listOf(
+                                        Answer(
+                                            text = StringId.MeditationStage3Answer0,
+                                            nextNode = DialogSystem.MEDITATION_STAGE_3_DIALOG_1,
+                                        )
+                                    )
+                                }
+                            }
+                            else -> listOf(
+                                Answer(
+                                    text = StringId.MeditationStage3Answer0,
+                                    nextNode = DialogSystem.MEDITATION_STAGE_3_DIALOG_2,
+                                )
+                            )
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
             ),
         )
     ),

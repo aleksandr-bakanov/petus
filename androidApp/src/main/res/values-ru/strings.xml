@@ -61,6 +61,28 @@
 	<string name="MathBook">Что такое математика? - книга Р. Куранта и Г. Роббинса</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
 
+	<!-- Meditation exercises -->
+	<string name="MeditationExerciseBreathAwareness">Осознанное дыхание</string>
+	<string name="MeditationExerciseBoxBreathing">Квадратное дыхание</string>
+	<string name="MeditationExerciseBodyScan">Сканирование тела</string>
+	<string name="MeditationExerciseLovingKindnessPhrases">Фразы любящей доброты</string>
+	<string name="MeditationExerciseCountingTheBreath">Подсчёт дыхания</string>
+	<string name="MeditationExerciseMantraRepetition">Повторение мантры</string>
+	<string name="MeditationExerciseWalkingMeditation">Медитация ходьбы</string>
+	<string name="MeditationExerciseCandleGazing">Созерцание свечи</string>
+	<string name="MeditationExerciseNotingPractice">Практика «Нотинг»</string>
+	<string name="MeditationExerciseFiveSensesAwareness">Осознанность пяти чувств</string>
+	<string name="MeditationExerciseVisualization">Визуализация</string>
+	<string name="MeditationExerciseMountainMeditation">Медитация «Гора»</string>
+	<string name="MeditationExerciseSoundAwareness">Осознанное слушание</string>
+	<string name="MeditationExerciseTonglenExercise">Практика Тонглен</string>
+	<string name="MeditationExerciseGratitudeReflection">Размышление о благодарности</string>
+	<string name="MeditationExerciseMindfulEating">Осознанное питание</string>
+	<string name="MeditationExerciseProgressiveRelaxation">Прогрессивное расслабление</string>
+	<string name="MeditationExerciseChakraFocusing">Фокусировка на чакрах</string>
+	<string name="MeditationExerciseSelfInquiryQuestions">Самоисследование</string>
+	<string name="MeditationExerciseSilentSitting">Тихое сидение</string>
+
 	<!-- Abilities names -->
 	<string name="Necromancy">Некромантия</string>
 	<string name="Meditation">Медитация</string>
@@ -118,6 +140,9 @@
 	<string name="IAmGoodLatin">Bene sum.</string>
 	<string name="IAmGoodPolish">Mam się dobrze.</string>
 	<string name="IAmGoodMath">[e^(iπ) + 1 = 0]</string>
+	<string name="IWillDie">Поскольку я стар, в течение следующих пяти минут я умру с вероятностью %1$.3f%%.</string>
+	<string name="IWillDieLatin">Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.</string>
+	<string name="IWillDiePolish">Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.</string>
 
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">Как дела?</string>
@@ -194,6 +219,21 @@
 	<string name="ObtainFractalStage6Answer0">Привет, фрогус сказал, что ты можешь объяснить мне про парадокс береговой линии.</string>
 	<string name="ObtainFractalStage6Dialog0">Aaaah, paradoks linii brzegowej? Wiemy, wiemy. Mam o tym bardzo ciekawą książkę. Przeczytaj ją, jest w niej mnóstwo ciekawych rzeczy.</string>
 	<string name="ObtainFractalStage6Answer1">Спасибо большое, думаю освою за ночь.</string>
+	<string name="MeditationStage1Answer0">Привет, что-то у меня последнее время голова гудит от всяких мыслей. Как у тебя получается всегда оставаться таким отдохнувшим?</string>
+	<string name="MeditationStage1Dialog0">А, ну так мы - догусы - с детства обучаемся медитации, хочешь научу?</string>
+	<string name="MeditationStage1Dialog1">Чтобы достичь просветления делай так:\n1. Заведи фрогуса - они про медитацию знают вообще всё.\n2. Как только вылупится - сразу же начинай с ним практиковаться.\n3. Тренируйся с ним медитировать каждый день.\n4. Если хоть один день пропустишь - начинай сначала.\n5. Завершение 13 упражнений позволит достичь просветления.</string>
+	<string name="MeditationStage1Answer1">Звучит запутанно, но я попробую.</string>
+	<string name="MeditationStage2Answer0">Привет, догус сказал, что ты можешь научить меня медитации.</string>
+	<string name="MeditationStage2Dialog0">Отлично, ты пришла по адресу, начнем с чего-нибудь простого - дыхательных упражнений. Повторяй за мной.</string>
+	<string name="MeditationStage2Dialog1">Извини, но ты поздновато пришла, тебе нужно найти фрогуса помоложе.</string>
+	<string name="MeditationStage2Dialog2">[Полчаса спустя] Ну вот и славно, приходи завтра, продолжим тренировки.</string>
+	<string name="MeditationStage3Answer0">Привет, я пришла продолжить наши тренировки.</string>
+	<string name="MeditationStage3Dialog0">Ты пришла слишком рано, еще и дня не прошло с нашей последней тренировки, отдыхай пока.</string>
+	<string name="MeditationStage3Dialog1">Отлично! Вижу ты отдохнула и готова продолжить. Сегодняшнее упражнение -</string>
+	<string name="MeditationStage3Dialog2">К сожалению ты задержалась больше чем на два дня, так дела не делаются. Придется начинать все с начала.</string>
+	<string name="MeditationStage3Answer1">Ой-ёй, ну что ж поделаешь...</string>
+	<string name="MeditationStage3Dialog4">Мне больше нечему тебя учить, дитя, ты уже знаешь всё что нужно. Отныне ты можешь по своему желанию избавляться от надоевших тебе мыслей. Мои поздравления!</string>
+	<string name="MeditationStage3Answer2">Спасибо за время проведенное со мной! Я многому научилась.</string>
 
 	<!-- Quest description -->
 	<string name="QuestIsFinished">Завершен</string>
@@ -201,6 +241,7 @@
 	<string name="QuestNameObtainFrogus">Последствия рыбалки</string>
 	<string name="QuestNameObtainBober">Должно быть, ветер.</string>
 	<string name="QuestNameObtainFractal">Парадокс береговой линии</string>
+	<string name="QuestNameMeditation">Игры разума</string>
 	<string name="QuestDescObtainFrogusStage0">Что-то мне подсказывает, что мне нужно убедиться, что я правильно понимаю катусов.</string>
 	<string name="QuestDescObtainFrogusStage1">Отлично, теперь надо поспрашивать катусов, может кому нужна какая помощь.</string>
 	<string name="QuestDescObtainFrogusStage2">Как я и думала, один из катусов попросил меня разнообразить меню и найти где-нибудь рыбы. Поищу у пруда, про который он говорил.</string>
@@ -241,4 +282,9 @@
 	<string name="QuestDescObtainFractalStage6">Фрогус отправил меня к боберам узнать насчет этого парадокса.</string>
 	<string name="QuestDescObtainFractalStage7">Бобер дал мне книгу про математику, нырну туда с головой.</string>
 	<string name="QuestDescObtainFractalStage8">Вау, я узнала там много нового! Больше всего в этой книге мне понравились фракталы, теперь я знаю что это такое и какие разные они бывают. Обожаю их себе представлять!</string>
+	<string name="QuestDescMeditationStage0">Для начала, неплохо бы полностью понимать моих питомцев.</string>
+	<string name="QuestDescMeditationStage1">Что-то последнее время голова кругом идет. Спрошу-ка я у взрослого догуса как ему всегда удается оставаться таким отдохнувшим.</string>
+	<string name="QuestDescMeditationStage2">Догус сказал чтобы я спросила у фрогуса насчет медитации.</string>
+	<string name="QuestDescMeditationStage3">Мы начали интенсивные тренировки с Фрогусом.</string>
+	<string name="QuestDescMeditationStage4">Я научилась практикам медитации и теперь я могу забыть всё что захочу!</string>
 </resources>

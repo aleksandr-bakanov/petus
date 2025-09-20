@@ -59,6 +59,28 @@
 "MathBook"                                 = "Что такое математика? - книга Р. Куранта и Г. Роббинса";
 "InventoryItemPattern"                     = "%@ (x%d)";
 
+/* Meditation exercises */
+"MeditationExerciseBreathAwareness"        = "Осознанное дыхание";
+"MeditationExerciseBoxBreathing"           = "Квадратное дыхание";
+"MeditationExerciseBodyScan"               = "Сканирование тела";
+"MeditationExerciseLovingKindnessPhrases"  = "Фразы любящей доброты";
+"MeditationExerciseCountingTheBreath"      = "Подсчёт дыхания";
+"MeditationExerciseMantraRepetition"       = "Повторение мантры";
+"MeditationExerciseWalkingMeditation"      = "Медитация ходьбы";
+"MeditationExerciseCandleGazing"           = "Созерцание свечи";
+"MeditationExerciseNotingPractice"         = "Практика «Нотинг»";
+"MeditationExerciseFiveSensesAwareness"    = "Осознанность пяти чувств";
+"MeditationExerciseVisualization"          = "Визуализация";
+"MeditationExerciseMountainMeditation"     = "Медитация «Гора»";
+"MeditationExerciseSoundAwareness"         = "Осознанное слушание";
+"MeditationExerciseTonglenExercise"        = "Практика Тонглен";
+"MeditationExerciseGratitudeReflection"    = "Размышление о благодарности";
+"MeditationExerciseMindfulEating"          = "Осознанное питание";
+"MeditationExerciseProgressiveRelaxation"  = "Прогрессивное расслабление";
+"MeditationExerciseChakraFocusing"         = "Фокусировка на чакрах";
+"MeditationExerciseSelfInquiryQuestions"   = "Самоисследование";
+"MeditationExerciseSilentSitting"          = "Тихое сидение";
+
 /* Abilities names */
 "Necromancy"                               = "Некромантия";
 "Meditation"                               = "Медитация";
@@ -116,6 +138,9 @@
 "IAmGoodLatin"                             = "Bene sum.";
 "IAmGoodPolish"                            = "Mam się dobrze.";
 "IAmGoodMath"                              = "[e^(iπ) + 1 = 0]";
+"IWillDie"                                 = "Поскольку я стар, в течение следующих пяти минут я умру с вероятностью %1$.3f%%.";
+"IWillDieLatin"                            = "Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.";
+"IWillDiePolish"                           = "Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.";
 
 /* Dialogs */
 "WhatIsGoingOnWithYou"                     = "Как дела?";
@@ -192,6 +217,21 @@
 "ObtainFractalStage6Answer0"               = "Привет, фрогус сказал, что ты можешь объяснить мне про парадокс береговой линии.";
 "ObtainFractalStage6Dialog0"               = "Aaaah, paradoks linii brzegowej? Wiemy, wiemy. Mam o tym bardzo ciekawą książkę. Przeczytaj ją, jest w niej mnóstwo ciekawych rzeczy.";
 "ObtainFractalStage6Answer1"               = "Спасибо большое, думаю освою за ночь.";
+"MeditationStage1Answer0"                  = "Привет, что-то у меня последнее время голова гудит от всяких мыслей. Как у тебя получается всегда оставаться таким отдохнувшим?";
+"MeditationStage1Dialog0"                  = "А, ну так мы - догусы - с детства обучаемся медитации, хочешь научу?";
+"MeditationStage1Dialog1"                  = "Чтобы достичь просветления делай так:\n1. Заведи фрогуса - они про медитацию знают вообще всё.\n2. Как только вылупится - сразу же начинай с ним практиковаться.\n3. Тренируйся с ним медитировать каждый день.\n4. Если хоть один день пропустишь - начинай сначала.\n5. Завершение 13 упражнений позволит достичь просветления.";
+"MeditationStage1Answer1"                  = "Звучит запутанно, но я попробую.";
+"MeditationStage2Answer0"                  = "Привет, догус сказал, что ты можешь научить меня медитации.";
+"MeditationStage2Dialog0"                  = "Отлично, ты пришла по адресу, начнем с чего-нибудь простого - дыхательных упражнений. Повторяй за мной.";
+"MeditationStage2Dialog1"                  = "Извини, но ты поздновато пришла, тебе нужно найти фрогуса помоложе.";
+"MeditationStage2Dialog2"                  = "[Полчаса спустя] Ну вот и славно, приходи завтра, продолжим тренировки.";
+"MeditationStage3Answer0"                  = "Привет, я пришла продолжить наши тренировки.";
+"MeditationStage3Dialog0"                  = "Ты пришла слишком рано, еще и дня не прошло с нашей последней тренировки, отдыхай пока.";
+"MeditationStage3Dialog1"                  = "Отлично! Вижу ты отдохнула и готова продолжить. Сегодняшнее упражнение -";
+"MeditationStage3Dialog2"                  = "К сожалению ты задержалась больше чем на два дня, так дела не делаются. Придется начинать все с начала.";
+"MeditationStage3Answer1"                  = "Ой-ёй, ну что ж поделаешь...";
+"MeditationStage3Dialog4"                  = "Мне больше нечему тебя учить, дитя, ты уже знаешь всё что нужно. Отныне ты можешь по своему желанию избавляться от надоевших тебе мыслей. Мои поздравления!";
+"MeditationStage3Answer2"                  = "Спасибо за время проведенное со мной! Я многому научилась.";
 
 /* Quest description */
 "QuestIsFinished"                          = "Завершен";
@@ -199,6 +239,7 @@
 "QuestNameObtainFrogus"                    = "Последствия рыбалки";
 "QuestNameObtainBober"                     = "Должно быть, ветер.";
 "QuestNameObtainFractal"                   = "Парадокс береговой линии";
+"QuestNameMeditation"                      = "Игры разума";
 "QuestDescObtainFrogusStage0"              = "Что-то мне подсказывает, что мне нужно убедиться, что я правильно понимаю катусов.";
 "QuestDescObtainFrogusStage1"              = "Отлично, теперь надо поспрашивать катусов, может кому нужна какая помощь.";
 "QuestDescObtainFrogusStage2"              = "Как я и думала, один из катусов попросил меня разнообразить меню и найти где-нибудь рыбы. Поищу у пруда, про который он говорил.";
@@ -239,3 +280,8 @@
 "QuestDescObtainFractalStage6"             = "Фрогус отправил меня к боберам узнать насчет этого парадокса.";
 "QuestDescObtainFractalStage7"             = "Бобер дал мне книгу про математику, нырну туда с головой.";
 "QuestDescObtainFractalStage8"             = "Вау, я узнала там много нового! Больше всего в этой книге мне понравились фракталы, теперь я знаю что это такое и какие разные они бывают. Обожаю их себе представлять!";
+"QuestDescMeditationStage0"                = "Для начала, неплохо бы полностью понимать моих питомцев.";
+"QuestDescMeditationStage1"                = "Что-то последнее время голова кругом идет. Спрошу-ка я у взрослого догуса как ему всегда удается оставаться таким отдохнувшим.";
+"QuestDescMeditationStage2"                = "Догус сказал чтобы я спросила у фрогуса насчет медитации.";
+"QuestDescMeditationStage3"                = "Мы начали интенсивные тренировки с Фрогусом.";
+"QuestDescMeditationStage4"                = "Я научилась практикам медитации и теперь я могу забыть всё что захочу!";

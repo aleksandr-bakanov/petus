@@ -61,6 +61,28 @@
 	<string name="MathBook">What Is Mathematics? - book by Herbert Robbins and Richard Courant</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
 
+	<!-- Meditation exercises -->
+	<string name="MeditationExerciseBreathAwareness">Breath Awareness</string>
+	<string name="MeditationExerciseBoxBreathing">Box Breathing</string>
+	<string name="MeditationExerciseBodyScan">Body Scan</string>
+	<string name="MeditationExerciseLovingKindnessPhrases">Loving-Kindness Phrases</string>
+	<string name="MeditationExerciseCountingTheBreath">Counting the Breath</string>
+	<string name="MeditationExerciseMantraRepetition">Mantra Repetition</string>
+	<string name="MeditationExerciseWalkingMeditation">Walking Meditation</string>
+	<string name="MeditationExerciseCandleGazing">Candle Gazing</string>
+	<string name="MeditationExerciseNotingPractice">Noting Practice</string>
+	<string name="MeditationExerciseFiveSensesAwareness">Five Senses Awareness</string>
+	<string name="MeditationExerciseVisualization">Visualization</string>
+	<string name="MeditationExerciseMountainMeditation">Mountain Meditation</string>
+	<string name="MeditationExerciseSoundAwareness">Sound Awareness</string>
+	<string name="MeditationExerciseTonglenExercise">Tonglen Exercise</string>
+	<string name="MeditationExerciseGratitudeReflection">Gratitude Reflection</string>
+	<string name="MeditationExerciseMindfulEating">Mindful Eating</string>
+	<string name="MeditationExerciseProgressiveRelaxation">Progressive Relaxation</string>
+	<string name="MeditationExerciseChakraFocusing">Chakra Focusing</string>
+	<string name="MeditationExerciseSelfInquiryQuestions">Self-Inquiry Questions</string>
+	<string name="MeditationExerciseSilentSitting">Silent Sitting</string>
+
 	<!-- Abilities names -->
 	<string name="Necromancy">Necromancy</string>
 	<string name="Meditation">Meditation</string>
@@ -118,6 +140,9 @@
 	<string name="IAmGoodLatin">Bene sum.</string>
 	<string name="IAmGoodPolish">Mam się dobrze.</string>
 	<string name="IAmGoodMath">[e^(iπ) + 1 = 0]</string>
+	<string name="IWillDie">As I am old, within the next five minutes I will die with a probability of %1$.3f%%.</string>
+	<string name="IWillDieLatin">Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.</string>
+	<string name="IWillDiePolish">Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.</string>
 
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">What is going on with you?</string>
@@ -194,6 +219,21 @@
 	<string name="ObtainFractalStage6Answer0">Hi, frogus said you could explain the coastline paradox to me.</string>
 	<string name="ObtainFractalStage6Dialog0">Aaaah, paradoks linii brzegowej? Wiemy, wiemy. Mam o tym bardzo ciekawą książkę. Przeczytaj ją, jest w niej mnóstwo ciekawych rzeczy.</string>
 	<string name="ObtainFractalStage6Answer1">Thank you very much, I think I will master it overnight.</string>
+	<string name="MeditationStage1Answer0">Hey, my head is been buzzing with all sorts of thoughts lately. How do you always stay so rested?</string>
+	<string name="MeditationStage1Dialog0">Ah, well, we Doguses have been learning meditation since childhood. Do you want me to teach you?</string>
+	<string name="MeditationStage1Dialog1">To achieve enlightenment, do this:\n1. Get a Frogus - they know everything there is to know about meditation.\n2. As soon as it hatches, start practicing with it right away.\n3. Practice meditating with it every day.\n4. If you miss even one day, start over.\n5. Finishing 13 exercises will allow you to achieve enlightenment.</string>
+	<string name="MeditationStage1Answer1">It sounds confusing, but I will try.</string>
+	<string name="MeditationStage2Answer0">Hi, dogus said you can teach me meditation.</string>
+	<string name="MeditationStage2Dialog0">Great, you have come to the right place. Let us start with something simple – breathing exercises. Repeat after me.</string>
+	<string name="MeditationStage2Dialog1">Sorry, but you are a bit late, you need to find a younger Frogus.</string>
+	<string name="MeditationStage2Dialog2">[Half an hour later] Well, that is great, come tomorrow, we will continue training.</string>
+	<string name="MeditationStage3Answer0">Hi, I came to continue our training.</string>
+	<string name="MeditationStage3Dialog0">You came too early, not even a day has passed since our last training, rest for now.</string>
+	<string name="MeditationStage3Dialog1">Excellent! I see you are rested and ready to continue. Exercise for today is</string>
+	<string name="MeditationStage3Dialog2">Unfortunately, you are more than two days late. That is not how things work. We will have to start all over again.</string>
+	<string name="MeditationStage3Answer1">Oh, oh, what can you do...</string>
+	<string name="MeditationStage3Dialog4">I have nothing more to teach you, child, you already know everything you need to know. From now on, you can free yourself from the thoughts that bother you at will. Congratulations!</string>
+	<string name="MeditationStage3Answer2">Thank you for spending time with me! I have learned a lot.</string>
 
 	<!-- Quest description -->
 	<string name="QuestIsFinished">Done</string>
@@ -201,6 +241,7 @@
 	<string name="QuestNameObtainFrogus">Fish and consequences</string>
 	<string name="QuestNameObtainBober">Must be a wind</string>
 	<string name="QuestNameObtainFractal">Coastline paradox</string>
+	<string name="QuestNameMeditation">Mind games</string>
 	<string name="QuestDescObtainFrogusStage0">Something tells me that I need to make sure I understand catus properly.</string>
 	<string name="QuestDescObtainFrogusStage1">Great, now I need to ask catus, maybe someone needs some help.</string>
 	<string name="QuestDescObtainFrogusStage2">As I thought, one of the katus asked me to diversify the menu and find some fish somewhere. I will look for it near the pond he was talking about.</string>
@@ -241,4 +282,9 @@
 	<string name="QuestDescObtainFractalStage6">Frogus sent me to the bobers to find out about this paradox.</string>
 	<string name="QuestDescObtainFractalStage7">Bober gave me a book about mathematics, I will dive into it head first.</string>
 	<string name="QuestDescObtainFractalStage8">Wow, I learned a lot of new things there! What I liked most in this book were the fractals, now I know what they are and how different they are. I love imagining them!</string>
+	<string name="QuestDescMeditationStage0">To begin with, it would be nice to fully understand my pets.</string>
+	<string name="QuestDescMeditationStage1">My head is been spinning lately. I will ask the adult dogus how he always manages to stay so rested.</string>
+	<string name="QuestDescMeditationStage2">Dogus told me to ask Frogus about meditation.</string>
+	<string name="QuestDescMeditationStage3">We started intensive training with Frogus.</string>
+	<string name="QuestDescMeditationStage4">I learned meditation practices and now I can forget anything I want!</string>
 </resources>

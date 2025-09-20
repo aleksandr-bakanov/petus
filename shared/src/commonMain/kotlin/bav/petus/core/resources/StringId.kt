@@ -29,6 +29,29 @@ sealed class StringId {
     data object TenCentimeterRuler : StringId()
     data object MathBook : StringId()
     //endregion
+    
+    //region Meditation exercises
+    data object MeditationExerciseBreathAwareness : StringId()
+    data object MeditationExerciseBoxBreathing : StringId()
+    data object MeditationExerciseBodyScan : StringId()
+    data object MeditationExerciseLovingKindnessPhrases : StringId()
+    data object MeditationExerciseCountingTheBreath : StringId()
+    data object MeditationExerciseMantraRepetition : StringId()
+    data object MeditationExerciseWalkingMeditation : StringId()
+    data object MeditationExerciseCandleGazing : StringId()
+    data object MeditationExerciseNotingPractice : StringId()
+    data object MeditationExerciseFiveSensesAwareness : StringId()
+    data object MeditationExerciseVisualization : StringId()
+    data object MeditationExerciseMountainMeditation : StringId()
+    data object MeditationExerciseSoundAwareness : StringId()
+    data object MeditationExerciseTonglenExercise : StringId()
+    data object MeditationExerciseGratitudeReflection : StringId()
+    data object MeditationExerciseMindfulEating : StringId()
+    data object MeditationExerciseProgressiveRelaxation : StringId()
+    data object MeditationExerciseChakraFocusing : StringId()
+    data object MeditationExerciseSelfInquiryQuestions : StringId()
+    data object MeditationExerciseSilentSitting : StringId()
+    //endregion
 
     //region Abilities names
     data object Necromancy : StringId()
@@ -168,6 +191,22 @@ sealed class StringId {
     data object ObtainFractalStage6Answer0 : StringId()
     data object ObtainFractalStage6Dialog0 : StringId()
     data object ObtainFractalStage6Answer1 : StringId()
+
+    data object MeditationStage1Answer0 : StringId()
+    data object MeditationStage1Dialog0 : StringId()
+    data object MeditationStage1Dialog1 : StringId()
+    data object MeditationStage1Answer1 : StringId()
+    data object MeditationStage2Answer0 : StringId()
+    data object MeditationStage2Dialog0 : StringId()
+    data object MeditationStage2Dialog1 : StringId()
+    data object MeditationStage2Dialog2 : StringId()
+    data object MeditationStage3Dialog0 : StringId()
+    data object MeditationStage3Answer0 : StringId()
+    data object MeditationStage3Dialog1 : StringId()
+    data object MeditationStage3Dialog2 : StringId()
+    data object MeditationStage3Answer1 : StringId()
+    data object MeditationStage3Dialog4 : StringId()
+    data object MeditationStage3Answer2 : StringId()
     //endregion
     
     //region Quest status
@@ -176,6 +215,7 @@ sealed class StringId {
     data object QuestNameObtainFrogus : StringId()
     data object QuestNameObtainBober : StringId()
     data object QuestNameObtainFractal : StringId()
+    data object QuestNameMeditation : StringId()
     data object QuestDescObtainFrogusStage0 : StringId()
     data object QuestDescObtainFrogusStage1 : StringId()
     data object QuestDescObtainFrogusStage2 : StringId()
@@ -216,5 +256,10 @@ sealed class StringId {
     data object QuestDescObtainFractalStage6 : StringId()
     data object QuestDescObtainFractalStage7 : StringId()
     data object QuestDescObtainFractalStage8 : StringId()
+    data object QuestDescMeditationStage0 : StringId()
+    data object QuestDescMeditationStage1 : StringId()
+    data object QuestDescMeditationStage2 : StringId()
+    data object QuestDescMeditationStage3 : StringId()
+    data object QuestDescMeditationStage4 : StringId()
     //endregion
 }

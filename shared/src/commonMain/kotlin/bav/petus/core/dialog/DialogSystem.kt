@@ -3,6 +3,10 @@ package bav.petus.core.dialog
 import androidx.datastore.preferences.core.edit
 import bav.petus.core.engine.Ability
 import bav.petus.core.engine.Engine
+import bav.petus.core.engine.MEDITATION_EXERCISES_LEFT_KEY
+import bav.petus.core.engine.MEDITATION_FROG_ID_KEY
+import bav.petus.core.engine.MEDITATION_TIMESTAMP_KEY
+import bav.petus.core.engine.MEDITATION_TOTAL_EXERCISES
 import bav.petus.core.engine.NECRONOMICON_EXHUMATED_PET_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_SEARCH_DOG_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_TIMESTAMP_KEY
@@ -26,6 +30,7 @@ import bav.petus.model.FractalType
 import bav.petus.model.Pet
 import bav.petus.model.PetType
 import kotlinx.coroutines.flow.first
+import kotlin.random.Random
 
 class DialogSystem(
     private val userStats: UserStats,
@@ -74,8 +79,14 @@ class DialogSystem(
                     nodes[nextId]
                 }
 
-                if (answer.nextNode == PET_DESCRIPTION) {
-                    currentNode = addPetDescription(currentPet, currentNode)
+                when (answer.nextNode) {
+                    PET_DESCRIPTION -> {
+                        currentNode = addPetDescription(currentPet, currentNode)
+                    }
+                    MEDITATION_STAGE_3_DIALOG_1 -> {
+                        // Add random meditation practice
+                        currentNode = addRandomMeditationPractice(currentNode)
+                    }
                 }
 
                 currentNode
@@ -202,6 +213,16 @@ class DialogSystem(
         }
     }
 
+    private fun addRandomMeditationPractice(node: DialogNode?): DialogNode? {
+        if (node == null) return node
+        else {
+            val randomIndex = Random.Default.nextInt(MEDITATION_EXERCISES.size)
+            return node.copy(
+                text = node.text + MEDITATION_EXERCISES[randomIndex]
+            )
+        }
+    }
+
     suspend fun censorDialogText(petType: PetType, text: String): String {
         val maxKnowledge = UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE
         val knowledge = userStats.getLanguageKnowledge(petType).coerceIn(0, maxKnowledge)
@@ -220,6 +241,29 @@ class DialogSystem(
     }
 
     companion object {
+        val MEDITATION_EXERCISES = listOf(
+            StringId.MeditationExerciseBreathAwareness,
+            StringId.MeditationExerciseBoxBreathing,
+            StringId.MeditationExerciseBodyScan,
+            StringId.MeditationExerciseLovingKindnessPhrases,
+            StringId.MeditationExerciseCountingTheBreath,
+            StringId.MeditationExerciseMantraRepetition,
+            StringId.MeditationExerciseWalkingMeditation,
+            StringId.MeditationExerciseCandleGazing,
+            StringId.MeditationExerciseNotingPractice,
+            StringId.MeditationExerciseFiveSensesAwareness,
+            StringId.MeditationExerciseVisualization,
+            StringId.MeditationExerciseMountainMeditation,
+            StringId.MeditationExerciseSoundAwareness,
+            StringId.MeditationExerciseTonglenExercise,
+            StringId.MeditationExerciseGratitudeReflection,
+            StringId.MeditationExerciseMindfulEating,
+            StringId.MeditationExerciseProgressiveRelaxation,
+            StringId.MeditationExerciseChakraFocusing,
+            StringId.MeditationExerciseSelfInquiryQuestions,
+            StringId.MeditationExerciseSilentSitting,
+        )
+        
         const val STANDARD_DIALOG_BEGINNING = "STANDARD_DIALOG_BEGINNING"
         const val PET_DESCRIPTION = "PET_DESCRIPTION"
         const val BEING_BETTER = "BEING_BETTER"
@@ -256,6 +300,17 @@ class DialogSystem(
         const val OBTAIN_FRACTAL_STAGE_3_DIALOG_0 = "OBTAIN_FRACTAL_STAGE_3_DIALOG_0"
         const val OBTAIN_FRACTAL_STAGE_5_DIALOG_0 = "OBTAIN_FRACTAL_STAGE_5_DIALOG_0"
         const val OBTAIN_FRACTAL_STAGE_6_DIALOG_0 = "OBTAIN_FRACTAL_STAGE_6_DIALOG_0"
+
+        const val MEDITATION_STAGE_1_DIALOG_0 = "MEDITATION_STAGE_1_DIALOG_0"
+        const val MEDITATION_STAGE_1_DIALOG_1 = "MEDITATION_STAGE_1_DIALOG_1"
+        const val MEDITATION_STAGE_2_DIALOG_0 = "MEDITATION_STAGE_2_DIALOG_0"
+        const val MEDITATION_STAGE_2_DIALOG_1 = "MEDITATION_STAGE_2_DIALOG_1"
+        const val MEDITATION_STAGE_2_DIALOG_2 = "MEDITATION_STAGE_2_DIALOG_2"
+        const val MEDITATION_STAGE_3_DIALOG_0 = "MEDITATION_STAGE_3_DIALOG_0"
+        const val MEDITATION_STAGE_3_DIALOG_1 = "MEDITATION_STAGE_3_DIALOG_1"
+        const val MEDITATION_STAGE_3_DIALOG_2 = "MEDITATION_STAGE_3_DIALOG_2"
+        const val MEDITATION_STAGE_3_DIALOG_3 = "MEDITATION_STAGE_3_DIALOG_3"
+        const val MEDITATION_STAGE_3_DIALOG_4 = "MEDITATION_STAGE_3_DIALOG_4"
 
         private val nodes: Map<String, DialogNode> = mapOf(
             STANDARD_DIALOG_BEGINNING to DialogNode(
@@ -741,6 +796,123 @@ class DialogSystem(
                                 )
                             )
                             questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_FRACTAL)
+                        }
+                    ),
+                )
+            ),
+            MEDITATION_STAGE_1_DIALOG_0 to DialogNode(
+                text = listOf(StringId.MeditationStage1Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Sure,
+                        nextNode = MEDITATION_STAGE_1_DIALOG_1,
+                    ),
+                )
+            ),
+            MEDITATION_STAGE_1_DIALOG_1 to DialogNode(
+                text = listOf(StringId.MeditationStage1Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.MeditationStage1Answer1,
+                        nextNode = null,
+                        action = { questSystem, _, _ ->
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_MEDITATION)
+                        }
+                    ),
+                )
+            ),
+            MEDITATION_STAGE_2_DIALOG_0 to DialogNode(
+                text = listOf(StringId.MeditationStage2Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Sure,
+                        nextNode = MEDITATION_STAGE_2_DIALOG_2,
+                    ),
+                )
+            ),
+            MEDITATION_STAGE_2_DIALOG_1 to DialogNode(
+                text = listOf(StringId.MeditationStage2Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ok,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            MEDITATION_STAGE_2_DIALOG_2 to DialogNode(
+                text = listOf(StringId.MeditationStage2Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Thanks,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[MEDITATION_TIMESTAMP_KEY] = now
+                                store[MEDITATION_EXERCISES_LEFT_KEY] = MEDITATION_TOTAL_EXERCISES - 1
+                                pet?.let { p -> store[MEDITATION_FROG_ID_KEY] = p.id }
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_MEDITATION)
+                        }
+                    ),
+                )
+            ),
+            MEDITATION_STAGE_3_DIALOG_0 to DialogNode(
+                text = listOf(StringId.MeditationStage3Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ok,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            MEDITATION_STAGE_3_DIALOG_1 to DialogNode(
+                text = listOf(StringId.MeditationStage3Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ok,
+                        nextNode = MEDITATION_STAGE_3_DIALOG_3,
+                    ),
+                )
+            ),
+            MEDITATION_STAGE_3_DIALOG_2 to DialogNode(
+                text = listOf(StringId.MeditationStage3Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.MeditationStage3Answer1,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            questSystem.setQuestStage(QuestSystem.QUEST_MEDITATION, 2)
+                        }
+                    ),
+                )
+            ),
+            MEDITATION_STAGE_3_DIALOG_3 to DialogNode(
+                text = listOf(StringId.MeditationStage2Dialog2), // same as in MEDITATION_STAGE_2_DIALOG_2
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ok,
+                        nextNode = null,
+                        action = { questSystem, _, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            val exercisesLeft = questSystem.dataStore.data.first()[MEDITATION_EXERCISES_LEFT_KEY] ?: MEDITATION_TOTAL_EXERCISES
+                            questSystem.dataStore.edit { store ->
+                                store[MEDITATION_TIMESTAMP_KEY] = now
+                                store[MEDITATION_EXERCISES_LEFT_KEY] = exercisesLeft - 1
+                            }
+                        }
+                    ),
+                )
+            ),
+            MEDITATION_STAGE_3_DIALOG_4 to DialogNode(
+                text = listOf(StringId.MeditationStage3Dialog4),
+                answers = listOf(
+                    Answer(
+                        text = StringId.MeditationStage3Answer2,
+                        nextNode = null,
+                        action = { questSystem, userStats, _ ->
+                            userStats.addNewAbility(Ability.Meditation)
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_MEDITATION)
                         }
                     ),
                 )

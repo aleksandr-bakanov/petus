@@ -57,6 +57,27 @@ Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android;InventoryItemPattern;%s (x%d);%s (x%d)
 ;ios;InventoryItemPattern;%@ (x%d);%@ (x%d)
 
+Meditation exercises;android, ios;MeditationExerciseBreathAwareness;Breath Awareness;Осознанное дыхание
+;android, ios;MeditationExerciseBoxBreathing;Box Breathing;Квадратное дыхание
+;android, ios;MeditationExerciseBodyScan;Body Scan;Сканирование тела
+;android, ios;MeditationExerciseLovingKindnessPhrases;Loving-Kindness Phrases;Фразы любящей доброты
+;android, ios;MeditationExerciseCountingTheBreath;Counting the Breath;Подсчёт дыхания
+;android, ios;MeditationExerciseMantraRepetition;Mantra Repetition;Повторение мантры
+;android, ios;MeditationExerciseWalkingMeditation;Walking Meditation;Медитация ходьбы
+;android, ios;MeditationExerciseCandleGazing;Candle Gazing;Созерцание свечи
+;android, ios;MeditationExerciseNotingPractice;Noting Practice;Практика «Нотинг»
+;android, ios;MeditationExerciseFiveSensesAwareness;Five Senses Awareness;Осознанность пяти чувств
+;android, ios;MeditationExerciseVisualization;Visualization;Визуализация
+;android, ios;MeditationExerciseMountainMeditation;Mountain Meditation;Медитация «Гора»
+;android, ios;MeditationExerciseSoundAwareness;Sound Awareness;Осознанное слушание
+;android, ios;MeditationExerciseTonglenExercise;Tonglen Exercise;Практика Тонглен
+;android, ios;MeditationExerciseGratitudeReflection;Gratitude Reflection;Размышление о благодарности
+;android, ios;MeditationExerciseMindfulEating;Mindful Eating;Осознанное питание
+;android, ios;MeditationExerciseProgressiveRelaxation;Progressive Relaxation;Прогрессивное расслабление
+;android, ios;MeditationExerciseChakraFocusing;Chakra Focusing;Фокусировка на чакрах
+;android, ios;MeditationExerciseSelfInquiryQuestions;Self-Inquiry Questions;Самоисследование
+;android, ios;MeditationExerciseSilentSitting;Silent Sitting;Тихое сидение
+
 Abilities names;android, ios;Necromancy;Necromancy;Некромантия
 ;android, ios;Meditation;Meditation;Медитация
 
@@ -190,12 +211,28 @@ Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как де
 ;android, ios;ObtainFractalStage6Answer0;Hi, frogus said you could explain the coastline paradox to me.;Привет, фрогус сказал, что ты можешь объяснить мне про парадокс береговой линии.
 ;android, ios;ObtainFractalStage6Dialog0;Aaaah, paradoks linii brzegowej? Wiemy, wiemy. Mam o tym bardzo ciekawą książkę. Przeczytaj ją, jest w niej mnóstwo ciekawych rzeczy.;
 ;android, ios;ObtainFractalStage6Answer1;Thank you very much, I think I will master it overnight.;Спасибо большое, думаю освою за ночь.
+;android, ios;MeditationStage1Answer0;Hey, my head is been buzzing with all sorts of thoughts lately. How do you always stay so rested?;Привет, что-то у меня последнее время голова гудит от всяких мыслей. Как у тебя получается всегда оставаться таким отдохнувшим?
+;android, ios;MeditationStage1Dialog0;Ah, well, we Doguses have been learning meditation since childhood. Do you want me to teach you?;А, ну так мы - догусы - с детства обучаемся медитации, хочешь научу?
+;android, ios;MeditationStage1Dialog1;To achieve enlightenment, do this:\n1. Get a Frogus - they know everything there is to know about meditation.\n2. As soon as it hatches, start practicing with it right away.\n3. Practice meditating with it every day.\n4. If you miss even one day, start over.\n5. Finishing 10 exercises will allow you to achieve enlightenment.;Чтобы достичь просветления делай так:\n1. Заведи фрогуса - они про медитацию знают вообще всё.\n2. Как только вылупится - сразу же начинай с ним практиковаться.\n3. Тренируйся с ним медитировать каждый день.\n4. Если хоть один день пропустишь - начинай сначала.\n5. Завершение 13 упражнений позволит достичь просветления.
+;android, ios;MeditationStage1Answer1;It sounds confusing, but I will try.;Звучит запутанно, но я попробую.
+;android, ios;MeditationStage2Answer0;Hi, dogus said you can teach me meditation.;Привет, догус сказал, что ты можешь научить меня медитации.
+;android, ios;MeditationStage2Dialog0;Great, you have come to the right place. Let us start with something simple – breathing exercises. Repeat after me.;Отлично, ты пришла по адресу, начнем с чего-нибудь простого - дыхательных упражнений. Повторяй за мной.
+;android, ios;MeditationStage2Dialog1;Sorry, but you are a bit late, you need to find a younger Frogus.;Извини, но ты поздновато пришла, тебе нужно найти фрогуса помоложе.
+;android, ios;MeditationStage2Dialog2;[Half an hour later] Well, that is great, come tomorrow, we will continue training.;[Полчаса спустя] Ну вот и славно, приходи завтра, продолжим тренировки.
+;android, ios;MeditationStage3Answer0;Hi, I came to continue our training.;Привет, я пришла продолжить наши тренировки.
+;android, ios;MeditationStage3Dialog0;You came too early, not even a day has passed since our last training, rest for now.;Ты пришла слишком рано, еще и дня не прошло с нашей последней тренировки, отдыхай пока.
+;android, ios;MeditationStage3Dialog1;Excellent! I see you are rested and ready to continue. Exercise for today is;Отлично! Вижу ты отдохнула и готова продолжить. Сегодняшнее упражнение -
+;android, ios;MeditationStage3Dialog2;Unfortunately, you are more than two days late. That is not how things work. We will have to start all over again.;К сожалению ты задержалась больше чем на два дня, так дела не делаются. Придется начинать все с начала.
+;android, ios;MeditationStage3Answer1;Oh, oh, what can you do...;Ой-ёй, ну что ж поделаешь...
+;android, ios;MeditationStage3Dialog4;I have nothing more to teach you, child, you already know everything you need to know. From now on, you can free yourself from the thoughts that bother you at will. Congratulations!;Мне больше нечему тебя учить, дитя, ты уже знаешь всё что нужно. Отныне ты можешь по своему желанию избавляться от надоевших тебе мыслей. Мои поздравления!
+;android, ios;MeditationStage3Answer2;Thank you for spending time with me! I have learned a lot.;Спасибо за время проведенное со мной! Я многому научилась.
 
 Quest description;android, ios;QuestIsFinished;Done;Завершен
 ;android, ios;QuestNameNecronomicon;Lost and found;Утраченный и обретённый
 ;android, ios;QuestNameObtainFrogus;Fish and consequences;Последствия рыбалки
 ;android, ios;QuestNameObtainBober;Must be a wind;Должно быть, ветер.
 ;android, ios;QuestNameObtainFractal;Coastline paradox;Парадокс береговой линии
+;android, ios;QuestNameMeditation;Mind games;Игры разума
 ;android, ios;QuestDescObtainFrogusStage0;Something tells me that I need to make sure I understand catus properly.;Что-то мне подсказывает, что мне нужно убедиться, что я правильно понимаю катусов.
 ;android, ios;QuestDescObtainFrogusStage1;Great, now I need to ask catus, maybe someone needs some help.;Отлично, теперь надо поспрашивать катусов, может кому нужна какая помощь.
 ;android, ios;QuestDescObtainFrogusStage2;As I thought, one of the katus asked me to diversify the menu and find some fish somewhere. I will look for it near the pond he was talking about.;Как я и думала, один из катусов попросил меня разнообразить меню и найти где-нибудь рыбы. Поищу у пруда, про который он говорил.
@@ -236,3 +273,8 @@ Quest description;android, ios;QuestIsFinished;Done;Завершен
 ;android, ios;QuestDescObtainFractalStage6;Frogus sent me to the bobers to find out about this paradox.;Фрогус отправил меня к боберам узнать насчет этого парадокса.
 ;android, ios;QuestDescObtainFractalStage7;Bober gave me a book about mathematics, I will dive into it head first.;Бобер дал мне книгу про математику, нырну туда с головой.
 ;android, ios;QuestDescObtainFractalStage8;Wow, I learned a lot of new things there! What I liked most in this book were the fractals, now I know what they are and how different they are. I love imagining them!;Вау, я узнала там много нового! Больше всего в этой книге мне понравились фракталы, теперь я знаю что это такое и какие разные они бывают. Обожаю их себе представлять!
+;android, ios;QuestDescMeditationStage0;To begin with, it would be nice to fully understand my pets.;Для начала, неплохо бы полностью понимать моих питомцев.
+;android, ios;QuestDescMeditationStage1;My head is been spinning lately. I will ask the adult dogus how he always manages to stay so rested.;Что-то последнее время голова кругом идет. Спрошу-ка я у взрослого догуса как ему всегда удается оставаться таким отдохнувшим.
+;android, ios;QuestDescMeditationStage2;Dogus told me to ask Frogus about meditation.;Догус сказал чтобы я спросила у фрогуса насчет медитации.
+;android, ios;QuestDescMeditationStage3;We started intensive training with Frogus.;Мы начали интенсивные тренировки с Фрогусом.
+;android, ios;QuestDescMeditationStage4;I learned meditation practices and now I can forget anything I want!;Я научилась практикам медитации и теперь я могу забыть всё что захочу!

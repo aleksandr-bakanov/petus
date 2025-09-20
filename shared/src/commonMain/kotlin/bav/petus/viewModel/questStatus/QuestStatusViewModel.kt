@@ -113,12 +113,31 @@ class QuestStatusViewModel(
             }
         )
 
+        val meditationStage = questSystem.getQuestStage(QuestSystem.QUEST_MEDITATION)
+        val meditationStageAmount =
+            questSystem.getQuestStagesAmount(QuestSystem.QUEST_MEDITATION)
+        val meditationQuest = QuestDescription(
+            questName = convertStringIdToString(StringId.QuestNameMeditation),
+            stagesDescription = getStagesCompletedString(
+                convertStringIdToString = convertStringIdToString,
+                currentStage = meditationStage,
+                total = meditationStageAmount,
+            ),
+            questDescription = buildString {
+                val completedStages = MEDITATION_STAGES_DESCRIPTIONS
+                    .take(meditationStage + 1)
+                    .joinToString(separator = " ", transform = convertStringIdToString)
+                append(completedStages)
+            }
+        )
+
         QuestStatusUiState(
             quests = listOf(
                 necroQuest,
                 frogusQuest,
                 boberQuest,
                 fractalQuest,
+                meditationQuest,
             )
         )
     }.stateIn(
@@ -189,6 +208,13 @@ class QuestStatusViewModel(
             StringId.QuestDescObtainFractalStage6,
             StringId.QuestDescObtainFractalStage7,
             StringId.QuestDescObtainFractalStage8,
+        )
+        private val MEDITATION_STAGES_DESCRIPTIONS = listOf(
+            StringId.QuestDescMeditationStage0,
+            StringId.QuestDescMeditationStage1,
+            StringId.QuestDescMeditationStage2,
+            StringId.QuestDescMeditationStage3,
+            StringId.QuestDescMeditationStage4,
         )
     }
 

@@ -172,6 +172,7 @@ class Engine(
     suspend fun isAllowedToForgetPet(pet: Pet): Boolean {
         val userData = userStats.getUserProfileFlow().first()
         return userData.abilities.contains(Ability.Meditation) &&
+                pet.type == PetType.Fractal &&
                 pet.place == Place.Zoo
     }
 

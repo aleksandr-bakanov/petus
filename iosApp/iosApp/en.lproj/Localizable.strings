@@ -59,6 +59,28 @@
 "MathBook"                                 = "What Is Mathematics? - book by Herbert Robbins and Richard Courant";
 "InventoryItemPattern"                     = "%@ (x%d)";
 
+/* Meditation exercises */
+"MeditationExerciseBreathAwareness"        = "Breath Awareness";
+"MeditationExerciseBoxBreathing"           = "Box Breathing";
+"MeditationExerciseBodyScan"               = "Body Scan";
+"MeditationExerciseLovingKindnessPhrases"  = "Loving-Kindness Phrases";
+"MeditationExerciseCountingTheBreath"      = "Counting the Breath";
+"MeditationExerciseMantraRepetition"       = "Mantra Repetition";
+"MeditationExerciseWalkingMeditation"      = "Walking Meditation";
+"MeditationExerciseCandleGazing"           = "Candle Gazing";
+"MeditationExerciseNotingPractice"         = "Noting Practice";
+"MeditationExerciseFiveSensesAwareness"    = "Five Senses Awareness";
+"MeditationExerciseVisualization"          = "Visualization";
+"MeditationExerciseMountainMeditation"     = "Mountain Meditation";
+"MeditationExerciseSoundAwareness"         = "Sound Awareness";
+"MeditationExerciseTonglenExercise"        = "Tonglen Exercise";
+"MeditationExerciseGratitudeReflection"    = "Gratitude Reflection";
+"MeditationExerciseMindfulEating"          = "Mindful Eating";
+"MeditationExerciseProgressiveRelaxation"  = "Progressive Relaxation";
+"MeditationExerciseChakraFocusing"         = "Chakra Focusing";
+"MeditationExerciseSelfInquiryQuestions"   = "Self-Inquiry Questions";
+"MeditationExerciseSilentSitting"          = "Silent Sitting";
+
 /* Abilities names */
 "Necromancy"                               = "Necromancy";
 "Meditation"                               = "Meditation";
@@ -116,6 +138,9 @@
 "IAmGoodLatin"                             = "Bene sum.";
 "IAmGoodPolish"                            = "Mam się dobrze.";
 "IAmGoodMath"                              = "[e^(iπ) + 1 = 0]";
+"IWillDie"                                 = "As I am old, within the next five minutes I will die with a probability of %1$.3f%%.";
+"IWillDieLatin"                            = "Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.";
+"IWillDiePolish"                           = "Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.";
 
 /* Dialogs */
 "WhatIsGoingOnWithYou"                     = "What is going on with you?";
@@ -192,6 +217,21 @@
 "ObtainFractalStage6Answer0"               = "Hi, frogus said you could explain the coastline paradox to me.";
 "ObtainFractalStage6Dialog0"               = "Aaaah, paradoks linii brzegowej? Wiemy, wiemy. Mam o tym bardzo ciekawą książkę. Przeczytaj ją, jest w niej mnóstwo ciekawych rzeczy.";
 "ObtainFractalStage6Answer1"               = "Thank you very much, I think I will master it overnight.";
+"MeditationStage1Answer0"                  = "Hey, my head is been buzzing with all sorts of thoughts lately. How do you always stay so rested?";
+"MeditationStage1Dialog0"                  = "Ah, well, we Doguses have been learning meditation since childhood. Do you want me to teach you?";
+"MeditationStage1Dialog1"                  = "To achieve enlightenment, do this:\n1. Get a Frogus - they know everything there is to know about meditation.\n2. As soon as it hatches, start practicing with it right away.\n3. Practice meditating with it every day.\n4. If you miss even one day, start over.\n5. Finishing 13 exercises will allow you to achieve enlightenment.";
+"MeditationStage1Answer1"                  = "It sounds confusing, but I will try.";
+"MeditationStage2Answer0"                  = "Hi, dogus said you can teach me meditation.";
+"MeditationStage2Dialog0"                  = "Great, you have come to the right place. Let us start with something simple – breathing exercises. Repeat after me.";
+"MeditationStage2Dialog1"                  = "Sorry, but you are a bit late, you need to find a younger Frogus.";
+"MeditationStage2Dialog2"                  = "[Half an hour later] Well, that is great, come tomorrow, we will continue training.";
+"MeditationStage3Answer0"                  = "Hi, I came to continue our training.";
+"MeditationStage3Dialog0"                  = "You came too early, not even a day has passed since our last training, rest for now.";
+"MeditationStage3Dialog1"                  = "Excellent! I see you are rested and ready to continue. Exercise for today is";
+"MeditationStage3Dialog2"                  = "Unfortunately, you are more than two days late. That is not how things work. We will have to start all over again.";
+"MeditationStage3Answer1"                  = "Oh, oh, what can you do...";
+"MeditationStage3Dialog4"                  = "I have nothing more to teach you, child, you already know everything you need to know. From now on, you can free yourself from the thoughts that bother you at will. Congratulations!";
+"MeditationStage3Answer2"                  = "Thank you for spending time with me! I have learned a lot.";
 
 /* Quest description */
 "QuestIsFinished"                          = "Done";
@@ -199,6 +239,7 @@
 "QuestNameObtainFrogus"                    = "Fish and consequences";
 "QuestNameObtainBober"                     = "Must be a wind";
 "QuestNameObtainFractal"                   = "Coastline paradox";
+"QuestNameMeditation"                      = "Mind games";
 "QuestDescObtainFrogusStage0"              = "Something tells me that I need to make sure I understand catus properly.";
 "QuestDescObtainFrogusStage1"              = "Great, now I need to ask catus, maybe someone needs some help.";
 "QuestDescObtainFrogusStage2"              = "As I thought, one of the katus asked me to diversify the menu and find some fish somewhere. I will look for it near the pond he was talking about.";
@@ -239,3 +280,8 @@
 "QuestDescObtainFractalStage6"             = "Frogus sent me to the bobers to find out about this paradox.";
 "QuestDescObtainFractalStage7"             = "Bober gave me a book about mathematics, I will dive into it head first.";
 "QuestDescObtainFractalStage8"             = "Wow, I learned a lot of new things there! What I liked most in this book were the fractals, now I know what they are and how different they are. I love imagining them!";
+"QuestDescMeditationStage0"                = "To begin with, it would be nice to fully understand my pets.";
+"QuestDescMeditationStage1"                = "My head is been spinning lately. I will ask the adult dogus how he always manages to stay so rested.";
+"QuestDescMeditationStage2"                = "Dogus told me to ask Frogus about meditation.";
+"QuestDescMeditationStage3"                = "We started intensive training with Frogus.";
+"QuestDescMeditationStage4"                = "I learned meditation practices and now I can forget anything I want!";
