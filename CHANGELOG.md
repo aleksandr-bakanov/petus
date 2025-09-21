@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-09-21
+
+### Added
+
+- New pet: fractal
+- Game update status bar
+- Info about death possibility
+- Foldable quest descriptions
+
+### Fixed
+
+- First dialog phrase for bober
+
 ## [1.1.0] - 2025-07-06
 
 ### Added
