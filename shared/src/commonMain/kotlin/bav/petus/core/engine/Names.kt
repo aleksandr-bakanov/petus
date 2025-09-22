@@ -12,9 +12,9 @@ val NAMES = listOf(
     "Joost", "Kajko", "Klaas", "Klaus", "Kokosz",
     "Kora", "Kretes", "Lars", "Leo", "Loki",
     "Lola", "Louie", "Lucy", "Luna", "Luna",
-    "Max", "Maximus", "Midnight", "Miki", "Mila",
-    "Mila", "Milo", "Misty", "Molly", "Nermal",
-    "Nikki", "Nikki", "Noa", "Noa", "Nori",
+    "Max", "Maximus", "Midnight", "Miki",
+    "Mila", "Mila", "Milo", "Misty", "Molly",
+    "Nermal", "Nikki", "Nikki", "Noa", "Nori",
     "Nova", "Oddie", "Olive", "Ollie", "Oscar",
     "Oscar", "Otto", "Pepper", "Pimpek", "Puck",
     "Pumpkin", "Reksio", "Remy", "Rocky", "Romek",
@@ -23,6 +23,3 @@ val NAMES = listOf(
     "Thor", "Tiger", "Titan", "Toby", "Tom",
     "Tytus", "Vincent", "Zeus", "Zoë", "Łatek"
 )
-
-
-

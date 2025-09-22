@@ -62,7 +62,6 @@ class Engine(
     }
 
     fun getRandomName(): String {
-        println(NAMES.sorted().joinToString(", ").replace(", ", "\", \"" ))
         return NAMES.random()
     }
 
