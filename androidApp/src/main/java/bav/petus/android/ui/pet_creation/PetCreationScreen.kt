@@ -1,10 +1,14 @@
 package bav.petus.android.ui.pet_creation
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -15,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -74,18 +79,35 @@ private fun PetCreationScreen(
                 style = MaterialTheme.typography.headlineLarge,
                 textAlign = TextAlign.Center,
             )
-            TextField(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                value = uiState.name,
-                placeholder = { Text(stringResource(id = R.string.PetCreationScreenEnterPetNameHint)) },
-                onValueChange = {
-                    onAction(PetCreationScreenViewModel.Action.UpdateName(it))
-                },
-                textStyle = MaterialTheme.typography.headlineLarge,
-                singleLine = true,
-            )
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                TextField(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    value = uiState.name,
+                    placeholder = { Text(stringResource(id = R.string.PetCreationScreenEnterPetNameHint)) },
+                    onValueChange = {
+                        onAction(PetCreationScreenViewModel.Action.UpdateName(it))
+                    },
+                    textStyle = MaterialTheme.typography.headlineLarge,
+                    singleLine = true
+                )
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_dice_svgrepo),
+                    contentDescription = ("dice icon"),
+                    modifier = Modifier
+                        .size(54.dp)
+                        .align(Alignment.CenterEnd)
+                        .padding(end = 18.dp)
+                        .clickable {
+                            onAction(PetCreationScreenViewModel.Action.GetRandomName)
+                        },
+                    tint = Color.Gray
+                )
+            }
 
             Text(
                 modifier = Modifier

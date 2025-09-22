@@ -61,6 +61,11 @@ class Engine(
         }
     }
 
+    fun getRandomName(): String {
+        println(NAMES.sorted().joinToString(", ").replace(", ", "\", \"" ))
+        return NAMES.random()
+    }
+
     private fun getRandomFractalType(): FractalType {
         val randomIndex = Random.Default.nextInt(FractalType.entries.size)
         return FractalType.entries[randomIndex]
