@@ -77,10 +77,8 @@ class PetCreationScreenViewModel
                 updateUiState(type = action.value)
             }
             is Action.GetRandomName -> {
-                viewModelScope.launch {
-                    val randomName = engine.getRandomName()
-                    updateUiState(name = randomName)
-                }
+                val randomName = engine.getRandomName()
+                updateUiState(name = randomName)
             }
         }
     }
