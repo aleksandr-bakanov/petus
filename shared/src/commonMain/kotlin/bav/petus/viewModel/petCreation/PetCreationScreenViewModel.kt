@@ -76,6 +76,10 @@ class PetCreationScreenViewModel
             is Action.UpdateType -> {
                 updateUiState(type = action.value)
             }
+            is Action.GetRandomName -> {
+                val randomName = engine.getRandomName()
+                updateUiState(name = randomName)
+            }
         }
     }
 
@@ -95,6 +99,7 @@ class PetCreationScreenViewModel
     sealed interface Action {
         data class UpdateName(val value: String) : Action
         data class UpdateType(val value: PetType) : Action
+        data object GetRandomName : Action
         data object TapCreateButton : Action
     }
 
