@@ -7,6 +7,8 @@ struct PetCreationScreen: View {
     @Environment(\.dismiss) private var dismiss
     
     @StateViewModel var viewModel: PetCreationScreenViewModel = PetCreationScreenViewModel()
+    
+    @State private var text: String = ""
 
     var body: some View {
         VStack {
@@ -34,14 +36,39 @@ struct PetCreationScreen: View {
                             .multilineTextAlignment(.center)
                         
                         // TextField for Pet Name
-                        TextField("PetCreationScreenEnterPetNameHint", text: $name)
-                            .textFieldStyle(.roundedBorder)
-                            .font(.title2)
-                            .padding(8)
-                            .frame(maxWidth: .infinity)
-                            .onChange(of: name) { newValue in
-                                viewModel.onAction(action: PetCreationScreenViewModelActionUpdateName(value: newValue))
+                        HStack {
+                            TextField("PetCreationScreenEnterPetNameHint", text: $text)
+                                .font(.largeTitle)
+                                .onChange(of: text) { newValue in
+                                    viewModel.onAction(action: PetCreationScreenViewModelActionUpdateName(value: newValue))
+                                }
+                                .padding(8)
+                                .frame(maxWidth: .infinity)
+
+                            Button(action: {
+                                viewModel.onAction(action: PetCreationScreenViewModelActionGetRandomName())
+                            }) {
+                                Image(systemName: "dice") // Replace with custom image if needed
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .padding(.trailing, 18)
+                                    .foregroundColor(.gray)
                             }
+                            .frame(width: 54, height: 54)
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray.opacity(0.4))
+                        )
+                        .padding(.horizontal, 8)
+                        .onAppear {
+                            text = state.name
+                        }
+                        .onChange(of: state.name) { newValue in
+                            if newValue != text {
+                                text = newValue
+                            }
+                        }
                         
                         // Type description
                         Text(state.typeDescription.localized)

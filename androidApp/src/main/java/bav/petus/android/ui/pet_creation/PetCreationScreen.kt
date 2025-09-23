@@ -92,7 +92,7 @@ private fun PetCreationScreen(
                 trailingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_dice_svgrepo),
-                        contentDescription = ("dice icon"),
+                        contentDescription = "dice icon",
                         modifier = Modifier
                             .size(54.dp)
                             .padding(end = 18.dp)
