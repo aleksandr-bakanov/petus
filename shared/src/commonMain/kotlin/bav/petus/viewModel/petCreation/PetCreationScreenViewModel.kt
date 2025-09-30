@@ -34,10 +34,10 @@ class PetCreationScreenViewModel
 
     init {
         viewModelScope.launch {
-            val petsInZoo = petsRepo.getAllPetsInZoo()
+            val nonFractalsInZoo = petsRepo.getAllPetsInZoo().filter { it.type != PetType.Fractal }
             val zooSize = userStats.getUserProfileFlow().first().zooSize
             val allAvailablePetTypes = userStats.getAvailablePetTypes()
-            val availablePetTypes = if (petsInZoo.size < zooSize) {
+            val availablePetTypes = if (nonFractalsInZoo.size < zooSize) {
                 allAvailablePetTypes
             } else {
                 allAvailablePetTypes.filter { it == PetType.Fractal }
