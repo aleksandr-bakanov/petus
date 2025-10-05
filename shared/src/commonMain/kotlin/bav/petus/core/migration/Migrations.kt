@@ -25,8 +25,14 @@ class Migrations(
     }
 
     private suspend fun migration0to1() {
-        userStats.addInventoryItem(InventoryItem(InventoryItemId.DogusEgg, 1))
-        userStats.addInventoryItem(InventoryItem(InventoryItemId.CatusEgg, 1))
+        userStats.addInventoryItem(
+            item = InventoryItem(InventoryItemId.DogusEgg, 1),
+            shouldDisplayNotification = false,
+        )
+        userStats.addInventoryItem(
+            item = InventoryItem(InventoryItemId.CatusEgg, 1),
+            shouldDisplayNotification = false,
+        )
     }
 
     private val migrations = listOf(
