@@ -106,11 +106,16 @@ class UserStats(
         }
     }
 
-    suspend fun addInventoryItem(item: InventoryItem) {
+    suspend fun addInventoryItem(
+        item: InventoryItem,
+        shouldDisplayNotification: Boolean = true,
+    ) {
         val inventory = dataStore.data.first().getInventory()
         val newInventory = inventory.addItem(item)
         dataStore.edit { store -> store[USER_INVENTORY_KEY] = Json.encodeToString(newInventory) }
-        addNotification(UserNotification.InventoryItemAdded(item))
+        if (shouldDisplayNotification) {
+            addNotification(UserNotification.InventoryItemAdded(item))
+        }
     }
 
     suspend fun removeInventoryItem(item: InventoryItem) {
