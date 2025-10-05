@@ -53,11 +53,25 @@
 "DogusEgg"                                 = "Dogus egg";
 "CatusEgg"                                 = "Catus egg";
 "BoberEgg"                                 = "Bober egg";
-"Basket"                                   = "Beautiful and reliable basket for storing eggs (with a lid)";
+"Basket"                                   = "Wicker basket";
 "TwoMeterRuler"                            = "2 meter stick";
 "TenCentimeterRuler"                       = "10 centimeter stick";
-"MathBook"                                 = "What Is Mathematics? - book by Herbert Robbins and Richard Courant";
+"MathBook"                                 = "What Is Mathematics?";
 "InventoryItemPattern"                     = "%@ (x%d)";
+
+/* Item descriptions */
+"ItemDescNecronomicon"                     = "The Necronomicon is a grimoire that contains forbidden knowledge, occult rituals, and descriptions of cosmic entities like Cthulhu and the Great Old Ones. It is a dangerous book that drives readers to madness.";
+"ItemDescPieceOfCloth"                     = "Piece of cloth found at the crime scene.";
+"ItemDescMysteriousBook"                   = "Mysterious book found at a ritual site.";
+"ItemDescFish"                             = "Not a very smart fish caught at the pond.";
+"ItemDescFrogusEgg"                        = "Found by Katus at the pond. Allows the spawning of new Froguses.";
+"ItemDescDogusEgg"                         = "It has been with me for as long as I can remember.";
+"ItemDescCatusEgg"                         = "It has been with me for as long as I can remember.";
+"ItemDescBoberEgg"                         = "Provided to us by the bobers community to support their population.";
+"ItemDescBasket"                           = "Beautiful and reliable basket for storing eggs (with a lid).";
+"ItemDescTwoMeterRuler"                    = "A huge ruler, taller than me.";
+"ItemDescTenCentimeterRuler"               = "A very small ruler, fits in your pocket.";
+"ItemDescMathBook"                         = "What Is Mathematics? - book by Herbert Robbins and Richard Courant";
 
 /* Meditation exercises */
 "MeditationExerciseBreathAwareness"        = "Breath Awareness";
@@ -219,7 +233,7 @@
 "ObtainFractalStage6Answer1"               = "Thank you very much, I think I will master it overnight.";
 "MeditationStage1Answer0"                  = "Hey, my head is been buzzing with all sorts of thoughts lately. How do you always stay so rested?";
 "MeditationStage1Dialog0"                  = "Ah, well, we Doguses have been learning meditation since childhood. Do you want me to teach you?";
-"MeditationStage1Dialog1"                  = "To achieve enlightenment, do this:\n1. Get a Frogus - they know everything there is to know about meditation.\n2. As soon as it hatches, start practicing with it right away.\n3. Practice meditating with it every day.\n4. If you miss even one day, start over.\n5. Finishing 13 exercises will allow you to achieve enlightenment.";
+"MeditationStage1Dialog1"                  = "To achieve enlightenment, do this:\n1. Get a Frogus - they know everything there is to know about meditation.\n2. As soon as it hatches, start practicing with it right away.\n3. Practice meditating with it every day.\n4. If you miss even one day, start over.\n5. Finishing 10 exercises will allow you to achieve enlightenment.";
 "MeditationStage1Answer1"                  = "It sounds confusing, but I will try.";
 "MeditationStage2Answer0"                  = "Hi, dogus said you can teach me meditation.";
 "MeditationStage2Dialog0"                  = "Great, you have come to the right place. Let us start with something simple – breathing exercises. Repeat after me.";

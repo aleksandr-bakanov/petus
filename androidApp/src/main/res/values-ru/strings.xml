@@ -55,11 +55,25 @@
 	<string name="DogusEgg">Яйцо Догуса</string>
 	<string name="CatusEgg">Яйцо Катуса</string>
 	<string name="BoberEgg">Яйцо Бобера</string>
-	<string name="Basket">Прекрасная и надёжная корзина для хранения яиц (с крышечкой)</string>
+	<string name="Basket">Плетёная корзина</string>
 	<string name="TwoMeterRuler">Двухметровая палка</string>
 	<string name="TenCentimeterRuler">Десятисантиметровая палочка</string>
-	<string name="MathBook">Что такое математика? - книга Р. Куранта и Г. Роббинса</string>
+	<string name="MathBook">Что такое математика?</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
+
+	<!-- Item descriptions -->
+	<string name="ItemDescNecronomicon">Некрономикон — это гримуар, в котором содержатся запретные знания, оккультные ритуалы и описания космических сущностей, таких как Ктулху и Великие Древние. Это опасный том, сводящий читателей с ума.</string>
+	<string name="ItemDescPieceOfCloth">Кусок ткани, найденный на месте преступления.</string>
+	<string name="ItemDescMysteriousBook">Загадочная книга, найденная на месте проведения ритуалов.</string>
+	<string name="ItemDescFish">Не очень умная рыба, пойманная в пруду.</string>
+	<string name="ItemDescFrogusEgg">Найдено Катусом у пруда. Позволяет порождать новых фрогусов.</string>
+	<string name="ItemDescDogusEgg">Было со мной сколько я себя помню.</string>
+	<string name="ItemDescCatusEgg">Было со мной сколько я себя помню.</string>
+	<string name="ItemDescBoberEgg">Предоставлено нам сообществом боберов для поддержания их популяции.</string>
+	<string name="ItemDescBasket">Прекрасная и надёжная корзина для хранения яиц (с крышечкой).</string>
+	<string name="ItemDescTwoMeterRuler">Здоровенная линейка больше меня ростом.</string>
+	<string name="ItemDescTenCentimeterRuler">Совсем маленькая линейка, помещается в кармане.</string>
+	<string name="ItemDescMathBook">Что такое математика? - книга Р. Куранта и Г. Роббинса</string>
 
 	<!-- Meditation exercises -->
 	<string name="MeditationExerciseBreathAwareness">Осознанное дыхание</string>

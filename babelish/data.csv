@@ -50,12 +50,25 @@ Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android, ios;DogusEgg;Dogus egg;Яйцо Догуса
 ;android, ios;CatusEgg;Catus egg;Яйцо Катуса
 ;android, ios;BoberEgg;Bober egg;Яйцо Бобера
-;android, ios;Basket;Beautiful and reliable basket for storing eggs (with a lid);Прекрасная и надёжная корзина для хранения яиц (с крышечкой)
+;android, ios;Basket;Wicker basket;Плетёная корзина
 ;android, ios;TwoMeterRuler;2 meter stick;Двухметровая палка
 ;android, ios;TenCentimeterRuler;10 centimeter stick;Десятисантиметровая палочка
-;android, ios;MathBook;What Is Mathematics? - book by Herbert Robbins and Richard Courant;Что такое математика? - книга Р. Куранта и Г. Роббинса
+;android, ios;MathBook;What Is Mathematics?;Что такое математика?
 ;android;InventoryItemPattern;%s (x%d);%s (x%d)
 ;ios;InventoryItemPattern;%@ (x%d);%@ (x%d)
+
+Item descriptions;android, ios;ItemDescNecronomicon;The Necronomicon is a grimoire that contains forbidden knowledge, occult rituals, and descriptions of cosmic entities like Cthulhu and the Great Old Ones. It is a dangerous book that drives readers to madness.;Некрономикон — это гримуар, в котором содержатся запретные знания, оккультные ритуалы и описания космических сущностей, таких как Ктулху и Великие Древние. Это опасный том, сводящий читателей с ума.
+;android, ios;ItemDescPieceOfCloth;Piece of cloth found at the crime scene.;Кусок ткани, найденный на месте преступления.
+;android, ios;ItemDescMysteriousBook;Mysterious book found at a ritual site.;Загадочная книга, найденная на месте проведения ритуалов.
+;android, ios;ItemDescFish;Not a very smart fish caught at the pond.;Не очень умная рыба, пойманная в пруду.
+;android, ios;ItemDescFrogusEgg;Found by Katus at the pond. Allows the spawning of new Froguses.;Найдено Катусом у пруда. Позволяет порождать новых фрогусов.
+;android, ios;ItemDescDogusEgg;It has been with me for as long as I can remember.;Было со мной сколько я себя помню.
+;android, ios;ItemDescCatusEgg;It has been with me for as long as I can remember.;Было со мной сколько я себя помню.
+;android, ios;ItemDescBoberEgg;Provided to us by the bobers community to support their population.;Предоставлено нам сообществом боберов для поддержания их популяции.
+;android, ios;ItemDescBasket;Beautiful and reliable basket for storing eggs (with a lid).;Прекрасная и надёжная корзина для хранения яиц (с крышечкой).
+;android, ios;ItemDescTwoMeterRuler;A huge ruler, taller than me.;Здоровенная линейка больше меня ростом.
+;android, ios;ItemDescTenCentimeterRuler;A very small ruler, fits in your pocket.;Совсем маленькая линейка, помещается в кармане.
+;android, ios;ItemDescMathBook;What Is Mathematics? - book by Herbert Robbins and Richard Courant;Что такое математика? - книга Р. Куранта и Г. Роббинса
 
 Meditation exercises;android, ios;MeditationExerciseBreathAwareness;Breath Awareness;Осознанное дыхание
 ;android, ios;MeditationExerciseBoxBreathing;Box Breathing;Квадратное дыхание
