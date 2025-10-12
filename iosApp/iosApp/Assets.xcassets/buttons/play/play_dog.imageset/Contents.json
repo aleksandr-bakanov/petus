@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "play_dog.png",
+      "filename" : "play_dog_256.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "speak_dog.png",
+      "filename" : "speak_dog_256.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
