@@ -16,6 +16,7 @@
 "LanguageKnowledgeTitleFrogus"             = "Язык Фрогуса";
 "LanguageKnowledgeTitleBober"              = "Язык Бобера";
 "LanguageKnowledgeTitleFractal"            = "Язык Фрактала";
+"LanguageKnowledgeTitleDragon"             = "Язык Дракона";
 "ZooSizeTitle"                             = "Размер дома";
 "ProfileScreenMiscLabel"                   = "Прочее";
 
@@ -34,6 +35,7 @@
 "PetCreationScreenPetTypeFrogus"           = "фрогуса";
 "PetCreationScreenPetTypeBober"            = "бобера";
 "PetCreationScreenPetTypeFractal"          = "фрактал";
+"PetCreationScreenPetTypeDragon"           = "дракона";
 "PetCreationScreenButtonTemplate"          = "Создать %@ %@";
 "PetCreationScreenButtonTemplateFractal"   = "Вообразить фрактал %@";
 
@@ -43,6 +45,7 @@
 "PetTypeDescriptionFrogus"                 = "Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер.";
 "PetTypeDescriptionBober"                  = "Фрогус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Не любит ветер.";
 "PetTypeDescriptionFractal"                = "Фрактал: спит 1,5 часа, бодрствует 1,5 часа. Не переживает насчет погоды потому что является просто идеей в твоей голове.";
+"PetTypeDescriptionDragon"                 = "Дракон: спит 1,5 часа, бодрствует 1,5 часа. Разные виды драконов предпочитают разную погоду.";
 
 /* Item names */
 "Necronomicon"                             = "Некрономикон";

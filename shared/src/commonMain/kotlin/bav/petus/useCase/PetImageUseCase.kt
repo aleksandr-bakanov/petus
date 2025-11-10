@@ -5,6 +5,7 @@ import bav.petus.core.resources.ImageId
 import bav.petus.model.AgeState
 import bav.petus.model.BodyState
 import bav.petus.model.BurialType
+import bav.petus.model.DragonType
 import bav.petus.model.FractalType
 import bav.petus.model.Pet
 import bav.petus.model.PetType
@@ -230,6 +231,116 @@ class PetImageUseCase(
                                 isPetHungryOrBored(pet) -> ImageId.FractalSpongeHungry
                                 isPetLowHealth(pet) -> ImageId.FractalSpongeIll
                                 else -> ImageId.FractalSpongeActive
+                            }
+                        }
+                    }
+                }
+            }
+
+            PetType.Dragon -> {
+                if (isPetInGrave(pet)) return ImageId.DragonGrave
+                when (pet.ageState) {
+                    AgeState.Egg -> ImageId.DragonEgg
+                    AgeState.NewBorn -> {
+                        when (pet.dragonType) {
+                            DragonType.Red -> when {
+                                pet.bodyState == BodyState.Zombie -> ImageId.DragonRedNewbornZombie
+                                pet.bodyState == BodyState.Dead -> ImageId.DragonRedNewbornDead
+                                pet.sleep -> ImageId.DragonRedNewbornSleep
+                                pet.isPooped -> ImageId.DragonRedNewbornPoop
+                                pet.illness -> ImageId.DragonRedNewbornIll
+                                isPetHungryOrBored(pet) -> ImageId.DragonRedNewbornHungry
+                                isPetLowHealth(pet) -> ImageId.DragonRedNewbornIll
+                                else -> ImageId.DragonRedNewbornActive
+                            }
+                            DragonType.Blue -> when {
+                                pet.bodyState == BodyState.Zombie -> ImageId.DragonBlueNewbornZombie
+                                pet.bodyState == BodyState.Dead -> ImageId.DragonBlueNewbornDead
+                                pet.sleep -> ImageId.DragonBlueNewbornSleep
+                                pet.isPooped -> ImageId.DragonBlueNewbornPoop
+                                pet.illness -> ImageId.DragonBlueNewbornIll
+                                isPetHungryOrBored(pet) -> ImageId.DragonBlueNewbornHungry
+                                isPetLowHealth(pet) -> ImageId.DragonBlueNewbornIll
+                                else -> ImageId.DragonBlueNewbornActive
+                            }
+                            DragonType.Void -> when {
+                                pet.bodyState == BodyState.Zombie -> ImageId.DragonVoidNewbornZombie
+                                pet.bodyState == BodyState.Dead -> ImageId.DragonVoidNewbornDead
+                                pet.sleep -> ImageId.DragonVoidNewbornSleep
+                                pet.isPooped -> ImageId.DragonVoidNewbornPoop
+                                pet.illness -> ImageId.DragonVoidNewbornIll
+                                isPetHungryOrBored(pet) -> ImageId.DragonVoidNewbornHungry
+                                isPetLowHealth(pet) -> ImageId.DragonVoidNewbornIll
+                                else -> ImageId.DragonVoidNewbornActive
+                            }
+                        }
+                    }
+                    AgeState.Teen,
+                    AgeState.Adult -> {
+                        when (pet.dragonType) {
+                            DragonType.Red -> when {
+                                pet.bodyState == BodyState.Zombie -> ImageId.DragonRedAdultZombie
+                                pet.bodyState == BodyState.Dead -> ImageId.DragonRedAdultDead
+                                pet.sleep -> ImageId.DragonRedAdultSleep
+                                pet.isPooped -> ImageId.DragonRedAdultPoop
+                                pet.illness -> ImageId.DragonRedAdultIll
+                                isPetHungryOrBored(pet) -> ImageId.DragonRedAdultHungry
+                                isPetLowHealth(pet) -> ImageId.DragonRedAdultIll
+                                else -> ImageId.DragonRedAdultActive
+                            }
+                            DragonType.Blue -> when {
+                                pet.bodyState == BodyState.Zombie -> ImageId.DragonBlueAdultZombie
+                                pet.bodyState == BodyState.Dead -> ImageId.DragonBlueAdultDead
+                                pet.sleep -> ImageId.DragonBlueAdultSleep
+                                pet.isPooped -> ImageId.DragonBlueAdultPoop
+                                pet.illness -> ImageId.DragonBlueAdultIll
+                                isPetHungryOrBored(pet) -> ImageId.DragonBlueAdultHungry
+                                isPetLowHealth(pet) -> ImageId.DragonBlueAdultIll
+                                else -> ImageId.DragonBlueAdultActive
+                            }
+                            DragonType.Void -> when {
+                                pet.bodyState == BodyState.Zombie -> ImageId.DragonVoidAdultZombie
+                                pet.bodyState == BodyState.Dead -> ImageId.DragonVoidAdultDead
+                                pet.sleep -> ImageId.DragonVoidAdultSleep
+                                pet.isPooped -> ImageId.DragonVoidAdultPoop
+                                pet.illness -> ImageId.DragonVoidAdultIll
+                                isPetHungryOrBored(pet) -> ImageId.DragonVoidAdultHungry
+                                isPetLowHealth(pet) -> ImageId.DragonVoidAdultIll
+                                else -> ImageId.DragonVoidAdultActive
+                            }
+                        }
+                    }
+                    AgeState.Old -> {
+                        when (pet.dragonType) {
+                            DragonType.Red -> when {
+                                pet.bodyState == BodyState.Zombie -> ImageId.DragonRedOldZombie
+                                pet.bodyState == BodyState.Dead -> ImageId.DragonRedOldDead
+                                pet.sleep -> ImageId.DragonRedOldSleep
+                                pet.isPooped -> ImageId.DragonRedOldPoop
+                                pet.illness -> ImageId.DragonRedOldIll
+                                isPetHungryOrBored(pet) -> ImageId.DragonRedOldHungry
+                                isPetLowHealth(pet) -> ImageId.DragonRedOldIll
+                                else -> ImageId.DragonRedOldActive
+                            }
+                            DragonType.Blue -> when {
+                                pet.bodyState == BodyState.Zombie -> ImageId.DragonBlueOldZombie
+                                pet.bodyState == BodyState.Dead -> ImageId.DragonBlueOldDead
+                                pet.sleep -> ImageId.DragonBlueOldSleep
+                                pet.isPooped -> ImageId.DragonBlueOldPoop
+                                pet.illness -> ImageId.DragonBlueOldIll
+                                isPetHungryOrBored(pet) -> ImageId.DragonBlueOldHungry
+                                isPetLowHealth(pet) -> ImageId.DragonBlueOldIll
+                                else -> ImageId.DragonBlueOldActive
+                            }
+                            DragonType.Void -> when {
+                                pet.bodyState == BodyState.Zombie -> ImageId.DragonVoidOldZombie
+                                pet.bodyState == BodyState.Dead -> ImageId.DragonVoidOldDead
+                                pet.sleep -> ImageId.DragonVoidOldSleep
+                                pet.isPooped -> ImageId.DragonVoidOldPoop
+                                pet.illness -> ImageId.DragonVoidOldIll
+                                isPetHungryOrBored(pet) -> ImageId.DragonVoidOldHungry
+                                isPetLowHealth(pet) -> ImageId.DragonVoidOldIll
+                                else -> ImageId.DragonVoidOldActive
                             }
                         }
                     }

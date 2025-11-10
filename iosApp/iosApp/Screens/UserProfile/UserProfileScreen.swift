@@ -24,6 +24,7 @@ struct UserProfileView: View {
                     LanguageKnowledgeCell(type: .frogus, value: state.languageKnowledgeFrogus)
                     LanguageKnowledgeCell(type: .bober, value: state.languageKnowledgeBober)
                     LanguageKnowledgeCell(type: .fractal, value: state.languageKnowledgeFractal)
+                    LanguageKnowledgeCell(type: .dragon, value: state.languageKnowledgeDragon)
                     Text("ProfileScreenInventoryLabel")
                     ForEach(state.inventory, id: \.id) { item in
                         InventoryItemCell(item: item)

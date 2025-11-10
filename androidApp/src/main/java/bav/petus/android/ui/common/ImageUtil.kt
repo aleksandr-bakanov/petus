@@ -142,6 +142,81 @@ fun ImageId.toResId(): Int {
         ImageId.FractalSpongeIll -> R.drawable.fractal_sponge_ill
         ImageId.FractalSpongePoop -> R.drawable.fractal_sponge_poop
         ImageId.FractalSpongeSleep -> R.drawable.fractal_sponge_sleep
+        //region Dragon
+        //region Common
+        ImageId.DragonEgg -> R.drawable.dragon_egg
+        ImageId.DragonGrave -> R.drawable.dragon_grave
+        //endregion
+        //region Red Dragon
+        ImageId.DragonRedAdultActive -> R.drawable.dragon_red_adult_active
+        ImageId.DragonRedAdultDead -> R.drawable.dragon_red_adult_dead
+        ImageId.DragonRedAdultHungry -> R.drawable.dragon_red_adult_hungry
+        ImageId.DragonRedAdultIll -> R.drawable.dragon_red_adult_ill
+        ImageId.DragonRedAdultPoop -> R.drawable.dragon_red_adult_poop
+        ImageId.DragonRedAdultSleep -> R.drawable.dragon_red_adult_sleep
+        ImageId.DragonRedAdultZombie -> R.drawable.dragon_red_adult_zombie
+        ImageId.DragonRedNewbornActive -> R.drawable.dragon_red_newborn_active
+        ImageId.DragonRedNewbornDead -> R.drawable.dragon_red_newborn_dead
+        ImageId.DragonRedNewbornHungry -> R.drawable.dragon_red_newborn_hungry
+        ImageId.DragonRedNewbornIll -> R.drawable.dragon_red_newborn_ill
+        ImageId.DragonRedNewbornPoop -> R.drawable.dragon_red_newborn_poop
+        ImageId.DragonRedNewbornSleep -> R.drawable.dragon_red_newborn_sleep
+        ImageId.DragonRedNewbornZombie -> R.drawable.dragon_red_newborn_zombie
+        ImageId.DragonRedOldActive -> R.drawable.dragon_red_old_active
+        ImageId.DragonRedOldDead -> R.drawable.dragon_red_old_dead
+        ImageId.DragonRedOldHungry -> R.drawable.dragon_red_old_hungry
+        ImageId.DragonRedOldIll -> R.drawable.dragon_red_old_ill
+        ImageId.DragonRedOldPoop -> R.drawable.dragon_red_old_poop
+        ImageId.DragonRedOldSleep -> R.drawable.dragon_red_old_sleep
+        ImageId.DragonRedOldZombie -> R.drawable.dragon_red_old_zombie
+        //endregion
+        //region Blue Dragon
+        ImageId.DragonBlueAdultActive -> R.drawable.dragon_blue_adult_active
+        ImageId.DragonBlueAdultDead -> R.drawable.dragon_blue_adult_dead
+        ImageId.DragonBlueAdultHungry -> R.drawable.dragon_blue_adult_hungry
+        ImageId.DragonBlueAdultIll -> R.drawable.dragon_blue_adult_ill
+        ImageId.DragonBlueAdultPoop -> R.drawable.dragon_blue_adult_poop
+        ImageId.DragonBlueAdultSleep -> R.drawable.dragon_blue_adult_sleep
+        ImageId.DragonBlueAdultZombie -> R.drawable.dragon_blue_adult_zombie
+        ImageId.DragonBlueNewbornActive -> R.drawable.dragon_blue_newborn_active
+        ImageId.DragonBlueNewbornDead -> R.drawable.dragon_blue_newborn_dead
+        ImageId.DragonBlueNewbornHungry -> R.drawable.dragon_blue_newborn_hungry
+        ImageId.DragonBlueNewbornIll -> R.drawable.dragon_blue_newborn_ill
+        ImageId.DragonBlueNewbornPoop -> R.drawable.dragon_blue_newborn_poop
+        ImageId.DragonBlueNewbornSleep -> R.drawable.dragon_blue_newborn_sleep
+        ImageId.DragonBlueNewbornZombie -> R.drawable.dragon_blue_newborn_zombie
+        ImageId.DragonBlueOldActive -> R.drawable.dragon_blue_old_active
+        ImageId.DragonBlueOldDead -> R.drawable.dragon_blue_old_dead
+        ImageId.DragonBlueOldHungry -> R.drawable.dragon_blue_old_hungry
+        ImageId.DragonBlueOldIll -> R.drawable.dragon_blue_old_ill
+        ImageId.DragonBlueOldPoop -> R.drawable.dragon_blue_old_poop
+        ImageId.DragonBlueOldSleep -> R.drawable.dragon_blue_old_sleep
+        ImageId.DragonBlueOldZombie -> R.drawable.dragon_blue_old_zombie
+        //endregion
+        //region Void Dragon
+        ImageId.DragonVoidAdultActive -> R.drawable.dragon_void_adult_active
+        ImageId.DragonVoidAdultDead -> R.drawable.dragon_void_adult_dead
+        ImageId.DragonVoidAdultHungry -> R.drawable.dragon_void_adult_hungry
+        ImageId.DragonVoidAdultIll -> R.drawable.dragon_void_adult_ill
+        ImageId.DragonVoidAdultPoop -> R.drawable.dragon_void_adult_poop
+        ImageId.DragonVoidAdultSleep -> R.drawable.dragon_void_adult_sleep
+        ImageId.DragonVoidAdultZombie -> R.drawable.dragon_void_adult_zombie
+        ImageId.DragonVoidNewbornActive -> R.drawable.dragon_void_newborn_active
+        ImageId.DragonVoidNewbornDead -> R.drawable.dragon_void_newborn_dead
+        ImageId.DragonVoidNewbornHungry -> R.drawable.dragon_void_newborn_hungry
+        ImageId.DragonVoidNewbornIll -> R.drawable.dragon_void_newborn_ill
+        ImageId.DragonVoidNewbornPoop -> R.drawable.dragon_void_newborn_poop
+        ImageId.DragonVoidNewbornSleep -> R.drawable.dragon_void_newborn_sleep
+        ImageId.DragonVoidNewbornZombie -> R.drawable.dragon_void_newborn_zombie
+        ImageId.DragonVoidOldActive -> R.drawable.dragon_void_old_active
+        ImageId.DragonVoidOldDead -> R.drawable.dragon_void_old_dead
+        ImageId.DragonVoidOldHungry -> R.drawable.dragon_void_old_hungry
+        ImageId.DragonVoidOldIll -> R.drawable.dragon_void_old_ill
+        ImageId.DragonVoidOldPoop -> R.drawable.dragon_void_old_poop
+        ImageId.DragonVoidOldSleep -> R.drawable.dragon_void_old_sleep
+        ImageId.DragonVoidOldZombie -> R.drawable.dragon_void_old_zombie
+        //endregion
+        //endregion
         ImageId.DugOutGrave -> R.drawable.dug_out_grave
         ImageId.UserProfileAvatar -> R.drawable.user_profile_avatar
     }

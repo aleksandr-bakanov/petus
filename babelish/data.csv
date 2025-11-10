@@ -16,6 +16,7 @@ User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
 ;android, ios;LanguageKnowledgeTitleFrogus;Frogus language;Язык Фрогуса
 ;android, ios;LanguageKnowledgeTitleBober;Bober language;Язык Бобера
 ;android, ios;LanguageKnowledgeTitleFractal;Fractal language;Язык Фрактала
+;android, ios;LanguageKnowledgeTitleDragon;Dragon language;Язык Дракона
 ;android, ios;ZooSizeTitle;Home size;Размер дома
 ;android, ios;ProfileScreenMiscLabel;Misc;Прочее
 
@@ -31,6 +32,7 @@ Pet creation screen;android, ios;PetCreationScreenSelectPetType;Select pet type;
 ;android, ios;PetCreationScreenPetTypeFrogus;frogus;фрогуса
 ;android, ios;PetCreationScreenPetTypeBober;bober;бобера
 ;android, ios;PetCreationScreenPetTypeFractal;fractal;фрактал
+;android, ios;PetCreationScreenPetTypeDragon;dragon;дракона
 ;android;PetCreationScreenButtonTemplate;Create %s %s;Создать %s %s
 ;ios;PetCreationScreenButtonTemplate;Create %@ %@;Создать %@ %@
 ;android;PetCreationScreenButtonTemplateFractal;Imagine fractal %s;Вообразить фрактал %s
@@ -41,6 +43,7 @@ Pet descriptions;android, ios;PetTypeDescriptionCatus;Catus: sleeps 2 hours, awa
 ;android, ios;PetTypeDescriptionFrogus;Frogus: sleeps 1.5 hours, awake for 1.5 hours. Likes cold cloudy days. Does not like wind.;Фрогус: спит 1,5 часа, бодрствует 1,5 часа. Любит прохладные пасмурные дни. Не любит ветер.
 ;android, ios;PetTypeDescriptionBober;Bober: sleeps 1 hours, awake for 2 hours. Likes warm sunny days. Does not like wind.;Фрогус: спит 1 час, бодрствует 2 часа. Любит теплые солнечные дни. Не любит ветер.
 ;android, ios;PetTypeDescriptionFractal;Fractal: sleeps 1.5 hours, awake for 1.5 hours. Does not care about weather since it is just an idea.;Фрактал: спит 1,5 часа, бодрствует 1,5 часа. Не переживает насчет погоды потому что является просто идеей в твоей голове.
+;android, ios;PetTypeDescriptionDragon;Dragon: sleeps 1.5 hours, awake for 1.5 hours. Different types of dragons like different weather;Дракон: спит 1,5 часа, бодрствует 1,5 часа. Разные виды драконов предпочитают разную погоду.
 
 Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android, ios;PieceOfCloth;Piece of cloth;Кусок ткани

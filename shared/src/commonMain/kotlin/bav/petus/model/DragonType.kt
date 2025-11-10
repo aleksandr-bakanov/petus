@@ -1,12 +1,9 @@
 package bav.petus.model
 
-enum class PetType {
-    Catus,
-    Dogus,
-    Frogus,
-    Bober,
-    Fractal,
-    Dragon;
+enum class DragonType {
+    Red,
+    Blue,
+    Void;
 
     companion object {
         val names = entries.map { it.name }

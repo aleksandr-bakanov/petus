@@ -15,6 +15,7 @@ fun StringId.toResId(): Int {
         StringId.PetTypeDescriptionFrogus -> R.string.PetTypeDescriptionFrogus
         StringId.PetTypeDescriptionBober -> R.string.PetTypeDescriptionBober
         StringId.PetTypeDescriptionFractal -> R.string.PetTypeDescriptionFractal
+        StringId.PetTypeDescriptionDragon -> R.string.PetTypeDescriptionDragon
         StringId.WhatIsGoingOnWithYou -> R.string.WhatIsGoingOnWithYou
         StringId.WhatIsGoingOnWithYouLatin -> R.string.WhatIsGoingOnWithYouLatin
         StringId.WhatIsGoingOnWithYouPolish -> R.string.WhatIsGoingOnWithYouPolish

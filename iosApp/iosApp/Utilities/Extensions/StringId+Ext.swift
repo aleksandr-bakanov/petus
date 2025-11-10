@@ -9,6 +9,7 @@ extension StringId {
         case .petTypeDescriptionFrogus: "PetTypeDescriptionFrogus"
         case .petTypeDescriptionBober: "PetTypeDescriptionBober"
         case .petTypeDescriptionFractal: "PetTypeDescriptionFractal"
+        case .petTypeDescriptionDragon: "PetTypeDescriptionDragon"
         case .mysteriousBook: "MysteriousBook"
         case .necronomicon: "Necronomicon"
         case .pieceOfCloth: "PieceOfCloth"

@@ -250,6 +250,7 @@ private fun PetType.feedButtonImageId(): Int {
         PetType.Frogus -> R.drawable.feed_frog
         PetType.Bober -> R.drawable.feed_bober
         PetType.Fractal -> R.drawable.feed_fractal
+        PetType.Dragon -> R.drawable.feed_dragon
     }
 }
 
@@ -260,6 +261,7 @@ private fun PetType.playButtonImageId(): Int {
         PetType.Frogus -> R.drawable.play_frog
         PetType.Bober -> R.drawable.play_bober
         PetType.Fractal -> R.drawable.play_fractal
+        PetType.Dragon -> R.drawable.play_dragon
     }
 }
 
@@ -270,6 +272,7 @@ private fun PetType.healButtonImageId(): Int {
         PetType.Frogus -> R.drawable.heal_frog
         PetType.Bober -> R.drawable.heal_bober
         PetType.Fractal -> R.drawable.heal_fractal
+        PetType.Dragon -> R.drawable.heal_dragon
     }
 }
 
@@ -280,6 +283,7 @@ private fun PetType.poopButtonImageId(): Int {
         PetType.Frogus -> R.drawable.clean_up_frog
         PetType.Bober -> R.drawable.clean_up_bober
         PetType.Fractal -> R.drawable.clean_up_fractal
+        PetType.Dragon -> R.drawable.clean_up_dragon
     }
 }
 
@@ -290,6 +294,7 @@ private fun PetType.wakeUpButtonImageId(): Int {
         PetType.Frogus -> R.drawable.wake_up_frog
         PetType.Bober -> R.drawable.wake_up_bober
         PetType.Fractal -> R.drawable.wake_up_fractal
+        PetType.Dragon -> R.drawable.wake_up_dragon
     }
 }
 
@@ -300,6 +305,7 @@ private fun PetType.buryButtonImageId(): Int {
         PetType.Frogus -> R.drawable.bury_frog
         PetType.Bober -> R.drawable.bury_bober
         PetType.Fractal -> R.drawable.bury_bober // Can't bury fractal
+        PetType.Dragon -> R.drawable.bury_dragon
     }
 }
 
@@ -310,6 +316,7 @@ private fun PetType.speakButtonImageId(): Int {
         PetType.Frogus -> R.drawable.speak_frog
         PetType.Bober -> R.drawable.speak_bober
         PetType.Fractal -> R.drawable.speak_fractal
+        PetType.Dragon -> R.drawable.speak_dragon
     }
 }
 
@@ -320,5 +327,6 @@ private fun PetType.resurrectButtonImageId(): Int {
         PetType.Frogus -> R.drawable.resurrect_frog
         PetType.Bober -> R.drawable.resurrect_bober
         PetType.Fractal -> R.drawable.resurrect_bober // Can't resurrect fractal
+        PetType.Dragon -> R.drawable.resurrect_dragon
     }
 }

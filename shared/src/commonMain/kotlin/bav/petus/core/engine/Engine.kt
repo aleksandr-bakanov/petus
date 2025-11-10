@@ -8,6 +8,7 @@ import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.model.AgeState
 import bav.petus.model.BodyState
 import bav.petus.model.BurialType
+import bav.petus.model.DragonType
 import bav.petus.model.FractalType
 import bav.petus.model.HistoryEvent
 import bav.petus.model.Pet
@@ -49,6 +50,7 @@ class Engine(
             name = name.trim(),
             type = type,
             fractalType = getRandomFractalType(),
+            dragonType = getRandomDragonType(),
             creationTime = getTimestampSecondsSinceEpoch(),
             illnessPossibility = getRandomIllnessPossibility(),
             health = getFullHealthForPetType(type),
@@ -66,8 +68,13 @@ class Engine(
     }
 
     private fun getRandomFractalType(): FractalType {
-        val randomIndex = Random.Default.nextInt(FractalType.entries.size)
+        val randomIndex = Random.nextInt(FractalType.entries.size)
         return FractalType.entries[randomIndex]
+    }
+
+    private fun getRandomDragonType(): DragonType {
+        val randomIndex = Random.nextInt(DragonType.entries.size)
+        return DragonType.entries[randomIndex]
     }
 
     fun isAllowedToFeedPet(pet: Pet): Boolean {
@@ -304,6 +311,7 @@ class Engine(
             PetType.Frogus -> StringId.PetTypeDescriptionFrogus
             PetType.Bober -> StringId.PetTypeDescriptionBober
             PetType.Fractal -> StringId.PetTypeDescriptionFractal
+            PetType.Dragon -> StringId.PetTypeDescriptionDragon
         }
     }
 
@@ -433,7 +441,7 @@ class Engine(
                 )
 
                 val weatherAttitude = weatherAttitudeUseCase.convertWeatherRecordToAttitude(
-                    petType = newPet.type,
+                    pet = newPet,
                     record = weatherRecord,
                 )
                 val newPsych = newPet.psych - getPsych(newPet, weatherAttitude)
@@ -456,7 +464,7 @@ class Engine(
                 else {
                     if (newPet.illness.not()) {
                         newPet = newPet.copy(
-                            illness = Random.Default.nextFloat() < newPet.illnessPossibility
+                            illness = Random.nextFloat() < newPet.illnessPossibility
                         )
                         if (newPet.illness) {
                             historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetGetIll, periodTimestamp)
@@ -494,7 +502,7 @@ class Engine(
             newPet.type != PetType.Fractal
         ) {
             // Random death
-            if (Random.Default.nextFloat() < newPet.deathOfOldAgePossibility) {
+            if (Random.nextFloat() < newPet.deathOfOldAgePossibility) {
                 newPet = makePetDead(newPet, periodTimestamp)
             } else {
                 newPet = newPet.copy(
@@ -536,6 +544,7 @@ class Engine(
             PetType.Frogus -> commonPetAgeToSecondsTable
             PetType.Bober -> commonPetAgeToSecondsTable
             PetType.Fractal -> fractalAgeToSecondsTable
+            PetType.Dragon -> dragonAgeToSecondsTable
         }
     }
 
@@ -654,6 +663,7 @@ class Engine(
             PetType.Frogus -> commonPetHungerTable
             PetType.Bober -> commonPetHungerTable
             PetType.Fractal -> commonPetHungerTable
+            PetType.Dragon -> commonPetHungerTable
         }
     }
 
@@ -675,6 +685,7 @@ class Engine(
             PetType.Frogus -> commonPetPsychTable
             PetType.Bober -> commonPetPsychTable
             PetType.Fractal -> commonPetPsychTable
+            PetType.Dragon -> commonPetPsychTable
         }
     }
 
@@ -689,6 +700,7 @@ class Engine(
             PetType.Frogus -> 500f
             PetType.Bober -> 500f
             PetType.Fractal -> 500f
+            PetType.Dragon -> 500f
         }
     }
 
@@ -699,6 +711,7 @@ class Engine(
             PetType.Frogus -> 200_000f
             PetType.Bober -> 400_000f
             PetType.Fractal -> 300_000f
+            PetType.Dragon -> 500_000f
         }
     }
 
@@ -709,6 +722,7 @@ class Engine(
             PetType.Frogus -> 30_000f
             PetType.Bober -> 50_000f
             PetType.Fractal -> 30_000f
+            PetType.Dragon -> 50_000f
         }
     }
 
@@ -719,6 +733,7 @@ class Engine(
             PetType.Frogus -> 50_000f
             PetType.Bober -> 50_000f
             PetType.Fractal -> 50_000f
+            PetType.Dragon -> 50_000f
         }
     }
 
@@ -751,8 +766,13 @@ class Engine(
                     SleepState.Sleep -> HOUR
                 }
             }
-
             PetType.Fractal -> {
+                when (state) {
+                    SleepState.Active -> (HOUR * 3) / 2
+                    SleepState.Sleep -> (HOUR * 3) / 2
+                }
+            }
+            PetType.Dragon -> {
                 when (state) {
                     SleepState.Active -> (HOUR * 3) / 2
                     SleepState.Sleep -> (HOUR * 3) / 2
@@ -765,7 +785,7 @@ class Engine(
      * Returns random illness possibility in range 0 < p < MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION
      */
     private fun getRandomIllnessPossibility(): Float {
-        return Random.Default.nextFloat() * MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION
+        return Random.nextFloat() * MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION
     }
 
     companion object {
@@ -775,7 +795,7 @@ class Engine(
         // Ranges in seconds
         private val commonPetAgeToSecondsTable = mapOf(
             AgeState.Egg to (0L until 60),                    // 1 minute
-            AgeState.NewBorn to (60 until DAY * 7),           // 7 days (-1 hour)
+            AgeState.NewBorn to (60 until DAY * 7),           // 7 days (-1 minute)
             AgeState.Teen to (DAY * 7 until DAY * 7 + 1),       // Disable Teen state making it short
             AgeState.Adult to (DAY * 7 + 1 until DAY * 14),      // 7 days
             AgeState.Old to (DAY * 14 until Long.MAX_VALUE),
@@ -784,10 +804,19 @@ class Engine(
         // Ranges in seconds
         private val fractalAgeToSecondsTable = mapOf(
             AgeState.Egg to (0L until 60),                    // 1 minute
-            AgeState.NewBorn to (60 until DAY * 7),           // 7 days (-1 hour)
+            AgeState.NewBorn to (60 until DAY * 7),           // 7 days (-1 minute)
             AgeState.Teen to (DAY * 7 until DAY * 7 + 1),       // Disable Teen state making it short
             AgeState.Adult to (DAY * 7 + 1 until Long.MAX_VALUE - 1),      // Forever adult
             AgeState.Old to (Long.MAX_VALUE - 1 until Long.MAX_VALUE),
+        )
+
+        // Ranges in seconds
+        private val dragonAgeToSecondsTable = mapOf(
+            AgeState.Egg to (0L until 60),                    // 1 minute
+            AgeState.NewBorn to (60 until DAY * 10),          // 10 days (-1 minute)
+            AgeState.Teen to (DAY * 10 until DAY * 10 + 1),   // Disable Teen state making it short
+            AgeState.Adult to (DAY * 10 + 1 until DAY * 20),  // 10 days (-1 minute)
+            AgeState.Old to (DAY * 20 until Long.MAX_VALUE),
         )
 
         // Represents 'hunger speed' how much calories
@@ -815,7 +844,7 @@ class Engine(
         const val BASIC_WIND_MULTIPLIER = 2f
         const val ACTIVE_TEMPERATURE_MULTIPLIER = 0.5f
         const val SLEEP_TEMPERATURE_MULTIPLIER = 0.25f
-        const val DEATH_OF_OLD_AGE_POSSIBILITY_INC = 0.000001f
+        const val DEATH_OF_OLD_AGE_POSSIBILITY_INC = 0.0000002f
         const val MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION = 0.00835f
         const val LANGUAGE_KNOWLEDGE_INCREMENT = 3
         const val PET_NOT_ALLOWED_TO_PLAY_INTERVAL_SEC = 12 * HOUR

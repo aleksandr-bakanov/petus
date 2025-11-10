@@ -1,24 +1,26 @@
 package bav.petus.useCase
 
 import bav.petus.cache.WeatherRecord
+import bav.petus.model.DragonType
+import bav.petus.model.Pet
 import bav.petus.model.PetType
 import bav.petus.model.ThreePointRange
 import bav.petus.model.WeatherAttitude
 
 class WeatherAttitudeUseCase {
 
-    fun convertWeatherRecordToAttitude(petType: PetType, record: WeatherRecord?): WeatherAttitude {
+    fun convertWeatherRecordToAttitude(pet: Pet, record: WeatherRecord?): WeatherAttitude {
         return if (record == null) NEUTRAL_ATTITUDE
         else WeatherAttitude(
-            toCloudPercentage = getAttitudeToCloudPercentage(petType, record.cloudPercentage),
-            toTemperature = getAttitudeToTemperature(petType, record.temperature),
-            toHumidity = getAttitudeToHumidity(petType, record.humidity),
-            toWindSpeed = getAttitudeToWindSpeed(petType, record.windSpeed)
+            toCloudPercentage = getAttitudeToCloudPercentage(pet, record.cloudPercentage),
+            toTemperature = getAttitudeToTemperature(pet, record.temperature),
+            toHumidity = getAttitudeToHumidity(pet, record.humidity),
+            toWindSpeed = getAttitudeToWindSpeed(pet, record.windSpeed)
         )
     }
 
-    private fun getAttitudeToCloudPercentage(petType: PetType, value: Int?): Double {
-        return when (petType) {
+    private fun getAttitudeToCloudPercentage(pet: Pet, value: Int?): Double {
+        return when (pet.type) {
             // Cats love sunny days
             PetType.Catus -> calculateAttitude(
                 value = value?.toDouble(),
@@ -49,11 +51,23 @@ class WeatherAttitudeUseCase {
             )
             // Fractal doesn't care about weather
             PetType.Fractal -> NEUTRAL_ATTITUDE.toCloudPercentage
+            // Dragons
+            PetType.Dragon -> {
+                val range = when (pet.dragonType) {
+                    DragonType.Red -> ThreePointRange(start = -1000.0, middle = 0.0, end = 30.0)
+                    DragonType.Blue -> ThreePointRange(start = 0.0, middle = 50.0, end = 100.0)
+                    DragonType.Void -> ThreePointRange(start = 70.0, middle = 100.0, end = 1000.0)
+                }
+                calculateAttitude(
+                    value = value?.toDouble(),
+                    range = range,
+                )
+            }
         }
     }
 
-    private fun getAttitudeToTemperature(petType: PetType, value: Int?): Double {
-        return when (petType) {
+    private fun getAttitudeToTemperature(pet: Pet, value: Int?): Double {
+        return when (pet.type) {
             // Cats love warm
             PetType.Catus -> calculateAttitude(
                 value = value?.toDouble(),
@@ -84,11 +98,23 @@ class WeatherAttitudeUseCase {
             )
             // Fractal doesn't care about weather
             PetType.Fractal -> NEUTRAL_ATTITUDE.toTemperature
+            // Dragons
+            PetType.Dragon -> {
+                val range = when (pet.dragonType) {
+                    DragonType.Red -> ThreePointRange(start = 20.0, middle = 30.0, end = 80.0)
+                    DragonType.Blue -> ThreePointRange(start = -10.0, middle = 5.0, end = 10.0)
+                    DragonType.Void -> ThreePointRange(start = -1000.0, middle = -50.0, end = -20.0)
+                }
+                calculateAttitude(
+                    value = value?.toDouble(),
+                    range = range,
+                )
+            }
         }
     }
 
-    private fun getAttitudeToHumidity(petType: PetType, value: Int?): Double {
-        return when (petType) {
+    private fun getAttitudeToHumidity(pet: Pet, value: Int?): Double {
+        return when (pet.type) {
             // Cats like dry weather
             PetType.Catus -> calculateAttitude(
                 value = value?.toDouble(),
@@ -119,11 +145,23 @@ class WeatherAttitudeUseCase {
             )
             // Fractal doesn't care about weather
             PetType.Fractal -> NEUTRAL_ATTITUDE.toHumidity
+            // Dragons
+            PetType.Dragon -> {
+                val range = when (pet.dragonType) {
+                    DragonType.Red -> ThreePointRange(start = -1000.0, middle = 50.0, end = 90.0)
+                    DragonType.Blue -> ThreePointRange(start = 30.0, middle = 50.0, end = 1000.0)
+                    DragonType.Void -> ThreePointRange(start = 0.0, middle = 50.0, end = 100.0)
+                }
+                calculateAttitude(
+                    value = value?.toDouble(),
+                    range = range,
+                )
+            }
         }
     }
 
-    private fun getAttitudeToWindSpeed(petType: PetType, value: Double?): Double {
-        return when (petType) {
+    private fun getAttitudeToWindSpeed(pet: Pet, value: Double?): Double {
+        return when (pet.type) {
             // Cats like small wind
             PetType.Catus -> calculateAttitude(
                 value = value,
@@ -154,6 +192,18 @@ class WeatherAttitudeUseCase {
             )
             // Fractal doesn't care about weather
             PetType.Fractal -> NEUTRAL_ATTITUDE.toWindSpeed
+            // Dragons
+            PetType.Dragon -> {
+                val range = when (pet.dragonType) {
+                    DragonType.Red -> ThreePointRange(start = -1000.0, middle = 1.0, end = 2.5)
+                    DragonType.Blue -> ThreePointRange(start = -1000.0, middle = 0.5, end = 1.5)
+                    DragonType.Void -> ThreePointRange(start = -1000.0, middle = 0.0, end = 0.3)
+                }
+                calculateAttitude(
+                    value = value,
+                    range = range,
+                )
+            }
         }
     }
 

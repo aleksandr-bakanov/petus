@@ -18,6 +18,7 @@
 	<string name="LanguageKnowledgeTitleFrogus">Frogus language</string>
 	<string name="LanguageKnowledgeTitleBober">Bober language</string>
 	<string name="LanguageKnowledgeTitleFractal">Fractal language</string>
+	<string name="LanguageKnowledgeTitleDragon">Dragon language</string>
 	<string name="ZooSizeTitle">Home size</string>
 	<string name="ProfileScreenMiscLabel">Misc</string>
 
@@ -36,6 +37,7 @@
 	<string name="PetCreationScreenPetTypeFrogus">frogus</string>
 	<string name="PetCreationScreenPetTypeBober">bober</string>
 	<string name="PetCreationScreenPetTypeFractal">fractal</string>
+	<string name="PetCreationScreenPetTypeDragon">dragon</string>
 	<string name="PetCreationScreenButtonTemplate">Create %s %s</string>
 	<string name="PetCreationScreenButtonTemplateFractal">Imagine fractal %s</string>
 
@@ -45,6 +47,7 @@
 	<string name="PetTypeDescriptionFrogus">Frogus: sleeps 1.5 hours, awake for 1.5 hours. Likes cold cloudy days. Does not like wind.</string>
 	<string name="PetTypeDescriptionBober">Bober: sleeps 1 hours, awake for 2 hours. Likes warm sunny days. Does not like wind.</string>
 	<string name="PetTypeDescriptionFractal">Fractal: sleeps 1.5 hours, awake for 1.5 hours. Does not care about weather since it is just an idea.</string>
+	<string name="PetTypeDescriptionDragon">Dragon: sleeps 1.5 hours, awake for 1.5 hours. Different types of dragons like different weather</string>
 
 	<!-- Item names -->
 	<string name="Necronomicon">Necronomicon</string>
@@ -221,7 +224,7 @@
 	<string name="ObtainFractalStage6Answer1">Thank you very much, I think I will master it overnight.</string>
 	<string name="MeditationStage1Answer0">Hey, my head is been buzzing with all sorts of thoughts lately. How do you always stay so rested?</string>
 	<string name="MeditationStage1Dialog0">Ah, well, we Doguses have been learning meditation since childhood. Do you want me to teach you?</string>
-	<string name="MeditationStage1Dialog1">To achieve enlightenment, do this:\n1. Get a Frogus - they know everything there is to know about meditation.\n2. As soon as it hatches, start practicing with it right away.\n3. Practice meditating with it every day.\n4. If you miss even one day, start over.\n5. Finishing 13 exercises will allow you to achieve enlightenment.</string>
+	<string name="MeditationStage1Dialog1">To achieve enlightenment, do this:\n1. Get a Frogus - they know everything there is to know about meditation.\n2. As soon as it hatches, start practicing with it right away.\n3. Practice meditating with it every day.\n4. If you miss even one day, start over.\n5. Finishing 10 exercises will allow you to achieve enlightenment.</string>
 	<string name="MeditationStage1Answer1">It sounds confusing, but I will try.</string>
 	<string name="MeditationStage2Answer0">Hi, dogus said you can teach me meditation.</string>
 	<string name="MeditationStage2Dialog0">Great, you have come to the right place. Let us start with something simple – breathing exercises. Repeat after me.</string>
