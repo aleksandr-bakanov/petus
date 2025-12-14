@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
+import bav.petus.core.engine.UserStats.Companion.USER_INVENTORY_KEY
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.notification.UserNotification
 import bav.petus.core.resources.StringId
@@ -75,12 +76,6 @@ class UserStats(
 
     private fun Preferences.getAbilities(): Set<Ability> {
         return this[AVAILABLE_ABILITIES_KEY]?.map { value -> Ability.valueOf(value) }?.toSet() ?: emptySet()
-    }
-
-    private fun Preferences.getInventory(): List<InventoryItem> {
-        return this[USER_INVENTORY_KEY]?.let {
-            Json.decodeFromString<List<InventoryItem>>(it)
-        } ?: emptyList()
     }
 
     private fun Preferences.getUserNotifications(): List<UserNotification> {
@@ -196,7 +191,7 @@ class UserStats(
         private val AVAILABLE_PET_TYPES_KEY = stringSetPreferencesKey("available_pet_types")
         private val AVAILABLE_ABILITIES_KEY = stringSetPreferencesKey("available_abilities_types")
 
-        private val USER_INVENTORY_KEY = stringPreferencesKey("user_inventory")
+        val USER_INVENTORY_KEY = stringPreferencesKey("user_inventory")
         private val USER_NOTIFICATIONS_KEY = stringPreferencesKey("user_notifications")
     }
 }
@@ -231,4 +226,10 @@ fun List<InventoryItem>.removeItem(item: InventoryItem): List<InventoryItem>? {
         }
         return newInventory
     }
+}
+
+fun Preferences.getInventory(): List<InventoryItem> {
+    return this[USER_INVENTORY_KEY]?.let {
+        Json.decodeFromString<List<InventoryItem>>(it)
+    } ?: emptyList()
 }

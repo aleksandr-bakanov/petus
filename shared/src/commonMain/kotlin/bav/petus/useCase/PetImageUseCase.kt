@@ -1,6 +1,7 @@
 package bav.petus.useCase
 
 import bav.petus.core.engine.Engine
+import bav.petus.core.engine.QuestSystem
 import bav.petus.core.resources.ImageId
 import bav.petus.model.AgeState
 import bav.petus.model.BodyState
@@ -23,6 +24,7 @@ class PetImageUseCase(
                     AgeState.Egg -> ImageId.CatEgg
                     AgeState.NewBorn -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.CatNewbornDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.CatNewbornZombie
                             pet.bodyState == BodyState.Dead -> ImageId.CatNewbornDead
                             pet.sleep -> ImageId.CatNewbornSleep
@@ -36,6 +38,7 @@ class PetImageUseCase(
                     AgeState.Teen,
                     AgeState.Adult -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.CatAdultDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.CatAdultZombie
                             pet.bodyState == BodyState.Dead -> ImageId.CatAdultDead
                             pet.sleep -> ImageId.CatAdultSleep
@@ -48,6 +51,7 @@ class PetImageUseCase(
                     }
                     AgeState.Old -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.CatOldDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.CatOldZombie
                             pet.bodyState == BodyState.Dead -> ImageId.CatOldDead
                             pet.sleep -> ImageId.CatOldSleep
@@ -66,6 +70,7 @@ class PetImageUseCase(
                     AgeState.Egg -> ImageId.DogEgg
                     AgeState.NewBorn -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.DogNewbornDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.DogNewbornZombie
                             pet.bodyState == BodyState.Dead -> ImageId.DogNewbornDead
                             pet.sleep -> ImageId.DogNewbornSleep
@@ -79,6 +84,7 @@ class PetImageUseCase(
                     AgeState.Teen,
                     AgeState.Adult -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.DogAdultDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.DogAdultZombie
                             pet.bodyState == BodyState.Dead -> ImageId.DogAdultDead
                             pet.sleep -> ImageId.DogAdultSleep
@@ -91,6 +97,7 @@ class PetImageUseCase(
                     }
                     AgeState.Old -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.DogOldDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.DogOldZombie
                             pet.bodyState == BodyState.Dead -> ImageId.DogOldDead
                             pet.sleep -> ImageId.DogOldSleep
@@ -109,6 +116,7 @@ class PetImageUseCase(
                     AgeState.Egg -> ImageId.FrogEgg
                     AgeState.NewBorn -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.FrogNewbornDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.FrogNewbornZombie
                             pet.bodyState == BodyState.Dead -> ImageId.FrogNewbornDead
                             pet.sleep -> ImageId.FrogNewbornSleep
@@ -122,6 +130,7 @@ class PetImageUseCase(
                     AgeState.Teen,
                     AgeState.Adult -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.FrogAdultDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.FrogAdultZombie
                             pet.bodyState == BodyState.Dead -> ImageId.FrogAdultDead
                             pet.sleep -> ImageId.FrogAdultSleep
@@ -134,6 +143,7 @@ class PetImageUseCase(
                     }
                     AgeState.Old -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.FrogOldDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.FrogOldZombie
                             pet.bodyState == BodyState.Dead -> ImageId.FrogOldDead
                             pet.sleep -> ImageId.FrogOldSleep
@@ -153,6 +163,7 @@ class PetImageUseCase(
                     AgeState.Egg -> ImageId.BoberEgg
                     AgeState.NewBorn -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.BoberNewbornDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.BoberNewbornZombie
                             pet.bodyState == BodyState.Dead -> ImageId.BoberNewbornDead
                             pet.sleep -> ImageId.BoberNewbornSleep
@@ -166,6 +177,7 @@ class PetImageUseCase(
                     AgeState.Teen,
                     AgeState.Adult -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.BoberAdultDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.BoberAdultZombie
                             pet.bodyState == BodyState.Dead -> ImageId.BoberAdultDead
                             pet.sleep -> ImageId.BoberAdultSleep
@@ -178,6 +190,7 @@ class PetImageUseCase(
                     }
                     AgeState.Old -> {
                         when {
+                            isPetInDragonAgeQuest(pet) -> ImageId.BoberOldDnd
                             pet.bodyState == BodyState.Zombie -> ImageId.BoberOldZombie
                             pet.bodyState == BodyState.Dead -> ImageId.BoberOldDead
                             pet.sleep -> ImageId.BoberOldSleep
@@ -363,5 +376,9 @@ class PetImageUseCase(
 
     private fun isPetInGrave(pet: Pet): Boolean {
         return pet.place == Place.Cemetery && pet.burialType == BurialType.Buried
+    }
+
+    private fun isPetInDragonAgeQuest(pet: Pet): Boolean {
+        return pet.questName == QuestSystem.QUEST_TO_OBTAIN_DRAGON
     }
 }

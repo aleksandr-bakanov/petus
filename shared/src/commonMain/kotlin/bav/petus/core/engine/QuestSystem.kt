@@ -2,9 +2,11 @@ package bav.petus.core.engine
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import bav.petus.core.dialog.Answer
 import bav.petus.core.dialog.DialogSystem
@@ -13,6 +15,7 @@ import bav.petus.core.engine.Engine.Companion.HOUR
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_MEDITATION
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_NECRONOMICON
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_BOBER
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_DRAGON
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FRACTAL
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FROGUS
 import bav.petus.core.engine.UserStats.Companion.MAXIMUM_LANGUAGE_KNOWLEDGE
@@ -216,6 +219,7 @@ class QuestSystem(
         const val QUEST_TO_OBTAIN_BOBER = "QUEST_TO_OBTAIN_BOBER"
         const val QUEST_TO_OBTAIN_FRACTAL = "QUEST_TO_OBTAIN_FRACTAL"
         const val QUEST_MEDITATION = "QUEST_MEDITATION"
+        const val QUEST_TO_OBTAIN_DRAGON = "QUEST_TO_OBTAIN_DRAGON"
     }
 }
 
@@ -252,6 +256,10 @@ private const val OBTAIN_FRACTAL_STAGE_0_LAMBDA = "OBTAIN_FRACTAL_STAGE_0_LAMBDA
 private const val OBTAIN_FRACTAL_STAGE_2_LAMBDA = "OBTAIN_FRACTAL_STAGE_2_LAMBDA"
 
 private const val MEDITATION_STAGE_0_LAMBDA = "MEDITATION_STAGE_0_LAMBDA"
+
+private const val OBTAIN_DRAGON_STAGE_0_LAMBDA = "OBTAIN_DRAGON_STAGE_0_LAMBDA"
+private const val OBTAIN_DRAGON_STAGE_3_LAMBDA = "OBTAIN_DRAGON_STAGE_3_LAMBDA"
+private const val OBTAIN_DRAGON_STAGE_6_LAMBDA = "OBTAIN_DRAGON_STAGE_6_LAMBDA"
 
 private val conditionLambdas =
     mapOf<String, suspend (QuestSystem, Preferences, QuestSystem.Event) -> Boolean>(
@@ -363,6 +371,33 @@ private val conditionLambdas =
                         frogusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE
             } ?: false
         },
+        OBTAIN_DRAGON_STAGE_0_LAMBDA to { questSystem, _, event ->
+            (event as? QuestSystem.Event.LanguageKnowledgeChanged)?.let { _ ->
+                val catusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Catus)
+                val dogusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Dogus)
+                val frogusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Frogus)
+                val boberKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Bober)
+
+                catusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE &&
+                        dogusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE &&
+                        frogusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE &&
+                        boberKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE
+            } ?: false
+        },
+        OBTAIN_DRAGON_STAGE_3_LAMBDA to { _, prefs, event ->
+            (event as? QuestSystem.Event.Tick)?.let { e ->
+                prefs[OBTAIN_DRAGON_TIMESTAMP_KEY]?.let { timestamp ->
+                    e.secondsSinceEpoch - timestamp > DAY
+                } ?: false
+            } ?: false
+        },
+        OBTAIN_DRAGON_STAGE_6_LAMBDA to { _, prefs, event ->
+            (event as? QuestSystem.Event.Tick)?.let { e ->
+                prefs[OBTAIN_DRAGON_TIMESTAMP_KEY]?.let { timestamp ->
+                    e.secondsSinceEpoch - timestamp > HOUR
+                } ?: false
+            } ?: false
+        },
     )
 
 val NECRONOMICON_TIMESTAMP_KEY = longPreferencesKey("NECRONOMICON_TIMESTAMP_KEY")
@@ -384,6 +419,26 @@ val MEDITATION_TIMESTAMP_KEY = longPreferencesKey("MEDITATION_TIMESTAMP_KEY")
 val MEDITATION_FROG_ID_KEY = longPreferencesKey("MEDITATION_FROG_ID_KEY")
 val MEDITATION_EXERCISES_LEFT_KEY = longPreferencesKey("MEDITATION_EXERCISES_LEFT_KEY")
 const val MEDITATION_TOTAL_EXERCISES = 10L
+
+val OBTAIN_DRAGON_CATUS_ID_KEY = longPreferencesKey("OBTAIN_DRAGON_CATUS_ID_KEY")
+val OBTAIN_DRAGON_DOGUS_ID_KEY = longPreferencesKey("OBTAIN_DRAGON_DOGUS_ID_KEY")
+val OBTAIN_DRAGON_FROGUS_ID_KEY = longPreferencesKey("OBTAIN_DRAGON_FROGUS_ID_KEY")
+val OBTAIN_DRAGON_BOBER_ID_KEY = longPreferencesKey("OBTAIN_DRAGON_BOBER_ID_KEY")
+val OBTAIN_DRAGON_TIMESTAMP_KEY = longPreferencesKey("OBTAIN_DRAGON_TIMESTAMP_KEY")
+val OBTAIN_DRAGON_CAT_ASKED_KEY = booleanPreferencesKey("OBTAIN_DRAGON_CAT_ASKED_KEY")
+val OBTAIN_DRAGON_DOG_ASKED_KEY = booleanPreferencesKey("OBTAIN_DRAGON_DOG_ASKED_KEY")
+val OBTAIN_DRAGON_FROG_ASKED_KEY = booleanPreferencesKey("OBTAIN_DRAGON_FROG_ASKED_KEY")
+val OBTAIN_DRAGON_BOBER_ASKED_KEY = booleanPreferencesKey("OBTAIN_DRAGON_BOBER_ASKED_KEY")
+const val OBTAIN_DRAGON_CAT_CHOICE = "cat"
+const val OBTAIN_DRAGON_DOG_CHOICE = "dog"
+const val OBTAIN_DRAGON_FROG_CHOICE = "frog"
+const val OBTAIN_DRAGON_BOBER_CHOICE = "bober"
+val OBTAIN_DRAGON_MISTY_GORGE_DECISION_KEY = stringPreferencesKey("OBTAIN_DRAGON_MISTY_GORGE_DECISION_KEY")
+val OBTAIN_DRAGON_FOREST_DECISION_KEY = stringPreferencesKey("OBTAIN_DRAGON_FOREST_DECISION_KEY")
+val OBTAIN_DRAGON_STONE_DECISION_KEY = stringPreferencesKey("OBTAIN_DRAGON_STONE_DECISION_KEY")
+val OBTAIN_DRAGON_ASH_DECISION_KEY = stringPreferencesKey("OBTAIN_DRAGON_ASH_DECISION_KEY")
+val OBTAIN_DRAGON_HAS_NECRONOMICON_KEY = booleanPreferencesKey("OBTAIN_DRAGON_HAS_NECRONOMICON_KEY")
+val OBTAIN_DRAGON_CAT_IS_SACRIFICE_KEY = booleanPreferencesKey("OBTAIN_DRAGON_CAT_IS_SACRIFICE_KEY")
 
 private val quests = mapOf(
     QUEST_NECRONOMICON to Quest(
@@ -1173,6 +1228,1043 @@ private val quests = mapOf(
                         emptyList()
                     }
                 },
+            ),
+        )
+    ),
+    QUEST_TO_OBTAIN_DRAGON to Quest(
+        currentStageKey = intPreferencesKey("obtain_dragon_stage_key"),
+        stages = listOf(
+            // Stage 0 - make sure user understands cat, dog, frog and bober 100%
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_0_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_0_LAMBDA),
+                onFinish = {},
+                additionalAnswerOptions = null,
+            ),
+            // Stage 1 - dialog stage - ask catus about rumors of some disaster in the kingdom
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_1_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainDragonStage1Answer0,
+                                nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_1_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 2 - dialog stage - ask dogus, frogus and bober to join you
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_2_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                        val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                        val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+                        when (pet.type) {
+                            PetType.Catus -> {
+                                if (pet.id == catId &&
+                                    dogId != null &&
+                                    frogId != null &&
+                                    boberId != null) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage2Answer4,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_2_DIALOG_3,
+                                        )
+                                    )
+                                } else emptyList()
+                            }
+                            PetType.Dogus -> {
+                                if (dogId == null) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage2Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_2_DIALOG_0,
+                                        )
+                                    )
+                                } else emptyList()
+                            }
+                            PetType.Frogus -> {
+                                if (frogId == null) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage2Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_2_DIALOG_0,
+                                        )
+                                    )
+                                } else emptyList()
+                            }
+                            PetType.Bober -> {
+                                if (boberId == null) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage2Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_2_DIALOG_2,
+                                        )
+                                    )
+                                } else emptyList()
+                            }
+                            else -> emptyList()
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 3 - wait 1 day to get to Misty Gorge
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_3_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_3_LAMBDA),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage3Answer0,
+                                    nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_3_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 4 - dialog stage - adventure in Misty Gorge starts
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_4_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage4Answer0,
+                                    nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_4_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 5 - dialog stage - ask team about their solutions for Misty Gorge
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_5_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                        val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                        val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+                        val catAsked = store[OBTAIN_DRAGON_CAT_ASKED_KEY] ?: false
+                        val dogAsked = store[OBTAIN_DRAGON_DOG_ASKED_KEY] ?: false
+                        val frogAsked = store[OBTAIN_DRAGON_FROG_ASKED_KEY] ?: false
+                        val boberAsked = store[OBTAIN_DRAGON_BOBER_ASKED_KEY] ?: false
+                        when (pet.id) {
+                            catId -> {
+                                // Everyone being asked, user ready to make decision
+                                if (catAsked && dogAsked && frogAsked && boberAsked) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage5Answer1,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_5_DIALOG_4,
+                                        ),
+                                        Answer(
+                                            text = StringId.ObtainDragonStage5Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_5_DIALOG_0,
+                                        )
+                                    )
+                                } else {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage5Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_5_DIALOG_0,
+                                        )
+                                    )
+                                }
+                            }
+                            dogId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage5Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_5_DIALOG_1,
+                                    )
+                                )
+                            }
+                            frogId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage5Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_5_DIALOG_2,
+                                    )
+                                )
+                            }
+                            boberId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage5Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_5_DIALOG_3,
+                                    )
+                                )
+                            }
+                            else -> emptyList()
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 6 - wait 1 hour to get through Misty Gorge
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_6_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_6_LAMBDA),
+                onFinish = {},
+                additionalAnswerOptions = null
+            ),
+            // Stage 7 - dialog stage - catus reports results of Misty Gorge adventure
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_7_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            val nextNode = when (val choice = store[OBTAIN_DRAGON_MISTY_GORGE_DECISION_KEY]) {
+                                // Cat choice is correct for Misty Gorge
+                                OBTAIN_DRAGON_CAT_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_7_DIALOG_0
+                                // All other choices lead to Catus being cursed
+                                OBTAIN_DRAGON_DOG_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_7_DIALOG_1
+                                OBTAIN_DRAGON_FROG_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_7_DIALOG_2
+                                OBTAIN_DRAGON_BOBER_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_7_DIALOG_3
+                                else -> error("OBTAIN_DRAGON_STAGE_7 wrong choice: $choice")
+                            }
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage7Answer0,
+                                    nextNode = nextNode,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 8 - wait 1 day to get to Forest of Singing Winds
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_8_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_3_LAMBDA), // Same as in stage 3
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage8Answer0,
+                                    nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_3_DIALOG_0, // Same as in stage 3
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 9 - dialog stage - adventure in Forest of Singing Winds
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_9_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage9Answer0,
+                                    nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_9_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 10 - dialog stage - ask team about their solutions for Forest of Singing Winds
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_10_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                        val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                        val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+                        val catAsked = store[OBTAIN_DRAGON_CAT_ASKED_KEY] ?: false
+                        val dogAsked = store[OBTAIN_DRAGON_DOG_ASKED_KEY] ?: false
+                        val frogAsked = store[OBTAIN_DRAGON_FROG_ASKED_KEY] ?: false
+                        val boberAsked = store[OBTAIN_DRAGON_BOBER_ASKED_KEY] ?: false
+                        when (pet.id) {
+                            catId -> {
+                                // Everyone being asked, user ready to make decision
+                                if (catAsked && dogAsked && frogAsked && boberAsked) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage10Answer1,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_10_DIALOG_4,
+                                        ),
+                                        Answer(
+                                            text = StringId.ObtainDragonStage10Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_10_DIALOG_0,
+                                        )
+                                    )
+                                } else {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage10Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_10_DIALOG_0,
+                                        )
+                                    )
+                                }
+                            }
+                            dogId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage10Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_10_DIALOG_1,
+                                    )
+                                )
+                            }
+                            frogId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage10Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_10_DIALOG_2,
+                                    )
+                                )
+                            }
+                            boberId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage10Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_10_DIALOG_3,
+                                    )
+                                )
+                            }
+                            else -> emptyList()
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 11 - wait 1 hour to get through Forest of Singing Winds
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_11_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_6_LAMBDA), // ok to reuse it here
+                onFinish = {},
+                additionalAnswerOptions = null
+            ),
+            // Stage 12 - dialog stage - catus reports results of Forest of Singing Winds adventure
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_12_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            val nextNode = when (val choice = store[OBTAIN_DRAGON_FOREST_DECISION_KEY]) {
+                                // Frog choice is correct for Forest of Singing Winds
+                                OBTAIN_DRAGON_FROG_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_12_DIALOG_0
+                                // All other choices lead to Frog being cursed
+                                OBTAIN_DRAGON_CAT_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_12_DIALOG_1
+                                OBTAIN_DRAGON_DOG_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_12_DIALOG_2
+                                OBTAIN_DRAGON_BOBER_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_12_DIALOG_3
+                                else -> error("OBTAIN_DRAGON_STAGE_12 wrong choice: $choice")
+                            }
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage12Answer0,
+                                    nextNode = nextNode,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 13 - wait 1 day to get to Stone Pass
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_13_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_3_LAMBDA), // Same as in stage 3
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage13Answer0,
+                                    nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_3_DIALOG_0, // Same as in stage 3
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 14 - dialog stage - adventure in Stone Pass
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_14_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage14Answer0,
+                                    nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_14_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 15 - dialog stage - ask team about their solutions for Stone Pass
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_15_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                        val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                        val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+                        val catAsked = store[OBTAIN_DRAGON_CAT_ASKED_KEY] ?: false
+                        val dogAsked = store[OBTAIN_DRAGON_DOG_ASKED_KEY] ?: false
+                        val frogAsked = store[OBTAIN_DRAGON_FROG_ASKED_KEY] ?: false
+                        val boberAsked = store[OBTAIN_DRAGON_BOBER_ASKED_KEY] ?: false
+                        when (pet.id) {
+                            catId -> {
+                                // Everyone being asked, user ready to make decision
+                                if (catAsked && dogAsked && frogAsked && boberAsked) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage15Answer1,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_15_DIALOG_4,
+                                        ),
+                                        Answer(
+                                            text = StringId.ObtainDragonStage15Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_15_DIALOG_0,
+                                        )
+                                    )
+                                } else {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage15Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_15_DIALOG_0,
+                                        )
+                                    )
+                                }
+                            }
+                            dogId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage15Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_15_DIALOG_1,
+                                    )
+                                )
+                            }
+                            frogId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage15Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_15_DIALOG_2,
+                                    )
+                                )
+                            }
+                            boberId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage15Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_15_DIALOG_3,
+                                    )
+                                )
+                            }
+                            else -> emptyList()
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 16 - wait 1 hour to get through Stone Pass
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_16_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_6_LAMBDA), // ok to reuse it here
+                onFinish = {},
+                additionalAnswerOptions = null
+            ),
+            // Stage 17 - dialog stage - catus reports results of Stone Pass adventure
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_17_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            val nextNode = when (val choice = store[OBTAIN_DRAGON_STONE_DECISION_KEY]) {
+                                // Dog choice is correct for Stone Pass
+                                OBTAIN_DRAGON_DOG_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_17_DIALOG_0
+                                // All other choices lead to Dog being cursed
+                                OBTAIN_DRAGON_CAT_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_17_DIALOG_1
+                                OBTAIN_DRAGON_FROG_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_17_DIALOG_2
+                                OBTAIN_DRAGON_BOBER_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_17_DIALOG_3
+                                else -> error("OBTAIN_DRAGON_STAGE_17 wrong choice: $choice")
+                            }
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage17Answer0,
+                                    nextNode = nextNode,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 18 - wait 1 day to get to Ash Caves
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_18_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_3_LAMBDA), // Same as in stage 3
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage18Answer0,
+                                    nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_3_DIALOG_0, // Same as in stage 3
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 19 - dialog stage - adventure in Ash Caves
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_19_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage19Answer0,
+                                    nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_19_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 20 - dialog stage - ask team about their solutions for Ash Caves
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_20_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                        val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                        val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+                        val catAsked = store[OBTAIN_DRAGON_CAT_ASKED_KEY] ?: false
+                        val dogAsked = store[OBTAIN_DRAGON_DOG_ASKED_KEY] ?: false
+                        val frogAsked = store[OBTAIN_DRAGON_FROG_ASKED_KEY] ?: false
+                        val boberAsked = store[OBTAIN_DRAGON_BOBER_ASKED_KEY] ?: false
+                        when (pet.id) {
+                            catId -> {
+                                // Everyone being asked, user ready to make decision
+                                if (catAsked && dogAsked && frogAsked && boberAsked) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage20Answer1,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_20_DIALOG_4,
+                                        ),
+                                        Answer(
+                                            text = StringId.ObtainDragonStage20Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_20_DIALOG_0,
+                                        )
+                                    )
+                                } else {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage20Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_20_DIALOG_0,
+                                        )
+                                    )
+                                }
+                            }
+                            dogId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage20Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_20_DIALOG_1,
+                                    )
+                                )
+                            }
+                            frogId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage20Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_20_DIALOG_2,
+                                    )
+                                )
+                            }
+                            boberId -> {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage20Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_20_DIALOG_3,
+                                    )
+                                )
+                            }
+                            else -> emptyList()
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 21 - wait 1 hour to get through Ash Caves
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_21_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_6_LAMBDA), // ok to reuse it here
+                onFinish = {},
+                additionalAnswerOptions = null
+            ),
+            // Stage 22 - dialog stage - catus reports results of Ash Caves adventure
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_22_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            val nextNode = when (val choice = store[OBTAIN_DRAGON_ASH_DECISION_KEY]) {
+                                // Bober choice is correct for Stone Pass
+                                OBTAIN_DRAGON_BOBER_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_22_DIALOG_0
+                                // All other choices lead to Bober being cursed
+                                OBTAIN_DRAGON_CAT_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_22_DIALOG_1
+                                OBTAIN_DRAGON_DOG_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_22_DIALOG_2
+                                OBTAIN_DRAGON_FROG_CHOICE -> DialogSystem.OBTAIN_DRAGON_STAGE_22_DIALOG_3
+                                else -> error("OBTAIN_DRAGON_STAGE_22 wrong choice: $choice")
+                            }
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage22Answer0,
+                                    nextNode = nextNode,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 23 - wait 1 day to get to Ritual Site
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_23_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_3_LAMBDA), // Same as in stage 3
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        if (catId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainDragonStage23Answer0,
+                                    nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_3_DIALOG_0, // Same as in stage 3
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 24 - dialog stage - final battle
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_24_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+
+                        if (catId == pet.id) {
+                            val hasNecronomicon = store.getInventory()
+                                .firstOrNull { it.id == InventoryItemId.Necronomicon } != null
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_HAS_NECRONOMICON_KEY] = hasNecronomicon
+                            }
+                            if (hasNecronomicon) {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage24Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_24_DIALOG_4,
+                                    )
+                                )
+                            } else {
+                                listOf(
+                                    Answer(
+                                        text = StringId.ObtainDragonStage24Answer0,
+                                        nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_24_DIALOG_0,
+                                    )
+                                )
+                            }
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 25 - dialog stage - final choice
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_25_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                        val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                        val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                        val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+                        val hasNecronomicon = store[OBTAIN_DRAGON_HAS_NECRONOMICON_KEY] ?: false
+
+                        if (hasNecronomicon) {
+                            // Choices are presented by catus
+                            val isCatSacrifice = store[OBTAIN_DRAGON_CAT_IS_SACRIFICE_KEY] ?: false
+                            if (isCatSacrifice.not()) {
+                                // Cat wasn't chosen as sacrifice and he presents all the options
+                                if (catId == pet.id) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage25Answer1,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_25_DIALOG_0,
+                                        )
+                                    )
+                                } else {
+                                    emptyList()
+                                }
+                            } else {
+                                // Cat was chosen as sacrifice when presenting all the options
+                                // and he asked player to speak with dogus so dogus can
+                                // describe what happened with catus.
+                                if (dogId == pet.id) {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage25Answer9,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_25_DIALOG_3,
+                                        )
+                                    )
+                                } else {
+                                    emptyList()
+                                }
+                            }
+                        } else {
+                            // Choices are presented by each hero because
+                            // they will be saved and they will tell the other's fate
+                            when (pet.id) {
+                                catId -> {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage25Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_25_DIALOG_12,
+                                        )
+                                    )
+                                }
+                                dogId -> {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage25Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_25_DIALOG_17,
+                                        )
+                                    )
+                                }
+                                frogId -> {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage25Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_25_DIALOG_22,
+                                        )
+                                    )
+                                }
+                                boberId -> {
+                                    listOf(
+                                        Answer(
+                                            text = StringId.ObtainDragonStage25Answer0,
+                                            nextNode = DialogSystem.OBTAIN_DRAGON_STAGE_25_DIALOG_27,
+                                        )
+                                    )
+                                }
+                                else -> emptyList()
+                            }
+                        }
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 26 - wait 1 day to get home
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_dragon_stage_26_conditions"),
+                initialConditions = setOf(OBTAIN_DRAGON_STAGE_3_LAMBDA), // Same as in stage 3
+                onFinish = { questSystem ->
+                    val store = questSystem.dataStore.data.first()
+
+                    val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                    val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                    val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                    val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+
+                    // Catus
+                    catId?.let { id ->
+                        questSystem.petsRepo.getPetByIdFlow(id).first()?.let { cat ->
+                            // Remove out of quest
+                            var newCat = cat.copy(
+                                questName = null,
+                            )
+                            // If he is still alive (not in memory) he still may be cursed
+                            if (newCat.place != Place.Memory) {
+                                val mistyGorgeChoice = store[OBTAIN_DRAGON_MISTY_GORGE_DECISION_KEY]
+                                if (mistyGorgeChoice != OBTAIN_DRAGON_CAT_CHOICE) {
+                                    newCat = newCat.copy(
+                                        place = Place.Memory,
+                                    )
+                                    // Add curse of a mage to inventory
+                                    questSystem.userStats.addInventoryItem(
+                                        InventoryItem(
+                                            id = InventoryItemId.CurseOfMage,
+                                            amount = 1,
+                                        )
+                                    )
+                                }
+                            }
+                            questSystem.petsRepo.updatePet(newCat)
+                        }
+                    }
+
+                    // Dogus
+                    dogId?.let { id ->
+                        questSystem.petsRepo.getPetByIdFlow(id).first()?.let { dog ->
+                            // Remove out of quest
+                            var newDog = dog.copy(
+                                questName = null,
+                            )
+                            // If he is still alive (not in memory) he still may be cursed
+                            if (newDog.place != Place.Memory) {
+                                val stoneChoice = store[OBTAIN_DRAGON_STONE_DECISION_KEY]
+                                if (stoneChoice != OBTAIN_DRAGON_DOG_CHOICE) {
+                                    newDog = newDog.copy(
+                                        place = Place.Memory,
+                                    )
+                                    // Add curse of a warrior to inventory
+                                    questSystem.userStats.addInventoryItem(
+                                        InventoryItem(
+                                            id = InventoryItemId.CurseOfWarrior,
+                                            amount = 1,
+                                        )
+                                    )
+                                }
+                            }
+                            questSystem.petsRepo.updatePet(newDog)
+                        }
+                    }
+
+                    // Frogus
+                    frogId?.let { id ->
+                        questSystem.petsRepo.getPetByIdFlow(id).first()?.let { frog ->
+                            // Remove out of quest
+                            var newFrog = frog.copy(
+                                questName = null,
+                            )
+                            // If he is still alive (not in memory) he still may be cursed
+                            if (newFrog.place != Place.Memory) {
+                                val forestChoice = store[OBTAIN_DRAGON_FOREST_DECISION_KEY]
+                                if (forestChoice != OBTAIN_DRAGON_FROG_CHOICE) {
+                                    newFrog = newFrog.copy(
+                                        place = Place.Memory,
+                                    )
+                                    // Add curse of a bard to inventory
+                                    questSystem.userStats.addInventoryItem(
+                                        InventoryItem(
+                                            id = InventoryItemId.CurseOfBard,
+                                            amount = 1,
+                                        )
+                                    )
+                                }
+                            }
+                            questSystem.petsRepo.updatePet(newFrog)
+                        }
+                    }
+
+                    // Bober
+                    boberId?.let { id ->
+                        questSystem.petsRepo.getPetByIdFlow(id).first()?.let { bober ->
+                            // Remove out of quest
+                            var newBober = bober.copy(
+                                questName = null,
+                            )
+                            // If he is still alive (not in memory) he still may be cursed
+                            if (newBober.place != Place.Memory) {
+                                val ashChoice = store[OBTAIN_DRAGON_ASH_DECISION_KEY]
+                                if (ashChoice != OBTAIN_DRAGON_BOBER_CHOICE) {
+                                    newBober = newBober.copy(
+                                        place = Place.Memory,
+                                    )
+                                    // Add curse of a Smith to inventory
+                                    questSystem.userStats.addInventoryItem(
+                                        InventoryItem(
+                                            id = InventoryItemId.CurseOfSmith,
+                                            amount = 1,
+                                        )
+                                    )
+                                }
+                            }
+                            questSystem.petsRepo.updatePet(newBober)
+                        }
+                    }
+
+                    // Add dragon egg to inventory
+                    questSystem.userStats.addInventoryItem(
+                        InventoryItem(
+                            id = InventoryItemId.DragonEgg,
+                            amount = 1,
+                        )
+                    )
+                    // Make dragon pet type available
+                    questSystem.userStats.addNewAvailablePetType(PetType.Dragon)
+                },
+                additionalAnswerOptions = null,
             ),
         )
     ),

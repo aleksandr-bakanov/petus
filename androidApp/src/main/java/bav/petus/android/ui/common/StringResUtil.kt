@@ -29,6 +29,9 @@ fun StringId.toResId(): Int {
         StringId.ByeBye -> R.string.ByeBye
         StringId.Sure -> R.string.Sure
         StringId.Ok -> R.string.Ok
+        StringId.AllRight -> R.string.AllRight
+        StringId.Excellent -> R.string.Excellent
+        StringId.Ellipsis -> R.string.Ellipsis
         StringId.Thanks -> R.string.Thanks
         StringId.Use -> R.string.Use
         StringId.Destroy -> R.string.Destroy
@@ -87,10 +90,19 @@ fun StringId.toResId(): Int {
         StringId.DogusEgg -> R.string.DogusEgg
         StringId.CatusEgg -> R.string.CatusEgg
         StringId.BoberEgg -> R.string.BoberEgg
+        StringId.DragonEgg -> R.string.DragonEgg
         StringId.Basket -> R.string.Basket
         StringId.TwoMeterRuler -> R.string.TwoMeterRuler
         StringId.TenCentimeterRuler -> R.string.TenCentimeterRuler
         StringId.MathBook -> R.string.MathBook
+        StringId.MemoryOfMage -> R.string.MemoryOfMage
+        StringId.MemoryOfWarrior -> R.string.MemoryOfWarrior
+        StringId.MemoryOfBard -> R.string.MemoryOfBard
+        StringId.MemoryOfSmith -> R.string.MemoryOfSmith
+        StringId.CurseOfMage -> R.string.CurseOfMage
+        StringId.CurseOfWarrior -> R.string.CurseOfWarrior
+        StringId.CurseOfBard -> R.string.CurseOfBard
+        StringId.CurseOfSmith -> R.string.CurseOfSmith
         StringId.MeditationExerciseBreathAwareness -> R.string.MeditationExerciseBreathAwareness
         StringId.MeditationExerciseBoxBreathing -> R.string.MeditationExerciseBoxBreathing
         StringId.MeditationExerciseBodyScan -> R.string.MeditationExerciseBodyScan
@@ -188,12 +200,133 @@ fun StringId.toResId(): Int {
         StringId.MeditationStage3Answer1 -> R.string.MeditationStage3Answer1
         StringId.MeditationStage3Dialog4 -> R.string.MeditationStage3Dialog4
         StringId.MeditationStage3Answer2 -> R.string.MeditationStage3Answer2
+        StringId.ObtainDragonStage1Answer0 -> R.string.ObtainDragonStage1Answer0
+        StringId.ObtainDragonStage1Dialog0 -> R.string.ObtainDragonStage1Dialog0
+        StringId.ObtainDragonStage1Answer1 -> R.string.ObtainDragonStage1Answer1
+        StringId.ObtainDragonStage1Dialog1 -> R.string.ObtainDragonStage1Dialog1
+        StringId.ObtainDragonStage1Answer2 -> R.string.ObtainDragonStage1Answer2
+        StringId.ObtainDragonStage1Dialog2 -> R.string.ObtainDragonStage1Dialog2
+        StringId.ObtainDragonStage1Answer3 -> R.string.ObtainDragonStage1Answer3
+        StringId.ObtainDragonStage2Answer0 -> R.string.ObtainDragonStage2Answer0
+        StringId.ObtainDragonStage2Dialog0 -> R.string.ObtainDragonStage2Dialog0
+        StringId.ObtainDragonStage2Answer1 -> R.string.ObtainDragonStage2Answer1
+        StringId.ObtainDragonStage2Answer2 -> R.string.ObtainDragonStage2Answer2
+        StringId.ObtainDragonStage2Dialog1 -> R.string.ObtainDragonStage2Dialog1
+        StringId.ObtainDragonStage2Answer3 -> R.string.ObtainDragonStage2Answer3
+        StringId.ObtainDragonStage2Dialog2 -> R.string.ObtainDragonStage2Dialog2
+        StringId.ObtainDragonStage2Answer4 -> R.string.ObtainDragonStage2Answer4
+        StringId.ObtainDragonStage2Dialog3 -> R.string.ObtainDragonStage2Dialog3
+        StringId.ObtainDragonStage2Answer5 -> R.string.ObtainDragonStage2Answer5
+        StringId.ObtainDragonStage3Answer0 -> R.string.ObtainDragonStage3Answer0
+        StringId.ObtainDragonStage3Dialog0 -> R.string.ObtainDragonStage3Dialog0
+        StringId.ObtainDragonStage4Answer0 -> R.string.ObtainDragonStage4Answer0
+        StringId.ObtainDragonStage4Dialog0 -> R.string.ObtainDragonStage4Dialog0
+        StringId.ObtainDragonStage4Dialog1 -> R.string.ObtainDragonStage4Dialog1
+        StringId.ObtainDragonStage4Dialog2 -> R.string.ObtainDragonStage4Dialog2
+        StringId.ObtainDragonStage5Answer0 -> R.string.ObtainDragonStage5Answer0
+        StringId.ObtainDragonStage5Dialog0 -> R.string.ObtainDragonStage5Dialog0
+        StringId.ObtainDragonStage5Dialog1 -> R.string.ObtainDragonStage5Dialog1
+        StringId.ObtainDragonStage5Dialog2 -> R.string.ObtainDragonStage5Dialog2
+        StringId.ObtainDragonStage5Dialog3 -> R.string.ObtainDragonStage5Dialog3
+        StringId.ObtainDragonStage5Answer1 -> R.string.ObtainDragonStage5Answer1
+        StringId.ObtainDragonStage5Dialog4 -> R.string.ObtainDragonStage5Dialog4
+        StringId.ObtainDragonStage5Answer2 -> R.string.ObtainDragonStage5Answer2
+        StringId.ObtainDragonStage5Answer3 -> R.string.ObtainDragonStage5Answer3
+        StringId.ObtainDragonStage5Answer4 -> R.string.ObtainDragonStage5Answer4
+        StringId.ObtainDragonStage5Answer5 -> R.string.ObtainDragonStage5Answer5
+        StringId.ObtainDragonStage5Answer6 -> R.string.ObtainDragonStage5Answer6
+        StringId.ObtainDragonStage5Dialog5 -> R.string.ObtainDragonStage5Dialog5
+        StringId.ObtainDragonStage7Answer0 -> R.string.ObtainDragonStage7Answer0
+        StringId.ObtainDragonStage7Dialog0 -> R.string.ObtainDragonStage7Dialog0
+        StringId.ObtainDragonStage7Dialog1 -> R.string.ObtainDragonStage7Dialog1
+        StringId.ObtainDragonStage7Dialog2 -> R.string.ObtainDragonStage7Dialog2
+        StringId.ObtainDragonStage7Dialog3 -> R.string.ObtainDragonStage7Dialog3
+        StringId.ObtainDragonStage8Answer0 -> R.string.ObtainDragonStage8Answer0
+        StringId.ObtainDragonStage9Answer0 -> R.string.ObtainDragonStage9Answer0
+        StringId.ObtainDragonStage9Dialog0 -> R.string.ObtainDragonStage9Dialog0
+        StringId.ObtainDragonStage9Dialog1 -> R.string.ObtainDragonStage9Dialog1
+        StringId.ObtainDragonStage9Dialog2 -> R.string.ObtainDragonStage9Dialog2
+        StringId.ObtainDragonStage10Answer0 -> R.string.ObtainDragonStage10Answer0
+        StringId.ObtainDragonStage10Answer1 -> R.string.ObtainDragonStage10Answer1
+        StringId.ObtainDragonStage10Dialog0 -> R.string.ObtainDragonStage10Dialog0
+        StringId.ObtainDragonStage10Dialog1 -> R.string.ObtainDragonStage10Dialog1
+        StringId.ObtainDragonStage10Dialog2 -> R.string.ObtainDragonStage10Dialog2
+        StringId.ObtainDragonStage10Dialog3 -> R.string.ObtainDragonStage10Dialog3
+        StringId.ObtainDragonStage12Answer0 -> R.string.ObtainDragonStage12Answer0
+        StringId.ObtainDragonStage12Dialog0 -> R.string.ObtainDragonStage12Dialog0
+        StringId.ObtainDragonStage12Dialog1 -> R.string.ObtainDragonStage12Dialog1
+        StringId.ObtainDragonStage12Dialog2 -> R.string.ObtainDragonStage12Dialog2
+        StringId.ObtainDragonStage12Dialog3 -> R.string.ObtainDragonStage12Dialog3
+        StringId.ObtainDragonStage13Answer0 -> R.string.ObtainDragonStage13Answer0
+        StringId.ObtainDragonStage14Answer0 -> R.string.ObtainDragonStage14Answer0
+        StringId.ObtainDragonStage14Dialog0 -> R.string.ObtainDragonStage14Dialog0
+        StringId.ObtainDragonStage14Dialog1 -> R.string.ObtainDragonStage14Dialog1
+        StringId.ObtainDragonStage14Dialog2 -> R.string.ObtainDragonStage14Dialog2
+        StringId.ObtainDragonStage15Answer0 -> R.string.ObtainDragonStage15Answer0
+        StringId.ObtainDragonStage15Answer1 -> R.string.ObtainDragonStage15Answer1
+        StringId.ObtainDragonStage15Dialog0 -> R.string.ObtainDragonStage15Dialog0
+        StringId.ObtainDragonStage15Dialog1 -> R.string.ObtainDragonStage15Dialog1
+        StringId.ObtainDragonStage15Dialog2 -> R.string.ObtainDragonStage15Dialog2
+        StringId.ObtainDragonStage15Dialog3 -> R.string.ObtainDragonStage15Dialog3
+        StringId.ObtainDragonStage17Answer0 -> R.string.ObtainDragonStage17Answer0
+        StringId.ObtainDragonStage17Dialog0 -> R.string.ObtainDragonStage17Dialog0
+        StringId.ObtainDragonStage17Dialog1 -> R.string.ObtainDragonStage17Dialog1
+        StringId.ObtainDragonStage17Dialog2 -> R.string.ObtainDragonStage17Dialog2
+        StringId.ObtainDragonStage17Dialog3 -> R.string.ObtainDragonStage17Dialog3
+        StringId.ObtainDragonStage18Answer0 -> R.string.ObtainDragonStage18Answer0
+        StringId.ObtainDragonStage19Answer0 -> R.string.ObtainDragonStage19Answer0
+        StringId.ObtainDragonStage19Dialog0 -> R.string.ObtainDragonStage19Dialog0
+        StringId.ObtainDragonStage19Dialog1 -> R.string.ObtainDragonStage19Dialog1
+        StringId.ObtainDragonStage19Dialog2 -> R.string.ObtainDragonStage19Dialog2
+        StringId.ObtainDragonStage20Answer0 -> R.string.ObtainDragonStage20Answer0
+        StringId.ObtainDragonStage20Answer1 -> R.string.ObtainDragonStage20Answer1
+        StringId.ObtainDragonStage20Dialog0 -> R.string.ObtainDragonStage20Dialog0
+        StringId.ObtainDragonStage20Dialog1 -> R.string.ObtainDragonStage20Dialog1
+        StringId.ObtainDragonStage20Dialog2 -> R.string.ObtainDragonStage20Dialog2
+        StringId.ObtainDragonStage20Dialog3 -> R.string.ObtainDragonStage20Dialog3
+        StringId.ObtainDragonStage22Answer0 -> R.string.ObtainDragonStage22Answer0
+        StringId.ObtainDragonStage22Dialog0 -> R.string.ObtainDragonStage22Dialog0
+        StringId.ObtainDragonStage22Dialog1 -> R.string.ObtainDragonStage22Dialog1
+        StringId.ObtainDragonStage22Dialog2 -> R.string.ObtainDragonStage22Dialog2
+        StringId.ObtainDragonStage22Dialog3 -> R.string.ObtainDragonStage22Dialog3
+        StringId.ObtainDragonStage23Answer0 -> R.string.ObtainDragonStage23Answer0
+        StringId.ObtainDragonStage24Answer0 -> R.string.ObtainDragonStage24Answer0
+        StringId.ObtainDragonStage24Dialog0 -> R.string.ObtainDragonStage24Dialog0
+        StringId.ObtainDragonStage24Dialog1 -> R.string.ObtainDragonStage24Dialog1
+        StringId.ObtainDragonStage24Dialog2 -> R.string.ObtainDragonStage24Dialog2
+        StringId.ObtainDragonStage24Dialog3 -> R.string.ObtainDragonStage24Dialog3
+        StringId.ObtainDragonStage24Answer1 -> R.string.ObtainDragonStage24Answer1
+        StringId.ObtainDragonStage24Dialog7 -> R.string.ObtainDragonStage24Dialog7
+        StringId.ObtainDragonStage25Answer0 -> R.string.ObtainDragonStage25Answer0
+        StringId.ObtainDragonStage25Answer1 -> R.string.ObtainDragonStage25Answer1
+        StringId.ObtainDragonStage25Dialog0 -> R.string.ObtainDragonStage25Dialog0
+        StringId.ObtainDragonStage25Answer2 -> R.string.ObtainDragonStage25Answer2
+        StringId.ObtainDragonStage25Answer3 -> R.string.ObtainDragonStage25Answer3
+        StringId.ObtainDragonStage25Answer4 -> R.string.ObtainDragonStage25Answer4
+        StringId.ObtainDragonStage25Answer5 -> R.string.ObtainDragonStage25Answer5
+        StringId.ObtainDragonStage25Dialog1 -> R.string.ObtainDragonStage25Dialog1
+        StringId.ObtainDragonStage25Answer6 -> R.string.ObtainDragonStage25Answer6
+        StringId.ObtainDragonStage25Answer7 -> R.string.ObtainDragonStage25Answer7
+        StringId.ObtainDragonStage25Dialog2 -> R.string.ObtainDragonStage25Dialog2
+        StringId.ObtainDragonStage25Answer8 -> R.string.ObtainDragonStage25Answer8
+        StringId.ObtainDragonStage25Answer9 -> R.string.ObtainDragonStage25Answer9
+        StringId.ObtainDragonStage25Dialog3 -> R.string.ObtainDragonStage25Dialog3
+        StringId.ObtainDragonStage25Dialog4 -> R.string.ObtainDragonStage25Dialog4
+        StringId.ObtainDragonStage25Dialog6 -> R.string.ObtainDragonStage25Dialog6
+        StringId.ObtainDragonStage25Dialog8 -> R.string.ObtainDragonStage25Dialog8
+        StringId.ObtainDragonStage25Dialog10 -> R.string.ObtainDragonStage25Dialog10
+        StringId.ObtainDragonStage25Dialog13 -> R.string.ObtainDragonStage25Dialog13
+        StringId.ObtainDragonStage25Dialog14 -> R.string.ObtainDragonStage25Dialog14
+        StringId.ObtainDragonStage25Dialog15 -> R.string.ObtainDragonStage25Dialog15
+        StringId.ObtainDragonStage25Dialog16 -> R.string.ObtainDragonStage25Dialog16
+        StringId.ObtainDragonStage25Dialog18 -> R.string.ObtainDragonStage25Dialog18
         StringId.QuestIsFinished -> R.string.QuestIsFinished
         StringId.QuestNameNecronomicon -> R.string.QuestNameNecronomicon
         StringId.QuestNameObtainFrogus -> R.string.QuestNameObtainFrogus
         StringId.QuestNameObtainBober -> R.string.QuestNameObtainBober
         StringId.QuestNameObtainFractal -> R.string.QuestNameObtainFractal
         StringId.QuestNameMeditation -> R.string.QuestNameMeditation
+        StringId.QuestNameObtainDragon -> R.string.QuestNameObtainDragon
         StringId.QuestDescObtainFrogusStage0 -> R.string.QuestDescObtainFrogusStage0
         StringId.QuestDescObtainFrogusStage1 -> R.string.QuestDescObtainFrogusStage1
         StringId.QuestDescObtainFrogusStage2 -> R.string.QuestDescObtainFrogusStage2
@@ -239,5 +372,34 @@ fun StringId.toResId(): Int {
         StringId.QuestDescMeditationStage2 -> R.string.QuestDescMeditationStage2
         StringId.QuestDescMeditationStage3 -> R.string.QuestDescMeditationStage3
         StringId.QuestDescMeditationStage4 -> R.string.QuestDescMeditationStage4
+        StringId.QuestDescObtainDragonStage0 -> R.string.QuestDescObtainDragonStage0
+        StringId.QuestDescObtainDragonStage1 -> R.string.QuestDescObtainDragonStage1
+        StringId.QuestDescObtainDragonStage2 -> R.string.QuestDescObtainDragonStage2
+        StringId.QuestDescObtainDragonStage3 -> R.string.QuestDescObtainDragonStage3
+        StringId.QuestDescObtainDragonStage4 -> R.string.QuestDescObtainDragonStage4
+        StringId.QuestDescObtainDragonStage5 -> R.string.QuestDescObtainDragonStage5
+        StringId.QuestDescObtainDragonStage6 -> R.string.QuestDescObtainDragonStage6
+        StringId.QuestDescObtainDragonStage7 -> R.string.QuestDescObtainDragonStage7
+        StringId.QuestDescObtainDragonStage8 -> R.string.QuestDescObtainDragonStage8
+        StringId.QuestDescObtainDragonStage9 -> R.string.QuestDescObtainDragonStage9
+        StringId.QuestDescObtainDragonStage10 -> R.string.QuestDescObtainDragonStage10
+        StringId.QuestDescObtainDragonStage11 -> R.string.QuestDescObtainDragonStage11
+        StringId.QuestDescObtainDragonStage12 -> R.string.QuestDescObtainDragonStage12
+        StringId.QuestDescObtainDragonStage13 -> R.string.QuestDescObtainDragonStage13
+        StringId.QuestDescObtainDragonStage14 -> R.string.QuestDescObtainDragonStage14
+        StringId.QuestDescObtainDragonStage15 -> R.string.QuestDescObtainDragonStage15
+        StringId.QuestDescObtainDragonStage16 -> R.string.QuestDescObtainDragonStage16
+        StringId.QuestDescObtainDragonStage17 -> R.string.QuestDescObtainDragonStage17
+        StringId.QuestDescObtainDragonStage18 -> R.string.QuestDescObtainDragonStage18
+        StringId.QuestDescObtainDragonStage19 -> R.string.QuestDescObtainDragonStage19
+        StringId.QuestDescObtainDragonStage20 -> R.string.QuestDescObtainDragonStage20
+        StringId.QuestDescObtainDragonStage21 -> R.string.QuestDescObtainDragonStage21
+        StringId.QuestDescObtainDragonStage22 -> R.string.QuestDescObtainDragonStage22
+        StringId.QuestDescObtainDragonStage23 -> R.string.QuestDescObtainDragonStage23
+        StringId.QuestDescObtainDragonStage24 -> R.string.QuestDescObtainDragonStage24
+        StringId.QuestDescObtainDragonStage25YesNecro -> R.string.QuestDescObtainDragonStage25YesNecro
+        StringId.QuestDescObtainDragonStage25NoNecro -> R.string.QuestDescObtainDragonStage25NoNecro
+        StringId.QuestDescObtainDragonStage26 -> R.string.QuestDescObtainDragonStage26
+        StringId.QuestDescObtainDragonStage27 -> R.string.QuestDescObtainDragonStage27
     }
 }

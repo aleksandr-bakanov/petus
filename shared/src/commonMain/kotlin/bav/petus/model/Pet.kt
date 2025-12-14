@@ -12,6 +12,10 @@ data class Pet(
     val fractalType: FractalType = FractalType.Gosper,
     val dragonType: DragonType = DragonType.Red,
 
+    // Quest name in which this pet participates
+    // currently required to exclude pet from life calculation
+    val questName: String? = null,
+
     val place: Place = Place.Zoo,
     val bodyState: BodyState = BodyState.Alive,
     val burialType: BurialType = BurialType.Buried,

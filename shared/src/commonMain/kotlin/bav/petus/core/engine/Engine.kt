@@ -339,9 +339,15 @@ class Engine(
         }
 
         // At least one period passed, let's update game state
-        var pets = petsRepo.getAllPetsInZoo().filter {
-            it.bodyState == BodyState.Alive
-        }
+        var pets = petsRepo.getAllPetsInZoo()
+            // Process only alive pets
+            .filter {
+                it.bodyState == BodyState.Alive
+            }
+            // Don't process pets in quest Dragon age
+            .filterNot {
+                it.questName == QuestSystem.QUEST_TO_OBTAIN_DRAGON
+            }
         val periodsPassed =
             (currentTime - lastTimestamp) / TimeRepository.CYCLE_PERIOD_IN_SECONDS
 

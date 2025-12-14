@@ -14,6 +14,24 @@ import bav.petus.core.engine.NECRONOMICON_WISE_CAT_ID_KEY
 import bav.petus.core.engine.OBTAIN_BOBER_SEARCH_DOG_ID_KEY
 import bav.petus.core.engine.OBTAIN_BOBER_SEARCH_FROG_ID_KEY
 import bav.petus.core.engine.OBTAIN_BOBER_TIMESTAMP_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_ASH_DECISION_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_BOBER_ASKED_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_BOBER_CHOICE
+import bav.petus.core.engine.OBTAIN_DRAGON_BOBER_ID_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_CATUS_ID_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_CAT_ASKED_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_CAT_CHOICE
+import bav.petus.core.engine.OBTAIN_DRAGON_CAT_IS_SACRIFICE_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_DOGUS_ID_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_DOG_ASKED_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_DOG_CHOICE
+import bav.petus.core.engine.OBTAIN_DRAGON_FOREST_DECISION_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_FROGUS_ID_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_FROG_ASKED_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_FROG_CHOICE
+import bav.petus.core.engine.OBTAIN_DRAGON_MISTY_GORGE_DECISION_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_STONE_DECISION_KEY
+import bav.petus.core.engine.OBTAIN_DRAGON_TIMESTAMP_KEY
 import bav.petus.core.engine.OBTAIN_FRACTAL_FROG_ID_KEY
 import bav.petus.core.engine.OBTAIN_FRACTAL_TIMESTAMP_KEY
 import bav.petus.core.engine.OBTAIN_FROGUS_ASKING_CAT_ID_KEY
@@ -29,6 +47,7 @@ import bav.petus.model.BurialType
 import bav.petus.model.FractalType
 import bav.petus.model.Pet
 import bav.petus.model.PetType
+import bav.petus.model.Place
 import kotlinx.coroutines.flow.first
 import kotlin.random.Random
 
@@ -311,6 +330,104 @@ class DialogSystem(
         const val MEDITATION_STAGE_3_DIALOG_2 = "MEDITATION_STAGE_3_DIALOG_2"
         const val MEDITATION_STAGE_3_DIALOG_3 = "MEDITATION_STAGE_3_DIALOG_3"
         const val MEDITATION_STAGE_3_DIALOG_4 = "MEDITATION_STAGE_3_DIALOG_4"
+
+        const val OBTAIN_DRAGON_STAGE_1_DIALOG_0 = "OBTAIN_DRAGON_STAGE_1_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_1_DIALOG_1 = "OBTAIN_DRAGON_STAGE_1_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_1_DIALOG_2 = "OBTAIN_DRAGON_STAGE_1_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_2_DIALOG_0 = "OBTAIN_DRAGON_STAGE_2_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_2_DIALOG_1 = "OBTAIN_DRAGON_STAGE_2_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_2_DIALOG_2 = "OBTAIN_DRAGON_STAGE_2_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_2_DIALOG_3 = "OBTAIN_DRAGON_STAGE_2_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_3_DIALOG_0 = "OBTAIN_DRAGON_STAGE_3_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_4_DIALOG_0 = "OBTAIN_DRAGON_STAGE_4_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_4_DIALOG_1 = "OBTAIN_DRAGON_STAGE_4_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_4_DIALOG_2 = "OBTAIN_DRAGON_STAGE_4_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_5_DIALOG_0 = "OBTAIN_DRAGON_STAGE_5_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_5_DIALOG_1 = "OBTAIN_DRAGON_STAGE_5_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_5_DIALOG_2 = "OBTAIN_DRAGON_STAGE_5_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_5_DIALOG_3 = "OBTAIN_DRAGON_STAGE_5_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_5_DIALOG_4 = "OBTAIN_DRAGON_STAGE_5_DIALOG_4"
+        const val OBTAIN_DRAGON_STAGE_5_DIALOG_5 = "OBTAIN_DRAGON_STAGE_5_DIALOG_5"
+        const val OBTAIN_DRAGON_STAGE_7_DIALOG_0 = "OBTAIN_DRAGON_STAGE_7_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_7_DIALOG_1 = "OBTAIN_DRAGON_STAGE_7_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_7_DIALOG_2 = "OBTAIN_DRAGON_STAGE_7_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_7_DIALOG_3 = "OBTAIN_DRAGON_STAGE_7_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_9_DIALOG_0 = "OBTAIN_DRAGON_STAGE_9_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_9_DIALOG_1 = "OBTAIN_DRAGON_STAGE_9_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_9_DIALOG_2 = "OBTAIN_DRAGON_STAGE_9_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_10_DIALOG_0 = "OBTAIN_DRAGON_STAGE_10_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_10_DIALOG_1 = "OBTAIN_DRAGON_STAGE_10_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_10_DIALOG_2 = "OBTAIN_DRAGON_STAGE_10_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_10_DIALOG_3 = "OBTAIN_DRAGON_STAGE_10_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_10_DIALOG_4 = "OBTAIN_DRAGON_STAGE_10_DIALOG_4"
+        const val OBTAIN_DRAGON_STAGE_12_DIALOG_0 = "OBTAIN_DRAGON_STAGE_12_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_12_DIALOG_1 = "OBTAIN_DRAGON_STAGE_12_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_12_DIALOG_2 = "OBTAIN_DRAGON_STAGE_12_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_12_DIALOG_3 = "OBTAIN_DRAGON_STAGE_12_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_14_DIALOG_0 = "OBTAIN_DRAGON_STAGE_14_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_14_DIALOG_1 = "OBTAIN_DRAGON_STAGE_14_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_14_DIALOG_2 = "OBTAIN_DRAGON_STAGE_14_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_15_DIALOG_0 = "OBTAIN_DRAGON_STAGE_15_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_15_DIALOG_1 = "OBTAIN_DRAGON_STAGE_15_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_15_DIALOG_2 = "OBTAIN_DRAGON_STAGE_15_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_15_DIALOG_3 = "OBTAIN_DRAGON_STAGE_15_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_15_DIALOG_4 = "OBTAIN_DRAGON_STAGE_15_DIALOG_4"
+        const val OBTAIN_DRAGON_STAGE_17_DIALOG_0 = "OBTAIN_DRAGON_STAGE_17_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_17_DIALOG_1 = "OBTAIN_DRAGON_STAGE_17_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_17_DIALOG_2 = "OBTAIN_DRAGON_STAGE_17_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_17_DIALOG_3 = "OBTAIN_DRAGON_STAGE_17_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_19_DIALOG_0 = "OBTAIN_DRAGON_STAGE_19_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_19_DIALOG_1 = "OBTAIN_DRAGON_STAGE_19_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_19_DIALOG_2 = "OBTAIN_DRAGON_STAGE_19_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_20_DIALOG_0 = "OBTAIN_DRAGON_STAGE_20_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_20_DIALOG_1 = "OBTAIN_DRAGON_STAGE_20_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_20_DIALOG_2 = "OBTAIN_DRAGON_STAGE_20_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_20_DIALOG_3 = "OBTAIN_DRAGON_STAGE_20_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_20_DIALOG_4 = "OBTAIN_DRAGON_STAGE_20_DIALOG_4"
+        const val OBTAIN_DRAGON_STAGE_22_DIALOG_0 = "OBTAIN_DRAGON_STAGE_22_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_22_DIALOG_1 = "OBTAIN_DRAGON_STAGE_22_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_22_DIALOG_2 = "OBTAIN_DRAGON_STAGE_22_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_22_DIALOG_3 = "OBTAIN_DRAGON_STAGE_22_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_24_DIALOG_0 = "OBTAIN_DRAGON_STAGE_24_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_24_DIALOG_1 = "OBTAIN_DRAGON_STAGE_24_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_24_DIALOG_2 = "OBTAIN_DRAGON_STAGE_24_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_24_DIALOG_3 = "OBTAIN_DRAGON_STAGE_24_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_24_DIALOG_4 = "OBTAIN_DRAGON_STAGE_24_DIALOG_4"
+        const val OBTAIN_DRAGON_STAGE_24_DIALOG_5 = "OBTAIN_DRAGON_STAGE_24_DIALOG_5"
+        const val OBTAIN_DRAGON_STAGE_24_DIALOG_6 = "OBTAIN_DRAGON_STAGE_24_DIALOG_6"
+        const val OBTAIN_DRAGON_STAGE_24_DIALOG_7 = "OBTAIN_DRAGON_STAGE_24_DIALOG_7"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_0 = "OBTAIN_DRAGON_STAGE_25_DIALOG_0"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_1 = "OBTAIN_DRAGON_STAGE_25_DIALOG_1"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_2 = "OBTAIN_DRAGON_STAGE_25_DIALOG_2"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_3 = "OBTAIN_DRAGON_STAGE_25_DIALOG_3"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_4 = "OBTAIN_DRAGON_STAGE_25_DIALOG_4"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_5 = "OBTAIN_DRAGON_STAGE_25_DIALOG_5"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_6 = "OBTAIN_DRAGON_STAGE_25_DIALOG_6"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_7 = "OBTAIN_DRAGON_STAGE_25_DIALOG_7"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_8 = "OBTAIN_DRAGON_STAGE_25_DIALOG_8"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_9 = "OBTAIN_DRAGON_STAGE_25_DIALOG_9"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_10 = "OBTAIN_DRAGON_STAGE_25_DIALOG_10"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_11 = "OBTAIN_DRAGON_STAGE_25_DIALOG_11"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_12 = "OBTAIN_DRAGON_STAGE_25_DIALOG_12"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_13 = "OBTAIN_DRAGON_STAGE_25_DIALOG_13"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_14 = "OBTAIN_DRAGON_STAGE_25_DIALOG_14"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_15 = "OBTAIN_DRAGON_STAGE_25_DIALOG_15"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_16 = "OBTAIN_DRAGON_STAGE_25_DIALOG_16"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_17 = "OBTAIN_DRAGON_STAGE_25_DIALOG_17"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_18 = "OBTAIN_DRAGON_STAGE_25_DIALOG_18"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_19 = "OBTAIN_DRAGON_STAGE_25_DIALOG_19"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_20 = "OBTAIN_DRAGON_STAGE_25_DIALOG_20"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_21 = "OBTAIN_DRAGON_STAGE_25_DIALOG_21"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_22 = "OBTAIN_DRAGON_STAGE_25_DIALOG_22"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_23 = "OBTAIN_DRAGON_STAGE_25_DIALOG_23"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_24 = "OBTAIN_DRAGON_STAGE_25_DIALOG_24"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_25 = "OBTAIN_DRAGON_STAGE_25_DIALOG_25"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_26 = "OBTAIN_DRAGON_STAGE_25_DIALOG_26"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_27 = "OBTAIN_DRAGON_STAGE_25_DIALOG_27"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_28 = "OBTAIN_DRAGON_STAGE_25_DIALOG_28"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_29 = "OBTAIN_DRAGON_STAGE_25_DIALOG_29"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_30 = "OBTAIN_DRAGON_STAGE_25_DIALOG_30"
+        const val OBTAIN_DRAGON_STAGE_25_DIALOG_31 = "OBTAIN_DRAGON_STAGE_25_DIALOG_31"
 
         private val nodes: Map<String, DialogNode> = mapOf(
             STANDARD_DIALOG_BEGINNING to DialogNode(
@@ -913,6 +1030,1757 @@ class DialogSystem(
                         action = { questSystem, userStats, _ ->
                             userStats.addNewAbility(Ability.Meditation)
                             questSystem.setQuestStageToNext(QuestSystem.QUEST_MEDITATION)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_1_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage1Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage1Answer1,
+                        nextNode = OBTAIN_DRAGON_STAGE_1_DIALOG_1,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_1_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage1Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage1Answer2,
+                        nextNode = OBTAIN_DRAGON_STAGE_1_DIALOG_2,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_1_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage1Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage1Answer3,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                pet?.let { p ->
+                                    questSystem.petsRepo.updatePet(
+                                        pet = p.copy(
+                                            questName = QuestSystem.QUEST_TO_OBTAIN_DRAGON,
+                                        )
+                                    )
+                                    store[OBTAIN_DRAGON_CATUS_ID_KEY] = p.id
+                                }
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_2_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage2Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage2Answer1,
+                        nextNode = OBTAIN_DRAGON_STAGE_2_DIALOG_1,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage2Answer2,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_2_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage2Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage2Answer3,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                pet?.let { p ->
+                                    questSystem.petsRepo.updatePet(
+                                        pet = p.copy(
+                                            questName = QuestSystem.QUEST_TO_OBTAIN_DRAGON,
+                                        )
+                                    )
+                                    when (pet.type) {
+                                        PetType.Dogus -> {
+                                            store[OBTAIN_DRAGON_DOGUS_ID_KEY] = p.id
+                                        }
+                                        PetType.Frogus -> {
+                                            store[OBTAIN_DRAGON_FROGUS_ID_KEY] = p.id
+                                        }
+                                        PetType.Bober -> {
+                                            store[OBTAIN_DRAGON_BOBER_ID_KEY] = p.id
+                                        }
+                                        else -> Unit
+                                    }
+                                }
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_2_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage2Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage2Answer1,
+                        nextNode = OBTAIN_DRAGON_STAGE_2_DIALOG_1,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage2Answer2,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_2_DIALOG_3 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage2Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage2Answer5,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_3_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage3Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_4_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage4Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_4_DIALOG_1,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_4_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage4Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_4_DIALOG_2,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_4_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage4Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_5_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage5Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_CAT_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_5_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage5Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_DOG_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_5_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage5Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_FROG_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_5_DIALOG_3 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage5Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_BOBER_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_5_DIALOG_4 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage5Dialog4),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer2,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_MISTY_GORGE_DECISION_KEY] = OBTAIN_DRAGON_CAT_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer3,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_MISTY_GORGE_DECISION_KEY] = OBTAIN_DRAGON_DOG_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer4,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_MISTY_GORGE_DECISION_KEY] = OBTAIN_DRAGON_FROG_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer5,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_MISTY_GORGE_DECISION_KEY] = OBTAIN_DRAGON_BOBER_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer6,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_5_DIALOG_5 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage5Dialog5),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_7_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage7Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_7_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage7Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_7_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage7Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_7_DIALOG_3 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage7Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_9_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage9Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_9_DIALOG_1,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_9_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage9Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_9_DIALOG_2,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_9_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage9Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_CAT_ASKED_KEY] = false
+                                store[OBTAIN_DRAGON_DOG_ASKED_KEY] = false
+                                store[OBTAIN_DRAGON_FROG_ASKED_KEY] = false
+                                store[OBTAIN_DRAGON_BOBER_ASKED_KEY] = false
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_10_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage10Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_CAT_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_10_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage10Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_DOG_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_10_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage10Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_FROG_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_10_DIALOG_3 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage10Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_BOBER_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_10_DIALOG_4 to DialogNode(
+                // Ok to reuse everything here except for OBTAIN_DRAGON_FOREST_DECISION_KEY
+                text = listOf(StringId.ObtainDragonStage5Dialog4),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer2,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_FOREST_DECISION_KEY] = OBTAIN_DRAGON_CAT_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer3,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_FOREST_DECISION_KEY] = OBTAIN_DRAGON_DOG_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer4,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_FOREST_DECISION_KEY] = OBTAIN_DRAGON_FROG_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer5,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_FOREST_DECISION_KEY] = OBTAIN_DRAGON_BOBER_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer6,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_12_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage12Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_12_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage12Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_12_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage12Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_12_DIALOG_3 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage12Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_14_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage14Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_14_DIALOG_1,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_14_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage14Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_14_DIALOG_2,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_14_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage14Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_CAT_ASKED_KEY] = false
+                                store[OBTAIN_DRAGON_DOG_ASKED_KEY] = false
+                                store[OBTAIN_DRAGON_FROG_ASKED_KEY] = false
+                                store[OBTAIN_DRAGON_BOBER_ASKED_KEY] = false
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_15_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage15Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_CAT_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_15_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage15Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_DOG_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_15_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage15Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_FROG_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_15_DIALOG_3 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage15Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_BOBER_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_15_DIALOG_4 to DialogNode(
+                // Ok to reuse everything here except for OBTAIN_DRAGON_STONE_DECISION_KEY
+                text = listOf(StringId.ObtainDragonStage5Dialog4),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer2,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_STONE_DECISION_KEY] = OBTAIN_DRAGON_CAT_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer3,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_STONE_DECISION_KEY] = OBTAIN_DRAGON_DOG_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer4,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_STONE_DECISION_KEY] = OBTAIN_DRAGON_FROG_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer5,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_STONE_DECISION_KEY] = OBTAIN_DRAGON_BOBER_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer6,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_17_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage17Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_17_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage17Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_17_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage17Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_17_DIALOG_3 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage17Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_19_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage19Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_19_DIALOG_1,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_19_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage19Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_19_DIALOG_2,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_19_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage19Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_CAT_ASKED_KEY] = false
+                                store[OBTAIN_DRAGON_DOG_ASKED_KEY] = false
+                                store[OBTAIN_DRAGON_FROG_ASKED_KEY] = false
+                                store[OBTAIN_DRAGON_BOBER_ASKED_KEY] = false
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_20_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage20Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_CAT_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_20_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage20Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_DOG_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_20_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage20Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_FROG_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_20_DIALOG_3 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage20Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_BOBER_ASKED_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_20_DIALOG_4 to DialogNode(
+                // Ok to reuse everything here except for OBTAIN_DRAGON_ASH_DECISION_KEY
+                text = listOf(StringId.ObtainDragonStage5Dialog4),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer2,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_ASH_DECISION_KEY] = OBTAIN_DRAGON_CAT_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer3,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_ASH_DECISION_KEY] = OBTAIN_DRAGON_DOG_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer4,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_ASH_DECISION_KEY] = OBTAIN_DRAGON_FROG_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer5,
+                        nextNode = OBTAIN_DRAGON_STAGE_5_DIALOG_5,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_ASH_DECISION_KEY] = OBTAIN_DRAGON_BOBER_CHOICE
+                            }
+                        }
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage5Answer6,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_22_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage22Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_22_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage22Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_22_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage22Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_22_DIALOG_3 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage22Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_24_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage24Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_24_DIALOG_1,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_24_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage24Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_24_DIALOG_2,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_24_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage24Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Excellent,
+                        nextNode = OBTAIN_DRAGON_STAGE_24_DIALOG_3,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_24_DIALOG_3 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage24Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage24Answer1,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // User doesn't have Necronomicon
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_24_DIALOG_4 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage24Dialog0), // Same as in dialog 0
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_24_DIALOG_5,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_24_DIALOG_5 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage24Dialog1), // Same as in dialog 1
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_24_DIALOG_6,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_24_DIALOG_6 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage24Dialog2), // Same as in dialog 2
+                answers = listOf(
+                    Answer(
+                        text = StringId.Excellent,
+                        nextNode = OBTAIN_DRAGON_STAGE_24_DIALOG_7,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_24_DIALOG_7 to DialogNode(
+                // Different dialog because user has Necronomicon
+                text = listOf(StringId.ObtainDragonStage24Dialog7),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage24Answer1, // Same as answer 1
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // User has Necronomicon
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer2, // Choose cat
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_1,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer3, // Choose dog
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_5,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer4, // Choose frog
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_8,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer5, // Choose bober
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_10,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer7, // Let me think
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer6,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_2,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer7,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer8,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // User choose to sacrifice Catus, the rest will be told by Dogus
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_CAT_IS_SACRIFICE_KEY] = true
+                            }
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_3 to DialogNode(
+                // Dogus tells the story of Catus sacrifice
+                text = listOf(StringId.ObtainDragonStage25Dialog3),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_4,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_4 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog4),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Move Catus to memory
+                            val store = questSystem.dataStore.data.first()
+                            val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                            catId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { cat ->
+                                    val newCat = cat.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newCat)
+                                }
+                            }
+                            // Add memory of a mage to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfMage,
+                                    amount = 1,
+                                )
+                            )
+
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_5 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog1), // Same = Are you sure?
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer6, // Same = Yes
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_6,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer7, // Same = No
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_6 to DialogNode(
+                // Catus tells the story of Dogus sacrifice
+                text = listOf(StringId.ObtainDragonStage25Dialog6),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_7,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_7 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog4), // Same
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Move Dogus to memory
+                            val store = questSystem.dataStore.data.first()
+                            val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                            dogId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { dog ->
+                                    val newDog = dog.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newDog)
+                                }
+                            }
+                            // Add memory of a warrior to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfWarrior,
+                                    amount = 1,
+                                )
+                            )
+
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_8 to DialogNode(
+                // Catus tells the story of Frogus sacrifice
+                text = listOf(StringId.ObtainDragonStage25Dialog8),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_9,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_9 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog4), // Same
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Move Frogus to memory
+                            val store = questSystem.dataStore.data.first()
+                            val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                            frogId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { frog ->
+                                    val newFrog = frog.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newFrog)
+                                }
+                            }
+                            // Add memory of a bard to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfBard,
+                                    amount = 1,
+                                )
+                            )
+
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_10 to DialogNode(
+                // Catus tells the story of Bober sacrifice
+                text = listOf(StringId.ObtainDragonStage25Dialog10),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_11,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_11 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog4), // Same
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Move Bober to memory
+                            val store = questSystem.dataStore.data.first()
+                            val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+                            boberId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { bober ->
+                                    val newBober = bober.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newBober)
+                                }
+                            }
+                            // Add memory of a smith to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfSmith,
+                                    amount = 1,
+                                )
+                            )
+
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_12 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog1), // Same = Are you sure?
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer6, // Same = Yes
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_13,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer7, // Same = No
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_13 to DialogNode(
+                // Catus tells the story of his escape and how everyone else died
+                // About dogus
+                text = listOf(StringId.ObtainDragonStage25Dialog13),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_14,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_14 to DialogNode(
+                // Catus tells the story of his escape and how everyone else died
+                // About frogus
+                text = listOf(StringId.ObtainDragonStage25Dialog14),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_15,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_15 to DialogNode(
+                // Catus tells the story of his escape and how everyone else died
+                // About bober
+                text = listOf(StringId.ObtainDragonStage25Dialog15),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_16,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_16 to DialogNode(
+                // Catus tells the story of his escape and how everyone else died
+                // Final
+                text = listOf(StringId.ObtainDragonStage25Dialog16),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val store = questSystem.dataStore.data.first()
+                            // Move Dogus to memory
+                            val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                            dogId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { dog ->
+                                    val newDog = dog.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newDog)
+                                }
+                            }
+                            // Add memory of a warrior to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfWarrior,
+                                    amount = 1,
+                                )
+                            )
+                            // Move Frogus to memory
+                            val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                            frogId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { frog ->
+                                    val newFrog = frog.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newFrog)
+                                }
+                            }
+                            // Add memory of a bard to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfBard,
+                                    amount = 1,
+                                )
+                            )
+                            // Move Bober to memory
+                            val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+                            boberId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { bober ->
+                                    val newBober = bober.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newBober)
+                                }
+                            }
+                            // Add memory of a smith to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfSmith,
+                                    amount = 1,
+                                )
+                            )
+
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_17 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog1), // Same = Are you sure?
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer6, // Same = Yes
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_18,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer7, // Same = No
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_18 to DialogNode(
+                // Dogus tells the story of his escape and how everyone else died
+                // About catus
+                text = listOf(StringId.ObtainDragonStage25Dialog18),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_19,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_19 to DialogNode(
+                // Dogus tells the story of his escape and how everyone else died
+                // About frogus
+                text = listOf(StringId.ObtainDragonStage25Dialog14),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_20,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_20 to DialogNode(
+                // Dogus tells the story of his escape and how everyone else died
+                // About bober
+                text = listOf(StringId.ObtainDragonStage25Dialog15),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_21,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_21 to DialogNode(
+                // Dogus tells the story of his escape and how everyone else died
+                // Final
+                text = listOf(StringId.ObtainDragonStage25Dialog16),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val store = questSystem.dataStore.data.first()
+                            // Move Catus to memory
+                            val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                            catId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { cat ->
+                                    val newCat = cat.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newCat)
+                                }
+                            }
+                            // Add memory of a mage to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfMage,
+                                    amount = 1,
+                                )
+                            )
+                            // Move Frogus to memory
+                            val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                            frogId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { frog ->
+                                    val newFrog = frog.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newFrog)
+                                }
+                            }
+                            // Add memory of a bard to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfBard,
+                                    amount = 1,
+                                )
+                            )
+                            // Move Bober to memory
+                            val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+                            boberId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { bober ->
+                                    val newBober = bober.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newBober)
+                                }
+                            }
+                            // Add memory of a smith to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfSmith,
+                                    amount = 1,
+                                )
+                            )
+
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_22 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog1), // Same = Are you sure?
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer6, // Same = Yes
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_23,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer7, // Same = No
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_23 to DialogNode(
+                // Frogus tells the story of his escape and how everyone else died
+                // About catus
+                text = listOf(StringId.ObtainDragonStage25Dialog18),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_24,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_24 to DialogNode(
+                // Frogus tells the story of his escape and how everyone else died
+                // About dogus
+                text = listOf(StringId.ObtainDragonStage25Dialog13),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_25,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_25 to DialogNode(
+                // Frogus tells the story of his escape and how everyone else died
+                // About bober
+                text = listOf(StringId.ObtainDragonStage25Dialog15),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_26,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_26 to DialogNode(
+                // Frogus tells the story of his escape and how everyone else died
+                // Final
+                text = listOf(StringId.ObtainDragonStage25Dialog16),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val store = questSystem.dataStore.data.first()
+                            // Move Catus to memory
+                            val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                            catId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { cat ->
+                                    val newCat = cat.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newCat)
+                                }
+                            }
+                            // Add memory of a mage to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfMage,
+                                    amount = 1,
+                                )
+                            )
+                            // Move Dogus to memory
+                            val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                            dogId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { dog ->
+                                    val newDog = dog.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newDog)
+                                }
+                            }
+                            // Add memory of a warrior to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfWarrior,
+                                    amount = 1,
+                                )
+                            )
+                            // Move Bober to memory
+                            val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
+                            boberId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { bober ->
+                                    val newBober = bober.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newBober)
+                                }
+                            }
+                            // Add memory of a smith to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfSmith,
+                                    amount = 1,
+                                )
+                            )
+
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_27 to DialogNode(
+                text = listOf(StringId.ObtainDragonStage25Dialog1), // Same = Are you sure?
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer6, // Same = Yes
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_28,
+                    ),
+                    Answer(
+                        text = StringId.ObtainDragonStage25Answer7, // Same = No
+                        nextNode = null,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_28 to DialogNode(
+                // Bober tells the story of his escape and how everyone else died
+                // About catus
+                text = listOf(StringId.ObtainDragonStage25Dialog18),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_29,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_29 to DialogNode(
+                // Bober tells the story of his escape and how everyone else died
+                // About dogus
+                text = listOf(StringId.ObtainDragonStage25Dialog13),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_30,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_30 to DialogNode(
+                // Bober tells the story of his escape and how everyone else died
+                // About frogus
+                text = listOf(StringId.ObtainDragonStage25Dialog14),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_DRAGON_STAGE_25_DIALOG_31,
+                    ),
+                )
+            ),
+            OBTAIN_DRAGON_STAGE_25_DIALOG_31 to DialogNode(
+                // Bober tells the story of his escape and how everyone else died
+                // Final
+                text = listOf(StringId.ObtainDragonStage25Dialog16),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            val store = questSystem.dataStore.data.first()
+                            // Move Catus to memory
+                            val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
+                            catId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { cat ->
+                                    val newCat = cat.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newCat)
+                                }
+                            }
+                            // Add memory of a mage to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfMage,
+                                    amount = 1,
+                                )
+                            )
+                            // Move Dogus to memory
+                            val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
+                            dogId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { dog ->
+                                    val newDog = dog.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newDog)
+                                }
+                            }
+                            // Add memory of a warrior to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfWarrior,
+                                    amount = 1,
+                                )
+                            )
+                            // Move Frogus to memory
+                            val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
+                            frogId?.let { id ->
+                                questSystem.petsRepo.getPetByIdFlow(id).first()?.let { frog ->
+                                    val newFrog = frog.copy(
+                                        questName = null,
+                                        place = Place.Memory,
+                                    )
+                                    questSystem.petsRepo.updatePet(newFrog)
+                                }
+                            }
+                            // Add memory of a bard to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.MemoryOfBard,
+                                    amount = 1,
+                                )
+                            )
+
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_DRAGON_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
                         }
                     ),
                 )
