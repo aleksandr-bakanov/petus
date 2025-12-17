@@ -69,15 +69,24 @@ class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenView
                     ))
                 }
             }
+            is Action.TapInventoryItem -> {
+                navigate(
+                    Navigation.ShowInventoryItemDetails(
+                        inventoryItemId = action.inventoryItemId
+                    )
+                )
+            }
         }
     }
 
     sealed interface Action {
         data object AddItem: Action
         data object RemoveItem: Action
+        data class TapInventoryItem(val inventoryItemId: InventoryItemId) : Action
     }
 
     sealed interface Navigation {
         data object CloseScreen : Navigation
+        data class ShowInventoryItemDetails(val inventoryItemId: InventoryItemId) : Navigation
     }
 }

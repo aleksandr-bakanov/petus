@@ -47,7 +47,7 @@ extension UserNotification {
                 ?? (self as! UserNotification.InventoryItemRemoved).item
 
             // 1️⃣ Localized item name
-            let itemName = item.id.toStringId().localized
+            let itemName = item.id.toItemNameStringId().localized
 
             // 2️⃣ Description of the item (e.g., "Apple x2")
             let itemDescription = String(format: NSLocalizedString("InventoryItemPattern", comment: ""), itemName, item.amount)

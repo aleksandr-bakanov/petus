@@ -24,7 +24,7 @@ import bav.petus.android.MyApplicationTheme
 import bav.petus.android.R
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
-import bav.petus.core.inventory.toStringId
+import bav.petus.core.inventory.toItemNameStringId
 import bav.petus.core.notification.UserNotification
 
 @Composable
@@ -75,7 +75,7 @@ private fun UserNotification.notificationTitle(): String {
         is UserNotification.InventoryItemAdded, is UserNotification.InventoryItemRemoved -> {
             val item = (this as? UserNotification.InventoryItemAdded)?.item
                 ?: (this as UserNotification.InventoryItemRemoved).item
-            val itemName = stringResource(id = item.id.toStringId().toResId())
+            val itemName = stringResource(id = item.id.toItemNameStringId().toResId())
             val itemDescription = stringResource(R.string.InventoryItemPattern, itemName, item.amount)
             val resId = if (this is UserNotification.InventoryItemAdded)
                 R.string.NotificationInventoryItemAdded

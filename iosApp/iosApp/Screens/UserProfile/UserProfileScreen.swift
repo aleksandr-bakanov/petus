@@ -2,51 +2,81 @@ import SwiftUI
 import KMPObservableViewModelSwiftUI
 import shared
 
+enum UserProfileNavigation: Hashable {
+    case itemDetails(itemId: InventoryItemId)
+}
+
 struct UserProfileView: View {
     
     @StateViewModel var viewModel: UserProfileScreenViewModel = UserProfileScreenViewModel()
+    @State private var navigationPath: [UserProfileNavigation] = []
+    
+    // Define 3 fixed-width columns
+    private let inventoryColumns: [GridItem] = Array(
+        repeating: GridItem(.flexible(), spacing: 8),
+        count: 3
+    )
     
     var body: some View {
-        ScrollView {
-            if let state = viewModel.uiState.value {
-                VStack(alignment: .center, spacing: 16) {
-                    if let weather = state.latestWeather {
-                        Text(weather).font(.caption)
+        NavigationStack(path: $navigationPath) {
+            ScrollView {
+                if let state = viewModel.uiState.value {
+                    VStack(alignment: .center, spacing: 16) {
+                        if let weather = state.latestWeather {
+                            Text(weather).font(.caption)
+                        }
+                        Image("user_profile_avatar")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 112, height: 112)
+                            .clipped()
+                        Text("ProfileScreenLanguagesLabel")
+                        LanguageKnowledgeCell(type: .catus, value: state.languageKnowledgeCatus)
+                        LanguageKnowledgeCell(type: .dogus, value: state.languageKnowledgeDogus)
+                        LanguageKnowledgeCell(type: .frogus, value: state.languageKnowledgeFrogus)
+                        LanguageKnowledgeCell(type: .bober, value: state.languageKnowledgeBober)
+                        LanguageKnowledgeCell(type: .fractal, value: state.languageKnowledgeFractal)
+                        LanguageKnowledgeCell(type: .dragon, value: state.languageKnowledgeDragon)
+                        Text("ProfileScreenInventoryLabel")
+                        
+                        LazyVGrid(
+                            columns: inventoryColumns,
+                            alignment: .center,
+                            spacing: 8
+                        ) {
+                            ForEach(state.inventory, id: \.id) { item in
+                                InventoryItemCell(item: item) {
+                                    navigationPath.append(.itemDetails(itemId: item.id))
+                                }
+                            }
+                        }
+                        .frame(maxHeight: .infinity) // Similar to heightIn max = 10000.dp
+                        .padding(8) // Optional: for outer spacing
+
+                        Text("ProfileScreenAbilitiesLabel")
+                        ForEach(state.abilities, id: \.self) { item in
+                            Text(item.toStringId().localized)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        Text("ProfileScreenMiscLabel")
+                        HStack {
+                            Text("ZooSizeTitle")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .layoutPriority(1)
+                            Text(state.zooSize)
+                                .frame(width: 80, alignment: .trailing) // Fixed width or proportional width
+                        }
                     }
-                    Image("user_profile_avatar")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 112, height: 112)
-                        .clipped()
-                    Text("ProfileScreenLanguagesLabel")
-                    LanguageKnowledgeCell(type: .catus, value: state.languageKnowledgeCatus)
-                    LanguageKnowledgeCell(type: .dogus, value: state.languageKnowledgeDogus)
-                    LanguageKnowledgeCell(type: .frogus, value: state.languageKnowledgeFrogus)
-                    LanguageKnowledgeCell(type: .bober, value: state.languageKnowledgeBober)
-                    LanguageKnowledgeCell(type: .fractal, value: state.languageKnowledgeFractal)
-                    LanguageKnowledgeCell(type: .dragon, value: state.languageKnowledgeDragon)
-                    Text("ProfileScreenInventoryLabel")
-                    ForEach(state.inventory, id: \.id) { item in
-                        InventoryItemCell(item: item)
-                    }
-                    Text("ProfileScreenAbilitiesLabel")
-                    ForEach(state.abilities, id: \.self) { item in
-                        Text(item.toStringId().localized)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    Text("ProfileScreenMiscLabel")
-                    HStack {
-                        Text("ZooSizeTitle")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .layoutPriority(1)
-                        Text(state.zooSize)
-                            .frame(width: 80, alignment: .trailing) // Fixed width or proportional width
-                    }
+                    .frame(maxWidth: .infinity) // Center horizontally
+                    .padding()
                 }
-                .frame(maxWidth: .infinity) // Center horizontally
-                .padding()
+            }
+            .navigationDestination(for: UserProfileNavigation.self) { destination in
+                switch destination {
+                case .itemDetails(let itemId):
+                    ItemDetailsScreen(itemId: itemId)
+                }
             }
         }
-        .navigationTitle("ProfileScreenTitle")
     }
 }

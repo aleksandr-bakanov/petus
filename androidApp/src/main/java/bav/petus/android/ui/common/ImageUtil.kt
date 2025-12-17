@@ -1,6 +1,7 @@
 package bav.petus.android.ui.common
 
 import bav.petus.android.R
+import bav.petus.core.inventory.InventoryItemId
 import bav.petus.core.resources.ImageId
 
 fun ImageId.toResId(): Int {
@@ -115,7 +116,6 @@ fun ImageId.toResId(): Int {
         ImageId.BoberAdultPoop -> R.drawable.bober_adult_poop
         ImageId.BoberAdultSleep -> R.drawable.bober_adult_sleep
         ImageId.BoberAdultZombie -> R.drawable.bober_adult_zombie
-        ImageId.BoberEgg -> R.drawable.bober_egg
         ImageId.BoberGrave -> R.drawable.bober_grave
         ImageId.BoberNewbornActive -> R.drawable.bober_newborn_active
         ImageId.BoberNewbornDead -> R.drawable.bober_newborn_dead
@@ -156,7 +156,6 @@ fun ImageId.toResId(): Int {
         ImageId.FractalSpongeSleep -> R.drawable.fractal_sponge_sleep
         //region Dragon
         //region Common
-        ImageId.DragonEgg -> R.drawable.dragon_egg
         ImageId.DragonGrave -> R.drawable.dragon_grave
         //endregion
         //region Red Dragon
@@ -231,5 +230,28 @@ fun ImageId.toResId(): Int {
         //endregion
         ImageId.DugOutGrave -> R.drawable.dug_out_grave
         ImageId.UserProfileAvatar -> R.drawable.user_profile_avatar
+        //region Items
+        ImageId.Necronomicon -> R.drawable.item_necronomicon
+        ImageId.PieceOfCloth -> R.drawable.item_piece_of_cloth
+        ImageId.MysteriousBook -> R.drawable.item_mysterious_book
+        ImageId.Fish -> R.drawable.item_fish
+        ImageId.FrogusEgg -> R.drawable.frogus_egg
+        ImageId.DogusEgg -> R.drawable.dogus_egg
+        ImageId.CatusEgg -> R.drawable.catus_egg
+        ImageId.BoberEgg -> R.drawable.bober_egg
+        ImageId.DragonEgg -> R.drawable.dragon_egg
+        ImageId.Basket -> R.drawable.item_basket
+        ImageId.TwoMeterRuler -> R.drawable.item_two_meter_ruler
+        ImageId.TenCentimeterRuler -> R.drawable.item_ten_centimeter_ruler
+        ImageId.MathBook -> R.drawable.item_math_book
+        ImageId.MemoryOfMage -> R.drawable.item_memory_of_mage
+        ImageId.MemoryOfWarrior -> R.drawable.item_memory_of_warrior
+        ImageId.MemoryOfBard -> R.drawable.item_memory_of_bard
+        ImageId.MemoryOfSmith -> R.drawable.item_memory_of_smith
+        ImageId.CurseOfMage -> R.drawable.item_curse_of_mage
+        ImageId.CurseOfWarrior -> R.drawable.item_curse_of_warrior
+        ImageId.CurseOfBard -> R.drawable.item_curse_of_bard
+        ImageId.CurseOfSmith -> R.drawable.item_curse_of_smith
+        //endregion
     }
 }

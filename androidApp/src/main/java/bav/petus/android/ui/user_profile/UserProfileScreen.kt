@@ -1,6 +1,7 @@
 package bav.petus.android.ui.user_profile
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,10 +9,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -21,6 +27,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -29,7 +36,7 @@ import bav.petus.android.R
 import bav.petus.android.ui.common.toResId
 import bav.petus.core.engine.toStringId
 import bav.petus.core.inventory.InventoryItem
-import bav.petus.core.inventory.toStringId
+import bav.petus.core.inventory.toImageId
 import bav.petus.model.PetType
 import bav.petus.viewModel.userProfile.UserProfileScreenViewModel
 import bav.petus.viewModel.userProfile.UserProfileUiState
@@ -102,8 +109,17 @@ private fun UserProfileScreen(
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenInventoryLabel))
-            uiState.inventory.forEach { item ->
-                InventoryItemCell(item)
+            LazyVerticalGrid(
+                modifier = Modifier.heightIn(max = 10000.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                columns = GridCells.Fixed(count = 3)
+            ) {
+                items(uiState.inventory) { item ->
+                    InventoryItemCell(item) {
+                        onAction(UserProfileScreenViewModel.Action.TapInventoryItem(it.id))
+                    }
+                }
             }
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenAbilitiesLabel))
@@ -160,10 +176,18 @@ private fun LanguageKnowledgeStat(type: PetType, value: String) {
 }
 
 @Composable
-private fun InventoryItemCell(item: InventoryItem) {
-    val title = stringResource(item.id.toStringId().toResId())
-    UserProfileRow(
-        title = title,
-        message = item.amount.toString()
+private fun InventoryItemCell(
+    item: InventoryItem,
+    onClick: (InventoryItem) -> Unit,
+) {
+    Image(
+        painter = painterResource(id = item.id.toImageId().toResId()),
+        contentDescription = null,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(percent = 20))
+            .clickable {
+                onClick(item)
+            }
     )
 }

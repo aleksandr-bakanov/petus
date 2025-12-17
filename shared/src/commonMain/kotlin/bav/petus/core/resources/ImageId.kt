@@ -243,5 +243,27 @@ enum class ImageId {
     DugOutGrave,
     UserProfileAvatar,
     //endregion
+
+    //region Items
+    Necronomicon,
+    PieceOfCloth,
+    MysteriousBook,
+    Fish,
+    FrogusEgg,
+    DogusEgg,
+    CatusEgg,
+    Basket,
+    TwoMeterRuler,
+    TenCentimeterRuler,
+    MathBook,
+    MemoryOfMage,
+    MemoryOfWarrior,
+    MemoryOfBard,
+    MemoryOfSmith,
+    CurseOfMage,
+    CurseOfWarrior,
+    CurseOfBard,
+    CurseOfSmith,
+    //endregion
     ;
 }

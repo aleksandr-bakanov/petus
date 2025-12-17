@@ -426,4 +426,28 @@ sealed class StringId {
     data object QuestDescObtainDragonStage26 : StringId()
     data object QuestDescObtainDragonStage27 : StringId()
     //endregion
+    
+    //region Item descriptions
+    data object ItemDescNecronomicon : StringId()
+    data object ItemDescPieceOfCloth : StringId()
+    data object ItemDescMysteriousBook : StringId()
+    data object ItemDescFish : StringId()
+    data object ItemDescFrogusEgg : StringId()
+    data object ItemDescDogusEgg : StringId()
+    data object ItemDescCatusEgg : StringId()
+    data object ItemDescBoberEgg : StringId()
+    data object ItemDescDragonEgg : StringId()
+    data object ItemDescBasket : StringId()
+    data object ItemDescTwoMeterRuler : StringId()
+    data object ItemDescTenCentimeterRuler : StringId()
+    data object ItemDescMathBook : StringId()
+    data object ItemDescMemoryOfMage : StringId()
+    data object ItemDescMemoryOfWarrior : StringId()
+    data object ItemDescMemoryOfBard : StringId()
+    data object ItemDescMemoryOfSmith : StringId()
+    data object ItemDescCurseOfMage : StringId()
+    data object ItemDescCurseOfWarrior : StringId()
+    data object ItemDescCurseOfBard : StringId()
+    data object ItemDescCurseOfSmith : StringId()
+    //endregion
 }

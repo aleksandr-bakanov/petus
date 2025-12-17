@@ -401,5 +401,26 @@ fun StringId.toResId(): Int {
         StringId.QuestDescObtainDragonStage25NoNecro -> R.string.QuestDescObtainDragonStage25NoNecro
         StringId.QuestDescObtainDragonStage26 -> R.string.QuestDescObtainDragonStage26
         StringId.QuestDescObtainDragonStage27 -> R.string.QuestDescObtainDragonStage27
+        StringId.ItemDescNecronomicon -> R.string.ItemDescNecronomicon
+        StringId.ItemDescPieceOfCloth -> R.string.ItemDescPieceOfCloth
+        StringId.ItemDescMysteriousBook -> R.string.ItemDescMysteriousBook
+        StringId.ItemDescFish -> R.string.ItemDescFish
+        StringId.ItemDescFrogusEgg -> R.string.ItemDescFrogusEgg
+        StringId.ItemDescDogusEgg -> R.string.ItemDescDogusEgg
+        StringId.ItemDescCatusEgg -> R.string.ItemDescCatusEgg
+        StringId.ItemDescBoberEgg -> R.string.ItemDescBoberEgg
+        StringId.ItemDescDragonEgg -> R.string.ItemDescDragonEgg
+        StringId.ItemDescBasket -> R.string.ItemDescBasket
+        StringId.ItemDescTwoMeterRuler -> R.string.ItemDescTwoMeterRuler
+        StringId.ItemDescTenCentimeterRuler -> R.string.ItemDescTenCentimeterRuler
+        StringId.ItemDescMathBook -> R.string.ItemDescMathBook
+        StringId.ItemDescMemoryOfMage -> R.string.ItemDescMemoryOfMage
+        StringId.ItemDescMemoryOfWarrior -> R.string.ItemDescMemoryOfWarrior
+        StringId.ItemDescMemoryOfBard -> R.string.ItemDescMemoryOfBard
+        StringId.ItemDescMemoryOfSmith -> R.string.ItemDescMemoryOfSmith
+        StringId.ItemDescCurseOfMage -> R.string.ItemDescCurseOfMage
+        StringId.ItemDescCurseOfWarrior -> R.string.ItemDescCurseOfWarrior
+        StringId.ItemDescCurseOfBard -> R.string.ItemDescCurseOfBard
+        StringId.ItemDescCurseOfSmith -> R.string.ItemDescCurseOfSmith
     }
 }

@@ -171,7 +171,8 @@ private fun CemeteryNavHost() {
 private fun UserProfileNavHost() {
     val userProfileNavController = rememberNavController()
     NavHost(userProfileNavController, startDestination = UserProfileScreenDestination) {
-        userProfileScreen()
+        userProfileScreen(userProfileNavController)
+        itemDetailsScreen(userProfileNavController)
     }
 }
 

@@ -18,6 +18,7 @@ import bav.petus.core.dialog.DialogSystem
 import bav.petus.core.engine.Engine
 import bav.petus.core.engine.QuestSystem
 import bav.petus.core.engine.UserStats
+import bav.petus.core.inventory.InventoryItemId
 import bav.petus.core.location.LocationHelper
 import bav.petus.core.migration.Migrations
 import bav.petus.core.time.TimeRepository
@@ -29,6 +30,8 @@ import bav.petus.useCase.PetImageUseCase
 import bav.petus.useCase.WeatherAttitudeUseCase
 import bav.petus.viewModel.dialog.DialogScreenViewModel
 import bav.petus.viewModel.dialog.DialogScreenViewModelArgs
+import bav.petus.viewModel.itemDetails.ItemDetailsScreenViewModel
+import bav.petus.viewModel.itemDetails.ItemDetailsScreenViewModelArgs
 import bav.petus.viewModel.main.MainViewModel
 import bav.petus.viewModel.questStatus.QuestStatusViewModel
 import bav.petus.viewModel.weatherReport.WeatherReportViewModel
@@ -198,5 +201,13 @@ val appModule = module {
 
     viewModel {
         UserProfileScreenViewModel()
+    }
+
+    viewModel { params ->
+        ItemDetailsScreenViewModel(
+            args = ItemDetailsScreenViewModelArgs(
+                itemId = params.get<InventoryItemId>(),
+            )
+        )
     }
 }
