@@ -338,6 +338,8 @@ class Engine(
             return
         }
 
+        val canPetsDieOfOldAge = userStats.getCanPetsDieOfOldAge()
+
         // At least one period passed, let's update game state
         var pets = petsRepo.getAllPetsInZoo()
             // Process only alive pets
@@ -365,7 +367,7 @@ class Engine(
                 timestamp = periodTimestamp
             )
             // Update all pets
-            pets = pets.map { updatePet(it, weatherRecord, periodTimestamp) }
+            pets = pets.map { updatePet(it, weatherRecord, periodTimestamp, canPetsDieOfOldAge) }
         }
 
         // Save results in DB
@@ -388,12 +390,14 @@ class Engine(
      * @param weatherRecord Info about weather closest to [periodTimestamp] if known
      * @param periodTimestamp Timestamp of a certain tick (cycle) - granulated
      *   by [TimeRepository.CYCLE_PERIOD_IN_SECONDS].
+     * @param canPetsDieOfOldAge Determines whether pet can randomly die if it's old
      * @return Resulting pet object
      */
     private suspend fun updatePet(
         pet: Pet,
         weatherRecord: WeatherRecord?,
         periodTimestamp: Long,
+        canPetsDieOfOldAge: Boolean,
     ): Pet {
         if (pet.bodyState != BodyState.Alive) return pet
 
@@ -505,7 +509,8 @@ class Engine(
         // Additional checks for Old pets (except for fractals)
         if (newPet.ageState == AgeState.Old &&
             newPet.bodyState == BodyState.Alive &&
-            newPet.type != PetType.Fractal
+            newPet.type != PetType.Fractal &&
+            canPetsDieOfOldAge
         ) {
             // Random death
             if (Random.nextFloat() < newPet.deathOfOldAgePossibility) {

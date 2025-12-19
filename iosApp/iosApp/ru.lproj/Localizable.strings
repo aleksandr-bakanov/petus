@@ -19,6 +19,7 @@
 "LanguageKnowledgeTitleDragon"             = "Язык Дракона";
 "ZooSizeTitle"                             = "Размер дома";
 "ProfileScreenMiscLabel"                   = "Прочее";
+"CanPetsDieOfOldAge"                       = "Могут ли петы умереть от старости?";
 
 /* Zoo screen */
 "CreatePetButtonTitle"                     = "Создать нового пета";

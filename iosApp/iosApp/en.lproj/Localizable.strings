@@ -19,6 +19,7 @@
 "LanguageKnowledgeTitleDragon"             = "Dragon language";
 "ZooSizeTitle"                             = "Home size";
 "ProfileScreenMiscLabel"                   = "Misc";
+"CanPetsDieOfOldAge"                       = "Can pets die of old age?";
 
 /* Zoo screen */
 "CreatePetButtonTitle"                     = "Create new pet";

@@ -26,6 +26,7 @@ data class UserProfileUiState(
     val inventory: List<InventoryItem>,
     val abilities: List<Ability>,
     val zooSize: String,
+    val canPetsDieOfOldAge: Boolean,
 )
 
 class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenViewModel.Navigation>(), KoinComponent {
@@ -48,6 +49,7 @@ class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenView
             inventory = userData.inventory,
             abilities = userData.abilities.toList(),
             zooSize = userData.zooSize.toString(),
+            canPetsDieOfOldAge = userData.canPetsDieOfOldAge,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
@@ -76,6 +78,11 @@ class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenView
                     )
                 )
             }
+            is Action.TapCanPetDieOfOldAgeSwitch -> {
+                viewModelScope.launch {
+                    userStats.setCanPetsDieOfOldAge(action.value)
+                }
+            }
         }
     }
 
@@ -83,6 +90,7 @@ class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenView
         data object AddItem: Action
         data object RemoveItem: Action
         data class TapInventoryItem(val inventoryItemId: InventoryItemId) : Action
+        data class TapCanPetDieOfOldAgeSwitch(val value: Boolean) : Action
     }
 
     sealed interface Navigation {

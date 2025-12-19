@@ -21,6 +21,7 @@
 	<string name="LanguageKnowledgeTitleDragon">Dragon language</string>
 	<string name="ZooSizeTitle">Home size</string>
 	<string name="ProfileScreenMiscLabel">Misc</string>
+	<string name="CanPetsDieOfOldAge">Can pets die of old age?</string>
 
 	<!-- Zoo screen -->
 	<string name="CreatePetButtonTitle">Create new pet</string>

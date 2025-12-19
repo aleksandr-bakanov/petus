@@ -2,6 +2,7 @@ package bav.petus.core.engine
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlin.collections.map
 
 data class LanguageKnowledge(
     val catus: Int,
@@ -44,6 +46,7 @@ data class UserProfileData(
     val inventory: List<InventoryItem>,
     val abilities: Set<Ability>,
     val zooSize: Int,
+    val canPetsDieOfOldAge: Boolean,
 )
 
 class UserStats(
@@ -69,7 +72,8 @@ class UserStats(
                 ),
                 inventory = it.getInventory(),
                 abilities = it.getAbilities(),
-                zooSize = it[ZOO_SIZE_KEY] ?: DEFAULT_ZOO_SIZE
+                zooSize = it[ZOO_SIZE_KEY] ?: DEFAULT_ZOO_SIZE,
+                canPetsDieOfOldAge = it[CAN_PETS_DIE_OF_OLD_AGE_KEY] ?: false
             )
         }
     }
@@ -204,10 +208,20 @@ class UserStats(
         }
     }
 
+    suspend fun getCanPetsDieOfOldAge(): Boolean {
+        return dataStore.data.first()[CAN_PETS_DIE_OF_OLD_AGE_KEY] ?: false
+    }
+
+    suspend fun setCanPetsDieOfOldAge(value: Boolean) {
+        dataStore.edit { store ->
+            store[CAN_PETS_DIE_OF_OLD_AGE_KEY] = value
+        }
+    }
+
     companion object {
         const val MAXIMUM_LANGUAGE_KNOWLEDGE = 120
         const val MAXIMUM_LANGUAGE_UI_KNOWLEDGE = 100
-        const val DEFAULT_ZOO_SIZE = 6
+        const val DEFAULT_ZOO_SIZE = 1024
 
         private val LANGUAGE_KNOWLEDGE_CATUS_KEY = intPreferencesKey("language_knowledge_catus")
         private val LANGUAGE_KNOWLEDGE_DOGUS_KEY = intPreferencesKey("language_knowledge_dogus")
@@ -223,6 +237,8 @@ class UserStats(
 
         val USER_INVENTORY_KEY = stringPreferencesKey("user_inventory")
         private val USER_NOTIFICATIONS_KEY = stringPreferencesKey("user_notifications")
+
+        val CAN_PETS_DIE_OF_OLD_AGE_KEY = booleanPreferencesKey("CAN_PETS_DIE_OF_OLD_AGE_KEY")
     }
 }
 

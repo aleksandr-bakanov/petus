@@ -19,6 +19,7 @@ User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
 ;android, ios;LanguageKnowledgeTitleDragon;Dragon language;Язык Дракона
 ;android, ios;ZooSizeTitle;Home size;Размер дома
 ;android, ios;ProfileScreenMiscLabel;Misc;Прочее
+;android, ios;CanPetsDieOfOldAge;Can pets die of old age?;Могут ли петы умереть от старости?
 
 Zoo screen;android, ios;CreatePetButtonTitle;Create new pet;Создать нового пета
 

@@ -21,6 +21,7 @@
 	<string name="LanguageKnowledgeTitleDragon">Язык Дракона</string>
 	<string name="ZooSizeTitle">Размер дома</string>
 	<string name="ProfileScreenMiscLabel">Прочее</string>
+	<string name="CanPetsDieOfOldAge">Могут ли петы умереть от старости?</string>
 
 	<!-- Zoo screen -->
 	<string name="CreatePetButtonTitle">Создать нового пета</string>

@@ -59,12 +59,8 @@ struct UserProfileView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         Text("ProfileScreenMiscLabel")
-                        HStack {
-                            Text("ZooSizeTitle")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .layoutPriority(1)
-                            Text(state.zooSize)
-                                .frame(width: 80, alignment: .trailing) // Fixed width or proportional width
+                        CanPetsDieOfOldAgeRow(value: state.canPetsDieOfOldAge) { newValue in
+                            viewModel.onAction(action: UserProfileScreenViewModelActionTapCanPetDieOfOldAgeSwitch(value: newValue))
                         }
                     }
                     .frame(maxWidth: .infinity) // Center horizontally

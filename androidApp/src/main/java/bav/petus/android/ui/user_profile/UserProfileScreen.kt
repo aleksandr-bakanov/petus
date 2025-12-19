@@ -19,8 +19,13 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -132,11 +137,44 @@ private fun UserProfileScreen(
             }
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenMiscLabel))
-            UserProfileRow(
-                title = stringResource(R.string.ZooSizeTitle),
-                message = uiState.zooSize,
-            )
+            CanPetsDieOfOldAgeRow(value = uiState.canPetsDieOfOldAge) {
+                onAction(UserProfileScreenViewModel.Action.TapCanPetDieOfOldAgeSwitch(it))
+            }
         }
+    }
+}
+
+@Composable
+private fun CanPetsDieOfOldAgeRow(
+    value: Boolean,
+    onClick: (Boolean) -> Unit
+) {
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .wrapContentHeight(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = stringResource(R.string.CanPetsDieOfOldAge),
+            modifier = Modifier.weight(3f)
+        )
+        Switch(
+            checked = value,
+            onCheckedChange = {
+                onClick(it)
+            },
+            thumbContent = if (value) {
+                {
+                    Icon(
+                        imageVector = Icons.Filled.Check,
+                        contentDescription = null,
+                        modifier = Modifier.size(SwitchDefaults.IconSize),
+                    )
+                }
+            } else {
+                null
+            }
+        )
     }
 }
 
