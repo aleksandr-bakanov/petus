@@ -179,6 +179,12 @@
 	<string name="IWillDieLatin">Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.</string>
 	<string name="IWillDiePolish">Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.</string>
 
+	<!-- Quests reset -->
+	<string name="QuestResetAnswer0">I want to reset a specific quest to the beginning.</string>
+	<string name="QuestResetDialog0">Q = ?</string>
+	<string name="QuestResetAnswer1">I changed my mind, thank you</string>
+	<string name="QuestResetDialog1">Q → ∅</string>
+
 	<!-- Dialogs -->
 	<string name="WhatIsGoingOnWithYou">What is going on with you?</string>
 	<string name="WhatIsGoingOnWithYouLatin">Quid tecum agitur?</string>

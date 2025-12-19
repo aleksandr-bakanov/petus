@@ -102,6 +102,10 @@ extension StringId {
         case .iWillDie(_): fatalError("IWillDie requires formatting and should not be mapped with localized")
         case .iWillDieLatin(_): fatalError("IWillDieLatin requires formatting and should not be mapped with localized")
         case .iWillDiePolish(_): fatalError("IWillDiePolish requires formatting and should not be mapped with localized")
+        case .questResetAnswer0: "QuestResetAnswer0"
+        case .questResetDialog0: "QuestResetDialog0"
+        case .questResetAnswer1: "QuestResetAnswer1"
+        case .questResetDialog1: "QuestResetDialog1"
         case .necronomiconStage3AnswerOption0: "NecronomiconStage3AnswerOption0"
         case .necronomiconStage3CommonDialog: "NecronomiconStage3CommonDialog"
         case .necronomiconStage3DogDialog: "NecronomiconStage3DogDialog"

@@ -37,6 +37,12 @@ import bav.petus.core.engine.OBTAIN_FRACTAL_TIMESTAMP_KEY
 import bav.petus.core.engine.OBTAIN_FROGUS_ASKING_CAT_ID_KEY
 import bav.petus.core.engine.OBTAIN_FROGUS_TIMESTAMP_KEY
 import bav.petus.core.engine.QuestSystem
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_MEDITATION
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_NECRONOMICON
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_BOBER
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_DRAGON
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FRACTAL
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FROGUS
 import bav.petus.core.engine.UserStats
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
@@ -63,7 +69,11 @@ class DialogSystem(
     suspend fun startDialog(pet: Pet): DialogNode? {
         currentPet = pet
         val standardBeginning = nodes[STANDARD_DIALOG_BEGINNING]!!
-        val additionalAnswerOptions = questSystem.getAdditionalAnswers(pet, STANDARD_DIALOG_BEGINNING)
+
+        val additionalAnswerOptions =
+            questSystem.getAdditionalAnswers(pet, STANDARD_DIALOG_BEGINNING) +
+                    getQuestResetAnswer(pet)
+
         val nodeWithAdditionalQuestAnswers = if (additionalAnswerOptions.isNotEmpty()) {
             standardBeginning.copy(
                 answers = additionalAnswerOptions + standardBeginning.answers
@@ -110,6 +120,19 @@ class DialogSystem(
 
                 currentNode
             }
+        }
+    }
+
+    private fun getQuestResetAnswer(pet: Pet): List<Answer> {
+        return if (pet.type == PetType.Fractal) {
+            listOf(
+                Answer(
+                    text = StringId.QuestResetAnswer0,
+                    nextNode = QUEST_RESET_DIALOG_0,
+                ),
+            )
+        } else {
+            emptyList()
         }
     }
 
@@ -428,6 +451,10 @@ class DialogSystem(
         const val OBTAIN_DRAGON_STAGE_25_DIALOG_29 = "OBTAIN_DRAGON_STAGE_25_DIALOG_29"
         const val OBTAIN_DRAGON_STAGE_25_DIALOG_30 = "OBTAIN_DRAGON_STAGE_25_DIALOG_30"
         const val OBTAIN_DRAGON_STAGE_25_DIALOG_31 = "OBTAIN_DRAGON_STAGE_25_DIALOG_31"
+
+        const val QUEST_RESET_DIALOG_0 = "QUEST_RESET_DIALOG_0"
+        const val QUEST_RESET_DIALOG_1 = "QUEST_RESET_DIALOG_1"
+        const val QUEST_RESET_DIALOG_2 = "QUEST_RESET_DIALOG_2"
 
         private val nodes: Map<String, DialogNode> = mapOf(
             STANDARD_DIALOG_BEGINNING to DialogNode(
@@ -2782,6 +2809,85 @@ class DialogSystem(
                             }
                             questSystem.setQuestStageToNext(QuestSystem.QUEST_TO_OBTAIN_DRAGON)
                         }
+                    ),
+                )
+            ),
+            QUEST_RESET_DIALOG_0 to DialogNode(
+                text = listOf(StringId.QuestResetDialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.QuestNameNecronomicon,
+                        nextNode = QUEST_RESET_DIALOG_1,
+                        action = { questSystem, userStats, pet ->
+                            // Reset necronomicon quest
+                            questSystem.resetQuest(QUEST_NECRONOMICON)
+                        }
+                    ),
+                    Answer(
+                        text = StringId.QuestNameObtainFrogus,
+                        nextNode = QUEST_RESET_DIALOG_1,
+                        action = { questSystem, userStats, pet ->
+                            // Reset obtain frogus quest
+                            questSystem.resetQuest(QUEST_TO_OBTAIN_FROGUS)
+                        }
+                    ),
+                    Answer(
+                        text = StringId.QuestNameObtainBober,
+                        nextNode = QUEST_RESET_DIALOG_1,
+                        action = { questSystem, userStats, pet ->
+                            // Reset obtain bober quest
+                            questSystem.resetQuest(QUEST_TO_OBTAIN_BOBER)
+                        }
+                    ),
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = QUEST_RESET_DIALOG_2,
+                    ),
+                    Answer(
+                        text = StringId.QuestResetAnswer1,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            QUEST_RESET_DIALOG_1 to DialogNode(
+                text = listOf(StringId.QuestResetDialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Thanks,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            QUEST_RESET_DIALOG_2 to DialogNode(
+                text = listOf(StringId.QuestResetDialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.QuestNameObtainFractal,
+                        nextNode = QUEST_RESET_DIALOG_1,
+                        action = { questSystem, userStats, pet ->
+                            // Reset obtain fractal quest
+                            questSystem.resetQuest(QUEST_TO_OBTAIN_FRACTAL)
+                        }
+                    ),
+                    Answer(
+                        text = StringId.QuestNameMeditation,
+                        nextNode = QUEST_RESET_DIALOG_1,
+                        action = { questSystem, userStats, pet ->
+                            // Reset meditation quest
+                            questSystem.resetQuest(QUEST_MEDITATION)
+                        }
+                    ),
+                    Answer(
+                        text = StringId.QuestNameObtainDragon,
+                        nextNode = QUEST_RESET_DIALOG_1,
+                        action = { questSystem, userStats, pet ->
+                            // Reset obtain dragon quest
+                            questSystem.resetQuest(QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                    Answer(
+                        text = StringId.QuestResetAnswer1,
+                        nextNode = null,
                     ),
                 )
             ),

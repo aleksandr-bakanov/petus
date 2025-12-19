@@ -67,6 +67,10 @@ fun StringId.toResId(): Int {
         is StringId.IWillDie -> error("IWillDie requires formatting and should not be mapped with toResId()")
         is StringId.IWillDieLatin -> error("IWillDieLatin requires formatting and should not be mapped with toResId()")
         is StringId.IWillDiePolish -> error("IWillDiePolish requires formatting and should not be mapped with toResId()")
+        StringId.QuestResetAnswer0 -> R.string.QuestResetAnswer0
+        StringId.QuestResetDialog0 -> R.string.QuestResetDialog0
+        StringId.QuestResetAnswer1 -> R.string.QuestResetAnswer1
+        StringId.QuestResetDialog1 -> R.string.QuestResetDialog1
         StringId.NecronomiconStage3AnswerOption0 -> R.string.NecronomiconStage3AnswerOption0
         StringId.NecronomiconStage3CommonDialog -> R.string.NecronomiconStage3CommonDialog
         StringId.NecronomiconStage3DogDialog -> R.string.NecronomiconStage3DogDialog

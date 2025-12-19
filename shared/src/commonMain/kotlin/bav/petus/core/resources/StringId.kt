@@ -143,6 +143,10 @@ sealed class StringId {
     data class IWillDieLatin(val chance: Float) : StringId()
     data class IWillDiePolish(val chance: Float) : StringId()
 
+    data object QuestResetAnswer0 : StringId()
+    data object QuestResetDialog0 : StringId()
+    data object QuestResetAnswer1 : StringId()
+    data object QuestResetDialog1 : StringId()
 
     data object NecronomiconStage3AnswerOption0 : StringId()
     data object NecronomiconStage3CommonDialog : StringId()

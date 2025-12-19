@@ -171,6 +171,11 @@ Pet state description dialogs;android, ios;IAmSick;I am sick, do you have any me
 ;android, ios;IWillDieLatin;Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.;
 ;android, ios;IWillDiePolish;Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.;
 
+Quests reset;android, ios;QuestResetAnswer0;I want to reset a specific quest to the beginning.;Я хочу сбросить определенный квест на начало.
+;android, ios;QuestResetDialog0;Q = ?;
+;android, ios;QuestResetAnswer1;I changed my mind, thank you;Я передумала, спасибо
+;android, ios;QuestResetDialog1;Q → ∅;
+
 Dialogs;android, ios;WhatIsGoingOnWithYou;What is going on with you?;Как дела?
 ;android, ios;WhatIsGoingOnWithYouLatin;Quid tecum agitur?;
 ;android, ios;WhatIsGoingOnWithYouPolish;Jak się masz?;

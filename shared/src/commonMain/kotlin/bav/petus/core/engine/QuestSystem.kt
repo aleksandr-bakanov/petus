@@ -205,6 +205,176 @@ class QuestSystem(
         }
     }
 
+    suspend fun resetQuest(questName: String) {
+        when (questName) {
+            QUEST_NECRONOMICON -> {
+                val necronomiconQuest = quests[QUEST_NECRONOMICON]!!
+                // Remove all items
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.PieceOfCloth, amount = 1), false)
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.MysteriousBook, amount = 1), false)
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.Necronomicon, amount = 1), false)
+                // Remove all abilities
+                userStats.removeAbility(Ability.Necromancy)
+                // Remove available pet type (if applicable)
+
+                // Fix possibly dug out grave
+                dataStore.data.first()[NECRONOMICON_EXHUMATED_PET_ID_KEY]?.let { bodyPetId ->
+                    petsRepo.getPetByIdFlow(bodyPetId).first()?.let { pet ->
+                        if (pet.burialType == BurialType.Exhumated) {
+                            petsRepo.updatePet(
+                                pet = pet.copy(
+                                    burialType = BurialType.Buried,
+                                )
+                            )
+                        }
+                    }
+                }
+
+                dataStore.edit { store ->
+                    // Remove all stages conditions
+                    for (index in 0 until necronomiconQuest.stages.size) {
+                        store.remove(stringSetPreferencesKey("necronomicon_stage_${index}_conditions"))
+                    }
+                    // Remove all special keys
+                    store.remove(NECRONOMICON_TIMESTAMP_KEY)
+                    store.remove(NECRONOMICON_EXHUMATED_PET_ID_KEY)
+                    store.remove(NECRONOMICON_SEARCH_DOG_ID_KEY)
+                    store.remove(NECRONOMICON_WISE_CAT_ID_KEY)
+                    // Reset stage to zero
+                    store[necronomiconQuest.currentStageKey] = 0
+                }
+            }
+            QUEST_TO_OBTAIN_FROGUS -> {
+                val obtainFrogusQuest = quests[QUEST_TO_OBTAIN_FROGUS]!!
+                // Remove all items
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.Fish, amount = 1), false)
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.FrogusEgg, amount = 1), false)
+                // Remove all abilities
+
+                // Remove available pet type (if applicable)
+                userStats.removeAvailablePetType(PetType.Frogus)
+
+                dataStore.edit { store ->
+                    // Remove all stages conditions
+                    for (index in 0 until obtainFrogusQuest.stages.size) {
+                        store.remove(stringSetPreferencesKey("obtain_frogus_stage_${index}_conditions"))
+                    }
+                    // Remove all special keys
+                    store.remove(OBTAIN_FROGUS_TIMESTAMP_KEY)
+                    store.remove(OBTAIN_FROGUS_ASKING_CAT_ID_KEY)
+                    // Reset stage to zero
+                    store[obtainFrogusQuest.currentStageKey] = 0
+                }
+            }
+            QUEST_TO_OBTAIN_BOBER -> {
+                val obtainBoberQuest = quests[QUEST_TO_OBTAIN_BOBER]!!
+                // Remove all items
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.Basket, amount = 1), false)
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.BoberEgg, amount = 1), false)
+                // Remove all abilities
+
+                // Remove available pet type (if applicable)
+                userStats.removeAvailablePetType(PetType.Bober)
+
+                dataStore.edit { store ->
+                    // Remove all stages conditions
+                    for (index in 0 until obtainBoberQuest.stages.size) {
+                        store.remove(stringSetPreferencesKey("obtain_bober_stage_${index}_conditions"))
+                    }
+                    // Remove all special keys
+                    store.remove(OBTAIN_BOBER_TIMESTAMP_KEY)
+                    store.remove(OBTAIN_BOBER_SEARCH_DOG_ID_KEY)
+                    store.remove(OBTAIN_BOBER_SEARCH_FROG_ID_KEY)
+                    // Reset stage to zero
+                    store[obtainBoberQuest.currentStageKey] = 0
+                }
+            }
+            QUEST_TO_OBTAIN_FRACTAL -> {
+                val obtainFractalQuest = quests[QUEST_TO_OBTAIN_FRACTAL]!!
+                // Remove all items
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.TwoMeterRuler, amount = 1), false)
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.TenCentimeterRuler, amount = 1), false)
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.MathBook, amount = 1), false)
+                // Remove all abilities
+
+                // Remove available pet type (if applicable)
+                userStats.removeAvailablePetType(PetType.Fractal)
+
+                dataStore.edit { store ->
+                    // Remove all stages conditions
+                    for (index in 0 until obtainFractalQuest.stages.size) {
+                        store.remove(stringSetPreferencesKey("obtain_fractal_stage_${index}_conditions"))
+                    }
+                    // Remove all special keys
+                    store.remove(OBTAIN_FRACTAL_TIMESTAMP_KEY)
+                    store.remove(OBTAIN_FRACTAL_FROG_ID_KEY)
+                    // Reset stage to zero
+                    store[obtainFractalQuest.currentStageKey] = 0
+                }
+            }
+            QUEST_MEDITATION -> {
+                val meditationQuest = quests[QUEST_MEDITATION]!!
+                // Remove all items
+
+                // Remove all abilities
+                userStats.removeAbility(Ability.Meditation)
+                // Remove available pet type (if applicable)
+
+                dataStore.edit { store ->
+                    // Remove all stages conditions
+                    for (index in 0 until meditationQuest.stages.size) {
+                        store.remove(stringSetPreferencesKey("meditation_stage_${index}_conditions"))
+                    }
+                    // Remove all special keys
+                    store.remove(MEDITATION_TIMESTAMP_KEY)
+                    store.remove(MEDITATION_FROG_ID_KEY)
+                    store.remove(MEDITATION_EXERCISES_LEFT_KEY)
+                    // Reset stage to zero
+                    store[meditationQuest.currentStageKey] = 0
+                }
+            }
+            QUEST_TO_OBTAIN_DRAGON -> {
+                val obtainDragonQuest = quests[QUEST_TO_OBTAIN_DRAGON]!!
+                // Remove all items
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.DragonEgg, amount = 1), false)
+                // Don't delete achievements (such a Memories and Curses)
+
+                // Remove all abilities
+
+                // Remove available pet type (if applicable)
+                userStats.removeAvailablePetType(PetType.Dragon)
+
+                dataStore.edit { store ->
+                    // Remove all stages conditions
+                    for (index in 0 until obtainDragonQuest.stages.size) {
+                        store.remove(stringSetPreferencesKey("obtain_dragon_stage_${index}_conditions"))
+                    }
+                    // Remove all special keys
+                    store.remove(OBTAIN_DRAGON_CATUS_ID_KEY)
+                    store.remove(OBTAIN_DRAGON_DOGUS_ID_KEY)
+                    store.remove(OBTAIN_DRAGON_FROGUS_ID_KEY)
+                    store.remove(OBTAIN_DRAGON_BOBER_ID_KEY)
+                    store.remove(OBTAIN_DRAGON_TIMESTAMP_KEY)
+                    store.remove(OBTAIN_DRAGON_DOG_ASKED_KEY)
+                    store.remove(OBTAIN_DRAGON_FROG_ASKED_KEY)
+                    store.remove(OBTAIN_DRAGON_BOBER_ASKED_KEY)
+                    store.remove(OBTAIN_DRAGON_MISTY_GORGE_DECISION_KEY)
+                    store.remove(OBTAIN_DRAGON_FOREST_DECISION_KEY)
+                    store.remove(OBTAIN_DRAGON_STONE_DECISION_KEY)
+                    store.remove(OBTAIN_DRAGON_ASH_DECISION_KEY)
+                    store.remove(OBTAIN_DRAGON_HAS_NECRONOMICON_KEY)
+                    store.remove(OBTAIN_DRAGON_CAT_IS_SACRIFICE_KEY)
+
+                    // Reset stage to zero
+                    store[obtainDragonQuest.currentStageKey] = 0
+                }
+            }
+        }
+        // Simulate language knowledge event because all quests require
+        // language knowledge as the first step
+        onEvent(Event.LanguageKnowledgeChanged(PetType.Catus, 0))
+    }
+
     sealed interface Event {
         data class PetMovedToPlace(val pet: Pet, val place: Place) : Event
         data class UserOpenPetDetails(val pet: Pet) : Event

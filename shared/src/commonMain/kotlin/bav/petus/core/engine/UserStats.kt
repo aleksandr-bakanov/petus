@@ -118,12 +118,17 @@ class UserStats(
         }
     }
 
-    suspend fun removeInventoryItem(item: InventoryItem) {
+    suspend fun removeInventoryItem(
+        item: InventoryItem,
+        shouldDisplayNotification: Boolean = true,
+    ) {
         val inventory = dataStore.data.first().getInventory()
         val newInventory = inventory.removeItem(item)
         if (newInventory != null) {
             dataStore.edit { store -> store[USER_INVENTORY_KEY] = Json.encodeToString(newInventory) }
-            addNotification(UserNotification.InventoryItemRemoved(item))
+            if (shouldDisplayNotification) {
+                addNotification(UserNotification.InventoryItemRemoved(item))
+            }
         }
     }
 
@@ -164,6 +169,16 @@ class UserStats(
         }
     }
 
+    suspend fun removeAvailablePetType(type: PetType) {
+        val current = getAvailablePetTypes().toMutableSet()
+        if (type in current) {
+            current.remove(type)
+            dataStore.edit { store ->
+                store[AVAILABLE_PET_TYPES_KEY] = current.map { it.name }.toSet()
+            }
+        }
+    }
+
     suspend fun getAvailableAbilities(): Set<Ability> {
         val value = dataStore.data.first()[AVAILABLE_ABILITIES_KEY] ?: emptySet()
         return value.map { Ability.valueOf(it) }.toSet()
@@ -173,6 +188,16 @@ class UserStats(
         val current = getAvailableAbilities().toMutableSet()
         if (value !in current) {
             current.add(value)
+            dataStore.edit { store ->
+                store[AVAILABLE_ABILITIES_KEY] = current.map { it.name }.toSet()
+            }
+        }
+    }
+
+    suspend fun removeAbility(value: Ability) {
+        val current = getAvailableAbilities().toMutableSet()
+        if (value in current) {
+            current.remove(value)
             dataStore.edit { store ->
                 store[AVAILABLE_ABILITIES_KEY] = current.map { it.name }.toSet()
             }
