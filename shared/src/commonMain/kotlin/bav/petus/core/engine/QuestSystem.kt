@@ -344,6 +344,22 @@ class QuestSystem(
                 // Remove available pet type (if applicable)
                 userStats.removeAvailablePetType(PetType.Dragon)
 
+                // Clear questName from all participants
+                val store = dataStore.data.first()
+                val keys = listOf(
+                    OBTAIN_DRAGON_CATUS_ID_KEY,
+                    OBTAIN_DRAGON_DOGUS_ID_KEY,
+                    OBTAIN_DRAGON_FROGUS_ID_KEY,
+                    OBTAIN_DRAGON_BOBER_ID_KEY
+                )
+                for (key in keys) {
+                    store[key]?.let { petId ->
+                        petsRepo.getPetByIdFlow(petId).first()?.let { pet ->
+                            petsRepo.updatePet(pet = pet.copy(questName = null))
+                        }
+                    }
+                }
+
                 dataStore.edit { store ->
                     // Remove all stages conditions
                     for (index in 0 until obtainDragonQuest.stages.size) {
