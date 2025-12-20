@@ -48,60 +48,69 @@ struct PetDetailsScreen: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(alignment: .center, spacing: 16) {
                                 if state.showSpeakButton {
-                                    AnimatedImageButton(imageName: state.petType.speakButtonImageName) {
+                                    AnimatedImageButton(imageName: state.petType.speakButtonImageName,
+                                                        title: NSLocalizedString("ButtonTitleSpeak", comment: "")) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapSpeakButton())
                                     }
                                 }
                                 
                                 if state.showPoopButton {
-                                    AnimatedImageButton(imageName: state.petType.poopButtonImageName) {
+                                    AnimatedImageButton(imageName: state.petType.poopButtonImageName,
+                                                        title: NSLocalizedString("ButtonTitlePoop", comment: "")) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapPoopButton())
                                     }
                                 }
                                 
                                 if state.showFeedButton {
-                                    AnimatedImageButton(imageName: state.petType.feedButtonImageName) {
+                                    AnimatedImageButton(imageName: state.petType.feedButtonImageName,
+                                                        title: NSLocalizedString("ButtonTitleFeed", comment: "")) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapFeedButton())
                                     }
                                 }
                                 
                                 if state.showHealButton {
-                                    AnimatedImageButton(imageName: state.petType.healButtonImageName) {
+                                    AnimatedImageButton(imageName: state.petType.healButtonImageName,
+                                                        title: NSLocalizedString("ButtonTitleHeal", comment: "")) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapHealButton())
                                     }
                                 }
                                 
                                 if state.showPlayButton {
-                                    AnimatedImageButton(imageName: state.petType.playButtonImageName) {
+                                    AnimatedImageButton(imageName: state.petType.playButtonImageName,
+                                                        title: NSLocalizedString("ButtonTitlePlay", comment: "")) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapPlayButton())
                                     }
                                 }
                                 
                                 if state.showWakeUpButton {
-                                    AnimatedImageButton(imageName: state.petType.wakeUpButtonImageName) {
+                                    AnimatedImageButton(imageName: state.petType.wakeUpButtonImageName,
+                                                        title: NSLocalizedString("ButtonTitleWakeUp", comment: "")) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapWakeUpButton())
                                     }
                                 }
                                 
                                 if state.showBuryButton {
-                                    AnimatedImageButton(imageName: state.petType.buryButtonImageName) {
+                                    AnimatedImageButton(imageName: state.petType.buryButtonImageName,
+                                                        title: NSLocalizedString("ButtonTitleBury", comment: "")) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapBuryButton())
                                     }
                                 }
                                 
                                 if state.showForgetButton {
-                                    AnimatedImageButton(imageName: "forget_fractal") {
+                                    AnimatedImageButton(imageName: "forget_fractal",
+                                                        title: NSLocalizedString("ButtonTitleForget", comment: "")) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapForgetButton())
                                     }
                                 }
                                 
                                 if state.showResurrectButton {
-                                    AnimatedImageButton(imageName: state.petType.resurrectButtonImageName) {
+                                    AnimatedImageButton(imageName: state.petType.resurrectButtonImageName,
+                                                        title: NSLocalizedString("ButtonTitleResurrect", comment: "")) {
                                         viewModel.onAction(action: PetDetailsScreenViewModelActionTapResurrectButton())
                                     }
                                 }
                             }
-                            .frame(height: 112)
+//                            .frame(height: 112)
                             .frame(maxWidth: .infinity)
                             .padding(.horizontal)
                         }

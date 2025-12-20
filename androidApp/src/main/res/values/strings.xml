@@ -28,6 +28,15 @@
 
 	<!-- Pet details -->
 	<string name="WillHatchSoon">Will hatch soon…</string>
+	<string name="ButtonTitleFeed">Feed</string>
+	<string name="ButtonTitlePlay">Play</string>
+	<string name="ButtonTitleHeal">Heal</string>
+	<string name="ButtonTitlePoop">Clean</string>
+	<string name="ButtonTitleWakeUp">Wake up</string>
+	<string name="ButtonTitleBury">Bury</string>
+	<string name="ButtonTitleSpeak">Speak</string>
+	<string name="ButtonTitleResurrect">Resurrect</string>
+	<string name="ButtonTitleForget">Forget</string>
 
 	<!-- Pet creation screen -->
 	<string name="PetCreationScreenSelectPetType">Select pet type</string>

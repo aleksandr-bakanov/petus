@@ -28,6 +28,15 @@
 
 	<!-- Pet details -->
 	<string name="WillHatchSoon">Скоро вылуплюсь…</string>
+	<string name="ButtonTitleFeed">Накормить</string>
+	<string name="ButtonTitlePlay">Поиграть</string>
+	<string name="ButtonTitleHeal">Вылечить</string>
+	<string name="ButtonTitlePoop">Чистить</string>
+	<string name="ButtonTitleWakeUp">Разбудить</string>
+	<string name="ButtonTitleBury">Похоронить</string>
+	<string name="ButtonTitleSpeak">Поговорить</string>
+	<string name="ButtonTitleResurrect">Воскресить</string>
+	<string name="ButtonTitleForget">Забыть</string>
 
 	<!-- Pet creation screen -->
 	<string name="PetCreationScreenSelectPetType">Выбери тип пета</string>

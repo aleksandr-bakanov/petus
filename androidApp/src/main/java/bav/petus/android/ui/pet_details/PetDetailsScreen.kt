@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -137,13 +138,11 @@ private fun PetDetailsScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 val scrollState = rememberScrollState()
-                val targetButtonRowHeight = if (uiState.isAnyButtonShown) 112.dp else 0.dp
-                val animatedButtonRowHeight by animateDpAsState(targetValue = targetButtonRowHeight, animationSpec = tween(300))
 
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(animatedButtonRowHeight)
+                        .wrapContentHeight()
                         .horizontalScroll(scrollState),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center,
@@ -151,6 +150,7 @@ private fun PetDetailsScreen(
                     if (uiState.showSpeakButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.speakButtonImageId()),
+                            title = stringResource(id = R.string.ButtonTitleSpeak),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapSpeakButton)
                         }
@@ -158,6 +158,7 @@ private fun PetDetailsScreen(
                     if (uiState.showPoopButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.poopButtonImageId()),
+                            title = stringResource(id = R.string.ButtonTitlePoop),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapPoopButton)
                         }
@@ -165,6 +166,7 @@ private fun PetDetailsScreen(
                     if (uiState.showFeedButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.feedButtonImageId()),
+                            title = stringResource(id = R.string.ButtonTitleFeed),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapFeedButton)
                         }
@@ -172,6 +174,7 @@ private fun PetDetailsScreen(
                     if (uiState.showHealButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.healButtonImageId()),
+                            title = stringResource(id = R.string.ButtonTitleHeal),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapHealButton)
                         }
@@ -179,6 +182,7 @@ private fun PetDetailsScreen(
                     if (uiState.showPlayButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.playButtonImageId()),
+                            title = stringResource(id = R.string.ButtonTitlePlay),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapPlayButton)
                         }
@@ -186,6 +190,7 @@ private fun PetDetailsScreen(
                     if (uiState.showWakeUpButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.wakeUpButtonImageId()),
+                            title = stringResource(id = R.string.ButtonTitleWakeUp),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapWakeUpButton)
                         }
@@ -193,6 +198,7 @@ private fun PetDetailsScreen(
                     if (uiState.showBuryButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.buryButtonImageId()),
+                            title = stringResource(id = R.string.ButtonTitleBury),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapBuryButton)
                         }
@@ -200,6 +206,7 @@ private fun PetDetailsScreen(
                     if (uiState.showForgetButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = R.drawable.forget_fractal),
+                            title = stringResource(id = R.string.ButtonTitleForget),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapForgetButton)
                         }
@@ -207,6 +214,7 @@ private fun PetDetailsScreen(
                     if (uiState.showResurrectButton) {
                         AnimatedImageButton(
                             painter = painterResource(id = uiState.petType.resurrectButtonImageId()),
+                            title = stringResource(id = R.string.ButtonTitleResurrect),
                         ) {
                             onAction(PetDetailsScreenViewModel.Action.TapResurrectButton)
                         }

@@ -26,6 +26,15 @@
 
 /* Pet details */
 "WillHatchSoon"                            = "Скоро вылуплюсь…";
+"ButtonTitleFeed"                          = "Накормить";
+"ButtonTitlePlay"                          = "Поиграть";
+"ButtonTitleHeal"                          = "Вылечить";
+"ButtonTitlePoop"                          = "Чистить";
+"ButtonTitleWakeUp"                        = "Разбудить";
+"ButtonTitleBury"                          = "Похоронить";
+"ButtonTitleSpeak"                         = "Поговорить";
+"ButtonTitleResurrect"                     = "Воскресить";
+"ButtonTitleForget"                        = "Забыть";
 
 /* Pet creation screen */
 "PetCreationScreenSelectPetType"           = "Выбери тип пета";

@@ -26,6 +26,15 @@
 
 /* Pet details */
 "WillHatchSoon"                            = "Will hatch soon…";
+"ButtonTitleFeed"                          = "Feed";
+"ButtonTitlePlay"                          = "Play";
+"ButtonTitleHeal"                          = "Heal";
+"ButtonTitlePoop"                          = "Clean";
+"ButtonTitleWakeUp"                        = "Wake up";
+"ButtonTitleBury"                          = "Bury";
+"ButtonTitleSpeak"                         = "Speak";
+"ButtonTitleResurrect"                     = "Resurrect";
+"ButtonTitleForget"                        = "Forget";
 
 /* Pet creation screen */
 "PetCreationScreenSelectPetType"           = "Select pet type";

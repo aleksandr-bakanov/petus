@@ -24,6 +24,15 @@ User profile;android, ios;ProfileScreenLanguagesLabel;Languages;Языки
 Zoo screen;android, ios;CreatePetButtonTitle;Create new pet;Создать нового пета
 
 Pet details;android, ios;WillHatchSoon;Will hatch soon…;Скоро вылуплюсь…
+;android, ios;ButtonTitleFeed;Feed;Накормить
+;android, ios;ButtonTitlePlay;Play;Поиграть
+;android, ios;ButtonTitleHeal;Heal;Вылечить
+;android, ios;ButtonTitlePoop;Clean;Чистить
+;android, ios;ButtonTitleWakeUp;Wake up;Разбудить
+;android, ios;ButtonTitleBury;Bury;Похоронить
+;android, ios;ButtonTitleSpeak;Speak;Поговорить
+;android, ios;ButtonTitleResurrect;Resurrect;Воскресить
+;android, ios;ButtonTitleForget;Forget;Забыть
 
 Pet creation screen;android, ios;PetCreationScreenSelectPetType;Select pet type;Выбери тип пета
 ;android, ios;PetCreationScreenEnterPetName;Enter pet name:;Введи имя пета:
