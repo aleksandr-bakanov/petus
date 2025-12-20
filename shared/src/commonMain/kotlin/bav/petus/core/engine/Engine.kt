@@ -717,34 +717,34 @@ class Engine(
 
     private fun getFullHealthForPetType(type: PetType): Float {
         return when (type) {
-            PetType.Catus -> 300_000f
-            PetType.Dogus -> 300_000f
-            PetType.Frogus -> 200_000f
-            PetType.Bober -> 400_000f
-            PetType.Fractal -> 300_000f
-            PetType.Dragon -> 500_000f
+            PetType.Catus -> 600_000f
+            PetType.Dogus -> 600_000f
+            PetType.Frogus -> 500_000f
+            PetType.Bober -> 800_000f
+            PetType.Fractal -> 600_000f
+            PetType.Dragon -> 1_000_000f
         }
     }
 
     private fun getFullPsychForPetType(type: PetType): Float {
         return when (type) {
-            PetType.Catus -> 50_000f
-            PetType.Dogus -> 40_000f
-            PetType.Frogus -> 30_000f
-            PetType.Bober -> 50_000f
-            PetType.Fractal -> 30_000f
-            PetType.Dragon -> 50_000f
+            PetType.Catus -> 70_000f
+            PetType.Dogus -> 60_000f
+            PetType.Frogus -> 50_000f
+            PetType.Bober -> 70_000f
+            PetType.Fractal -> 50_000f
+            PetType.Dragon -> 70_000f
         }
     }
 
     private fun getFullSatietyForPetType(type: PetType): Float {
         return when (type) {
-            PetType.Catus -> 50_000f
-            PetType.Dogus -> 50_000f
-            PetType.Frogus -> 50_000f
-            PetType.Bober -> 50_000f
-            PetType.Fractal -> 50_000f
-            PetType.Dragon -> 50_000f
+            PetType.Catus -> 70_000f
+            PetType.Dogus -> 70_000f
+            PetType.Frogus -> 70_000f
+            PetType.Bober -> 70_000f
+            PetType.Fractal -> 70_000f
+            PetType.Dragon -> 70_000f
         }
     }
 
@@ -857,7 +857,7 @@ class Engine(
         const val SLEEP_TEMPERATURE_MULTIPLIER = 0.25f
         const val DEATH_OF_OLD_AGE_POSSIBILITY_INC = 0.0000002f
         const val MAXIMUM_ILLNESS_POSSIBILITY_ON_CREATION = 0.00835f
-        const val LANGUAGE_KNOWLEDGE_INCREMENT = 3
+        const val LANGUAGE_KNOWLEDGE_INCREMENT = 5
         const val PET_NOT_ALLOWED_TO_PLAY_INTERVAL_SEC = 12 * HOUR
     }
 }
