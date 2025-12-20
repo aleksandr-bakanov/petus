@@ -128,6 +128,7 @@ fun AppWithBottomBar(
                     StatBar(
                         color = SatietyColor,
                         fraction = it.fraction,
+                        icon = null,
                         tweenDuration = 100,
                     )
                 }

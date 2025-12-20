@@ -1,7 +1,5 @@
 package bav.petus.android.ui.pet_details
 
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +15,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.LocalDining
+import androidx.compose.material.icons.filled.TagFaces
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -109,14 +110,17 @@ private fun PetDetailsScreen(
                     // Stats
                     StatBar(
                         color = SatietyColor,
+                        icon = Icons.Filled.LocalDining,
                         fraction = uiState.satietyFraction,
                     )
                     StatBar(
                         color = PsychColor,
+                        icon = Icons.Filled.TagFaces,
                         fraction = uiState.psychFraction,
                     )
                     StatBar(
                         color = HealthColor,
+                        icon = Icons.Filled.Favorite,
                         fraction = uiState.healthFraction,
                     )
                 }

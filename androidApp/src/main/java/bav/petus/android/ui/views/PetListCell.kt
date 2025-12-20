@@ -58,14 +58,17 @@ fun PetListCell(
             )
             StatBar(
                 color = SatietyColor,
+                icon = null,
                 fraction = data.satietyFraction,
             )
             StatBar(
                 color = PsychColor,
+                icon = null,
                 fraction = data.psychFraction,
             )
             StatBar(
                 color = HealthColor,
+                icon = null,
                 fraction = data.healthFraction,
             )
         }

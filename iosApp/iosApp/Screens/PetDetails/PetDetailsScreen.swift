@@ -32,9 +32,15 @@ struct PetDetailsScreen: View {
                             .scaledToFit()
                             .frame(maxWidth: .infinity)
                         if state.showStatBars {
-                            StatBar(color: Color("SatietyColor"), fraction: CGFloat(state.satietyFraction))
-                            StatBar(color: Color("PsychColor"), fraction: CGFloat(state.psychFraction))
-                            StatBar(color: Color("HealthColor"), fraction: CGFloat(state.healthFraction))
+                            StatBar(color: Color("SatietyColor"),
+                                    fraction: CGFloat(state.satietyFraction),
+                                    icon: Image(systemName: "fork.knife"))
+                            StatBar(color: Color("PsychColor"),
+                                    fraction: CGFloat(state.psychFraction),
+                                    icon: Image(systemName: "face.smiling.inverse"))
+                            StatBar(color: Color("HealthColor"),
+                                    fraction: CGFloat(state.healthFraction),
+                                    icon: Image(systemName: "heart.fill"))
                         }
                         if state.showWillHatchSoon {
                             Text("WillHatchSoon")
