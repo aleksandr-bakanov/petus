@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2025-12-21
+
+### Added
+
+- New pet: dragon
+- Images and descriptions for inventory items
+- Fractals can reset quests
+- Switch for death of old age
+- Titles for action buttons
+- Stat bar icons
+
+### Fixed
+
+- Pet stats increased
+
 ## [1.2.1] - 2025-09-30
 
 ### Added
