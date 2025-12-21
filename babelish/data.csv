@@ -79,7 +79,7 @@ Item names;android, ios;Necronomicon;Necronomicon;Некрономикон
 ;android;InventoryItemPattern;%s (x%d);%s (x%d)
 ;ios;InventoryItemPattern;%@ (x%d);%@ (x%d)
 
-Item descriptions;android, ios;ItemDescNecronomicon;The Necronomicon is a grimoire that contains forbidden knowledge, occult rituals, and descriptions of cosmic entities like Cthulhu and the Great Old Ones. It is a dangerous book that drives readers to madness.;Некрономикон — это гримуар, в котором содержатся запретные знания, оккультные ритуалы и описания космических сущностей, таких как Ктулху и Великие Древние. Это опасный том, сводящий читателей с ума.
+Item descriptions;android, ios;ItemDescNecronomicon;The Necronomicon is a grimoire that contains forbidden knowledge, occult rituals, and descriptions of cosmic entities like Cthulhu and the Great Old Ones. It is a dangerous book that drives readers to madness.;Некрономикон — гримуар, в котором содержатся запретные знания, оккультные ритуалы и описания космических сущностей, таких как Ктулху и Великие Древние. Это опасный том, сводящий читателей с ума.
 ;android, ios;ItemDescPieceOfCloth;Piece of cloth found at the crime scene.;Кусок ткани, найденный на месте преступления.
 ;android, ios;ItemDescMysteriousBook;Mysterious book found at a ritual site.;Загадочная книга, найденная на месте проведения ритуалов.
 ;android, ios;ItemDescFish;Not a very smart fish caught at the pond.;Не очень умная рыба, пойманная в пруду.
