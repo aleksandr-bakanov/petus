@@ -136,7 +136,7 @@ class DialogSystem(
         }
     }
 
-    private fun addPetDescription(pet: Pet?, node: DialogNode?): DialogNode? {
+    private suspend fun addPetDescription(pet: Pet?, node: DialogNode?): DialogNode? {
         if (pet == null || node == null) return node
         else {
             val texts = buildList {
@@ -148,6 +148,7 @@ class DialogSystem(
                 val isHalfHp = engine.isPetLowHealth(pet)
                 val isGood = listOf(isSick, isHungry, isPooped, isBored, isHalfHp, isAngryAfterForceWakeUp).none { it }
                 val isOld = pet.ageState == AgeState.Old
+                val canPetDieOfOldAge = userStats.getCanPetsDieOfOldAge()
 
                 if (isSick) add(getSickStringId(pet))
                 if (isHungry) add(getHungryStringId(pet))
@@ -156,7 +157,7 @@ class DialogSystem(
                 if (isAngryAfterForceWakeUp) add(getAngryAfterForceWakeUpStringId(pet))
                 if (isHalfHp) add(getHalfHpStringId(pet))
                 if (isGood) add(getIAmGoodStringId(pet))
-                if (isOld) add(getOldChancesOfDeathStringId(pet))
+                if (isOld && canPetDieOfOldAge) add(getOldChancesOfDeathStringId(pet))
             }
             return node.copy(
                 text = node.text + texts.shuffled()
