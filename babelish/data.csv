@@ -83,7 +83,7 @@ Item descriptions;android, ios;ItemDescNecronomicon;The Necronomicon is a grimoi
 ;android, ios;ItemDescPieceOfCloth;Piece of cloth found at the crime scene.;Кусок ткани, найденный на месте преступления.
 ;android, ios;ItemDescMysteriousBook;Mysterious book found at a ritual site.;Загадочная книга, найденная на месте проведения ритуалов.
 ;android, ios;ItemDescFish;Not a very smart fish caught at the pond.;Не очень умная рыба, пойманная в пруду.
-;android, ios;ItemDescFrogusEgg;Found by Katus at the pond. Allows the spawning of new Froguses.;Найдено Катусом у пруда. Позволяет порождать новых фрогусов.
+;android, ios;ItemDescFrogusEgg;Found by Catus at the pond. Allows the spawning of new Froguses.;Найдено Катусом у пруда. Позволяет порождать новых фрогусов.
 ;android, ios;ItemDescDogusEgg;It has been with me for as long as I can remember.;Было со мной сколько я себя помню.
 ;android, ios;ItemDescCatusEgg;It has been with me for as long as I can remember.;Было со мной сколько я себя помню.
 ;android, ios;ItemDescBoberEgg;Provided to us by the bobers community to support their population.;Предоставлено нам сообществом боберов для поддержания их популяции.
@@ -406,14 +406,14 @@ Quest description;android, ios;QuestIsFinished;Done;Завершен
 ;android, ios;QuestNameObtainFractal;Coastline paradox;Парадокс береговой линии
 ;android, ios;QuestNameMeditation;Mind games;Игры разума
 ;android, ios;QuestNameObtainDragon;Dragon age;Эра драконов
-;android, ios;QuestDescObtainFrogusStage0;Something tells me that I need to make sure I understand catus properly.;Что-то мне подсказывает, что мне нужно убедиться, что я правильно понимаю катусов.
-;android, ios;QuestDescObtainFrogusStage1;Great, now I need to ask catus, maybe someone needs some help.;Отлично, теперь надо поспрашивать катусов, может кому нужна какая помощь.
+;android, ios;QuestDescObtainFrogusStage0;Something tells me I need to make sure I understand the catus one hundred percent.;Что-то мне подсказывает, что мне нужно убедиться, что я понимаю катуса на сто процентов.
+;android, ios;QuestDescObtainFrogusStage1;Great, now I need to ask adult catus, maybe someone needs some help.;Отлично, теперь надо поспрашивать взрослых катусов, может кому нужна какая помощь.
 ;android, ios;QuestDescObtainFrogusStage2;As I thought, one of the katus asked me to diversify the menu and find some fish somewhere. I will look for it near the pond he was talking about.;Как я и думала, один из катусов попросил меня разнообразить меню и найти где-нибудь рыбы. Поищу у пруда, про который он говорил.
 ;android, ios;QuestDescObtainFrogusStage3;Well, I caught some fish, I should give it to the catus.;Ну вот, наловила рыбы, надо бы отдать её катусу.
 ;android, ios;QuestDescObtainFrogusStage4;Catus was pleased with my offering and said that he would go to the pond himself and evaluate its potential.;Катус был доволен моим подношением, сказал что сам сходит на пруд, оценит его потенциал.
 ;android, ios;QuestDescObtainFrogusStage5;I should probably ask Catus about his assessment of the pond.;Надо бы спросить у катуса как там его оценка пруда.
 ;android, ios;QuestDescObtainFrogusStage6;Well, the pond assessment turned out to be very successful, he even found a Frogus egg, which I am incredibly happy about.;Что ж, оценка пруда оказалась очень даже успешной, он даже нашел яйцо фрогуса, чему я несказанно рада.
-;android, ios;QuestDescNecronomiconStage0;To begin with, it would be nice to fully understand my pets.;Для начала, неплохо бы полностью понимать моих питомцев.
+;android, ios;QuestDescNecronomiconStage0;To begin with, it would be nice to fully understand dogus and catus.;Для начала, неплохо бы полностью понимать догуса и катуса.
 ;android, ios;QuestDescNecronomiconStage1;Here comes another beautiful day.;Вот и наступил очередной прекрасный денёк.
 ;android, ios;QuestDescNecronomiconStage2;Nothing foreshadows trouble.;Ничто не предвещает беды.
 ;android, ios;QuestDescNecronomiconStage3;Oh no! Someone dug up the grave without the consent of the deceased’s closest relatives! I need to ask around, maybe someone knows something.;О нет! Кто-то разрыл могилу без согласия на то близжайших родственников погребённого! Надо поспрашивать вокруг, может кто-нибудь что-нибудь знает.
@@ -424,7 +424,7 @@ Quest description;android, ios;QuestIsFinished;Done;Завершен
 ;android, ios;QuestDescNecronomiconStage8;I learned that catus are knowledgeable in magic. And the longer they live, the better they understand it. Perhaps one of them can help me with this mysterious book.;Я узнала, что катусы сведущи в магии. И чем дольше они живут, тем лучше в ней разбираются. Возможно кто-то из них сможет помочь мне с этой загадочной книгой.
 ;android, ios;QuestDescNecronomiconStage9Use;The old catus told me that the book that dogus found was the Necronomicon. He also warned me that it was a very dangerous book. However, I decided to ignore him and wanted to learn the knowledge that this book contains. It seems that now I can resurrect the dead.;Старый катус поведал что книга, которую догус нашел - Некрономикон. Он также предупредил меня что это очень опасная книга. Впрочем я решила проигнорировать его и пожелала научиться знаниям, которые эта книга содержит. Кажется теперь я могу воскрешать мертвых.
 ;android, ios;QuestDescNecronomiconStage9Destroy;The old katus told me that the book that the dogus found was the Necronomicon. He also warned me that it was a very dangerous book. Taking his advice, I decided to destroy the book. To be on the safe side.;Старый катус поведал что книга, которую догус нашел - Некрономикон. Он также предупредил меня что это очень опасная книга. Прислушавшись к его совету, я решила уничтожить книгу. От греха подальше.
-;android, ios;QuestDescObtainBoberStage0;To begin with, it would be nice to fully understand my pets.;Для начала, неплохо бы полностью понимать моих питомцев.
+;android, ios;QuestDescObtainBoberStage0;To begin with, it would be nice to fully understand frogus and dogus.;Для начала, неплохо бы полностью понимать фрогуса и догуса.
 ;android, ios;QuestDescObtainBoberStage1;The eggs are gone! The eggs are gone! What should I do?;Яйца пропали! Яйца пропали! Что же делать?
 ;android, ios;QuestDescObtainBoberStage2;I will ask the pets, maybe they know something.;Поспрашиваю петов, может они что-нибудь знают.
 ;android, ios;QuestDescObtainBoberStage3;Dogus agreed to look for the eggs and said to give him a day to do it.;Догус согласился поискать яйца, сказал дать ему на это день.
@@ -437,7 +437,7 @@ Quest description;android, ios;QuestIsFinished;Done;Завершен
 ;android, ios;QuestDescObtainBoberStage10;Frogus said that he would ask his friends from the pond, he said that they are handy and know their business.;Фрогус сказал что поспрашивает своих приятелей с пруда, говорит они рукастые и знают своё дело.
 ;android, ios;QuestDescObtainBoberStage11;It’s time to ask frogus if there is any news from his friends.;Пора бы спросить фрогуса, нет ли вестей от его друзей.
 ;android, ios;QuestDescObtainBoberStage12;Wow! These Bober guys not only gave me a basket for eggs, but they also entrusted me with one of their eggs so that I could care for future generations of bobers.;Вот это да! Эти ребята Боберы не только подарили мне корзину для яйц, но также доверили одно из их яйц, чтобы я могла заботиться о будущих поколениях боберов.
-;android, ios;QuestDescObtainFractalStage0;To begin with, it would be nice to fully understand my pets.;Для начала, неплохо бы полностью понимать моих питомцев.
+;android, ios;QuestDescObtainFractalStage0;To begin with, it would be nice to fully understand bober and frogus.;Для начала, неплохо бы полностью понимать бобера и фрогуса.
 ;android, ios;QuestDescObtainFractalStage1;I have noticed that lately the froguses have been sitting in thought for a long time, I need to figure out what is going on.;Я заметила что последнее время фрогусы подолгу сидят в задумчивости, надо выяснить в чем дело.
 ;android, ios;QuestDescObtainFractalStage2;Frogus asked me to measure the length of the pond shoreline using a two-meter stick. Why would he want that?;Фрогус попросил меня измерить длину береговой линии пруда с помощью двухметровой палки. Зачем ему это?
 ;android, ios;QuestDescObtainFractalStage3;Well, I have measured it, it is time to report the results.;Ну я померяла, пора сообщить о результатах.
@@ -446,12 +446,12 @@ Quest description;android, ios;QuestIsFinished;Done;Завершен
 ;android, ios;QuestDescObtainFractalStage6;Frogus sent me to the bobers to find out about this paradox.;Фрогус отправил меня к боберам узнать насчет этого парадокса.
 ;android, ios;QuestDescObtainFractalStage7;Bober gave me a book about mathematics, I will dive into it head first.;Бобер дал мне книгу про математику, нырну туда с головой.
 ;android, ios;QuestDescObtainFractalStage8;Wow, I learned a lot of new things there! What I liked most in this book were the fractals, now I know what they are and how different they are. I love imagining them!;Вау, я узнала там много нового! Больше всего в этой книге мне понравились фракталы, теперь я знаю что это такое и какие разные они бывают. Обожаю их себе представлять!
-;android, ios;QuestDescMeditationStage0;To begin with, it would be nice to fully understand my pets.;Для начала, неплохо бы полностью понимать моих питомцев.
+;android, ios;QuestDescMeditationStage0;To begin with, it would be nice to fully understand frogus and dogus.;Для начала, неплохо бы полностью понимать фрогуса и догуса.
 ;android, ios;QuestDescMeditationStage1;My head is been spinning lately. I will ask the adult dogus how he always manages to stay so rested.;Что-то последнее время голова кругом идет. Спрошу-ка я у взрослого догуса как ему всегда удается оставаться таким отдохнувшим.
 ;android, ios;QuestDescMeditationStage2;Dogus told me to ask Frogus about meditation.;Догус сказал чтобы я спросила у фрогуса насчет медитации.
 ;android, ios;QuestDescMeditationStage3;We started intensive training with Frogus.;Мы начали интенсивные тренировки с Фрогусом.
 ;android, ios;QuestDescMeditationStage4;I learned meditation practices and now I can forget anything I want!;Я научилась практикам медитации и теперь я могу забыть всё что захочу!
-;android, ios;QuestDescObtainDragonStage0;To begin with, it would be nice to fully understand my pets.;Для начала, неплохо бы полностью понимать моих питомцев.
+;android, ios;QuestDescObtainDragonStage0;To begin with, it would be nice to fully understand catus, frogus, dogus and bober.;Для начала, неплохо бы полностью понимать катуса, фрогуса, догуса и бобера.
 ;android, ios;QuestDescObtainDragonStage1;I heard some rumors about troubles in the kingdom, I think I will ask Catus about it.;Я слышала какие-то слухи про неприятности в королевстве, спрошу, пожалуй, у Катуса насчет этого.
 ;android, ios;QuestDescObtainDragonStage2;So, to save the egg I need to assemble a team of Catus, Dogus, Frogus and Bober.;Итак, чтобы спасти яйцо мне нужно собрать команду из Катуса, Догуса, Фрогуса и Бобера.
 ;android, ios;QuestDescObtainDragonStage3;We set off for our first destination, Misty Gorge, which will take one day to get there.;Мы отправились к нашей первой цели - Туманному Ущелью, путь туда займет один день.
