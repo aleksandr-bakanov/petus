@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2025-12-23
+
+### Fixed
+
+- Lost and Found quest zero stage description
+
 ## [1.3.0] - 2025-12-21
 
 ### Added
