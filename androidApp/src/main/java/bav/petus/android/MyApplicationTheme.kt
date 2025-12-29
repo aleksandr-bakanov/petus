@@ -10,6 +10,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -53,6 +54,10 @@ fun MyApplicationTheme(
         content = content
     )
 }
+
+val mysteryQuestReqular = FontFamily(
+    Font(R.font.mysteryquest_regular, FontWeight.Black)
+)
 
 val SatietyColor = Color(0xFF4CAF50)
 val PsychColor = Color(0xFF3F51B5)

@@ -12,10 +12,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import bav.petus.PetsSDK
 import bav.petus.android.navigation.AppWithBottomBar
+import bav.petus.android.ui.onboarding.OnboardingRoute
 import bav.petus.core.location.LocationHelper
 import bav.petus.core.location.getLocation
 import bav.petus.core.time.TimeRepository
 import bav.petus.viewModel.main.MainViewModel
+import bav.petus.viewModel.onboarding.OnboardingScreenViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
@@ -34,7 +36,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 val mainViewModel: MainViewModel = koinViewModel()
+                val onBoardingViewModel: OnboardingScreenViewModel = koinViewModel()
                 val uiState by mainViewModel.uiState.collectAsStateWithLifecycle()
+
+                OnboardingRoute(onBoardingViewModel)
 
                 uiState?.let {
                     AppWithBottomBar(
