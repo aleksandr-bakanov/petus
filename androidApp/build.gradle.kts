@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
@@ -7,11 +9,11 @@ plugins {
 
 android {
     namespace = "bav.petus.android"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         applicationId = "bav.petus.android"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 8
         versionName = "1.3.2"
     }
@@ -35,9 +37,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        //jvmTarget = "1.8"
-        jvmTarget = JavaVersion.VERSION_11.toString()
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.fromTarget("11")
     }
 }
 

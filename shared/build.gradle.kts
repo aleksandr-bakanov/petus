@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -9,11 +11,8 @@ plugins {
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = JavaVersion.VERSION_11.toString()
-                //jvmTarget = "17"
-            }
+        compilerOptions {
+            jvmTarget = JvmTarget.fromTarget("11")
         }
     }
     
@@ -84,7 +83,7 @@ dependencies {
 
 android {
     namespace = "bav.petus"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         minSdk = 24
     }
