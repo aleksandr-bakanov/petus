@@ -1,18 +1,28 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.android.kotlin.multiplatform.library)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
     alias(libs.plugins.skie)
 }
 
 kotlin {
-    androidTarget {
+    androidLibrary {
+        namespace = "bav.petus"
+        compileSdk = 36
+        minSdk = 24
+
+        withJava() // enable java compilation support
+        withHostTestBuilder {}.configure {}
+        withDeviceTestBuilder {
+            sourceSetTreeName = "test"
+        }
+
         compilerOptions {
-            jvmTarget = JvmTarget.fromTarget("11")
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
     
@@ -67,10 +77,6 @@ kotlin {
             implementation(libs.kotlin.test)
         }
     }
-
-    configurations.implementation {
-        exclude(group = "com.intellij", module = "annotations")
-    }
 }
 
 dependencies {
@@ -79,18 +85,6 @@ dependencies {
 //    add("kspIosSimulatorArm64", libs.room.compiler) // Exclude ios simulator target
 //    add("kspIosX64", libs.room.compiler) // Exclude ios x64 target
     add("kspIosArm64", libs.room.compiler)
-}
-
-android {
-    namespace = "bav.petus"
-    compileSdk = 36
-    defaultConfig {
-        minSdk = 24
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
 }
 
 room {
