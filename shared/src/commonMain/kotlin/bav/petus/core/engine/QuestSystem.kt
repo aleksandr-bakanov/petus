@@ -18,6 +18,7 @@ import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_BOBER
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_DRAGON
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FRACTAL
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FROGUS
+import bav.petus.core.engine.QuestSystem.Event
 import bav.petus.core.engine.UserStats.Companion.MAXIMUM_LANGUAGE_KNOWLEDGE
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
@@ -203,6 +204,15 @@ class QuestSystem(
             val current = dataStore.data.first()[quest.currentStageKey] ?: 0
             dataStore.edit { store -> store[quest.currentStageKey] = current + 1 }
         }
+    }
+
+    suspend fun movePetToMemory(pet: Pet) {
+        val newPet = pet.copy(
+            questName = null,
+            place = Place.Memory,
+        )
+        petsRepo.updatePet(newPet)
+        onEvent(Event.PetDied(pet.id))
     }
 
     suspend fun resetQuest(questName: String) {
@@ -2353,6 +2363,7 @@ private val quests = mapOf(
                                             amount = 1,
                                         )
                                     )
+                                    questSystem.onEvent(Event.PetDied(cat.id))
                                 }
                             }
                             questSystem.petsRepo.updatePet(newCat)
@@ -2380,6 +2391,7 @@ private val quests = mapOf(
                                             amount = 1,
                                         )
                                     )
+                                    questSystem.onEvent(Event.PetDied(dog.id))
                                 }
                             }
                             questSystem.petsRepo.updatePet(newDog)
@@ -2407,6 +2419,7 @@ private val quests = mapOf(
                                             amount = 1,
                                         )
                                     )
+                                    questSystem.onEvent(Event.PetDied(frog.id))
                                 }
                             }
                             questSystem.petsRepo.updatePet(newFrog)
@@ -2434,6 +2447,7 @@ private val quests = mapOf(
                                             amount = 1,
                                         )
                                     )
+                                    questSystem.onEvent(Event.PetDied(bober.id))
                                 }
                             }
                             questSystem.petsRepo.updatePet(newBober)

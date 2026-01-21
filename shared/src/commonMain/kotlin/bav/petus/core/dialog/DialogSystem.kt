@@ -2158,11 +2158,7 @@ class DialogSystem(
                             val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
                             catId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { cat ->
-                                    val newCat = cat.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newCat)
+                                    questSystem.movePetToMemory(cat)
                                 }
                             }
                             // Add memory of a mage to inventory
@@ -2217,11 +2213,7 @@ class DialogSystem(
                             val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
                             dogId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { dog ->
-                                    val newDog = dog.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newDog)
+                                    questSystem.movePetToMemory(dog)
                                 }
                             }
                             // Add memory of a warrior to inventory
@@ -2263,11 +2255,7 @@ class DialogSystem(
                             val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
                             frogId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { frog ->
-                                    val newFrog = frog.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newFrog)
+                                    questSystem.movePetToMemory(frog)
                                 }
                             }
                             // Add memory of a bard to inventory
@@ -2309,11 +2297,7 @@ class DialogSystem(
                             val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
                             boberId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { bober ->
-                                    val newBober = bober.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newBober)
+                                    questSystem.movePetToMemory(bober)
                                 }
                             }
                             // Add memory of a smith to inventory
@@ -2393,11 +2377,7 @@ class DialogSystem(
                             val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
                             dogId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { dog ->
-                                    val newDog = dog.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newDog)
+                                    questSystem.movePetToMemory(dog)
                                 }
                             }
                             // Add memory of a warrior to inventory
@@ -2411,11 +2391,7 @@ class DialogSystem(
                             val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
                             frogId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { frog ->
-                                    val newFrog = frog.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newFrog)
+                                    questSystem.movePetToMemory(frog)
                                 }
                             }
                             // Add memory of a bard to inventory
@@ -2429,11 +2405,7 @@ class DialogSystem(
                             val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
                             boberId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { bober ->
-                                    val newBober = bober.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newBober)
+                                    questSystem.movePetToMemory(bober)
                                 }
                             }
                             // Add memory of a smith to inventory
@@ -2513,11 +2485,7 @@ class DialogSystem(
                             val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
                             catId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { cat ->
-                                    val newCat = cat.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newCat)
+                                    questSystem.movePetToMemory(cat)
                                 }
                             }
                             // Add memory of a mage to inventory
@@ -2531,11 +2499,7 @@ class DialogSystem(
                             val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
                             frogId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { frog ->
-                                    val newFrog = frog.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newFrog)
+                                    questSystem.movePetToMemory(frog)
                                 }
                             }
                             // Add memory of a bard to inventory
@@ -2549,11 +2513,7 @@ class DialogSystem(
                             val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
                             boberId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { bober ->
-                                    val newBober = bober.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newBober)
+                                    questSystem.movePetToMemory(bober)
                                 }
                             }
                             // Add memory of a smith to inventory
@@ -2633,11 +2593,7 @@ class DialogSystem(
                             val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
                             catId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { cat ->
-                                    val newCat = cat.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newCat)
+                                    questSystem.movePetToMemory(cat)
                                 }
                             }
                             // Add memory of a mage to inventory
@@ -2651,11 +2607,7 @@ class DialogSystem(
                             val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
                             dogId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { dog ->
-                                    val newDog = dog.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newDog)
+                                    questSystem.movePetToMemory(dog)
                                 }
                             }
                             // Add memory of a warrior to inventory
@@ -2669,11 +2621,7 @@ class DialogSystem(
                             val boberId = store[OBTAIN_DRAGON_BOBER_ID_KEY]
                             boberId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { bober ->
-                                    val newBober = bober.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newBober)
+                                    questSystem.movePetToMemory(bober)
                                 }
                             }
                             // Add memory of a smith to inventory
@@ -2753,11 +2701,7 @@ class DialogSystem(
                             val catId = store[OBTAIN_DRAGON_CATUS_ID_KEY]
                             catId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { cat ->
-                                    val newCat = cat.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newCat)
+                                    questSystem.movePetToMemory(cat)
                                 }
                             }
                             // Add memory of a mage to inventory
@@ -2771,11 +2715,7 @@ class DialogSystem(
                             val dogId = store[OBTAIN_DRAGON_DOGUS_ID_KEY]
                             dogId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { dog ->
-                                    val newDog = dog.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newDog)
+                                    questSystem.movePetToMemory(dog)
                                 }
                             }
                             // Add memory of a warrior to inventory
@@ -2789,11 +2729,7 @@ class DialogSystem(
                             val frogId = store[OBTAIN_DRAGON_FROGUS_ID_KEY]
                             frogId?.let { id ->
                                 questSystem.petsRepo.getPetByIdFlow(id).first()?.let { frog ->
-                                    val newFrog = frog.copy(
-                                        questName = null,
-                                        place = Place.Memory,
-                                    )
-                                    questSystem.petsRepo.updatePet(newFrog)
+                                    questSystem.movePetToMemory(frog)
                                 }
                             }
                             // Add memory of a bard to inventory
