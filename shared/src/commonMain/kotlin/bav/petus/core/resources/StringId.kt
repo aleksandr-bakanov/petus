@@ -62,6 +62,32 @@ sealed class StringId {
     data object MeditationExerciseSelfInquiryQuestions : StringId()
     data object MeditationExerciseSilentSitting : StringId()
     //endregion
+    
+    //region Onboarding
+    data object OnboardingHomeTitle : StringId()
+    data object OnboardingHomeMessage : StringId()
+    data object OnboardingSatietyTitle : StringId()
+    data object OnboardingSatietyMessage : StringId()
+    data object OnboardingPsycheTitle : StringId()
+    data object OnboardingPsycheMessage : StringId()
+    data object OnboardingHealthTitle : StringId()
+    data object OnboardingHealthMessage : StringId()
+    data object OnboardingIllnessTitle : StringId()
+    data object OnboardingIllnessMessage : StringId()
+    data object OnboardingCleanUpTitle : StringId()
+    data object OnboardingCleanUpMessage : StringId()
+    data object OnboardingTalkTitle : StringId()
+    data object OnboardingTalkMessage : StringId()
+    data object OnboardingAgeTitle : StringId()
+    data object OnboardingAgeMessage : StringId()
+    data object OnboardingGoodLuckTitle : StringId()
+    data object OnboardingGoodLuckMessage : StringId()
+    data object OnboardingSkipTitle : StringId()
+    data object OnboardingPreviousTitle : StringId()
+    data object OnboardingNextTitle : StringId()
+    data object OnboardingLetsGoTitle : StringId()
+    data object OnboardingHowToButtonTitle : StringId()
+    //endregion
 
     //region Abilities names
     data object Necromancy : StringId()

@@ -30,6 +30,15 @@ fun ImageId.toResId(): Int {
         ImageId.WakeUpCat -> R.drawable.wake_up_cat
         ImageId.WakeUpDog -> R.drawable.wake_up_dog
         ImageId.WakeUpFrog -> R.drawable.wake_up_frog
+        ImageId.OnboardingHome -> R.drawable.house_on_hill
+        ImageId.OnboardingSatiety -> R.drawable.feed_cat_1024
+        ImageId.OnboardingPsyche -> R.drawable.play_cat_1024
+        ImageId.OnboardingHealth -> R.drawable.bury_cat_1024
+        ImageId.OnboardingIllness -> R.drawable.heal_cat_1024
+        ImageId.OnboardingCleanUp -> R.drawable.clean_up_cat_1024
+        ImageId.OnboardingTalk -> R.drawable.speak_cat_1024
+        ImageId.OnboardingAge -> R.drawable.catus_egg
+        ImageId.OnboardingGoodLuck -> R.drawable.user_profile_avatar
         ImageId.CatAdultActive -> R.drawable.catus_adult_active
         ImageId.CatAdultDead -> R.drawable.catus_adult_dead
         ImageId.CatAdultDnd -> R.drawable.catus_adult_dnd

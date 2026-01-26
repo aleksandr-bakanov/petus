@@ -27,6 +27,18 @@ enum class ImageId {
     WakeUpDog,
     WakeUpFrog,
     //endregion
+
+    //region Onboarding
+    OnboardingHome,
+    OnboardingSatiety,
+    OnboardingPsyche,
+    OnboardingHealth,
+    OnboardingIllness,
+    OnboardingCleanUp,
+    OnboardingTalk,
+    OnboardingAge,
+    OnboardingGoodLuck,
+    //endregion
     
     //region Catus
     CatAdultActive,

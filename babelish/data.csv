@@ -130,6 +130,30 @@ Notifications;ios;NotificationInventoryItemAdded;%@ added;Добавлено: %@
 ;android;NotificationInventoryItemRemoved;%s removed;Удалено: %s
 ;ios;NotificationInventoryItemRemoved;%@ removed;Удалено: %@
 
+Onboarding;android, ios;OnboardingHomeTitle;Home;Дом
+;android, ios;OnboardingHomeMessage;Here you can see all your pets. Take good care of them!;Здесь живут все твои петы. Заботься о них хорошо!
+;android, ios;OnboardingSatietyTitle;Satiety;Сытость
+;android, ios;OnboardingSatietyMessage;Each pet has 3 main stats: Satiety (green) - feed your pet when this stat is low.;У каждого пета есть 3 основных показателя: Сытость (зеленый) — корми пета, когда этот показатель низкий.
+;android, ios;OnboardingPsycheTitle;Psyche;Психика
+;android, ios;OnboardingPsycheMessage;Psyche (blue) - it’s your animal’s mental health. Play with your pet to increase it and let your pet have a good UNINTERRUPTED nap. Your pet may not want to spend the time with you if you wake it up.;Психика (синий) — это психическое здоровье твоего пета. Играй с ним, чтобы улучшить этот показатель, и дай ему хорошо и спокойно поспать. Если ты его разбудишь, пет может не захотеть проводить с тобой время.
+;android, ios;OnboardingHealthTitle;Health;Здоровье
+;android, ios;OnboardingHealthMessage;Health (red) - it decreases if you pet’s satiety and psyche aren’t high enough. If it reaches zero, your pet will die.;Здоровье (красный) — оно снижается, если уровень сытости и психического здоровья твоего пета недостаточно высок. Если оно достигнет нуля, твой пет умрет.
+;android, ios;OnboardingIllnessTitle;Illness;Болезнь
+;android, ios;OnboardingIllnessMessage;Your pet might become ill. Ill pets are more needy. Their satiety and psyche decrease faster. You can heal an ill pet.;Твой пет может заболеть. Больные животные более требовательны к своему здоровью. Их чувство сытости и психическое состояние ухудшаются быстрее. Ты можешь вылечить больного пета.
+;android, ios;OnboardingCleanUpTitle;Clean up;Уборка
+;android, ios;OnboardingCleanUpMessage;Your pet will poop from time to time. Clean up after your pet to keep its psyche high.;Твой пет будет время от времени испражняться. Убирай за ним, чтобы поддерживать его хорошее настроение.
+;android, ios;OnboardingTalkTitle;Talk;Общение
+;android, ios;OnboardingTalkMessage;You can talk to your pet in its own language, but it’s obviously not easy to talk to a pet. Play with your pets regularly to understand them better.;Ты можешь разговаривать со своим петом на его собственном языке, но, очевидно, это непросто. Регулярно играй со своими петами, чтобы лучше их понимать.
+;android, ios;OnboardingAgeTitle;Age;Возраст
+;android, ios;OnboardingAgeMessage;Pets grow over time, from egg to adult. Their needs differ throughout their lifetime, so observe your pets carefully.;Петы растут с течением времени, от яйца до взрослой особи. Их потребности меняются на протяжении всей жизни, поэтому внимательно наблюдай за своими петами.
+;android, ios;OnboardingGoodLuckTitle;Good luck!;Удачи!
+;android, ios;OnboardingGoodLuckMessage;Take good care of your pets to keep them alive and happy! Good luck!;Заботься о своих петах, чтобы они были живы и счастливы! Удачи!
+;android, ios;OnboardingSkipTitle;Skip;Закрыть
+;android, ios;OnboardingPreviousTitle;Back;Назад
+;android, ios;OnboardingNextTitle;Next;Дальше
+;android, ios;OnboardingLetsGoTitle;Let’s go!;Поехали!
+;android, ios;OnboardingHowToButtonTitle;How to play?;Как играть?
+
 History events;android, ios;HistoryEventPetCreated;Created;Создан
 ;android, ios;HistoryEventPetWakeUp;Wake up;Проснулся
 ;android, ios;HistoryEventPetForciblyWakeUp;Forcibly wake up;Был разбужен

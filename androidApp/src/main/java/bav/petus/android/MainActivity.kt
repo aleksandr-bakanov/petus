@@ -18,7 +18,7 @@ import bav.petus.core.time.TimeRepository
 import bav.petus.viewModel.main.MainViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinActivityViewModel
 
 class MainActivity : ComponentActivity() {
 
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             MyApplicationTheme {
-                val mainViewModel: MainViewModel = koinViewModel()
+                val mainViewModel: MainViewModel = koinActivityViewModel()
                 val uiState by mainViewModel.uiState.collectAsStateWithLifecycle()
 
                 uiState?.let {

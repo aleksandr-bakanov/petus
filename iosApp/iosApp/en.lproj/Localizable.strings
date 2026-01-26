@@ -134,6 +134,31 @@
 "NotificationInventoryItemAdded"           = "%@ added";
 "NotificationInventoryItemRemoved"         = "%@ removed";
 
+/* Onboarding */
+"OnboardingHomeTitle"                      = "Home";
+"OnboardingHomeMessage"                    = "Here you can see all your pets. Take good care of them!";
+"OnboardingSatietyTitle"                   = "Satiety";
+"OnboardingSatietyMessage"                 = "Each pet has 3 main stats: Satiety (green) - feed your pet when this stat is low.";
+"OnboardingPsycheTitle"                    = "Psyche";
+"OnboardingPsycheMessage"                  = "Psyche (blue) - it’s your animal’s mental health. Play with your pet to increase it and let your pet have a good UNINTERRUPTED nap. Your pet may not want to spend the time with you if you wake it up.";
+"OnboardingHealthTitle"                    = "Health";
+"OnboardingHealthMessage"                  = "Health (red) - it decreases if you pet’s satiety and psyche aren’t high enough. If it reaches zero, your pet will die.";
+"OnboardingIllnessTitle"                   = "Illness";
+"OnboardingIllnessMessage"                 = "Your pet might become ill. Ill pets are more needy. Their satiety and psyche decrease faster. You can heal an ill pet.";
+"OnboardingCleanUpTitle"                   = "Clean up";
+"OnboardingCleanUpMessage"                 = "Your pet will poop from time to time. Clean up after your pet to keep its psyche high.";
+"OnboardingTalkTitle"                      = "Talk";
+"OnboardingTalkMessage"                    = "You can talk to your pet in its own language, but it’s obviously not easy to talk to a pet. Play with your pets regularly to understand them better.";
+"OnboardingAgeTitle"                       = "Age";
+"OnboardingAgeMessage"                     = "Pets grow over time, from egg to adult. Their needs differ throughout their lifetime, so observe your pets carefully.";
+"OnboardingGoodLuckTitle"                  = "Good luck!";
+"OnboardingGoodLuckMessage"                = "Take good care of your pets to keep them alive and happy! Good luck!";
+"OnboardingSkipTitle"                      = "Skip";
+"OnboardingPreviousTitle"                  = "Back";
+"OnboardingNextTitle"                      = "Next";
+"OnboardingLetsGoTitle"                    = "Let’s go!";
+"OnboardingHowToButtonTitle"               = "How to play?";
+
 /* History events */
 "HistoryEventPetCreated"                   = "Created";
 "HistoryEventPetWakeUp"                    = "Wake up";

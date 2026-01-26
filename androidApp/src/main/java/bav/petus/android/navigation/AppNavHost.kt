@@ -17,11 +17,14 @@ import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Menu
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -38,7 +41,9 @@ import bav.petus.android.SatietyColor
 import bav.petus.android.ui.common.StatBar
 import bav.petus.android.ui.common.UserNotificationCell
 import bav.petus.android.ui.common.toResId
+import bav.petus.android.ui.onboarding.OnboardingBottomSheet
 import bav.petus.core.resources.StringId
+import bav.petus.viewModel.main.BottomSheetType
 import bav.petus.viewModel.main.MainScreenUiState
 import bav.petus.viewModel.main.MainViewModel
 
@@ -55,6 +60,7 @@ private val weatherTopRoute = TopLevelRoute(StringId.WeatherScreenTitle, "Weathe
 private val profileTopRoute = TopLevelRoute(StringId.ProfileScreenTitle, "UserProfileTab", Icons.Filled.Face, Icons.Outlined.Face)
 private val questStatusTopRoute = TopLevelRoute(StringId.QuestsScreenTitle, "QuestStatusTab", Icons.Filled.Info, Icons.Outlined.Info)
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppWithBottomBar(
     uiState: MainScreenUiState,
@@ -62,6 +68,8 @@ fun AppWithBottomBar(
 ) {
     val rootNavController = rememberNavController()
     val navBackStackEntry by rootNavController.currentBackStackEntryAsState()
+
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
     Scaffold(
         bottomBar = {
@@ -141,6 +149,22 @@ fun AppWithBottomBar(
                             onAction(MainViewModel.Action.TapOnNotification(notification.id))
                         }
                     }
+                }
+            }
+
+            if (uiState.bottomSheetType != null) {
+                when (val sheet = uiState.bottomSheetType) {
+                    is BottomSheetType.Onboarding -> {
+                        ModalBottomSheet(
+                            onDismissRequest = { onAction(MainViewModel.Action.HideBottomSheet) },
+                            sheetState = sheetState,
+                            dragHandle = null,
+                        ) {
+                            OnboardingBottomSheet(uiState = sheet)
+                        }
+                    }
+
+                    else -> Unit
                 }
             }
         }

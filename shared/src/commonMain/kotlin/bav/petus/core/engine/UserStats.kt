@@ -218,6 +218,16 @@ class UserStats(
         }
     }
 
+    suspend fun getOnboardingIsShownAtLeastOnce(): Boolean {
+        return dataStore.data.first()[ONBOARDING_IS_SHOWN_AT_LEAST_ONCE] ?: false
+    }
+
+    suspend fun setOnboardingIsShownAtLeastOnce(value: Boolean) {
+        dataStore.edit { store ->
+            store[ONBOARDING_IS_SHOWN_AT_LEAST_ONCE] = value
+        }
+    }
+
     companion object {
         const val MAXIMUM_LANGUAGE_KNOWLEDGE = 120
         const val MAXIMUM_LANGUAGE_UI_KNOWLEDGE = 100
@@ -239,6 +249,8 @@ class UserStats(
         private val USER_NOTIFICATIONS_KEY = stringPreferencesKey("user_notifications")
 
         val CAN_PETS_DIE_OF_OLD_AGE_KEY = booleanPreferencesKey("CAN_PETS_DIE_OF_OLD_AGE_KEY")
+
+        val ONBOARDING_IS_SHOWN_AT_LEAST_ONCE = booleanPreferencesKey("onboarding_is_shown_at_least_once")
     }
 }
 

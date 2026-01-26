@@ -24,7 +24,9 @@ struct MainScreen: View {
                             Label("ZooScreenTitle", systemImage: "house")
                         }
                         .tag(2)
-                    UserProfileView()
+                    UserProfileView(showOnboardingLambda: {
+                        viewModel.onAction(action: MainViewModelActionShowOnboarding())
+                    })
                         .tabItem {
                             Label("ProfileScreenTitle", systemImage: "face.smiling")
                         }
@@ -57,6 +59,18 @@ struct MainScreen: View {
                         Spacer()
                     }
                 }
+            }
+        }
+        .sheet(
+            item: viewModel.bottomSheetBinding,
+            onDismiss: {
+                viewModel.onAction(action: MainViewModelActionHideBottomSheet())
+            }
+        ) { sheet in
+            switch onEnum(of: sheet) {
+            case .onboarding(let onboardingState):
+                OnboardingBottomSheetView(uiState: onboardingState)
+                    .presentationDragIndicator(.hidden)
             }
         }
     }

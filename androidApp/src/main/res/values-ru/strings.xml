@@ -136,6 +136,31 @@
 	<string name="NotificationInventoryItemAdded">Добавлено: %s</string>
 	<string name="NotificationInventoryItemRemoved">Удалено: %s</string>
 
+	<!-- Onboarding -->
+	<string name="OnboardingHomeTitle">Дом</string>
+	<string name="OnboardingHomeMessage">Здесь живут все твои петы. Заботься о них хорошо!</string>
+	<string name="OnboardingSatietyTitle">Сытость</string>
+	<string name="OnboardingSatietyMessage">У каждого пета есть 3 основных показателя: Сытость (зеленый) — корми пета, когда этот показатель низкий.</string>
+	<string name="OnboardingPsycheTitle">Психика</string>
+	<string name="OnboardingPsycheMessage">Психика (синий) — это психическое здоровье твоего пета. Играй с ним, чтобы улучшить этот показатель, и дай ему хорошо и спокойно поспать. Если ты его разбудишь, пет может не захотеть проводить с тобой время.</string>
+	<string name="OnboardingHealthTitle">Здоровье</string>
+	<string name="OnboardingHealthMessage">Здоровье (красный) — оно снижается, если уровень сытости и психического здоровья твоего пета недостаточно высок. Если оно достигнет нуля, твой пет умрет.</string>
+	<string name="OnboardingIllnessTitle">Болезнь</string>
+	<string name="OnboardingIllnessMessage">Твой пет может заболеть. Больные животные более требовательны к своему здоровью. Их чувство сытости и психическое состояние ухудшаются быстрее. Ты можешь вылечить больного пета.</string>
+	<string name="OnboardingCleanUpTitle">Уборка</string>
+	<string name="OnboardingCleanUpMessage">Твой пет будет время от времени испражняться. Убирай за ним, чтобы поддерживать его хорошее настроение.</string>
+	<string name="OnboardingTalkTitle">Общение</string>
+	<string name="OnboardingTalkMessage">Ты можешь разговаривать со своим петом на его собственном языке, но, очевидно, это непросто. Регулярно играй со своими петами, чтобы лучше их понимать.</string>
+	<string name="OnboardingAgeTitle">Возраст</string>
+	<string name="OnboardingAgeMessage">Петы растут с течением времени, от яйца до взрослой особи. Их потребности меняются на протяжении всей жизни, поэтому внимательно наблюдай за своими петами.</string>
+	<string name="OnboardingGoodLuckTitle">Удачи!</string>
+	<string name="OnboardingGoodLuckMessage">Заботься о своих петах, чтобы они были живы и счастливы! Удачи!</string>
+	<string name="OnboardingSkipTitle">Закрыть</string>
+	<string name="OnboardingPreviousTitle">Назад</string>
+	<string name="OnboardingNextTitle">Дальше</string>
+	<string name="OnboardingLetsGoTitle">Поехали!</string>
+	<string name="OnboardingHowToButtonTitle">Как играть?</string>
+
 	<!-- History events -->
 	<string name="HistoryEventPetCreated">Создан</string>
 	<string name="HistoryEventPetWakeUp">Проснулся</string>

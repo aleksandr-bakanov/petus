@@ -134,6 +134,31 @@
 "NotificationInventoryItemAdded"           = "Добавлено: %@";
 "NotificationInventoryItemRemoved"         = "Удалено: %@";
 
+/* Onboarding */
+"OnboardingHomeTitle"                      = "Дом";
+"OnboardingHomeMessage"                    = "Здесь живут все твои петы. Заботься о них хорошо!";
+"OnboardingSatietyTitle"                   = "Сытость";
+"OnboardingSatietyMessage"                 = "У каждого пета есть 3 основных показателя: Сытость (зеленый) — корми пета, когда этот показатель низкий.";
+"OnboardingPsycheTitle"                    = "Психика";
+"OnboardingPsycheMessage"                  = "Психика (синий) — это психическое здоровье твоего пета. Играй с ним, чтобы улучшить этот показатель, и дай ему хорошо и спокойно поспать. Если ты его разбудишь, пет может не захотеть проводить с тобой время.";
+"OnboardingHealthTitle"                    = "Здоровье";
+"OnboardingHealthMessage"                  = "Здоровье (красный) — оно снижается, если уровень сытости и психического здоровья твоего пета недостаточно высок. Если оно достигнет нуля, твой пет умрет.";
+"OnboardingIllnessTitle"                   = "Болезнь";
+"OnboardingIllnessMessage"                 = "Твой пет может заболеть. Больные животные более требовательны к своему здоровью. Их чувство сытости и психическое состояние ухудшаются быстрее. Ты можешь вылечить больного пета.";
+"OnboardingCleanUpTitle"                   = "Уборка";
+"OnboardingCleanUpMessage"                 = "Твой пет будет время от времени испражняться. Убирай за ним, чтобы поддерживать его хорошее настроение.";
+"OnboardingTalkTitle"                      = "Общение";
+"OnboardingTalkMessage"                    = "Ты можешь разговаривать со своим петом на его собственном языке, но, очевидно, это непросто. Регулярно играй со своими петами, чтобы лучше их понимать.";
+"OnboardingAgeTitle"                       = "Возраст";
+"OnboardingAgeMessage"                     = "Петы растут с течением времени, от яйца до взрослой особи. Их потребности меняются на протяжении всей жизни, поэтому внимательно наблюдай за своими петами.";
+"OnboardingGoodLuckTitle"                  = "Удачи!";
+"OnboardingGoodLuckMessage"                = "Заботься о своих петах, чтобы они были живы и счастливы! Удачи!";
+"OnboardingSkipTitle"                      = "Закрыть";
+"OnboardingPreviousTitle"                  = "Назад";
+"OnboardingNextTitle"                      = "Дальше";
+"OnboardingLetsGoTitle"                    = "Поехали!";
+"OnboardingHowToButtonTitle"               = "Как играть?";
+
 /* History events */
 "HistoryEventPetCreated"                   = "Создан";
 "HistoryEventPetWakeUp"                    = "Проснулся";

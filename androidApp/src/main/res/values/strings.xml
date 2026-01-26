@@ -136,6 +136,31 @@
 	<string name="NotificationInventoryItemAdded">%s added</string>
 	<string name="NotificationInventoryItemRemoved">%s removed</string>
 
+	<!-- Onboarding -->
+	<string name="OnboardingHomeTitle">Home</string>
+	<string name="OnboardingHomeMessage">Here you can see all your pets. Take good care of them!</string>
+	<string name="OnboardingSatietyTitle">Satiety</string>
+	<string name="OnboardingSatietyMessage">Each pet has 3 main stats: Satiety (green) - feed your pet when this stat is low.</string>
+	<string name="OnboardingPsycheTitle">Psyche</string>
+	<string name="OnboardingPsycheMessage">Psyche (blue) - it’s your animal’s mental health. Play with your pet to increase it and let your pet have a good UNINTERRUPTED nap. Your pet may not want to spend the time with you if you wake it up.</string>
+	<string name="OnboardingHealthTitle">Health</string>
+	<string name="OnboardingHealthMessage">Health (red) - it decreases if you pet’s satiety and psyche aren’t high enough. If it reaches zero, your pet will die.</string>
+	<string name="OnboardingIllnessTitle">Illness</string>
+	<string name="OnboardingIllnessMessage">Your pet might become ill. Ill pets are more needy. Their satiety and psyche decrease faster. You can heal an ill pet.</string>
+	<string name="OnboardingCleanUpTitle">Clean up</string>
+	<string name="OnboardingCleanUpMessage">Your pet will poop from time to time. Clean up after your pet to keep its psyche high.</string>
+	<string name="OnboardingTalkTitle">Talk</string>
+	<string name="OnboardingTalkMessage">You can talk to your pet in its own language, but it’s obviously not easy to talk to a pet. Play with your pets regularly to understand them better.</string>
+	<string name="OnboardingAgeTitle">Age</string>
+	<string name="OnboardingAgeMessage">Pets grow over time, from egg to adult. Their needs differ throughout their lifetime, so observe your pets carefully.</string>
+	<string name="OnboardingGoodLuckTitle">Good luck!</string>
+	<string name="OnboardingGoodLuckMessage">Take good care of your pets to keep them alive and happy! Good luck!</string>
+	<string name="OnboardingSkipTitle">Skip</string>
+	<string name="OnboardingPreviousTitle">Back</string>
+	<string name="OnboardingNextTitle">Next</string>
+	<string name="OnboardingLetsGoTitle">Let’s go!</string>
+	<string name="OnboardingHowToButtonTitle">How to play?</string>
+
 	<!-- History events -->
 	<string name="HistoryEventPetCreated">Created</string>
 	<string name="HistoryEventPetWakeUp">Wake up</string>

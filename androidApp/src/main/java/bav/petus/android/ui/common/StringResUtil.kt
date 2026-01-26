@@ -127,6 +127,29 @@ fun StringId.toResId(): Int {
         StringId.MeditationExerciseChakraFocusing -> R.string.MeditationExerciseChakraFocusing
         StringId.MeditationExerciseSelfInquiryQuestions -> R.string.MeditationExerciseSelfInquiryQuestions
         StringId.MeditationExerciseSilentSitting -> R.string.MeditationExerciseSilentSitting
+        StringId.OnboardingHomeTitle -> R.string.OnboardingHomeTitle
+        StringId.OnboardingHomeMessage -> R.string.OnboardingHomeMessage
+        StringId.OnboardingSatietyTitle -> R.string.OnboardingSatietyTitle
+        StringId.OnboardingSatietyMessage -> R.string.OnboardingSatietyMessage
+        StringId.OnboardingPsycheTitle -> R.string.OnboardingPsycheTitle
+        StringId.OnboardingPsycheMessage -> R.string.OnboardingPsycheMessage
+        StringId.OnboardingHealthTitle -> R.string.OnboardingHealthTitle
+        StringId.OnboardingHealthMessage -> R.string.OnboardingHealthMessage
+        StringId.OnboardingIllnessTitle -> R.string.OnboardingIllnessTitle
+        StringId.OnboardingIllnessMessage -> R.string.OnboardingIllnessMessage
+        StringId.OnboardingCleanUpTitle -> R.string.OnboardingCleanUpTitle
+        StringId.OnboardingCleanUpMessage -> R.string.OnboardingCleanUpMessage
+        StringId.OnboardingTalkTitle -> R.string.OnboardingTalkTitle
+        StringId.OnboardingTalkMessage -> R.string.OnboardingTalkMessage
+        StringId.OnboardingAgeTitle -> R.string.OnboardingAgeTitle
+        StringId.OnboardingAgeMessage -> R.string.OnboardingAgeMessage
+        StringId.OnboardingGoodLuckTitle -> R.string.OnboardingGoodLuckTitle
+        StringId.OnboardingGoodLuckMessage -> R.string.OnboardingGoodLuckMessage
+        StringId.OnboardingSkipTitle -> R.string.OnboardingSkipTitle
+        StringId.OnboardingPreviousTitle -> R.string.OnboardingPreviousTitle
+        StringId.OnboardingNextTitle -> R.string.OnboardingNextTitle
+        StringId.OnboardingLetsGoTitle -> R.string.OnboardingLetsGoTitle
+        StringId.OnboardingHowToButtonTitle -> R.string.OnboardingHowToButtonTitle
         StringId.HistoryEventPetBecomeAdult -> R.string.HistoryEventPetBecomeAdult
         StringId.HistoryEventPetBecomeNewborn -> R.string.HistoryEventPetBecomeNewborn
         StringId.HistoryEventPetBecomeOld -> R.string.HistoryEventPetBecomeOld

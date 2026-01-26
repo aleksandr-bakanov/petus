@@ -8,6 +8,8 @@ enum UserProfileNavigation: Hashable {
 
 struct UserProfileView: View {
     
+    let showOnboardingLambda: () -> Void
+    
     @StateViewModel var viewModel: UserProfileScreenViewModel = UserProfileScreenViewModel()
     @State private var navigationPath: [UserProfileNavigation] = []
     
@@ -30,6 +32,16 @@ struct UserProfileView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 112, height: 112)
                             .clipped()
+                        Button(action: showOnboardingLambda) {
+                            Text(NSLocalizedString("OnboardingHowToButtonTitle", comment: ""))
+                                .font(.footnote)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
+                        }
+                            .background(Color("PsychColor"))
+                            .cornerRadius(8)
+                            .fixedSize()
                         Text("ProfileScreenLanguagesLabel")
                         LanguageKnowledgeCell(type: .catus, value: state.languageKnowledgeCatus)
                         LanguageKnowledgeCell(type: .dogus, value: state.languageKnowledgeDogus)

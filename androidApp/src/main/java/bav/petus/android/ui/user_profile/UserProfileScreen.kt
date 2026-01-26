@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -21,6 +22,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -33,22 +36,27 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import bav.petus.android.PsychColor
 import bav.petus.android.R
 import bav.petus.android.ui.common.toResId
 import bav.petus.core.engine.toStringId
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.toImageId
+import bav.petus.core.resources.StringId
 import bav.petus.model.PetType
+import bav.petus.viewModel.main.MainViewModel
 import bav.petus.viewModel.userProfile.UserProfileScreenViewModel
 import bav.petus.viewModel.userProfile.UserProfileUiState
 
 @Composable
 fun UserProfileRoute(
     viewModel: UserProfileScreenViewModel,
+    mainViewModel: MainViewModel,
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -56,6 +64,7 @@ fun UserProfileRoute(
         UserProfileScreen(
             uiState = it,
             onAction = viewModel::onAction,
+            showOnboarding = { mainViewModel.onAction(MainViewModel.Action.ShowOnboarding) }
         )
     }
 }
@@ -64,6 +73,7 @@ fun UserProfileRoute(
 private fun UserProfileScreen(
     uiState: UserProfileUiState,
     onAction: (UserProfileScreenViewModel.Action) -> Unit,
+    showOnboarding: () -> Unit,
 ) {
     Scaffold { padding ->
         Column(
@@ -86,6 +96,21 @@ private fun UserProfileScreen(
                 contentDescription = null,
                 modifier = Modifier.size(112.dp)
             )
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(
+                onClick = showOnboarding,
+                modifier = Modifier
+                    .wrapContentSize(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = PsychColor,
+                    contentColor = Color.White
+                )
+            ) {
+                Text(
+                    text = stringResource(StringId.OnboardingHowToButtonTitle.toResId()),
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            }
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenLanguagesLabel))
             LanguageKnowledgeStat(
