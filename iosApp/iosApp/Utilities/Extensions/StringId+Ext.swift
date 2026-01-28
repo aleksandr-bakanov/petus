@@ -347,6 +347,8 @@ extension StringId {
         case .obtainDragonStage25Dialog16: "ObtainDragonStage25Dialog16"
         case .obtainDragonStage25Dialog18: "ObtainDragonStage25Dialog18"
         case .questIsFinished: "QuestIsFinished"
+        case .questDescFrog: "QuestDescFrog"
+        case .questDescBober: "QuestDescBober"
         case .questNameNecronomicon: "QuestNameNecronomicon"
         case .questNameObtainFrogus: "QuestNameObtainFrogus"
         case .questNameObtainBober: "QuestNameObtainBober"
@@ -371,7 +373,7 @@ extension StringId {
         case .questDescNecronomiconStage8: "QuestDescNecronomiconStage8"
         case .questDescNecronomiconStage9Use: "QuestDescNecronomiconStage9Use"
         case .questDescNecronomiconStage9Destroy: "QuestDescNecronomiconStage9Destroy"
-        case .questDescObtainBoberStage0: "QuestDescObtainBoberStage0"
+        case .questDescObtainBoberStage0(_): fatalError("QuestDescObtainBoberStage0 requires formatting and should not be mapped with localized")
         case .questDescObtainBoberStage1: "QuestDescObtainBoberStage1"
         case .questDescObtainBoberStage2: "QuestDescObtainBoberStage2"
         case .questDescObtainBoberStage3: "QuestDescObtainBoberStage3"
@@ -384,7 +386,7 @@ extension StringId {
         case .questDescObtainBoberStage10: "QuestDescObtainBoberStage10"
         case .questDescObtainBoberStage11: "QuestDescObtainBoberStage11"
         case .questDescObtainBoberStage12: "QuestDescObtainBoberStage12"
-        case .questDescObtainFractalStage0: "QuestDescObtainFractalStage0"
+        case .questDescObtainFractalStage0(_): fatalError("QuestDescObtainFractalStage0 requires formatting and should not be mapped with localized")
         case .questDescObtainFractalStage1: "QuestDescObtainFractalStage1"
         case .questDescObtainFractalStage2: "QuestDescObtainFractalStage2"
         case .questDescObtainFractalStage3: "QuestDescObtainFractalStage3"
@@ -393,12 +395,12 @@ extension StringId {
         case .questDescObtainFractalStage6: "QuestDescObtainFractalStage6"
         case .questDescObtainFractalStage7: "QuestDescObtainFractalStage7"
         case .questDescObtainFractalStage8: "QuestDescObtainFractalStage8"
-        case .questDescMeditationStage0: "QuestDescMeditationStage0"
+        case .questDescMeditationStage0(_): fatalError("QuestDescMeditationStage0 requires formatting and should not be mapped with localized")
         case .questDescMeditationStage1: "QuestDescMeditationStage1"
         case .questDescMeditationStage2: "QuestDescMeditationStage2"
         case .questDescMeditationStage3: "QuestDescMeditationStage3"
         case .questDescMeditationStage4: "QuestDescMeditationStage4"
-        case .questDescObtainDragonStage0: "QuestDescObtainDragonStage0"
+        case .questDescObtainDragonStage0(_): fatalError("questDescObtainDragonStage0 requires formatting and should not be mapped with localized")
         case .questDescObtainDragonStage1: "QuestDescObtainDragonStage1"
         case .questDescObtainDragonStage2: "QuestDescObtainDragonStage2"
         case .questDescObtainDragonStage3: "QuestDescObtainDragonStage3"
@@ -462,6 +464,14 @@ func convertStringIdToString(id: StringId) -> String {
         return String(format: NSLocalizedString("IWillDieLatin", comment: ""), value.chance)
     case .iWillDiePolish(let value):
         return String(format: NSLocalizedString("IWillDiePolish", comment: ""), value.chance)
+    case .questDescObtainBoberStage0(let value):
+        return String(format: NSLocalizedString("QuestDescObtainBoberStage0", comment: ""), value.frogName)
+    case .questDescObtainFractalStage0(let value):
+        return String(format: NSLocalizedString("QuestDescObtainFractalStage0", comment: ""), value.boberName, value.frogName)
+    case .questDescMeditationStage0(let value):
+        return String(format: NSLocalizedString("QuestDescMeditationStage0", comment: ""), value.frogName)
+    case .questDescObtainDragonStage0(let value):
+        return String(format: NSLocalizedString("QuestDescObtainDragonStage0", comment: ""), value.frogName, value.boberName)
     default:
         return id.localized
     }

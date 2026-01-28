@@ -6,6 +6,7 @@ import bav.petus.core.engine.QuestSystem
 import bav.petus.core.engine.UserStats
 import bav.petus.core.inventory.InventoryItemId
 import bav.petus.core.resources.StringId
+import bav.petus.model.PetType
 import com.rickclephas.kmp.observableviewmodel.stateIn
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -32,6 +33,13 @@ class QuestStatusViewModel(
     private val userStats: UserStats by inject()
 
     val uiState: StateFlow<QuestStatusUiState> = questSystem.dataStore.data.map { preferences ->
+        val availablePetTypes = userStats.getAvailablePetTypes()
+        val isFrogAvailable = availablePetTypes.contains(PetType.Frogus)
+        val isBoberAvailable = availablePetTypes.contains(PetType.Bober)
+
+        val frogName = if (isFrogAvailable) convertStringIdToString(StringId.QuestDescFrog) else UNKNOWN_PET_TYPE_NAME
+        val boberName = if (isBoberAvailable) convertStringIdToString(StringId.QuestDescBober) else UNKNOWN_PET_TYPE_NAME
+
         val necroStage = questSystem.getQuestStage(QuestSystem.QUEST_NECRONOMICON)
         val necroStageAmount = questSystem.getQuestStagesAmount(QuestSystem.QUEST_NECRONOMICON)
         val userHasNecronomicon = userStats.getUserProfileFlow().first().inventory.any { item ->
@@ -47,10 +55,10 @@ class QuestStatusViewModel(
             questDescription = buildString {
                 val completedStages = NECRONOMICON_STAGES_DESCRIPTIONS
                     .take(necroStage + 1)
-                    .joinToString(separator = "\n- ", transform = convertStringIdToString)
+                    .joinToString(separator = QUEST_STAGES_SEPARATOR, transform = convertStringIdToString)
                 append(completedStages)
                 if (necroStage == necroStageAmount) {
-                    append("\n- ")
+                    append(QUEST_STAGES_SEPARATOR)
                     if (userHasNecronomicon) {
                         append(convertStringIdToString(StringId.QuestDescNecronomiconStage9Use))
                     } else {
@@ -73,7 +81,7 @@ class QuestStatusViewModel(
             questDescription = buildString {
                 val completedStages = OBTAIN_FROGUS_STAGES_DESCRIPTIONS
                     .take(frogusStage + 1)
-                    .joinToString(separator = "\n- ", transform = convertStringIdToString)
+                    .joinToString(separator = QUEST_STAGES_SEPARATOR, transform = convertStringIdToString)
                 append(completedStages)
             }
         )
@@ -89,10 +97,15 @@ class QuestStatusViewModel(
                 total = boberStageAmount,
             ),
             questDescription = buildString {
-                val completedStages = OBTAIN_BOBER_STAGES_DESCRIPTIONS
-                    .take(boberStage + 1)
-                    .joinToString(separator = "\n- ", transform = convertStringIdToString)
-                append(completedStages)
+                append(convertStringIdToString(StringId.QuestDescObtainBoberStage0(frogName)))
+
+                if (boberStage > 0) {
+                    val completedStages = OBTAIN_BOBER_STAGES_DESCRIPTIONS
+                        .take(boberStage)
+                        .joinToString(separator = QUEST_STAGES_SEPARATOR, transform = convertStringIdToString)
+                    append(QUEST_STAGES_SEPARATOR)
+                    append(completedStages)
+                }
             }
         )
 
@@ -107,10 +120,15 @@ class QuestStatusViewModel(
                 total = fractalStageAmount,
             ),
             questDescription = buildString {
-                val completedStages = OBTAIN_FRACTAL_STAGES_DESCRIPTIONS
-                    .take(fractalStage + 1)
-                    .joinToString(separator = "\n- ", transform = convertStringIdToString)
-                append(completedStages)
+                append(convertStringIdToString(StringId.QuestDescObtainFractalStage0(boberName, frogName)))
+
+                if (fractalStage > 0) {
+                    val completedStages = OBTAIN_FRACTAL_STAGES_DESCRIPTIONS
+                        .take(fractalStage)
+                        .joinToString(separator = QUEST_STAGES_SEPARATOR, transform = convertStringIdToString)
+                    append(QUEST_STAGES_SEPARATOR)
+                    append(completedStages)
+                }
             }
         )
 
@@ -125,10 +143,18 @@ class QuestStatusViewModel(
                 total = meditationStageAmount,
             ),
             questDescription = buildString {
-                val completedStages = MEDITATION_STAGES_DESCRIPTIONS
-                    .take(meditationStage + 1)
-                    .joinToString(separator = "\n- ", transform = convertStringIdToString)
-                append(completedStages)
+                append(convertStringIdToString(StringId.QuestDescMeditationStage0(frogName)))
+
+                if (meditationStage > 0) {
+                    val completedStages = MEDITATION_STAGES_DESCRIPTIONS
+                        .take(meditationStage)
+                        .joinToString(
+                            separator = QUEST_STAGES_SEPARATOR,
+                            transform = convertStringIdToString
+                        )
+                    append(QUEST_STAGES_SEPARATOR)
+                    append(completedStages)
+                }
             }
         )
 
@@ -143,33 +169,46 @@ class QuestStatusViewModel(
                 total = dragonStageAmount,
             ),
             questDescription = buildString {
-                // Starting from 25 stage there is condition on having Necronomicon
-                if (dragonStage <= 24) {
-                    val completedStages = OBTAIN_DRAGON_STAGES_DESCRIPTIONS
-                        .take(dragonStage + 1)
-                        .joinToString(separator = "\n- ", transform = convertStringIdToString)
-                    append(completedStages)
-                } else {
-                    val completedStages = OBTAIN_DRAGON_STAGES_DESCRIPTIONS
-                        .take(25)
-                        .joinToString(separator = "\n- ", transform = convertStringIdToString)
-                    append(completedStages)
+                append(convertStringIdToString(StringId.QuestDescObtainDragonStage0(frogName, boberName)))
 
-                    val hasNecronomicon = preferences[OBTAIN_DRAGON_HAS_NECRONOMICON_KEY] ?: false
-                    append("\n- ")
-                    if (hasNecronomicon) {
-                        append(convertStringIdToString(StringId.QuestDescObtainDragonStage25YesNecro))
+                if (dragonStage > 0) {
+                    // Starting from 25 stage there is condition on having Necronomicon
+                    if (dragonStage <= 24) {
+                        val completedStages = OBTAIN_DRAGON_STAGES_DESCRIPTIONS
+                            .take(dragonStage)
+                            .joinToString(
+                                separator = QUEST_STAGES_SEPARATOR,
+                                transform = convertStringIdToString
+                            )
+                        append(QUEST_STAGES_SEPARATOR)
+                        append(completedStages)
                     } else {
-                        append(convertStringIdToString(StringId.QuestDescObtainDragonStage25NoNecro))
-                    }
+                        val completedStages = OBTAIN_DRAGON_STAGES_DESCRIPTIONS
+                            .take(25)
+                            .joinToString(
+                                separator = QUEST_STAGES_SEPARATOR,
+                                transform = convertStringIdToString
+                            )
+                        append(QUEST_STAGES_SEPARATOR)
+                        append(completedStages)
 
-                    if (dragonStage >= 26) {
-                        append("\n- ")
-                        append(convertStringIdToString(StringId.QuestDescObtainDragonStage26))
-                    }
-                    if (dragonStage >= 27) {
-                        append("\n- ")
-                        append(convertStringIdToString(StringId.QuestDescObtainDragonStage27))
+                        val hasNecronomicon =
+                            preferences[OBTAIN_DRAGON_HAS_NECRONOMICON_KEY] ?: false
+                        append(QUEST_STAGES_SEPARATOR)
+                        if (hasNecronomicon) {
+                            append(convertStringIdToString(StringId.QuestDescObtainDragonStage25YesNecro))
+                        } else {
+                            append(convertStringIdToString(StringId.QuestDescObtainDragonStage25NoNecro))
+                        }
+
+                        if (dragonStage >= 26) {
+                            append(QUEST_STAGES_SEPARATOR)
+                            append(convertStringIdToString(StringId.QuestDescObtainDragonStage26))
+                        }
+                        if (dragonStage >= 27) {
+                            append(QUEST_STAGES_SEPARATOR)
+                            append(convertStringIdToString(StringId.QuestDescObtainDragonStage27))
+                        }
                     }
                 }
             }
@@ -208,6 +247,9 @@ class QuestStatusViewModel(
     }
 
     companion object {
+        private const val QUEST_STAGES_SEPARATOR = "\n- "
+        private const val UNKNOWN_PET_TYPE_NAME = "???"
+
         private val NECRONOMICON_STAGES_DESCRIPTIONS = listOf(
             StringId.QuestDescNecronomiconStage0,
             StringId.QuestDescNecronomiconStage1,
@@ -229,7 +271,7 @@ class QuestStatusViewModel(
             StringId.QuestDescObtainFrogusStage6,
         )
         private val OBTAIN_BOBER_STAGES_DESCRIPTIONS = listOf(
-            StringId.QuestDescObtainBoberStage0,
+            // StringId.QuestDescObtainBoberStage0, // This stage is appended separately
             StringId.QuestDescObtainBoberStage1,
             StringId.QuestDescObtainBoberStage2,
             StringId.QuestDescObtainBoberStage3,
@@ -244,7 +286,7 @@ class QuestStatusViewModel(
             StringId.QuestDescObtainBoberStage12,
         )
         private val OBTAIN_FRACTAL_STAGES_DESCRIPTIONS = listOf(
-            StringId.QuestDescObtainFractalStage0,
+            // StringId.QuestDescObtainFractalStage0, // This stage is appended separately
             StringId.QuestDescObtainFractalStage1,
             StringId.QuestDescObtainFractalStage2,
             StringId.QuestDescObtainFractalStage3,
@@ -255,14 +297,14 @@ class QuestStatusViewModel(
             StringId.QuestDescObtainFractalStage8,
         )
         private val MEDITATION_STAGES_DESCRIPTIONS = listOf(
-            StringId.QuestDescMeditationStage0,
+            // StringId.QuestDescMeditationStage0, // This stage is appended separately
             StringId.QuestDescMeditationStage1,
             StringId.QuestDescMeditationStage2,
             StringId.QuestDescMeditationStage3,
             StringId.QuestDescMeditationStage4,
         )
         private val OBTAIN_DRAGON_STAGES_DESCRIPTIONS = listOf(
-            StringId.QuestDescObtainDragonStage0,
+            // StringId.QuestDescObtainDragonStage0, // This stage is appended separately
             StringId.QuestDescObtainDragonStage1,
             StringId.QuestDescObtainDragonStage2,
             StringId.QuestDescObtainDragonStage3,

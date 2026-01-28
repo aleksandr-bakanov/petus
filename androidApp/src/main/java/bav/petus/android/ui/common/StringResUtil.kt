@@ -348,6 +348,8 @@ fun StringId.toResId(): Int {
         StringId.ObtainDragonStage25Dialog16 -> R.string.ObtainDragonStage25Dialog16
         StringId.ObtainDragonStage25Dialog18 -> R.string.ObtainDragonStage25Dialog18
         StringId.QuestIsFinished -> R.string.QuestIsFinished
+        StringId.QuestDescFrog -> R.string.QuestDescFrog
+        StringId.QuestDescBober -> R.string.QuestDescBober
         StringId.QuestNameNecronomicon -> R.string.QuestNameNecronomicon
         StringId.QuestNameObtainFrogus -> R.string.QuestNameObtainFrogus
         StringId.QuestNameObtainBober -> R.string.QuestNameObtainBober
@@ -372,7 +374,7 @@ fun StringId.toResId(): Int {
         StringId.QuestDescNecronomiconStage8 -> R.string.QuestDescNecronomiconStage8
         StringId.QuestDescNecronomiconStage9Use -> R.string.QuestDescNecronomiconStage9Use
         StringId.QuestDescNecronomiconStage9Destroy -> R.string.QuestDescNecronomiconStage9Destroy
-        StringId.QuestDescObtainBoberStage0 -> R.string.QuestDescObtainBoberStage0
+        is StringId.QuestDescObtainBoberStage0 -> error("QuestDescObtainBoberStage0 requires formatting and should not be mapped with toResId()")
         StringId.QuestDescObtainBoberStage1 -> R.string.QuestDescObtainBoberStage1
         StringId.QuestDescObtainBoberStage2 -> R.string.QuestDescObtainBoberStage2
         StringId.QuestDescObtainBoberStage3 -> R.string.QuestDescObtainBoberStage3
@@ -385,7 +387,7 @@ fun StringId.toResId(): Int {
         StringId.QuestDescObtainBoberStage10 -> R.string.QuestDescObtainBoberStage10
         StringId.QuestDescObtainBoberStage11 -> R.string.QuestDescObtainBoberStage11
         StringId.QuestDescObtainBoberStage12 -> R.string.QuestDescObtainBoberStage12
-        StringId.QuestDescObtainFractalStage0 -> R.string.QuestDescObtainFractalStage0
+        is StringId.QuestDescObtainFractalStage0 -> error("QuestDescObtainFractalStage0 requires formatting and should not be mapped with toResId()")
         StringId.QuestDescObtainFractalStage1 -> R.string.QuestDescObtainFractalStage1
         StringId.QuestDescObtainFractalStage2 -> R.string.QuestDescObtainFractalStage2
         StringId.QuestDescObtainFractalStage3 -> R.string.QuestDescObtainFractalStage3
@@ -394,12 +396,12 @@ fun StringId.toResId(): Int {
         StringId.QuestDescObtainFractalStage6 -> R.string.QuestDescObtainFractalStage6
         StringId.QuestDescObtainFractalStage7 -> R.string.QuestDescObtainFractalStage7
         StringId.QuestDescObtainFractalStage8 -> R.string.QuestDescObtainFractalStage8
-        StringId.QuestDescMeditationStage0 -> R.string.QuestDescMeditationStage0
+        is StringId.QuestDescMeditationStage0 -> error("QuestDescMeditationStage0 requires formatting and should not be mapped with toResId()")
         StringId.QuestDescMeditationStage1 -> R.string.QuestDescMeditationStage1
         StringId.QuestDescMeditationStage2 -> R.string.QuestDescMeditationStage2
         StringId.QuestDescMeditationStage3 -> R.string.QuestDescMeditationStage3
         StringId.QuestDescMeditationStage4 -> R.string.QuestDescMeditationStage4
-        StringId.QuestDescObtainDragonStage0 -> R.string.QuestDescObtainDragonStage0
+        is StringId.QuestDescObtainDragonStage0 -> error("QuestDescObtainDragonStage0 requires formatting and should not be mapped with toResId()")
         StringId.QuestDescObtainDragonStage1 -> R.string.QuestDescObtainDragonStage1
         StringId.QuestDescObtainDragonStage2 -> R.string.QuestDescObtainDragonStage2
         StringId.QuestDescObtainDragonStage3 -> R.string.QuestDescObtainDragonStage3

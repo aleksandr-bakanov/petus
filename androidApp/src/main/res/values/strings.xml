@@ -436,6 +436,8 @@
 
 	<!-- Quest description -->
 	<string name="QuestIsFinished">Done</string>
+	<string name="QuestDescFrog">frogus</string>
+	<string name="QuestDescBober">bober</string>
 	<string name="QuestNameNecronomicon">Lost and found</string>
 	<string name="QuestNameObtainFrogus">Fish and consequences</string>
 	<string name="QuestNameObtainBober">Must be a wind</string>
@@ -460,7 +462,7 @@
 	<string name="QuestDescNecronomiconStage8">I learned that catus are knowledgeable in magic. And the longer they live, the better they understand it. Perhaps one of them can help me with this mysterious book.</string>
 	<string name="QuestDescNecronomiconStage9Use">The old catus told me that the book that dogus found was the Necronomicon. He also warned me that it was a very dangerous book. However, I decided to ignore him and wanted to learn the knowledge that this book contains. It seems that now I can resurrect the dead.</string>
 	<string name="QuestDescNecronomiconStage9Destroy">The old katus told me that the book that the dogus found was the Necronomicon. He also warned me that it was a very dangerous book. Taking his advice, I decided to destroy the book. To be on the safe side.</string>
-	<string name="QuestDescObtainBoberStage0">To begin with, it would be nice to fully understand frogus and dogus.</string>
+	<string name="QuestDescObtainBoberStage0">To begin with, it would be nice to fully understand %1$s and dogus.</string>
 	<string name="QuestDescObtainBoberStage1">The eggs are gone! The eggs are gone! What should I do?</string>
 	<string name="QuestDescObtainBoberStage2">I will ask the pets, maybe they know something.</string>
 	<string name="QuestDescObtainBoberStage3">Dogus agreed to look for the eggs and said to give him a day to do it.</string>
@@ -473,7 +475,7 @@
 	<string name="QuestDescObtainBoberStage10">Frogus said that he would ask his friends from the pond, he said that they are handy and know their business.</string>
 	<string name="QuestDescObtainBoberStage11">It’s time to ask frogus if there is any news from his friends.</string>
 	<string name="QuestDescObtainBoberStage12">Wow! These Bober guys not only gave me a basket for eggs, but they also entrusted me with one of their eggs so that I could care for future generations of bobers.</string>
-	<string name="QuestDescObtainFractalStage0">To begin with, it would be nice to fully understand bober and frogus.</string>
+	<string name="QuestDescObtainFractalStage0">To begin with, it would be nice to fully understand %1$s and %2$s.</string>
 	<string name="QuestDescObtainFractalStage1">I have noticed that lately the froguses have been sitting in thought for a long time, I need to figure out what is going on.</string>
 	<string name="QuestDescObtainFractalStage2">Frogus asked me to measure the length of the pond shoreline using a two-meter stick. Why would he want that?</string>
 	<string name="QuestDescObtainFractalStage3">Well, I have measured it, it is time to report the results.</string>
@@ -482,12 +484,12 @@
 	<string name="QuestDescObtainFractalStage6">Frogus sent me to the bobers to find out about this paradox.</string>
 	<string name="QuestDescObtainFractalStage7">Bober gave me a book about mathematics, I will dive into it head first.</string>
 	<string name="QuestDescObtainFractalStage8">Wow, I learned a lot of new things there! What I liked most in this book were the fractals, now I know what they are and how different they are. I love imagining them!</string>
-	<string name="QuestDescMeditationStage0">To begin with, it would be nice to fully understand frogus and dogus.</string>
+	<string name="QuestDescMeditationStage0">To begin with, it would be nice to fully understand %1$s and dogus.</string>
 	<string name="QuestDescMeditationStage1">My head is been spinning lately. I will ask the adult dogus how he always manages to stay so rested.</string>
 	<string name="QuestDescMeditationStage2">Dogus told me to ask Frogus about meditation.</string>
 	<string name="QuestDescMeditationStage3">We started intensive training with Frogus.</string>
 	<string name="QuestDescMeditationStage4">I learned meditation practices and now I can forget anything I want!</string>
-	<string name="QuestDescObtainDragonStage0">To begin with, it would be nice to fully understand catus, frogus, dogus and bober.</string>
+	<string name="QuestDescObtainDragonStage0">To begin with, it would be nice to fully understand catus, %1$s, dogus and %2$s.</string>
 	<string name="QuestDescObtainDragonStage1">I heard some rumors about troubles in the kingdom, I think I will ask Catus about it.</string>
 	<string name="QuestDescObtainDragonStage2">So, to save the egg I need to assemble a team of Catus, Dogus, Frogus and Bober.</string>
 	<string name="QuestDescObtainDragonStage3">We set off for our first destination, Misty Gorge, which will take one day to get there.</string>

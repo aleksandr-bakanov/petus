@@ -12,6 +12,10 @@ class StringResourcesUseCase(
         is StringId.IWillDie -> context.getString(R.string.IWillDie, id.chance)
         is StringId.IWillDieLatin -> context.getString(R.string.IWillDieLatin, id.chance)
         is StringId.IWillDiePolish -> context.getString(R.string.IWillDiePolish, id.chance)
+        is StringId.QuestDescObtainBoberStage0 -> context.getString(R.string.QuestDescObtainBoberStage0, id.frogName)
+        is StringId.QuestDescObtainFractalStage0 -> context.getString(R.string.QuestDescObtainFractalStage0, id.boberName, id.frogName)
+        is StringId.QuestDescMeditationStage0 -> context.getString(R.string.QuestDescMeditationStage0, id.frogName)
+        is StringId.QuestDescObtainDragonStage0 -> context.getString(R.string.QuestDescObtainDragonStage0, id.frogName, id.boberName)
         else -> context.getString(id.toResId())
     }
 }

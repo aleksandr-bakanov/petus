@@ -434,6 +434,8 @@
 
 /* Quest description */
 "QuestIsFinished"                          = "Done";
+"QuestDescFrog"                            = "frogus";
+"QuestDescBober"                           = "bober";
 "QuestNameNecronomicon"                    = "Lost and found";
 "QuestNameObtainFrogus"                    = "Fish and consequences";
 "QuestNameObtainBober"                     = "Must be a wind";
@@ -458,7 +460,7 @@
 "QuestDescNecronomiconStage8"              = "I learned that catus are knowledgeable in magic. And the longer they live, the better they understand it. Perhaps one of them can help me with this mysterious book.";
 "QuestDescNecronomiconStage9Use"           = "The old catus told me that the book that dogus found was the Necronomicon. He also warned me that it was a very dangerous book. However, I decided to ignore him and wanted to learn the knowledge that this book contains. It seems that now I can resurrect the dead.";
 "QuestDescNecronomiconStage9Destroy"       = "The old katus told me that the book that the dogus found was the Necronomicon. He also warned me that it was a very dangerous book. Taking his advice, I decided to destroy the book. To be on the safe side.";
-"QuestDescObtainBoberStage0"               = "To begin with, it would be nice to fully understand frogus and dogus.";
+"QuestDescObtainBoberStage0"               = "To begin with, it would be nice to fully understand %@ and dogus.";
 "QuestDescObtainBoberStage1"               = "The eggs are gone! The eggs are gone! What should I do?";
 "QuestDescObtainBoberStage2"               = "I will ask the pets, maybe they know something.";
 "QuestDescObtainBoberStage3"               = "Dogus agreed to look for the eggs and said to give him a day to do it.";
@@ -471,7 +473,7 @@
 "QuestDescObtainBoberStage10"              = "Frogus said that he would ask his friends from the pond, he said that they are handy and know their business.";
 "QuestDescObtainBoberStage11"              = "It’s time to ask frogus if there is any news from his friends.";
 "QuestDescObtainBoberStage12"              = "Wow! These Bober guys not only gave me a basket for eggs, but they also entrusted me with one of their eggs so that I could care for future generations of bobers.";
-"QuestDescObtainFractalStage0"             = "To begin with, it would be nice to fully understand bober and frogus.";
+"QuestDescObtainFractalStage0"             = "To begin with, it would be nice to fully understand %@ and %@.";
 "QuestDescObtainFractalStage1"             = "I have noticed that lately the froguses have been sitting in thought for a long time, I need to figure out what is going on.";
 "QuestDescObtainFractalStage2"             = "Frogus asked me to measure the length of the pond shoreline using a two-meter stick. Why would he want that?";
 "QuestDescObtainFractalStage3"             = "Well, I have measured it, it is time to report the results.";
@@ -480,12 +482,12 @@
 "QuestDescObtainFractalStage6"             = "Frogus sent me to the bobers to find out about this paradox.";
 "QuestDescObtainFractalStage7"             = "Bober gave me a book about mathematics, I will dive into it head first.";
 "QuestDescObtainFractalStage8"             = "Wow, I learned a lot of new things there! What I liked most in this book were the fractals, now I know what they are and how different they are. I love imagining them!";
-"QuestDescMeditationStage0"                = "To begin with, it would be nice to fully understand frogus and dogus.";
+"QuestDescMeditationStage0"                = "To begin with, it would be nice to fully understand %@ and dogus.";
 "QuestDescMeditationStage1"                = "My head is been spinning lately. I will ask the adult dogus how he always manages to stay so rested.";
 "QuestDescMeditationStage2"                = "Dogus told me to ask Frogus about meditation.";
 "QuestDescMeditationStage3"                = "We started intensive training with Frogus.";
 "QuestDescMeditationStage4"                = "I learned meditation practices and now I can forget anything I want!";
-"QuestDescObtainDragonStage0"              = "To begin with, it would be nice to fully understand catus, frogus, dogus and bober.";
+"QuestDescObtainDragonStage0"              = "To begin with, it would be nice to fully understand catus, %@, dogus and %@.";
 "QuestDescObtainDragonStage1"              = "I heard some rumors about troubles in the kingdom, I think I will ask Catus about it.";
 "QuestDescObtainDragonStage2"              = "So, to save the egg I need to assemble a team of Catus, Dogus, Frogus and Bober.";
 "QuestDescObtainDragonStage3"              = "We set off for our first destination, Misty Gorge, which will take one day to get there.";
