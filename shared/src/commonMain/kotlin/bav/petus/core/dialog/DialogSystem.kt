@@ -157,7 +157,7 @@ class DialogSystem(
                 if (isAngryAfterForceWakeUp) add(getAngryAfterForceWakeUpStringId(pet))
                 if (isHalfHp) add(getHalfHpStringId(pet))
                 if (isGood) add(getIAmGoodStringId(pet))
-                if (isOld && canPetDieOfOldAge) add(getOldChancesOfDeathStringId(pet))
+                if (isOld && canPetDieOfOldAge && pet.type != PetType.Alien) add(getOldChancesOfDeathStringId(pet))
             }
             return node.copy(
                 text = node.text + texts.shuffled()
@@ -189,6 +189,7 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmSickLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmSickPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmSickMath
+            engine.isPetSpeakAlien(pet) -> StringId.IAmSickAlien
             else -> StringId.IAmSick
         }
     }
@@ -198,6 +199,7 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmHungryLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmHungryPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmHungryMath
+            engine.isPetSpeakAlien(pet) -> StringId.IAmHungryAlien
             else -> StringId.IAmHungry
         }
     }
@@ -216,6 +218,7 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmBoredLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmBoredPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmBoredMath
+            engine.isPetSpeakAlien(pet) -> StringId.IAmBoredAlien
             else -> StringId.IAmBored
         }
     }
@@ -225,6 +228,7 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmStillAngryAfterForceWakeUpLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmStillAngryAfterForceWakeUpPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmStillAngryAfterForceWakeUpMath
+            engine.isPetSpeakAlien(pet) -> StringId.IAmStillAngryAfterForceWakeUpAlien
             else -> StringId.IAmStillAngryAfterForceWakeUp
         }
     }
@@ -234,6 +238,7 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmHalfHpLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmHalfHpPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmHalfHpMath
+            engine.isPetSpeakAlien(pet) -> StringId.IAmHalfHpAlien
             else -> StringId.IAmHalfHp
         }
     }
@@ -252,6 +257,7 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmGoodLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmGoodPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmGoodMath
+            engine.isPetSpeakAlien(pet) -> StringId.IAmGoodAlien
             else -> StringId.IAmGood
         }
     }

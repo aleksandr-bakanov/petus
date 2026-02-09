@@ -137,6 +137,10 @@ private fun UserProfileScreen(
                 type = PetType.Dragon,
                 value = uiState.languageKnowledgeDragon,
             )
+            LanguageKnowledgeStat(
+                type = PetType.Alien,
+                value = uiState.languageKnowledgeAlien,
+            )
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenInventoryLabel))
             LazyVerticalGrid(
@@ -230,6 +234,7 @@ private fun LanguageKnowledgeStat(type: PetType, value: String) {
             PetType.Bober -> R.string.LanguageKnowledgeTitleBober
             PetType.Fractal -> R.string.LanguageKnowledgeTitleFractal
             PetType.Dragon -> R.string.LanguageKnowledgeTitleDragon
+            PetType.Alien -> R.string.LanguageKnowledgeTitleAlien
         }
     )
     UserProfileRow(

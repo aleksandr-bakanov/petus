@@ -9,6 +9,7 @@ extension PetType {
         case .bober: return "feed_bober"
         case .fractal: return "feed_fractal"
         case .dragon: return "feed_dragon"
+        case .alien: return "feed_alien"
         }
     }
 
@@ -20,6 +21,7 @@ extension PetType {
         case .bober: return "play_bober"
         case .fractal: return "play_fractal"
         case .dragon: return "play_dragon"
+        case .alien: return "play_alien"
         }
     }
 
@@ -31,6 +33,7 @@ extension PetType {
         case .bober: return "heal_bober"
         case .fractal: return "heal_fractal"
         case .dragon: return "heal_dragon"
+        case .alien: return "heal_alien"
         }
     }
 
@@ -42,6 +45,7 @@ extension PetType {
         case .bober: return "clean_up_bober"
         case .fractal: return "clean_up_fractal"
         case .dragon: return "clean_up_dragon"
+        case .alien: return "clean_up_dragon" // Aliens don't poop
         }
     }
 
@@ -53,6 +57,7 @@ extension PetType {
         case .bober: return "wake_up_bober"
         case .fractal: return "wake_up_fractal"
         case .dragon: return "wake_up_dragon"
+        case .alien: return "wake_up_alien"
         }
     }
     
@@ -64,6 +69,7 @@ extension PetType {
         case .bober: return "bury_bober"
         case .fractal: return "bury_bober" // Can't bury fractal
         case .dragon: return "bury_dragon"
+        case .alien: return "bury_alien"
         }
     }
     
@@ -75,6 +81,7 @@ extension PetType {
         case .bober: return "speak_bober"
         case .fractal: return "speak_fractal"
         case .dragon: return "speak_dragon"
+        case .alien: return "speak_alien"
         }
     }
     
@@ -86,6 +93,7 @@ extension PetType {
         case .bober: return "resurrect_bober"
         case .fractal: return "resurrect_bober" // Can't resurrect fractal
         case .dragon: return "resurrect_dragon"
+        case .alien: return "resurrect_bober" // Can't resurrect alien
         }
     }
     
@@ -97,6 +105,7 @@ extension PetType {
         case .bober: return "bober_egg"
         case .fractal: return "fractal_egg"
         case .dragon: return "dragon_egg"
+        case .alien: return "alien_egg"
         }
     }
 }

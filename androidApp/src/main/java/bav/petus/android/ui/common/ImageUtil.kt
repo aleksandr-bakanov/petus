@@ -236,6 +236,30 @@ fun ImageId.toResId(): Int {
         ImageId.DragonVoidOldSleep -> R.drawable.dragon_void_old_sleep
         ImageId.DragonVoidOldZombie -> R.drawable.dragon_void_old_zombie
         //endregion
+        //region Alien
+        ImageId.AlienAdultActive -> R.drawable.alien_adult_active
+        ImageId.AlienAdultDead -> R.drawable.alien_adult_dead
+        ImageId.AlienAdultHungry -> R.drawable.alien_adult_hungry
+        ImageId.AlienAdultIll -> R.drawable.alien_adult_ill
+        ImageId.AlienAdultSleep -> R.drawable.alien_adult_sleep
+        ImageId.AlienEgg -> R.drawable.alien_egg
+        ImageId.AlienGrave -> R.drawable.alien_grave
+        ImageId.AlienNewbornActive -> R.drawable.alien_newborn_active
+        ImageId.AlienNewbornDead -> R.drawable.alien_newborn_dead
+        ImageId.AlienNewbornHungry -> R.drawable.alien_newborn_hungry
+        ImageId.AlienNewbornIll -> R.drawable.alien_newborn_ill
+        ImageId.AlienNewbornSleep -> R.drawable.alien_newborn_sleep
+        ImageId.AlienTeenActive -> R.drawable.alien_teen_active
+        ImageId.AlienTeenDead -> R.drawable.alien_teen_dead
+        ImageId.AlienTeenHungry -> R.drawable.alien_teen_hungry
+        ImageId.AlienTeenIll -> R.drawable.alien_teen_ill
+        ImageId.AlienTeenSleep -> R.drawable.alien_teen_sleep
+        ImageId.AlienOldActive -> R.drawable.alien_old_active
+        ImageId.AlienOldDead -> R.drawable.alien_old_dead
+        ImageId.AlienOldHungry -> R.drawable.alien_old_hungry
+        ImageId.AlienOldIll -> R.drawable.alien_old_ill
+        ImageId.AlienOldSleep -> R.drawable.alien_old_sleep
+        //endregion
         //endregion
         ImageId.DugOutGrave -> R.drawable.dug_out_grave
         ImageId.UserProfileAvatar -> R.drawable.user_profile_avatar

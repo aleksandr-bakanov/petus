@@ -63,6 +63,13 @@ class WeatherAttitudeUseCase {
                     range = range,
                 )
             }
+            // Alien love cloudy days
+            PetType.Alien -> calculateAttitude(
+                value = value?.toDouble(),
+                range = ThreePointRange(
+                    start = 20.0, middle = 70.0, end = 1000.0
+                ),
+            )
         }
     }
 
@@ -110,6 +117,13 @@ class WeatherAttitudeUseCase {
                     range = range,
                 )
             }
+            // Alien love cold
+            PetType.Alien -> calculateAttitude(
+                value = value?.toDouble(),
+                range = ThreePointRange(
+                    start = 3.0, middle = 10.0, end = 15.0
+                ),
+            )
         }
     }
 
@@ -157,6 +171,13 @@ class WeatherAttitudeUseCase {
                     range = range,
                 )
             }
+            // Alien like wet weather
+            PetType.Alien -> calculateAttitude(
+                value = value?.toDouble(),
+                range = ThreePointRange(
+                    start = 30.0, middle = 50.0, end = 1000.0
+                ),
+            )
         }
     }
 
@@ -204,6 +225,13 @@ class WeatherAttitudeUseCase {
                     range = range,
                 )
             }
+            // Alien like up to medium wind
+            PetType.Alien -> calculateAttitude(
+                value = value,
+                range = ThreePointRange(
+                    start = -1000.0, middle = 1.0, end = 2.5
+                ),
+            )
         }
     }
 

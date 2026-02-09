@@ -26,6 +26,7 @@ data class LanguageKnowledge(
     val bober: Int,
     val fractal: Int,
     val dragon: Int,
+    val alien: Int,
 )
 
 enum class Ability {
@@ -69,6 +70,7 @@ class UserStats(
                     bober = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_BOBER_KEY),
                     fractal = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_FRACTAL_KEY),
                     dragon = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_DRAGON_KEY),
+                    alien = it.coercedKnowledge(LANGUAGE_KNOWLEDGE_ALIEN_KEY),
                 ),
                 inventory = it.getInventory(),
                 abilities = it.getAbilities(),
@@ -155,6 +157,7 @@ class UserStats(
             PetType.Bober -> LANGUAGE_KNOWLEDGE_BOBER_KEY
             PetType.Fractal -> LANGUAGE_KNOWLEDGE_FRACTAL_KEY
             PetType.Dragon -> LANGUAGE_KNOWLEDGE_DRAGON_KEY
+            PetType.Alien -> LANGUAGE_KNOWLEDGE_ALIEN_KEY
         }
     }
 
@@ -239,6 +242,7 @@ class UserStats(
         private val LANGUAGE_KNOWLEDGE_BOBER_KEY = intPreferencesKey("language_knowledge_bober")
         private val LANGUAGE_KNOWLEDGE_FRACTAL_KEY = intPreferencesKey("language_knowledge_fractal")
         private val LANGUAGE_KNOWLEDGE_DRAGON_KEY = intPreferencesKey("language_knowledge_dragon")
+        private val LANGUAGE_KNOWLEDGE_ALIEN_KEY = intPreferencesKey("language_knowledge_alien")
 
         private val ZOO_SIZE_KEY = intPreferencesKey("zoo_size")
 

@@ -16,6 +16,7 @@ fun StringId.toResId(): Int {
         StringId.PetTypeDescriptionBober -> R.string.PetTypeDescriptionBober
         StringId.PetTypeDescriptionFractal -> R.string.PetTypeDescriptionFractal
         StringId.PetTypeDescriptionDragon -> R.string.PetTypeDescriptionDragon
+        StringId.PetTypeDescriptionAlien -> R.string.PetTypeDescriptionAlien
         StringId.WhatIsGoingOnWithYou -> R.string.WhatIsGoingOnWithYou
         StringId.WhatIsGoingOnWithYouLatin -> R.string.WhatIsGoingOnWithYouLatin
         StringId.WhatIsGoingOnWithYouPolish -> R.string.WhatIsGoingOnWithYouPolish
@@ -40,10 +41,12 @@ fun StringId.toResId(): Int {
         StringId.IAmSickLatin -> R.string.IAmSickLatin
         StringId.IAmSickPolish -> R.string.IAmSickPolish
         StringId.IAmSickMath -> R.string.IAmSickMath
+        StringId.IAmSickAlien -> R.string.IAmSickAlien
         StringId.IAmHungry -> R.string.IAmHungry
         StringId.IAmHungryLatin -> R.string.IAmHungryLatin
         StringId.IAmHungryPolish -> R.string.IAmHungryPolish
         StringId.IAmHungryMath -> R.string.IAmHungryMath
+        StringId.IAmHungryAlien -> R.string.IAmHungryAlien
         StringId.IPooped -> R.string.IPooped
         StringId.IPoopedLatin -> R.string.IPoopedLatin
         StringId.IPoopedPolish -> R.string.IPoopedPolish
@@ -52,18 +55,22 @@ fun StringId.toResId(): Int {
         StringId.IAmBoredLatin -> R.string.IAmBoredLatin
         StringId.IAmBoredPolish -> R.string.IAmBoredPolish
         StringId.IAmBoredMath -> R.string.IAmBoredMath
+        StringId.IAmBoredAlien -> R.string.IAmBoredAlien
         StringId.IAmStillAngryAfterForceWakeUp -> R.string.IAmStillAngryAfterForceWakeUp
         StringId.IAmStillAngryAfterForceWakeUpLatin -> R.string.IAmStillAngryAfterForceWakeUpLatin
         StringId.IAmStillAngryAfterForceWakeUpPolish -> R.string.IAmStillAngryAfterForceWakeUpPolish
         StringId.IAmStillAngryAfterForceWakeUpMath -> R.string.IAmStillAngryAfterForceWakeUpMath
+        StringId.IAmStillAngryAfterForceWakeUpAlien -> R.string.IAmStillAngryAfterForceWakeUpAlien
         StringId.IAmHalfHp -> R.string.IAmHalfHp
         StringId.IAmHalfHpLatin -> R.string.IAmHalfHpLatin
         StringId.IAmHalfHpPolish -> R.string.IAmHalfHpPolish
         StringId.IAmHalfHpMath -> R.string.IAmHalfHpMath
+        StringId.IAmHalfHpAlien -> R.string.IAmHalfHpAlien
         StringId.IAmGood -> R.string.IAmGood
         StringId.IAmGoodLatin -> R.string.IAmGoodLatin
         StringId.IAmGoodPolish -> R.string.IAmGoodPolish
         StringId.IAmGoodMath -> R.string.IAmGoodMath
+        StringId.IAmGoodAlien -> R.string.IAmGoodAlien
         is StringId.IWillDie -> error("IWillDie requires formatting and should not be mapped with toResId()")
         is StringId.IWillDieLatin -> error("IWillDieLatin requires formatting and should not be mapped with toResId()")
         is StringId.IWillDiePolish -> error("IWillDiePolish requires formatting and should not be mapped with toResId()")

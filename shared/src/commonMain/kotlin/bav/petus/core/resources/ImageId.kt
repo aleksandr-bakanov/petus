@@ -251,6 +251,31 @@ enum class ImageId {
     DragonVoidOldZombie,
     //endregion
 
+    //region Alien
+    AlienAdultActive,
+    AlienAdultDead,
+    AlienAdultHungry,
+    AlienAdultIll,
+    AlienAdultSleep,
+    AlienEgg,
+    AlienGrave,
+    AlienNewbornActive,
+    AlienNewbornDead,
+    AlienNewbornHungry,
+    AlienNewbornIll,
+    AlienNewbornSleep,
+    AlienTeenActive,
+    AlienTeenDead,
+    AlienTeenHungry,
+    AlienTeenIll,
+    AlienTeenSleep,
+    AlienOldActive,
+    AlienOldDead,
+    AlienOldHungry,
+    AlienOldIll,
+    AlienOldSleep,
+    //endregion
+
     //region Common
     DugOutGrave,
     UserProfileAvatar,

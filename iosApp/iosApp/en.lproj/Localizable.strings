@@ -17,6 +17,7 @@
 "LanguageKnowledgeTitleBober"              = "Bober language";
 "LanguageKnowledgeTitleFractal"            = "Fractal language";
 "LanguageKnowledgeTitleDragon"             = "Dragon language";
+"LanguageKnowledgeTitleAlien"              = "Alien language";
 "ZooSizeTitle"                             = "Home size";
 "ProfileScreenMiscLabel"                   = "Misc";
 "CanPetsDieOfOldAge"                       = "Can pets die of old age?";
@@ -46,6 +47,7 @@
 "PetCreationScreenPetTypeBober"            = "bober";
 "PetCreationScreenPetTypeFractal"          = "fractal";
 "PetCreationScreenPetTypeDragon"           = "dragon";
+"PetCreationScreenPetTypeAlien"            = "alien";
 "PetCreationScreenButtonTemplate"          = "Create %@ %@";
 "PetCreationScreenButtonTemplateFractal"   = "Imagine fractal %@";
 
@@ -56,6 +58,7 @@
 "PetTypeDescriptionBober"                  = "Bober: sleeps 1 hours, awake for 2 hours. Likes warm sunny days. Does not like wind.";
 "PetTypeDescriptionFractal"                = "Fractal: sleeps 1.5 hours, awake for 1.5 hours. Does not care about weather since it is just an idea.";
 "PetTypeDescriptionDragon"                 = "Dragon: sleeps 1.5 hours, awake for 1.5 hours. Different types of dragons like different weather";
+"PetTypeDescriptionAlien"                  = "Alien: sleeps 1.5 hours, awake for 1.5 hours. Likes cold cloudy days. Likes medium wind.";
 
 /* Item names */
 "Necronomicon"                             = "Necronomicon";
@@ -184,10 +187,12 @@
 "IAmSickLatin"                             = "Aeger sum, habesne medicamentum aliquod?";
 "IAmSickPolish"                            = "Jestem chory. Czy masz jakieś lekarstwo?";
 "IAmSickMath"                              = "[C = 2πr]";
+"IAmSickAlien"                             = "Я̶̭̈́ ̴̛̙̑б̸̱͌о̶͔͔̚л̶̝͑е̸͇̂̽ю̸̧̗́̏,̴̫̂ ̷̞͋у̸̜͚͋ ̷̞̣̓̀т̸̧̦̍ё̷̺̮̽б̵̥̜̔я̵̼͂ ̴͓̾̈н̷̦̈́а̵̳͒й̷̜̆͘д̷̦͍̇е̵̼̒̀т̷̼̀͝с̵̃̕͜я̷̯̐ ̷̖̙̎к̸̧͎̄а̸̗̬̀к̶̢͚̌͌о̴̱̝̊̕е̷̫̬͌̇-̶̼̈н̸̠́̍и̸̗̐б̵̺̌͆ӳ̶͕̹̽д̴̘̟̏̿ь̶̡̋͑ ̸͍̠̏л̶̨̤̋̂е̸̫̜̄̏к̴̨̈́а̵̹̥̌̍р̵̣̙̋̈с̴̺͈̋т̷̻̳̊в̶̼̭̈́̈́о̴̪̋?̶̬̎̍͜";
 "IAmHungry"                                = "I am hungry, give me some food.";
 "IAmHungryLatin"                           = "Esurio, da mihi cibum.";
 "IAmHungryPolish"                          = "Jestem głodny, daj mi trochę jedzenia.";
 "IAmHungryMath"                            = "[sin^2(θ) + cos^2(θ) = 1]";
+"IAmHungryAlien"                           = "Я̵̢̭̃͛ ̶̝̳͊г̵̙̀͝о̸̲́̀л̷͕̤̔ӧ̴͍́̀ͅд̷̳͎̽н̶̞̊̏ͅы̸̲̩̾й̵̫͆̚,̷̡̜̄ ̶̙̀̏д̴͓̖̚а̸͇̽͝й̷͍̈́ ̵̘̱̄ч̷̣̦̽͗т̷̧̪̿о̴̟̪͗̀-̸̪͆н̶̕͜й̴̳̏б̶̝̈́̒ͅу̵̤̝̀̐д̵̖̍̕ь̵̪͙͛ ̷͉̻̿̋п̷̤̿̊ͅо̵̤̋͝е̷͎̽с̸̢͙͌̐т̷̯͉̚ь̴̖̽.̵̡̄͌";
 "IPooped"                                  = "I pooped (it would be nice if you clean after me).";
 "IPoopedLatin"                             = "Cacavi (gratum esset si post me lavares).";
 "IPoopedPolish"                            = "Zrobiłem kupę (byłoby miło, gdybyś po mnie posprzątał).";
@@ -196,18 +201,22 @@
 "IAmBoredLatin"                            = "Taedet me, ludere vis?";
 "IAmBoredPolish"                           = "Nudzę się, chcesz zagrać?";
 "IAmBoredMath"                             = "[F - E + V = 2]";
+"IAmBoredAlien"                            = "М̶̢̤͝н̷̲͙̏̏е̸̫͒͐ ̷̬͖̊с̵̰̆к̶̜͙̀у̷͇̼̏ч̶̘͆н̵̰̅о̷̀͜ͅ,̸̱̋͝ ̵̧̹̍̎п̵̲̫́о̵̗̇́и̸̣͚̅̃г̸̲̯̌р̸͍͌̌а̵̛͎е̶̘̫̏̄м̶̠̯̌?̷̤́̕";
 "IAmStillAngryAfterForceWakeUp"            = "I am still not happy that you woke me up for no reason!";
 "IAmStillAngryAfterForceWakeUpLatin"       = "Adhuc non gaudeo te me sine causa excitasse!";
 "IAmStillAngryAfterForceWakeUpPolish"      = "Nadal nie jestem zadowolony, że mnie obudziłeś bez powodu!";
 "IAmStillAngryAfterForceWakeUpMath"        = "[(-b ± √(b^2 - 4ac)) / 2a]";
+"IAmStillAngryAfterForceWakeUpAlien"       = "Я̷̧͖͒̈́ ̵̱̘̋в̷̟͚̐̏с̸̩̓е̷̻̲̅ ̵͓̫́͝е̸̨̏щ̸̣̇е̷̱͐ͅ ̷̨̲͒н̴͉̟̏͛е̶̲̚ ̵̗́д̶͈̇̈о̶͇̀в̶̧̱̊͝о̴̟̿л̶͍̿ё̶̬̟́̑н̷̱̙̿̈ ̷̘̍т̸̧̇е̴̜̱͠͝м̶̤͔̚,̷̺̞̐̀ ̵̭͑ч̷̭͍͑т̷̭̻̌͝о̶̱̃ ̸͍̹͛т̸͈́͛ͅы̵̭̯͘ ̵̨̚м̴̞̽̃е̵͇́̊н̶̩̙̓̆я̸̧͚́͝ ̶͓̐͜р̸͕̈͛а̵͎̬͐̓з̸̮̎͝б̴̣̀у̵̢͙̊̉д̷͇̭́̈́и̴̣͂л̶̣͌͘а̶̲̿ ̵̨̐̕͜п̷̲̝͝о̸̞͔͝ ̴̪̱̀̚ч̸̱̹̄е̸͍͝м̸̞̖̓ ̴̯̏̀ͅз̶̠̹͂р̸͖́̔я̶̮̫̒!̵̗̃͋";
 "IAmHalfHp"                                = "I do not feel so good, need some rest.";
 "IAmHalfHpLatin"                           = "Non tam bene me habeo, requie mihi opus est.";
 "IAmHalfHpPolish"                          = "Nie czuję się najlepiej, muszę odpocząć.";
 "IAmHalfHpMath"                            = "[a^2 + b^2 = c^2]";
+"IAmHalfHpAlien"                           = "Ч̶̰̱͊͘т̸̞̎͑о̵̩̟̋-̸͉̑т̶̮͊о̶͍͎̽ ̴̻̕м̴͉͇̇н̴͉̪́е̶̢̋ ̴͚̈́н̸̨͎̿е̶̘̒̌ ̶̯̻̂х̶̢̔̕о̴̡̃р̷̮͝о̸̖̜̑́ш̸̺̾̾о̸̞̅,̷̬̜̊͝ ̸͈̉н̴̱͑͊а̷̛̬̟д̵̘̑̈́͜ӧ̵̫͚̂ ̸͓͐̓б̷͉̑̈ы̴̧̼̇͗ ̵̬͉͝о̸̰̥͂̏т̶̻̔д̴̗̍̾о̴͈͂̓х̸̳̖̀͌н̸̗̀͝у̶͙̎̌т̷̼̑ь̴̮͓͛͝.̵̫͒̈́";
 "IAmGood"                                  = "I am fine.";
 "IAmGoodLatin"                             = "Bene sum.";
 "IAmGoodPolish"                            = "Mam się dobrze.";
 "IAmGoodMath"                              = "[e^(iπ) + 1 = 0]";
+"IAmGoodAlien"                             = "В̴̜́с̵͕̰̇̃ё̴͍̈͊ ̴̹̓х̵̪͊̿о̷̬́͝р̸͎̋о̴̼͊͌ш̶̫̀о̵̨͙̑.̷̜͂͛";
 "IWillDie"                                 = "As I am old, within the next five minutes I will die with a probability of %1$.3f%%.";
 "IWillDieLatin"                            = "Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.";
 "IWillDiePolish"                           = "Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.";

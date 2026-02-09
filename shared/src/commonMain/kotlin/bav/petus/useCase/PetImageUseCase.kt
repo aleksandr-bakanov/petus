@@ -359,6 +359,53 @@ class PetImageUseCase(
                     }
                 }
             }
+
+            PetType.Alien -> {
+                if (isPetInGrave(pet)) return ImageId.AlienGrave
+                when (pet.ageState) {
+                    AgeState.Egg -> ImageId.AlienEgg
+                    AgeState.NewBorn -> {
+                        when {
+                            pet.bodyState == BodyState.Dead -> ImageId.AlienNewbornDead
+                            pet.sleep -> ImageId.AlienNewbornSleep
+                            pet.illness -> ImageId.AlienNewbornIll
+                            isPetHungryOrBored(pet) -> ImageId.AlienNewbornHungry
+                            isPetLowHealth(pet) -> ImageId.AlienNewbornIll
+                            else -> ImageId.AlienNewbornActive
+                        }
+                    }
+                    AgeState.Teen -> {
+                        when {
+                            pet.bodyState == BodyState.Dead -> ImageId.AlienTeenDead
+                            pet.sleep -> ImageId.AlienTeenSleep
+                            pet.illness -> ImageId.AlienTeenIll
+                            isPetHungryOrBored(pet) -> ImageId.AlienTeenHungry
+                            isPetLowHealth(pet) -> ImageId.AlienTeenIll
+                            else -> ImageId.AlienTeenActive
+                        }
+                    }
+                    AgeState.Adult -> {
+                        when {
+                            pet.bodyState == BodyState.Dead -> ImageId.AlienAdultDead
+                            pet.sleep -> ImageId.AlienAdultSleep
+                            pet.illness -> ImageId.AlienAdultIll
+                            isPetHungryOrBored(pet) -> ImageId.AlienAdultHungry
+                            isPetLowHealth(pet) -> ImageId.AlienAdultIll
+                            else -> ImageId.AlienAdultActive
+                        }
+                    }
+                    AgeState.Old -> {
+                        when {
+                            pet.bodyState == BodyState.Dead -> ImageId.AlienOldDead
+                            pet.sleep -> ImageId.AlienOldSleep
+                            pet.illness -> ImageId.AlienOldIll
+                            isPetHungryOrBored(pet) -> ImageId.AlienOldHungry
+                            isPetLowHealth(pet) -> ImageId.AlienOldIll
+                            else -> ImageId.AlienOldActive
+                        }
+                    }
+                }
+            }
         }
     }
 

@@ -178,6 +178,8 @@ class Engine(
         return userData.abilities.contains(Ability.Necromancy) &&
                 pet.place == Place.Cemetery &&
                 pet.burialType != BurialType.Exhumated &&
+                // Aliens can't be resurrected
+                pet.type != PetType.Alien &&
                 petsInZoo.size < userData.zooSize
     }
 
@@ -241,6 +243,10 @@ class Engine(
 
     fun isPetSpeakMath(pet: Pet): Boolean {
         return pet.type == PetType.Fractal
+    }
+
+    fun isPetSpeakAlien(pet: Pet): Boolean {
+        return pet.type == PetType.Alien
     }
 
     fun isPetHungry(pet: Pet): Boolean {
@@ -312,6 +318,7 @@ class Engine(
             PetType.Bober -> StringId.PetTypeDescriptionBober
             PetType.Fractal -> StringId.PetTypeDescriptionFractal
             PetType.Dragon -> StringId.PetTypeDescriptionDragon
+            PetType.Alien -> StringId.PetTypeDescriptionAlien
         }
     }
 
@@ -498,8 +505,11 @@ class Engine(
 
                         // If pet woke up then it immediately poops
                         if (newPet.activeSleepState == SleepState.Active) {
-                            newPet = newPet.copy(isPooped = true)
-                            historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetPoop, periodTimestamp)
+                            // However, aliens don't poop
+                            if (newPet.type != PetType.Alien) {
+                                newPet = newPet.copy(isPooped = true)
+                                historyRepo.recordHistoryEvent(pet.id, HistoryEvent.PetPoop, periodTimestamp)
+                            }
                         }
                     }
                 }
@@ -556,6 +566,7 @@ class Engine(
             PetType.Bober -> commonPetAgeToSecondsTable
             PetType.Fractal -> fractalAgeToSecondsTable
             PetType.Dragon -> dragonAgeToSecondsTable
+            PetType.Alien -> alienAgeToSecondsTable
         }
     }
 
@@ -675,6 +686,7 @@ class Engine(
             PetType.Bober -> commonPetHungerTable
             PetType.Fractal -> commonPetHungerTable
             PetType.Dragon -> commonPetHungerTable
+            PetType.Alien -> commonPetHungerTable
         }
     }
 
@@ -697,6 +709,7 @@ class Engine(
             PetType.Bober -> commonPetPsychTable
             PetType.Fractal -> commonPetPsychTable
             PetType.Dragon -> commonPetPsychTable
+            PetType.Alien -> commonPetPsychTable
         }
     }
 
@@ -712,6 +725,7 @@ class Engine(
             PetType.Bober -> 500f
             PetType.Fractal -> 500f
             PetType.Dragon -> 500f
+            PetType.Alien -> 500f
         }
     }
 
@@ -723,6 +737,7 @@ class Engine(
             PetType.Bober -> 800_000f
             PetType.Fractal -> 600_000f
             PetType.Dragon -> 1_000_000f
+            PetType.Alien -> 800_000f
         }
     }
 
@@ -734,6 +749,7 @@ class Engine(
             PetType.Bober -> 70_000f
             PetType.Fractal -> 50_000f
             PetType.Dragon -> 70_000f
+            PetType.Alien -> 60_000f
         }
     }
 
@@ -745,6 +761,7 @@ class Engine(
             PetType.Bober -> 70_000f
             PetType.Fractal -> 70_000f
             PetType.Dragon -> 70_000f
+            PetType.Alien -> 70_000f
         }
     }
 
@@ -789,6 +806,12 @@ class Engine(
                     SleepState.Sleep -> (HOUR * 3) / 2
                 }
             }
+            PetType.Alien -> {
+                when (state) {
+                    SleepState.Active -> (HOUR * 3) / 2
+                    SleepState.Sleep -> (HOUR * 3) / 2
+                }
+            }
         }
     }
 
@@ -828,6 +851,15 @@ class Engine(
             AgeState.Teen to (DAY * 10 until DAY * 10 + 1),   // Disable Teen state making it short
             AgeState.Adult to (DAY * 10 + 1 until DAY * 20),  // 10 days (-1 minute)
             AgeState.Old to (DAY * 20 until Long.MAX_VALUE),
+        )
+
+        // Alien in seconds
+        private val alienAgeToSecondsTable = mapOf(
+            AgeState.Egg to (0L until 60),                   // 1 minute
+            AgeState.NewBorn to (60 until DAY * 7),          // 7 days
+            AgeState.Teen to (DAY * 7 until DAY * 14),       // 7 days
+            AgeState.Adult to (DAY * 14 until DAY * 21),     // 7 days
+            AgeState.Old to (DAY * 21 until Long.MAX_VALUE),
         )
 
         // Represents 'hunger speed' how much calories

@@ -49,6 +49,7 @@ struct UserProfileView: View {
                         LanguageKnowledgeCell(type: .bober, value: state.languageKnowledgeBober)
                         LanguageKnowledgeCell(type: .fractal, value: state.languageKnowledgeFractal)
                         LanguageKnowledgeCell(type: .dragon, value: state.languageKnowledgeDragon)
+                        LanguageKnowledgeCell(type: .alien, value: state.languageKnowledgeAlien)
                         Text("ProfileScreenInventoryLabel")
                         
                         LazyVGrid(
