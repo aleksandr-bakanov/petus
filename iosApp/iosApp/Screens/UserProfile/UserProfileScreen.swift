@@ -18,6 +18,10 @@ struct UserProfileView: View {
         repeating: GridItem(.flexible(), spacing: 8),
         count: 3
     )
+    private let languagesColumns: [GridItem] = Array(
+        repeating: GridItem(.flexible(), spacing: 8),
+        count: 4
+    )
     
     var body: some View {
         NavigationStack(path: $navigationPath) {
@@ -43,13 +47,18 @@ struct UserProfileView: View {
                             .cornerRadius(8)
                             .fixedSize()
                         Text("ProfileScreenLanguagesLabel")
-                        LanguageKnowledgeCell(type: .catus, value: state.languageKnowledgeCatus)
-                        LanguageKnowledgeCell(type: .dogus, value: state.languageKnowledgeDogus)
-                        LanguageKnowledgeCell(type: .frogus, value: state.languageKnowledgeFrogus)
-                        LanguageKnowledgeCell(type: .bober, value: state.languageKnowledgeBober)
-                        LanguageKnowledgeCell(type: .fractal, value: state.languageKnowledgeFractal)
-                        LanguageKnowledgeCell(type: .dragon, value: state.languageKnowledgeDragon)
-                        LanguageKnowledgeCell(type: .alien, value: state.languageKnowledgeAlien)
+                        LazyVGrid(
+                            columns: languagesColumns,
+                            alignment: .center,
+                            spacing: 8
+                        ) {
+                            ForEach(state.languages, id: \.type) { item in
+                                LanguageCell(type: item.type, percentage: CGFloat(item.percentage))
+                            }
+                        }
+                        .frame(maxHeight: .infinity) // Similar to heightIn max = 10000.dp
+                        .padding(8) // Optional: for outer spacing
+                        
                         Text("ProfileScreenInventoryLabel")
                         
                         LazyVGrid(

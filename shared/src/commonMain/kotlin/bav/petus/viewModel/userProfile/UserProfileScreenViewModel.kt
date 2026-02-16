@@ -6,6 +6,8 @@ import bav.petus.core.engine.UserStats
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.InventoryItemId
 import bav.petus.extension.str
+import bav.petus.model.Pet
+import bav.petus.model.PetType
 import bav.petus.repo.WeatherRepository
 import com.rickclephas.kmp.observableviewmodel.launch
 import com.rickclephas.kmp.observableviewmodel.stateIn
@@ -17,17 +19,16 @@ import org.koin.core.component.inject
 
 data class UserProfileUiState(
     val latestWeather: String?,
-    val languageKnowledgeCatus: String,
-    val languageKnowledgeDogus: String,
-    val languageKnowledgeFrogus: String,
-    val languageKnowledgeBober: String,
-    val languageKnowledgeFractal: String,
-    val languageKnowledgeDragon: String,
-    val languageKnowledgeAlien: String,
+    val languages: List<LanguageKnowledge>,
     val inventory: List<InventoryItem>,
     val abilities: List<Ability>,
     val zooSize: String,
     val canPetsDieOfOldAge: Boolean,
+)
+
+data class LanguageKnowledge(
+    val type: PetType,
+    val percentage: Float,
 )
 
 class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenViewModel.Navigation>(), KoinComponent {
@@ -41,13 +42,15 @@ class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenView
     ) { userData, weatherRecord ->
         UserProfileUiState(
             latestWeather = weatherRecord?.str(),
-            languageKnowledgeCatus = "${userData.languageKnowledge.catus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
-            languageKnowledgeDogus = "${userData.languageKnowledge.dogus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
-            languageKnowledgeFrogus = "${userData.languageKnowledge.frogus} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
-            languageKnowledgeBober = "${userData.languageKnowledge.bober} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
-            languageKnowledgeFractal = "${userData.languageKnowledge.fractal} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
-            languageKnowledgeDragon = "${userData.languageKnowledge.dragon} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
-            languageKnowledgeAlien = "${userData.languageKnowledge.alien} / ${UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE}",
+            languages = listOf(
+                LanguageKnowledge(PetType.Catus, userData.languageKnowledge.catus.toFloat() / UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE),
+                LanguageKnowledge(PetType.Dogus, userData.languageKnowledge.dogus.toFloat() / UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE),
+                LanguageKnowledge(PetType.Frogus, userData.languageKnowledge.frogus.toFloat() / UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE),
+                LanguageKnowledge(PetType.Bober, userData.languageKnowledge.bober.toFloat() / UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE),
+                LanguageKnowledge(PetType.Fractal, userData.languageKnowledge.fractal.toFloat() / UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE),
+                LanguageKnowledge(PetType.Dragon, userData.languageKnowledge.dragon.toFloat() / UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE),
+                LanguageKnowledge(PetType.Alien, userData.languageKnowledge.alien.toFloat() / UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE),
+            ),
             inventory = userData.inventory,
             abilities = userData.abilities.toList(),
             zooSize = userData.zooSize.toString(),

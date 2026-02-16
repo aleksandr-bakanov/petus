@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.material.icons.extended)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.graphics.shapes)
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.android)
     implementation(libs.androidx.lifecycle.viewmodel.compose)

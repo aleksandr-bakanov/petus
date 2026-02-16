@@ -3,6 +3,7 @@ package bav.petus.android.ui.user_profile
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -18,6 +19,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -37,6 +39,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -44,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import bav.petus.android.PsychColor
 import bav.petus.android.R
 import bav.petus.android.ui.common.toResId
+import bav.petus.android.ui.views.SectorMaskShape
 import bav.petus.core.engine.toStringId
 import bav.petus.core.inventory.InventoryItem
 import bav.petus.core.inventory.toImageId
@@ -52,6 +57,7 @@ import bav.petus.model.PetType
 import bav.petus.viewModel.main.MainViewModel
 import bav.petus.viewModel.userProfile.UserProfileScreenViewModel
 import bav.petus.viewModel.userProfile.UserProfileUiState
+import kotlin.random.Random
 
 @Composable
 fun UserProfileRoute(
@@ -113,34 +119,19 @@ private fun UserProfileScreen(
             }
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenLanguagesLabel))
-            LanguageKnowledgeStat(
-                type = PetType.Catus,
-                value = uiState.languageKnowledgeCatus,
-            )
-            LanguageKnowledgeStat(
-                type = PetType.Dogus,
-                value = uiState.languageKnowledgeDogus,
-            )
-            LanguageKnowledgeStat(
-                type = PetType.Frogus,
-                value = uiState.languageKnowledgeFrogus,
-            )
-            LanguageKnowledgeStat(
-                type = PetType.Bober,
-                value = uiState.languageKnowledgeBober,
-            )
-            LanguageKnowledgeStat(
-                type = PetType.Fractal,
-                value = uiState.languageKnowledgeFractal,
-            )
-            LanguageKnowledgeStat(
-                type = PetType.Dragon,
-                value = uiState.languageKnowledgeDragon,
-            )
-            LanguageKnowledgeStat(
-                type = PetType.Alien,
-                value = uiState.languageKnowledgeAlien,
-            )
+            LazyVerticalGrid(
+                modifier = Modifier.heightIn(max = 10000.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                columns = GridCells.Fixed(count = 4)
+            ) {
+                items(uiState.languages) { item ->
+                    LanguageCell(
+                        type = item.type,
+                        percentage = item.percentage,
+                    )
+                }
+            }
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenInventoryLabel))
             LazyVerticalGrid(
@@ -258,4 +249,42 @@ private fun InventoryItemCell(
                 onClick(item)
             }
     )
+}
+
+@Composable
+private fun LanguageCell(
+    type: PetType,
+    percentage: Float,
+) {
+    Box {
+        Image(
+            painter = painterResource(id = type.languageImageRes()),
+            contentDescription = null,
+            modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxSize(fraction = if (percentage < 1f) 0.95f else 1f)
+                .clip(CircleShape)
+        )
+        if (percentage < 1f) {
+            Image(
+                painter = painterResource(id = R.drawable.question_mark),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(SectorMaskShape(percentage = percentage))
+            )
+        }
+    }
+}
+
+private fun PetType.languageImageRes(): Int {
+    return when (this) {
+        PetType.Catus -> R.drawable.speak_cat
+        PetType.Dogus -> R.drawable.speak_dog
+        PetType.Frogus -> R.drawable.speak_frog
+        PetType.Bober -> R.drawable.speak_bober
+        PetType.Fractal -> R.drawable.speak_fractal
+        PetType.Dragon -> R.drawable.speak_dragon
+        PetType.Alien -> R.drawable.speak_alien
+    }
 }
