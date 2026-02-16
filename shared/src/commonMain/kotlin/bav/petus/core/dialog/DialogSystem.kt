@@ -192,7 +192,6 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmSickLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmSickPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmSickMath
-            engine.isPetSpeakAlien(pet) -> StringId.IAmSickAlien
             else -> StringId.IAmSick
         }
     }
@@ -202,7 +201,6 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmHungryLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmHungryPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmHungryMath
-            engine.isPetSpeakAlien(pet) -> StringId.IAmHungryAlien
             else -> StringId.IAmHungry
         }
     }
@@ -221,7 +219,6 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmBoredLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmBoredPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmBoredMath
-            engine.isPetSpeakAlien(pet) -> StringId.IAmBoredAlien
             else -> StringId.IAmBored
         }
     }
@@ -231,7 +228,6 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmStillAngryAfterForceWakeUpLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmStillAngryAfterForceWakeUpPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmStillAngryAfterForceWakeUpMath
-            engine.isPetSpeakAlien(pet) -> StringId.IAmStillAngryAfterForceWakeUpAlien
             else -> StringId.IAmStillAngryAfterForceWakeUp
         }
     }
@@ -241,7 +237,6 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmHalfHpLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmHalfHpPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmHalfHpMath
-            engine.isPetSpeakAlien(pet) -> StringId.IAmHalfHpAlien
             else -> StringId.IAmHalfHp
         }
     }
@@ -260,7 +255,6 @@ class DialogSystem(
             engine.isPetSpeakLatin(pet) -> StringId.IAmGoodLatin
             engine.isPetSpeakPolish(pet) -> StringId.IAmGoodPolish
             engine.isPetSpeakMath(pet) -> StringId.IAmGoodMath
-            engine.isPetSpeakAlien(pet) -> StringId.IAmGoodAlien
             else -> StringId.IAmGood
         }
     }
@@ -283,11 +277,9 @@ class DialogSystem(
         val amountToCensor = text.length - (text.length * ratio).toInt()
         val indicesToCensor = text.indices.shuffled().take(amountToCensor)
 
-        val maskSymbol = "\u258A"
-
         return buildString {
             for (i in text.indices) {
-                append(if (i in indicesToCensor) maskSymbol else text[i])
+                append(if (i in indicesToCensor) MASK_SYMBOL else text[i])
             }
         }
     }
@@ -315,6 +307,8 @@ class DialogSystem(
             StringId.MeditationExerciseSelfInquiryQuestions,
             StringId.MeditationExerciseSilentSitting,
         )
+
+        const val MASK_SYMBOL = '\u258A'
         
         const val STANDARD_DIALOG_BEGINNING = "STANDARD_DIALOG_BEGINNING"
         const val PET_DESCRIPTION = "PET_DESCRIPTION"

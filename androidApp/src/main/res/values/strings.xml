@@ -199,12 +199,10 @@
 	<string name="IAmSickLatin">Aeger sum, habesne medicamentum aliquod?</string>
 	<string name="IAmSickPolish">Jestem chory. Czy masz jakieś lekarstwo?</string>
 	<string name="IAmSickMath">[C = 2πr]</string>
-	<string name="IAmSickAlien">Я̶̭̈́ ̴̛̙̑б̸̱͌о̶͔͔̚л̶̝͑е̸͇̂̽ю̸̧̗́̏,̴̫̂ ̷̞͋у̸̜͚͋ ̷̞̣̓̀т̸̧̦̍ё̷̺̮̽б̵̥̜̔я̵̼͂ ̴͓̾̈н̷̦̈́а̵̳͒й̷̜̆͘д̷̦͍̇е̵̼̒̀т̷̼̀͝с̵̃̕͜я̷̯̐ ̷̖̙̎к̸̧͎̄а̸̗̬̀к̶̢͚̌͌о̴̱̝̊̕е̷̫̬͌̇-̶̼̈н̸̠́̍и̸̗̐б̵̺̌͆ӳ̶͕̹̽д̴̘̟̏̿ь̶̡̋͑ ̸͍̠̏л̶̨̤̋̂е̸̫̜̄̏к̴̨̈́а̵̹̥̌̍р̵̣̙̋̈с̴̺͈̋т̷̻̳̊в̶̼̭̈́̈́о̴̪̋?̶̬̎̍͜</string>
 	<string name="IAmHungry">I am hungry, give me some food.</string>
 	<string name="IAmHungryLatin">Esurio, da mihi cibum.</string>
 	<string name="IAmHungryPolish">Jestem głodny, daj mi trochę jedzenia.</string>
 	<string name="IAmHungryMath">[sin^2(θ) + cos^2(θ) = 1]</string>
-	<string name="IAmHungryAlien">Я̵̢̭̃͛ ̶̝̳͊г̵̙̀͝о̸̲́̀л̷͕̤̔ӧ̴͍́̀ͅд̷̳͎̽н̶̞̊̏ͅы̸̲̩̾й̵̫͆̚,̷̡̜̄ ̶̙̀̏д̴͓̖̚а̸͇̽͝й̷͍̈́ ̵̘̱̄ч̷̣̦̽͗т̷̧̪̿о̴̟̪͗̀-̸̪͆н̶̕͜й̴̳̏б̶̝̈́̒ͅу̵̤̝̀̐д̵̖̍̕ь̵̪͙͛ ̷͉̻̿̋п̷̤̿̊ͅо̵̤̋͝е̷͎̽с̸̢͙͌̐т̷̯͉̚ь̴̖̽.̵̡̄͌</string>
 	<string name="IPooped">I pooped (it would be nice if you clean after me).</string>
 	<string name="IPoopedLatin">Cacavi (gratum esset si post me lavares).</string>
 	<string name="IPoopedPolish">Zrobiłem kupę (byłoby miło, gdybyś po mnie posprzątał).</string>
@@ -213,22 +211,18 @@
 	<string name="IAmBoredLatin">Taedet me, ludere vis?</string>
 	<string name="IAmBoredPolish">Nudzę się, chcesz zagrać?</string>
 	<string name="IAmBoredMath">[F - E + V = 2]</string>
-	<string name="IAmBoredAlien">М̶̢̤͝н̷̲͙̏̏е̸̫͒͐ ̷̬͖̊с̵̰̆к̶̜͙̀у̷͇̼̏ч̶̘͆н̵̰̅о̷̀͜ͅ,̸̱̋͝ ̵̧̹̍̎п̵̲̫́о̵̗̇́и̸̣͚̅̃г̸̲̯̌р̸͍͌̌а̵̛͎е̶̘̫̏̄м̶̠̯̌?̷̤́̕</string>
 	<string name="IAmStillAngryAfterForceWakeUp">I am still not happy that you woke me up for no reason!</string>
 	<string name="IAmStillAngryAfterForceWakeUpLatin">Adhuc non gaudeo te me sine causa excitasse!</string>
 	<string name="IAmStillAngryAfterForceWakeUpPolish">Nadal nie jestem zadowolony, że mnie obudziłeś bez powodu!</string>
 	<string name="IAmStillAngryAfterForceWakeUpMath">[(-b ± √(b^2 - 4ac)) / 2a]</string>
-	<string name="IAmStillAngryAfterForceWakeUpAlien">Я̷̧͖͒̈́ ̵̱̘̋в̷̟͚̐̏с̸̩̓е̷̻̲̅ ̵͓̫́͝е̸̨̏щ̸̣̇е̷̱͐ͅ ̷̨̲͒н̴͉̟̏͛е̶̲̚ ̵̗́д̶͈̇̈о̶͇̀в̶̧̱̊͝о̴̟̿л̶͍̿ё̶̬̟́̑н̷̱̙̿̈ ̷̘̍т̸̧̇е̴̜̱͠͝м̶̤͔̚,̷̺̞̐̀ ̵̭͑ч̷̭͍͑т̷̭̻̌͝о̶̱̃ ̸͍̹͛т̸͈́͛ͅы̵̭̯͘ ̵̨̚м̴̞̽̃е̵͇́̊н̶̩̙̓̆я̸̧͚́͝ ̶͓̐͜р̸͕̈͛а̵͎̬͐̓з̸̮̎͝б̴̣̀у̵̢͙̊̉д̷͇̭́̈́и̴̣͂л̶̣͌͘а̶̲̿ ̵̨̐̕͜п̷̲̝͝о̸̞͔͝ ̴̪̱̀̚ч̸̱̹̄е̸͍͝м̸̞̖̓ ̴̯̏̀ͅз̶̠̹͂р̸͖́̔я̶̮̫̒!̵̗̃͋</string>
 	<string name="IAmHalfHp">I do not feel so good, need some rest.</string>
 	<string name="IAmHalfHpLatin">Non tam bene me habeo, requie mihi opus est.</string>
 	<string name="IAmHalfHpPolish">Nie czuję się najlepiej, muszę odpocząć.</string>
 	<string name="IAmHalfHpMath">[a^2 + b^2 = c^2]</string>
-	<string name="IAmHalfHpAlien">Ч̶̰̱͊͘т̸̞̎͑о̵̩̟̋-̸͉̑т̶̮͊о̶͍͎̽ ̴̻̕м̴͉͇̇н̴͉̪́е̶̢̋ ̴͚̈́н̸̨͎̿е̶̘̒̌ ̶̯̻̂х̶̢̔̕о̴̡̃р̷̮͝о̸̖̜̑́ш̸̺̾̾о̸̞̅,̷̬̜̊͝ ̸͈̉н̴̱͑͊а̷̛̬̟д̵̘̑̈́͜ӧ̵̫͚̂ ̸͓͐̓б̷͉̑̈ы̴̧̼̇͗ ̵̬͉͝о̸̰̥͂̏т̶̻̔д̴̗̍̾о̴͈͂̓х̸̳̖̀͌н̸̗̀͝у̶͙̎̌т̷̼̑ь̴̮͓͛͝.̵̫͒̈́</string>
 	<string name="IAmGood">I am fine.</string>
 	<string name="IAmGoodLatin">Bene sum.</string>
 	<string name="IAmGoodPolish">Mam się dobrze.</string>
 	<string name="IAmGoodMath">[e^(iπ) + 1 = 0]</string>
-	<string name="IAmGoodAlien">В̴̜́с̵͕̰̇̃ё̴͍̈͊ ̴̹̓х̵̪͊̿о̷̬́͝р̸͎̋о̴̼͊͌ш̶̫̀о̵̨͙̑.̷̜͂͛</string>
 	<string name="IWillDie">As I am old, within the next five minutes I will die with a probability of %1$.3f%%.</string>
 	<string name="IWillDieLatin">Quoniam senex sum, intra proximos quinque minutos cum probabilitate %1$.3f%% moriar.</string>
 	<string name="IWillDiePolish">Ponieważ jestem już stary, w ciągu najbliższych pięciu minut umrę z prawdopodobieństwem %.3f%%.</string>

@@ -2846,8 +2846,6 @@ private val quests = mapOf(
                 onFinish = { questSystem ->
                     // Add available alien pet type
                     questSystem.userStats.addNewAvailablePetType(PetType.Alien)
-                    // Immediately learn its language
-                    questSystem.userStats.saveLanguageKnowledge(PetType.Alien, MAXIMUM_LANGUAGE_KNOWLEDGE)
                 },
                 additionalAnswerOptions = null
             ),

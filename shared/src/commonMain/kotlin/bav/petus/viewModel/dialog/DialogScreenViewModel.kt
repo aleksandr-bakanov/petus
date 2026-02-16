@@ -3,6 +3,7 @@ package bav.petus.viewModel.dialog
 import bav.petus.base.ViewModelWithNavigation
 import bav.petus.core.dialog.DialogNode
 import bav.petus.core.dialog.DialogSystem
+import bav.petus.core.dialog.Zalgoize
 import bav.petus.core.resources.ImageId
 import bav.petus.core.resources.StringId
 import bav.petus.repo.PetsRepository
@@ -10,6 +11,7 @@ import com.rickclephas.kmp.observableviewmodel.MutableStateFlow
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import bav.petus.model.Pet
+import bav.petus.model.PetType
 import bav.petus.useCase.PetImageUseCase
 import com.rickclephas.kmp.observableviewmodel.launch
 import kotlinx.coroutines.flow.asStateFlow
@@ -84,6 +86,24 @@ class DialogScreenViewModel(
         }
     }
 
+    /**
+     * Initially introduced to zalgoize alien messages.
+     */
+    private fun processTextByPetType(
+        text: String,
+        petType: PetType,
+    ): String {
+        return when (petType) {
+            PetType.Alien -> Zalgoize.encode(
+                text = text,
+                level = 1,
+                directions = listOf("up", "middle", "down"),
+                ignoreChars = setOf(DialogSystem.MASK_SYMBOL)
+            )
+            else -> text
+        }
+    }
+
     private suspend fun makeDialogUiState(
         currentMessages: List<DialogMessage>,
         node: DialogNode,
@@ -92,11 +112,14 @@ class DialogScreenViewModel(
         val petMessage = DialogMessage(
             isImageAtStart = true,
             imageId = petImageUseCase.getPetImageId(pet!!),
-            text = dialogSystem.censorDialogText(
+            text = processTextByPetType(
+                text = dialogSystem.censorDialogText(
+                    petType = pet!!.type,
+                    text = node.text.joinToString(" ") {
+                        args.convertStringIdToString(it)
+                    },
+                ),
                 petType = pet!!.type,
-                text = node.text.joinToString(" ") {
-                    args.convertStringIdToString(it)
-                },
             )
         )
         val userMessage: DialogMessage? = answer?.let {

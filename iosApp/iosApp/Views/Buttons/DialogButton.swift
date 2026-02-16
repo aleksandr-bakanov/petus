@@ -10,6 +10,7 @@ struct DialogButton: View {
                 Text(text)
                     .font(.body)
                     .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
                 Spacer()
             }
             .padding(.horizontal, 16)
