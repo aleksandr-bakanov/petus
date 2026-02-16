@@ -1,11 +1,14 @@
 package bav.petus.viewModel.questStatus
 
 import bav.petus.base.ViewModelWithNavigation
+import bav.petus.core.engine.Engine.Companion.DAY
+import bav.petus.core.engine.OBTAIN_ALIEN_TIMESTAMP_KEY
 import bav.petus.core.engine.OBTAIN_DRAGON_HAS_NECRONOMICON_KEY
 import bav.petus.core.engine.QuestSystem
 import bav.petus.core.engine.UserStats
 import bav.petus.core.inventory.InventoryItemId
 import bav.petus.core.resources.StringId
+import bav.petus.core.time.getTimestampSecondsSinceEpoch
 import bav.petus.model.PetType
 import com.rickclephas.kmp.observableviewmodel.stateIn
 import kotlinx.coroutines.flow.SharingStarted
@@ -36,9 +39,13 @@ class QuestStatusViewModel(
         val availablePetTypes = userStats.getAvailablePetTypes()
         val isFrogAvailable = availablePetTypes.contains(PetType.Frogus)
         val isBoberAvailable = availablePetTypes.contains(PetType.Bober)
+        val isDragonAvailable = availablePetTypes.contains(PetType.Dragon)
+        val isFractalAvailable = availablePetTypes.contains(PetType.Fractal)
 
         val frogName = if (isFrogAvailable) convertStringIdToString(StringId.QuestDescFrog) else UNKNOWN_PET_TYPE_NAME
         val boberName = if (isBoberAvailable) convertStringIdToString(StringId.QuestDescBober) else UNKNOWN_PET_TYPE_NAME
+        val dragonName = if (isDragonAvailable) convertStringIdToString(StringId.QuestDescDragon) else UNKNOWN_PET_TYPE_NAME
+        val fractalName = if (isFractalAvailable) convertStringIdToString(StringId.QuestDescFractal) else UNKNOWN_PET_TYPE_NAME
 
         val necroStage = questSystem.getQuestStage(QuestSystem.QUEST_NECRONOMICON)
         val necroStageAmount = questSystem.getQuestStagesAmount(QuestSystem.QUEST_NECRONOMICON)
@@ -214,6 +221,41 @@ class QuestStatusViewModel(
             }
         )
 
+        val alienStage = questSystem.getQuestStage(QuestSystem.QUEST_TO_OBTAIN_ALIEN)
+        val alienStageAmount =
+            questSystem.getQuestStagesAmount(QuestSystem.QUEST_TO_OBTAIN_ALIEN)
+        val alienQuest = QuestDescription(
+            questName = convertStringIdToString(StringId.QuestNameObtainAlien),
+            stagesDescription = getStagesCompletedString(
+                convertStringIdToString = convertStringIdToString,
+                currentStage = alienStage,
+                total = alienStageAmount,
+            ),
+            questDescription = buildString {
+                for (i in 0..alienStage) {
+                    when(i) {
+                        0 -> append(convertStringIdToString(StringId.QuestDescObtainAlienStage0(boberName, dragonName, fractalName)))
+                        7 -> {
+                            val now = getTimestampSecondsSinceEpoch()
+                            val timestamp = preferences[OBTAIN_ALIEN_TIMESTAMP_KEY] ?: now
+                            val daysPassed = (now - timestamp) / DAY
+                            val daysLeft = if (alienStage < 11) {
+                                8473649557489L - daysPassed
+                            } else {
+                                0
+                            }
+                            append(QUEST_STAGES_SEPARATOR)
+                            append(convertStringIdToString(StringId.QuestDescObtainAlienStage7(days = daysLeft.toString())))
+                        }
+                        else -> {
+                            append(QUEST_STAGES_SEPARATOR)
+                            append(convertStringIdToString(ALIEN_STAGES_DESCRIPTIONS[i]))
+                        }
+                    }
+                }
+            }
+        )
+
         QuestStatusUiState(
             quests = listOf(
                 necroQuest,
@@ -222,6 +264,7 @@ class QuestStatusViewModel(
                 fractalQuest,
                 meditationQuest,
                 dragonQuest,
+                alienQuest,
             )
         )
     }.stateIn(
@@ -329,6 +372,24 @@ class QuestStatusViewModel(
             StringId.QuestDescObtainDragonStage22,
             StringId.QuestDescObtainDragonStage23,
             StringId.QuestDescObtainDragonStage24,
+        )
+        private val ALIEN_STAGES_DESCRIPTIONS = listOf<StringId>(
+            StringId.QuestDescObtainAlienStage0("xxx", "xxx", "xxx"), // This stage is appended separately
+            StringId.QuestDescObtainAlienStage1,
+            StringId.QuestDescObtainAlienStage2,
+            StringId.QuestDescObtainAlienStage3,
+            StringId.QuestDescObtainAlienStage4,
+            StringId.QuestDescObtainAlienStage5,
+            StringId.QuestDescObtainAlienStage6,
+            StringId.QuestDescObtainAlienStage7(days = "XXX"),
+            StringId.QuestDescObtainAlienStage8,
+            StringId.QuestDescObtainAlienStage9,
+            StringId.QuestDescObtainAlienStage10,
+            StringId.QuestDescObtainAlienStage11,
+            StringId.QuestDescObtainAlienStage12,
+            StringId.QuestDescObtainAlienStage13,
+            StringId.QuestDescObtainAlienStage14,
+            StringId.QuestDescObtainAlienStage15,
         )
     }
 

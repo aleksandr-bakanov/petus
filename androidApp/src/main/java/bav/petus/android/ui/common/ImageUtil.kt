@@ -285,6 +285,10 @@ fun ImageId.toResId(): Int {
         ImageId.CurseOfWarrior -> R.drawable.item_curse_of_warrior
         ImageId.CurseOfBard -> R.drawable.item_curse_of_bard
         ImageId.CurseOfSmith -> R.drawable.item_curse_of_smith
+        ImageId.StarSupernova -> R.drawable.item_star_supernova
+        ImageId.ClotOfMagic -> R.drawable.item_magic_energy
+        ImageId.Spaceship -> R.drawable.item_spaceship
+        ImageId.SupernovaInSpace -> R.drawable.item_supernova_in_space
         //endregion
     }
 }

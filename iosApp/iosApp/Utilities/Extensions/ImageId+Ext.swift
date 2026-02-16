@@ -270,6 +270,10 @@ extension ImageId {
         case .curseOfWarrior: "item_curse_of_warrior"
         case .curseOfBard: "item_curse_of_bard"
         case .curseOfSmith: "item_curse_of_smith"
+        case .starSupernova: "item_star_supernova"
+        case .clotOfMagic: "item_magic_energy"
+        case .spaceship: "item_spaceship"
+        case .supernovaInSpace: "item_supernova_in_space"
         }
     }
 }

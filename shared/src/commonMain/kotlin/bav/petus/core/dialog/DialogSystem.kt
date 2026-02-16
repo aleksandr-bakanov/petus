@@ -11,6 +11,8 @@ import bav.petus.core.engine.NECRONOMICON_EXHUMATED_PET_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_SEARCH_DOG_ID_KEY
 import bav.petus.core.engine.NECRONOMICON_TIMESTAMP_KEY
 import bav.petus.core.engine.NECRONOMICON_WISE_CAT_ID_KEY
+import bav.petus.core.engine.OBTAIN_ALIEN_BOBER_ID_KEY
+import bav.petus.core.engine.OBTAIN_ALIEN_TIMESTAMP_KEY
 import bav.petus.core.engine.OBTAIN_BOBER_SEARCH_DOG_ID_KEY
 import bav.petus.core.engine.OBTAIN_BOBER_SEARCH_FROG_ID_KEY
 import bav.petus.core.engine.OBTAIN_BOBER_TIMESTAMP_KEY
@@ -39,6 +41,7 @@ import bav.petus.core.engine.OBTAIN_FROGUS_TIMESTAMP_KEY
 import bav.petus.core.engine.QuestSystem
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_MEDITATION
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_NECRONOMICON
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_ALIEN
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_BOBER
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_DRAGON
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FRACTAL
@@ -459,9 +462,31 @@ class DialogSystem(
         const val OBTAIN_DRAGON_STAGE_25_DIALOG_30 = "OBTAIN_DRAGON_STAGE_25_DIALOG_30"
         const val OBTAIN_DRAGON_STAGE_25_DIALOG_31 = "OBTAIN_DRAGON_STAGE_25_DIALOG_31"
 
+        const val OBTAIN_ALIEN_STAGE_1_DIALOG_0 = "OBTAIN_ALIEN_STAGE_1_DIALOG_0"
+        const val OBTAIN_ALIEN_STAGE_1_DIALOG_1 = "OBTAIN_ALIEN_STAGE_1_DIALOG_1"
+        const val OBTAIN_ALIEN_STAGE_1_DIALOG_2 = "OBTAIN_ALIEN_STAGE_1_DIALOG_2"
+        const val OBTAIN_ALIEN_STAGE_2_DIALOG_0 = "OBTAIN_ALIEN_STAGE_2_DIALOG_0"
+        const val OBTAIN_ALIEN_STAGE_2_DIALOG_1 = "OBTAIN_ALIEN_STAGE_2_DIALOG_1"
+        const val OBTAIN_ALIEN_STAGE_2_DIALOG_2 = "OBTAIN_ALIEN_STAGE_2_DIALOG_2"
+        const val OBTAIN_ALIEN_STAGE_3_DIALOG_0 = "OBTAIN_ALIEN_STAGE_3_DIALOG_0"
+        const val OBTAIN_ALIEN_STAGE_3_DIALOG_1 = "OBTAIN_ALIEN_STAGE_3_DIALOG_1"
+        const val OBTAIN_ALIEN_STAGE_4_DIALOG_0 = "OBTAIN_ALIEN_STAGE_4_DIALOG_0"
+        const val OBTAIN_ALIEN_STAGE_4_DIALOG_1 = "OBTAIN_ALIEN_STAGE_4_DIALOG_1"
+        const val OBTAIN_ALIEN_STAGE_6_DIALOG_0 = "OBTAIN_ALIEN_STAGE_6_DIALOG_0"
+        const val OBTAIN_ALIEN_STAGE_8_DIALOG_0 = "OBTAIN_ALIEN_STAGE_8_DIALOG_0"
+        const val OBTAIN_ALIEN_STAGE_9_DIALOG_0 = "OBTAIN_ALIEN_STAGE_9_DIALOG_0"
+        const val OBTAIN_ALIEN_STAGE_9_DIALOG_1 = "OBTAIN_ALIEN_STAGE_9_DIALOG_1"
+        const val OBTAIN_ALIEN_STAGE_10_DIALOG_0 = "OBTAIN_ALIEN_STAGE_10_DIALOG_0"
+        const val OBTAIN_ALIEN_STAGE_10_DIALOG_1 = "OBTAIN_ALIEN_STAGE_10_DIALOG_1"
+        const val OBTAIN_ALIEN_STAGE_10_DIALOG_2 = "OBTAIN_ALIEN_STAGE_10_DIALOG_2"
+        const val OBTAIN_ALIEN_STAGE_11_DIALOG_0 = "OBTAIN_ALIEN_STAGE_11_DIALOG_0"
+        const val OBTAIN_ALIEN_STAGE_11_DIALOG_1 = "OBTAIN_ALIEN_STAGE_11_DIALOG_1"
+        const val OBTAIN_ALIEN_STAGE_13_DIALOG_0 = "OBTAIN_ALIEN_STAGE_13_DIALOG_0"
+
         const val QUEST_RESET_DIALOG_0 = "QUEST_RESET_DIALOG_0"
         const val QUEST_RESET_DIALOG_1 = "QUEST_RESET_DIALOG_1"
         const val QUEST_RESET_DIALOG_2 = "QUEST_RESET_DIALOG_2"
+        const val QUEST_RESET_DIALOG_3 = "QUEST_RESET_DIALOG_3"
 
         private val nodes: Map<String, DialogNode> = mapOf(
             STANDARD_DIALOG_BEGINNING to DialogNode(
@@ -2755,6 +2780,263 @@ class DialogSystem(
                     ),
                 )
             ),
+            OBTAIN_ALIEN_STAGE_1_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage1Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage1Answer1,
+                        nextNode = OBTAIN_ALIEN_STAGE_1_DIALOG_1,
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_1_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage1Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage1Answer2,
+                        nextNode = OBTAIN_ALIEN_STAGE_1_DIALOG_2,
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_1_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage1Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage1Answer3,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.setQuestStageToNext(QUEST_TO_OBTAIN_ALIEN)
+                        }
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_2_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage2Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage2Answer1,
+                        nextNode = OBTAIN_ALIEN_STAGE_2_DIALOG_1,
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_2_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage2Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage2Answer2,
+                        nextNode = OBTAIN_ALIEN_STAGE_2_DIALOG_2,
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_2_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage2Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Excellent,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Save this bober id
+                            questSystem.dataStore.edit { store ->
+                                pet?.let { p ->
+                                    store[OBTAIN_ALIEN_BOBER_ID_KEY] = p.id
+                                }
+                            }
+                            questSystem.setQuestStageToNext(QUEST_TO_OBTAIN_ALIEN)
+                        }
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_3_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage3Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage3Answer1,
+                        nextNode = OBTAIN_ALIEN_STAGE_3_DIALOG_1,
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_3_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage3Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage3Answer2,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Add Clot of Magic to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.ClotOfMagic,
+                                    amount = 1,
+                                )
+                            )
+                            questSystem.setQuestStageToNext(QUEST_TO_OBTAIN_ALIEN)
+                        }
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_4_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage4Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage4Answer1,
+                        nextNode = OBTAIN_ALIEN_STAGE_4_DIALOG_1,
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_4_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage4Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.AllRight,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Save time to wait one day
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_ALIEN_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QUEST_TO_OBTAIN_ALIEN)
+                        }
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_6_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage6Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage6Answer1,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Add spaceship to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.Spaceship,
+                                    amount = 1,
+                                )
+                            )
+                            // Remember time of start
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_ALIEN_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QUEST_TO_OBTAIN_ALIEN)
+                        }
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_8_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage8Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage8Answer1,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.setQuestStageToNext(QUEST_TO_OBTAIN_ALIEN)
+                        }
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_9_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage9Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage9Answer1,
+                        nextNode = OBTAIN_ALIEN_STAGE_9_DIALOG_1,
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_9_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage9Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage9Answer2,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            questSystem.setQuestStageToNext(QUEST_TO_OBTAIN_ALIEN)
+                        }
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_10_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage10Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage10Answer1,
+                        nextNode = OBTAIN_ALIEN_STAGE_10_DIALOG_1,
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_10_DIALOG_1 to DialogNode(
+                text = listOf(StringId.Ellipsis),
+                answers = listOf(
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = OBTAIN_ALIEN_STAGE_10_DIALOG_2,
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_10_DIALOG_2 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage10Dialog2),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage10Answer2,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Add supernova in space to inventory
+                            userStats.addInventoryItem(
+                                InventoryItem(
+                                    id = InventoryItemId.SupernovaInSpace,
+                                    amount = 1,
+                                )
+                            )
+                            questSystem.setQuestStageToNext(QUEST_TO_OBTAIN_ALIEN)
+                        }
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_11_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage11Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage11Answer1,
+                        nextNode = OBTAIN_ALIEN_STAGE_11_DIALOG_1,
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_11_DIALOG_1 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage11Dialog1),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage11Answer2,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Save time to wait 1 hour
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_ALIEN_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QUEST_TO_OBTAIN_ALIEN)
+                        }
+                    ),
+                ),
+            ),
+            OBTAIN_ALIEN_STAGE_13_DIALOG_0 to DialogNode(
+                text = listOf(StringId.ObtainAlienStage13Dialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.ObtainAlienStage13Answer1,
+                        nextNode = null,
+                        action = { questSystem, userStats, pet ->
+                            // Save time to wait 1 hour
+                            val now = getTimestampSecondsSinceEpoch()
+                            questSystem.dataStore.edit { store ->
+                                store[OBTAIN_ALIEN_TIMESTAMP_KEY] = now
+                            }
+                            questSystem.setQuestStageToNext(QUEST_TO_OBTAIN_ALIEN)
+                        }
+                    ),
+                ),
+            ),
             QUEST_RESET_DIALOG_0 to DialogNode(
                 text = listOf(StringId.QuestResetDialog0),
                 answers = listOf(
@@ -2826,6 +3108,27 @@ class DialogSystem(
                         action = { questSystem, userStats, pet ->
                             // Reset obtain dragon quest
                             questSystem.resetQuest(QUEST_TO_OBTAIN_DRAGON)
+                        }
+                    ),
+                    Answer(
+                        text = StringId.Ellipsis,
+                        nextNode = QUEST_RESET_DIALOG_3,
+                    ),
+                    Answer(
+                        text = StringId.QuestResetAnswer1,
+                        nextNode = null,
+                    ),
+                )
+            ),
+            QUEST_RESET_DIALOG_3 to DialogNode(
+                text = listOf(StringId.QuestResetDialog0),
+                answers = listOf(
+                    Answer(
+                        text = StringId.QuestNameObtainAlien,
+                        nextNode = QUEST_RESET_DIALOG_1,
+                        action = { questSystem, userStats, pet ->
+                            // Reset obtain alien quest
+                            questSystem.resetQuest(QUEST_TO_OBTAIN_ALIEN)
                         }
                     ),
                     Answer(

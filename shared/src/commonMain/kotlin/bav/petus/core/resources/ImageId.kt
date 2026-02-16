@@ -301,6 +301,10 @@ enum class ImageId {
     CurseOfWarrior,
     CurseOfBard,
     CurseOfSmith,
+    StarSupernova,
+    ClotOfMagic,
+    Spaceship,
+    SupernovaInSpace,
     //endregion
     ;
 }

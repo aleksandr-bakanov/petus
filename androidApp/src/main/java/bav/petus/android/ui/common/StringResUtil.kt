@@ -114,6 +114,11 @@ fun StringId.toResId(): Int {
         StringId.CurseOfWarrior -> R.string.CurseOfWarrior
         StringId.CurseOfBard -> R.string.CurseOfBard
         StringId.CurseOfSmith -> R.string.CurseOfSmith
+        StringId.StarSupernova -> R.string.StarSupernova
+        StringId.ClotOfMagic -> R.string.ClotOfMagic
+        StringId.Spaceship -> R.string.Spaceship
+        StringId.SupernovaInSpace -> R.string.SupernovaInSpace
+        StringId.AlienEgg -> R.string.AlienEgg
         StringId.MeditationExerciseBreathAwareness -> R.string.MeditationExerciseBreathAwareness
         StringId.MeditationExerciseBoxBreathing -> R.string.MeditationExerciseBoxBreathing
         StringId.MeditationExerciseBodyScan -> R.string.MeditationExerciseBodyScan
@@ -354,15 +359,64 @@ fun StringId.toResId(): Int {
         StringId.ObtainDragonStage25Dialog15 -> R.string.ObtainDragonStage25Dialog15
         StringId.ObtainDragonStage25Dialog16 -> R.string.ObtainDragonStage25Dialog16
         StringId.ObtainDragonStage25Dialog18 -> R.string.ObtainDragonStage25Dialog18
+        StringId.ObtainAlienStage1Answer0 -> R.string.ObtainAlienStage1Answer0
+        StringId.ObtainAlienStage1Dialog0 -> R.string.ObtainAlienStage1Dialog0
+        StringId.ObtainAlienStage1Answer1 -> R.string.ObtainAlienStage1Answer1
+        StringId.ObtainAlienStage1Dialog1 -> R.string.ObtainAlienStage1Dialog1
+        StringId.ObtainAlienStage1Answer2 -> R.string.ObtainAlienStage1Answer2
+        StringId.ObtainAlienStage1Dialog2 -> R.string.ObtainAlienStage1Dialog2
+        StringId.ObtainAlienStage1Answer3 -> R.string.ObtainAlienStage1Answer3
+        StringId.ObtainAlienStage2Answer0 -> R.string.ObtainAlienStage2Answer0
+        StringId.ObtainAlienStage2Dialog0 -> R.string.ObtainAlienStage2Dialog0
+        StringId.ObtainAlienStage2Answer1 -> R.string.ObtainAlienStage2Answer1
+        StringId.ObtainAlienStage2Dialog1 -> R.string.ObtainAlienStage2Dialog1
+        StringId.ObtainAlienStage2Answer2 -> R.string.ObtainAlienStage2Answer2
+        StringId.ObtainAlienStage2Dialog2 -> R.string.ObtainAlienStage2Dialog2
+        StringId.ObtainAlienStage3Answer0 -> R.string.ObtainAlienStage3Answer0
+        StringId.ObtainAlienStage3Dialog0 -> R.string.ObtainAlienStage3Dialog0
+        StringId.ObtainAlienStage3Answer1 -> R.string.ObtainAlienStage3Answer1
+        StringId.ObtainAlienStage3Dialog1 -> R.string.ObtainAlienStage3Dialog1
+        StringId.ObtainAlienStage3Answer2 -> R.string.ObtainAlienStage3Answer2
+        StringId.ObtainAlienStage4Answer0 -> R.string.ObtainAlienStage4Answer0
+        StringId.ObtainAlienStage4Dialog0 -> R.string.ObtainAlienStage4Dialog0
+        StringId.ObtainAlienStage4Answer1 -> R.string.ObtainAlienStage4Answer1
+        StringId.ObtainAlienStage4Dialog1 -> R.string.ObtainAlienStage4Dialog1
+        StringId.ObtainAlienStage6Answer0 -> R.string.ObtainAlienStage6Answer0
+        StringId.ObtainAlienStage6Dialog0 -> R.string.ObtainAlienStage6Dialog0
+        StringId.ObtainAlienStage6Answer1 -> R.string.ObtainAlienStage6Answer1
+        StringId.ObtainAlienStage8Answer0 -> R.string.ObtainAlienStage8Answer0
+        StringId.ObtainAlienStage8Dialog0 -> R.string.ObtainAlienStage8Dialog0
+        StringId.ObtainAlienStage8Answer1 -> R.string.ObtainAlienStage8Answer1
+        StringId.ObtainAlienStage9Answer0 -> R.string.ObtainAlienStage9Answer0
+        StringId.ObtainAlienStage9Dialog0 -> R.string.ObtainAlienStage9Dialog0
+        StringId.ObtainAlienStage9Answer1 -> R.string.ObtainAlienStage9Answer1
+        StringId.ObtainAlienStage9Dialog1 -> R.string.ObtainAlienStage9Dialog1
+        StringId.ObtainAlienStage9Answer2 -> R.string.ObtainAlienStage9Answer2
+        StringId.ObtainAlienStage10Answer0 -> R.string.ObtainAlienStage10Answer0
+        StringId.ObtainAlienStage10Dialog0 -> R.string.ObtainAlienStage10Dialog0
+        StringId.ObtainAlienStage10Answer1 -> R.string.ObtainAlienStage10Answer1
+        StringId.ObtainAlienStage10Dialog2 -> R.string.ObtainAlienStage10Dialog2
+        StringId.ObtainAlienStage10Answer2 -> R.string.ObtainAlienStage10Answer2
+        StringId.ObtainAlienStage11Answer0 -> R.string.ObtainAlienStage11Answer0
+        StringId.ObtainAlienStage11Dialog0 -> R.string.ObtainAlienStage11Dialog0
+        StringId.ObtainAlienStage11Answer1 -> R.string.ObtainAlienStage11Answer1
+        StringId.ObtainAlienStage11Dialog1 -> R.string.ObtainAlienStage11Dialog1
+        StringId.ObtainAlienStage11Answer2 -> R.string.ObtainAlienStage11Answer2
+        StringId.ObtainAlienStage13Answer0 -> R.string.ObtainAlienStage13Answer0
+        StringId.ObtainAlienStage13Dialog0 -> R.string.ObtainAlienStage13Dialog0
+        StringId.ObtainAlienStage13Answer1 -> R.string.ObtainAlienStage13Answer1
         StringId.QuestIsFinished -> R.string.QuestIsFinished
         StringId.QuestDescFrog -> R.string.QuestDescFrog
         StringId.QuestDescBober -> R.string.QuestDescBober
+        StringId.QuestDescDragon -> R.string.QuestDescDragon
+        StringId.QuestDescFractal -> R.string.QuestDescFractal
         StringId.QuestNameNecronomicon -> R.string.QuestNameNecronomicon
         StringId.QuestNameObtainFrogus -> R.string.QuestNameObtainFrogus
         StringId.QuestNameObtainBober -> R.string.QuestNameObtainBober
         StringId.QuestNameObtainFractal -> R.string.QuestNameObtainFractal
         StringId.QuestNameMeditation -> R.string.QuestNameMeditation
         StringId.QuestNameObtainDragon -> R.string.QuestNameObtainDragon
+        StringId.QuestNameObtainAlien -> R.string.QuestNameObtainAlien
         StringId.QuestDescObtainFrogusStage0 -> R.string.QuestDescObtainFrogusStage0
         StringId.QuestDescObtainFrogusStage1 -> R.string.QuestDescObtainFrogusStage1
         StringId.QuestDescObtainFrogusStage2 -> R.string.QuestDescObtainFrogusStage2
@@ -437,6 +491,22 @@ fun StringId.toResId(): Int {
         StringId.QuestDescObtainDragonStage25NoNecro -> R.string.QuestDescObtainDragonStage25NoNecro
         StringId.QuestDescObtainDragonStage26 -> R.string.QuestDescObtainDragonStage26
         StringId.QuestDescObtainDragonStage27 -> R.string.QuestDescObtainDragonStage27
+        is StringId.QuestDescObtainAlienStage0 -> error("QuestDescObtainAlienStage0 requires formatting and should not be mapped with toResId()")
+        StringId.QuestDescObtainAlienStage1 -> R.string.QuestDescObtainAlienStage1
+        StringId.QuestDescObtainAlienStage2 -> R.string.QuestDescObtainAlienStage2
+        StringId.QuestDescObtainAlienStage3 -> R.string.QuestDescObtainAlienStage3
+        StringId.QuestDescObtainAlienStage4 -> R.string.QuestDescObtainAlienStage4
+        StringId.QuestDescObtainAlienStage5 -> R.string.QuestDescObtainAlienStage5
+        StringId.QuestDescObtainAlienStage6 -> R.string.QuestDescObtainAlienStage6
+        is StringId.QuestDescObtainAlienStage7 -> error("QuestDescObtainAlienStage7 requires formatting and should not be mapped with toResId()")
+        StringId.QuestDescObtainAlienStage8 -> R.string.QuestDescObtainAlienStage8
+        StringId.QuestDescObtainAlienStage9 -> R.string.QuestDescObtainAlienStage9
+        StringId.QuestDescObtainAlienStage10 -> R.string.QuestDescObtainAlienStage10
+        StringId.QuestDescObtainAlienStage11 -> R.string.QuestDescObtainAlienStage11
+        StringId.QuestDescObtainAlienStage12 -> R.string.QuestDescObtainAlienStage12
+        StringId.QuestDescObtainAlienStage13 -> R.string.QuestDescObtainAlienStage13
+        StringId.QuestDescObtainAlienStage14 -> R.string.QuestDescObtainAlienStage14
+        StringId.QuestDescObtainAlienStage15 -> R.string.QuestDescObtainAlienStage15
         StringId.ItemDescNecronomicon -> R.string.ItemDescNecronomicon
         StringId.ItemDescPieceOfCloth -> R.string.ItemDescPieceOfCloth
         StringId.ItemDescMysteriousBook -> R.string.ItemDescMysteriousBook
@@ -458,5 +528,10 @@ fun StringId.toResId(): Int {
         StringId.ItemDescCurseOfWarrior -> R.string.ItemDescCurseOfWarrior
         StringId.ItemDescCurseOfBard -> R.string.ItemDescCurseOfBard
         StringId.ItemDescCurseOfSmith -> R.string.ItemDescCurseOfSmith
+        StringId.ItemDescStarSupernova -> R.string.ItemDescStarSupernova
+        StringId.ItemDescClotOfMagic -> R.string.ItemDescClotOfMagic
+        StringId.ItemDescSpaceship -> R.string.ItemDescSpaceship
+        StringId.ItemDescSupernovaInSpace -> R.string.ItemDescSupernovaInSpace
+        StringId.ItemDescAlienEgg -> R.string.ItemDescAlienEgg
     }
 }

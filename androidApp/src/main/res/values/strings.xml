@@ -84,6 +84,11 @@
 	<string name="CurseOfWarrior">Curse of the Warrior</string>
 	<string name="CurseOfBard">Curse of the Bard</string>
 	<string name="CurseOfSmith">Curse of the Smith</string>
+	<string name="StarSupernova">Star in the sky</string>
+	<string name="ClotOfMagic">Clot of pure magic</string>
+	<string name="Spaceship">Spaceship</string>
+	<string name="SupernovaInSpace">Supernova</string>
+	<string name="AlienEgg">Extraterrestrial capsule</string>
 	<string name="InventoryItemPattern">%s (x%d)</string>
 
 	<!-- Item descriptions -->
@@ -108,6 +113,11 @@
 	<string name="ItemDescCurseOfWarrior">The warrior’s curse was born not of magic, but of a choice denied.\nAt Stone Pass, he was prevented from confronting the giant — and this decision, made out of caution, left a rift deeper than any wound.\n\nHonor, unrequited, began to rot. He left alone, without words or witnesses, to reclaim what he considered rightfully his.\n\nBut when he returned to the pass, he was already broken: doubt dulled his hand, fatigue weighed his steps, and rage proved weaker than stone.\n\nHe didn’t last five minutes.\n\nNow the giant wears his cloak, draped over his shoulder like a warm cloth. He doesn’t know it’s a trophy, doesn’t understand its significance — and in this final humiliation, the warrior’s honor dissolved completely, becoming nothing more than the wind on the pass.</string>
 	<string name="ItemDescCurseOfBard">The bard’s curse began in the Forest of Singing Winds, where he once dared to respond to the songs of the dryads. They managed to break through further, but the forest did not completely release him — part of the melody wove itself into his voice, leaving an alien rhythm within him.\n\nOver time, the songs ceased to be quiet. They came in his dreams, interrupted his thoughts, compelled him to sing even when he was silent. His music became strange: it contained a melancholy that made the listeners’ hearts clench, and a call that made them want to go — not knowing where.\n\nHe resisted to the last, but one day he realized he could no longer distinguish his own desires from those whispered by the forest. On a windless night, he left his house and walked into the thicket, following the voices that now sounded like a sentence.\n\nSince then, a wordless song is sometimes heard in the Forest of Singing Winds — uneven, broken. And those who recognize the human voice in it try to leave quickly: they say the forest sings through the one who once tried to answer it.</string>
 	<string name="ItemDescCurseOfSmith">The blacksmith’s curse began in the Ash Caves, when he found red crystals, warm as life, amid the slag and rusty machinery. He mistook them for a rare ore and began studying them, testing their sound and impact, without noticing how they began to respond to him.\n\nAt first, the crystals merely drove him mad — distorting time, making him hear meaningful words in the grinding of gears. Then they sprouted: scarlet veins appeared beneath his skin, his bones grew heavier, his movements slower but stronger.\n\nWhen he realized he could no longer distinguish his own will from the call of the earth, it was too late. He removed his hammer, left it at the entrance, and went deeper into the caves, where fire and stone never sleep.\nThey say that now in the Ash Caves, a mechanism that no one has ever set in motion sometimes moves, and in its rhythm one can hear the heavy breathing of one who has chosen to merge with the earth forever.</string>
+	<string name="ItemDescStarSupernova">Night wrapped the village in thick velvet, and only a few fading window lights dared to rival the stars. The sky hung low and silent, as if holding its breath.\n\nAnd then one of the stars flared.\n\nAt first, it was no more than a spark lost among the silver scatter of lights. Then its radiance began to swell with unnatural force, as though a fiery rift had opened in the very heart of the heavens. In a single instant, the darkness recoiled: rooftops blazed with cold brilliance, the well’s wooden beam flashed like steel, and sharp black shadows slashed across the earth.\n\nIt was not merely light — it was the cry of a dying sun, forged into a blinding crown of fire. The sky blossomed in orange flame, and for a fleeting moment it seemed that eternity itself had looked down upon the quiet village.</string>
+	<string name="ItemDescClotOfMagic">It hovered in the air, touching neither earth nor wind — a cluster of pure magic, radiating a soft yet unbearably deep light. Its surface flowed like living quicksilver, shimmering in shades of azure, gold, and a faint violet flame. Within it, tiny sparks flared and faded, as though stars were being born and extinguished in a sky too small for infinity.\n\nA quiet hum emanated from it, like the echo of a distant choir chanting ancient words long forgotten. The air around it thickened and trembled, grass bent low, and shadows stretched toward it as if drawn to a source of life. To come near was to feel your skin prickle, as though the very fabric of the world brushed against you with unseen fingers.</string>
+	<string name="ItemDescSpaceship">It towered above the village like a steel giant strayed from another world. Its matte-silver hull, traced with seams, resembled the armor of an ancient titan, while the rounded cockpit with its dark glass dome gleamed like an enchanted eye. Within its belly, an unseen force hummed softly — like a captive star bound obediently within iron ribs.\n\nMassive supports, like the legs of a colossal guardian, pierced the earth, leaving faintly smoking marks in the grass from its recent landing. Along its sides protruded cylinders and structures — perhaps vessels of arcane ether, perhaps the organs of some mechanical beast unknown to humankind. Amber lights flickered beneath its hull, like the breathing of a dragon fallen asleep among fields and windmills.\n\nAgainst the backdrop of blue mountains and a tranquil sky, it seemed a messenger from distant constellations — a wanderer descending into a realm of thatched roofs and pastoral calm. In its silhouette lingered ancient power and silent mystery, as though it carried legends of worlds where the heavens are roads and the stars serve as lanterns for travelers.</string>
+	<string name="ItemDescSupernovaInSpace">At the heart of the abyssal darkness, a star reached the limit of its nuclear endurance. Its core, compressed to an almost impossible density, collapsed in an instant and then unleashed energy rivaling the luminosity of an entire galaxy. The flash tore through the cosmic night — an overwhelming surge of gamma and X-ray radiation ripping through space as if the very fabric of reality had fractured.\n\nThe shockwave, expanding at thousands of kilometers per second, hurled layers of incandescent plasma into the vacuum. Swirling currents of ionized gas formed a radiant ring — the advancing front of matter enriched with heavy elements forged in the star’s final fractions of a second. Within this blazing cloud, gold, uranium, and other rare atoms were synthesized — the raw material for future planets and civilizations.\nAs the brilliance slowly began to fade, a сверхdense remnant remained behind — a neutron star or a nascent black hole. Space around it warped under extreme gravity, and for eons the surrounding galaxy would carry the echo of the catastrophe. It was not merely an explosion, it was a cosmic act of matter recycling, rewriting the chemical map of the Universe.</string>
+	<string name="ItemDescAlienEgg">Transparent cylindrical capsule with metallic end caps. The glass body reveals its contents — inside, a bright orange-golden substance pulses, emitting a soft glow. The light reflects off the inner walls of the capsule, creating a sense of warmth and contained energy.\n\nInside the capsule is something resembling an alien organism. It looks like a living lava: a dome-shaped form rises at the center, with wave-like flows spreading outward, as if the liquid is in constant motion. Tiny sparkling points are visible throughout the mass, like microscopic flashes of energy.\n\nThe organism appears active and almost intelligent — its surface shimmers and seems to respond to its surroundings.</string>
 
 	<!-- Meditation exercises -->
 	<string name="MeditationExerciseBreathAwareness">Breath Awareness</string>
@@ -442,17 +452,66 @@
 	<string name="ObtainDragonStage25Dialog15">Bober places his hand on your shoulder and looks at you calmly, as if this were all just another day’s work in the forge. He waits until we run across the bridge, then strikes the hammer against a supporting column. The entire temple begins to crumble. The last thing we see is Bober’s silhouette standing amidst the falling stones.</string>
 	<string name="ObtainDragonStage25Dialog16">It’s time to go back, we don’t want their sacrifice to be in vain. The journey home will be easier and quicker, and it will only take one day. Let’s go!</string>
 	<string name="ObtainDragonStage25Dialog18">Catus grabs his staff, and a blue flame flares on it. He creates a wall of energy that tears the air. The wall explodes with light, burying the mage and the hordes of the dead.</string>
+	<string name="ObtainAlienStage1Answer0">Hey… Catus, did you see that? Did the sky just explode?</string>
+	<string name="ObtainAlienStage1Dialog0">I saw it. And this, my friend, is not just a firework. This is Betelgeuse.</string>
+	<string name="ObtainAlienStage1Answer1">Betel… who?</string>
+	<string name="ObtainAlienStage1Dialog1">Betelgeuse. A red supergiant. Once a star, it has decided to make a graceful exit — it has gone supernova. Such an event happens once every few thousand years.</string>
+	<string name="ObtainAlienStage1Answer2">Sounds epic.</string>
+	<string name="ObtainAlienStage1Dialog2">Of course. You know what would be really epic? To fly there and see it all with your own eyes.</string>
+	<string name="ObtainAlienStage1Answer3">Hmm… indeed, why not?</string>
+	<string name="ObtainAlienStage2Answer0">Bober, hypothetical question. Can you build… a spaceship?</string>
+	<string name="ObtainAlienStage2Dialog0">Hypothetically? Yes. Practically? Also yes, but with some nuances.</string>
+	<string name="ObtainAlienStage2Answer1">Which ones exactly?</string>
+	<string name="ObtainAlienStage2Dialog1">I need a source of powerful magic. You know, concentrated magic. Without it, the ship won’t get further than the next hill.</string>
+	<string name="ObtainAlienStage2Answer2">Where can I get it?</string>
+	<string name="ObtainAlienStage2Dialog2">At the dragon’s, of course. Where else?</string>
+	<string name="ObtainAlienStage3Answer0">Hi, we need magic. For a flight to a supernova.</string>
+	<string name="ObtainAlienStage3Dialog0">Hmm. A bold wish. And a stupid one. I like it.</string>
+	<string name="ObtainAlienStage3Answer1">So… will you help?</string>
+	<string name="ObtainAlienStage3Dialog1">Take this. This is a clot of pure magic. Don’t drop it. And don’t eat it.</string>
+	<string name="ObtainAlienStage3Answer2">I’ll try.</string>
+	<string name="ObtainAlienStage4Answer0">Hi, I brought a little magic.</string>
+	<string name="ObtainAlienStage4Dialog0">Ooh, that’s some magic! Okay… if it’s here, then the stabilizer, and the magic engine…</string>
+	<string name="ObtainAlienStage4Answer1">I see you are passionate about work, when will the starship be ready?</string>
+	<string name="ObtainAlienStage4Dialog1">Tomorrow, come tomorrow… I wonder if this formula will work…</string>
+	<string name="ObtainAlienStage6Answer0">Hey, how are things with the starship?</string>
+	<string name="ObtainAlienStage6Dialog0">It worked! Everything is according to plan. All systems are operating normally. The magical spaceship is ready. Onward, to the stars!</string>
+	<string name="ObtainAlienStage6Answer1">Onward!</string>
+	<string name="ObtainAlienStage8Answer0">Hello… we’ve been flying for a long time, and Betelgeuse is still far away.</string>
+	<string name="ObtainAlienStage8Dialog0">Well, space is big.</string>
+	<string name="ObtainAlienStage8Answer1">Something’s wrong here…</string>
+	<string name="ObtainAlienStage9Answer0">Hi, do you know why we’re flying so slowly?</string>
+	<string name="ObtainAlienStage9Dialog0">I see your path. It is… ineffective.</string>
+	<string name="ObtainAlienStage9Answer1">In terms of?</string>
+	<string name="ObtainAlienStage9Dialog1">You are flying at normal thrust. Your hyperdrive is turned off.</string>
+	<string name="ObtainAlienStage9Answer2">…what?</string>
+	<string name="ObtainAlienStage10Answer0">Bober.</string>
+	<string name="ObtainAlienStage10Dialog0">Yes?</string>
+	<string name="ObtainAlienStage10Answer1">Did we forget to turn on the hyperdrive?</string>
+	<string name="ObtainAlienStage10Dialog2">Yeah, heck… wait a second…</string>
+	<string name="ObtainAlienStage10Answer2">Bober, bober…</string>
+	<string name="ObtainAlienStage11Answer0">Wow…</string>
+	<string name="ObtainAlienStage11Dialog0">Supernova remnants. Gas, light, debris… beautiful. And deadly.</string>
+	<string name="ObtainAlienStage11Answer1">Wait. Do you see this?</string>
+	<string name="ObtainAlienStage11Dialog1">Signal? Yes. In orbit. Looks like a capsule.</string>
+	<string name="ObtainAlienStage11Answer2">Launch the probe. It should return within an hour.</string>
+	<string name="ObtainAlienStage13Answer0">The probe has returned with the capsule, it’s time to go home.</string>
+	<string name="ObtainAlienStage13Dialog0">Hyperdrive engaged. This time, immediately. The journey home will take one hour.</string>
+	<string name="ObtainAlienStage13Answer1">Excellent. I hope no one at home is against alien capsules.</string>
 
 	<!-- Quest description -->
 	<string name="QuestIsFinished">Done</string>
 	<string name="QuestDescFrog">frogus</string>
 	<string name="QuestDescBober">bober</string>
+	<string name="QuestDescDragon">dragon</string>
+	<string name="QuestDescFractal">fractal</string>
 	<string name="QuestNameNecronomicon">Lost and found</string>
 	<string name="QuestNameObtainFrogus">Fish and consequences</string>
 	<string name="QuestNameObtainBober">Must be a wind</string>
 	<string name="QuestNameObtainFractal">Coastline paradox</string>
 	<string name="QuestNameMeditation">Mind games</string>
 	<string name="QuestNameObtainDragon">Dragon age</string>
+	<string name="QuestNameObtainAlien">Betel… who?</string>
 	<string name="QuestDescObtainFrogusStage0">Something tells me I need to make sure I understand the catus one hundred percent.</string>
 	<string name="QuestDescObtainFrogusStage1">Great, now I need to ask adult catus, maybe someone needs some help.</string>
 	<string name="QuestDescObtainFrogusStage2">As I thought, one of the katus asked me to diversify the menu and find some fish somewhere. I will look for it near the pond he was talking about.</string>
@@ -527,4 +586,20 @@
 	<string name="QuestDescObtainDragonStage25NoNecro">The necromancer is defeated, but now I must choose who will escape with the egg while the others hold off the creatures.</string>
 	<string name="QuestDescObtainDragonStage26">We got the egg back, but at what cost! Time to go home.</string>
 	<string name="QuestDescObtainDragonStage27">Here we are at home, time to honor the memory of the heroes and start hatching dragons!</string>
+	<string name="QuestDescObtainAlienStage0">To begin with, it would be nice to fully understand catus, %1$s, %2$s and %3$s.</string>
+	<string name="QuestDescObtainAlienStage1">A new star has appeared in the sky, I need to find out from Catus what’s what.</string>
+	<string name="QuestDescObtainAlienStage2">Catus explained that this was Betelgeuse and suggested flying to it, I should ask Bober if this is even possible.</string>
+	<string name="QuestDescObtainAlienStage3">The Bober said that he could build a spaceship, but to do so he needed concentrated magic, which could be taken from dragons.</string>
+	<string name="QuestDescObtainAlienStage4">I got magic from the dragon (I’ll try not to eat it), I need to give it to the bober.</string>
+	<string name="QuestDescObtainAlienStage5">I gave the bober a clot of magic and he immersed himself in work, saying to come tomorrow.</string>
+	<string name="QuestDescObtainAlienStage6">Need to ask the bober about the starship.</string>
+	<string name="QuestDescObtainAlienStage7">The starship is ready! We’re heading to Betelgeuse. According to the panels, we’re still %1$s days away.</string>
+	<string name="QuestDescObtainAlienStage8">It’s taking us a strangely long time to fly, even with dragon magic. Need to ask bober what’s wrong.</string>
+	<string name="QuestDescObtainAlienStage9">I need to consult with the fractal, maybe it will tell me what to do.</string>
+	<string name="QuestDescObtainAlienStage10">So. It seems the bober got so busy that he forgot the most important thing.</string>
+	<string name="QuestDescObtainAlienStage11">We’ve arrived. It’s very beautiful. I’ll go ask the beaver if everything is okay.</string>
+	<string name="QuestDescObtainAlienStage12">We launched a probe to intercept the capsule sending out a strange signal.</string>
+	<string name="QuestDescObtainAlienStage13">The probe has brought the capsule on board. Need to tell the bober it’s time to return.</string>
+	<string name="QuestDescObtainAlienStage14">We’re flying home.</string>
+	<string name="QuestDescObtainAlienStage15">We’re back home, time to try growing this weird soup.</string>
 </resources>

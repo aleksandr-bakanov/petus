@@ -149,10 +149,11 @@ class Engine(
         val now = getTimestampSecondsSinceEpoch()
         val fullPsych = getFullPsychForPetType(pet.type)
         val newPsych = (pet.psych - fullPsych / 2f).coerceIn(0f, fullPsych)
+        val newPooped = if (pet.type != PetType.Alien) true else false // Aliens don't poop
         val newPet = pet.copy(
             activeSleepState = SleepState.Active,
             lastActiveSleepSwitchTimestamp = now,
-            isPooped = true,
+            isPooped = newPooped,
             psych = newPsych,
             timestampPlayAllowed = now + PET_NOT_ALLOWED_TO_PLAY_INTERVAL_SEC,
         )

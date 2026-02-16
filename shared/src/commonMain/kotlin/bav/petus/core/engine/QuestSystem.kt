@@ -14,6 +14,7 @@ import bav.petus.core.engine.Engine.Companion.DAY
 import bav.petus.core.engine.Engine.Companion.HOUR
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_MEDITATION
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_NECRONOMICON
+import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_ALIEN
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_BOBER
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_DRAGON
 import bav.petus.core.engine.QuestSystem.Companion.QUEST_TO_OBTAIN_FRACTAL
@@ -64,7 +65,7 @@ class QuestSystem(
             }
         }
 
-        // Checks if some pet involved in quest dies (it it's critical for quest)
+        // Checks if some pet involved in quest dies (if it's critical for quest)
         if (e is Event.PetDied) {
             // Necronomicon stage 6 check
             val necronomiconQuest = quests[QUEST_NECRONOMICON]!!
@@ -94,7 +95,7 @@ class QuestSystem(
                         InventoryItem(
                             id = InventoryItemId.Fish,
                             amount = 1,
-                        )
+                        ), false
                     )
                     dataStore.edit { store -> store[obtainFrogusQuest.currentStageKey] = 1 }
                 }
@@ -140,13 +141,13 @@ class QuestSystem(
                         InventoryItem(
                             id = InventoryItemId.TwoMeterRuler,
                             amount = 1,
-                        )
+                        ), false
                     )
                     userStats.removeInventoryItem(
                         InventoryItem(
                             id = InventoryItemId.TenCentimeterRuler,
                             amount = 1,
-                        )
+                        ), false
                     )
                 }
             }
@@ -161,6 +162,24 @@ class QuestSystem(
                     dataStore.edit { store ->
                         store[meditationQuest.currentStageKey] = 2
                     }
+                }
+            }
+
+            // Obtain alien stage >= 3 check (and until quest end)
+            val obtainAlienQuest = quests[QUEST_TO_OBTAIN_ALIEN]!!
+            val obtainAlienCurrentStage = preferences[obtainAlienQuest.currentStageKey]
+            if (obtainAlienCurrentStage in 3..14) {
+                // If pet who died is this bober
+                if (preferences[OBTAIN_ALIEN_BOBER_ID_KEY] == e.petId) {
+                    // Then set stage to 2
+                    dataStore.edit { store ->
+                        store[obtainAlienQuest.currentStageKey] = 2
+                    }
+                    // Remove any items obtained starting from stage 3
+                    userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.ClotOfMagic, amount = 1), false)
+                    userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.Spaceship, amount = 1), false)
+                    userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.SupernovaInSpace, amount = 1), false)
+                    userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.AlienEgg, amount = 1), false)
                 }
             }
         }
@@ -395,6 +414,34 @@ class QuestSystem(
                     store[obtainDragonQuest.currentStageKey] = 0
                 }
             }
+            QUEST_TO_OBTAIN_ALIEN -> {
+                val obtainAlienQuest = quests[QUEST_TO_OBTAIN_ALIEN]!!
+
+                // Remove all items
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.StarSupernova, amount = 1), false)
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.ClotOfMagic, amount = 1), false)
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.Spaceship, amount = 1), false)
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.SupernovaInSpace, amount = 1), false)
+                userStats.removeInventoryItem(InventoryItem(id = InventoryItemId.AlienEgg, amount = 1), false)
+
+                // Don't delete achievements (such a Memories and Curses)
+
+                // Remove available pet type
+                userStats.removeAvailablePetType(PetType.Alien)
+
+                dataStore.edit { store ->
+                    // Remove all stages conditions
+                    for (index in 0 until obtainAlienQuest.stages.size) {
+                        store.remove(stringSetPreferencesKey("obtain_alien_stage_${index}_conditions"))
+                    }
+                    // Remove all special keys
+                    store.remove(OBTAIN_ALIEN_BOBER_ID_KEY)
+                    store.remove(OBTAIN_ALIEN_TIMESTAMP_KEY)
+
+                    // Reset stage to zero
+                    store[obtainAlienQuest.currentStageKey] = 0
+                }
+            }
         }
         // Simulate language knowledge event because all quests require
         // language knowledge as the first step
@@ -416,6 +463,7 @@ class QuestSystem(
         const val QUEST_TO_OBTAIN_FRACTAL = "QUEST_TO_OBTAIN_FRACTAL"
         const val QUEST_MEDITATION = "QUEST_MEDITATION"
         const val QUEST_TO_OBTAIN_DRAGON = "QUEST_TO_OBTAIN_DRAGON"
+        const val QUEST_TO_OBTAIN_ALIEN = "QUEST_TO_OBTAIN_ALIEN"
     }
 }
 
@@ -456,6 +504,11 @@ private const val MEDITATION_STAGE_0_LAMBDA = "MEDITATION_STAGE_0_LAMBDA"
 private const val OBTAIN_DRAGON_STAGE_0_LAMBDA = "OBTAIN_DRAGON_STAGE_0_LAMBDA"
 private const val OBTAIN_DRAGON_STAGE_3_LAMBDA = "OBTAIN_DRAGON_STAGE_3_LAMBDA"
 private const val OBTAIN_DRAGON_STAGE_6_LAMBDA = "OBTAIN_DRAGON_STAGE_6_LAMBDA"
+
+private const val OBTAIN_ALIEN_STAGE_0_LAMBDA = "OBTAIN_ALIEN_STAGE_0_LAMBDA"
+private const val OBTAIN_ALIEN_STAGE_5_LAMBDA = "OBTAIN_ALIEN_STAGE_5_LAMBDA"
+private const val OBTAIN_ALIEN_STAGE_7_LAMBDA = "OBTAIN_ALIEN_STAGE_7_LAMBDA"
+private const val OBTAIN_ALIEN_STAGE_12_LAMBDA = "OBTAIN_ALIEN_STAGE_12_LAMBDA"
 
 private val conditionLambdas =
     mapOf<String, suspend (QuestSystem, Preferences, QuestSystem.Event) -> Boolean>(
@@ -594,6 +647,40 @@ private val conditionLambdas =
                 } ?: false
             } ?: false
         },
+        OBTAIN_ALIEN_STAGE_0_LAMBDA to { questSystem, _, event ->
+            (event as? QuestSystem.Event.LanguageKnowledgeChanged)?.let { _ ->
+                val catusKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Catus)
+                val boberKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Bober)
+                val dragonKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Dragon)
+                val fractalKnowledge = questSystem.userStats.getLanguageKnowledge(PetType.Fractal)
+
+                catusKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE &&
+                        boberKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE &&
+                        dragonKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE &&
+                        fractalKnowledge >= UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE
+            } ?: false
+        },
+        OBTAIN_ALIEN_STAGE_5_LAMBDA to { _, prefs, event ->
+            (event as? QuestSystem.Event.Tick)?.let { e ->
+                prefs[OBTAIN_ALIEN_TIMESTAMP_KEY]?.let { timestamp ->
+                    e.secondsSinceEpoch - timestamp > DAY
+                } ?: false
+            } ?: false
+        },
+        OBTAIN_ALIEN_STAGE_7_LAMBDA to { _, prefs, event ->
+            (event as? QuestSystem.Event.Tick)?.let { e ->
+                prefs[OBTAIN_ALIEN_TIMESTAMP_KEY]?.let { timestamp ->
+                    e.secondsSinceEpoch - timestamp > 3 * DAY
+                } ?: false
+            } ?: false
+        },
+        OBTAIN_ALIEN_STAGE_12_LAMBDA to { _, prefs, event ->
+            (event as? QuestSystem.Event.Tick)?.let { e ->
+                prefs[OBTAIN_ALIEN_TIMESTAMP_KEY]?.let { timestamp ->
+                    e.secondsSinceEpoch - timestamp > HOUR
+                } ?: false
+            } ?: false
+        },
     )
 
 val NECRONOMICON_TIMESTAMP_KEY = longPreferencesKey("NECRONOMICON_TIMESTAMP_KEY")
@@ -635,6 +722,9 @@ val OBTAIN_DRAGON_STONE_DECISION_KEY = stringPreferencesKey("OBTAIN_DRAGON_STONE
 val OBTAIN_DRAGON_ASH_DECISION_KEY = stringPreferencesKey("OBTAIN_DRAGON_ASH_DECISION_KEY")
 val OBTAIN_DRAGON_HAS_NECRONOMICON_KEY = booleanPreferencesKey("OBTAIN_DRAGON_HAS_NECRONOMICON_KEY")
 val OBTAIN_DRAGON_CAT_IS_SACRIFICE_KEY = booleanPreferencesKey("OBTAIN_DRAGON_CAT_IS_SACRIFICE_KEY")
+
+val OBTAIN_ALIEN_BOBER_ID_KEY = longPreferencesKey("OBTAIN_ALIEN_BOBER_ID_KEY")
+val OBTAIN_ALIEN_TIMESTAMP_KEY = longPreferencesKey("OBTAIN_ALIEN_TIMESTAMP_KEY")
 
 private val quests = mapOf(
     QUEST_NECRONOMICON to Quest(
@@ -2468,4 +2558,299 @@ private val quests = mapOf(
             ),
         )
     ),
+    QUEST_TO_OBTAIN_ALIEN to Quest(
+        currentStageKey = intPreferencesKey("obtain_alien_stage_key"),
+        stages = listOf(
+            // Stage 0 - make sure user understands cat, bober, dragon and fractal 100%
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_0_conditions"),
+                initialConditions = setOf(OBTAIN_ALIEN_STAGE_0_LAMBDA),
+                onFinish = { questSystem ->
+                    // Add star in the sky to inventory
+                    questSystem.userStats.addInventoryItem(
+                        InventoryItem(
+                            id = InventoryItemId.StarSupernova,
+                            amount = 1,
+                        )
+                    )
+                },
+                additionalAnswerOptions = null,
+            ),
+            // Stage 1 - dialog stage - ask Catus about new star
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_1_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Catus &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainAlienStage1Answer0,
+                                nextNode = DialogSystem.OBTAIN_ALIEN_STAGE_1_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 2 - dialog stage - ask Bober to build spaceship
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_2_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Bober &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainAlienStage2Answer0,
+                                nextNode = DialogSystem.OBTAIN_ALIEN_STAGE_2_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 3 - dialog stage - ask Dragon to give concentrated magic
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_3_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Dragon &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainAlienStage3Answer0,
+                                nextNode = DialogSystem.OBTAIN_ALIEN_STAGE_3_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 4 - dialog stage - give clot of magic to bober
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_4_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Bober &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val boberId = store[OBTAIN_ALIEN_BOBER_ID_KEY]
+                        if (boberId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainAlienStage4Answer0,
+                                    nextNode = DialogSystem.OBTAIN_ALIEN_STAGE_4_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 5 - wait 1 day to build a spaceship
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_5_conditions"),
+                initialConditions = setOf(OBTAIN_ALIEN_STAGE_5_LAMBDA),
+                onFinish = {},
+                additionalAnswerOptions = null
+            ),
+            // Stage 6 - dialog stage - ask bober about if starship is ready
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_6_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Bober &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val boberId = store[OBTAIN_ALIEN_BOBER_ID_KEY]
+                        if (boberId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainAlienStage6Answer0,
+                                    nextNode = DialogSystem.OBTAIN_ALIEN_STAGE_6_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 7 - wait 3 day go without hyperdrive
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_7_conditions"),
+                initialConditions = setOf(OBTAIN_ALIEN_STAGE_7_LAMBDA),
+                onFinish = {},
+                additionalAnswerOptions = null
+            ),
+            // Stage 8 - dialog stage - ask Bober about slow speed
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_8_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Bober &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val boberId = store[OBTAIN_ALIEN_BOBER_ID_KEY]
+                        if (boberId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainAlienStage8Answer0,
+                                    nextNode = DialogSystem.OBTAIN_ALIEN_STAGE_8_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 9 - dialog stage - ask Fractal about slow speed
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_9_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Fractal &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        listOf(
+                            Answer(
+                                text = StringId.ObtainAlienStage9Answer0,
+                                nextNode = DialogSystem.OBTAIN_ALIEN_STAGE_9_DIALOG_0,
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 10 - dialog stage - tell bober about hyperdrive
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_10_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Bober &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val boberId = store[OBTAIN_ALIEN_BOBER_ID_KEY]
+                        if (boberId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainAlienStage10Answer0,
+                                    nextNode = DialogSystem.OBTAIN_ALIEN_STAGE_10_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 11 - dialog stage - ask bober about supernova
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_11_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Bober &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val boberId = store[OBTAIN_ALIEN_BOBER_ID_KEY]
+                        if (boberId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainAlienStage11Answer0,
+                                    nextNode = DialogSystem.OBTAIN_ALIEN_STAGE_11_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 12 - wait 1 hour for probe to return
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_12_conditions"),
+                initialConditions = setOf(OBTAIN_ALIEN_STAGE_12_LAMBDA),
+                onFinish = { questSystem ->
+                    // Add alien egg into inventory
+                    questSystem.userStats.addInventoryItem(
+                        InventoryItem(
+                            id = InventoryItemId.AlienEgg,
+                            amount = 1,
+                        )
+                    )
+                },
+                additionalAnswerOptions = null
+            ),
+            // Stage 13 - dialog stage - ask bober to return home
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_13_conditions"),
+                initialConditions = setOf(ALWAYS_FALSE_CONDITION),
+                onFinish = {},
+                additionalAnswerOptions = { questSystem, pet, nodeKey ->
+                    if (nodeKey == DialogSystem.STANDARD_DIALOG_BEGINNING &&
+                        pet.type == PetType.Bober &&
+                        pet.bodyState == BodyState.Alive)
+                    {
+                        val store = questSystem.dataStore.data.first()
+                        val boberId = store[OBTAIN_ALIEN_BOBER_ID_KEY]
+                        if (boberId == pet.id) {
+                            listOf(
+                                Answer(
+                                    text = StringId.ObtainAlienStage13Answer0,
+                                    nextNode = DialogSystem.OBTAIN_ALIEN_STAGE_13_DIALOG_0,
+                                )
+                            )
+                        } else emptyList()
+                    } else {
+                        emptyList()
+                    }
+                },
+            ),
+            // Stage 14 - wait 1 hour to return home
+            QuestStage(
+                conditionsKey = stringSetPreferencesKey("obtain_alien_stage_14_conditions"),
+                initialConditions = setOf(OBTAIN_ALIEN_STAGE_12_LAMBDA), // save to reuse here
+                onFinish = { questSystem ->
+                    // Add available alien pet type
+                    questSystem.userStats.addNewAvailablePetType(PetType.Alien)
+                    // Immediately learn its language
+                    questSystem.userStats.saveLanguageKnowledge(PetType.Alien, MAXIMUM_LANGUAGE_KNOWLEDGE)
+                },
+                additionalAnswerOptions = null
+            ),
+        )
+    )
 )

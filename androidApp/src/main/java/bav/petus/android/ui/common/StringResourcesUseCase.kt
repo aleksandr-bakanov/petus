@@ -16,6 +16,8 @@ class StringResourcesUseCase(
         is StringId.QuestDescObtainFractalStage0 -> context.getString(R.string.QuestDescObtainFractalStage0, id.boberName, id.frogName)
         is StringId.QuestDescMeditationStage0 -> context.getString(R.string.QuestDescMeditationStage0, id.frogName)
         is StringId.QuestDescObtainDragonStage0 -> context.getString(R.string.QuestDescObtainDragonStage0, id.frogName, id.boberName)
+        is StringId.QuestDescObtainAlienStage0 -> context.getString(R.string.QuestDescObtainAlienStage0, id.boberName, id.dragonName, id.fractalName)
+        is StringId.QuestDescObtainAlienStage7 -> context.getString(R.string.QuestDescObtainAlienStage7, id.days)
         else -> context.getString(id.toResId())
     }
 }

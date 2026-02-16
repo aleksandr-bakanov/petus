@@ -25,6 +25,11 @@ enum class InventoryItemId {
     CurseOfWarrior,
     CurseOfBard,
     CurseOfSmith,
+    StarSupernova,
+    ClotOfMagic,
+    Spaceship,
+    SupernovaInSpace,
+    AlienEgg,
     ;
 }
 
@@ -51,6 +56,11 @@ fun InventoryItemId.toItemNameStringId(): StringId {
         InventoryItemId.CurseOfWarrior -> StringId.CurseOfWarrior
         InventoryItemId.CurseOfBard -> StringId.CurseOfBard
         InventoryItemId.CurseOfSmith -> StringId.CurseOfSmith
+        InventoryItemId.StarSupernova -> StringId.StarSupernova
+        InventoryItemId.ClotOfMagic -> StringId.ClotOfMagic
+        InventoryItemId.Spaceship -> StringId.Spaceship
+        InventoryItemId.SupernovaInSpace -> StringId.SupernovaInSpace
+        InventoryItemId.AlienEgg -> StringId.AlienEgg
     }
 }
 
@@ -77,6 +87,11 @@ fun InventoryItemId.toItemDescriptionStringId(): StringId {
         InventoryItemId.CurseOfWarrior -> StringId.ItemDescCurseOfWarrior
         InventoryItemId.CurseOfBard -> StringId.ItemDescCurseOfBard
         InventoryItemId.CurseOfSmith -> StringId.ItemDescCurseOfSmith
+        InventoryItemId.StarSupernova -> StringId.ItemDescStarSupernova
+        InventoryItemId.ClotOfMagic -> StringId.ItemDescClotOfMagic
+        InventoryItemId.Spaceship -> StringId.ItemDescSpaceship
+        InventoryItemId.SupernovaInSpace -> StringId.ItemDescSupernovaInSpace
+        InventoryItemId.AlienEgg -> StringId.ItemDescAlienEgg
     }
 }
 
@@ -103,5 +118,10 @@ fun InventoryItemId.toImageId(): ImageId {
         InventoryItemId.CurseOfWarrior -> ImageId.CurseOfWarrior
         InventoryItemId.CurseOfBard -> ImageId.CurseOfBard
         InventoryItemId.CurseOfSmith -> ImageId.CurseOfSmith
+        InventoryItemId.StarSupernova -> ImageId.StarSupernova
+        InventoryItemId.ClotOfMagic -> ImageId.ClotOfMagic
+        InventoryItemId.Spaceship -> ImageId.Spaceship
+        InventoryItemId.SupernovaInSpace -> ImageId.SupernovaInSpace
+        InventoryItemId.AlienEgg -> ImageId.AlienEgg
     }
 }
