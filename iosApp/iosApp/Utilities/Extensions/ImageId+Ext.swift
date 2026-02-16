@@ -274,6 +274,8 @@ extension ImageId {
         case .clotOfMagic: "item_magic_energy"
         case .spaceship: "item_spaceship"
         case .supernovaInSpace: "item_supernova_in_space"
+        case .abilityNecromancy: "ability_necromancy"
+        case .abilityMeditation: "ability_meditation"
         }
     }
 }

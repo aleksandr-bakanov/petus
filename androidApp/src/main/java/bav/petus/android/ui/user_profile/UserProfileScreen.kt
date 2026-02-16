@@ -39,8 +39,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -49,12 +47,13 @@ import bav.petus.android.PsychColor
 import bav.petus.android.R
 import bav.petus.android.ui.common.toResId
 import bav.petus.android.ui.views.SectorMaskShape
-import bav.petus.core.engine.toStringId
 import bav.petus.core.inventory.InventoryItem
+import bav.petus.core.inventory.InventoryItemId
 import bav.petus.core.inventory.toImageId
 import bav.petus.core.resources.StringId
 import bav.petus.model.PetType
 import bav.petus.viewModel.main.MainViewModel
+import bav.petus.viewModel.userProfile.AbilityItem
 import bav.petus.viewModel.userProfile.UserProfileScreenViewModel
 import bav.petus.viewModel.userProfile.UserProfileUiState
 import kotlin.random.Random
@@ -148,12 +147,17 @@ private fun UserProfileScreen(
             }
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenAbilitiesLabel))
-            uiState.abilities.forEach { item ->
-                Text(
-                    text = stringResource(id = item.toStringId().toResId()),
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Start,
-                )
+            LazyVerticalGrid(
+                modifier = Modifier.heightIn(max = 10000.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                columns = GridCells.Fixed(count = 3)
+            ) {
+                items(uiState.abilities) { item ->
+                    AbilityItemCell(item) {
+                        onAction(UserProfileScreenViewModel.Action.TapInventoryItem(it))
+                    }
+                }
             }
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.ProfileScreenMiscLabel))
@@ -217,24 +221,6 @@ private fun UserProfileRow(title: String, message: String) {
 }
 
 @Composable
-private fun LanguageKnowledgeStat(type: PetType, value: String) {
-    val title = stringResource(id = when (type) {
-            PetType.Catus -> R.string.LanguageKnowledgeTitleCatus
-            PetType.Dogus -> R.string.LanguageKnowledgeTitleDogus
-            PetType.Frogus -> R.string.LanguageKnowledgeTitleFrogus
-            PetType.Bober -> R.string.LanguageKnowledgeTitleBober
-            PetType.Fractal -> R.string.LanguageKnowledgeTitleFractal
-            PetType.Dragon -> R.string.LanguageKnowledgeTitleDragon
-            PetType.Alien -> R.string.LanguageKnowledgeTitleAlien
-        }
-    )
-    UserProfileRow(
-        title = title,
-        message = value
-    )
-}
-
-@Composable
 private fun InventoryItemCell(
     item: InventoryItem,
     onClick: (InventoryItem) -> Unit,
@@ -247,6 +233,26 @@ private fun InventoryItemCell(
             .clip(RoundedCornerShape(percent = 20))
             .clickable {
                 onClick(item)
+            }
+    )
+}
+
+@Composable
+private fun AbilityItemCell(
+    item: AbilityItem,
+    onClick: (InventoryItemId) -> Unit,
+) {
+    Image(
+        painter = painterResource(
+            id = if (item.isAvailable) item.ability.toImageId().toResId()
+            else R.drawable.question_mark
+        ),
+        contentDescription = null,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(percent = 20))
+            .clickable {
+                if (item.isAvailable) onClick(item.ability)
             }
     )
 }

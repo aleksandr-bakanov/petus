@@ -44,6 +44,8 @@ sealed class StringId {
     data object Spaceship : StringId()
     data object SupernovaInSpace : StringId()
     data object AlienEgg : StringId()
+    data object AbilityNecromancy : StringId()
+    data object AbilityMeditation : StringId()
     //endregion
     
     //region Meditation exercises
@@ -557,5 +559,7 @@ sealed class StringId {
     data object ItemDescSpaceship : StringId()
     data object ItemDescSupernovaInSpace : StringId()
     data object ItemDescAlienEgg : StringId()
+    data object ItemDescAbilityNecromancy : StringId()
+    data object ItemDescAbilityMeditation : StringId()
     //endregion
 }

@@ -112,6 +112,8 @@ fun StringId.toResId(): Int {
         StringId.ClotOfMagic -> R.string.ClotOfMagic
         StringId.Spaceship -> R.string.Spaceship
         StringId.SupernovaInSpace -> R.string.SupernovaInSpace
+        StringId.AbilityNecromancy -> R.string.AbilityNecromancy
+        StringId.AbilityMeditation -> R.string.AbilityMeditation
         StringId.AlienEgg -> R.string.AlienEgg
         StringId.MeditationExerciseBreathAwareness -> R.string.MeditationExerciseBreathAwareness
         StringId.MeditationExerciseBoxBreathing -> R.string.MeditationExerciseBoxBreathing
@@ -527,5 +529,7 @@ fun StringId.toResId(): Int {
         StringId.ItemDescSpaceship -> R.string.ItemDescSpaceship
         StringId.ItemDescSupernovaInSpace -> R.string.ItemDescSupernovaInSpace
         StringId.ItemDescAlienEgg -> R.string.ItemDescAlienEgg
+        StringId.ItemDescAbilityNecromancy -> R.string.ItemDescAbilityNecromancy
+        StringId.ItemDescAbilityMeditation -> R.string.ItemDescAbilityMeditation
     }
 }

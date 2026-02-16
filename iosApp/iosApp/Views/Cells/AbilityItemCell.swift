@@ -1,12 +1,12 @@
 import SwiftUI
 import shared
 
-struct InventoryItemCell: View {
-    let item: InventoryItem
+struct AbilityItemCell: View {
+    let item: AbilityItem
     let onClick: () -> Void
 
     var body: some View {
-        Image(item.id.toImageId().resId)
+        Image(item.isAvailable ? item.ability.toImageId().resId: "question_mark")
             .resizable()
             .scaledToFit()
             .frame(maxWidth: .infinity)
@@ -14,7 +14,9 @@ struct InventoryItemCell: View {
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
             )
             .onTapGesture {
-                onClick()
+                if (item.isAvailable) {
+                    onClick()
+                }
             }
     }
 }

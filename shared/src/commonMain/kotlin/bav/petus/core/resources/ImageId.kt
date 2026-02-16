@@ -305,6 +305,8 @@ enum class ImageId {
     ClotOfMagic,
     Spaceship,
     SupernovaInSpace,
+    AbilityNecromancy,
+    AbilityMeditation,
     //endregion
     ;
 }

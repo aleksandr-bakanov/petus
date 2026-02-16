@@ -76,10 +76,20 @@ struct UserProfileView: View {
                         .padding(8) // Optional: for outer spacing
 
                         Text("ProfileScreenAbilitiesLabel")
-                        ForEach(state.abilities, id: \.self) { item in
-                            Text(item.toStringId().localized)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                        LazyVGrid(
+                            columns: inventoryColumns,
+                            alignment: .center,
+                            spacing: 8
+                        ) {
+                            ForEach(state.abilities, id: \.ability) { item in
+                                AbilityItemCell(item: item) {
+                                    navigationPath.append(.itemDetails(itemId: item.ability))
+                                }
+                            }
                         }
+                        .frame(maxHeight: .infinity) // Similar to heightIn max = 10000.dp
+                        .padding(8) // Optional: for outer spacing
+                        
                         Text("ProfileScreenMiscLabel")
                         CanPetsDieOfOldAgeRow(value: state.canPetsDieOfOldAge) { newValue in
                             viewModel.onAction(action: UserProfileScreenViewModelActionTapCanPetDieOfOldAgeSwitch(value: newValue))

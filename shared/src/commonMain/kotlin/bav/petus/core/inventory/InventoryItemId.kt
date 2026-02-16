@@ -30,6 +30,8 @@ enum class InventoryItemId {
     Spaceship,
     SupernovaInSpace,
     AlienEgg,
+    AbilityNecromancy,
+    AbilityMeditation,
     ;
 }
 
@@ -61,6 +63,8 @@ fun InventoryItemId.toItemNameStringId(): StringId {
         InventoryItemId.Spaceship -> StringId.Spaceship
         InventoryItemId.SupernovaInSpace -> StringId.SupernovaInSpace
         InventoryItemId.AlienEgg -> StringId.AlienEgg
+        InventoryItemId.AbilityNecromancy -> StringId.AbilityNecromancy
+        InventoryItemId.AbilityMeditation -> StringId.AbilityMeditation
     }
 }
 
@@ -92,6 +96,8 @@ fun InventoryItemId.toItemDescriptionStringId(): StringId {
         InventoryItemId.Spaceship -> StringId.ItemDescSpaceship
         InventoryItemId.SupernovaInSpace -> StringId.ItemDescSupernovaInSpace
         InventoryItemId.AlienEgg -> StringId.ItemDescAlienEgg
+        InventoryItemId.AbilityNecromancy -> StringId.ItemDescAbilityNecromancy
+        InventoryItemId.AbilityMeditation -> StringId.ItemDescAbilityMeditation
     }
 }
 
@@ -123,5 +129,7 @@ fun InventoryItemId.toImageId(): ImageId {
         InventoryItemId.Spaceship -> ImageId.Spaceship
         InventoryItemId.SupernovaInSpace -> ImageId.SupernovaInSpace
         InventoryItemId.AlienEgg -> ImageId.AlienEgg
+        InventoryItemId.AbilityNecromancy -> ImageId.AbilityNecromancy
+        InventoryItemId.AbilityMeditation -> ImageId.AbilityMeditation
     }
 }

@@ -36,6 +36,8 @@ extension StringId {
         case .clotOfMagic: "ClotOfMagic"
         case .spaceship: "Spaceship"
         case .supernovaInSpace: "SupernovaInSpace"
+        case .abilityNecromancy: "AbilityNecromancy"
+        case .abilityMeditation: "AbilityMeditation"
         case .alienEgg: "AlienEgg"
         case .meditationExerciseBreathAwareness: "MeditationExerciseBreathAwareness"
         case .meditationExerciseBoxBreathing: "MeditationExerciseBoxBreathing"
@@ -526,6 +528,8 @@ extension StringId {
         case .itemDescSpaceship: "ItemDescSpaceship"
         case .itemDescSupernovaInSpace: "ItemDescSupernovaInSpace"
         case .itemDescAlienEgg: "ItemDescAlienEgg"
+        case .itemDescAbilityNecromancy: "ItemDescAbilityNecromancy"
+        case .itemDescAbilityMeditation: "ItemDescAbilityMeditation"
         }
         
         return String(localized: resId)

@@ -21,7 +21,7 @@ data class UserProfileUiState(
     val latestWeather: String?,
     val languages: List<LanguageKnowledge>,
     val inventory: List<InventoryItem>,
-    val abilities: List<Ability>,
+    val abilities: List<AbilityItem>,
     val zooSize: String,
     val canPetsDieOfOldAge: Boolean,
 )
@@ -29,6 +29,11 @@ data class UserProfileUiState(
 data class LanguageKnowledge(
     val type: PetType,
     val percentage: Float,
+)
+
+data class AbilityItem(
+    val ability: InventoryItemId,
+    val isAvailable: Boolean,
 )
 
 class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenViewModel.Navigation>(), KoinComponent {
@@ -52,7 +57,10 @@ class UserProfileScreenViewModel : ViewModelWithNavigation<UserProfileScreenView
                 LanguageKnowledge(PetType.Alien, userData.languageKnowledge.alien.toFloat() / UserStats.MAXIMUM_LANGUAGE_UI_KNOWLEDGE),
             ),
             inventory = userData.inventory,
-            abilities = userData.abilities.toList(),
+            abilities = listOf(
+                AbilityItem(InventoryItemId.AbilityNecromancy, userData.abilities.contains(Ability.Necromancy)),
+                AbilityItem(InventoryItemId.AbilityMeditation, userData.abilities.contains(Ability.Meditation)),
+            ),
             zooSize = userData.zooSize.toString(),
             canPetsDieOfOldAge = userData.canPetsDieOfOldAge,
         )

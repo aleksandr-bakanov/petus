@@ -289,6 +289,8 @@ fun ImageId.toResId(): Int {
         ImageId.ClotOfMagic -> R.drawable.item_magic_energy
         ImageId.Spaceship -> R.drawable.item_spaceship
         ImageId.SupernovaInSpace -> R.drawable.item_supernova_in_space
+        ImageId.AbilityNecromancy -> R.drawable.ability_necromancy
+        ImageId.AbilityMeditation -> R.drawable.ability_meditation
         //endregion
     }
 }
