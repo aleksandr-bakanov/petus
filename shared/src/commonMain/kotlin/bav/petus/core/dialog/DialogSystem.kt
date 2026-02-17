@@ -71,7 +71,7 @@ class DialogSystem(
 
     suspend fun startDialog(pet: Pet): DialogNode? {
         currentPet = pet
-        val standardBeginning = nodes[STANDARD_DIALOG_BEGINNING]!!
+        val standardBeginning = getStandardBeginningWithFact(pet)
 
         val additionalAnswerOptions =
             questSystem.getAdditionalAnswers(pet, STANDARD_DIALOG_BEGINNING) +
@@ -84,15 +84,8 @@ class DialogSystem(
         } else {
             standardBeginning
         }
-        val whatGoingOnStringId = getWhatGoingOnStringId(pet)
-        val resultNode = when {
-            whatGoingOnStringId != StringId.WhatIsGoingOnWithYou -> nodeWithAdditionalQuestAnswers.copy(
-                text = listOf(whatGoingOnStringId)
-            )
-            else -> nodeWithAdditionalQuestAnswers
-        }
 
-        currentNode = resultNode
+        currentNode = nodeWithAdditionalQuestAnswers
         return currentNode
     }
 
@@ -137,6 +130,22 @@ class DialogSystem(
         } else {
             emptyList()
         }
+    }
+
+    private fun getStandardBeginningWithFact(pet: Pet): DialogNode {
+        val standardBeginning = nodes[STANDARD_DIALOG_BEGINNING]!!
+        val factList = when (pet.type) {
+            PetType.Dogus -> factsDog
+            PetType.Catus -> factsCat
+            PetType.Frogus -> factsFrog
+            PetType.Bober -> factsBober
+            PetType.Fractal -> factsFractal
+            PetType.Dragon -> factsDragon
+            PetType.Alien -> factsAlien
+        }
+        return standardBeginning.copy(
+            text = listOf(factList.random())
+        )
     }
 
     private suspend fun addPetDescription(pet: Pet?, node: DialogNode?): DialogNode? {

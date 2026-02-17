@@ -1,539 +1,1242 @@
+import Foundation
 import SwiftUI
 import shared
 
 extension StringId {
     var localized: String {
-        let resId: String.LocalizationValue = switch onEnum(of: self) {
-        case .petTypeDescriptionCatus: "PetTypeDescriptionCatus"
-        case .petTypeDescriptionDogus: "PetTypeDescriptionDogus"
-        case .petTypeDescriptionFrogus: "PetTypeDescriptionFrogus"
-        case .petTypeDescriptionBober: "PetTypeDescriptionBober"
-        case .petTypeDescriptionFractal: "PetTypeDescriptionFractal"
-        case .petTypeDescriptionDragon: "PetTypeDescriptionDragon"
-        case .petTypeDescriptionAlien: "PetTypeDescriptionAlien"
-        case .mysteriousBook: "MysteriousBook"
-        case .necronomicon: "Necronomicon"
-        case .pieceOfCloth: "PieceOfCloth"
-        case .fish: "Fish"
-        case .frogusEgg: "FrogusEgg"
-        case .dogusEgg: "DogusEgg"
-        case .catusEgg: "CatusEgg"
-        case .boberEgg: "BoberEgg"
-        case .dragonEgg: "DragonEgg"
-        case .basket: "Basket"
-        case .twoMeterRuler: "TwoMeterRuler"
-        case .tenCentimeterRuler: "TenCentimeterRuler"
-        case .mathBook: "MathBook"
-        case .memoryOfMage: "MemoryOfMage"
-        case .memoryOfWarrior: "MemoryOfWarrior"
-        case .memoryOfBard: "MemoryOfBard"
-        case .memoryOfSmith: "MemoryOfSmith"
-        case .curseOfMage: "CurseOfMage"
-        case .curseOfWarrior: "CurseOfWarrior"
-        case .curseOfBard: "CurseOfBard"
-        case .curseOfSmith: "CurseOfSmith"
-        case .starSupernova: "StarSupernova"
-        case .clotOfMagic: "ClotOfMagic"
-        case .spaceship: "Spaceship"
-        case .supernovaInSpace: "SupernovaInSpace"
-        case .abilityNecromancy: "AbilityNecromancy"
-        case .abilityMeditation: "AbilityMeditation"
-        case .alienEgg: "AlienEgg"
-        case .meditationExerciseBreathAwareness: "MeditationExerciseBreathAwareness"
-        case .meditationExerciseBoxBreathing: "MeditationExerciseBoxBreathing"
-        case .meditationExerciseBodyScan: "MeditationExerciseBodyScan"
-        case .meditationExerciseLovingKindnessPhrases: "MeditationExerciseLovingKindnessPhrases"
-        case .meditationExerciseCountingTheBreath: "MeditationExerciseCountingTheBreath"
-        case .meditationExerciseMantraRepetition: "MeditationExerciseMantraRepetition"
-        case .meditationExerciseWalkingMeditation: "MeditationExerciseWalkingMeditation"
-        case .meditationExerciseCandleGazing: "MeditationExerciseCandleGazing"
-        case .meditationExerciseNotingPractice: "MeditationExerciseNotingPractice"
-        case .meditationExerciseFiveSensesAwareness: "MeditationExerciseFiveSensesAwareness"
-        case .meditationExerciseVisualization: "MeditationExerciseVisualization"
-        case .meditationExerciseMountainMeditation: "MeditationExerciseMountainMeditation"
-        case .meditationExerciseSoundAwareness: "MeditationExerciseSoundAwareness"
-        case .meditationExerciseTonglenExercise: "MeditationExerciseTonglenExercise"
-        case .meditationExerciseGratitudeReflection: "MeditationExerciseGratitudeReflection"
-        case .meditationExerciseMindfulEating: "MeditationExerciseMindfulEating"
-        case .meditationExerciseProgressiveRelaxation: "MeditationExerciseProgressiveRelaxation"
-        case .meditationExerciseChakraFocusing: "MeditationExerciseChakraFocusing"
-        case .meditationExerciseSelfInquiryQuestions: "MeditationExerciseSelfInquiryQuestions"
-        case .meditationExerciseSilentSitting: "MeditationExerciseSilentSitting"
-        case .onboardingHomeTitle: "OnboardingHomeTitle"
-        case .onboardingHomeMessage: "OnboardingHomeMessage"
-        case .onboardingSatietyTitle: "OnboardingSatietyTitle"
-        case .onboardingSatietyMessage: "OnboardingSatietyMessage"
-        case .onboardingPsycheTitle: "OnboardingPsycheTitle"
-        case .onboardingPsycheMessage: "OnboardingPsycheMessage"
-        case .onboardingHealthTitle: "OnboardingHealthTitle"
-        case .onboardingHealthMessage: "OnboardingHealthMessage"
-        case .onboardingIllnessTitle: "OnboardingIllnessTitle"
-        case .onboardingIllnessMessage: "OnboardingIllnessMessage"
-        case .onboardingCleanUpTitle: "OnboardingCleanUpTitle"
-        case .onboardingCleanUpMessage: "OnboardingCleanUpMessage"
-        case .onboardingTalkTitle: "OnboardingTalkTitle"
-        case .onboardingTalkMessage: "OnboardingTalkMessage"
-        case .onboardingAgeTitle: "OnboardingAgeTitle"
-        case .onboardingAgeMessage: "OnboardingAgeMessage"
-        case .onboardingGoodLuckTitle: "OnboardingGoodLuckTitle"
-        case .onboardingGoodLuckMessage: "OnboardingGoodLuckMessage"
-        case .onboardingSkipTitle: "OnboardingSkipTitle"
-        case .onboardingPreviousTitle: "OnboardingPreviousTitle"
-        case .onboardingNextTitle: "OnboardingNextTitle"
-        case .onboardingLetsGoTitle: "OnboardingLetsGoTitle"
-        case .onboardingHowToButtonTitle: "OnboardingHowToButtonTitle"
-        case .whatIsGoingOnWithYou: "WhatIsGoingOnWithYou"
-        case .whatIsGoingOnWithYouLatin: "WhatIsGoingOnWithYouLatin"
-        case .whatIsGoingOnWithYouPolish: "WhatIsGoingOnWithYouPolish"
-        case .whatIsGoingOnWithYouMathMandelbrot: "WhatIsGoingOnWithYouMathMandelbrot"
-        case .whatIsGoingOnWithYouMathGosper: "WhatIsGoingOnWithYouMathGosper"
-        case .whatIsGoingOnWithYouMathKoch: "WhatIsGoingOnWithYouMathKoch"
-        case .whatIsGoingOnWithYouMathSponge: "WhatIsGoingOnWithYouMathSponge"
-        case .beingBetter: "BeenBetter"
-        case .byeBye: "ByeBye"
-        case .iShouldGo: "IShouldGo"
-        case .seeYa: "SeeYa"
-        case .sure: "Sure"
-        case .ok: "Ok"
-        case .allRight: "AllRight"
-        case .excellent: "Excellent"
-        case .ellipsis: "Ellipsis"
-        case .thanks: "Thanks"
-        case .use: "Use"
-        case .destroy: "Destroy"
-        case .iAmOkayHowAreYou: "IAmOkayHowAreYou"
-        case .iAmSick: "IAmSick"
-        case .iAmSickLatin: "IAmSickLatin"
-        case .iAmSickPolish: "IAmSickPolish"
-        case .iAmSickMath: "IAmSickMath"
-        case .iAmHungry: "IAmHungry"
-        case .iAmHungryLatin: "IAmHungryLatin"
-        case .iAmHungryPolish: "IAmHungryPolish"
-        case .iAmHungryMath: "IAmHungryMath"
-        case .iPooped: "IPooped"
-        case .iPoopedLatin: "IPoopedLatin"
-        case .iPoopedPolish: "IPoopedPolish"
-        case .iPoopedMath: "IPoopedMath"
-        case .iAmBored: "IAmBored"
-        case .iAmBoredLatin: "IAmBoredLatin"
-        case .iAmBoredPolish: "IAmBoredPolish"
-        case .iAmBoredMath: "IAmBoredMath"
-        case .iAmStillAngryAfterForceWakeUp: "IAmStillAngryAfterForceWakeUp"
-        case .iAmStillAngryAfterForceWakeUpLatin: "IAmStillAngryAfterForceWakeUpLatin"
-        case .iAmStillAngryAfterForceWakeUpPolish: "IAmStillAngryAfterForceWakeUpPolish"
-        case .iAmStillAngryAfterForceWakeUpMath: "IAmStillAngryAfterForceWakeUpMath"
-        case .iAmHalfHp: "IAmHalfHp"
-        case .iAmHalfHpLatin: "IAmHalfHpLatin"
-        case .iAmHalfHpPolish: "IAmHalfHpPolish"
-        case .iAmHalfHpMath: "IAmHalfHpMath"
-        case .iAmGood: "IAmGood"
-        case .iAmGoodLatin: "IAmGoodLatin"
-        case .iAmGoodPolish: "IAmGoodPolish"
-        case .iAmGoodMath: "IAmGoodMath"
-        case .iWillDie(_): fatalError("IWillDie requires formatting and should not be mapped with localized")
-        case .iWillDieLatin(_): fatalError("IWillDieLatin requires formatting and should not be mapped with localized")
-        case .iWillDiePolish(_): fatalError("IWillDiePolish requires formatting and should not be mapped with localized")
-        case .questResetAnswer0: "QuestResetAnswer0"
-        case .questResetDialog0: "QuestResetDialog0"
-        case .questResetAnswer1: "QuestResetAnswer1"
-        case .questResetDialog1: "QuestResetDialog1"
-        case .necronomiconStage3AnswerOption0: "NecronomiconStage3AnswerOption0"
-        case .necronomiconStage3CommonDialog: "NecronomiconStage3CommonDialog"
-        case .necronomiconStage3DogDialog: "NecronomiconStage3DogDialog"
-        case .necronomiconStage3DogDialogAnswerOption0: "NecronomiconStage3DogDialogAnswerOption0"
-        case .necronomiconStage5AnswerOption0: "NecronomiconStage5AnswerOption0"
-        case .necronomiconStage5DogDialog: "NecronomiconStage5DogDialog"
-        case .necronomiconStage6AnswerOption0: "NecronomiconStage6AnswerOption0"
-        case .necronomiconStage6DogDialog: "NecronomiconStage6DogDialog"
-        case .necronomiconStage7DogDialog0: "NecronomiconStage7DogDialog0"
-        case .necronomiconStage7AnswerOption0: "NecronomiconStage7AnswerOption0"
-        case .necronomiconStage7DogDialog1: "NecronomiconStage7DogDialog1"
-        case .necronomiconStage7DogDialog2: "NecronomiconStage7DogDialog2"
-        case .necronomiconStage8AnswerOption0: "NecronomiconStage8AnswerOption0"
-        case .necronomiconStage8Dialog0: "NecronomiconStage8Dialog0"
-        case .necronomiconStage8Dialog1: "NecronomiconStage8Dialog1"
-        case .cemeteryScreenTitle: "CemeteryScreenTitle"
-        case .profileScreenTitle: "ProfileScreenTitle"
-        case .weatherScreenTitle: "WeatherScreenTitle"
-        case .zooScreenTitle: "ZooScreenTitle"
-        case .questsScreenTitle: "QuestsScreenTitle"
-        case .historyEventPetBecomeAdult: "HistoryEventPetBecomeAdult"
-        case .historyEventPetBecomeNewborn: "HistoryEventPetBecomeNewborn"
-        case .historyEventPetBecomeOld: "HistoryEventPetBecomeOld"
-        case .historyEventPetBecomeTeen: "HistoryEventPetBecomeTeen"
-        case .historyEventPetBuried: "HistoryEventPetBuried"
-        case .historyEventPetForgotten: "HistoryEventPetForgotten"
-        case .historyEventPetCleanUp: "HistoryEventPetCleanUp"
-        case .historyEventPetCreated: "HistoryEventPetCreated"
-        case .historyEventPetDied: "HistoryEventPetDied"
-        case .historyEventPetFeed: "HistoryEventPetFeed"
-        case .historyEventPetForciblyWakeUp: "HistoryEventPetForciblyWakeUp"
-        case .historyEventPetGetHealed: "HistoryEventPetGetHealed"
-        case .historyEventPetGetIll: "HistoryEventPetGetIll"
-        case .historyEventPetPlay: "HistoryEventPetPlay"
-        case .historyEventPetPoop: "HistoryEventPetPoop"
-        case .historyEventPetResurrected: "HistoryEventPetResurrected"
-        case .historyEventPetSleep: "HistoryEventPetSleep"
-        case .historyEventPetWakeUp: "HistoryEventPetWakeUp"
-        case .necromancy: "Necromancy"
-        case .meditation: "Meditation"
-        case .obtainFrogusStage1Answer0: "ObtainFrogusStage1Answer0"
-        case .obtainFrogusStage1Dialog0: "ObtainFrogusStage1Dialog0"
-        case .obtainFrogusStage1Answer1: "ObtainFrogusStage1Answer1"
-        case .obtainFrogusStage3Answer0: "ObtainFrogusStage3Answer0"
-        case .obtainFrogusStage3Dialog0: "ObtainFrogusStage3Dialog0"
-        case .obtainFrogusStage3Answer1: "ObtainFrogusStage3Answer1"
-        case .obtainFrogusStage5Answer0: "ObtainFrogusStage5Answer0"
-        case .obtainFrogusStage5Dialog0: "ObtainFrogusStage5Dialog0"
-        case .obtainFrogusStage5Answer1: "ObtainFrogusStage5Answer1"
-        case .obtainBoberStage2Answer0: "ObtainBoberStage2Answer0"
-        case .obtainBoberStage2Answer1: "ObtainBoberStage2Answer1"
-        case .obtainBoberStage2Dialog0: "ObtainBoberStage2Dialog0"
-        case .obtainBoberStage2Dialog1: "ObtainBoberStage2Dialog1"
-        case .obtainBoberStage3Answer0: "ObtainBoberStage3Answer0"
-        case .obtainBoberStage3Dialog0: "ObtainBoberStage3Dialog0"
-        case .obtainBoberStage4Dialog0: "ObtainBoberStage4Dialog0"
-        case .obtainBoberStage6Answer0: "ObtainBoberStage6Answer0"
-        case .obtainBoberStage6Dialog0: "ObtainBoberStage6Dialog0"
-        case .obtainBoberStage6Dialog1: "ObtainBoberStage6Dialog1"
-        case .obtainBoberStage8Answer0: "ObtainBoberStage8Answer0"
-        case .obtainBoberStage8Dialog0: "ObtainBoberStage8Dialog0"
-        case .obtainBoberStage9Answer0: "ObtainBoberStage9Answer0"
-        case .obtainBoberStage9Dialog0: "ObtainBoberStage9Dialog0"
-        case .obtainBoberStage9Dialog1: "ObtainBoberStage9Dialog1"
-        case .obtainBoberStage9Dialog2: "ObtainBoberStage9Dialog2"
-        case .obtainBoberStage10Answer0: "ObtainBoberStage10Answer0"
-        case .obtainBoberStage10Dialog0: "ObtainBoberStage10Dialog0"
-        case .obtainBoberStage11Dialog0: "ObtainBoberStage11Dialog0"
-        case .obtainBoberStage11Answer0: "ObtainBoberStage11Answer0"
-        case .obtainFractalStage1Answer0: "ObtainFractalStage1Answer0"
-        case .obtainFractalStage1Dialog0: "ObtainFractalStage1Dialog0"
-        case .obtainFractalStage1Dialog1: "ObtainFractalStage1Dialog1"
-        case .obtainFractalStage1Answer1: "ObtainFractalStage1Answer1"
-        case .obtainFractalStage3Answer0: "ObtainFractalStage3Answer0"
-        case .obtainFractalStage3Dialog0: "ObtainFractalStage3Dialog0"
-        case .obtainFractalStage3Answer1: "ObtainFractalStage3Answer1"
-        case .obtainFractalStage5Answer0: "ObtainFractalStage5Answer0"
-        case .obtainFractalStage5Dialog0: "ObtainFractalStage5Dialog0"
-        case .obtainFractalStage5Answer1: "ObtainFractalStage5Answer1"
-        case .obtainFractalStage6Answer0: "ObtainFractalStage6Answer0"
-        case .obtainFractalStage6Dialog0: "ObtainFractalStage6Dialog0"
-        case .obtainFractalStage6Answer1: "ObtainFractalStage6Answer1"
-        case .meditationStage1Answer0: "MeditationStage1Answer0"
-        case .meditationStage1Dialog0: "MeditationStage1Dialog0"
-        case .meditationStage1Dialog1: "MeditationStage1Dialog1"
-        case .meditationStage1Answer1: "MeditationStage1Answer1"
-        case .meditationStage2Answer0: "MeditationStage2Answer0"
-        case .meditationStage2Dialog0: "MeditationStage2Dialog0"
-        case .meditationStage2Dialog1: "MeditationStage2Dialog1"
-        case .meditationStage2Dialog2: "MeditationStage2Dialog2"
-        case .meditationStage3Answer0: "MeditationStage3Answer0"
-        case .meditationStage3Dialog0: "MeditationStage3Dialog0"
-        case .meditationStage3Dialog1: "MeditationStage3Dialog1"
-        case .meditationStage3Dialog2: "MeditationStage3Dialog2"
-        case .meditationStage3Answer1: "MeditationStage3Answer1"
-        case .meditationStage3Dialog4: "MeditationStage3Dialog4"
-        case .meditationStage3Answer2: "MeditationStage3Answer2"
-        case .obtainDragonStage1Answer0: "ObtainDragonStage1Answer0"
-        case .obtainDragonStage1Dialog0: "ObtainDragonStage1Dialog0"
-        case .obtainDragonStage1Answer1: "ObtainDragonStage1Answer1"
-        case .obtainDragonStage1Dialog1: "ObtainDragonStage1Dialog1"
-        case .obtainDragonStage1Answer2: "ObtainDragonStage1Answer2"
-        case .obtainDragonStage1Dialog2: "ObtainDragonStage1Dialog2"
-        case .obtainDragonStage1Answer3: "ObtainDragonStage1Answer3"
-        case .obtainDragonStage2Answer0: "ObtainDragonStage2Answer0"
-        case .obtainDragonStage2Dialog0: "ObtainDragonStage2Dialog0"
-        case .obtainDragonStage2Answer1: "ObtainDragonStage2Answer1"
-        case .obtainDragonStage2Answer2: "ObtainDragonStage2Answer2"
-        case .obtainDragonStage2Dialog1: "ObtainDragonStage2Dialog1"
-        case .obtainDragonStage2Answer3: "ObtainDragonStage2Answer3"
-        case .obtainDragonStage2Dialog2: "ObtainDragonStage2Dialog2"
-        case .obtainDragonStage2Answer4: "ObtainDragonStage2Answer4"
-        case .obtainDragonStage2Dialog3: "ObtainDragonStage2Dialog3"
-        case .obtainDragonStage2Answer5: "ObtainDragonStage2Answer5"
-        case .obtainDragonStage3Answer0: "ObtainDragonStage3Answer0"
-        case .obtainDragonStage3Dialog0: "ObtainDragonStage3Dialog0"
-        case .obtainDragonStage4Answer0: "ObtainDragonStage4Answer0"
-        case .obtainDragonStage4Dialog0: "ObtainDragonStage4Dialog0"
-        case .obtainDragonStage4Dialog1: "ObtainDragonStage4Dialog1"
-        case .obtainDragonStage4Dialog2: "ObtainDragonStage4Dialog2"
-        case .obtainDragonStage5Answer0: "ObtainDragonStage5Answer0"
-        case .obtainDragonStage5Dialog0: "ObtainDragonStage5Dialog0"
-        case .obtainDragonStage5Dialog1: "ObtainDragonStage5Dialog1"
-        case .obtainDragonStage5Dialog2: "ObtainDragonStage5Dialog2"
-        case .obtainDragonStage5Dialog3: "ObtainDragonStage5Dialog3"
-        case .obtainDragonStage5Answer1: "ObtainDragonStage5Answer1"
-        case .obtainDragonStage5Dialog4: "ObtainDragonStage5Dialog4"
-        case .obtainDragonStage5Answer2: "ObtainDragonStage5Answer2"
-        case .obtainDragonStage5Answer3: "ObtainDragonStage5Answer3"
-        case .obtainDragonStage5Answer4: "ObtainDragonStage5Answer4"
-        case .obtainDragonStage5Answer5: "ObtainDragonStage5Answer5"
-        case .obtainDragonStage5Answer6: "ObtainDragonStage5Answer6"
-        case .obtainDragonStage5Dialog5: "ObtainDragonStage5Dialog5"
-        case .obtainDragonStage7Answer0: "ObtainDragonStage7Answer0"
-        case .obtainDragonStage7Dialog0: "ObtainDragonStage7Dialog0"
-        case .obtainDragonStage7Dialog1: "ObtainDragonStage7Dialog1"
-        case .obtainDragonStage7Dialog2: "ObtainDragonStage7Dialog2"
-        case .obtainDragonStage7Dialog3: "ObtainDragonStage7Dialog3"
-        case .obtainDragonStage8Answer0: "ObtainDragonStage8Answer0"
-        case .obtainDragonStage9Answer0: "ObtainDragonStage9Answer0"
-        case .obtainDragonStage9Dialog0: "ObtainDragonStage9Dialog0"
-        case .obtainDragonStage9Dialog1: "ObtainDragonStage9Dialog1"
-        case .obtainDragonStage9Dialog2: "ObtainDragonStage9Dialog2"
-        case .obtainDragonStage10Answer0: "ObtainDragonStage10Answer0"
-        case .obtainDragonStage10Answer1: "ObtainDragonStage10Answer1"
-        case .obtainDragonStage10Dialog0: "ObtainDragonStage10Dialog0"
-        case .obtainDragonStage10Dialog1: "ObtainDragonStage10Dialog1"
-        case .obtainDragonStage10Dialog2: "ObtainDragonStage10Dialog2"
-        case .obtainDragonStage10Dialog3: "ObtainDragonStage10Dialog3"
-        case .obtainDragonStage12Answer0: "ObtainDragonStage12Answer0"
-        case .obtainDragonStage12Dialog0: "ObtainDragonStage12Dialog0"
-        case .obtainDragonStage12Dialog1: "ObtainDragonStage12Dialog1"
-        case .obtainDragonStage12Dialog2: "ObtainDragonStage12Dialog2"
-        case .obtainDragonStage12Dialog3: "ObtainDragonStage12Dialog3"
-        case .obtainDragonStage13Answer0: "ObtainDragonStage13Answer0"
-        case .obtainDragonStage14Answer0: "ObtainDragonStage14Answer0"
-        case .obtainDragonStage14Dialog0: "ObtainDragonStage14Dialog0"
-        case .obtainDragonStage14Dialog1: "ObtainDragonStage14Dialog1"
-        case .obtainDragonStage14Dialog2: "ObtainDragonStage14Dialog2"
-        case .obtainDragonStage15Answer0: "ObtainDragonStage15Answer0"
-        case .obtainDragonStage15Answer1: "ObtainDragonStage15Answer1"
-        case .obtainDragonStage15Dialog0: "ObtainDragonStage15Dialog0"
-        case .obtainDragonStage15Dialog1: "ObtainDragonStage15Dialog1"
-        case .obtainDragonStage15Dialog2: "ObtainDragonStage15Dialog2"
-        case .obtainDragonStage15Dialog3: "ObtainDragonStage15Dialog3"
-        case .obtainDragonStage17Answer0: "ObtainDragonStage17Answer0"
-        case .obtainDragonStage17Dialog0: "ObtainDragonStage17Dialog0"
-        case .obtainDragonStage17Dialog1: "ObtainDragonStage17Dialog1"
-        case .obtainDragonStage17Dialog2: "ObtainDragonStage17Dialog2"
-        case .obtainDragonStage17Dialog3: "ObtainDragonStage17Dialog3"
-        case .obtainDragonStage18Answer0: "ObtainDragonStage18Answer0"
-        case .obtainDragonStage19Answer0: "ObtainDragonStage19Answer0"
-        case .obtainDragonStage19Dialog0: "ObtainDragonStage19Dialog0"
-        case .obtainDragonStage19Dialog1: "ObtainDragonStage19Dialog1"
-        case .obtainDragonStage19Dialog2: "ObtainDragonStage19Dialog2"
-        case .obtainDragonStage20Answer0: "ObtainDragonStage20Answer0"
-        case .obtainDragonStage20Answer1: "ObtainDragonStage20Answer1"
-        case .obtainDragonStage20Dialog0: "ObtainDragonStage20Dialog0"
-        case .obtainDragonStage20Dialog1: "ObtainDragonStage20Dialog1"
-        case .obtainDragonStage20Dialog2: "ObtainDragonStage20Dialog2"
-        case .obtainDragonStage20Dialog3: "ObtainDragonStage20Dialog3"
-        case .obtainDragonStage22Answer0: "ObtainDragonStage22Answer0"
-        case .obtainDragonStage22Dialog0: "ObtainDragonStage22Dialog0"
-        case .obtainDragonStage22Dialog1: "ObtainDragonStage22Dialog1"
-        case .obtainDragonStage22Dialog2: "ObtainDragonStage22Dialog2"
-        case .obtainDragonStage22Dialog3: "ObtainDragonStage22Dialog3"
-        case .obtainDragonStage23Answer0: "ObtainDragonStage23Answer0"
-        case .obtainDragonStage24Answer0: "ObtainDragonStage24Answer0"
-        case .obtainDragonStage24Dialog0: "ObtainDragonStage24Dialog0"
-        case .obtainDragonStage24Dialog1: "ObtainDragonStage24Dialog1"
-        case .obtainDragonStage24Dialog2: "ObtainDragonStage24Dialog2"
-        case .obtainDragonStage24Dialog3: "ObtainDragonStage24Dialog3"
-        case .obtainDragonStage24Answer1: "ObtainDragonStage24Answer1"
-        case .obtainDragonStage24Dialog7: "ObtainDragonStage24Dialog7"
-        case .obtainDragonStage25Answer0: "ObtainDragonStage25Answer0"
-        case .obtainDragonStage25Answer1: "ObtainDragonStage25Answer1"
-        case .obtainDragonStage25Dialog0: "ObtainDragonStage25Dialog0"
-        case .obtainDragonStage25Answer2: "ObtainDragonStage25Answer2"
-        case .obtainDragonStage25Answer3: "ObtainDragonStage25Answer3"
-        case .obtainDragonStage25Answer4: "ObtainDragonStage25Answer4"
-        case .obtainDragonStage25Answer5: "ObtainDragonStage25Answer5"
-        case .obtainDragonStage25Dialog1: "ObtainDragonStage25Dialog1"
-        case .obtainDragonStage25Answer6: "ObtainDragonStage25Answer6"
-        case .obtainDragonStage25Answer7: "ObtainDragonStage25Answer7"
-        case .obtainDragonStage25Dialog2: "ObtainDragonStage25Dialog2"
-        case .obtainDragonStage25Answer8: "ObtainDragonStage25Answer8"
-        case .obtainDragonStage25Answer9: "ObtainDragonStage25Answer9"
-        case .obtainDragonStage25Dialog3: "ObtainDragonStage25Dialog3"
-        case .obtainDragonStage25Dialog4: "ObtainDragonStage25Dialog4"
-        case .obtainDragonStage25Dialog6: "ObtainDragonStage25Dialog6"
-        case .obtainDragonStage25Dialog8: "ObtainDragonStage25Dialog8"
-        case .obtainDragonStage25Dialog10: "ObtainDragonStage25Dialog10"
-        case .obtainDragonStage25Dialog13: "ObtainDragonStage25Dialog13"
-        case .obtainDragonStage25Dialog14: "ObtainDragonStage25Dialog14"
-        case .obtainDragonStage25Dialog15: "ObtainDragonStage25Dialog15"
-        case .obtainDragonStage25Dialog16: "ObtainDragonStage25Dialog16"
-        case .obtainDragonStage25Dialog18: "ObtainDragonStage25Dialog18"
-        case .obtainAlienStage1Answer0: "ObtainAlienStage1Answer0"
-        case .obtainAlienStage1Dialog0: "ObtainAlienStage1Dialog0"
-        case .obtainAlienStage1Answer1: "ObtainAlienStage1Answer1"
-        case .obtainAlienStage1Dialog1: "ObtainAlienStage1Dialog1"
-        case .obtainAlienStage1Answer2: "ObtainAlienStage1Answer2"
-        case .obtainAlienStage1Dialog2: "ObtainAlienStage1Dialog2"
-        case .obtainAlienStage1Answer3: "ObtainAlienStage1Answer3"
-        case .obtainAlienStage2Answer0: "ObtainAlienStage2Answer0"
-        case .obtainAlienStage2Dialog0: "ObtainAlienStage2Dialog0"
-        case .obtainAlienStage2Answer1: "ObtainAlienStage2Answer1"
-        case .obtainAlienStage2Dialog1: "ObtainAlienStage2Dialog1"
-        case .obtainAlienStage2Answer2: "ObtainAlienStage2Answer2"
-        case .obtainAlienStage2Dialog2: "ObtainAlienStage2Dialog2"
-        case .obtainAlienStage3Answer0: "ObtainAlienStage3Answer0"
-        case .obtainAlienStage3Dialog0: "ObtainAlienStage3Dialog0"
-        case .obtainAlienStage3Answer1: "ObtainAlienStage3Answer1"
-        case .obtainAlienStage3Dialog1: "ObtainAlienStage3Dialog1"
-        case .obtainAlienStage3Answer2: "ObtainAlienStage3Answer2"
-        case .obtainAlienStage4Answer0: "ObtainAlienStage4Answer0"
-        case .obtainAlienStage4Dialog0: "ObtainAlienStage4Dialog0"
-        case .obtainAlienStage4Answer1: "ObtainAlienStage4Answer1"
-        case .obtainAlienStage4Dialog1: "ObtainAlienStage4Dialog1"
-        case .obtainAlienStage6Answer0: "ObtainAlienStage6Answer0"
-        case .obtainAlienStage6Dialog0: "ObtainAlienStage6Dialog0"
-        case .obtainAlienStage6Answer1: "ObtainAlienStage6Answer1"
-        case .obtainAlienStage8Answer0: "ObtainAlienStage8Answer0"
-        case .obtainAlienStage8Dialog0: "ObtainAlienStage8Dialog0"
-        case .obtainAlienStage8Answer1: "ObtainAlienStage8Answer1"
-        case .obtainAlienStage9Answer0: "ObtainAlienStage9Answer0"
-        case .obtainAlienStage9Dialog0: "ObtainAlienStage9Dialog0"
-        case .obtainAlienStage9Answer1: "ObtainAlienStage9Answer1"
-        case .obtainAlienStage9Dialog1: "ObtainAlienStage9Dialog1"
-        case .obtainAlienStage9Answer2: "ObtainAlienStage9Answer2"
-        case .obtainAlienStage10Answer0: "ObtainAlienStage10Answer0"
-        case .obtainAlienStage10Dialog0: "ObtainAlienStage10Dialog0"
-        case .obtainAlienStage10Answer1: "ObtainAlienStage10Answer1"
-        case .obtainAlienStage10Dialog2: "ObtainAlienStage10Dialog2"
-        case .obtainAlienStage10Answer2: "ObtainAlienStage10Answer2"
-        case .obtainAlienStage11Answer0: "ObtainAlienStage11Answer0"
-        case .obtainAlienStage11Dialog0: "ObtainAlienStage11Dialog0"
-        case .obtainAlienStage11Answer1: "ObtainAlienStage11Answer1"
-        case .obtainAlienStage11Dialog1: "ObtainAlienStage11Dialog1"
-        case .obtainAlienStage11Answer2: "ObtainAlienStage11Answer2"
-        case .obtainAlienStage13Answer0: "ObtainAlienStage13Answer0"
-        case .obtainAlienStage13Dialog0: "ObtainAlienStage13Dialog0"
-        case .obtainAlienStage13Answer1: "ObtainAlienStage13Answer1"
-        case .questIsFinished: "QuestIsFinished"
-        case .questDescFrog: "QuestDescFrog"
-        case .questDescBober: "QuestDescBober"
-        case .questDescDragon: "QuestDescDragon"
-        case .questDescFractal: "QuestDescFractal"
-        case .questNameNecronomicon: "QuestNameNecronomicon"
-        case .questNameObtainFrogus: "QuestNameObtainFrogus"
-        case .questNameObtainBober: "QuestNameObtainBober"
-        case .questNameObtainFractal: "QuestNameObtainFractal"
-        case .questNameMeditation: "QuestNameMeditation"
-        case .questNameObtainDragon: "QuestNameObtainDragon"
-        case .questNameObtainAlien: "QuestNameObtainAlien"
-        case .questDescObtainFrogusStage0: "QuestDescObtainFrogusStage0"
-        case .questDescObtainFrogusStage1: "QuestDescObtainFrogusStage1"
-        case .questDescObtainFrogusStage2: "QuestDescObtainFrogusStage2"
-        case .questDescObtainFrogusStage3: "QuestDescObtainFrogusStage3"
-        case .questDescObtainFrogusStage4: "QuestDescObtainFrogusStage4"
-        case .questDescObtainFrogusStage5: "QuestDescObtainFrogusStage5"
-        case .questDescObtainFrogusStage6: "QuestDescObtainFrogusStage6"
-        case .questDescNecronomiconStage0: "QuestDescNecronomiconStage0"
-        case .questDescNecronomiconStage1: "QuestDescNecronomiconStage1"
-        case .questDescNecronomiconStage2: "QuestDescNecronomiconStage2"
-        case .questDescNecronomiconStage3: "QuestDescNecronomiconStage3"
-        case .questDescNecronomiconStage4: "QuestDescNecronomiconStage4"
-        case .questDescNecronomiconStage5: "QuestDescNecronomiconStage5"
-        case .questDescNecronomiconStage6: "QuestDescNecronomiconStage6"
-        case .questDescNecronomiconStage7: "QuestDescNecronomiconStage7"
-        case .questDescNecronomiconStage8: "QuestDescNecronomiconStage8"
-        case .questDescNecronomiconStage9Use: "QuestDescNecronomiconStage9Use"
-        case .questDescNecronomiconStage9Destroy: "QuestDescNecronomiconStage9Destroy"
-        case .questDescObtainBoberStage0(_): fatalError("QuestDescObtainBoberStage0 requires formatting and should not be mapped with localized")
-        case .questDescObtainBoberStage1: "QuestDescObtainBoberStage1"
-        case .questDescObtainBoberStage2: "QuestDescObtainBoberStage2"
-        case .questDescObtainBoberStage3: "QuestDescObtainBoberStage3"
-        case .questDescObtainBoberStage4: "QuestDescObtainBoberStage4"
-        case .questDescObtainBoberStage5: "QuestDescObtainBoberStage5"
-        case .questDescObtainBoberStage6: "QuestDescObtainBoberStage6"
-        case .questDescObtainBoberStage7: "QuestDescObtainBoberStage7"
-        case .questDescObtainBoberStage8: "QuestDescObtainBoberStage8"
-        case .questDescObtainBoberStage9: "QuestDescObtainBoberStage9"
-        case .questDescObtainBoberStage10: "QuestDescObtainBoberStage10"
-        case .questDescObtainBoberStage11: "QuestDescObtainBoberStage11"
-        case .questDescObtainBoberStage12: "QuestDescObtainBoberStage12"
-        case .questDescObtainFractalStage0(_): fatalError("QuestDescObtainFractalStage0 requires formatting and should not be mapped with localized")
-        case .questDescObtainFractalStage1: "QuestDescObtainFractalStage1"
-        case .questDescObtainFractalStage2: "QuestDescObtainFractalStage2"
-        case .questDescObtainFractalStage3: "QuestDescObtainFractalStage3"
-        case .questDescObtainFractalStage4: "QuestDescObtainFractalStage4"
-        case .questDescObtainFractalStage5: "QuestDescObtainFractalStage5"
-        case .questDescObtainFractalStage6: "QuestDescObtainFractalStage6"
-        case .questDescObtainFractalStage7: "QuestDescObtainFractalStage7"
-        case .questDescObtainFractalStage8: "QuestDescObtainFractalStage8"
-        case .questDescMeditationStage0(_): fatalError("QuestDescMeditationStage0 requires formatting and should not be mapped with localized")
-        case .questDescMeditationStage1: "QuestDescMeditationStage1"
-        case .questDescMeditationStage2: "QuestDescMeditationStage2"
-        case .questDescMeditationStage3: "QuestDescMeditationStage3"
-        case .questDescMeditationStage4: "QuestDescMeditationStage4"
-        case .questDescObtainDragonStage0(_): fatalError("questDescObtainDragonStage0 requires formatting and should not be mapped with localized")
-        case .questDescObtainDragonStage1: "QuestDescObtainDragonStage1"
-        case .questDescObtainDragonStage2: "QuestDescObtainDragonStage2"
-        case .questDescObtainDragonStage3: "QuestDescObtainDragonStage3"
-        case .questDescObtainDragonStage4: "QuestDescObtainDragonStage4"
-        case .questDescObtainDragonStage5: "QuestDescObtainDragonStage5"
-        case .questDescObtainDragonStage6: "QuestDescObtainDragonStage6"
-        case .questDescObtainDragonStage7: "QuestDescObtainDragonStage7"
-        case .questDescObtainDragonStage8: "QuestDescObtainDragonStage8"
-        case .questDescObtainDragonStage9: "QuestDescObtainDragonStage9"
-        case .questDescObtainDragonStage10: "QuestDescObtainDragonStage10"
-        case .questDescObtainDragonStage11: "QuestDescObtainDragonStage11"
-        case .questDescObtainDragonStage12: "QuestDescObtainDragonStage12"
-        case .questDescObtainDragonStage13: "QuestDescObtainDragonStage13"
-        case .questDescObtainDragonStage14: "QuestDescObtainDragonStage14"
-        case .questDescObtainDragonStage15: "QuestDescObtainDragonStage15"
-        case .questDescObtainDragonStage16: "QuestDescObtainDragonStage16"
-        case .questDescObtainDragonStage17: "QuestDescObtainDragonStage17"
-        case .questDescObtainDragonStage18: "QuestDescObtainDragonStage18"
-        case .questDescObtainDragonStage19: "QuestDescObtainDragonStage19"
-        case .questDescObtainDragonStage20: "QuestDescObtainDragonStage20"
-        case .questDescObtainDragonStage21: "QuestDescObtainDragonStage21"
-        case .questDescObtainDragonStage22: "QuestDescObtainDragonStage22"
-        case .questDescObtainDragonStage23: "QuestDescObtainDragonStage23"
-        case .questDescObtainDragonStage24: "QuestDescObtainDragonStage24"
-        case .questDescObtainDragonStage25YesNecro: "QuestDescObtainDragonStage25YesNecro"
-        case .questDescObtainDragonStage25NoNecro: "QuestDescObtainDragonStage25NoNecro"
-        case .questDescObtainDragonStage26: "QuestDescObtainDragonStage26"
-        case .questDescObtainDragonStage27: "QuestDescObtainDragonStage27"
-        case .questDescObtainAlienStage0(_): fatalError("QuestDescObtainAlienStage0 requires formatting and should not be mapped with localized")
-        case .questDescObtainAlienStage1: "QuestDescObtainAlienStage1"
-        case .questDescObtainAlienStage2: "QuestDescObtainAlienStage2"
-        case .questDescObtainAlienStage3: "QuestDescObtainAlienStage3"
-        case .questDescObtainAlienStage4: "QuestDescObtainAlienStage4"
-        case .questDescObtainAlienStage5: "QuestDescObtainAlienStage5"
-        case .questDescObtainAlienStage6: "QuestDescObtainAlienStage6"
-        case .questDescObtainAlienStage7(_): fatalError("QuestDescObtainAlienStage7 requires formatting and should not be mapped with localized")
-        case .questDescObtainAlienStage8: "QuestDescObtainAlienStage8"
-        case .questDescObtainAlienStage9: "QuestDescObtainAlienStage9"
-        case .questDescObtainAlienStage10: "QuestDescObtainAlienStage10"
-        case .questDescObtainAlienStage11: "QuestDescObtainAlienStage11"
-        case .questDescObtainAlienStage12: "QuestDescObtainAlienStage12"
-        case .questDescObtainAlienStage13: "QuestDescObtainAlienStage13"
-        case .questDescObtainAlienStage14: "QuestDescObtainAlienStage14"
-        case .questDescObtainAlienStage15: "QuestDescObtainAlienStage15"
-        case .itemDescNecronomicon: "ItemDescNecronomicon"
-        case .itemDescPieceOfCloth: "ItemDescPieceOfCloth"
-        case .itemDescMysteriousBook: "ItemDescMysteriousBook"
-        case .itemDescFish: "ItemDescFish"
-        case .itemDescFrogusEgg: "ItemDescFrogusEgg"
-        case .itemDescDogusEgg: "ItemDescDogusEgg"
-        case .itemDescCatusEgg: "ItemDescCatusEgg"
-        case .itemDescBoberEgg: "ItemDescBoberEgg"
-        case .itemDescDragonEgg: "ItemDescDragonEgg"
-        case .itemDescBasket: "ItemDescBasket"
-        case .itemDescTwoMeterRuler: "ItemDescTwoMeterRuler"
-        case .itemDescTenCentimeterRuler: "ItemDescTenCentimeterRuler"
-        case .itemDescMathBook: "ItemDescMathBook"
-        case .itemDescMemoryOfMage: "ItemDescMemoryOfMage"
-        case .itemDescMemoryOfWarrior: "ItemDescMemoryOfWarrior"
-        case .itemDescMemoryOfBard: "ItemDescMemoryOfBard"
-        case .itemDescMemoryOfSmith: "ItemDescMemoryOfSmith"
-        case .itemDescCurseOfMage: "ItemDescCurseOfMage"
-        case .itemDescCurseOfWarrior: "ItemDescCurseOfWarrior"
-        case .itemDescCurseOfBard: "ItemDescCurseOfBard"
-        case .itemDescCurseOfSmith: "ItemDescCurseOfSmith"
-        case .itemDescStarSupernova: "ItemDescStarSupernova"
-        case .itemDescClotOfMagic: "ItemDescClotOfMagic"
-        case .itemDescSpaceship: "ItemDescSpaceship"
-        case .itemDescSupernovaInSpace: "ItemDescSupernovaInSpace"
-        case .itemDescAlienEgg: "ItemDescAlienEgg"
-        case .itemDescAbilityNecromancy: "ItemDescAbilityNecromancy"
-        case .itemDescAbilityMeditation: "ItemDescAbilityMeditation"
+        guard let resId: String.LocalizationValue = StringId.stringIdMap[self] else {
+            fatalError("No localization key found for \(self)")
         }
         
         return String(localized: resId)
     }
+    
+    static let stringIdMap: [StringId: String.LocalizationValue] = [
+        StringId.PetTypeDescriptionCatus(): "PetTypeDescriptionCatus",
+        StringId.PetTypeDescriptionDogus(): "PetTypeDescriptionDogus",
+        StringId.PetTypeDescriptionFrogus(): "PetTypeDescriptionFrogus",
+        StringId.PetTypeDescriptionBober(): "PetTypeDescriptionBober",
+        StringId.PetTypeDescriptionFractal(): "PetTypeDescriptionFractal",
+        StringId.PetTypeDescriptionDragon(): "PetTypeDescriptionDragon",
+        StringId.PetTypeDescriptionAlien(): "PetTypeDescriptionAlien",
+        StringId.MysteriousBook(): "MysteriousBook",
+        StringId.Necronomicon(): "Necronomicon",
+        StringId.PieceOfCloth(): "PieceOfCloth",
+        StringId.Fish(): "Fish",
+        StringId.FrogusEgg(): "FrogusEgg",
+        StringId.DogusEgg(): "DogusEgg",
+        StringId.CatusEgg(): "CatusEgg",
+        StringId.BoberEgg(): "BoberEgg",
+        StringId.DragonEgg(): "DragonEgg",
+        StringId.Basket(): "Basket",
+        StringId.TwoMeterRuler(): "TwoMeterRuler",
+        StringId.TenCentimeterRuler(): "TenCentimeterRuler",
+        StringId.MathBook(): "MathBook",
+        StringId.MemoryOfMage(): "MemoryOfMage",
+        StringId.MemoryOfWarrior(): "MemoryOfWarrior",
+        StringId.MemoryOfBard(): "MemoryOfBard",
+        StringId.MemoryOfSmith(): "MemoryOfSmith",
+        StringId.CurseOfMage(): "CurseOfMage",
+        StringId.CurseOfWarrior(): "CurseOfWarrior",
+        StringId.CurseOfBard(): "CurseOfBard",
+        StringId.CurseOfSmith(): "CurseOfSmith",
+        StringId.StarSupernova(): "StarSupernova",
+        StringId.ClotOfMagic(): "ClotOfMagic",
+        StringId.Spaceship(): "Spaceship",
+        StringId.SupernovaInSpace(): "SupernovaInSpace",
+        StringId.AbilityNecromancy(): "AbilityNecromancy",
+        StringId.AbilityMeditation(): "AbilityMeditation",
+        StringId.AlienEgg(): "AlienEgg",
+        StringId.MeditationExerciseBreathAwareness(): "MeditationExerciseBreathAwareness",
+        StringId.MeditationExerciseBoxBreathing(): "MeditationExerciseBoxBreathing",
+        StringId.MeditationExerciseBodyScan(): "MeditationExerciseBodyScan",
+        StringId.MeditationExerciseLovingKindnessPhrases(): "MeditationExerciseLovingKindnessPhrases",
+        StringId.MeditationExerciseCountingTheBreath(): "MeditationExerciseCountingTheBreath",
+        StringId.MeditationExerciseMantraRepetition(): "MeditationExerciseMantraRepetition",
+        StringId.MeditationExerciseWalkingMeditation(): "MeditationExerciseWalkingMeditation",
+        StringId.MeditationExerciseCandleGazing(): "MeditationExerciseCandleGazing",
+        StringId.MeditationExerciseNotingPractice(): "MeditationExerciseNotingPractice",
+        StringId.MeditationExerciseFiveSensesAwareness(): "MeditationExerciseFiveSensesAwareness",
+        StringId.MeditationExerciseVisualization(): "MeditationExerciseVisualization",
+        StringId.MeditationExerciseMountainMeditation(): "MeditationExerciseMountainMeditation",
+        StringId.MeditationExerciseSoundAwareness(): "MeditationExerciseSoundAwareness",
+        StringId.MeditationExerciseTonglenExercise(): "MeditationExerciseTonglenExercise",
+        StringId.MeditationExerciseGratitudeReflection(): "MeditationExerciseGratitudeReflection",
+        StringId.MeditationExerciseMindfulEating(): "MeditationExerciseMindfulEating",
+        StringId.MeditationExerciseProgressiveRelaxation(): "MeditationExerciseProgressiveRelaxation",
+        StringId.MeditationExerciseChakraFocusing(): "MeditationExerciseChakraFocusing",
+        StringId.MeditationExerciseSelfInquiryQuestions(): "MeditationExerciseSelfInquiryQuestions",
+        StringId.MeditationExerciseSilentSitting(): "MeditationExerciseSilentSitting",
+        StringId.OnboardingHomeTitle(): "OnboardingHomeTitle",
+        StringId.OnboardingHomeMessage(): "OnboardingHomeMessage",
+        StringId.OnboardingSatietyTitle(): "OnboardingSatietyTitle",
+        StringId.OnboardingSatietyMessage(): "OnboardingSatietyMessage",
+        StringId.OnboardingPsycheTitle(): "OnboardingPsycheTitle",
+        StringId.OnboardingPsycheMessage(): "OnboardingPsycheMessage",
+        StringId.OnboardingHealthTitle(): "OnboardingHealthTitle",
+        StringId.OnboardingHealthMessage(): "OnboardingHealthMessage",
+        StringId.OnboardingIllnessTitle(): "OnboardingIllnessTitle",
+        StringId.OnboardingIllnessMessage(): "OnboardingIllnessMessage",
+        StringId.OnboardingCleanUpTitle(): "OnboardingCleanUpTitle",
+        StringId.OnboardingCleanUpMessage(): "OnboardingCleanUpMessage",
+        StringId.OnboardingTalkTitle(): "OnboardingTalkTitle",
+        StringId.OnboardingTalkMessage(): "OnboardingTalkMessage",
+        StringId.OnboardingAgeTitle(): "OnboardingAgeTitle",
+        StringId.OnboardingAgeMessage(): "OnboardingAgeMessage",
+        StringId.OnboardingGoodLuckTitle(): "OnboardingGoodLuckTitle",
+        StringId.OnboardingGoodLuckMessage(): "OnboardingGoodLuckMessage",
+        StringId.OnboardingSkipTitle(): "OnboardingSkipTitle",
+        StringId.OnboardingPreviousTitle(): "OnboardingPreviousTitle",
+        StringId.OnboardingNextTitle(): "OnboardingNextTitle",
+        StringId.OnboardingLetsGoTitle(): "OnboardingLetsGoTitle",
+        StringId.OnboardingHowToButtonTitle(): "OnboardingHowToButtonTitle",
+        StringId.WhatIsGoingOnWithYou(): "WhatIsGoingOnWithYou",
+        StringId.WhatIsGoingOnWithYouLatin(): "WhatIsGoingOnWithYouLatin",
+        StringId.WhatIsGoingOnWithYouPolish(): "WhatIsGoingOnWithYouPolish",
+        StringId.WhatIsGoingOnWithYouMathMandelbrot(): "WhatIsGoingOnWithYouMathMandelbrot",
+        StringId.WhatIsGoingOnWithYouMathGosper(): "WhatIsGoingOnWithYouMathGosper",
+        StringId.WhatIsGoingOnWithYouMathKoch(): "WhatIsGoingOnWithYouMathKoch",
+        StringId.WhatIsGoingOnWithYouMathSponge(): "WhatIsGoingOnWithYouMathSponge",
+        StringId.BeenBetter(): "BeenBetter",
+        StringId.ByeBye(): "ByeBye",
+        StringId.IShouldGo(): "IShouldGo",
+        StringId.SeeYa(): "SeeYa",
+        StringId.Sure(): "Sure",
+        StringId.Ok(): "Ok",
+        StringId.AllRight(): "AllRight",
+        StringId.Excellent(): "Excellent",
+        StringId.Ellipsis(): "Ellipsis",
+        StringId.Thanks(): "Thanks",
+        StringId.Use(): "Use",
+        StringId.Destroy(): "Destroy",
+        StringId.IAmOkayHowAreYou(): "IAmOkayHowAreYou",
+        StringId.IAmSick(): "IAmSick",
+        StringId.IAmSickLatin(): "IAmSickLatin",
+        StringId.IAmSickPolish(): "IAmSickPolish",
+        StringId.IAmSickMath(): "IAmSickMath",
+        StringId.IAmHungry(): "IAmHungry",
+        StringId.IAmHungryLatin(): "IAmHungryLatin",
+        StringId.IAmHungryPolish(): "IAmHungryPolish",
+        StringId.IAmHungryMath(): "IAmHungryMath",
+        StringId.IPooped(): "IPooped",
+        StringId.IPoopedLatin(): "IPoopedLatin",
+        StringId.IPoopedPolish(): "IPoopedPolish",
+        StringId.IPoopedMath(): "IPoopedMath",
+        StringId.IAmBored(): "IAmBored",
+        StringId.IAmBoredLatin(): "IAmBoredLatin",
+        StringId.IAmBoredPolish(): "IAmBoredPolish",
+        StringId.IAmBoredMath(): "IAmBoredMath",
+        StringId.IAmStillAngryAfterForceWakeUp(): "IAmStillAngryAfterForceWakeUp",
+        StringId.IAmStillAngryAfterForceWakeUpLatin(): "IAmStillAngryAfterForceWakeUpLatin",
+        StringId.IAmStillAngryAfterForceWakeUpPolish(): "IAmStillAngryAfterForceWakeUpPolish",
+        StringId.IAmStillAngryAfterForceWakeUpMath(): "IAmStillAngryAfterForceWakeUpMath",
+        StringId.IAmHalfHp(): "IAmHalfHp",
+        StringId.IAmHalfHpLatin(): "IAmHalfHpLatin",
+        StringId.IAmHalfHpPolish(): "IAmHalfHpPolish",
+        StringId.IAmHalfHpMath(): "IAmHalfHpMath",
+        StringId.IAmGood(): "IAmGood",
+        StringId.IAmGoodLatin(): "IAmGoodLatin",
+        StringId.IAmGoodPolish(): "IAmGoodPolish",
+        StringId.IAmGoodMath(): "IAmGoodMath",
+        StringId.QuestResetAnswer0(): "QuestResetAnswer0",
+        StringId.QuestResetDialog0(): "QuestResetDialog0",
+        StringId.QuestResetAnswer1(): "QuestResetAnswer1",
+        StringId.QuestResetDialog1(): "QuestResetDialog1",
+        StringId.NecronomiconStage3AnswerOption0(): "NecronomiconStage3AnswerOption0",
+        StringId.NecronomiconStage3CommonDialog(): "NecronomiconStage3CommonDialog",
+        StringId.NecronomiconStage3DogDialog(): "NecronomiconStage3DogDialog",
+        StringId.NecronomiconStage3DogDialogAnswerOption0(): "NecronomiconStage3DogDialogAnswerOption0",
+        StringId.NecronomiconStage5AnswerOption0(): "NecronomiconStage5AnswerOption0",
+        StringId.NecronomiconStage5DogDialog(): "NecronomiconStage5DogDialog",
+        StringId.NecronomiconStage6AnswerOption0(): "NecronomiconStage6AnswerOption0",
+        StringId.NecronomiconStage6DogDialog(): "NecronomiconStage6DogDialog",
+        StringId.NecronomiconStage7DogDialog0(): "NecronomiconStage7DogDialog0",
+        StringId.NecronomiconStage7AnswerOption0(): "NecronomiconStage7AnswerOption0",
+        StringId.NecronomiconStage7DogDialog1(): "NecronomiconStage7DogDialog1",
+        StringId.NecronomiconStage7DogDialog2(): "NecronomiconStage7DogDialog2",
+        StringId.NecronomiconStage8AnswerOption0(): "NecronomiconStage8AnswerOption0",
+        StringId.NecronomiconStage8Dialog0(): "NecronomiconStage8Dialog0",
+        StringId.NecronomiconStage8Dialog1(): "NecronomiconStage8Dialog1",
+        StringId.CemeteryScreenTitle(): "CemeteryScreenTitle",
+        StringId.ProfileScreenTitle(): "ProfileScreenTitle",
+        StringId.WeatherScreenTitle(): "WeatherScreenTitle",
+        StringId.ZooScreenTitle(): "ZooScreenTitle",
+        StringId.QuestsScreenTitle(): "QuestsScreenTitle",
+        StringId.HistoryEventPetBecomeAdult(): "HistoryEventPetBecomeAdult",
+        StringId.HistoryEventPetBecomeNewborn(): "HistoryEventPetBecomeNewborn",
+        StringId.HistoryEventPetBecomeOld(): "HistoryEventPetBecomeOld",
+        StringId.HistoryEventPetBecomeTeen(): "HistoryEventPetBecomeTeen",
+        StringId.HistoryEventPetBuried(): "HistoryEventPetBuried",
+        StringId.HistoryEventPetForgotten(): "HistoryEventPetForgotten",
+        StringId.HistoryEventPetCleanUp(): "HistoryEventPetCleanUp",
+        StringId.HistoryEventPetCreated(): "HistoryEventPetCreated",
+        StringId.HistoryEventPetDied(): "HistoryEventPetDied",
+        StringId.HistoryEventPetFeed(): "HistoryEventPetFeed",
+        StringId.HistoryEventPetForciblyWakeUp(): "HistoryEventPetForciblyWakeUp",
+        StringId.HistoryEventPetGetHealed(): "HistoryEventPetGetHealed",
+        StringId.HistoryEventPetGetIll(): "HistoryEventPetGetIll",
+        StringId.HistoryEventPetPlay(): "HistoryEventPetPlay",
+        StringId.HistoryEventPetPoop(): "HistoryEventPetPoop",
+        StringId.HistoryEventPetResurrected(): "HistoryEventPetResurrected",
+        StringId.HistoryEventPetSleep(): "HistoryEventPetSleep",
+        StringId.HistoryEventPetWakeUp(): "HistoryEventPetWakeUp",
+        StringId.Necromancy(): "Necromancy",
+        StringId.Meditation(): "Meditation",
+        StringId.ObtainFrogusStage1Answer0(): "ObtainFrogusStage1Answer0",
+        StringId.ObtainFrogusStage1Dialog0(): "ObtainFrogusStage1Dialog0",
+        StringId.ObtainFrogusStage1Answer1(): "ObtainFrogusStage1Answer1",
+        StringId.ObtainFrogusStage3Answer0(): "ObtainFrogusStage3Answer0",
+        StringId.ObtainFrogusStage3Dialog0(): "ObtainFrogusStage3Dialog0",
+        StringId.ObtainFrogusStage3Answer1(): "ObtainFrogusStage3Answer1",
+        StringId.ObtainFrogusStage5Answer0(): "ObtainFrogusStage5Answer0",
+        StringId.ObtainFrogusStage5Dialog0(): "ObtainFrogusStage5Dialog0",
+        StringId.ObtainFrogusStage5Answer1(): "ObtainFrogusStage5Answer1",
+        StringId.ObtainBoberStage2Answer0(): "ObtainBoberStage2Answer0",
+        StringId.ObtainBoberStage2Answer1(): "ObtainBoberStage2Answer1",
+        StringId.ObtainBoberStage2Dialog0(): "ObtainBoberStage2Dialog0",
+        StringId.ObtainBoberStage2Dialog1(): "ObtainBoberStage2Dialog1",
+        StringId.ObtainBoberStage3Answer0(): "ObtainBoberStage3Answer0",
+        StringId.ObtainBoberStage3Dialog0(): "ObtainBoberStage3Dialog0",
+        StringId.ObtainBoberStage4Dialog0(): "ObtainBoberStage4Dialog0",
+        StringId.ObtainBoberStage6Answer0(): "ObtainBoberStage6Answer0",
+        StringId.ObtainBoberStage6Dialog0(): "ObtainBoberStage6Dialog0",
+        StringId.ObtainBoberStage6Dialog1(): "ObtainBoberStage6Dialog1",
+        StringId.ObtainBoberStage8Answer0(): "ObtainBoberStage8Answer0",
+        StringId.ObtainBoberStage8Dialog0(): "ObtainBoberStage8Dialog0",
+        StringId.ObtainBoberStage9Answer0(): "ObtainBoberStage9Answer0",
+        StringId.ObtainBoberStage9Dialog0(): "ObtainBoberStage9Dialog0",
+        StringId.ObtainBoberStage9Dialog1(): "ObtainBoberStage9Dialog1",
+        StringId.ObtainBoberStage9Dialog2(): "ObtainBoberStage9Dialog2",
+        StringId.ObtainBoberStage10Answer0(): "ObtainBoberStage10Answer0",
+        StringId.ObtainBoberStage10Dialog0(): "ObtainBoberStage10Dialog0",
+        StringId.ObtainBoberStage11Dialog0(): "ObtainBoberStage11Dialog0",
+        StringId.ObtainBoberStage11Answer0(): "ObtainBoberStage11Answer0",
+        StringId.ObtainFractalStage1Answer0(): "ObtainFractalStage1Answer0",
+        StringId.ObtainFractalStage1Dialog0(): "ObtainFractalStage1Dialog0",
+        StringId.ObtainFractalStage1Dialog1(): "ObtainFractalStage1Dialog1",
+        StringId.ObtainFractalStage1Answer1(): "ObtainFractalStage1Answer1",
+        StringId.ObtainFractalStage3Answer0(): "ObtainFractalStage3Answer0",
+        StringId.ObtainFractalStage3Dialog0(): "ObtainFractalStage3Dialog0",
+        StringId.ObtainFractalStage3Answer1(): "ObtainFractalStage3Answer1",
+        StringId.ObtainFractalStage5Answer0(): "ObtainFractalStage5Answer0",
+        StringId.ObtainFractalStage5Dialog0(): "ObtainFractalStage5Dialog0",
+        StringId.ObtainFractalStage5Answer1(): "ObtainFractalStage5Answer1",
+        StringId.ObtainFractalStage6Answer0(): "ObtainFractalStage6Answer0",
+        StringId.ObtainFractalStage6Dialog0(): "ObtainFractalStage6Dialog0",
+        StringId.ObtainFractalStage6Answer1(): "ObtainFractalStage6Answer1",
+        StringId.MeditationStage1Answer0(): "MeditationStage1Answer0",
+        StringId.MeditationStage1Dialog0(): "MeditationStage1Dialog0",
+        StringId.MeditationStage1Dialog1(): "MeditationStage1Dialog1",
+        StringId.MeditationStage1Answer1(): "MeditationStage1Answer1",
+        StringId.MeditationStage2Answer0(): "MeditationStage2Answer0",
+        StringId.MeditationStage2Dialog0(): "MeditationStage2Dialog0",
+        StringId.MeditationStage2Dialog1(): "MeditationStage2Dialog1",
+        StringId.MeditationStage2Dialog2(): "MeditationStage2Dialog2",
+        StringId.MeditationStage3Answer0(): "MeditationStage3Answer0",
+        StringId.MeditationStage3Dialog0(): "MeditationStage3Dialog0",
+        StringId.MeditationStage3Dialog1(): "MeditationStage3Dialog1",
+        StringId.MeditationStage3Dialog2(): "MeditationStage3Dialog2",
+        StringId.MeditationStage3Answer1(): "MeditationStage3Answer1",
+        StringId.MeditationStage3Dialog4(): "MeditationStage3Dialog4",
+        StringId.MeditationStage3Answer2(): "MeditationStage3Answer2",
+        StringId.ObtainDragonStage1Answer0(): "ObtainDragonStage1Answer0",
+        StringId.ObtainDragonStage1Dialog0(): "ObtainDragonStage1Dialog0",
+        StringId.ObtainDragonStage1Answer1(): "ObtainDragonStage1Answer1",
+        StringId.ObtainDragonStage1Dialog1(): "ObtainDragonStage1Dialog1",
+        StringId.ObtainDragonStage1Answer2(): "ObtainDragonStage1Answer2",
+        StringId.ObtainDragonStage1Dialog2(): "ObtainDragonStage1Dialog2",
+        StringId.ObtainDragonStage1Answer3(): "ObtainDragonStage1Answer3",
+        StringId.ObtainDragonStage2Answer0(): "ObtainDragonStage2Answer0",
+        StringId.ObtainDragonStage2Dialog0(): "ObtainDragonStage2Dialog0",
+        StringId.ObtainDragonStage2Answer1(): "ObtainDragonStage2Answer1",
+        StringId.ObtainDragonStage2Answer2(): "ObtainDragonStage2Answer2",
+        StringId.ObtainDragonStage2Dialog1(): "ObtainDragonStage2Dialog1",
+        StringId.ObtainDragonStage2Answer3(): "ObtainDragonStage2Answer3",
+        StringId.ObtainDragonStage2Dialog2(): "ObtainDragonStage2Dialog2",
+        StringId.ObtainDragonStage2Answer4(): "ObtainDragonStage2Answer4",
+        StringId.ObtainDragonStage2Dialog3(): "ObtainDragonStage2Dialog3",
+        StringId.ObtainDragonStage2Answer5(): "ObtainDragonStage2Answer5",
+        StringId.ObtainDragonStage3Answer0(): "ObtainDragonStage3Answer0",
+        StringId.ObtainDragonStage3Dialog0(): "ObtainDragonStage3Dialog0",
+        StringId.ObtainDragonStage4Answer0(): "ObtainDragonStage4Answer0",
+        StringId.ObtainDragonStage4Dialog0(): "ObtainDragonStage4Dialog0",
+        StringId.ObtainDragonStage4Dialog1(): "ObtainDragonStage4Dialog1",
+        StringId.ObtainDragonStage4Dialog2(): "ObtainDragonStage4Dialog2",
+        StringId.ObtainDragonStage5Answer0(): "ObtainDragonStage5Answer0",
+        StringId.ObtainDragonStage5Dialog0(): "ObtainDragonStage5Dialog0",
+        StringId.ObtainDragonStage5Dialog1(): "ObtainDragonStage5Dialog1",
+        StringId.ObtainDragonStage5Dialog2(): "ObtainDragonStage5Dialog2",
+        StringId.ObtainDragonStage5Dialog3(): "ObtainDragonStage5Dialog3",
+        StringId.ObtainDragonStage5Answer1(): "ObtainDragonStage5Answer1",
+        StringId.ObtainDragonStage5Dialog4(): "ObtainDragonStage5Dialog4",
+        StringId.ObtainDragonStage5Answer2(): "ObtainDragonStage5Answer2",
+        StringId.ObtainDragonStage5Answer3(): "ObtainDragonStage5Answer3",
+        StringId.ObtainDragonStage5Answer4(): "ObtainDragonStage5Answer4",
+        StringId.ObtainDragonStage5Answer5(): "ObtainDragonStage5Answer5",
+        StringId.ObtainDragonStage5Answer6(): "ObtainDragonStage5Answer6",
+        StringId.ObtainDragonStage5Dialog5(): "ObtainDragonStage5Dialog5",
+        StringId.ObtainDragonStage7Answer0(): "ObtainDragonStage7Answer0",
+        StringId.ObtainDragonStage7Dialog0(): "ObtainDragonStage7Dialog0",
+        StringId.ObtainDragonStage7Dialog1(): "ObtainDragonStage7Dialog1",
+        StringId.ObtainDragonStage7Dialog2(): "ObtainDragonStage7Dialog2",
+        StringId.ObtainDragonStage7Dialog3(): "ObtainDragonStage7Dialog3",
+        StringId.ObtainDragonStage8Answer0(): "ObtainDragonStage8Answer0",
+        StringId.ObtainDragonStage9Answer0(): "ObtainDragonStage9Answer0",
+        StringId.ObtainDragonStage9Dialog0(): "ObtainDragonStage9Dialog0",
+        StringId.ObtainDragonStage9Dialog1(): "ObtainDragonStage9Dialog1",
+        StringId.ObtainDragonStage9Dialog2(): "ObtainDragonStage9Dialog2",
+        StringId.ObtainDragonStage10Answer0(): "ObtainDragonStage10Answer0",
+        StringId.ObtainDragonStage10Answer1(): "ObtainDragonStage10Answer1",
+        StringId.ObtainDragonStage10Dialog0(): "ObtainDragonStage10Dialog0",
+        StringId.ObtainDragonStage10Dialog1(): "ObtainDragonStage10Dialog1",
+        StringId.ObtainDragonStage10Dialog2(): "ObtainDragonStage10Dialog2",
+        StringId.ObtainDragonStage10Dialog3(): "ObtainDragonStage10Dialog3",
+        StringId.ObtainDragonStage12Answer0(): "ObtainDragonStage12Answer0",
+        StringId.ObtainDragonStage12Dialog0(): "ObtainDragonStage12Dialog0",
+        StringId.ObtainDragonStage12Dialog1(): "ObtainDragonStage12Dialog1",
+        StringId.ObtainDragonStage12Dialog2(): "ObtainDragonStage12Dialog2",
+        StringId.ObtainDragonStage12Dialog3(): "ObtainDragonStage12Dialog3",
+        StringId.ObtainDragonStage13Answer0(): "ObtainDragonStage13Answer0",
+        StringId.ObtainDragonStage14Answer0(): "ObtainDragonStage14Answer0",
+        StringId.ObtainDragonStage14Dialog0(): "ObtainDragonStage14Dialog0",
+        StringId.ObtainDragonStage14Dialog1(): "ObtainDragonStage14Dialog1",
+        StringId.ObtainDragonStage14Dialog2(): "ObtainDragonStage14Dialog2",
+        StringId.ObtainDragonStage15Answer0(): "ObtainDragonStage15Answer0",
+        StringId.ObtainDragonStage15Answer1(): "ObtainDragonStage15Answer1",
+        StringId.ObtainDragonStage15Dialog0(): "ObtainDragonStage15Dialog0",
+        StringId.ObtainDragonStage15Dialog1(): "ObtainDragonStage15Dialog1",
+        StringId.ObtainDragonStage15Dialog2(): "ObtainDragonStage15Dialog2",
+        StringId.ObtainDragonStage15Dialog3(): "ObtainDragonStage15Dialog3",
+        StringId.ObtainDragonStage17Answer0(): "ObtainDragonStage17Answer0",
+        StringId.ObtainDragonStage17Dialog0(): "ObtainDragonStage17Dialog0",
+        StringId.ObtainDragonStage17Dialog1(): "ObtainDragonStage17Dialog1",
+        StringId.ObtainDragonStage17Dialog2(): "ObtainDragonStage17Dialog2",
+        StringId.ObtainDragonStage17Dialog3(): "ObtainDragonStage17Dialog3",
+        StringId.ObtainDragonStage18Answer0(): "ObtainDragonStage18Answer0",
+        StringId.ObtainDragonStage19Answer0(): "ObtainDragonStage19Answer0",
+        StringId.ObtainDragonStage19Dialog0(): "ObtainDragonStage19Dialog0",
+        StringId.ObtainDragonStage19Dialog1(): "ObtainDragonStage19Dialog1",
+        StringId.ObtainDragonStage19Dialog2(): "ObtainDragonStage19Dialog2",
+        StringId.ObtainDragonStage20Answer0(): "ObtainDragonStage20Answer0",
+        StringId.ObtainDragonStage20Answer1(): "ObtainDragonStage20Answer1",
+        StringId.ObtainDragonStage20Dialog0(): "ObtainDragonStage20Dialog0",
+        StringId.ObtainDragonStage20Dialog1(): "ObtainDragonStage20Dialog1",
+        StringId.ObtainDragonStage20Dialog2(): "ObtainDragonStage20Dialog2",
+        StringId.ObtainDragonStage20Dialog3(): "ObtainDragonStage20Dialog3",
+        StringId.ObtainDragonStage22Answer0(): "ObtainDragonStage22Answer0",
+        StringId.ObtainDragonStage22Dialog0(): "ObtainDragonStage22Dialog0",
+        StringId.ObtainDragonStage22Dialog1(): "ObtainDragonStage22Dialog1",
+        StringId.ObtainDragonStage22Dialog2(): "ObtainDragonStage22Dialog2",
+        StringId.ObtainDragonStage22Dialog3(): "ObtainDragonStage22Dialog3",
+        StringId.ObtainDragonStage23Answer0(): "ObtainDragonStage23Answer0",
+        StringId.ObtainDragonStage24Answer0(): "ObtainDragonStage24Answer0",
+        StringId.ObtainDragonStage24Dialog0(): "ObtainDragonStage24Dialog0",
+        StringId.ObtainDragonStage24Dialog1(): "ObtainDragonStage24Dialog1",
+        StringId.ObtainDragonStage24Dialog2(): "ObtainDragonStage24Dialog2",
+        StringId.ObtainDragonStage24Dialog3(): "ObtainDragonStage24Dialog3",
+        StringId.ObtainDragonStage24Answer1(): "ObtainDragonStage24Answer1",
+        StringId.ObtainDragonStage24Dialog7(): "ObtainDragonStage24Dialog7",
+        StringId.ObtainDragonStage25Answer0(): "ObtainDragonStage25Answer0",
+        StringId.ObtainDragonStage25Answer1(): "ObtainDragonStage25Answer1",
+        StringId.ObtainDragonStage25Dialog0(): "ObtainDragonStage25Dialog0",
+        StringId.ObtainDragonStage25Answer2(): "ObtainDragonStage25Answer2",
+        StringId.ObtainDragonStage25Answer3(): "ObtainDragonStage25Answer3",
+        StringId.ObtainDragonStage25Answer4(): "ObtainDragonStage25Answer4",
+        StringId.ObtainDragonStage25Answer5(): "ObtainDragonStage25Answer5",
+        StringId.ObtainDragonStage25Dialog1(): "ObtainDragonStage25Dialog1",
+        StringId.ObtainDragonStage25Answer6(): "ObtainDragonStage25Answer6",
+        StringId.ObtainDragonStage25Answer7(): "ObtainDragonStage25Answer7",
+        StringId.ObtainDragonStage25Dialog2(): "ObtainDragonStage25Dialog2",
+        StringId.ObtainDragonStage25Answer8(): "ObtainDragonStage25Answer8",
+        StringId.ObtainDragonStage25Answer9(): "ObtainDragonStage25Answer9",
+        StringId.ObtainDragonStage25Dialog3(): "ObtainDragonStage25Dialog3",
+        StringId.ObtainDragonStage25Dialog4(): "ObtainDragonStage25Dialog4",
+        StringId.ObtainDragonStage25Dialog6(): "ObtainDragonStage25Dialog6",
+        StringId.ObtainDragonStage25Dialog8(): "ObtainDragonStage25Dialog8",
+        StringId.ObtainDragonStage25Dialog10(): "ObtainDragonStage25Dialog10",
+        StringId.ObtainDragonStage25Dialog13(): "ObtainDragonStage25Dialog13",
+        StringId.ObtainDragonStage25Dialog14(): "ObtainDragonStage25Dialog14",
+        StringId.ObtainDragonStage25Dialog15(): "ObtainDragonStage25Dialog15",
+        StringId.ObtainDragonStage25Dialog16(): "ObtainDragonStage25Dialog16",
+        StringId.ObtainDragonStage25Dialog18(): "ObtainDragonStage25Dialog18",
+        StringId.ObtainAlienStage1Answer0(): "ObtainAlienStage1Answer0",
+        StringId.ObtainAlienStage1Dialog0(): "ObtainAlienStage1Dialog0",
+        StringId.ObtainAlienStage1Answer1(): "ObtainAlienStage1Answer1",
+        StringId.ObtainAlienStage1Dialog1(): "ObtainAlienStage1Dialog1",
+        StringId.ObtainAlienStage1Answer2(): "ObtainAlienStage1Answer2",
+        StringId.ObtainAlienStage1Dialog2(): "ObtainAlienStage1Dialog2",
+        StringId.ObtainAlienStage1Answer3(): "ObtainAlienStage1Answer3",
+        StringId.ObtainAlienStage2Answer0(): "ObtainAlienStage2Answer0",
+        StringId.ObtainAlienStage2Dialog0(): "ObtainAlienStage2Dialog0",
+        StringId.ObtainAlienStage2Answer1(): "ObtainAlienStage2Answer1",
+        StringId.ObtainAlienStage2Dialog1(): "ObtainAlienStage2Dialog1",
+        StringId.ObtainAlienStage2Answer2(): "ObtainAlienStage2Answer2",
+        StringId.ObtainAlienStage2Dialog2(): "ObtainAlienStage2Dialog2",
+        StringId.ObtainAlienStage3Answer0(): "ObtainAlienStage3Answer0",
+        StringId.ObtainAlienStage3Dialog0(): "ObtainAlienStage3Dialog0",
+        StringId.ObtainAlienStage3Answer1(): "ObtainAlienStage3Answer1",
+        StringId.ObtainAlienStage3Dialog1(): "ObtainAlienStage3Dialog1",
+        StringId.ObtainAlienStage3Answer2(): "ObtainAlienStage3Answer2",
+        StringId.ObtainAlienStage4Answer0(): "ObtainAlienStage4Answer0",
+        StringId.ObtainAlienStage4Dialog0(): "ObtainAlienStage4Dialog0",
+        StringId.ObtainAlienStage4Answer1(): "ObtainAlienStage4Answer1",
+        StringId.ObtainAlienStage4Dialog1(): "ObtainAlienStage4Dialog1",
+        StringId.ObtainAlienStage6Answer0(): "ObtainAlienStage6Answer0",
+        StringId.ObtainAlienStage6Dialog0(): "ObtainAlienStage6Dialog0",
+        StringId.ObtainAlienStage6Answer1(): "ObtainAlienStage6Answer1",
+        StringId.ObtainAlienStage8Answer0(): "ObtainAlienStage8Answer0",
+        StringId.ObtainAlienStage8Dialog0(): "ObtainAlienStage8Dialog0",
+        StringId.ObtainAlienStage8Answer1(): "ObtainAlienStage8Answer1",
+        StringId.ObtainAlienStage9Answer0(): "ObtainAlienStage9Answer0",
+        StringId.ObtainAlienStage9Dialog0(): "ObtainAlienStage9Dialog0",
+        StringId.ObtainAlienStage9Answer1(): "ObtainAlienStage9Answer1",
+        StringId.ObtainAlienStage9Dialog1(): "ObtainAlienStage9Dialog1",
+        StringId.ObtainAlienStage9Answer2(): "ObtainAlienStage9Answer2",
+        StringId.ObtainAlienStage10Answer0(): "ObtainAlienStage10Answer0",
+        StringId.ObtainAlienStage10Dialog0(): "ObtainAlienStage10Dialog0",
+        StringId.ObtainAlienStage10Answer1(): "ObtainAlienStage10Answer1",
+        StringId.ObtainAlienStage10Dialog2(): "ObtainAlienStage10Dialog2",
+        StringId.ObtainAlienStage10Answer2(): "ObtainAlienStage10Answer2",
+        StringId.ObtainAlienStage11Answer0(): "ObtainAlienStage11Answer0",
+        StringId.ObtainAlienStage11Dialog0(): "ObtainAlienStage11Dialog0",
+        StringId.ObtainAlienStage11Answer1(): "ObtainAlienStage11Answer1",
+        StringId.ObtainAlienStage11Dialog1(): "ObtainAlienStage11Dialog1",
+        StringId.ObtainAlienStage11Answer2(): "ObtainAlienStage11Answer2",
+        StringId.ObtainAlienStage13Answer0(): "ObtainAlienStage13Answer0",
+        StringId.ObtainAlienStage13Dialog0(): "ObtainAlienStage13Dialog0",
+        StringId.ObtainAlienStage13Answer1(): "ObtainAlienStage13Answer1",
+        StringId.QuestIsFinished(): "QuestIsFinished",
+        StringId.QuestDescFrog(): "QuestDescFrog",
+        StringId.QuestDescBober(): "QuestDescBober",
+        StringId.QuestDescDragon(): "QuestDescDragon",
+        StringId.QuestDescFractal(): "QuestDescFractal",
+        StringId.QuestNameNecronomicon(): "QuestNameNecronomicon",
+        StringId.QuestNameObtainFrogus(): "QuestNameObtainFrogus",
+        StringId.QuestNameObtainBober(): "QuestNameObtainBober",
+        StringId.QuestNameObtainFractal(): "QuestNameObtainFractal",
+        StringId.QuestNameMeditation(): "QuestNameMeditation",
+        StringId.QuestNameObtainDragon(): "QuestNameObtainDragon",
+        StringId.QuestNameObtainAlien(): "QuestNameObtainAlien",
+        StringId.QuestDescObtainFrogusStage0(): "QuestDescObtainFrogusStage0",
+        StringId.QuestDescObtainFrogusStage1(): "QuestDescObtainFrogusStage1",
+        StringId.QuestDescObtainFrogusStage2(): "QuestDescObtainFrogusStage2",
+        StringId.QuestDescObtainFrogusStage3(): "QuestDescObtainFrogusStage3",
+        StringId.QuestDescObtainFrogusStage4(): "QuestDescObtainFrogusStage4",
+        StringId.QuestDescObtainFrogusStage5(): "QuestDescObtainFrogusStage5",
+        StringId.QuestDescObtainFrogusStage6(): "QuestDescObtainFrogusStage6",
+        StringId.QuestDescNecronomiconStage0(): "QuestDescNecronomiconStage0",
+        StringId.QuestDescNecronomiconStage1(): "QuestDescNecronomiconStage1",
+        StringId.QuestDescNecronomiconStage2(): "QuestDescNecronomiconStage2",
+        StringId.QuestDescNecronomiconStage3(): "QuestDescNecronomiconStage3",
+        StringId.QuestDescNecronomiconStage4(): "QuestDescNecronomiconStage4",
+        StringId.QuestDescNecronomiconStage5(): "QuestDescNecronomiconStage5",
+        StringId.QuestDescNecronomiconStage6(): "QuestDescNecronomiconStage6",
+        StringId.QuestDescNecronomiconStage7(): "QuestDescNecronomiconStage7",
+        StringId.QuestDescNecronomiconStage8(): "QuestDescNecronomiconStage8",
+        StringId.QuestDescNecronomiconStage9Use(): "QuestDescNecronomiconStage9Use",
+        StringId.QuestDescNecronomiconStage9Destroy(): "QuestDescNecronomiconStage9Destroy",
+        StringId.QuestDescObtainBoberStage1(): "QuestDescObtainBoberStage1",
+        StringId.QuestDescObtainBoberStage2(): "QuestDescObtainBoberStage2",
+        StringId.QuestDescObtainBoberStage3(): "QuestDescObtainBoberStage3",
+        StringId.QuestDescObtainBoberStage4(): "QuestDescObtainBoberStage4",
+        StringId.QuestDescObtainBoberStage5(): "QuestDescObtainBoberStage5",
+        StringId.QuestDescObtainBoberStage6(): "QuestDescObtainBoberStage6",
+        StringId.QuestDescObtainBoberStage7(): "QuestDescObtainBoberStage7",
+        StringId.QuestDescObtainBoberStage8(): "QuestDescObtainBoberStage8",
+        StringId.QuestDescObtainBoberStage9(): "QuestDescObtainBoberStage9",
+        StringId.QuestDescObtainBoberStage10(): "QuestDescObtainBoberStage10",
+        StringId.QuestDescObtainBoberStage11(): "QuestDescObtainBoberStage11",
+        StringId.QuestDescObtainBoberStage12(): "QuestDescObtainBoberStage12",
+        StringId.QuestDescObtainFractalStage1(): "QuestDescObtainFractalStage1",
+        StringId.QuestDescObtainFractalStage2(): "QuestDescObtainFractalStage2",
+        StringId.QuestDescObtainFractalStage3(): "QuestDescObtainFractalStage3",
+        StringId.QuestDescObtainFractalStage4(): "QuestDescObtainFractalStage4",
+        StringId.QuestDescObtainFractalStage5(): "QuestDescObtainFractalStage5",
+        StringId.QuestDescObtainFractalStage6(): "QuestDescObtainFractalStage6",
+        StringId.QuestDescObtainFractalStage7(): "QuestDescObtainFractalStage7",
+        StringId.QuestDescObtainFractalStage8(): "QuestDescObtainFractalStage8",
+        StringId.QuestDescMeditationStage1(): "QuestDescMeditationStage1",
+        StringId.QuestDescMeditationStage2(): "QuestDescMeditationStage2",
+        StringId.QuestDescMeditationStage3(): "QuestDescMeditationStage3",
+        StringId.QuestDescMeditationStage4(): "QuestDescMeditationStage4",
+        StringId.QuestDescObtainDragonStage1(): "QuestDescObtainDragonStage1",
+        StringId.QuestDescObtainDragonStage2(): "QuestDescObtainDragonStage2",
+        StringId.QuestDescObtainDragonStage3(): "QuestDescObtainDragonStage3",
+        StringId.QuestDescObtainDragonStage4(): "QuestDescObtainDragonStage4",
+        StringId.QuestDescObtainDragonStage5(): "QuestDescObtainDragonStage5",
+        StringId.QuestDescObtainDragonStage6(): "QuestDescObtainDragonStage6",
+        StringId.QuestDescObtainDragonStage7(): "QuestDescObtainDragonStage7",
+        StringId.QuestDescObtainDragonStage8(): "QuestDescObtainDragonStage8",
+        StringId.QuestDescObtainDragonStage9(): "QuestDescObtainDragonStage9",
+        StringId.QuestDescObtainDragonStage10(): "QuestDescObtainDragonStage10",
+        StringId.QuestDescObtainDragonStage11(): "QuestDescObtainDragonStage11",
+        StringId.QuestDescObtainDragonStage12(): "QuestDescObtainDragonStage12",
+        StringId.QuestDescObtainDragonStage13(): "QuestDescObtainDragonStage13",
+        StringId.QuestDescObtainDragonStage14(): "QuestDescObtainDragonStage14",
+        StringId.QuestDescObtainDragonStage15(): "QuestDescObtainDragonStage15",
+        StringId.QuestDescObtainDragonStage16(): "QuestDescObtainDragonStage16",
+        StringId.QuestDescObtainDragonStage17(): "QuestDescObtainDragonStage17",
+        StringId.QuestDescObtainDragonStage18(): "QuestDescObtainDragonStage18",
+        StringId.QuestDescObtainDragonStage19(): "QuestDescObtainDragonStage19",
+        StringId.QuestDescObtainDragonStage20(): "QuestDescObtainDragonStage20",
+        StringId.QuestDescObtainDragonStage21(): "QuestDescObtainDragonStage21",
+        StringId.QuestDescObtainDragonStage22(): "QuestDescObtainDragonStage22",
+        StringId.QuestDescObtainDragonStage23(): "QuestDescObtainDragonStage23",
+        StringId.QuestDescObtainDragonStage24(): "QuestDescObtainDragonStage24",
+        StringId.QuestDescObtainDragonStage25YesNecro(): "QuestDescObtainDragonStage25YesNecro",
+        StringId.QuestDescObtainDragonStage25NoNecro(): "QuestDescObtainDragonStage25NoNecro",
+        StringId.QuestDescObtainDragonStage26(): "QuestDescObtainDragonStage26",
+        StringId.QuestDescObtainDragonStage27(): "QuestDescObtainDragonStage27",
+        StringId.QuestDescObtainAlienStage1(): "QuestDescObtainAlienStage1",
+        StringId.QuestDescObtainAlienStage2(): "QuestDescObtainAlienStage2",
+        StringId.QuestDescObtainAlienStage3(): "QuestDescObtainAlienStage3",
+        StringId.QuestDescObtainAlienStage4(): "QuestDescObtainAlienStage4",
+        StringId.QuestDescObtainAlienStage5(): "QuestDescObtainAlienStage5",
+        StringId.QuestDescObtainAlienStage6(): "QuestDescObtainAlienStage6",
+        StringId.QuestDescObtainAlienStage8(): "QuestDescObtainAlienStage8",
+        StringId.QuestDescObtainAlienStage9(): "QuestDescObtainAlienStage9",
+        StringId.QuestDescObtainAlienStage10(): "QuestDescObtainAlienStage10",
+        StringId.QuestDescObtainAlienStage11(): "QuestDescObtainAlienStage11",
+        StringId.QuestDescObtainAlienStage12(): "QuestDescObtainAlienStage12",
+        StringId.QuestDescObtainAlienStage13(): "QuestDescObtainAlienStage13",
+        StringId.QuestDescObtainAlienStage14(): "QuestDescObtainAlienStage14",
+        StringId.QuestDescObtainAlienStage15(): "QuestDescObtainAlienStage15",
+        StringId.ItemDescNecronomicon(): "ItemDescNecronomicon",
+        StringId.ItemDescPieceOfCloth(): "ItemDescPieceOfCloth",
+        StringId.ItemDescMysteriousBook(): "ItemDescMysteriousBook",
+        StringId.ItemDescFish(): "ItemDescFish",
+        StringId.ItemDescFrogusEgg(): "ItemDescFrogusEgg",
+        StringId.ItemDescDogusEgg(): "ItemDescDogusEgg",
+        StringId.ItemDescCatusEgg(): "ItemDescCatusEgg",
+        StringId.ItemDescBoberEgg(): "ItemDescBoberEgg",
+        StringId.ItemDescDragonEgg(): "ItemDescDragonEgg",
+        StringId.ItemDescBasket(): "ItemDescBasket",
+        StringId.ItemDescTwoMeterRuler(): "ItemDescTwoMeterRuler",
+        StringId.ItemDescTenCentimeterRuler(): "ItemDescTenCentimeterRuler",
+        StringId.ItemDescMathBook(): "ItemDescMathBook",
+        StringId.ItemDescMemoryOfMage(): "ItemDescMemoryOfMage",
+        StringId.ItemDescMemoryOfWarrior(): "ItemDescMemoryOfWarrior",
+        StringId.ItemDescMemoryOfBard(): "ItemDescMemoryOfBard",
+        StringId.ItemDescMemoryOfSmith(): "ItemDescMemoryOfSmith",
+        StringId.ItemDescCurseOfMage(): "ItemDescCurseOfMage",
+        StringId.ItemDescCurseOfWarrior(): "ItemDescCurseOfWarrior",
+        StringId.ItemDescCurseOfBard(): "ItemDescCurseOfBard",
+        StringId.ItemDescCurseOfSmith(): "ItemDescCurseOfSmith",
+        StringId.ItemDescStarSupernova(): "ItemDescStarSupernova",
+        StringId.ItemDescClotOfMagic(): "ItemDescClotOfMagic",
+        StringId.ItemDescSpaceship(): "ItemDescSpaceship",
+        StringId.ItemDescSupernovaInSpace(): "ItemDescSupernovaInSpace",
+        StringId.ItemDescAlienEgg(): "ItemDescAlienEgg",
+        StringId.ItemDescAbilityNecromancy(): "ItemDescAbilityNecromancy",
+        StringId.ItemDescAbilityMeditation(): "ItemDescAbilityMeditation",
+
+        StringId.FactDog1(): "FactDog1",
+        StringId.FactDog2(): "FactDog2",
+        StringId.FactDog3(): "FactDog3",
+        StringId.FactDog4(): "FactDog4",
+        StringId.FactDog5(): "FactDog5",
+        StringId.FactDog6(): "FactDog6",
+        StringId.FactDog7(): "FactDog7",
+        StringId.FactDog8(): "FactDog8",
+        StringId.FactDog9(): "FactDog9",
+        StringId.FactDog10(): "FactDog10",
+        StringId.FactDog11(): "FactDog11",
+        StringId.FactDog12(): "FactDog12",
+        StringId.FactDog13(): "FactDog13",
+        StringId.FactDog14(): "FactDog14",
+        StringId.FactDog15(): "FactDog15",
+        StringId.FactDog16(): "FactDog16",
+        StringId.FactDog17(): "FactDog17",
+        StringId.FactDog18(): "FactDog18",
+        StringId.FactDog19(): "FactDog19",
+        StringId.FactDog20(): "FactDog20",
+        StringId.FactDog21(): "FactDog21",
+        StringId.FactDog22(): "FactDog22",
+        StringId.FactDog23(): "FactDog23",
+        StringId.FactDog24(): "FactDog24",
+        StringId.FactDog25(): "FactDog25",
+        StringId.FactDog26(): "FactDog26",
+        StringId.FactDog27(): "FactDog27",
+        StringId.FactDog28(): "FactDog28",
+        StringId.FactDog29(): "FactDog29",
+        StringId.FactDog30(): "FactDog30",
+        StringId.FactDog31(): "FactDog31",
+        StringId.FactDog32(): "FactDog32",
+        StringId.FactDog33(): "FactDog33",
+        StringId.FactDog34(): "FactDog34",
+        StringId.FactDog35(): "FactDog35",
+        StringId.FactDog36(): "FactDog36",
+        StringId.FactDog37(): "FactDog37",
+        StringId.FactDog38(): "FactDog38",
+        StringId.FactDog39(): "FactDog39",
+        StringId.FactDog40(): "FactDog40",
+        StringId.FactDog41(): "FactDog41",
+        StringId.FactDog42(): "FactDog42",
+        StringId.FactDog43(): "FactDog43",
+        StringId.FactDog44(): "FactDog44",
+        StringId.FactDog45(): "FactDog45",
+        StringId.FactDog46(): "FactDog46",
+        StringId.FactDog47(): "FactDog47",
+        StringId.FactDog48(): "FactDog48",
+        StringId.FactDog49(): "FactDog49",
+        StringId.FactDog50(): "FactDog50",
+        StringId.FactDog51(): "FactDog51",
+        StringId.FactDog52(): "FactDog52",
+        StringId.FactDog53(): "FactDog53",
+        StringId.FactDog54(): "FactDog54",
+        StringId.FactDog55(): "FactDog55",
+        StringId.FactDog56(): "FactDog56",
+        StringId.FactDog57(): "FactDog57",
+        StringId.FactDog58(): "FactDog58",
+        StringId.FactDog59(): "FactDog59",
+        StringId.FactDog60(): "FactDog60",
+        StringId.FactDog61(): "FactDog61",
+        StringId.FactDog62(): "FactDog62",
+        StringId.FactDog63(): "FactDog63",
+        StringId.FactDog64(): "FactDog64",
+        StringId.FactDog65(): "FactDog65",
+        StringId.FactDog66(): "FactDog66",
+        StringId.FactDog67(): "FactDog67",
+        StringId.FactDog68(): "FactDog68",
+        StringId.FactDog69(): "FactDog69",
+        StringId.FactDog70(): "FactDog70",
+        StringId.FactDog71(): "FactDog71",
+        StringId.FactDog72(): "FactDog72",
+        StringId.FactDog73(): "FactDog73",
+        StringId.FactDog74(): "FactDog74",
+        StringId.FactDog75(): "FactDog75",
+        StringId.FactDog76(): "FactDog76",
+        StringId.FactDog77(): "FactDog77",
+        StringId.FactDog78(): "FactDog78",
+        StringId.FactDog79(): "FactDog79",
+        StringId.FactDog80(): "FactDog80",
+        StringId.FactDog81(): "FactDog81",
+        StringId.FactDog82(): "FactDog82",
+        StringId.FactDog83(): "FactDog83",
+        StringId.FactDog84(): "FactDog84",
+        StringId.FactDog85(): "FactDog85",
+        StringId.FactDog86(): "FactDog86",
+        StringId.FactDog87(): "FactDog87",
+        StringId.FactDog88(): "FactDog88",
+        StringId.FactDog89(): "FactDog89",
+        StringId.FactDog90(): "FactDog90",
+        StringId.FactDog91(): "FactDog91",
+        StringId.FactDog92(): "FactDog92",
+        StringId.FactDog93(): "FactDog93",
+        StringId.FactDog94(): "FactDog94",
+        StringId.FactDog95(): "FactDog95",
+        StringId.FactDog96(): "FactDog96",
+        StringId.FactDog97(): "FactDog97",
+        StringId.FactDog98(): "FactDog98",
+        StringId.FactDog99(): "FactDog99",
+        StringId.FactDog100(): "FactDog100",
+        StringId.FactDog101(): "FactDog101",
+
+        StringId.FactCat1(): "FactCat1",
+        StringId.FactCat2(): "FactCat2",
+        StringId.FactCat3(): "FactCat3",
+        StringId.FactCat4(): "FactCat4",
+        StringId.FactCat5(): "FactCat5",
+        StringId.FactCat6(): "FactCat6",
+        StringId.FactCat7(): "FactCat7",
+        StringId.FactCat8(): "FactCat8",
+        StringId.FactCat9(): "FactCat9",
+        StringId.FactCat10(): "FactCat10",
+        StringId.FactCat11(): "FactCat11",
+        StringId.FactCat12(): "FactCat12",
+        StringId.FactCat13(): "FactCat13",
+        StringId.FactCat14(): "FactCat14",
+        StringId.FactCat15(): "FactCat15",
+        StringId.FactCat16(): "FactCat16",
+        StringId.FactCat17(): "FactCat17",
+        StringId.FactCat18(): "FactCat18",
+        StringId.FactCat19(): "FactCat19",
+        StringId.FactCat20(): "FactCat20",
+        StringId.FactCat21(): "FactCat21",
+        StringId.FactCat22(): "FactCat22",
+        StringId.FactCat23(): "FactCat23",
+        StringId.FactCat24(): "FactCat24",
+        StringId.FactCat25(): "FactCat25",
+        StringId.FactCat26(): "FactCat26",
+        StringId.FactCat27(): "FactCat27",
+        StringId.FactCat28(): "FactCat28",
+        StringId.FactCat29(): "FactCat29",
+        StringId.FactCat30(): "FactCat30",
+        StringId.FactCat31(): "FactCat31",
+        StringId.FactCat32(): "FactCat32",
+        StringId.FactCat33(): "FactCat33",
+        StringId.FactCat34(): "FactCat34",
+        StringId.FactCat35(): "FactCat35",
+        StringId.FactCat36(): "FactCat36",
+        StringId.FactCat37(): "FactCat37",
+        StringId.FactCat38(): "FactCat38",
+        StringId.FactCat39(): "FactCat39",
+        StringId.FactCat40(): "FactCat40",
+        StringId.FactCat41(): "FactCat41",
+        StringId.FactCat42(): "FactCat42",
+        StringId.FactCat43(): "FactCat43",
+        StringId.FactCat44(): "FactCat44",
+        StringId.FactCat45(): "FactCat45",
+        StringId.FactCat46(): "FactCat46",
+        StringId.FactCat47(): "FactCat47",
+        StringId.FactCat48(): "FactCat48",
+        StringId.FactCat49(): "FactCat49",
+        StringId.FactCat50(): "FactCat50",
+        StringId.FactCat51(): "FactCat51",
+        StringId.FactCat52(): "FactCat52",
+        StringId.FactCat53(): "FactCat53",
+        StringId.FactCat54(): "FactCat54",
+        StringId.FactCat55(): "FactCat55",
+        StringId.FactCat56(): "FactCat56",
+        StringId.FactCat57(): "FactCat57",
+        StringId.FactCat58(): "FactCat58",
+        StringId.FactCat59(): "FactCat59",
+        StringId.FactCat60(): "FactCat60",
+        StringId.FactCat61(): "FactCat61",
+        StringId.FactCat62(): "FactCat62",
+        StringId.FactCat63(): "FactCat63",
+        StringId.FactCat64(): "FactCat64",
+        StringId.FactCat65(): "FactCat65",
+        StringId.FactCat66(): "FactCat66",
+        StringId.FactCat67(): "FactCat67",
+        StringId.FactCat68(): "FactCat68",
+        StringId.FactCat69(): "FactCat69",
+        StringId.FactCat70(): "FactCat70",
+        StringId.FactCat71(): "FactCat71",
+        StringId.FactCat72(): "FactCat72",
+        StringId.FactCat73(): "FactCat73",
+        StringId.FactCat74(): "FactCat74",
+        StringId.FactCat75(): "FactCat75",
+        StringId.FactCat76(): "FactCat76",
+        StringId.FactCat77(): "FactCat77",
+        StringId.FactCat78(): "FactCat78",
+        StringId.FactCat79(): "FactCat79",
+        StringId.FactCat80(): "FactCat80",
+        StringId.FactCat81(): "FactCat81",
+        StringId.FactCat82(): "FactCat82",
+        StringId.FactCat83(): "FactCat83",
+        StringId.FactCat84(): "FactCat84",
+        StringId.FactCat85(): "FactCat85",
+        StringId.FactCat86(): "FactCat86",
+        StringId.FactCat87(): "FactCat87",
+        StringId.FactCat88(): "FactCat88",
+        StringId.FactCat89(): "FactCat89",
+        StringId.FactCat90(): "FactCat90",
+        StringId.FactCat91(): "FactCat91",
+        StringId.FactCat92(): "FactCat92",
+        StringId.FactCat93(): "FactCat93",
+        StringId.FactCat94(): "FactCat94",
+        StringId.FactCat95(): "FactCat95",
+        StringId.FactCat96(): "FactCat96",
+        StringId.FactCat97(): "FactCat97",
+        StringId.FactCat98(): "FactCat98",
+        StringId.FactCat99(): "FactCat99",
+        StringId.FactCat100(): "FactCat100",
+
+        StringId.FactFrog1(): "FactFrog1",
+        StringId.FactFrog2(): "FactFrog2",
+        StringId.FactFrog3(): "FactFrog3",
+        StringId.FactFrog4(): "FactFrog4",
+        StringId.FactFrog5(): "FactFrog5",
+        StringId.FactFrog6(): "FactFrog6",
+        StringId.FactFrog7(): "FactFrog7",
+        StringId.FactFrog8(): "FactFrog8",
+        StringId.FactFrog9(): "FactFrog9",
+        StringId.FactFrog10(): "FactFrog10",
+        StringId.FactFrog11(): "FactFrog11",
+        StringId.FactFrog12(): "FactFrog12",
+        StringId.FactFrog13(): "FactFrog13",
+        StringId.FactFrog14(): "FactFrog14",
+        StringId.FactFrog15(): "FactFrog15",
+        StringId.FactFrog16(): "FactFrog16",
+        StringId.FactFrog17(): "FactFrog17",
+        StringId.FactFrog18(): "FactFrog18",
+        StringId.FactFrog19(): "FactFrog19",
+        StringId.FactFrog20(): "FactFrog20",
+        StringId.FactFrog21(): "FactFrog21",
+        StringId.FactFrog22(): "FactFrog22",
+        StringId.FactFrog23(): "FactFrog23",
+        StringId.FactFrog24(): "FactFrog24",
+        StringId.FactFrog25(): "FactFrog25",
+        StringId.FactFrog26(): "FactFrog26",
+        StringId.FactFrog27(): "FactFrog27",
+        StringId.FactFrog28(): "FactFrog28",
+        StringId.FactFrog29(): "FactFrog29",
+        StringId.FactFrog30(): "FactFrog30",
+        StringId.FactFrog31(): "FactFrog31",
+        StringId.FactFrog32(): "FactFrog32",
+        StringId.FactFrog33(): "FactFrog33",
+        StringId.FactFrog34(): "FactFrog34",
+        StringId.FactFrog35(): "FactFrog35",
+        StringId.FactFrog36(): "FactFrog36",
+        StringId.FactFrog37(): "FactFrog37",
+        StringId.FactFrog38(): "FactFrog38",
+        StringId.FactFrog39(): "FactFrog39",
+        StringId.FactFrog40(): "FactFrog40",
+        StringId.FactFrog41(): "FactFrog41",
+        StringId.FactFrog42(): "FactFrog42",
+        StringId.FactFrog43(): "FactFrog43",
+        StringId.FactFrog44(): "FactFrog44",
+        StringId.FactFrog45(): "FactFrog45",
+        StringId.FactFrog46(): "FactFrog46",
+        StringId.FactFrog47(): "FactFrog47",
+        StringId.FactFrog48(): "FactFrog48",
+        StringId.FactFrog49(): "FactFrog49",
+        StringId.FactFrog50(): "FactFrog50",
+        StringId.FactFrog51(): "FactFrog51",
+        StringId.FactFrog52(): "FactFrog52",
+        StringId.FactFrog53(): "FactFrog53",
+        StringId.FactFrog54(): "FactFrog54",
+        StringId.FactFrog55(): "FactFrog55",
+        StringId.FactFrog56(): "FactFrog56",
+        StringId.FactFrog57(): "FactFrog57",
+        StringId.FactFrog58(): "FactFrog58",
+        StringId.FactFrog59(): "FactFrog59",
+        StringId.FactFrog60(): "FactFrog60",
+        StringId.FactFrog61(): "FactFrog61",
+        StringId.FactFrog62(): "FactFrog62",
+        StringId.FactFrog63(): "FactFrog63",
+        StringId.FactFrog64(): "FactFrog64",
+        StringId.FactFrog65(): "FactFrog65",
+        StringId.FactFrog66(): "FactFrog66",
+        StringId.FactFrog67(): "FactFrog67",
+        StringId.FactFrog68(): "FactFrog68",
+        StringId.FactFrog69(): "FactFrog69",
+        StringId.FactFrog70(): "FactFrog70",
+        StringId.FactFrog71(): "FactFrog71",
+        StringId.FactFrog72(): "FactFrog72",
+        StringId.FactFrog73(): "FactFrog73",
+        StringId.FactFrog74(): "FactFrog74",
+        StringId.FactFrog75(): "FactFrog75",
+        StringId.FactFrog76(): "FactFrog76",
+        StringId.FactFrog77(): "FactFrog77",
+        StringId.FactFrog78(): "FactFrog78",
+        StringId.FactFrog79(): "FactFrog79",
+        StringId.FactFrog80(): "FactFrog80",
+        StringId.FactFrog81(): "FactFrog81",
+        StringId.FactFrog82(): "FactFrog82",
+        StringId.FactFrog83(): "FactFrog83",
+        StringId.FactFrog84(): "FactFrog84",
+        StringId.FactFrog85(): "FactFrog85",
+        StringId.FactFrog86(): "FactFrog86",
+        StringId.FactFrog87(): "FactFrog87",
+        StringId.FactFrog88(): "FactFrog88",
+        StringId.FactFrog89(): "FactFrog89",
+        StringId.FactFrog90(): "FactFrog90",
+        StringId.FactFrog91(): "FactFrog91",
+        StringId.FactFrog92(): "FactFrog92",
+        StringId.FactFrog93(): "FactFrog93",
+        StringId.FactFrog94(): "FactFrog94",
+        StringId.FactFrog95(): "FactFrog95",
+        StringId.FactFrog96(): "FactFrog96",
+        StringId.FactFrog97(): "FactFrog97",
+        StringId.FactFrog98(): "FactFrog98",
+        StringId.FactFrog99(): "FactFrog99",
+        StringId.FactFrog100(): "FactFrog100",
+
+        StringId.FactBober1(): "FactBober1",
+        StringId.FactBober2(): "FactBober2",
+        StringId.FactBober3(): "FactBober3",
+        StringId.FactBober4(): "FactBober4",
+        StringId.FactBober5(): "FactBober5",
+        StringId.FactBober6(): "FactBober6",
+        StringId.FactBober7(): "FactBober7",
+        StringId.FactBober8(): "FactBober8",
+        StringId.FactBober9(): "FactBober9",
+        StringId.FactBober10(): "FactBober10",
+        StringId.FactBober11(): "FactBober11",
+        StringId.FactBober12(): "FactBober12",
+        StringId.FactBober13(): "FactBober13",
+        StringId.FactBober14(): "FactBober14",
+        StringId.FactBober15(): "FactBober15",
+        StringId.FactBober16(): "FactBober16",
+        StringId.FactBober17(): "FactBober17",
+        StringId.FactBober18(): "FactBober18",
+        StringId.FactBober19(): "FactBober19",
+        StringId.FactBober20(): "FactBober20",
+        StringId.FactBober21(): "FactBober21",
+        StringId.FactBober22(): "FactBober22",
+        StringId.FactBober23(): "FactBober23",
+        StringId.FactBober24(): "FactBober24",
+        StringId.FactBober25(): "FactBober25",
+        StringId.FactBober26(): "FactBober26",
+        StringId.FactBober27(): "FactBober27",
+        StringId.FactBober28(): "FactBober28",
+        StringId.FactBober29(): "FactBober29",
+        StringId.FactBober30(): "FactBober30",
+        StringId.FactBober31(): "FactBober31",
+        StringId.FactBober32(): "FactBober32",
+        StringId.FactBober33(): "FactBober33",
+        StringId.FactBober34(): "FactBober34",
+        StringId.FactBober35(): "FactBober35",
+        StringId.FactBober36(): "FactBober36",
+        StringId.FactBober37(): "FactBober37",
+        StringId.FactBober38(): "FactBober38",
+        StringId.FactBober39(): "FactBober39",
+        StringId.FactBober40(): "FactBober40",
+        StringId.FactBober41(): "FactBober41",
+        StringId.FactBober42(): "FactBober42",
+        StringId.FactBober43(): "FactBober43",
+        StringId.FactBober44(): "FactBober44",
+        StringId.FactBober45(): "FactBober45",
+        StringId.FactBober46(): "FactBober46",
+        StringId.FactBober47(): "FactBober47",
+        StringId.FactBober48(): "FactBober48",
+        StringId.FactBober49(): "FactBober49",
+        StringId.FactBober50(): "FactBober50",
+        StringId.FactBober51(): "FactBober51",
+        StringId.FactBober52(): "FactBober52",
+        StringId.FactBober53(): "FactBober53",
+        StringId.FactBober54(): "FactBober54",
+        StringId.FactBober55(): "FactBober55",
+        StringId.FactBober56(): "FactBober56",
+        StringId.FactBober57(): "FactBober57",
+        StringId.FactBober58(): "FactBober58",
+        StringId.FactBober59(): "FactBober59",
+        StringId.FactBober60(): "FactBober60",
+        StringId.FactBober61(): "FactBober61",
+        StringId.FactBober62(): "FactBober62",
+        StringId.FactBober63(): "FactBober63",
+        StringId.FactBober64(): "FactBober64",
+        StringId.FactBober65(): "FactBober65",
+        StringId.FactBober66(): "FactBober66",
+        StringId.FactBober67(): "FactBober67",
+        StringId.FactBober68(): "FactBober68",
+        StringId.FactBober69(): "FactBober69",
+        StringId.FactBober70(): "FactBober70",
+        StringId.FactBober71(): "FactBober71",
+        StringId.FactBober72(): "FactBober72",
+        StringId.FactBober73(): "FactBober73",
+        StringId.FactBober74(): "FactBober74",
+        StringId.FactBober75(): "FactBober75",
+        StringId.FactBober76(): "FactBober76",
+        StringId.FactBober77(): "FactBober77",
+        StringId.FactBober78(): "FactBober78",
+        StringId.FactBober79(): "FactBober79",
+        StringId.FactBober80(): "FactBober80",
+        StringId.FactBober81(): "FactBober81",
+        StringId.FactBober82(): "FactBober82",
+        StringId.FactBober83(): "FactBober83",
+        StringId.FactBober84(): "FactBober84",
+        StringId.FactBober85(): "FactBober85",
+        StringId.FactBober86(): "FactBober86",
+        StringId.FactBober87(): "FactBober87",
+        StringId.FactBober88(): "FactBober88",
+        StringId.FactBober89(): "FactBober89",
+        StringId.FactBober90(): "FactBober90",
+        StringId.FactBober91(): "FactBober91",
+        StringId.FactBober92(): "FactBober92",
+        StringId.FactBober93(): "FactBober93",
+        StringId.FactBober94(): "FactBober94",
+        StringId.FactBober95(): "FactBober95",
+        StringId.FactBober96(): "FactBober96",
+        StringId.FactBober97(): "FactBober97",
+        StringId.FactBober98(): "FactBober98",
+        StringId.FactBober99(): "FactBober99",
+        StringId.FactBober100(): "FactBober100",
+
+        StringId.FactFractal1(): "FactFractal1",
+        StringId.FactFractal2(): "FactFractal2",
+        StringId.FactFractal3(): "FactFractal3",
+        StringId.FactFractal4(): "FactFractal4",
+        StringId.FactFractal5(): "FactFractal5",
+        StringId.FactFractal6(): "FactFractal6",
+        StringId.FactFractal7(): "FactFractal7",
+        StringId.FactFractal8(): "FactFractal8",
+        StringId.FactFractal9(): "FactFractal9",
+        StringId.FactFractal10(): "FactFractal10",
+        StringId.FactFractal11(): "FactFractal11",
+        StringId.FactFractal12(): "FactFractal12",
+        StringId.FactFractal13(): "FactFractal13",
+        StringId.FactFractal14(): "FactFractal14",
+        StringId.FactFractal15(): "FactFractal15",
+        StringId.FactFractal16(): "FactFractal16",
+        StringId.FactFractal17(): "FactFractal17",
+        StringId.FactFractal18(): "FactFractal18",
+        StringId.FactFractal19(): "FactFractal19",
+        StringId.FactFractal20(): "FactFractal20",
+        StringId.FactFractal21(): "FactFractal21",
+        StringId.FactFractal22(): "FactFractal22",
+        StringId.FactFractal23(): "FactFractal23",
+        StringId.FactFractal24(): "FactFractal24",
+        StringId.FactFractal25(): "FactFractal25",
+        StringId.FactFractal26(): "FactFractal26",
+        StringId.FactFractal27(): "FactFractal27",
+        StringId.FactFractal28(): "FactFractal28",
+        StringId.FactFractal29(): "FactFractal29",
+        StringId.FactFractal30(): "FactFractal30",
+        StringId.FactFractal31(): "FactFractal31",
+        StringId.FactFractal32(): "FactFractal32",
+        StringId.FactFractal33(): "FactFractal33",
+        StringId.FactFractal34(): "FactFractal34",
+        StringId.FactFractal35(): "FactFractal35",
+        StringId.FactFractal36(): "FactFractal36",
+        StringId.FactFractal37(): "FactFractal37",
+        StringId.FactFractal38(): "FactFractal38",
+        StringId.FactFractal39(): "FactFractal39",
+        StringId.FactFractal40(): "FactFractal40",
+        StringId.FactFractal41(): "FactFractal41",
+        StringId.FactFractal42(): "FactFractal42",
+        StringId.FactFractal43(): "FactFractal43",
+        StringId.FactFractal44(): "FactFractal44",
+        StringId.FactFractal45(): "FactFractal45",
+        StringId.FactFractal46(): "FactFractal46",
+        StringId.FactFractal47(): "FactFractal47",
+        StringId.FactFractal48(): "FactFractal48",
+        StringId.FactFractal49(): "FactFractal49",
+        StringId.FactFractal50(): "FactFractal50",
+        StringId.FactFractal51(): "FactFractal51",
+        StringId.FactFractal52(): "FactFractal52",
+        StringId.FactFractal53(): "FactFractal53",
+        StringId.FactFractal54(): "FactFractal54",
+        StringId.FactFractal55(): "FactFractal55",
+        StringId.FactFractal56(): "FactFractal56",
+        StringId.FactFractal57(): "FactFractal57",
+        StringId.FactFractal58(): "FactFractal58",
+        StringId.FactFractal59(): "FactFractal59",
+        StringId.FactFractal60(): "FactFractal60",
+        StringId.FactFractal61(): "FactFractal61",
+        StringId.FactFractal62(): "FactFractal62",
+        StringId.FactFractal63(): "FactFractal63",
+        StringId.FactFractal64(): "FactFractal64",
+        StringId.FactFractal65(): "FactFractal65",
+        StringId.FactFractal66(): "FactFractal66",
+        StringId.FactFractal67(): "FactFractal67",
+        StringId.FactFractal68(): "FactFractal68",
+        StringId.FactFractal69(): "FactFractal69",
+        StringId.FactFractal70(): "FactFractal70",
+        StringId.FactFractal71(): "FactFractal71",
+        StringId.FactFractal72(): "FactFractal72",
+        StringId.FactFractal73(): "FactFractal73",
+        StringId.FactFractal74(): "FactFractal74",
+        StringId.FactFractal75(): "FactFractal75",
+        StringId.FactFractal76(): "FactFractal76",
+        StringId.FactFractal77(): "FactFractal77",
+        StringId.FactFractal78(): "FactFractal78",
+        StringId.FactFractal79(): "FactFractal79",
+        StringId.FactFractal80(): "FactFractal80",
+        StringId.FactFractal81(): "FactFractal81",
+        StringId.FactFractal82(): "FactFractal82",
+        StringId.FactFractal83(): "FactFractal83",
+        StringId.FactFractal84(): "FactFractal84",
+        StringId.FactFractal85(): "FactFractal85",
+        StringId.FactFractal86(): "FactFractal86",
+        StringId.FactFractal87(): "FactFractal87",
+        StringId.FactFractal88(): "FactFractal88",
+        StringId.FactFractal89(): "FactFractal89",
+        StringId.FactFractal90(): "FactFractal90",
+        StringId.FactFractal91(): "FactFractal91",
+        StringId.FactFractal92(): "FactFractal92",
+        StringId.FactFractal93(): "FactFractal93",
+        StringId.FactFractal94(): "FactFractal94",
+        StringId.FactFractal95(): "FactFractal95",
+        StringId.FactFractal96(): "FactFractal96",
+        StringId.FactFractal97(): "FactFractal97",
+        StringId.FactFractal98(): "FactFractal98",
+        StringId.FactFractal99(): "FactFractal99",
+
+        StringId.FactDragon1(): "FactDragon1",
+        StringId.FactDragon2(): "FactDragon2",
+        StringId.FactDragon3(): "FactDragon3",
+        StringId.FactDragon4(): "FactDragon4",
+        StringId.FactDragon5(): "FactDragon5",
+        StringId.FactDragon6(): "FactDragon6",
+        StringId.FactDragon7(): "FactDragon7",
+        StringId.FactDragon8(): "FactDragon8",
+        StringId.FactDragon9(): "FactDragon9",
+        StringId.FactDragon10(): "FactDragon10",
+        StringId.FactDragon11(): "FactDragon11",
+        StringId.FactDragon12(): "FactDragon12",
+        StringId.FactDragon13(): "FactDragon13",
+        StringId.FactDragon14(): "FactDragon14",
+        StringId.FactDragon15(): "FactDragon15",
+        StringId.FactDragon16(): "FactDragon16",
+        StringId.FactDragon17(): "FactDragon17",
+        StringId.FactDragon18(): "FactDragon18",
+        StringId.FactDragon19(): "FactDragon19",
+        StringId.FactDragon20(): "FactDragon20",
+        StringId.FactDragon21(): "FactDragon21",
+        StringId.FactDragon22(): "FactDragon22",
+        StringId.FactDragon23(): "FactDragon23",
+        StringId.FactDragon24(): "FactDragon24",
+        StringId.FactDragon25(): "FactDragon25",
+        StringId.FactDragon26(): "FactDragon26",
+        StringId.FactDragon27(): "FactDragon27",
+        StringId.FactDragon28(): "FactDragon28",
+        StringId.FactDragon29(): "FactDragon29",
+        StringId.FactDragon30(): "FactDragon30",
+        StringId.FactDragon31(): "FactDragon31",
+        StringId.FactDragon32(): "FactDragon32",
+        StringId.FactDragon33(): "FactDragon33",
+        StringId.FactDragon34(): "FactDragon34",
+        StringId.FactDragon35(): "FactDragon35",
+        StringId.FactDragon36(): "FactDragon36",
+        StringId.FactDragon37(): "FactDragon37",
+        StringId.FactDragon38(): "FactDragon38",
+        StringId.FactDragon39(): "FactDragon39",
+        StringId.FactDragon40(): "FactDragon40",
+        StringId.FactDragon41(): "FactDragon41",
+        StringId.FactDragon42(): "FactDragon42",
+        StringId.FactDragon43(): "FactDragon43",
+        StringId.FactDragon44(): "FactDragon44",
+        StringId.FactDragon45(): "FactDragon45",
+        StringId.FactDragon46(): "FactDragon46",
+        StringId.FactDragon47(): "FactDragon47",
+        StringId.FactDragon48(): "FactDragon48",
+        StringId.FactDragon49(): "FactDragon49",
+        StringId.FactDragon50(): "FactDragon50",
+        StringId.FactDragon51(): "FactDragon51",
+        StringId.FactDragon52(): "FactDragon52",
+        StringId.FactDragon53(): "FactDragon53",
+        StringId.FactDragon54(): "FactDragon54",
+        StringId.FactDragon55(): "FactDragon55",
+        StringId.FactDragon56(): "FactDragon56",
+        StringId.FactDragon57(): "FactDragon57",
+        StringId.FactDragon58(): "FactDragon58",
+        StringId.FactDragon59(): "FactDragon59",
+        StringId.FactDragon60(): "FactDragon60",
+        StringId.FactDragon61(): "FactDragon61",
+        StringId.FactDragon62(): "FactDragon62",
+        StringId.FactDragon63(): "FactDragon63",
+        StringId.FactDragon64(): "FactDragon64",
+        StringId.FactDragon65(): "FactDragon65",
+        StringId.FactDragon66(): "FactDragon66",
+        StringId.FactDragon67(): "FactDragon67",
+        StringId.FactDragon68(): "FactDragon68",
+        StringId.FactDragon69(): "FactDragon69",
+        StringId.FactDragon70(): "FactDragon70",
+        StringId.FactDragon71(): "FactDragon71",
+        StringId.FactDragon72(): "FactDragon72",
+        StringId.FactDragon73(): "FactDragon73",
+        StringId.FactDragon74(): "FactDragon74",
+        StringId.FactDragon75(): "FactDragon75",
+        StringId.FactDragon76(): "FactDragon76",
+        StringId.FactDragon77(): "FactDragon77",
+        StringId.FactDragon78(): "FactDragon78",
+        StringId.FactDragon79(): "FactDragon79",
+        StringId.FactDragon80(): "FactDragon80",
+        StringId.FactDragon81(): "FactDragon81",
+        StringId.FactDragon82(): "FactDragon82",
+        StringId.FactDragon83(): "FactDragon83",
+        StringId.FactDragon84(): "FactDragon84",
+        StringId.FactDragon85(): "FactDragon85",
+        StringId.FactDragon86(): "FactDragon86",
+        StringId.FactDragon87(): "FactDragon87",
+        StringId.FactDragon88(): "FactDragon88",
+        StringId.FactDragon89(): "FactDragon89",
+        StringId.FactDragon90(): "FactDragon90",
+        StringId.FactDragon91(): "FactDragon91",
+        StringId.FactDragon92(): "FactDragon92",
+        StringId.FactDragon93(): "FactDragon93",
+        StringId.FactDragon94(): "FactDragon94",
+        StringId.FactDragon95(): "FactDragon95",
+        StringId.FactDragon96(): "FactDragon96",
+        StringId.FactDragon97(): "FactDragon97",
+        StringId.FactDragon98(): "FactDragon98",
+        StringId.FactDragon99(): "FactDragon99",
+        StringId.FactDragon100(): "FactDragon100",
+
+        StringId.FactAlien1(): "FactAlien1",
+        StringId.FactAlien2(): "FactAlien2",
+        StringId.FactAlien3(): "FactAlien3",
+        StringId.FactAlien4(): "FactAlien4",
+        StringId.FactAlien5(): "FactAlien5",
+        StringId.FactAlien6(): "FactAlien6",
+        StringId.FactAlien7(): "FactAlien7",
+        StringId.FactAlien8(): "FactAlien8",
+        StringId.FactAlien9(): "FactAlien9",
+        StringId.FactAlien10(): "FactAlien10",
+        StringId.FactAlien11(): "FactAlien11",
+        StringId.FactAlien12(): "FactAlien12",
+        StringId.FactAlien13(): "FactAlien13",
+        StringId.FactAlien14(): "FactAlien14",
+        StringId.FactAlien15(): "FactAlien15",
+        StringId.FactAlien16(): "FactAlien16",
+        StringId.FactAlien17(): "FactAlien17",
+        StringId.FactAlien18(): "FactAlien18",
+        StringId.FactAlien19(): "FactAlien19",
+        StringId.FactAlien20(): "FactAlien20",
+        StringId.FactAlien21(): "FactAlien21",
+        StringId.FactAlien22(): "FactAlien22",
+        StringId.FactAlien23(): "FactAlien23",
+        StringId.FactAlien24(): "FactAlien24",
+        StringId.FactAlien25(): "FactAlien25",
+        StringId.FactAlien26(): "FactAlien26",
+        StringId.FactAlien27(): "FactAlien27",
+        StringId.FactAlien28(): "FactAlien28",
+        StringId.FactAlien29(): "FactAlien29",
+        StringId.FactAlien30(): "FactAlien30",
+        StringId.FactAlien31(): "FactAlien31",
+        StringId.FactAlien32(): "FactAlien32",
+        StringId.FactAlien33(): "FactAlien33",
+        StringId.FactAlien34(): "FactAlien34",
+        StringId.FactAlien35(): "FactAlien35",
+        StringId.FactAlien36(): "FactAlien36",
+        StringId.FactAlien37(): "FactAlien37",
+        StringId.FactAlien38(): "FactAlien38",
+        StringId.FactAlien39(): "FactAlien39",
+        StringId.FactAlien40(): "FactAlien40",
+        StringId.FactAlien41(): "FactAlien41",
+        StringId.FactAlien42(): "FactAlien42",
+        StringId.FactAlien43(): "FactAlien43",
+        StringId.FactAlien44(): "FactAlien44",
+        StringId.FactAlien45(): "FactAlien45",
+        StringId.FactAlien46(): "FactAlien46",
+        StringId.FactAlien47(): "FactAlien47",
+        StringId.FactAlien48(): "FactAlien48",
+        StringId.FactAlien49(): "FactAlien49",
+        StringId.FactAlien50(): "FactAlien50",
+        StringId.FactAlien51(): "FactAlien51",
+        StringId.FactAlien52(): "FactAlien52",
+        StringId.FactAlien53(): "FactAlien53",
+        StringId.FactAlien54(): "FactAlien54",
+        StringId.FactAlien55(): "FactAlien55",
+        StringId.FactAlien56(): "FactAlien56",
+        StringId.FactAlien57(): "FactAlien57",
+        StringId.FactAlien58(): "FactAlien58",
+        StringId.FactAlien59(): "FactAlien59",
+        StringId.FactAlien60(): "FactAlien60",
+        StringId.FactAlien61(): "FactAlien61",
+        StringId.FactAlien62(): "FactAlien62",
+        StringId.FactAlien63(): "FactAlien63",
+        StringId.FactAlien64(): "FactAlien64",
+        StringId.FactAlien65(): "FactAlien65",
+        StringId.FactAlien66(): "FactAlien66",
+        StringId.FactAlien67(): "FactAlien67",
+        StringId.FactAlien68(): "FactAlien68",
+        StringId.FactAlien69(): "FactAlien69",
+        StringId.FactAlien70(): "FactAlien70",
+        StringId.FactAlien71(): "FactAlien71",
+        StringId.FactAlien72(): "FactAlien72",
+        StringId.FactAlien73(): "FactAlien73",
+        StringId.FactAlien74(): "FactAlien74",
+        StringId.FactAlien75(): "FactAlien75",
+        StringId.FactAlien76(): "FactAlien76",
+        StringId.FactAlien77(): "FactAlien77",
+        StringId.FactAlien78(): "FactAlien78",
+        StringId.FactAlien79(): "FactAlien79",
+        StringId.FactAlien80(): "FactAlien80",
+        StringId.FactAlien81(): "FactAlien81",
+        StringId.FactAlien82(): "FactAlien82",
+        StringId.FactAlien83(): "FactAlien83",
+        StringId.FactAlien84(): "FactAlien84",
+        StringId.FactAlien85(): "FactAlien85",
+        StringId.FactAlien86(): "FactAlien86",
+        StringId.FactAlien87(): "FactAlien87",
+        StringId.FactAlien88(): "FactAlien88",
+        StringId.FactAlien89(): "FactAlien89",
+        StringId.FactAlien90(): "FactAlien90",
+        StringId.FactAlien91(): "FactAlien91",
+        StringId.FactAlien92(): "FactAlien92",
+        StringId.FactAlien93(): "FactAlien93",
+        StringId.FactAlien94(): "FactAlien94",
+        StringId.FactAlien95(): "FactAlien95",
+        StringId.FactAlien96(): "FactAlien96",
+        StringId.FactAlien97(): "FactAlien97",
+        StringId.FactAlien98(): "FactAlien98",
+        StringId.FactAlien99(): "FactAlien99",
+        StringId.FactAlien100(): "FactAlien100"
+    ]
 }
 
 func convertStringIdToString(id: StringId) -> String {
