@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-02-17
+
+### Added
+
+- New pet: alien
+- Images and descriptions for abilities
+- Onboarding sheet
+- Facts about pets
+
+### Fixed
+
+- Pet stats increased
+
 ## [1.3.3] - 2026-01-21
 
 ### Fixed
