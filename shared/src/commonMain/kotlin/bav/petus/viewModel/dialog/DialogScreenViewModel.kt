@@ -4,6 +4,8 @@ import bav.petus.base.ViewModelWithNavigation
 import bav.petus.core.dialog.DialogNode
 import bav.petus.core.dialog.DialogSystem
 import bav.petus.core.dialog.Zalgoize
+import bav.petus.core.dialog.Zalgoize.Range
+import bav.petus.core.dialog.Zalgoize.ZalgoLevel
 import bav.petus.core.resources.ImageId
 import bav.petus.core.resources.StringId
 import bav.petus.repo.PetsRepository
@@ -96,7 +98,7 @@ class DialogScreenViewModel(
         return when (petType) {
             PetType.Alien -> Zalgoize.encode(
                 text = text,
-                level = 1,
+                level = ZalgoLevel(Range(0, 3), Range(0, 1), Range(0, 3)),
                 directions = listOf("up", "middle", "down"),
                 ignoreChars = setOf(DialogSystem.MASK_SYMBOL)
             )
